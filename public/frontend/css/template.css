@@ -289,14 +289,13 @@ div.opacity-absolute::before{
     font-weight: bold;    
     background: #dddddd3b;
     border:1px solid #ddddddad;
-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
 }
 .dk a:hover{
     background: #337ab7;
     border: 1px solid #1b588d;
-    color: #ffffff;
-    
+    color: #ffffff;    
 }
 .tao-ho-so a{
     display: block;
@@ -332,12 +331,53 @@ transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
 }
-.tao-ho-so a:hover .ths ,.tao-ho-so a:hover .sloganthsmp,.tao-ho-so a:hover i{
+.tao-ho-so a:hover .ths ,
+.tao-ho-so a:hover .sloganthsmp,
+.tao-ho-so a:hover i{
     color: #ffffff;
 }
 .mica{
     display: flex;
     justify-content: center;   
+}
+.dang-tin-mien-phi a{
+    display: block;
+    padding-left: 10px ;
+    padding-top: 10px;   
+    padding-bottom: 11px;     
+    background: #dddddd3b;
+    border:1px solid #ddddddad;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;    
+}
+.dang-tin-mien-phi a:hover{
+    background: #337ab7;
+    border: 1px solid #1b588d;
+}
+.dang-tin-mien-phi a .ths{
+  color: #337ab7;
+    font-weight: bold;
+    font-size:16px;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;    
+}
+.dang-tin-mien-phi a .sloganthsmp{
+    color: #333;
+    font-size: 12px;
+    margin-top: 5px;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;    
+}
+.dang-tin-mien-phi a i{
+    color: #337ab7;
+    font-size: 74px;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;    
+}
+.dang-tin-mien-phi a:hover .ths ,
+.dang-tin-mien-phi a:hover .sloganthsmp,
+.dang-tin-mien-phi a:hover i{
+    color: #ffffff;
 }
 @media (max-width: 768px){    
     .mobilemenu{

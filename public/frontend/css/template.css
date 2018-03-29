@@ -2059,6 +2059,9 @@ form[name='frm-search'] input[name='q']{
 	float: right;
     width: 50px;
 }
+.header{
+    background: #2D82C3;    
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

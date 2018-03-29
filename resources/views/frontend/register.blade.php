@@ -1,7 +1,4 @@
- <?php 
- use App\GroupMemberModel;
- ?>
- <div class="tieu-de margin-top-15">
+<div class="tieu-de margin-top-15">
     Đăng ký
 </div>
 <form method="post" name="frm" class="box-article margin-top-5">

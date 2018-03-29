@@ -157,18 +157,18 @@ if(count($arrCart) > 0){
 	<script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
 	<!-- end datatables -->
 	<!-- begin youtube -->    
-  <script src="{{ asset('public/frontend/js/jquery-modal-video.min.js') }}"></script>
-  <script src="{{ asset('public/frontend/js/modal-video.min.js') }}"></script>
-  <link rel="stylesheet" href="{{ asset('public/frontend/css/modal-video.min.css') }}" />
-  <!-- end youtube -->
+	<script src="{{ asset('public/frontend/js/jquery-modal-video.min.js') }}"></script>
+	<script src="{{ asset('public/frontend/js/modal-video.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('public/frontend/css/modal-video.min.css') }}" />
+	<!-- end youtube -->
 	<!-- begin fancybox -->
 	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/js/jquery.fancybox.min.js')}}"                 ></script>
 	<link href="{{asset('public/frontend/css/jquery.fancybox.min.css')}}" rel="stylesheet" type="text/css" />
 	<!-- end fancybox -->
 	<!-- begin ckeditor-->
 	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/ckeditor/ckeditor.js')}}"                 ></script>
-    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/ckfinder/ckfinder.js')}}"                 ></script>
-    <!-- end ckeditor-->
+	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/ckfinder/ckfinder.js')}}"                 ></script>
+	<!-- end ckeditor-->
 	<!-- begin custom -->
 	<link rel="stylesheet" href="{{ asset('public/frontend/css/menu-horizontal-right.css') }}" />
 	<link rel="stylesheet" href="{{ asset('public/frontend/css/menu-horizontal-right-dmsp.css') }}" />
@@ -208,10 +208,67 @@ if(count($arrCart) > 0){
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- end fanpage -->
 	<header class="header">	
-		
+		<div class="top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-1">					
+						<div class="tieplua">
+							<a href="http://tieplua.info" target="_blank">Tiếp lửa</a>
+						</div>	
+					</div>	
+					<div class="col-lg-2">						
+						<span><i class="fas fa-phone-volume"></i></span>
+						<span>Hotline:</span>	
+						<span>04.35335527</span>
+					</div>	
+					<div class="col-lg-9">						
+						<ul class="nipad">
+							<li><a href="<?php echo url('/'); ?>"><span><i class="fas fa-home"></i></span><span class="margin-left-5">Trang chủ</span> </a></li>
+							<li><a href="<?php echo url('/'); ?>"><span><i class="fas fa-user-circle"></i></span><span class="margin-left-5">Người tìm việc</span> </a></li>
+							<li><a href="javascript:void(0);"><span><i class="far fa-address-card"></i></span><span class="margin-left-5">Nhà tuyển dụng</span> </a></li>
+							<li><a href="javascript:void(0);"><span><i class="fas fa-users"></i></span><span class="margin-left-5">Góc nghề nghiệp</span> </a></li>
+						</ul>
+					</div>					
+				</div>
+			</div>			
+		</div>
+		<div class="container padding-top-30 padding-bottom-30">
+			<div class="row">
+				<div class="col-lg-3"><a href="<?php echo url('/'); ?>"><img src="<?php echo asset('/upload/logo.png'); ?>"></a></div>
+				<div class="col-lg-9">
+					<form action="" method="post" name="frm-search-job">
+						<div class="tim-cong-viec"><input type="text" name="job_name" class="kiem-cong-viec" placeholder="Nhập tên công việc..."></div>
+						<div class="tim-cong-viec">
+							<select name="job" class="kiem-cong-viec">
+								<option>Chọn ngành nghề</option>
+								<option>Dầu khí</option>
+								<option>Địa chất</option>
+								<option>Dệt may</option>
+								<option>Điện tử / Điện lạnh</option>
+								<option>Du lịch / Nhà hàng / Khách sạn</option>
+							</select>
+						</div>
+						<div class="tim-cong-viec">
+							<select name="province" class="kiem-cong-viec">
+								<option>Chọn tỉnh thành</option>
+								<option>Hồ Chí Minh</option>
+								<option>Bắc Cạn</option>
+								<option>Quy Nhơn</option>
+								<option>Bình Thuận</option>
+								<option>Bình Phước</option>
+								<option>Cà Mau</option>
+							</select>
+						</div>
+						<div class="tim-cong-viec btn-search-job">
+							<a href="javascript:void(0);" onclick="document.forms['frm-search-job'].submit();">Tìm công việc</a>
+						</div>
+					</form>					
+				</div>
+			</div>
+		</div>
 	</header>
-@yield("content")
-@include("frontend.footer")
+	@yield("content")
+	@include("frontend.footer")
 </body>
 </html>
 

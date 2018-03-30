@@ -8,7 +8,7 @@
 		</div>
 		<div class="col-lg-2 dk-dn">
 			<a  href="<?php echo route('frontend.index.register'); ?>">
-				<div><center><i class="fas fa-lock"></i></center></div>
+				<div><center><i class="fas fa-user-plus"></i></center></div>
 				<div><center>ĐĂNG KÝ</center> </div>
 			</a>
 		</div>		

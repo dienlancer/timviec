@@ -261,7 +261,7 @@ div.opacity-absolute::before{
     -webkit-transition: all 0.5s ease-in-out;
 }
 .btn-search-job a:hover{
-    background: #0079BE;
+    background:#337ab7;
 }
 .bg-startup{
     background-image: url('../images/bg-quick-search.png');
@@ -277,7 +277,7 @@ div.opacity-absolute::before{
 .tim-kiem-cv-mo-uoc{
     border: 3px solid #d3f3f9;
     margin-top: 15px;
-    background: #f7fdfe;
+    background: #ffffff;
     text-align: center;
     margin-left: 200px;
     margin-right: 200px;
@@ -378,6 +378,80 @@ div.opacity-absolute::before{
 .dang-tin-mien-phi a:hover .sloganthsmp,
 .dang-tin-mien-phi a:hover i{
     color: #ffffff;
+}
+.box-dk-dn{
+        border: 1px solid #ccc;
+    
+}
+.user-dn-dk{
+        padding-top: 20px;
+    padding-bottom: 20px;
+    font-size:40px;
+    color: #3333335c;
+}
+.box-btn-dn-dk{
+    padding: 0px 10px;
+}
+.box-btn-dn-dk a{
+        display: inline-block;
+    background: #E30000;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    color: #ffffff;
+    padding: 10px 10px;
+    font-size: 15px;
+    width: 100%;
+}
+.box-btn-dn-dk a:hover{
+    background: #337ab7;    
+}
+.thong-tin-dn-dk{
+    list-style: none;
+}
+.thong-tin-dn-dk li{
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: justify;
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.riba{
+        margin-top: 60px;
+}
+.thong-tin-dn-dk span{
+    margin-left: 5px;
+}
+.dk-dn-r a{
+    display: block;
+    padding: 20px 0px;
+    font-weight: bold;    
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;    
+}
+.dk-dn-r a:hover{
+    background: #337ab7;
+    border: 1px solid #1b588d;
+    color: #ffffff;    
+}
+.dk-dn-r a .dk-dn-login{
+        font-size: 20px;
+    margin-left: 20px;
+}
+.dk-dn-r a .dk-dn-icon{
+        font-size: 50px;
+    position: absolute;
+    right: 20px;
+}
+.caramba{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.lilikati{
+    padding: 0px 80px;    
 }
 @media (max-width: 768px){    
     .mobilemenu{

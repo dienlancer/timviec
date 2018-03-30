@@ -225,7 +225,7 @@ div.opacity-absolute::before{
 }
 /* end standard */
 .top{
-    background: #f7f7f7;
+    background: #f5f5f5;
     padding: 10px 0px;
 }
 .tieplua a{
@@ -247,7 +247,7 @@ div.opacity-absolute::before{
     margin-right: 5px;
 }
 .kiem-cong-viec{
-    border: 1px solid #d7d7d7;
+    border: 1px solid #ccc;
     padding: 5px 5px;
     font-size: 12px;
 }
@@ -282,17 +282,17 @@ div.opacity-absolute::before{
     margin-left: 200px;
     margin-right: 200px;
 }
-.dk a{
+.dk-dn a{
     display: block;
     padding: 20px 0px;
     font-size: 20px;
     font-weight: bold;    
-    background: #dddddd3b;
-    border:1px solid #ddddddad;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
 }
-.dk a:hover{
+.dk-dn a:hover{
     background: #337ab7;
     border: 1px solid #1b588d;
     color: #ffffff;    
@@ -302,8 +302,8 @@ div.opacity-absolute::before{
     padding-left: 10px ;
     padding-top: 10px;   
     padding-bottom: 11px;     
-    background: #dddddd3b;
-    border:1px solid #ddddddad;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
 }
@@ -345,8 +345,8 @@ div.opacity-absolute::before{
     padding-left: 10px ;
     padding-top: 10px;   
     padding-bottom: 11px;     
-    background: #dddddd3b;
-    border:1px solid #ddddddad;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
 }

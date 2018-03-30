@@ -1,12 +1,12 @@
 <div class="container margin-top-15">
 	<div class="row">
-		<div class="col-lg-2 dk">
+		<div class="col-lg-2 dk-dn">
 			<a  href="javascript:void(0);">
 				<div><center><i class="fas fa-sign-in-alt"></i></center></div>
 				<div><center>ĐĂNG NHẬP</center> </div>
 			</a>
 		</div>
-		<div class="col-lg-2 dk">
+		<div class="col-lg-2 dk-dn">
 			<a  href="<?php echo route('frontend.index.register'); ?>">
 				<div><center><i class="fas fa-lock"></i></center></div>
 				<div><center>ĐĂNG KÝ</center> </div>

@@ -43,30 +43,6 @@ $seo_alias="";
 if(isset($alias)){
 	$seo_alias=$alias;
 }
-$ssName="vmuser";
-$arrUser =array();   
-$user = Sentinel::forceCheck(); 
-if(!empty($user)){                
-    $arrUser = $user->toArray();    
-}         
-$account_link=route("frontend.index.viewAccount");  
-$logout_link=route("frontend.index.getLgout"); 
-$security_link=route("frontend.index.viewSecurity"); 
-$invoice_link=route("frontend.index.getInvoice");
-$register_member_link=route("frontend.index.register");
-$cart_link=route('frontend.index.viewCart');
-
-$ssNameCart='vmart';
-$quantity=0;
-$arrCart=array();
-if(Session::has($ssNameCart)){    
-	$arrCart = @Session::get($ssNameCart);    
-}         
-if(count($arrCart) > 0){
-	foreach ($arrCart as $key => $value){
-		$quantity+=(int)$value['product_quantity'];              
-	}
-}   
 
 ?>
 <!DOCTYPE html>

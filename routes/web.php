@@ -364,73 +364,12 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("create-alias",["as"=>"adminsystem.group-member.createAlias","uses"=>"adminsystem\GroupMemberController@createAlias"]);	
 	});	
 });
-Route::match(["get","post"],"adminsystem/login",["as"=>"adminsystem.login","uses"=>"adminsystem\LoginController@login"]);
-Route::post("adminsystem/logout",["as"=>"adminsystem.logout","uses"=>"adminsystem\LoginController@logout"]);
+
+/* begin tìm việc */
 Route::match(["get","post"],"/",["as"=>"frontend.index.getHome","uses"=>"frontend\IndexController@getHome"]);
 Route::match(["get","post"],"{alias}.html",["as"=>"frontend.index.index","uses"=>"frontend\IndexController@index"]);
-Route::match(["get","post"],"gio-hang",["as"=>"frontend.index.viewCart","uses"=>"frontend\IndexController@viewCart"]);
-Route::match(["get","post"],"xoa-gio-hang",["as"=>"frontend.index.deleteAll","uses"=>"frontend\IndexController@deleteAll"]);
-Route::match(["get","post"],"xoa/{id}",["as"=>"frontend.index.delete","uses"=>"frontend\IndexController@delete"]);
-Route::match(["get","post"],"dang-ky",["as"=>"frontend.index.register","uses"=>"frontend\IndexController@register"]);
-Route::match(["get","post"],"tai-khoan",["as"=>"frontend.index.viewAccount","uses"=>"frontend\IndexController@viewAccount"]);
-Route::match(["get","post"],"dang-nhap",["as"=>"frontend.index.login","uses"=>"frontend\IndexController@login"]);
-Route::match(["get","post"],"bao-mat",["as"=>"frontend.index.viewSecurity","uses"=>"frontend\IndexController@viewSecurity"]);
-Route::match(["get","post"],"lien-he",["as"=>"frontend.index.contact","uses"=>"frontend\IndexController@contact"]);
-Route::get("thanh-toan",["as"=>"frontend.index.checkout","uses"=>"frontend\IndexController@checkout"]);
-Route::get("hoan-tat-giao-dich",["as"=>"frontend.index.finishCheckout","uses"=>"frontend\IndexController@finishCheckout"]);
-Route::get("luu-don-hang",["as"=>"frontend.index.saveInvoice","uses"=>"frontend\IndexController@saveInvoice"]);
-Route::get("huy-giao-dich",["as"=>"frontend.index.cancelInvoice","uses"=>"frontend\IndexController@cancelInvoice"]);
-Route::match(["get","post"],"xac-nhan-thanh-toan",["as"=>"frontend.index.confirmCheckout","uses"=>"frontend\IndexController@confirmCheckout"]);
-Route::match(["get","post"],"dang-nhap-thanh-toan",["as"=>"frontend.index.loginCheckout","uses"=>"frontend\IndexController@loginCheckout"]);
-Route::get("hoa-don",["as"=>"frontend.index.getInvoice","uses"=>"frontend\IndexController@getInvoice"]);
-Route::get("lgout",["as"=>"frontend.index.getLgout","uses"=>"frontend\IndexController@getLgout"]);
-Route::post("add-to-cart",["as"=>"frontend.index.addToCart","uses"=>"frontend\IndexController@addToCart"]);
-Route::post("get-paymentmethod",["as"=>"frontend.index.getPaymentmethod","uses"=>"frontend\IndexController@getPaymentmethod"]);
-Route::post("tim-kiem",["as"=>"frontend.index.search","uses"=>"frontend\IndexController@search"]);
-Route::post("load-data-member",["as"=>"frontend.index.loadDataMember","uses"=>"frontend\IndexController@loadDataMember"]);	
-Route::post("load-data-supporter",["as"=>"frontend.index.loadDataSupporter","uses"=>"frontend\IndexController@loadDataSupporter"]);		
-Route::post("tim-kiem-san-pham",["as"=>"frontend.index.searchProduct","uses"=>"frontend\IndexController@searchProduct"]);
-Route::match(["get","post"],"lien-he-voi-chung-toi",["as"=>"frontend.index.contactUs","uses"=>"frontend\IndexController@contactUs"]);
-
-/* begin tính riêng cho website hardwaremart */
-Route::post("change-total-price",["as"=>"frontend.index.changeTotalPrice","uses"=>"frontend\IndexController@changeTotalPrice"]);
-Route::post("delete-row-cart",["as"=>"frontend.index.deleteRowCart","uses"=>"frontend\IndexController@deleteRowCart"]);
-Route::post("thanh-toan-truc-tiep",["as"=>"frontend.index.checkoutQuickly","uses"=>"frontend\IndexController@checkoutQuickly"]);
-/* end tính riêng cho website hardwaremart */
-Route::group(["prefix"=>"product"],function(){
-	Route::match(["get","post"],"list",["as"=>"frontend.product.getList","uses"=>"frontend\ProductController@getList"]);		
-	Route::post("load-data",["as"=>"frontend.product.loadData","uses"=>"frontend\ProductController@loadData"]);	
-	Route::get("form/{task}/{id?}",["as"=>"frontend.product.getForm","uses"=>"frontend\ProductController@getForm"]);
-	Route::post("save",["as"=>"frontend.product.save","uses"=>"frontend\ProductController@save"]);
-	Route::post("delete-item",["as"=>"frontend.product.deleteItem","uses"=>"frontend\ProductController@deleteItem"]);		
-	Route::post("sort-order",["as"=>"frontend.product.sortOrder","uses"=>"frontend\ProductController@sortOrder"]);
-	Route::post("update-status",["as"=>"frontend.product.updateStatus","uses"=>"frontend\ProductController@updateStatus"]);
-	Route::post("change-status",["as"=>"frontend.product.changeStatus","uses"=>"frontend\ProductController@changeStatus"]);
-	Route::post("trash",["as"=>"frontend.product.trash","uses"=>"frontend\ProductController@trash"]);
-	
-	Route::post("create-alias",["as"=>"frontend.product.createAlias","uses"=>"frontend\ProductController@createAlias"]);
-});
-
-Route::group(["prefix"=>"invoice"],function(){		
-		Route::get("list",["as"=>"frontend.invoice.getList","uses"=>"frontend\InvoiceController@getList"]);
-		Route::post("load-data",["as"=>"frontend.invoice.loadData","uses"=>"frontend\InvoiceController@loadData"]);		
-		Route::get("form/{task}/{id?}",["as"=>"frontend.invoice.getForm","uses"=>"frontend\InvoiceController@getForm"]);
-		Route::post("save",["as"=>"frontend.invoice.save","uses"=>"frontend\InvoiceController@save"]);
-		Route::post("delete-item",["as"=>"frontend.invoice.deleteItem","uses"=>"frontend\InvoiceController@deleteItem"]);		
-		Route::post("sort-order",["as"=>"frontend.invoice.sortOrder","uses"=>"frontend\InvoiceController@sortOrder"]);
-		Route::post("update-status",["as"=>"frontend.invoice.updateStatus","uses"=>"frontend\InvoiceController@updateStatus"]);
-		Route::post("change-status",["as"=>"frontend.invoice.changeStatus","uses"=>"frontend\InvoiceController@changeStatus"]);
-		Route::post("trash",["as"=>"frontend.invoice.trash","uses"=>"frontend\InvoiceController@trash"]);
-	});
-
-Route::group(["prefix"=>"media"],function(){		
-	Route::get("list",["as"=>"frontend.media.getList","uses"=>"frontend\MediaController@getList"]);
-	Route::post("load-data",["as"=>"frontend.media.loadData","uses"=>"frontend\MediaController@loadData"]);		
-	Route::get("form/{task}/{id?}",["as"=>"frontend.media.getForm","uses"=>"frontend\MediaController@getForm"]);
-	Route::post("save",["as"=>"frontend.media.save","uses"=>"frontend\MediaController@save"]);
-	Route::post("delete-item",["as"=>"frontend.media.deleteItem","uses"=>"frontend\MediaController@deleteItem"]);				
-	Route::post("trash",["as"=>"frontend.media.trash","uses"=>"frontend\MediaController@trash"]);		
-	
-});
-
+Route::match(["get","post"],"dk-dn/{status}",["as"=>"frontend.index.registerLogin","uses"=>"frontend\IndexController@registerLogin"]);
+Route::match(["get","post"],"dang-ky-ntd",["as"=>"frontend.index.employerRegister","uses"=>"frontend\IndexController@registerEmployer"]);
+Route::match(["get","post"],"dang-ky-ung-vien",["as"=>"frontend.index.employerRegister","uses"=>"frontend\IndexController@registerCandidate"]);
+/* end tìm việc */
 ?>

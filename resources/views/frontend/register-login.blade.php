@@ -2,6 +2,22 @@
 @section("content")
 <?php 
 use Illuminate\Support\Facades\DB;
+$register_employer_text='';
+$register_employer_link='';
+$register_candidate_text='';
+$register_candidate_link='';
+$login_text='';
+$login_link='';
+switch ($status) {
+	case 'register':
+		$register_employer_text='ĐĂNG KÝ NHÀ TUYỂN DỤNG';
+		$register_employer_link=route('frontend.index.employerRegister');
+		$register_candidate_text='ĐĂNG KÝ ỨNG VIÊN';
+		$register_candidate_link=route('frontend.index.employerRegister');
+		break;
+	case 'login':
+		break;	
+}
 ?>
 <div class="container">
 	<div class="row">
@@ -18,7 +34,7 @@ use Illuminate\Support\Facades\DB;
 									<li><i class="far fa-check-circle"></i><span>Quảng cáo công ty trên Fanpage số 1 về việc làm – tuyển dụng</span> </li>                
 								</ul>
 							</div>
-							<div class="box-btn-dn-dk margin-top-10"><center><a href="javascript:void(0);">ĐĂNG KÝ NHÀ TUYỂN DỤNG</a></center></div>	
+							<div class="box-btn-dn-dk terran"><center><a href="<?php echo $register_employer_link; ?>"><?php echo $register_employer_text; ?></a></center></div>	
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -31,7 +47,7 @@ use Illuminate\Support\Facades\DB;
 									<li><i class="far fa-check-circle"></i><span>Nhận bản tin công việc phù hợp định kỳ</span></li>                
 								</ul>
 							</div>
-							<div class="box-btn-dn-dk riba"><center><a href="javascript:void(0);">ĐĂNG KÝ ỨNG VIÊN TÌM VIỆC</a></center></div>	
+							<div class="box-btn-dn-dk riba"><center><a href="<?php echo $register_candidate_link; ?>"><?php echo $register_candidate_text; ?></a></center></div>	
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -50,7 +66,15 @@ use Illuminate\Support\Facades\DB;
 									<div class="dk-dn-icon"><i class="far fa-address-card"></i></div>									
 								</div>																							
 							</a>
-						</div>						
+						</div>	
+						<div class="tao-ho-so-r margin-top-10">
+							<a  href="javascript:void(0);">
+								<div class="caramba">
+									<div class="dk-dn-login">TẠO HỒ SƠ</div>
+									<div class="dk-dn-icon"><i class="far fa-folder-open"></i></div>									
+								</div>																							
+							</a>
+						</div>					
 					</div>
 				</div>		
 			</div>

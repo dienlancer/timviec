@@ -1,7 +1,7 @@
 <div class="container margin-top-15">
 	<div class="row">
 		<div class="col-lg-2 dk-dn">
-			<a  href="javascript:void(0);">
+			<a  href="<?php echo route('frontend.index.registerLogin',['login']); ?>">
 				<div><center><i class="fas fa-sign-in-alt"></i></center></div>
 				<div><center>ĐĂNG NHẬP</center> </div>
 			</a>

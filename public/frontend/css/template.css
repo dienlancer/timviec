@@ -11,13 +11,13 @@
 @font-face{font-family:"OpenSans";src:url("../fonts/OpenSans.ttf") format('truetype');}
 @font-face{font-family:"OpenSans-Bold";src:url("../fonts/OpenSans-Bold.ttf") format('truetype');}
 body{
-    font-size:14px;
+    
     color:#333;
     background:#ffffff;
     font-family: 'OpenSans';
     
 }
-a:hover{
+a:hover,a:focus{
     text-decoration: none;
 }
 table{max-width:100%;}
@@ -478,13 +478,64 @@ div.opacity-absolute::before{
 .tao-ho-so-r a .dk-dn-login{
         font-size: 20px;
     margin-left: 20px;
-    
 }
 .tao-ho-so-r a .dk-dn-icon{
         font-size: 50px;
     position: absolute;
-    right: 20px;
-    
+    right: 20px;   
+}
+
+.dn-dk-h {
+    color: #E30000;
+    font-size: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+    font-style: italic;
+    margin-top: 10px;
+}
+.dn-dk-h::before {
+    position: absolute;
+    left: 0;
+    height: 1px;
+    width: 100px;
+    background: #E30000;
+    content: "";
+    bottom: 0;
+}
+
+.dn-dk-h::after {
+    position: absolute;
+    left: 15px;
+    bottom: -2px;
+    height: 1px;
+    width: 100px;
+    background: #E30000;
+    content: "";
+}
+.login-information{
+        font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+}
+.vacca{
+    width: 100%;
+        border: 1px solid #ccc;
+    padding: 5px 5px;
+    font-size: 12px;
+}
+.xika{
+    padding: 4px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.pappa i{
+    color: #E30000;
+    font-size: 6px;
+}
+.mia{
+    margin-top: 10px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

@@ -58,6 +58,12 @@ class IndexController extends Controller {
   }
   public function registerCandidate(Request $request){             
     return view("frontend.candidate-register");         
+  }    
+  public function loginEmployer(Request $request){             
+    return view("frontend.employer-login");         
+  }
+  public function loginCandidate(Request $request){             
+    return view("frontend.candidate-login");         
   }      
 }
 

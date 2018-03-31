@@ -2,20 +2,28 @@
 @section("content")
 <?php 
 use Illuminate\Support\Facades\DB;
-$register_employer_text='';
-$register_employer_link='';
-$register_candidate_text='';
-$register_candidate_link='';
-$login_text='';
-$login_link='';
+$employer_link='';
+$employer_link='';
+$candidate_text='';
+$candidate_link='';
+$login_register_link='';
+$login_register_text='';
 switch ($status) {
 	case 'register':
-		$register_employer_text='ĐĂNG KÝ NHÀ TUYỂN DỤNG';
-		$register_employer_link=route('frontend.index.employerRegister');
-		$register_candidate_text='ĐĂNG KÝ ỨNG VIÊN';
-		$register_candidate_link=route('frontend.index.employerRegister');
+		$employer_text='ĐĂNG KÝ NHÀ TUYỂN DỤNG';
+		$employer_link=route('frontend.index.employerRegister');
+		$candidate_text='ĐĂNG KÝ ỨNG VIÊN';
+		$candidate_link=route('frontend.index.candidateRegister');
+		$login_register_link=route('frontend.index.registerLogin',['login']);
+		$login_register_text='ĐĂNG NHẬP';
 		break;
 	case 'login':
+		$employer_text='ĐĂNG NHẬP NHÀ TUYỂN DỤNG';
+		$employer_link=route('frontend.index.employerLogin');
+		$candidate_text='ĐĂNG NHẬP ỨNG VIÊN';
+		$candidate_link=route('frontend.index.candidateLogin');
+		$login_register_link=route('frontend.index.registerLogin',['register']);
+		$login_register_text='ĐĂNG KÝ';
 		break;	
 }
 ?>
@@ -34,7 +42,7 @@ switch ($status) {
 									<li><i class="far fa-check-circle"></i><span>Quảng cáo công ty trên Fanpage số 1 về việc làm – tuyển dụng</span> </li>                
 								</ul>
 							</div>
-							<div class="box-btn-dn-dk terran"><center><a href="<?php echo $register_employer_link; ?>"><?php echo $register_employer_text; ?></a></center></div>	
+							<div class="box-btn-dn-dk terran"><center><a href="<?php echo $employer_link; ?>"><?php echo $employer_text; ?></a></center></div>	
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -47,14 +55,14 @@ switch ($status) {
 									<li><i class="far fa-check-circle"></i><span>Nhận bản tin công việc phù hợp định kỳ</span></li>                
 								</ul>
 							</div>
-							<div class="box-btn-dn-dk riba"><center><a href="<?php echo $register_candidate_link; ?>"><?php echo $register_candidate_text; ?></a></center></div>	
+							<div class="box-btn-dn-dk riba"><center><a href="<?php echo $candidate_link; ?>"><?php echo $candidate_text; ?></a></center></div>	
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="dk-dn-r">
-							<a  href="javascript:void(0);">
+							<a  href="<?php echo $login_register_link; ?>">
 								<div class="caramba">
-									<div class="dk-dn-login">ĐĂNG NHẬP</div>
+									<div class="dk-dn-login"><?php echo $login_register_text; ?></div>
 									<div class="dk-dn-icon"><i class="fas fa-sign-in-alt"></i></div>									
 								</div>																							
 							</a>

@@ -1,4 +1,4 @@
-<div class="container margin-top-15">
+<div class="container">
 	<div class="row">
 		<div class="col-lg-2 dk-dn">
 			<a  href="<?php echo route('frontend.index.registerLogin',['login']); ?>">

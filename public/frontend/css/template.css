@@ -265,6 +265,20 @@ div.opacity-absolute::before{
     background:#337ab7;
     border: 1px solid #1b588d;
 }
+.btn-dang-ky a{
+    display: inline-block;
+    background: #E30000;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 1px solid #c50000;
+}
+.btn-dang-ky a:hover{
+    background:#337ab7;
+    border: 1px solid #1b588d;
+}
 .bg-startup{
     background-image: url('../images/bg-quick-search.png');
     background-repeat: no-repeat;
@@ -514,7 +528,7 @@ div.opacity-absolute::before{
     content: "";
 }
 .login-information{
-        font-size: 14px;
+        font-size: 18px;
     font-weight: bold;
     text-align: right;
 }
@@ -526,8 +540,7 @@ div.opacity-absolute::before{
 }
 .xika{
     padding: 4px 0px;
-    display: flex;
-    align-items: center;
+    display: flex;    
     justify-content: flex-end;
 }
 .pappa i{
@@ -537,6 +550,11 @@ div.opacity-absolute::before{
 .mia{
     margin-top: 10px;
 }
+.pappa{
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

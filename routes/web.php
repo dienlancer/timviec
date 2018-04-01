@@ -364,7 +364,8 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("create-alias",["as"=>"adminsystem.group-member.createAlias","uses"=>"adminsystem\GroupMemberController@createAlias"]);	
 	});	
 });
-
+Route::match(["get","post"],"adminsystem/login",["as"=>"adminsystem.login","uses"=>"adminsystem\LoginController@login"]);
+Route::post("adminsystem/logout",["as"=>"adminsystem.logout","uses"=>"adminsystem\LoginController@logout"]);
 /* begin tìm việc */
 Route::match(["get","post"],"/",["as"=>"frontend.index.getHome","uses"=>"frontend\IndexController@getHome"]);
 Route::match(["get","post"],"{alias}.html",["as"=>"frontend.index.index","uses"=>"frontend\IndexController@index"]);

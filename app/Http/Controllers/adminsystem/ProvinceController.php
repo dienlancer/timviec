@@ -85,19 +85,7 @@ class ProvinceController extends Controller {
                  $checked = 0;
                  $error["fullname"]["type_msg"] = "has-error";
                  $error["fullname"]["msg"] = "Thiếu tên";
-          }else{
-              $data=array();
-              if (empty($id)) {
-                $data=ProvinceModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();	        	
-              }else{
-                $data=ProvinceModel::whereRaw("trim(lower(fullname)) = ? and id != ?",[trim(mb_strtolower($fullname,'UTF-8')),(int)@$id])->get()->toArray();		
-              }  
-              if (count($data) > 0) {
-                  $checked = 0;
-                  $error["fullname"]["type_msg"] = "has-error";
-                  $error["fullname"]["msg"] = "Bài viết đã tồn tại";
-              }      	
-          }                          
+          }                   
           if(empty($sort_order)){
              $checked = 0;
              $error["sort_order"]["type_msg"] 	= "has-error";
@@ -164,7 +152,13 @@ class ProvinceController extends Controller {
             $id                     =   (int)$request->id;              
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                    
+            $msg                    =   "Xóa thành công"; 
+            $data                   =   ProjectModel::whereRaw("province_id = ?",[(int)@$id])->get()->toArray();  
+            if(count($data) > 0){
+              $checked     =   0;
+              $type_msg           =   "alert-warning";            
+              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            }                  
             if($checked == 1){
               $item = ProvinceModel::find((int)@$id);
                 $item->delete();                                                
@@ -215,12 +209,20 @@ class ProvinceController extends Controller {
         $type_msg               =   "alert-success";
         $msg                    =   "Xóa thành công";                  
         $strID=substr($strID, 0,strlen($strID) - 1);
-        $arrID=explode(',',$strID);                 
+        $arrID=explode(',',$strID); 
         if(empty($strID)){
           $checked     =   0;
           $type_msg           =   "alert-warning";            
           $msg                =   "Vui lòng chọn ít nhất một phần tử";
         }
+        foreach ($arrID as $key => $value){
+          $data                   =   ProjectModel::whereRaw("province_id = ?",[(int)@$value])->get()->toArray();  
+            if(count($data) > 0){
+              $checked     =   0;
+              $type_msg           =   "alert-warning";            
+              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            }
+        }              
         if($checked == 1){                                  
 
           DB::table('province')->whereIn('id',@$arrID)->delete();                                      

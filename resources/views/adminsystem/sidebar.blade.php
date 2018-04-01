@@ -14,8 +14,11 @@ $li_video='';
 $li_project_management='';
 $li_project='';
 $li_project_article='';
+
+$li_category_management='';
 $li_province='';
-$li_district='';
+$li_scale='';
+
 
 $li_product_management='';
 $li_category_product='';
@@ -57,7 +60,7 @@ switch ($controller) {
     $li_photo='active open';   
     $li_album_management='active open'; 
     break;    
-   
+    
     case 'category-video':  
     $li_category_video='active open';   
     $li_video_management='active open'; 
@@ -78,13 +81,14 @@ switch ($controller) {
     break;
 
     case 'province': 
-    $li_province='active open';        
+    $li_province='active open';       
+    $li_category_management='active open'; 
     break;
-
-    case 'district': 
-    $li_district='active open';    
-    $li_project_management='active open';
+    case 'scale': 
+    $li_scale='active open';       
+    $li_category_management='active open'; 
     break;
+    
     
     case 'category-product':  
     $li_category_product='active open';
@@ -186,12 +190,30 @@ switch ($controller) {
             <span class="title">Trang tĩnh</span>                                            
         </a>                                                                      
     </li> 
-    <li class="nav-item  <?php echo $li_province; ?>">
-        <a href="{!! route('adminsystem.province.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Tỉnh / Thành phố</span>                                            
-        </a>                                                                      
-    </li> 
+
+    <li class="nav-item <?php echo $li_category_management; ?>">
+        <a href="javascript:;" class="nav-link nav-toggle">
+            <i class="fa fa-folder-open-o" ></i>
+            <span class="title">Quản lý danh mục</span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">                                    
+            <li class="nav-item  <?php echo $li_province; ?>">
+                <a href="{!! route('adminsystem.province.getList') !!}" class="nav-link nav-toggle">
+                    <i class="icon-notebook"></i>
+                    <span class="title">Tỉnh / Thành phố</span>                                            
+                </a>                                                                      
+            </li>     
+            <li class="nav-item  <?php echo $li_scale; ?>">
+                <a href="{!! route('adminsystem.scale.getList') !!}" class="nav-link nav-toggle">
+                    <i class="icon-notebook"></i>
+                    <span class="title">Quy mô công ty</span>                                            
+                </a>                                                                      
+            </li>       
+        </ul>
+    </li>
+
+    
     <li class="nav-item  <?php echo $li_media; ?>">
         <a href="{!! route('adminsystem.media.getList') !!}" class="nav-link nav-toggle">
             <i class="icon-notebook"></i>

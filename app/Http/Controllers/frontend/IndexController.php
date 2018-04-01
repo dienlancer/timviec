@@ -1,5 +1,4 @@
 <?php namespace App\Http\Controllers\frontend;
-session_start();
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -46,14 +45,31 @@ class IndexController extends Controller {
   var $_ssNameCart="vmart";      
   var $_ssNameInvoice="vminvoice";
   public function getHome(Request $request){       
-
     \Artisan::call('sitemap:auto');   
     return view("frontend.home");        
   } 
   public function registerLogin(Request $request,$status){             
     return view("frontend.register-login",compact('status'));         
   }
-  public function registerEmployer(Request $request){             
+  public function registerEmployer(Request $request){        
+    /*$flag=1;
+    $error=array();
+    $success=array();  
+    $data=array();       
+    $info=array();
+    if($request->isMethod('post')){
+      $data             =   @$request->all();
+      $email = trim(@$request->email);
+      $password=trim(@$request->password);
+      $password_confirmed=trim(@$request->password_confirmed);
+      $fullname=trim(@$request->fullname);
+      $address=trim(@$request->address);
+      $phone=trim(@$request->phone);
+      $province_id=trim(@$request->province_id);
+      $scale_id=trim(@$request->scale_id);
+      $intro=trim(@$request->intro);
+      $fax=trim(@$request->fax);
+    }*/     
     return view("frontend.employer-register");         
   }
   public function registerCandidate(Request $request){             

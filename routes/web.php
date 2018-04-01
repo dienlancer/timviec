@@ -211,6 +211,18 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.province.trash","uses"=>"adminsystem\ProvinceController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.province.createAlias","uses"=>"adminsystem\ProvinceController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"scale"],function(){		
+		Route::get("list",["as"=>"adminsystem.scale.getList","uses"=>"adminsystem\ScaleController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.scale.loadData","uses"=>"adminsystem\ScaleController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.scale.getForm","uses"=>"adminsystem\ScaleController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.scale.save","uses"=>"adminsystem\ScaleController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.scale.deleteItem","uses"=>"adminsystem\ScaleController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.scale.sortOrder","uses"=>"adminsystem\ScaleController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.scale.updateStatus","uses"=>"adminsystem\ScaleController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.scale.changeStatus","uses"=>"adminsystem\ScaleController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.scale.trash","uses"=>"adminsystem\ScaleController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.scale.createAlias","uses"=>"adminsystem\ScaleController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"district"],function(){		
 		Route::get("list",["as"=>"adminsystem.district.getList","uses"=>"adminsystem\DistrictController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.district.loadData","uses"=>"adminsystem\DistrictController@loadData"]);		
@@ -374,5 +386,6 @@ Route::match(["get","post"],"dang-ky-ntd",["as"=>"frontend.index.employerRegiste
 Route::match(["get","post"],"dang-ky-ung-vien",["as"=>"frontend.index.candidateRegister","uses"=>"frontend\IndexController@registerCandidate"]);
 Route::match(["get","post"],"dang-nhap-ntd",["as"=>"frontend.index.employerLogin","uses"=>"frontend\IndexController@loginEmployer"]);
 Route::match(["get","post"],"dang-nhap-ung-vien",["as"=>"frontend.index.candidateLogin","uses"=>"frontend\IndexController@loginCandidate"]);
+Route::post("register-employer-ajax",["as"=>"frontend.index.registerEmployerAjax","uses"=>"frontend\IndexController@registerEmployerAjax"]);
 /* end tìm việc */
 ?>

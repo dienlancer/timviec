@@ -13,12 +13,11 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\DistrictModel;
-use App\ProvinceModel;
+use App\ScaleModel;
 use DB;
-class DistrictController extends Controller {
-  	var $_controller="district";	
-  	var $_title="Quận huyện";
+class ScaleController extends Controller {
+  	var $_controller="scale";	
+  	var $_title="Quy mô công ty";
   	var $_icon="icon-settings font-dark";    
   	public function getList(){		
     		$controller=$this->_controller;	
@@ -39,15 +38,14 @@ class DistrictController extends Controller {
         if(!empty(@$request->filter_search)){      
           $filter_search=trim(@$request->filter_search) ;    
         }        
-        $data=DB::table('district')
-                ->join('province','district.province_id','=','province.id')                  
-                ->select('district.id','district.fullname','province.fullname as province_name','district.sort_order','district.status','district.created_at','district.updated_at')                
-                ->where('district.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-                ->groupBy('district.id','district.fullname','province.fullname','district.sort_order','district.status','district.created_at','district.updated_at')   
-                ->orderBy('district.fullname', 'asc')                
+        $data=DB::table('scale')                  
+                ->select('scale.id','scale.fullname','scale.sort_order','scale.status','scale.created_at','scale.updated_at')                
+                ->where('scale.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
+                ->groupBy('scale.id','scale.fullname','scale.sort_order','scale.status','scale.created_at','scale.updated_at')   
+                ->orderBy('scale.sort_order', 'asc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
-        $data=districtConverter($data,$this->_controller);            
+        $data=scaleConverter($data,$this->_controller);            
         return $data;
     } 
     public function getForm($task,$id=""){     
@@ -57,27 +55,25 @@ class DistrictController extends Controller {
         $arrRowData=array();        
         $arrPrivilege=getArrPrivilege();
         $requestControllerAction=$this->_controller."-form";  
-        $arrProvince=ProvinceModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
         if(in_array($requestControllerAction, $arrPrivilege)){
           switch ($task) {
            case 'edit':
               $title=$this->_title . " : Update";
-              $arrRowData=DistrictModel::find((int)@$id)->toArray();                     
+              $arrRowData=ScaleModel::find((int)@$id)->toArray();                     
            break;
            case 'add':
               $title=$this->_title . " : Add new";
            break;     
         }                  
-        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrProvince","controller","task","title","icon"));
+        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
         }else{
           return view("adminsystem.no-access");
         }        
     }
      public function save(Request $request){
           $id 					        =		trim($request->id);        
-          $fullname 				    =		trim($request->fullname);  
-          $alias                =   trim($request->alias);    
-          $province_id          =   trim($request->province_id);                        
+          $fullname 				    =		trim($request->fullname);    
+          $alias                =   trim($request->alias);                          
           $sort_order           =   trim($request->sort_order);
           $status               =   trim($request->status);          
           $data 		            =   array();
@@ -89,7 +85,7 @@ class DistrictController extends Controller {
                  $checked = 0;
                  $error["fullname"]["type_msg"] = "has-error";
                  $error["fullname"]["msg"] = "Thiếu tên";
-          }                      
+          }                   
           if(empty($sort_order)){
              $checked = 0;
              $error["sort_order"]["type_msg"] 	= "has-error";
@@ -102,16 +98,15 @@ class DistrictController extends Controller {
           }
           if ($checked == 1) {    
                 if(empty($id)){
-                    $item         =   new DistrictModel;       
+                    $item         =   new ScaleModel;       
                     $item->created_at   = date("Y-m-d H:i:s",time());        
                       
                 } else{
-                    $item       = DistrictModel::find((int)@$id);   
+                    $item       = ScaleModel::find((int)@$id);   
                                   
                 }  
-                $item->fullname 		    =	@$fullname;   
-                $item->alias            = @$alias;   
-                $item->province_id      = (int)@$province_id;                                     
+                $item->fullname 		    =	@$fullname;  
+                $item->alias            = @$alias;                                         
                 $item->sort_order 		  =	(int)@$sort_order;
                 $item->status 			    =	(int)@$status;    
                 $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
@@ -140,7 +135,7 @@ class DistrictController extends Controller {
                   $type_msg               =   "alert-success";
                   $msg                    =   "Cập nhật thành công";              
                   $status         =       (int)@$request->status;
-                  $item           =       DistrictModel::find((int)@$id);        
+                  $item           =       ScaleModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
                   $data                   =   $this->loadData($request);
@@ -157,9 +152,9 @@ class DistrictController extends Controller {
             $id                     =   (int)$request->id;              
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                    
+            $msg                    =   "Xóa thành công";                       
             if($checked == 1){
-              $item = DistrictModel::find((int)@$id);
+              $item = ScaleModel::find((int)@$id);
                 $item->delete();                                                
             }        
             $data                   =   $this->loadData($request);
@@ -172,7 +167,7 @@ class DistrictController extends Controller {
             return $info;
       }
       public function updateStatus(Request $request){
-          $strID                 =   $request->str_id;     
+        $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
         $checked                =   1;
         $type_msg               =   "alert-success";
@@ -180,51 +175,52 @@ class DistrictController extends Controller {
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
-                    $checked                =   0;
-                    $type_msg               =   "alert-warning";            
-                    $msg                    =   "Vui lòng chọn ít nhất một phần tử";
+          $checked                =   0;
+          $type_msg               =   "alert-warning";            
+          $msg                    =   "Vui lòng chọn ít nhất một phần tử";
+        }
+        if($checked==1){
+          foreach ($arrID as $key => $value) {
+            if(!empty($value)){
+              $item=ScaleModel::find($value);
+              $item->status=$status;
+              $item->save();      
+            }            
           }
-          if($checked==1){
-              foreach ($arrID as $key => $value) {
-                if(!empty($value)){
-                    $item=DistrictModel::find($value);
-                    $item->status=$status;
-                    $item->save();      
-                }            
-              }
-          }                 
-          $data                   =   $this->loadData($request);
-          $info = array(
-            'checked'           => $checked,
-            'type_msg'          => $type_msg,                
-            'msg'               => $msg,                
-            'data'              => $data
-          );
-          return $info;
+        }                 
+        $data                   =   $this->loadData($request);
+        $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'msg'               => $msg,                
+          'data'              => $data
+        );
+        return $info;
       }
       public function trash(Request $request){
-            $strID                 =   $request->str_id;               
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                  
-            $strID=substr($strID, 0,strlen($strID) - 1);
-            $arrID=explode(',',$strID);                 
-            if(empty($strID)){  
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                =   "Vui lòng chọn ít nhất một phần tử";
-            }
-            if($checked == 1){                                                    
-                  DB::table('district')->whereIn('id',@$arrID)->delete();                               
-            }
-            $data                   =   $this->loadData($request);
-            $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
-            return $info;
+        $strID                 =   $request->str_id;               
+        $checked                =   1;
+        $type_msg               =   "alert-success";
+        $msg                    =   "Xóa thành công";                  
+        $strID=substr($strID, 0,strlen($strID) - 1);
+        $arrID=explode(',',$strID); 
+        if(empty($strID)){
+          $checked     =   0;
+          $type_msg           =   "alert-warning";            
+          $msg                =   "Vui lòng chọn ít nhất một phần tử";
+        }            
+        if($checked == 1){                                  
+
+          DB::table('scale')->whereIn('id',@$arrID)->delete();                                      
+        }
+        $data                   =   $this->loadData($request);
+        $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'msg'               => $msg,                
+          'data'              => $data
+        );
+        return $info;
       }
       public function sortOrder(Request $request){
             $sort_json              =   $request->sort_json;           
@@ -236,7 +232,7 @@ class DistrictController extends Controller {
             if(count($data_order) > 0){              
               foreach($data_order as $key => $value){      
                 if(!empty($value)){
-                  $item=DistrictModel::find((int)@$value->id);                
+                  $item=ScaleModel::find((int)@$value->id);                
                 $item->sort_order=(int)$value->sort_order;                         
                 $item->save();                      
                 }                                                  
@@ -250,7 +246,7 @@ class DistrictController extends Controller {
               'data'              => $data
             );
             return $info;
-      }       
+      }     
       public function createAlias(Request $request){
           $id                =  trim($request->id)  ; 
           $fullname                =  trim($request->fullname)  ;        
@@ -265,49 +261,16 @@ class DistrictController extends Controller {
            $error["fullname"]["type_msg"] = "has-error";
            $error["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{          
-          $alias=str_slug($fullname,'-');
-          $dataCategoryArticle=array();
-          $dataCategoryProduct=array();
-          $dataArticle=array();
-          $dataProduct=array();
-          $dataPage=array();
-          $dataProject=array();
-          $dataProjectArticle=array();
-          $dataProvince=array();
-          $dataDistrict=array();
+          $alias=str_slug($fullname,'-');          
+          $dataScale=array();
           $checked_trung_alias=0;          
-          
-            $dataCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-          if (count($dataCategoryArticle) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataCategoryProduct) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataArticle) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataProduct) > 0) {
-            $checked_trung_alias=1;
-          }    
-          if (count($dataPage) > 0) {
-            $checked_trung_alias=1;
-          }  
-          if (count($dataProject) > 0) {
-            $checked_trung_alias=1;
-          }  
-          if (count($dataProjectArticle) > 0) {
-            $checked_trung_alias=1;
-          }      
-           if (count($dataProvince) > 0) {
-            $checked_trung_alias=1;
-          } 
-          if (count($dataDistrict) > 0) {
+          if (empty($id)) {              
+              $dataScale=ScaleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
+            }else{
+              $dataScale=ScaleModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
+            }  
+           
+           if (count($dataScale) > 0) {
             $checked_trung_alias=1;
           }
           if((int)$checked_trung_alias == 1){

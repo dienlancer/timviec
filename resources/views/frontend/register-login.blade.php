@@ -1,6 +1,7 @@
 @extends("frontend.master")
 @section("content")
 <?php 
+$seo=getSeo();
 use Illuminate\Support\Facades\DB;
 $employer_link='';
 $employer_link='';
@@ -27,6 +28,8 @@ switch ($status) {
 		break;	
 }
 ?>
+<h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
+<h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">

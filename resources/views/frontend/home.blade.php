@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 $seo=getSeo();
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
+<h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 <div class="bg-startup">
 	<div class="margin-top-15">
 		<div class="container">

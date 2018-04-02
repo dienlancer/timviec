@@ -33,6 +33,7 @@ use App\PhotoModel;
 use App\CategoryVideoModel;
 use App\VideoModel;
 use App\EmployerModel;
+use App\CandidateModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -154,32 +155,21 @@ class IndexController extends Controller {
         $data['intro']='';       
         $flag = 0;
       }
-      if(mb_strlen($fax) < 10){
-        $error["fax"] = 'Fax ít nhất 10 ký tự trở lên';     
-        $data['fax']='';       
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(fax)) = ?",[trim(mb_strtolower($fax,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["fax"] = "Fax công ty đã tồn tại";
-          $data['fax']='';
-          $flag = 0;                  
-        }       
-      }  
-      if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
-        $error["website"] = 'Website không hợp lệ';     
-        $data['website']='';       
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(website)) = ?",[trim(mb_strtolower($website,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["website"] = "Website công ty đã tồn tại";
-          $data['website']='';
-          $flag = 0;                    
-        }       
-      }
+      if(mb_strlen($website) > 0){
+        if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
+          $error["website"] = 'Website không hợp lệ';     
+          $data['website']='';       
+          $flag = 0;
+        }else{
+          $source=array();
+          $source=EmployerModel::whereRaw("trim(lower(website)) = ?",[trim(mb_strtolower($website,'UTF-8'))])->get()->toArray();    
+          if (count($source) > 0) {
+            $error["website"] = "Website công ty đã tồn tại";
+            $data['website']='';
+            $flag = 0;                    
+          }       
+        }
+      }      
       if(mb_strlen($contacted_name) < 6){
         $error["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
         $data['contacted_name']='';         
@@ -214,13 +204,90 @@ class IndexController extends Controller {
         $item->created_at=date("Y-m-d H:i:s",time());
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
-        $success[]='Đăng ký tài khoản nhà tuyển dụng thành công';
+        $success[]='<span>Đăng ký tài khoản nhà tuyển dụng thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
       }
     }
     return view("frontend.employer-register",compact('data','error','success'));         
   }
   public function registerCandidate(Request $request){             
-    return view("frontend.candidate-register");         
+    $flag=1;
+    $error=array();    
+    $success=array();
+    $data=array();       
+    if($request->isMethod('post')){
+      $data               = @$request->all();
+      $email              = trim(@$request->email);
+      $password           = trim(@$request->password);
+      $password_confirmed = trim(@$request->password_confirmed);
+      $fullname           = trim(@$request->fullname);
+      $phone              = trim(@$request->phone);      
+      if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
+        $error["email"] = 'Email ứng viên không hợp lệ'; 
+        $data['email']='';           
+        $flag = 0;
+      }
+      else{
+        $source=array();
+        $source=CandidateModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
+        if (count($source) > 0) {
+          $error["email"]= "Email ứng viên đã tồn tại";
+          $data['email']='';
+          $flag = 0;                    
+        }       
+      }
+      if(mb_strlen($password) < 10 ){
+        $error["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
+        $data['password']='';
+        $data['password_confirmed']='';
+        $flag = 0;                
+      }else{
+        if(strcmp($password, $password_confirmed) !=0 ){
+          $error["password"] = "Xác nhận mật khẩu không trùng khớp";
+          $data['password']='';
+          $data['password_confirmed']='';
+          $flag = 0;                  
+        }
+      }    
+      if(mb_strlen($fullname) < 6){
+        $error["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
+        $data['fullname']='';        
+        $flag = 0;
+      }else{
+        $source=array();
+        $source=CandidateModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();    
+        if (count($source) > 0) {
+          $error["fullname"] = "Tên ứng viên đã tồn tại";
+          $data['fullname']='';
+          $flag = 0;                    
+        }       
+      }        
+      if(mb_strlen($phone) < 10){
+        $error["phone"] = 'Điện thoại ứng viên phải từ 10 ký tự trở lên';   
+        $data['phone']='';         
+        $flag = 0;
+      }else{
+        $source=array();
+        $source=CandidateModel::whereRaw("trim(lower(phone)) = ?",[trim(mb_strtolower($phone,'UTF-8'))])->get()->toArray();    
+        if (count($source) > 0) {
+          $error["phone"] = "Điện thoại ứng viên đã tồn tại";
+          $data['phone']='';
+          $flag = 0;                
+        }       
+      }        
+      if($flag==1){
+        $item               = new CandidateModel;
+        $item->email        = @$email;
+        $item->password     = md5(@$password);
+        $item->fullname     = @$fullname;
+        $item->phone        = @$phone;      
+        $item->status = 1;
+        $item->created_at=date("Y-m-d H:i:s",time());
+        $item->updated_at=date("Y-m-d H:i:s",time());   
+        $item->save();   
+        $success[]='<span>Đăng ký tài khoản ứng viên thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
+      }
+    }
+    return view("frontend.candidate-register",compact('data','error','success'));         
   }    
   public function loginEmployer(Request $request){             
     return view("frontend.employer-login");         
@@ -228,159 +295,6 @@ class IndexController extends Controller {
   public function loginCandidate(Request $request){             
     return view("frontend.candidate-login");         
   }    
-  public function registerEmployerAjax(Request $request){
-    $flag=1;
-    $error=array();
-    $success=array();  
-    $data=array();       
-    $info=array();
-    if($request->isMethod('post')){
-      $data               = @$request->all();
-      $email              = trim(@$request->email);
-      $password           = trim(@$request->password);
-      $password_confirmed = trim(@$request->password_confirmed);
-      $fullname           = trim(@$request->fullname);
-      $address            = trim(@$request->address);
-      $phone              = trim(@$request->phone);
-      $province_id        = trim(@$request->province_id);
-      $scale_id           = trim(@$request->scale_id);
-      $intro              = trim(@$request->intro);
-      $fax                = trim(@$request->fax);
-      $website            = trim(@$request->website);
-      $contacted_name     = trim(@$request->contacted_name);
-      $contacted_email    = trim(@$request->contacted_email);
-      $contacted_phone    = trim(@$request->contacted_phone);
-      if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
-        $error["email"] = 'Email nhà tuyển dụng không hợp lệ';            
-        $flag = 0;
-      }
-      else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
-        if (count($source) > 0) {
-          $error["email"]= "Email nhà tuyển dụng đã tồn tại";
-          $flag = 0;                    
-        }       
-      }
-      if(mb_strlen($password) < 6 ){
-        $error["password"] = "Mật khẩu tối thiểu phải 6 ít tự";
-        $flag = 0;                
-      }else{
-        if(strcmp($password, $password_confirmed) !=0 ){
-          $error["password"] = "Xác nhận mật khẩu không trùng khớp";
-          $flag = 0;                  
-        }
-      }    
-      if(mb_strlen($fullname) < 6){
-        $error["fullname"] = 'Tên công ty phải từ 6 ký tự trở lên';            
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["fullname"] = "Tên công ty đã tồn tại";
-          $flag = 0;                    
-        }       
-      }  
-      if(mb_strlen($address) < 6){
-        $error["address"] = 'Địa chỉ phải từ 6 ký tự trở lên';            
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(address)) = ?",[trim(mb_strtolower($address,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["address"] = "Địa chỉ công ty đã tồn tại";
-          $flag = 0;                    
-        }       
-      }          
-      if(mb_strlen($phone) < 10){
-        $error["phone"] = 'Số điện thoại phải từ 10 ký tự trở lên';            
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(phone)) = ?",[trim(mb_strtolower($phone,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["phone"] = "Điện thoại công ty đã tồn tại";
-          $flag = 0;                
-        }       
-      }  
-      if((int)@$request->province_id == 0){
-        $error["province_id"] = 'Vui lòng chọn tỉnh thành phố';            
-        $flag = 0;
-      }
-      if((int)@$request->scale_id == 0){
-        $error["scale_id"] = 'Vui lòng chọn quy mô công ty';            
-        $flag = 0;
-      }
-      if(mb_strlen($intro) < 10){
-        $error["intro"] = 'Sơ lược về công ty tối thiểu 10 ký tự trở lên';            
-        $flag = 0;
-      }
-      if(mb_strlen($fax) < 10){
-        $error["fax"] = 'Fax ít nhất 10 ký tự trở lên';            
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(fax)) = ?",[trim(mb_strtolower($fax,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["fax"] = "Fax công ty đã tồn tại";
-          $flag = 0;                  
-        }       
-      }  
-      if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
-        $error["website"] = 'Website không hợp lệ';            
-        $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(website)) = ?",[trim(mb_strtolower($website,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["website"] = "Website công ty đã tồn tại";
-          $flag = 0;                    
-        }       
-      }
-      if(mb_strlen($contacted_name) < 6){
-        $error["contacted_name"] = 'Họ tên phải từ 6 ký tự trở lên';            
-        $flag = 0;
-      } 
-      if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($contacted_email,'UTF-8')   )){
-        $error["contacted_email"] = 'Email người liên hệ không hợp lệ';            
-        $flag = 0;
-      }
-      if(mb_strlen($contacted_phone) < 10){
-        $error["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
-        $flag = 0;
-      }
-      if($flag==1){
-        $item               =   new EmployerModel;
-        $item->email        = @$email;
-        $item->password     = md5(@$password);
-        $item->fullname     = @$fullname;
-        $item->address      = @$address;
-        $item->phone        = @$phone;
-        $item->province_id  = @$province_id;
-        $item->scale_id     = @$scale_id;
-        $item->intro        = @$intro;
-        $item->fax          = @$fax;
-        $item->website      = @$website;
-        $item->contacted_name   = @$contacted_name;
-        $item->contacted_email  = @$contacted_email;
-        $item->contacted_phone  = @$contacted_phone; 
-        $item->status = 1;
-        $item->created_at=date("Y-m-d H:i:s",time());
-        $item->updated_at=date("Y-m-d H:i:s",time());   
-        $item->save();   
-      }
-    }
-    $info = array(                            
-      "checked"   => $flag,
-      "error"     => $error, 
-      "link_redirect"=>url('/')             
-    );
-    return $info;       
-  }  
-  public function registerCandidateAjax(Request $request){
-
-  }
 }
 
 

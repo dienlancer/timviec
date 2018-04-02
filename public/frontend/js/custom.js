@@ -82,11 +82,14 @@ function addToCart(product_id,ajaxurl){
 		}
 	});
 }
+var timeout;
+var second_timeout=3000;
 function hideMsg() {
 	$('.alert-system').fadeOut();
 } 
-var timeout;
-var second_timeout=3000;
+function hideMsg2(ctrlID) {
+	$('#'+ctrlID).fadeOut();
+} 
 function showMsg(ctrlID,msg,type_msg){		
 	$('#'+ctrlID).removeClass();	
 	$('#'+ctrlID).addClass("alert");			
@@ -98,9 +101,6 @@ function showMsg(ctrlID,msg,type_msg){
 	}
 	timeout = setTimeout(hideMsg2, second_timeout,ctrlID);			 
 }
-function hideMsg2(ctrlID) {
-	$('#'+ctrlID).fadeOut();
-} 
 function PhanCachSoTien(Ctrl) {
     var vMoney = Ctrl.value;
     vMoney = vMoney.replace(/[^\d]+/g, '');

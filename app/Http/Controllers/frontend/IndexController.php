@@ -55,6 +55,7 @@ class IndexController extends Controller {
   public function registerEmployer(Request $request){        
     $flag=1;
     $error=array();    
+    $success=array();
     $data=array();       
     if($request->isMethod('post')){
       $data               = @$request->all();
@@ -180,7 +181,7 @@ class IndexController extends Controller {
         }       
       }
       if(mb_strlen($contacted_name) < 6){
-        $error["contacted_name"] = 'Họ tên phải từ 6 ký tự trở lên';   
+        $error["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
         $data['contacted_name']='';         
         $flag = 0;
       } 
@@ -213,9 +214,10 @@ class IndexController extends Controller {
         $item->created_at=date("Y-m-d H:i:s",time());
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
+        $success[]='Đăng ký tài khoản nhà tuyển dụng thành công';
       }
     }
-    return view("frontend.employer-register",compact('data','error'));         
+    return view("frontend.employer-register",compact('data','error','success'));         
   }
   public function registerCandidate(Request $request){             
     return view("frontend.candidate-register");         

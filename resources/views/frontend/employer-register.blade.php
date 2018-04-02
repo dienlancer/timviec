@@ -16,9 +16,9 @@ $ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id
 		<div class="row">
 			<div class="col-lg-8">
 				<?php 
-				if(count(@$error) > 0){
+				if(count(@$error) > 0 || count(@$success) > 0){
 					?>
-					<div class="alert-system padding-top-5">
+					<div class="alert-system margin-top-10">
 						<?php                                           
 						if(count(@$error) > 0){
 							?>
@@ -32,7 +32,20 @@ $ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id
 								?>                              
 							</ul>
 							<?php
-						}						
+						}
+						if(count(@$success) > 0){
+							?>
+							<ul class="alert-success">
+								<?php 
+								foreach (@$success as $key => $value) {
+									?>
+									<li><?php echo $value; ?></li>
+									<?php
+								}
+								?>                              
+							</ul>
+							<?php
+						}
 						?>  
 						<div class="clr"></div>                                            
 					</div>              

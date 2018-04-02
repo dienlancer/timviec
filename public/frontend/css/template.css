@@ -279,6 +279,36 @@ div.opacity-absolute::before{
     background:#337ab7;
     border: 1px solid #1b588d;
 }
+.btn-login{
+    display: inline-block;
+    background: #E30000;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 1px solid #c50000;
+}
+.btn-login:hover{
+    background:#337ab7;
+    border: 1px solid #1b588d;
+    color: #ffffff;
+}
+.btn-remember-password{
+    display: inline-block;
+    background: #ffffff;
+    padding: 5px 10px;
+    color: #E30000;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 1px solid #ccc;
+}
+.btn-remember-password:hover{
+    background: #E30000;
+    color: #ffffff;
+    border: 1px solid #c50000;
+}
 .bg-startup{
     background-image: url('../images/bg-quick-search.png');
     background-repeat: no-repeat;

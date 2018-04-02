@@ -289,8 +289,30 @@ class IndexController extends Controller {
     }
     return view("frontend.candidate-register",compact('data','error','success'));         
   }    
-  public function loginEmployer(Request $request){             
-    return view("frontend.employer-login");         
+  public function loginEmployer(Request $request){  
+    $flag=1;
+    $error=array();
+    $data=array();       
+    $arrUser=array();
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }     
+    if(count($arrUser) > 0){
+      //return redirect()->route('frontend.index.viewAccount');
+    }
+    if($request->isMethod('post')){                    
+      $email              = trim(@$request->email);
+      $password           = md5(trim(@$request->password));
+      $source=EmployerModel::whereRaw('trim(lower(email)) = ? and trim(lower(password)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),trim(mb_strtolower(@$password,'UTF-8')) ,1])->select('id','email','password')->get()->toArray();
+      if(count($source) > 0){
+        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);                                          
+        Session::put($this->_ssNameUser,$arrUser);  
+        //return redirect()->route('frontend.index.viewAccount'); 
+      }else{
+        $error[]="Đăng nhập sai email và password";
+      }          
+    }                
+    return view("frontend.employer-login",compact("error","data"));                       
   }
   public function loginCandidate(Request $request){             
     return view("frontend.candidate-login");         

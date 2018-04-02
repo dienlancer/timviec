@@ -387,5 +387,7 @@ Route::match(["get","post"],"dang-ky-ung-vien",["as"=>"frontend.index.candidateR
 Route::match(["get","post"],"dang-nhap-ntd",["as"=>"frontend.index.employerLogin","uses"=>"frontend\IndexController@loginEmployer"]);
 Route::match(["get","post"],"dang-nhap-ung-vien",["as"=>"frontend.index.candidateLogin","uses"=>"frontend\IndexController@loginCandidate"]);
 Route::post("register-employer-ajax",["as"=>"frontend.index.registerEmployerAjax","uses"=>"frontend\IndexController@registerEmployerAjax"]);
+Route::post("register-candidate-ajax",["as"=>"frontend.index.registerCandidateAjax","uses"=>"frontend\IndexController@registerCandidateAjax"]);
+
 /* end tìm việc */
 ?>

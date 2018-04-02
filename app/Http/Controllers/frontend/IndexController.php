@@ -126,7 +126,7 @@ class IndexController extends Controller {
         }       
       }          
       if(mb_strlen($phone) < 10){
-        $error["phone"] = 'Số điện thoại phải từ 10 ký tự trở lên';   
+        $error["phone"] = 'Điện thoại công ty phải từ 10 ký tự trở lên';   
         $data['phone']='';         
         $flag = 0;
       }else{

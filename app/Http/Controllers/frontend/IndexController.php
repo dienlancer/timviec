@@ -43,7 +43,7 @@ use Hash;
 use Sentinel;
 class IndexController extends Controller {  
   var $_pageRange=4;
-  var $_ssNameUser="vmuser";
+  var $_ssNameUser="vmuser";  
   var $_ssNameCart="vmart";      
   var $_ssNameInvoice="vminvoice";
   public function getHome(Request $request){       
@@ -83,7 +83,13 @@ class IndexController extends Controller {
         $source=array();
         $source=EmployerModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
         if (count($source) > 0) {
-          $error["email"]= "Email nhà tuyển dụng đã tồn tại";
+          $error["email"]= "Email nhà tuyển dụng đã có trong hệ thống. ";
+          $data['email']='';
+          $flag = 0;                    
+        }
+        $source=CandidateModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
+        if (count($source) > 0) {
+          $error["email"]= "Email nhà tuyển dụng đã có trong hệ thống. ";
           $data['email']='';
           $flag = 0;                    
         }       
@@ -109,7 +115,7 @@ class IndexController extends Controller {
         $source=array();
         $source=EmployerModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();    
         if (count($source) > 0) {
-          $error["fullname"] = "Tên công ty đã tồn tại";
+          $error["fullname"] = "Tên công ty đã có trong hệ thống. ";
           $data['fullname']='';
           $flag = 0;                    
         }       
@@ -122,7 +128,7 @@ class IndexController extends Controller {
         $source=array();
         $source=EmployerModel::whereRaw("trim(lower(address)) = ?",[trim(mb_strtolower($address,'UTF-8'))])->get()->toArray();    
         if (count($source) > 0) {
-          $error["address"] = "Địa chỉ công ty đã tồn tại";
+          $error["address"] = "Địa chỉ công ty đã có trong hệ thống. ";
           $data['address']='';
           $flag = 0;                    
         }       
@@ -135,7 +141,7 @@ class IndexController extends Controller {
         $source=array();
         $source=EmployerModel::whereRaw("trim(lower(phone)) = ?",[trim(mb_strtolower($phone,'UTF-8'))])->get()->toArray();    
         if (count($source) > 0) {
-          $error["phone"] = "Điện thoại công ty đã tồn tại";
+          $error["phone"] = "Điện thoại công ty đã có trong hệ thống. ";
           $data['phone']='';
           $flag = 0;                
         }       
@@ -159,7 +165,7 @@ class IndexController extends Controller {
           $source=array();
           $source=EmployerModel::whereRaw("trim(lower(website)) = ?",[trim(mb_strtolower($website,'UTF-8'))])->get()->toArray();    
           if (count($source) > 0) {
-            $error["website"] = "Website công ty đã tồn tại";
+            $error["website"] = "Website công ty đã có trong hệ thống. ";
             $data['website']='';
             $flag = 0;                    
           }       
@@ -225,7 +231,13 @@ class IndexController extends Controller {
         $source=array();
         $source=CandidateModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
         if (count($source) > 0) {
-          $error["email"]= "Email ứng viên đã tồn tại";
+          $error["email"]= "Email ứng viên đã có trong hệ thống. ";
+          $data['email']='';
+          $flag = 0;                    
+        }
+        $source=EmployerModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
+        if (count($source) > 0) {
+          $error["email"]= "Email ứng viên đã có trong hệ thống. ";
           $data['email']='';
           $flag = 0;                    
         }       
@@ -256,7 +268,7 @@ class IndexController extends Controller {
         $source=array();
         $source=CandidateModel::whereRaw("trim(lower(phone)) = ?",[trim(mb_strtolower($phone,'UTF-8'))])->get()->toArray();    
         if (count($source) > 0) {
-          $error["phone"] = "Điện thoại ứng viên đã tồn tại";
+          $error["phone"] = "Điện thoại ứng viên đã có trong hệ thống. ";
           $data['phone']='';
           $flag = 0;                
         }       
@@ -276,16 +288,20 @@ class IndexController extends Controller {
     }
     return view("frontend.candidate-register",compact('data','error','success'));         
   }    
-  public function loginEmployer(Request $request){  
-    $flag=1;
+  public function loginEmployer(Request $request){      
     $error=array();
     $data=array();       
     $arrUser=array();
+    $source=array();
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
-    }     
+    }         
     if(count($arrUser) > 0){
-      //return redirect()->route('frontend.index.viewAccount');
+      $email=@$arrUser['email'];   
+      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+      if(count($source) > 0){
+        return redirect()->route('frontend.index.viewEmployerAccount');
+      }      
     }
     if($request->isMethod('post')){                    
       $email              = trim(@$request->email);
@@ -294,23 +310,27 @@ class IndexController extends Controller {
       if(count($source) > 0){
         $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);                                          
         Session::put($this->_ssNameUser,$arrUser);  
-        //return redirect()->route('frontend.index.viewAccount'); 
+        return redirect()->route('frontend.index.viewEmployerAccount'); 
       }else{
         $error[]="Đăng nhập sai email và password";
       }          
     }                
     return view("frontend.employer-login",compact("error","data"));                       
   }
-  public function loginCandidate(Request $request){     
-    $flag=1;
+  public function loginCandidate(Request $request){         
     $error=array();
     $data=array();       
     $arrUser=array();
+    $source=array();
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }     
     if(count($arrUser) > 0){
-      //return redirect()->route('frontend.index.viewAccount');
+      $email=@$arrUser['email'];   
+      $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+      if(count($source) > 0){
+        return redirect()->route('frontend.index.viewCandidateAccount');
+      }      
     }
     if($request->isMethod('post')){                    
       $email              = trim(@$request->email);
@@ -319,13 +339,19 @@ class IndexController extends Controller {
       if(count($source) > 0){
         $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);                                          
         Session::put($this->_ssNameUser,$arrUser);  
-        //return redirect()->route('frontend.index.viewAccount'); 
+        return redirect()->route('frontend.index.viewCandidateAccount'); 
       }else{
         $error[]="Đăng nhập sai email và password";
       }          
     }                       
     return view("frontend.candidate-login");         
   }    
+  public function viewEmployerAccount(){
+    return view("frontend.employer-account");
+  }
+  public function viewCandidateAccount(){
+    return view("frontend.candidate-account");
+  }
 }
 
 

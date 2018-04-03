@@ -584,7 +584,16 @@ div.opacity-absolute::before{
     display: flex;
     align-items: center;
 }
-
+.ex-website{
+    display: flex;
+    align-items: center;
+}
+.lili{
+    font-size: 12px;
+}
+.tattoo{
+    width: 60%;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

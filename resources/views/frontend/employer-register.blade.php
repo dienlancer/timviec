@@ -98,7 +98,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>
 				</div>
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Sơ lược công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-4" ><div class="xika"><div>Sơ lược công ty</div></div></div>
 					<div class="col-lg-8"><textarea name="intro" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['intro']; ?></textarea></div>
 				</div>
 				<div class="row mia">
@@ -106,9 +106,14 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="fax" class="vacca" placeholder="Fax công ty" value="<?php echo @$data['fax']; ?>" ></div>
 				</div>
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Website</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="website" class="vacca" placeholder="Website công ty" value="<?php echo @$data['website']; ?>" ></div>
-				</div>
+					<div class="col-lg-4" ><div class="xika"><div>Website</div></div></div>
+					<div class="col-lg-8">
+						<div class="ex-website">
+							<div class="tattoo"><input type="text" <?php echo $disabled_status; ?> name="website" class="vacca" placeholder="Nhập tên miền website của công ty" value="<?php echo @$data['website']; ?>" ></div>
+							<div class="margin-left-15 lili">Ví dụ : www.pnj.com.vn</div>
+						</div>						
+					</div>
+				</div>				
 				<hr  />
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin liên hệ</h2></div>

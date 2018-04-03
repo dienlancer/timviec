@@ -149,15 +149,10 @@ class IndexController extends Controller {
         $error["scale_id"] = 'Vui lòng chọn quy mô công ty';    
         $data['scale_id']=0;        
         $flag = 0;
-      }
-      if(mb_strlen($intro) < 20){
-        $error["intro"] = 'Sơ lược về công ty tối thiểu 20 ký tự trở lên';     
-        $data['intro']='';       
-        $flag = 0;
-      }
+      }      
       if(mb_strlen($website) > 0){
         if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
-          $error["website"] = 'Website không hợp lệ';     
+          $error["website"] = 'Website công ty không hợp lệ';     
           $data['website']='';       
           $flag = 0;
         }else{
@@ -252,14 +247,6 @@ class IndexController extends Controller {
         $error["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
         $data['fullname']='';        
         $flag = 0;
-      }else{
-        $source=array();
-        $source=CandidateModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["fullname"] = "Tên ứng viên đã tồn tại";
-          $data['fullname']='';
-          $flag = 0;                    
-        }       
       }        
       if(mb_strlen($phone) < 10){
         $error["phone"] = 'Điện thoại ứng viên phải từ 10 ký tự trở lên';   
@@ -280,7 +267,7 @@ class IndexController extends Controller {
         $item->password     = md5(@$password);
         $item->fullname     = @$fullname;
         $item->phone        = @$phone;      
-        $item->status = 1;
+        $item->status =1;
         $item->created_at=date("Y-m-d H:i:s",time());
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
@@ -314,7 +301,29 @@ class IndexController extends Controller {
     }                
     return view("frontend.employer-login",compact("error","data"));                       
   }
-  public function loginCandidate(Request $request){             
+  public function loginCandidate(Request $request){     
+    $flag=1;
+    $error=array();
+    $data=array();       
+    $arrUser=array();
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }     
+    if(count($arrUser) > 0){
+      //return redirect()->route('frontend.index.viewAccount');
+    }
+    if($request->isMethod('post')){                    
+      $email              = trim(@$request->email);
+      $password           = md5(trim(@$request->password));
+      $source=CandidateModel::whereRaw('trim(lower(email)) = ? and trim(lower(password)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),trim(mb_strtolower(@$password,'UTF-8')) ,1])->select('id','email','password')->get()->toArray();
+      if(count($source) > 0){
+        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);                                          
+        Session::put($this->_ssNameUser,$arrUser);  
+        //return redirect()->route('frontend.index.viewAccount'); 
+      }else{
+        $error[]="Đăng nhập sai email và password";
+      }          
+    }                       
     return view("frontend.candidate-login");         
   }    
 }

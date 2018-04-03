@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 01, 2018 lúc 08:39 PM
+-- Thời gian đã tạo: Th4 03, 2018 lúc 01:04 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -222,6 +222,32 @@ INSERT INTO `banner` (`id`, `category_id`, `caption`, `alt`, `image`, `page_url`
 (47, 15, '', '', 'thoi-trang-nu-2.jpg', '', 2, 1, '2018-02-25 12:16:17', '2018-02-25 12:16:17'),
 (48, 6, '', '', 'thoi-trang-nu-1.jpg', '', 1, 1, '2018-02-25 12:16:33', '2018-02-25 12:16:33'),
 (49, 6, '', '', 'thoi-trang-nu-2.jpg', '', 2, 1, '2018-02-25 12:16:39', '2018-02-25 12:16:39');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `candidate`
+--
+
+DROP TABLE IF EXISTS `candidate`;
+CREATE TABLE `candidate` (
+  `id` bigint(20) NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `candidate`
+--
+
+INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'tranhuyvu@dienkim.com', 'faf5341a39919352a4f9bde4d6de5396', 'Trần Huy Vũ', '0988162739', 1, '2018-04-03 02:32:59', '2018-04-03 02:32:59'),
+(2, 'truongnt@dienkim.com', 'faf5341a39919352a4f9bde4d6de5396', 'Nguyễn Tuấn Trường', '0922782190', 1, '2018-04-03 07:14:21', '2018-04-03 07:14:21');
 
 -- --------------------------------------------------------
 
@@ -471,6 +497,42 @@ INSERT INTO `district` (`id`, `fullname`, `alias`, `province_id`, `sort_order`, 
 (6, 'Quận 1', 'quan-1', 36, 5, 1, '2018-02-26 03:24:19', '2018-02-26 03:25:00'),
 (7, 'Tân Bình', 'tan-binh', 36, 7, 1, '2018-02-26 03:24:47', '2018-02-26 03:25:07'),
 (8, 'Phú Nhuận', 'phu-nhuan', 36, 8, 1, '2018-02-26 03:25:52', '2018-02-26 03:25:52');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `employer`
+--
+
+DROP TABLE IF EXISTS `employer`;
+CREATE TABLE `employer` (
+  `id` bigint(20) NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `province_id` int(11) DEFAULT NULL,
+  `scale_id` int(11) DEFAULT NULL,
+  `intro` text COLLATE utf8_unicode_ci,
+  `fax` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contacted_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contacted_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contacted_phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `employer`
+--
+
+INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `address`, `phone`, `province_id`, `scale_id`, `intro`, `fax`, `website`, `contacted_name`, `contacted_email`, `contacted_phone`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'pnjcomvn@dienkim.com', 'faf5341a39919352a4f9bde4d6de5396', 'Công ty CP Vàng Bạc Đá Quý Phú Nhuận', '170E Phan Đăng Lưu, Phường 03, Quận Phú Nhuận', '0988162733', 23, 3, 'PNJ là thương hiệu hàng đầu tại Việt Nam trong lĩnh vực chế tác và bán lẻ trang sức bằng vàng, bạc, đá quý. Sản phẩm PNJ ngày càng được các nước tại thị trường Châu Á và Châu Âu ưu chuộng. \r\n\r\nHiện tại, Công ty có hơn 5.200 nhân viên với hệ thống bán sỉ, và hơn 270 cửa hàng bán lẻ trải rộng trên toàn quốc; Xí Nghiệp Nữ trang PNJ có công suất sản xuất đạt trên 4 triệu sản phẩm/năm, được đánh giá là một trong những xí nghiệp chế tác nữ trang lớn nhất khu vực Châu Á với đội ngũ hơn 1.000 nhân viên.\r\n\r\nTrải qua 30 năm hình thành và phát triển, PNJ đã đạt đươc nhiều thành tựu đáng kể: thuộc Top 500 nhà bán lẻ hàng đầu Châu Á Thái Bình Dương, Giải thưởng Chất lượng Châu Á Thái Bình Dương, Thương hiệu quốc gia, … \r\n\r\nVới những giá trị cốt lõi mà PNJ đã theo đuổi, PNJ đã sở hữu được nguồn nhân lực có tác phong làm việc chuyên nghiệp, hiệu quả lao động cao và hơn cả là mối gắn kết nhân viên với tổ chức. Cơ sở vật chất được trang bị hiện đại bảo đảm nhân viên được làm việc trong điều kiện tốt nhất. Ngoài ra công ty còn trang bị thêm phòng tập GYM và Yoga giúp người lao động tái tạo sức lao động sau một ngày làm việc. \r\n\r\nTập thể PNJ đã cùng nhau chung tay xây dựng văn hoá cảm thông, chia sẻ bằng những hoạt động hỗ trợ cộng đồng, thành lập quỹ từ thiện PNJ, chương trình “mái ấm PNJ” mang đến một cuộc sống tốt đẹp cho người dân nghèo, ươm mầm phát triển tài năng. \r\n\r\nĐể tiếp tục khẳng định vị thế PNJ tại VN và thế giới, chúng tôi đang mở rộng hệ thống phát triển kinh doanh và cần bổ sung những ứng viên tài năng vào đội ngũ nhân sự chuyên nghiệp của mình. \r\n\r\nTại PNJ, sự nghiệp của các bạn sẽ được phát triển cùng với sự lớn mạnh không ngừng của chúng tôi.', '88483127487588', 'www.pnj.com.vn', 'Trần Lệ Diễm Quyên', 'quyentld@dienkim.com', '0988162778', 1, '2018-04-03 01:48:19', '2018-04-03 01:48:19'),
+(2, 'lottevn@dienkim.com', 'faf5341a39919352a4f9bde4d6de5396', 'LOTTE MART VIỆT NAM', '469 Nguyễn Hữu Thọ, Quận 7, TP Hồ Chí Minh', '0988162732', 23, 4, 'Công ty TNHH TTTM LOTTE trực thuộc tập đoàn LOTTE của Hàn Quốc. Tính đến thời điểm này, Trung tâm thương mại LOTTE Mart đã có mặt tại 4 quốc gia của châu Á là: Hàn Quốc, Trung Quốc, Indonesia và Việt Nam, với 243 trung tâm thương mại được xây dựng theo phong cách hiện đại, phù hợp với thị hiếu và nhu cầu mua sắm của người tiêu dùng. Tại Việt Nam, LOTTE Mart đã khai trương 7 trung tâm thương mại, tọa lạc tại những khu vực trung tâm thành phố Hồ Chí Minh: LOTTE Mart Nam Sài Gòn tại quận 7 và LOTTE Mart Phú Thọ quận 11, LOTTE Mart Đồng Nai, LOTTE Mart Đà Nẵng, LOTTE Mart Phan Thiết, LOTTE Mart Bình Dương, LOTTE Mart Hà Nội. Từ khi bước vào thị trường Việt Nam năm 2008 đến nay, LOTTE Mart luôn không ngừng vươn lên với mục tiêu làm hài lòng, thỏa mãn nhu cầu của quý khách, nỗ lực tối đa để cung cấp những sản phẩm, dịch vụ tốt nhất đến tay người tiêu dùng. Mục tiêu đến năm 2020 LOTTE Mart sẽ mở khoảng 60 cửa hàng trải dài khắp các tỉnh thành trên đất nước Việt Nam.', '87437372767823578', 'www.lottemart.com.vn', 'Trần Thanh Tùng', 'tungtt@dienkim.com', '0978222214', 1, '2018-04-03 01:58:47', '2018-04-03 01:58:47'),
+(3, 'spt3134@dienkim.com', 'faf5341a39919352a4f9bde4d6de5396', 'Công ty CP DV Bưu Chính Viễn Thông Sài Gòn', '10 Cô Giang, Phường Cầu Ông Lãnh, Q.1, TP HCM', '0983222111', 23, 3, 'TRUNG TÂM ĐIỆN THOẠI SPT (SPT Telephone Center - STC) là một Chi nhánh trực thuộc\r\nCông ty Cổ phần Dịch vụ Bưu chính Viễn thông Sài Gòn – SPT chuyên cung cấp số thuê bao điện\r\nthoại cố định, ADSL, FTTx, IPTV và các dịch vụ khác...đáp ứng nhu cầu lắp đặt tại các Công ty, Khu\r\ndân cư, Khu công nghiệp, Khu chế xuất, Khu thương mại,...', '', 'www.spt.vn', 'Đinh Thị Trường Giang', 'giangdtt@dienkim.com', '0933251718', 1, '2018-04-03 06:55:44', '2018-04-03 06:55:44');
 
 -- --------------------------------------------------------
 
@@ -2779,6 +2841,12 @@ ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `candidate`
+--
+ALTER TABLE `candidate`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `category_article`
 --
 ALTER TABLE `category_article`
@@ -2812,6 +2880,12 @@ ALTER TABLE `category_video`
 -- Chỉ mục cho bảng `district`
 --
 ALTER TABLE `district`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `employer`
+--
+ALTER TABLE `employer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3034,6 +3108,12 @@ ALTER TABLE `banner`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
+-- AUTO_INCREMENT cho bảng `candidate`
+--
+ALTER TABLE `candidate`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT cho bảng `category_article`
 --
 ALTER TABLE `category_article`
@@ -3068,6 +3148,12 @@ ALTER TABLE `category_video`
 --
 ALTER TABLE `district`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `employer`
+--
+ALTER TABLE `employer`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `group_member`

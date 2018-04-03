@@ -347,9 +347,34 @@ class IndexController extends Controller {
     return view("frontend.candidate-login");         
   }    
   public function viewEmployerAccount(){
+    $arrUser=array();
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }         
+    if(count($arrUser) > 0){
+      $email=@$arrUser['email'];   
+      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+      if(count($source) > 0){
+        return redirect()->route('frontend.index.viewEmployerAccount');
+      }      
+    }else{
+      return redirect()->route("frontend.index.employerLogin"); 
+    } 
     return view("frontend.employer-account");
   }
   public function viewCandidateAccount(){
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }     
+    if(count($arrUser) > 0){
+      $email=@$arrUser['email'];   
+      $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+      if(count($source) > 0){
+        return redirect()->route('frontend.index.viewCandidateAccount');
+      }      
+    }else{
+      return redirect()->route("frontend.index.candidateLogin");
+    }
     return view("frontend.candidate-account");
   }
 }

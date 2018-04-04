@@ -13,6 +13,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
+				<h1 class="dn-dk-h">Đăng Ký Ứng Viên</h1>
 				<?php 
 				if(count(@$error) > 0){
 					?>
@@ -46,8 +47,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>
 					<?php
 				}				
-				?>
-				<h1 class="dn-dk-h">Đăng Ký Ứng Viên</h1>			
+				?>							
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin đăng nhập</h2></div>
 					<div class="col-lg-8"></div>

@@ -15,6 +15,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
+				<h1 class="dn-dk-h">Đăng Ký Nhà Tuyển Dụng</h1>		
 				<?php 
 				if(count(@$error) > 0){
 					?>
@@ -50,8 +51,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				}
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_district,@$data['province_id'],$disabled_status);
 				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],$disabled_status);
-				?>
-				<h1 class="dn-dk-h">Đăng Ký Nhà Tuyển Dụng</h1>			
+				?>					
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin đăng nhập</h2></div>
 					<div class="col-lg-8"></div>

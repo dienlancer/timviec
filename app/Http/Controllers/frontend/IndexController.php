@@ -459,7 +459,11 @@ class IndexController extends Controller {
     return view("frontend.employer-account",compact('data','error','success'));         
   }
   public function viewCandidateAccount(){
-  	$arrUser=array();
+  	$flag=1;
+    $error=array();    
+    $success=array();
+    $data=array();       
+    $arrUser=array();
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }     
@@ -468,11 +472,48 @@ class IndexController extends Controller {
       $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
       if(count($source) == 0){
         return redirect()->route("frontend.index.candidateLogin");
-      }      
+      }else{
+        $data=CandidateModel::find((int)@$source[0]['id'])->toArray();        
+      }       
     }else{
     	return redirect()->route("frontend.index.candidateLogin");
     }
-    return view("frontend.candidate-account");
+    if($request->isMethod('post')){
+      $data               = @$request->all();      
+      $fullname           = trim(@$request->fullname);
+      $phone              = trim(@$request->phone);            
+      if(mb_strlen($fullname) < 6){
+        $error["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
+        $data['fullname']='';        
+        $flag = 0;
+      }        
+      if(mb_strlen($phone) < 10){
+        $error["phone"] = 'Điện thoại ứng viên phải từ 10 ký tự trở lên';   
+        $data['phone']='';         
+        $flag = 0;
+      }else{
+        $source=array();
+        $source=CandidateModel::whereRaw("trim(lower(phone)) = ? and id != ?",[trim(mb_strtolower($phone,'UTF-8')),(int)@$arrUser['id']])->get()->toArray();    
+        if (count($source) > 0) {
+          $error["phone"] = "Điện thoại ứng viên đã có trong hệ thống. ";
+          $data['phone']='';
+          $flag = 0;                
+        }       
+      }        
+      if($flag==1){
+        $item               = CandidateModel::find((int)@$arrUser['id']);
+        $item->email        = @$email;
+        $item->password     = Hash::make(@$password) ;
+        $item->fullname     = @$fullname;
+        $item->phone        = @$phone;      
+        $item->status =1;
+        $item->created_at=date("Y-m-d H:i:s",time());
+        $item->updated_at=date("Y-m-d H:i:s",time());   
+        $item->save();   
+        $success[]='<span>Cập nhật tài khoản ứng viên thành công.</span>';
+      }
+    }
+    return view("frontend.candidate-account",compact('data','error','success'));         
   }
   public function logoutEmployer(){
   	$arrUser=array();            

@@ -61,8 +61,8 @@ class IndexController extends Controller {
     if($request->isMethod('post')){
       $data               = @$request->all();
       $email              = trim(@$request->email);
-      $password           = trim(@$request->password);
-      $password_confirmed = trim(@$request->password_confirmed);
+      $password           = @$request->password;
+      $password_confirmed = @$request->password_confirmed;
       $fullname           = trim(@$request->fullname);
       $address            = trim(@$request->address);
       $phone              = trim(@$request->phone);
@@ -189,7 +189,7 @@ class IndexController extends Controller {
       if($flag==1){
         $item               =   new EmployerModel;
         $item->email        = @$email;
-        $item->password     = md5(@$password);
+        $item->password     = Hash::make(@$password) ;
         $item->fullname     = @$fullname;
         $item->address      = @$address;
         $item->phone        = @$phone;
@@ -218,8 +218,8 @@ class IndexController extends Controller {
     if($request->isMethod('post')){
       $data               = @$request->all();
       $email              = trim(@$request->email);
-      $password           = trim(@$request->password);
-      $password_confirmed = trim(@$request->password_confirmed);
+      $password           = @$request->password;
+      $password_confirmed = @$request->password_confirmed;
       $fullname           = trim(@$request->fullname);
       $phone              = trim(@$request->phone);      
       if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
@@ -276,7 +276,7 @@ class IndexController extends Controller {
       if($flag==1){
         $item               = new CandidateModel;
         $item->email        = @$email;
-        $item->password     = md5(@$password);
+        $item->password     = Hash::make(@$password) ;
         $item->fullname     = @$fullname;
         $item->phone        = @$phone;      
         $item->status =1;
@@ -305,17 +305,22 @@ class IndexController extends Controller {
     }
     if($request->isMethod('post')){                    
       $email              = trim(@$request->email);
-      $password           = md5(trim(@$request->password));
-      $source=EmployerModel::whereRaw('trim(lower(email)) = ? and trim(lower(password)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),trim(mb_strtolower(@$password,'UTF-8')) ,1])->select('id','email','password')->get()->toArray();
+      $password           = @$request->password ;
+      $source=EmployerModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
       if(count($source) > 0){
-        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);  
-        Session::forget($this->_ssNameUser);                                        
-        Session::put($this->_ssNameUser,$arrUser);  
-        return redirect()->route('frontend.index.viewEmployerAccount'); 
+        $password_hashed=$source[0]['password'];
+        if(Hash::check($password,$password_hashed)){
+          $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
+          Session::forget($this->_ssNameUser);                                 
+          Session::put($this->_ssNameUser,$arrUser);  
+          return redirect()->route('frontend.index.viewEmployerAccount'); 
+        }else{
+          $error[]="Đăng nhập sai mật khẩu";
+        }              
       }else{
-        $error[]="Đăng nhập sai email và password";
+        $error[]="Đăng nhập sai email";
       }          
-    }                
+    }                          
     return view("frontend.employer-login",compact("error","data"));                       
   }
   public function loginCandidate(Request $request){         
@@ -335,15 +340,20 @@ class IndexController extends Controller {
     }
     if($request->isMethod('post')){                    
       $email              = trim(@$request->email);
-      $password           = md5(trim(@$request->password));
-      $source=CandidateModel::whereRaw('trim(lower(email)) = ? and trim(lower(password)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),trim(mb_strtolower(@$password,'UTF-8')) ,1])->select('id','email','password')->get()->toArray();
+      $password           = @$request->password ;
+      $source=CandidateModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
       if(count($source) > 0){
-        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
-        Session::forget($this->_ssNameUser);                                 
-        Session::put($this->_ssNameUser,$arrUser);  
-        return redirect()->route('frontend.index.viewCandidateAccount'); 
+        $password_hashed=$source[0]['password'];
+        if(Hash::check($password,$password_hashed)){
+          $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
+          Session::forget($this->_ssNameUser);                                 
+          Session::put($this->_ssNameUser,$arrUser);  
+          return redirect()->route('frontend.index.viewCandidateAccount'); 
+        }else{
+          $error[]="Đăng nhập sai mật khẩu";
+        }              
       }else{
-        $error[]="Đăng nhập sai email và password";
+        $error[]="Đăng nhập sai email";
       }          
     }                       
     return view("frontend.candidate-login",compact("error","data"));         

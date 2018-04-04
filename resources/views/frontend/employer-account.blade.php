@@ -11,7 +11,7 @@ $seo=getSeo();
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-									
+					@include("frontend.employer-sidebar")				
 			</div>
 			<div class="col-lg-9">
 				<?php 

@@ -594,6 +594,42 @@ div.opacity-absolute::before{
 .tattoo{
     width: 60%;
 }
+.box-category{
+    margin-top: 10px;
+}
+.menu-right-title {
+    background: #d80027;
+    color: #ffffff;    
+    font-size: 15px;
+    padding: 10px 10px;
+}
+.categoryarticle {
+    list-style: none;
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+}
+.categoryarticle li {
+    margin-left: 0;
+}
+.categoryarticle li a {
+    
+    
+    
+    display: flex;
+    padding:5px 10px;
+    color: #333;
+        transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    align-items: center;
+}
+.categoryarticle li a:hover{
+    background: #f0f0f0;
+}
+.category-icon{
+        font-size: 14px;
+    margin-right: 10px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

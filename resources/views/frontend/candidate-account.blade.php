@@ -10,7 +10,10 @@ $seo=getSeo();
 	{{ csrf_field() }}
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-3">
+									
+			</div>
+			<div class="col-lg-9">
 				<?php 
 				if(count(@$error) > 0){
 					?>
@@ -28,7 +31,7 @@ $seo=getSeo();
 					<?php
 				}				
 				?>
-				<h1 class="dn-dk-h">Thông Tin Ứng Viên</h1>							
+				<h1 class="dn-dk-h">Tài Khoản Ứng Viên</h1>		
 			</div>
 		</div>
 	</div>

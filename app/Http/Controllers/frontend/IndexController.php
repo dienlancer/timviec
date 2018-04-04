@@ -344,7 +344,7 @@ class IndexController extends Controller {
         $error[]="Đăng nhập sai email và password";
       }          
     }                       
-    return view("frontend.candidate-login");         
+    return view("frontend.candidate-login",compact("error","data"));         
   }    
   public function viewEmployerAccount(){
     $arrUser=array();
@@ -354,26 +354,27 @@ class IndexController extends Controller {
     if(count($arrUser) > 0){
       $email=@$arrUser['email'];   
       $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) > 0){
-        return redirect()->route('frontend.index.viewEmployerAccount');
+      if(count($source) == 0){
+        return redirect()->route("frontend.index.employerLogin"); 
       }      
     }else{
-      return redirect()->route("frontend.index.employerLogin"); 
-    } 
+    	return redirect()->route("frontend.index.employerLogin"); 
+    }
     return view("frontend.employer-account");
   }
   public function viewCandidateAccount(){
+  	$arrUser=array();
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }     
     if(count($arrUser) > 0){
       $email=@$arrUser['email'];   
       $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) > 0){
-        return redirect()->route('frontend.index.viewCandidateAccount');
+      if(count($source) == 0){
+        return redirect()->route("frontend.index.candidateLogin");
       }      
     }else{
-      return redirect()->route("frontend.index.candidateLogin");
+    	return redirect()->route("frontend.index.candidateLogin");
     }
     return view("frontend.candidate-account");
   }

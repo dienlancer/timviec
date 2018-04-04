@@ -124,15 +124,7 @@ class IndexController extends Controller {
         $error["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
         $data['address']='';      
         $flag = 0;
-      }else{
-        $source=array();
-        $source=EmployerModel::whereRaw("trim(lower(address)) = ?",[trim(mb_strtolower($address,'UTF-8'))])->get()->toArray();    
-        if (count($source) > 0) {
-          $error["address"] = "Địa chỉ công ty đã có trong hệ thống. ";
-          $data['address']='';
-          $flag = 0;                    
-        }       
-      }          
+      }   
       if(mb_strlen($phone) < 10){
         $error["phone"] = 'Điện thoại công ty phải từ 10 ký tự trở lên';   
         $data['phone']='';         
@@ -161,14 +153,6 @@ class IndexController extends Controller {
           $error["website"] = 'Website công ty không hợp lệ';     
           $data['website']='';       
           $flag = 0;
-        }else{
-          $source=array();
-          $source=EmployerModel::whereRaw("trim(lower(website)) = ?",[trim(mb_strtolower($website,'UTF-8'))])->get()->toArray();    
-          if (count($source) > 0) {
-            $error["website"] = "Website công ty đã có trong hệ thống. ";
-            $data['website']='';
-            $flag = 0;                    
-          }       
         }
       }      
       if(mb_strlen($contacted_name) < 6){
@@ -358,8 +342,12 @@ class IndexController extends Controller {
     }                       
     return view("frontend.candidate-login",compact("error","data"));         
   }    
-  public function viewEmployerAccount(){
-    $arrUser=array();
+  public function viewEmployerAccount(Request $request){
+    $flag=1;
+    $error=array();    
+    $success=array();
+    $data=array();       
+    $arrUser=array();    
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }         
@@ -368,11 +356,107 @@ class IndexController extends Controller {
       $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
       if(count($source) == 0){
         return redirect()->route("frontend.index.employerLogin"); 
+      }else{
+        $data=EmployerModel::find((int)@$source[0]['id'])->toArray();        
       }      
     }else{
     	return redirect()->route("frontend.index.employerLogin"); 
     }
-    return view("frontend.employer-account");
+    if($request->isMethod('post')){
+      $data               = @$request->all();      
+      $fullname           = trim(@$request->fullname);
+      $address            = trim(@$request->address);
+      $phone              = trim(@$request->phone);
+      $province_id        = trim(@$request->province_id);
+      $scale_id           = trim(@$request->scale_id);
+      $intro              = trim(@$request->intro);
+      $fax                = trim(@$request->fax);
+      $website            = trim(@$request->website);
+      $contacted_name     = trim(@$request->contacted_name);
+      $contacted_email    = trim(@$request->contacted_email);
+      $contacted_phone    = trim(@$request->contacted_phone);
+      if(mb_strlen($fullname) < 15){
+        $error["fullname"] = 'Tên công ty phải từ 15 ký tự trở lên';    
+        $data['fullname']='';        
+        $flag = 0;
+      }else{
+        $source=array();
+        $source=EmployerModel::whereRaw("trim(lower(fullname)) = ? and id != ?",[trim(mb_strtolower($fullname,'UTF-8')),(int)@$arrUser['id']])->get()->toArray();    
+        if (count($source) > 0) {
+          $error["fullname"] = "Tên công ty đã có trong hệ thống. ";
+          $data['fullname']='';
+          $flag = 0;                    
+        }       
+      }  
+      if(mb_strlen($address) < 15){
+        $error["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
+        $data['address']='';      
+        $flag = 0;
+      }       
+      if(mb_strlen($phone) < 10){
+        $error["phone"] = 'Điện thoại công ty phải từ 10 ký tự trở lên';   
+        $data['phone']='';         
+        $flag = 0;
+      }else{
+        $source=array();
+        $source=EmployerModel::whereRaw("trim(lower(phone)) = ? and id != ?",[trim(mb_strtolower($phone,'UTF-8')),(int)@$arrUser['id']])->get()->toArray();    
+        if (count($source) > 0) {
+          $error["phone"] = "Điện thoại công ty đã có trong hệ thống. ";
+          $data['phone']='';
+          $flag = 0;                
+        }       
+      }  
+      if((int)@$request->province_id == 0){
+        $error["province_id"] = 'Vui lòng chọn tỉnh thành phố';            
+        $data['province_id']=0;
+        $flag = 0;
+      }
+      if((int)@$request->scale_id == 0){
+        $error["scale_id"] = 'Vui lòng chọn quy mô công ty';    
+        $data['scale_id']=0;        
+        $flag = 0;
+      }      
+      if(mb_strlen($website) > 0){
+        if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
+          $error["website"] = 'Website công ty không hợp lệ';     
+          $data['website']='';       
+          $flag = 0;
+        }
+      }      
+      if(mb_strlen($contacted_name) < 6){
+        $error["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
+        $data['contacted_name']='';         
+        $flag = 0;
+      } 
+      if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($contacted_email,'UTF-8')   )){
+        $error["contacted_email"] = 'Email người liên hệ không hợp lệ';     
+        $data['contacted_email']='';       
+        $flag = 0;
+      }
+      if(mb_strlen($contacted_phone) < 10){
+        $error["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
+        $data['contacted_phone']='';
+        $flag = 0;
+      }
+      if($flag==1){
+        $item               = EmployerModel::find((int)@$arrUser['id']);
+        $item->fullname     = @$fullname;
+        $item->address      = @$address;
+        $item->phone        = @$phone;
+        $item->province_id  = @$province_id;
+        $item->scale_id     = @$scale_id;
+        $item->intro        = @$intro;
+        $item->fax          = @$fax;
+        $item->website      = @$website;
+        $item->contacted_name   = @$contacted_name;
+        $item->contacted_email  = @$contacted_email;
+        $item->contacted_phone  = @$contacted_phone;               
+        $item->updated_at=date("Y-m-d H:i:s",time());   
+        $item->save();   
+        $success[]='<span>Cập nhật tài khoản nhà tuyển dụng thành công.</span>';
+      }
+    }
+    return view("frontend.employer-account",compact('data','error','success'));         
   }
   public function viewCandidateAccount(){
   	$arrUser=array();

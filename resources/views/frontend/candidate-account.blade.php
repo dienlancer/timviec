@@ -9,10 +9,7 @@ $seo=getSeo();
 <form name="frm" method="POST" enctype="multipart/form-data">
 	{{ csrf_field() }}
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-3">
-				@include("frontend.candidate-sidebar")									
-			</div>
+		<div class="row">			
 			<div class="col-lg-9">
 				<?php 
 				if(count(@$error) > 0){
@@ -32,6 +29,9 @@ $seo=getSeo();
 				}				
 				?>
 				<h1 class="dn-dk-h">Tài Khoản Ứng Viên</h1>		
+			</div>
+			<div class="col-lg-3">
+				@include("frontend.candidate-sidebar")									
 			</div>
 		</div>
 	</div>

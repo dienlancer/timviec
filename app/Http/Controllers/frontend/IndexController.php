@@ -308,7 +308,8 @@ class IndexController extends Controller {
       $password           = md5(trim(@$request->password));
       $source=EmployerModel::whereRaw('trim(lower(email)) = ? and trim(lower(password)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),trim(mb_strtolower(@$password,'UTF-8')) ,1])->select('id','email','password')->get()->toArray();
       if(count($source) > 0){
-        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);                                          
+        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);  
+        Session::forget($this->_ssNameUser);                                        
         Session::put($this->_ssNameUser,$arrUser);  
         return redirect()->route('frontend.index.viewEmployerAccount'); 
       }else{
@@ -337,7 +338,8 @@ class IndexController extends Controller {
       $password           = md5(trim(@$request->password));
       $source=CandidateModel::whereRaw('trim(lower(email)) = ? and trim(lower(password)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),trim(mb_strtolower(@$password,'UTF-8')) ,1])->select('id','email','password')->get()->toArray();
       if(count($source) > 0){
-        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);                                          
+        $arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
+        Session::forget($this->_ssNameUser);                                 
         Session::put($this->_ssNameUser,$arrUser);  
         return redirect()->route('frontend.index.viewCandidateAccount'); 
       }else{
@@ -377,6 +379,22 @@ class IndexController extends Controller {
     	return redirect()->route("frontend.index.candidateLogin");
     }
     return view("frontend.candidate-account");
+  }
+  public function logoutEmployer(){
+  	$arrUser=array();            
+  	if(Session::has($this->_ssNameUser)){
+  		$arrUser=Session::get($this->_ssNameUser);
+  		Session::forget($this->_ssNameUser);      
+  	}    
+  	return redirect()->route("frontend.index.employerLogin");
+  }
+  public function logoutCandidate(){
+  	$arrUser=array();            
+  	if(Session::has($this->_ssNameUser)){
+  		$arrUser=Session::get($this->_ssNameUser);
+  		Session::forget($this->_ssNameUser);      
+  	}    
+  	return redirect()->route("frontend.index.candidateLogin");
   }
 }
 

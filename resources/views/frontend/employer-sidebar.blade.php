@@ -7,8 +7,8 @@
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fab fa-spotify"></i></div><div>Đăng tin tuyển dụng</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-columns"></i></div><div>Quản lý tin tuyển dụng</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-users"></i></div><div>Hồ sơ đã lưu</div></a></li>
-			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-users"></i></div><div>Hồ sơ đã ứng tuyển</div></a></li>			
-			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-sign-out-alt"></i></div><div>Đăng xuất</div></a></li>
+			<li><a href="javascript:void(0);"><div class="category-icon"><i class="far fa-file-alt"></i></div><div>Hồ sơ đã ứng tuyển</div></a></li>			
+			<li class="category-article-last"><a href="<?php echo route('frontend.index.logoutEmployer'); ?>"><div class="category-icon"><i class="fas fa-sign-out-alt"></i></div><div>Đăng xuất</div></a></li>
 		</ul>
 	</div>
 </div>

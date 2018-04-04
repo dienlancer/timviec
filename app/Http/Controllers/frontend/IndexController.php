@@ -458,7 +458,7 @@ class IndexController extends Controller {
     }
     return view("frontend.employer-account",compact('data','error','success'));         
   }
-  public function viewCandidateAccount(){
+  public function viewCandidateAccount(Request $request){
   	$flag=1;
     $error=array();    
     $success=array();
@@ -502,12 +502,8 @@ class IndexController extends Controller {
       }        
       if($flag==1){
         $item               = CandidateModel::find((int)@$arrUser['id']);
-        $item->email        = @$email;
-        $item->password     = Hash::make(@$password) ;
         $item->fullname     = @$fullname;
-        $item->phone        = @$phone;      
-        $item->status =1;
-        $item->created_at=date("Y-m-d H:i:s",time());
+        $item->phone        = @$phone;                      
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
         $success[]='<span>Cập nhật tài khoản ứng viên thành công.</span>';

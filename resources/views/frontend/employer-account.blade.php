@@ -10,11 +10,24 @@ $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){
       $arrUser=Session::get($ssNameUser);
 } 
+$picture                =   "";
+$strImage               =   "";
+$setting= getSettingSystem();
+$product_width = $setting['product_width']['field_value'];
+$product_height = $setting['product_height']['field_value'];  
+if(count(@$data)>0){
+    if(!empty(@$data["image"])){
+        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["image"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
+        $strImage       =   @$data["image"];
+    }        
+} 
+$inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 <form name="frm" method="POST" enctype="multipart/form-data">
 	{{ csrf_field() }}
+	<?php echo $inputPictureHidden; ?>
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
@@ -99,6 +112,13 @@ if(Session::has($ssNameUser)){
 					</div>
 				</div>
 				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Logo</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">
+						<input type="file" name="image"  />   
+                        <div class="picture-area"><?php echo $picture; ?>                      </div>
+					</div>
+				</div>
+				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Sơ lược công ty</div></div></div>
 					<div class="col-lg-8"><textarea name="intro"  class="vacca" rows="10" ><?php echo @$data['intro']; ?></textarea></div>
 				</div>
@@ -143,4 +163,18 @@ if(Session::has($ssNameUser)){
 		</div>
 	</div>
 </form>
+<script type="text/javascript" language="javascript">
+	function deleteImage(){
+        var xac_nhan = 0;
+        var msg="Bạn có muốn xóa ?";
+        if(window.confirm(msg)){ 
+            xac_nhan = 1;
+        }
+        if(xac_nhan  == 0){
+            return 0;
+        }
+        $(".picture-area").empty();
+        $("input[name='image_hidden']").val("");        
+    }
+</script>
 @endsection()

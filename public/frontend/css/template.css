@@ -653,6 +653,9 @@ div.opacity-absolute::before{
     background:#337ab7;
     border: 1px solid #1b588d;
 }
+.box-logo{
+    display: flex;    
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

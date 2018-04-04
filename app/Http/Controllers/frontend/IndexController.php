@@ -549,8 +549,43 @@ class IndexController extends Controller {
     }
     return view("frontend.employer-security",compact('error','success'));                               
   }
-  public function viewCandidateSecurity(Request $request){
-    return view("frontend.candidate-security");                       
+  public function viewCandidateSecurity(Request $request){   
+    $flag=1;
+    $error=array();    
+    $success=array();    
+    $arrUser=array();    
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }         
+    if(count($arrUser) > 0){
+      $email=@$arrUser['email'];   
+      $source=candidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+      if(count($source) == 0){
+        return redirect()->route("frontend.index.candidateLogin"); 
+      }     
+    }else{
+      return redirect()->route("frontend.index.candidateLogin"); 
+    }
+    if($request->isMethod('post')){
+      $password           = @$request->password;
+      $password_confirmed = @$request->password_confirmed;
+      if(mb_strlen($password) < 10 ){
+        $error["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
+        $flag = 0;                
+      }else{
+        if(strcmp($password, $password_confirmed) !=0 ){
+          $error["password"] = "Xác nhận mật khẩu không trùng khớp";
+          $flag = 0;                  
+        }
+      }  
+      if($flag==1){
+        $item               = CandidateModel::find((int)@$arrUser['id']);
+        $item->password     = Hash::make(@$password) ;
+        $item->save();   
+        $success[]='<span>Đổi mật khẩu thành công.</span>';
+      } 
+    }
+    return view("frontend.candidate-security",compact('error','success'));                               
   }
   public function logoutEmployer(){
   	$arrUser=array();            

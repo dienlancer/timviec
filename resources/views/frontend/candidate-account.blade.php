@@ -56,7 +56,13 @@ if(Session::has($ssNameUser)){
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Email</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text" disabled name="email" class="vacca" placeholder="Email" value="<?php echo @$arrUser['email']; ?>"></div>
-				</div>				
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ></div>
+					<div class="col-lg-8 change-passwrd">
+						<a href="<?php echo route('frontend.index.viewCandidateSecurity'); ?>">Đổi mật khẩu</a>
+					</div>
+				</div>			
 				<hr  />
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin cá nhân</h2></div>
@@ -76,7 +82,7 @@ if(Session::has($ssNameUser)){
 				</div>	
 			</div>
 			<div class="col-lg-3">
-					@include("frontend.employer-sidebar")				
+					@include("frontend.candidate-sidebar")				
 			</div>
 		</div>
 	</div>

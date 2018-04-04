@@ -390,5 +390,7 @@ Route::match(["get","post"],"tk-ntd",["as"=>"frontend.index.viewEmployerAccount"
 Route::match(["get","post"],"tk-ungvien",["as"=>"frontend.index.viewCandidateAccount","uses"=>"frontend\IndexController@viewCandidateAccount"]);
 Route::get("dang-xuat-ntd",["as"=>"frontend.index.logoutEmployer","uses"=>"frontend\IndexController@logoutEmployer"]);
 Route::get("dang-xuat-ungvien",["as"=>"frontend.index.logoutCandidate","uses"=>"frontend\IndexController@logoutCandidate"]);
+Route::match(["get","post"],"doi-mat-khau-ntd",["as"=>"frontend.index.viewEmployerSecurity","uses"=>"frontend\IndexController@viewEmployerSecurity"]);
+Route::match(["get","post"],"doi-mat-khau-ungvien",["as"=>"frontend.index.viewCandidateSecurity","uses"=>"frontend\IndexController@viewCandidateSecurity"]);
 /* end tìm việc */
 ?>

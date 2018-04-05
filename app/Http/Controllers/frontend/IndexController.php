@@ -369,6 +369,11 @@ class IndexController extends Controller {
       $phone              = trim(@$request->phone);
       $province_id        = trim(@$request->province_id);
       $scale_id           = trim(@$request->scale_id);
+      $image_file           =   null;
+      if(isset($_FILES["image"])){
+      	$image_file         =   $_FILES["image"];
+      }                   
+      $image_hidden         =   trim($request->image_hidden);
       $intro              = trim(@$request->intro);
       $fax                = trim(@$request->fax);
       $website            = trim(@$request->website);
@@ -445,6 +450,18 @@ class IndexController extends Controller {
         $item->phone        = @$phone;
         $item->province_id  = @$province_id;
         $item->scale_id     = @$scale_id;
+        /* begin upload logo */
+        $setting= getSettingSystem();
+        $width=$setting['product_width']['field_value'];
+        $height=$setting['product_height']['field_value'];  
+        $image_name='';
+        if($image_file != null){             	
+        	$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+        }
+        if(!empty($image_name)){
+            $item->logo    =   trim($image_name) ;  
+        }
+        /* end upload logo */
         $item->intro        = @$intro;
         $item->fax          = @$fax;
         $item->website      = @$website;

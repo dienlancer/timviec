@@ -12,13 +12,13 @@ if(Session::has($ssNameUser)){
 } 
 $picture                =   "";
 $strImage               =   "";
-$setting= getSettingSystem();
+$setting = getSettingSystem();
 $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$data)>0){
-    if(!empty(@$data["image"])){
-        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["image"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
-        $strImage       =   @$data["image"];
+    if(!empty(@$data["logo"])){
+        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["logo"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
+        $strImage       =   @$data["logo"];
     }        
 } 
 $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';

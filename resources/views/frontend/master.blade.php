@@ -225,15 +225,13 @@ if(isset($alias)){
 							</select>
 						</div>
 						<div class="tim-cong-viec">
-							<select name="province" class="kiem-cong-viec">
-								<option>Chọn tỉnh thành</option>
-								<option>Hồ Chí Minh</option>
-								<option>Bắc Cạn</option>
-								<option>Quy Nhơn</option>
-								<option>Bình Thuận</option>
-								<option>Bình Phước</option>
-								<option>Cà Mau</option>
-							</select>
+							<?php 
+							/* begin province */
+							$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
+							$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,0,'');
+							/* end province */
+							echo $ddlProvince;
+							?>							
 						</div>
 						<div class="tim-cong-viec btn-search-job">
 							<a href="javascript:void(0);" onclick="document.forms['frm-search-job'].submit();">Tìm công việc</a>

@@ -13,7 +13,7 @@ class LoginController extends Controller
             Sentinel::authenticate($request->all());
             if(Sentinel::check()){                
                 $user=Sentinel::getUser();                                
-                $arrPrivilege=getArrPrivilege();
+                $arrPrivilege=getArrPrivilege();                
                 if(count($arrPrivilege) > 0){                                        
                     return redirect()->route('adminsystem.category-article.getList');  
                 }else{

@@ -17,8 +17,8 @@ $inputMetakeyword             =   '<textarea   name="meta_keyword" rows="2" cols
 $inputMetadescription             =   '<textarea  name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
 $inputTotalCost             =   '<input type="text" class="form-control" name="total_cost"         value="'.@$arrRowData['total_cost'].'">';
 $inputUnit          =   '<input type="text" class="form-control" name="unit"      value="'.@$arrRowData['unit'].'">'; 
-$ddlProvince      =   cmsSelectboxCategory("province_id","form-control",$arrProvince,@$arrRowData['province_id'],"");
-$ddlDistrict      =   cmsSelectboxCategory("district_id","form-control",$arrDistrict,@$arrRowData['district_id'],"");
+$ddlProvince      =   cmsSelectboxCategory("province_id","form-control",$arrProvince,@$arrRowData['province_id'],"",'Chọn danh mục');
+$ddlDistrict      =   cmsSelectboxCategory("district_id","form-control",$arrDistrict,@$arrRowData['district_id'],"",'Chọn danh mục');
 $inputStreet          =   '<input type="text" class="form-control" name="street"   id="street"    value="'.@$arrRowData['street'].'">'; 
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order" id="sort_order"     value="'.@$arrRowData['sort_order'].'">';
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;

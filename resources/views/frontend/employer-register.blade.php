@@ -49,8 +49,8 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>
 					<?php
 				}
-				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status);
-				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],$disabled_status);
+				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status,'Chọn tỉnh thành');
+				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],$disabled_status,'Chọn quy mô công ty');
 				?>					
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin đăng nhập</h2></div>

@@ -16,7 +16,7 @@ function uploadImage($name,$tmp_name,$width,$height){
   $pattern_dot='#\.#';
   $image_slug=preg_replace($pattern_ext, '', $image_slug);                      
   $image_slug=preg_replace($pattern_dot, '-', $image_slug);   
-  $code_alias=rand(1,999999999);                 
+  $code_alias=range(1,9);                 
   $image_name=$image_slug. '-' . $code_alias .'.'.$ext;   
   $image_path=base_path("upload".DS.$image_name);
   @copy($image_tmp_name, $image_path);  
@@ -90,13 +90,6 @@ function fnPrice($value){
     break;
   }
   return $strCurrency;
-}
-function randomString($length = 5){
-  $arrCharacter = array_merge(range('a','z'), range(0,9));
-  $arrCharacter = implode($arrCharacter, '');
-  $arrCharacter = str_shuffle($arrCharacter);
-  $result   = substr($arrCharacter, 0, $length);
-  return $result;
 }
 function randomCodeNumber(){
   $data = range(1,9);

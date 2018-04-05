@@ -3,7 +3,7 @@
 @include("frontend.content-top-register")
 <?php 
 $seo=getSeo();
-$source_district=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
+$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
 $source_scale=App\ScaleModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
 $disabled_status='';
 $register_status='onclick="document.forms[\'frm\'].submit();"';
@@ -49,7 +49,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>
 					<?php
 				}
-				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_district,@$data['province_id'],$disabled_status);
+				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status);
 				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],$disabled_status);
 				?>					
 				<div class="row mia">

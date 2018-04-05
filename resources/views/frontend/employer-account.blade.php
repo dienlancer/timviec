@@ -3,7 +3,7 @@
 @include("frontend.content-top-register")
 <?php 
 $seo=getSeo();
-$source_district=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
+$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
 $source_scale=App\ScaleModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
 $arrUser=array();
 $ssNameUser='vmuser';
@@ -63,7 +63,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 					</div>
 					<?php
 				}		
-				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_district,@$data['province_id'],'');
+				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'');
 				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],'');		
 				?>					
 				<div class="row mia">
@@ -157,7 +157,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 				</div>				
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật thông tin</a></div></div>
+					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật</a></div></div>
 				</div>	
 			</div>
 			<div class="col-lg-3">

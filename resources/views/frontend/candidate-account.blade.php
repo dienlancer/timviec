@@ -20,6 +20,45 @@ if(count(@$data)>0){
     }        
 } 
 $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
+/* begin ngày sinh */
+$source_day=array();
+$source_month=array();
+$source_year=array();
+for($i=0;$i<=31;$i++){
+	if($i==0){
+		$source_day[]='Ngày';	
+	}else{
+		$source_day[]=$i;
+	}
+}
+for($i=0;$i<=12;$i++){
+	if($i==0){
+		$source_month[]='Tháng';	
+	}else{
+		$source_month[]=$i;
+	}
+}
+$arrDate    = date_parse_from_format('Y-m-d H:i:s', date("Y-m-d")) ;
+for ($i=1953; $i <= @$arrDate['year']; $i++) { 
+	$source_year[]=$i;
+}
+rsort($source_year);
+$ddlDay=cmsSelectbox("day","vacca",$source_day,0,'');
+$ddlMonth=cmsSelectbox("month","vacca",$source_month,0,'');
+$ddlYear=cmsSelectbox("year","vacca",$source_year,0,'');
+/* end ngày sinh */
+/* begin giới tính */
+$source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
+$ddlSex=cmsSelectboxCategory("sex_id","vacca",$source_sex,@$data['sex_id'],'');
+/* end giới tính */
+/* begin province */
+$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
+$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'');
+/* end province */
+/* begin Hôn nhân */
+$source_marriage=App\MarriageModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
+$ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data['marriage_id'],'');
+/* end Hôn nhân */
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -99,8 +138,34 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 					</div>
 				</div>
 				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Ngày sinh</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">
+						<div class="recommend">
+							<div><?php echo $ddlDay; ?></div>
+							<div class="margin-left-15"><?php echo $ddlMonth; ?></div>
+							<div class="margin-left-15"><?php echo $ddlYear; ?></div>
+						</div>
+					</div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Giới tính</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><?php echo $ddlSex; ?></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Hôn nhân</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><?php echo $ddlMarriage; ?></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Tỉnh / Thành phố</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><?php echo $ddlProvince; ?></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Chỗ ở hiện tại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text"  name="address" class="vacca" placeholder="Chỗ ở hiện tại" value="<?php echo @$data['address']; ?>" ></div>
+				</div>
+				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật thông tin</a></div></div>
+					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật</a></div></div>
 				</div>	
 			</div>
 			<div class="col-lg-3">

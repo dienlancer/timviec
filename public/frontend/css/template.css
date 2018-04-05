@@ -382,9 +382,19 @@ div.opacity-absolute::before{
 .tao-ho-so a:hover i{
     color: #ffffff;
 }
-.mica{
+.zidan{
     display: flex;
-    justify-content: center;   
+}
+.mica{
+        display: flex;
+    justify-content: center;
+    margin-left: 40px;
+}
+.mica-2{
+        display: flex;
+    justify-content: center;
+    margin-left: 5px;
+    padding-right: 15px;
 }
 .dang-tin-mien-phi a{
     display: block;

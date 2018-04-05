@@ -114,7 +114,10 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Logo</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">
-						<input type="file" name="image"  />   
+						<div class="recommend">
+							<div><input type="file" name="image"  /></div>
+							<div><font color="#E30000"><b>Khuyến khích cập nhật logo hình vuông</b></font></div>
+						</div>
                         <div class="picture-area"><?php echo $picture; ?>                      </div>
 					</div>
 				</div>

@@ -363,7 +363,7 @@ class IndexController extends Controller {
     	return redirect()->route("frontend.index.employerLogin"); 
     }
     if($request->isMethod('post')){
-      $data               = @$request->all();      
+      $data               = @$request->all();          
       $fullname           = trim(@$request->fullname);
       $address            = trim(@$request->address);
       $phone              = trim(@$request->phone);
@@ -372,7 +372,7 @@ class IndexController extends Controller {
       $image_file           =   null;
       if(isset($_FILES["image"])){
       	$image_file         =   $_FILES["image"];
-      }                   
+      }                 
       $image_hidden         =   trim($request->image_hidden);
       $intro              = trim(@$request->intro);
       $fax                = trim(@$request->fax);
@@ -455,8 +455,10 @@ class IndexController extends Controller {
         $width=$setting['product_width']['field_value'];
         $height=$setting['product_height']['field_value'];  
         $image_name='';
-        if($image_file != null){             	
-        	$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+        if($image_file != null){          
+        	if(!empty($image_file['name'])){
+        		$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+        	}   	        	
         }
         if(!empty($image_name)){
             $item->logo    =   trim($image_name) ;  
@@ -470,6 +472,7 @@ class IndexController extends Controller {
         $item->contacted_phone  = @$contacted_phone;               
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
+        $data=EmployerModel::find((int)@$arrUser['id'])->toArray();
         $success[]='<span>Cập nhật tài khoản nhà tuyển dụng thành công.</span>';
       }
     }

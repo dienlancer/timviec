@@ -39,13 +39,14 @@ for($i=0;$i<=12;$i++){
 	}	
 }
 $arrDate    = date_parse_from_format('Y-m-d H:i:s', date("Y-m-d")) ;
-for ($i=1953; $i <= @$arrDate['year']; $i++) { 
-	$source_year[]=$i;
+for ($i=1953; $i <= (int)@$arrDate['year']; $i++) { 
+	$source_year[$i]=$i;
 }
-rsort($source_year);
-$ddlDay=cmsSelectbox(	"day"	,	"vacca"	,	$source_day		,	0	,	''	);
-$ddlMonth=cmsSelectbox(	"month"	,	"vacca"	,	$source_month	,	0	,	''	);
-$ddlYear=cmsSelectbox(	"year"	,	"vacca"	,	$source_year	,	0	,	''	);
+$source_year[0]='Năm';
+krsort($source_year);
+$ddlDay=cmsSelectbox(	"day"	,	"vacca"	,	$source_day		,	@$data['day']	,	''	);
+$ddlMonth=cmsSelectbox(	"month"	,	"vacca"	,	$source_month	,	@$data['month']	,	''	);
+$ddlYear=cmsSelectbox(	"year"	,	"vacca"	,	$source_year	,	@$data['year']	,	''	);
 /* end ngày sinh */
 /* begin giới tính */
 $source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();

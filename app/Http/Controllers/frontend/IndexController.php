@@ -493,7 +493,12 @@ class IndexController extends Controller {
       if(count($source) == 0){
         return redirect()->route("frontend.index.candidateLogin");
       }else{
-        $data=CandidateModel::find((int)@$source[0]['id'])->toArray();        
+        $data=CandidateModel::find((int)@$source[0]['id'])->toArray();  
+        $birthday=$data['birthday'];
+        $arrDate    = date_parse_from_format('Y-m-d', $birthday) ;     
+        $data['day']=(int)@$arrDate['day'];
+        $data['month']=(int)@$arrDate['month'];
+        $data['year']=(int)@$arrDate['year']; 
       }       
     }else{
     	return redirect()->route("frontend.index.candidateLogin");
@@ -502,11 +507,20 @@ class IndexController extends Controller {
       $data               = @$request->all();      
       $fullname           = trim(@$request->fullname);
       $phone              = trim(@$request->phone);   
+      /* begin avatar */
       $image_file           =   null;
       if(isset($_FILES["image"])){
       	$image_file         =   $_FILES["image"];
       }                 
       $image_hidden         =   trim($request->image_hidden);         
+      /* end avatar */
+      $day=(int)@$request->day;
+      $month=(int)@$request->month;
+      $year=(int)@$request->year;     
+      $sex_id=trim(@$request->sex_id);
+      $marriage_id=trim(@$request->marriage_id);
+      $province_id=trim(@$request->province_id); 
+      $address=trim(@$request->address);
       if(mb_strlen($fullname) < 6){
         $error["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
         $data['fullname']='';        
@@ -525,11 +539,55 @@ class IndexController extends Controller {
           $flag = 0;                
         }       
       }        
+      if($day==0){
+        $error["day"] = 'Thiếu ngày sinh';    
+        $data['day']='';        
+        $flag = 0;
+      }
+      if($month==0){
+        $error["month"] = 'Thiếu tháng sinh';    
+        $data['month']='';        
+        $flag = 0;
+      }
+      if($year==0){
+        $error["year"] = 'Thiếu năm sinh';    
+        $data['year']='';        
+        $flag = 0;
+      }
+      if((int)@$request->sex_id == 0){
+        $error["sex_id"] = 'Vui lòng chọn giới tính';            
+        $data['sex_id']=0;
+        $flag = 0;
+      }
+      if((int)@$request->marriage_id == 0){
+        $error["marriage_id"] = 'Vui lòng chọn tình trạng hôn nhân';            
+        $data['marriage_id']=0;
+        $flag = 0;
+      }
+      if((int)@$request->province_id == 0){
+        $error["province_id"] = 'Vui lòng chọn tỉnh thành phố';            
+        $data['province_id']=0;
+        $flag = 0;
+      }
+      if(mb_strlen(@$address) < 10){
+        $error["address"] = 'Vui lòng nhập chỗ ở hiện tại';            
+        $data['address']='';
+        $flag = 0;
+      }
       if($flag==1){
         $item               = CandidateModel::find((int)@$arrUser['id']);
         $item->fullname     = @$fullname;
-        $item->phone        = @$phone;    
-        /* begin upload logo */
+        $item->phone        = @$phone;   
+        /* begin ngày sinh nhật */        
+        $ts=mktime(0,0,0,$month,$day,$year);        
+        $birthday=date('Y-m-d', $ts);
+        $item->birthday=$birthday;
+        /* end ngày sinh nhật */ 
+        $item->sex_id=(int)@$sex_id;
+        $item->marriage_id=(int)@$marriage_id;
+        $item->province_id=(int)@$province_id;
+        $item->address=@$address;
+        /* begin upload avatar */
         $setting= getSettingSystem();
         $width=$setting['product_width']['field_value'];
         $height=$setting['product_height']['field_value'];  
@@ -542,10 +600,13 @@ class IndexController extends Controller {
         if(!empty($image_name)){
             $item->avatar    =   trim($image_name) ;  
         }
-        /* end upload logo */                  
+        /* end upload avatar */                         
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
         $data               = CandidateModel::find((int)@$arrUser['id']);
+        $data['day']=(int)@$day;
+        $data['month']=(int)@$month;
+        $data['year']=(int)@$year;
         $success[]='<span>Cập nhật tài khoản ứng viên thành công.</span>';
       }
     }

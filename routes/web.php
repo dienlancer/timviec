@@ -223,6 +223,30 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.scale.trash","uses"=>"adminsystem\ScaleController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.scale.createAlias","uses"=>"adminsystem\ScaleController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"sex"],function(){		
+		Route::get("list",["as"=>"adminsystem.sex.getList","uses"=>"adminsystem\SexController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.sex.loadData","uses"=>"adminsystem\SexController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.sex.getForm","uses"=>"adminsystem\SexController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.sex.save","uses"=>"adminsystem\SexController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.sex.deleteItem","uses"=>"adminsystem\SexController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.sex.sortOrder","uses"=>"adminsystem\SexController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.sex.updateStatus","uses"=>"adminsystem\SexController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.sex.changeStatus","uses"=>"adminsystem\SexController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.sex.trash","uses"=>"adminsystem\SexController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.sex.createAlias","uses"=>"adminsystem\SexController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"marriage"],function(){		
+		Route::get("list",["as"=>"adminsystem.marriage.getList","uses"=>"adminsystem\MarriageController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.marriage.loadData","uses"=>"adminsystem\MarriageController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.marriage.getForm","uses"=>"adminsystem\MarriageController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.marriage.save","uses"=>"adminsystem\MarriageController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.marriage.deleteItem","uses"=>"adminsystem\MarriageController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.marriage.sortOrder","uses"=>"adminsystem\MarriageController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.marriage.updateStatus","uses"=>"adminsystem\MarriageController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.marriage.changeStatus","uses"=>"adminsystem\MarriageController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.marriage.trash","uses"=>"adminsystem\MarriageController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.marriage.createAlias","uses"=>"adminsystem\MarriageController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"district"],function(){		
 		Route::get("list",["as"=>"adminsystem.district.getList","uses"=>"adminsystem\DistrictController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.district.loadData","uses"=>"adminsystem\DistrictController@loadData"]);		

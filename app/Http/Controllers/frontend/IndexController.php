@@ -501,7 +501,12 @@ class IndexController extends Controller {
     if($request->isMethod('post')){
       $data               = @$request->all();      
       $fullname           = trim(@$request->fullname);
-      $phone              = trim(@$request->phone);            
+      $phone              = trim(@$request->phone);   
+      $image_file           =   null;
+      if(isset($_FILES["image"])){
+      	$image_file         =   $_FILES["image"];
+      }                 
+      $image_hidden         =   trim($request->image_hidden);         
       if(mb_strlen($fullname) < 6){
         $error["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
         $data['fullname']='';        
@@ -523,9 +528,24 @@ class IndexController extends Controller {
       if($flag==1){
         $item               = CandidateModel::find((int)@$arrUser['id']);
         $item->fullname     = @$fullname;
-        $item->phone        = @$phone;                      
+        $item->phone        = @$phone;    
+        /* begin upload logo */
+        $setting= getSettingSystem();
+        $width=$setting['product_width']['field_value'];
+        $height=$setting['product_height']['field_value'];  
+        $image_name='';
+        if($image_file != null){          
+        	if(!empty($image_file['name'])){
+        		$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+        	}   	        	
+        }
+        if(!empty($image_name)){
+            $item->avatar    =   trim($image_name) ;  
+        }
+        /* end upload logo */                  
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
+        $data               = CandidateModel::find((int)@$arrUser['id']);
         $success[]='<span>Cập nhật tài khoản ứng viên thành công.</span>';
       }
     }

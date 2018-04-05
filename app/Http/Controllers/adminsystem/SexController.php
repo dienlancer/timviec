@@ -13,13 +13,12 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\ProvinceModel;
-use App\EmployerModel;
+use App\SexModel;
 use App\CandidateModel;
 use DB;
-class ProvinceController extends Controller {
-  	var $_controller="province";	
-  	var $_title="Tỉnh thành phố";
+class SexController extends Controller {
+  	var $_controller="sex";	
+  	var $_title="Giới tính";
   	var $_icon="icon-settings font-dark";    
   	public function getList(){		
     		$controller=$this->_controller;	
@@ -40,14 +39,14 @@ class ProvinceController extends Controller {
         if(!empty(@$request->filter_search)){      
           $filter_search=trim(@$request->filter_search) ;    
         }        
-        $data=DB::table('province')                  
-                ->select('province.id','province.fullname','province.sort_order','province.status','province.created_at','province.updated_at')                
-                ->where('province.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-                ->groupBy('province.id','province.fullname','province.sort_order','province.status','province.created_at','province.updated_at')   
-                ->orderBy('province.fullname', 'asc')                
+        $data=DB::table('sex')                  
+                ->select('sex.id','sex.fullname','sex.sort_order','sex.status','sex.created_at','sex.updated_at')                
+                ->where('sex.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
+                ->groupBy('sex.id','sex.fullname','sex.sort_order','sex.status','sex.created_at','sex.updated_at')   
+                ->orderBy('sex.sort_order', 'asc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
-        $data=provinceConverter($data,$this->_controller);            
+        $data=sexConverter($data,$this->_controller);            
         return $data;
     } 
     public function getForm($task,$id=""){     
@@ -61,7 +60,7 @@ class ProvinceController extends Controller {
           switch ($task) {
            case 'edit':
               $title=$this->_title . " : Update";
-              $arrRowData=ProvinceModel::find((int)@$id)->toArray();                     
+              $arrRowData=SexModel::find((int)@$id)->toArray();                     
            break;
            case 'add':
               $title=$this->_title . " : Add new";
@@ -100,18 +99,18 @@ class ProvinceController extends Controller {
           }
           if ($checked == 1) {    
                 if(empty($id)){
-                    $item         =   new ProvinceModel;       
+                    $item         =   new SexModel;       
                     $item->created_at   = date("Y-m-d H:i:s",time());        
                       
                 } else{
-                    $item       = ProvinceModel::find((int)@$id);   
+                    $item       = SexModel::find((int)@$id);   
                                   
                 }  
                 $item->fullname 		    =	@$fullname;  
                 $item->alias            = @$alias;                                         
                 $item->sort_order 		  =	(int)@$sort_order;
                 $item->status 			    =	(int)@$status;    
-                $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
+                $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	                
                 $item->save();                                  
                 $info = array(
                   'type_msg' 			=> "has-success",
@@ -137,7 +136,7 @@ class ProvinceController extends Controller {
                   $type_msg               =   "alert-success";
                   $msg                    =   "Cập nhật thành công";              
                   $status         =       (int)@$request->status;
-                  $item           =       ProvinceModel::find((int)@$id);        
+                  $item           =       SexModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
                   $data                   =   $this->loadData($request);
@@ -154,21 +153,15 @@ class ProvinceController extends Controller {
             $id                     =   (int)$request->id;              
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công"; 
-            $data                   =   EmployerModel::whereRaw("province_id = ?",[(int)@$id])->get()->toArray();  
+            $msg                    =   "Xóa thành công";    
+            $data                   =   CandidateModel::whereRaw("sex_id = ?",[(int)@$id])->get()->toArray();  
             if(count($data) > 0){
               $checked     =   0;
               $type_msg           =   "alert-warning";            
               $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
-            }
-            $data                   =   CandidateModel::whereRaw("province_id = ?",[(int)@$id])->get()->toArray();  
-            if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
-            }                  
+            }                      
             if($checked == 1){
-              $item = ProvinceModel::find((int)@$id);
+              $item = SexModel::find((int)@$id);
                 $item->delete();                                                
             }        
             $data                   =   $this->loadData($request);
@@ -196,7 +189,7 @@ class ProvinceController extends Controller {
         if($checked==1){
           foreach ($arrID as $key => $value) {
             if(!empty($value)){
-              $item=ProvinceModel::find($value);
+              $item=SexModel::find($value);
               $item->status=$status;
               $item->save();      
             }            
@@ -222,26 +215,18 @@ class ProvinceController extends Controller {
           $checked     =   0;
           $type_msg           =   "alert-warning";            
           $msg                =   "Vui lòng chọn ít nhất một phần tử";
-        }
+        }         
         foreach ($arrID as $key => $value){
-          $data                   =   EmployerModel::whereRaw("province_id = ?",[(int)@$value])->get()->toArray();  
+          $data                   =   CandidateModel::whereRaw("sex_id = ?",[(int)@$value])->get()->toArray();  
             if(count($data) > 0){
               $checked     =   0;
               $type_msg           =   "alert-warning";            
               $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
-        } 
-        foreach ($arrID as $key => $value){
-          $data                   =   CandidateModel::whereRaw("province_id = ?",[(int)@$value])->get()->toArray();  
-            if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
-            }
-        }              
+        }    
         if($checked == 1){                                  
 
-          DB::table('province')->whereIn('id',@$arrID)->delete();                                      
+          DB::table('sex')->whereIn('id',@$arrID)->delete();                                      
         }
         $data                   =   $this->loadData($request);
         $info = array(
@@ -262,7 +247,7 @@ class ProvinceController extends Controller {
             if(count($data_order) > 0){              
               foreach($data_order as $key => $value){      
                 if(!empty($value)){
-                  $item=ProvinceModel::find((int)@$value->id);                
+                  $item=SexModel::find((int)@$value->id);                
                 $item->sort_order=(int)$value->sort_order;                         
                 $item->save();                      
                 }                                                  
@@ -291,49 +276,16 @@ class ProvinceController extends Controller {
            $error["fullname"]["type_msg"] = "has-error";
            $error["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{          
-          $alias=str_slug($fullname,'-');
-          $dataCategoryArticle=array();
-          $dataCategoryProduct=array();
-          $dataArticle=array();
-          $dataProduct=array();
-          $dataPage=array();
-          $dataProject=array();
-          $dataProjectArticle=array();
-          $dataProvince=array();
+          $alias=str_slug($fullname,'-');          
+          $dataSex=array();
           $checked_trung_alias=0;          
           if (empty($id)) {              
-              $dataProvince=ProvinceModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
+              $dataSex=SexModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
             }else{
-              $dataProvince=ProvinceModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
+              $dataSex=SexModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
             }  
-            $dataCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-          if (count($dataCategoryArticle) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataCategoryProduct) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataArticle) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataProduct) > 0) {
-            $checked_trung_alias=1;
-          }    
-          if (count($dataPage) > 0) {
-            $checked_trung_alias=1;
-          }  
-          if (count($dataProject) > 0) {
-            $checked_trung_alias=1;
-          }  
-          if (count($dataProjectArticle) > 0) {
-            $checked_trung_alias=1;
-          }      
-           if (count($dataProvince) > 0) {
+           
+           if (count($dataSex) > 0) {
             $checked_trung_alias=1;
           }
           if((int)$checked_trung_alias == 1){

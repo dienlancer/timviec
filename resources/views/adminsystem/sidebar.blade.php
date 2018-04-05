@@ -18,7 +18,8 @@ $li_project_article='';
 $li_category_management='';
 $li_province='';
 $li_scale='';
-
+$li_sex='';
+$li_marriage='';
 
 $li_product_management='';
 $li_category_product='';
@@ -88,8 +89,14 @@ switch ($controller) {
     $li_scale='active open';       
     $li_category_management='active open'; 
     break;
-    
-    
+    case 'sex': 
+    $li_sex='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'marriage': 
+    $li_marriage='active open';       
+    $li_category_management='active open'; 
+    break;
     case 'category-product':  
     $li_category_product='active open';
     $li_product_management='active open';
@@ -208,6 +215,18 @@ switch ($controller) {
                 <a href="{!! route('adminsystem.scale.getList') !!}" class="nav-link nav-toggle">
                     <i class="icon-notebook"></i>
                     <span class="title">Quy mô công ty</span>                                            
+                </a>                                                                      
+            </li>    
+            <li class="nav-item  <?php echo $li_sex; ?>">
+                <a href="{!! route('adminsystem.sex.getList') !!}" class="nav-link nav-toggle">
+                    <i class="icon-notebook"></i>
+                    <span class="title">Giới tính</span>                                            
+                </a>                                                                      
+            </li> 
+            <li class="nav-item  <?php echo $li_marriage; ?>">
+                <a href="{!! route('adminsystem.marriage.getList') !!}" class="nav-link nav-toggle">
+                    <i class="icon-notebook"></i>
+                    <span class="title">Tình trạng hôn nhân</span>                                            
                 </a>                                                                      
             </li>       
         </ul>

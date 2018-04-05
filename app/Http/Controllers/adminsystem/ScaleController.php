@@ -14,6 +14,7 @@ use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
 use App\ScaleModel;
+use App\EmployerModel;
 use DB;
 class ScaleController extends Controller {
   	var $_controller="scale";	
@@ -152,7 +153,13 @@ class ScaleController extends Controller {
             $id                     =   (int)$request->id;              
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                       
+            $msg                    =   "Xóa thành công";     
+            $data                   =   EmployerModel::whereRaw("scale_id = ?",[(int)@$id])->get()->toArray();  
+            if(count($data) > 0){
+              $checked     =   0;
+              $type_msg           =   "alert-warning";            
+              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            }                  
             if($checked == 1){
               $item = ScaleModel::find((int)@$id);
                 $item->delete();                                                
@@ -209,6 +216,14 @@ class ScaleController extends Controller {
           $type_msg           =   "alert-warning";            
           $msg                =   "Vui lòng chọn ít nhất một phần tử";
         }            
+        foreach ($arrID as $key => $value){
+          $data                   =   EmployerModel::whereRaw("scale_id = ?",[(int)@$value])->get()->toArray();  
+            if(count($data) > 0){
+              $checked     =   0;
+              $type_msg           =   "alert-warning";            
+              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            }
+        } 
         if($checked == 1){                                  
 
           DB::table('scale')->whereIn('id',@$arrID)->delete();                                      

@@ -8,6 +8,18 @@ $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){
       $arrUser=Session::get($ssNameUser);
 } 
+$picture                =   "";
+$strImage               =   "";
+$setting = getSettingSystem();
+$product_width = $setting['product_width']['field_value'];
+$product_height = $setting['product_height']['field_value'];  
+if(count(@$data)>0){
+    if(!empty(@$data["avatar"])){
+        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["avatar"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
+        $strImage       =   @$data["avatar"];
+    }        
+} 
+$inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -75,7 +87,17 @@ if(Session::has($ssNameUser)){
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Điện thoại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text"  name="phone" class="vacca" placeholder="Điện thoại ứng viên" value="<?php echo @$data['phone']; ?>" ></div>
-				</div>			
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Avatar</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">
+						<div class="recommend">
+							<div><input type="file" name="image"  /></div>
+							<div><font color="#E30000"><b>Khuyến khích cập nhật avatar hình vuông</b></font></div>
+						</div>
+                        <div class="picture-area"><?php echo $picture; ?>                      </div>
+					</div>
+				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật thông tin</a></div></div>

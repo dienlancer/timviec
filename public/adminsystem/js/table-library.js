@@ -10,6 +10,8 @@ var vOrganizationTable           =   null;
 var vProvinceTable           =   null;
 var vDistrictTable           =   null;
 var vScaleTable           =   null;
+var vSexTable           =   null;
+var vMarriageTable           =   null;
 var vProjectArticleTable           =   null;
 var vMediaTable           =   null;
 var vPageTable           =   null;
@@ -290,6 +292,40 @@ var basicTable = function () {
     };
     var initScaleTable = function () {
         vScaleTable = $('#tbl-scale').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initSexTable = function () {
+        vSexTable = $('#tbl-sex').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initMarriageTable = function () {
+        vMarriageTable = $('#tbl-marriage').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -776,6 +812,8 @@ var basicTable = function () {
             initProvinceTable();
             initDistrictTable();  
             initScaleTable();  
+            initSexTable();  
+            initMarriageTable();
         }
     };
 }();

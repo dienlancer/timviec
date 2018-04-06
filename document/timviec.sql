@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 06, 2018 lúc 11:58 AM
+-- Thời gian đã tạo: Th4 06, 2018 lúc 05:56 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -551,7 +551,7 @@ CREATE TABLE `employer` (
 --
 
 INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_keyword`, `meta_description`, `address`, `phone`, `province_id`, `scale_id`, `logo`, `intro`, `fax`, `website`, `contacted_name`, `contacted_email`, `contacted_phone`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'pnjcomvn@dienkim.com', '$2y$10$9x.3XOYYCCvKEMM6pA9AhuIGl9muSxYPyWMpJfwQ2vuHoLkrIdwxO', 'Công ty CP Vàng Bạc Đá Quý Phú Nhuận', 'cong-ty-cp-vang-bac-da-quy-phu-nhuan', '', '', '170E Phan Đăng Lưu, Phường 03, Quận Phú Nhuận', '0988162733', 23, 3, 'logo-7-3409.png', 'PNJ là thương hiệu hàng đầu tại Việt Nam trong lĩnh vực chế tác và bán lẻ trang sức bằng vàng, bạc, đá quý. Sản phẩm PNJ ngày càng được các nước tại thị trường Châu Á và Châu Âu ưu chuộng. \r\n\r\nHiện tại, Công ty có hơn 5.200 nhân viên với hệ thống bán sỉ, và hơn 270 cửa hàng bán lẻ trải rộng trên toàn quốc; Xí Nghiệp Nữ trang PNJ có công suất sản xuất đạt trên 4 triệu sản phẩm/năm, được đánh giá là một trong những xí nghiệp chế tác nữ trang lớn nhất khu vực Châu Á với đội ngũ hơn 1.000 nhân viên.\r\n\r\nTrải qua 30 năm hình thành và phát triển, PNJ đã đạt đươc nhiều thành tựu đáng kể: thuộc Top 500 nhà bán lẻ hàng đầu Châu Á Thái Bình Dương, Giải thưởng Chất lượng Châu Á Thái Bình Dương, Thương hiệu quốc gia, … \r\n\r\nVới những giá trị cốt lõi mà PNJ đã theo đuổi, PNJ đã sở hữu được nguồn nhân lực có tác phong làm việc chuyên nghiệp, hiệu quả lao động cao và hơn cả là mối gắn kết nhân viên với tổ chức. Cơ sở vật chất được trang bị hiện đại bảo đảm nhân viên được làm việc trong điều kiện tốt nhất. Ngoài ra công ty còn trang bị thêm phòng tập GYM và Yoga giúp người lao động tái tạo sức lao động sau một ngày làm việc. \r\n\r\nTập thể PNJ đã cùng nhau chung tay xây dựng văn hoá cảm thông, chia sẻ bằng những hoạt động hỗ trợ cộng đồng, thành lập quỹ từ thiện PNJ, chương trình “mái ấm PNJ” mang đến một cuộc sống tốt đẹp cho người dân nghèo, ươm mầm phát triển tài năng. \r\n\r\nĐể tiếp tục khẳng định vị thế PNJ tại VN và thế giới, chúng tôi đang mở rộng hệ thống phát triển kinh doanh và cần bổ sung những ứng viên tài năng vào đội ngũ nhân sự chuyên nghiệp của mình. \r\n\r\nTại PNJ, sự nghiệp của các bạn sẽ được phát triển cùng với sự lớn mạnh không ngừng của chúng tôi.', '88483127487588', 'www.pnj.com.vn', 'Trần Lệ Diễm Quyên', 'quyentld@dienkim.com', '0988162778', 2, 1, '2018-04-03 01:48:19', '2018-04-06 08:24:03'),
+(1, 'pnjcomvn@dienkim.com', '$2y$10$9x.3XOYYCCvKEMM6pA9AhuIGl9muSxYPyWMpJfwQ2vuHoLkrIdwxO', 'Công ty CP Vàng Bạc Đá Quý Phú Nhuận', 'cong-ty-cp-vang-bac-da-quy-phu-nhuan', '', '', '170E Phan Đăng Lưu, Phường 03, Quận Phú Nhuận', '0988162733', 23, 3, 'logo-7-3409.png', 'PNJ là thương hiệu hàng đầu tại Việt Nam trong lĩnh vực chế tác và bán lẻ trang sức bằng vàng, bạc, đá quý. Sản phẩm PNJ ngày càng được các nước tại thị trường Châu Á và Châu Âu ưu chuộng. \r\n\r\nHiện tại, Công ty có hơn 5.200 nhân viên với hệ thống bán sỉ, và hơn 270 cửa hàng bán lẻ trải rộng trên toàn quốc; Xí Nghiệp Nữ trang PNJ có công suất sản xuất đạt trên 4 triệu sản phẩm/năm, được đánh giá là một trong những xí nghiệp chế tác nữ trang lớn nhất khu vực Châu Á với đội ngũ hơn 1.000 nhân viên.\r\n\r\nTrải qua 30 năm hình thành và phát triển, PNJ đã đạt đươc nhiều thành tựu đáng kể: thuộc Top 500 nhà bán lẻ hàng đầu Châu Á Thái Bình Dương, Giải thưởng Chất lượng Châu Á Thái Bình Dương, Thương hiệu quốc gia, … \r\n\r\nVới những giá trị cốt lõi mà PNJ đã theo đuổi, PNJ đã sở hữu được nguồn nhân lực có tác phong làm việc chuyên nghiệp, hiệu quả lao động cao và hơn cả là mối gắn kết nhân viên với tổ chức. Cơ sở vật chất được trang bị hiện đại bảo đảm nhân viên được làm việc trong điều kiện tốt nhất. Ngoài ra công ty còn trang bị thêm phòng tập GYM và Yoga giúp người lao động tái tạo sức lao động sau một ngày làm việc. \r\n\r\nTập thể PNJ đã cùng nhau chung tay xây dựng văn hoá cảm thông, chia sẻ bằng những hoạt động hỗ trợ cộng đồng, thành lập quỹ từ thiện PNJ, chương trình “mái ấm PNJ” mang đến một cuộc sống tốt đẹp cho người dân nghèo, ươm mầm phát triển tài năng. \r\n\r\nĐể tiếp tục khẳng định vị thế PNJ tại VN và thế giới, chúng tôi đang mở rộng hệ thống phát triển kinh doanh và cần bổ sung những ứng viên tài năng vào đội ngũ nhân sự chuyên nghiệp của mình. \r\n\r\nTại PNJ, sự nghiệp của các bạn sẽ được phát triển cùng với sự lớn mạnh không ngừng của chúng tôi.', '88483127487588', 'www.pnj.com.vn', 'Trần Lệ Diễm Quyên', 'quyentld@dienkim.com', '0988162778', 2, 1, '2018-04-03 01:48:19', '2018-04-06 15:55:37'),
 (2, 'lottevn@dienkim.com', '$2y$10$5QrmrHzQ84G0GDuwW1XY8uLDaYoy9N1KOp0n5Xk//..bdt.br5CqC', 'LOTTE MART VIỆT NAM', 'lotte-mart-viet-nam', '', '', '469 Nguyễn Hữu Thọ, Quận 7, TP Hồ Chí Minh', '0988162732', 23, 4, NULL, 'Công ty TNHH TTTM LOTTE trực thuộc tập đoàn LOTTE của Hàn Quốc. Tính đến thời điểm này, Trung tâm thương mại LOTTE Mart đã có mặt tại 4 quốc gia của châu Á là: Hàn Quốc, Trung Quốc, Indonesia và Việt Nam, với 243 trung tâm thương mại được xây dựng theo phong cách hiện đại, phù hợp với thị hiếu và nhu cầu mua sắm của người tiêu dùng. Tại Việt Nam, LOTTE Mart đã khai trương 7 trung tâm thương mại, tọa lạc tại những khu vực trung tâm thành phố Hồ Chí Minh: LOTTE Mart Nam Sài Gòn tại quận 7 và LOTTE Mart Phú Thọ quận 11, LOTTE Mart Đồng Nai, LOTTE Mart Đà Nẵng, LOTTE Mart Phan Thiết, LOTTE Mart Bình Dương, LOTTE Mart Hà Nội. Từ khi bước vào thị trường Việt Nam năm 2008 đến nay, LOTTE Mart luôn không ngừng vươn lên với mục tiêu làm hài lòng, thỏa mãn nhu cầu của quý khách, nỗ lực tối đa để cung cấp những sản phẩm, dịch vụ tốt nhất đến tay người tiêu dùng. Mục tiêu đến năm 2020 LOTTE Mart sẽ mở khoảng 60 cửa hàng trải dài khắp các tỉnh thành trên đất nước Việt Nam.', '87437372767823578', 'www.lottemart.com.vn', 'Trần Thanh Tùng', 'tungtt@dienkim.com', '0978222214', 7, 1, '2018-04-03 01:58:47', '2018-04-06 08:23:52'),
 (3, 'spt3134@dienkim.com', '$2y$10$vXe9D1NRDa9vMA.udYBSCOkbs/s.LnwYLdwM5FNF.cHoqEYAdt/2.', 'Công ty CP DV Bưu Chính Viễn Thông Sài Gòn', 'cong-ty-cp-dv-buu-chinh-vien-thong-sai-gon', '', '', '10 Cô Giang, Phường Cầu Ông Lãnh, Q.1, TP HCM', '0983222111', 23, 3, NULL, 'TRUNG TÂM ĐIỆN THOẠI SPT (SPT Telephone Center - STC) là một Chi nhánh trực thuộc\r\nCông ty Cổ phần Dịch vụ Bưu chính Viễn thông Sài Gòn – SPT chuyên cung cấp số thuê bao điện\r\nthoại cố định, ADSL, FTTx, IPTV và các dịch vụ khác...đáp ứng nhu cầu lắp đặt tại các Công ty, Khu\r\ndân cư, Khu công nghiệp, Khu chế xuất, Khu thương mại,...', '', 'www.spt.vn', 'Đinh Thị Trường Giang', 'giangdtt@dienkim.com', '0933251718', 5, 1, '2018-04-03 06:55:44', '2018-04-06 08:23:44'),
 (4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, NULL, 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, '2018-04-04 05:29:16', '2018-04-06 08:23:33'),
@@ -2708,7 +2708,15 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (533, 1, 'user', NULL, '2018-04-01 04:26:16', '2018-04-01 04:26:16'),
 (534, NULL, 'global', NULL, '2018-04-06 02:07:34', '2018-04-06 02:07:34'),
 (535, NULL, 'ip', '127.0.0.1', '2018-04-06 02:07:34', '2018-04-06 02:07:34'),
-(536, 1, 'user', NULL, '2018-04-06 02:07:34', '2018-04-06 02:07:34');
+(536, 1, 'user', NULL, '2018-04-06 02:07:34', '2018-04-06 02:07:34'),
+(537, NULL, 'global', NULL, '2018-04-06 08:36:06', '2018-04-06 08:36:06'),
+(538, NULL, 'ip', '127.0.0.1', '2018-04-06 08:36:06', '2018-04-06 08:36:06'),
+(539, NULL, 'global', NULL, '2018-04-06 08:39:03', '2018-04-06 08:39:03'),
+(540, NULL, 'ip', '127.0.0.1', '2018-04-06 08:39:03', '2018-04-06 08:39:03'),
+(541, 1, 'user', NULL, '2018-04-06 08:39:03', '2018-04-06 08:39:03'),
+(542, NULL, 'global', NULL, '2018-04-06 08:48:04', '2018-04-06 08:48:04'),
+(543, NULL, 'ip', '127.0.0.1', '2018-04-06 08:48:04', '2018-04-06 08:48:04'),
+(544, 3, 'user', NULL, '2018-04-06 08:48:04', '2018-04-06 08:48:04');
 
 -- --------------------------------------------------------
 
@@ -2739,13 +2747,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-06 02:22:14', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-06 02:22:14'),
-(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$X4oiWN77NMqQwgYSrWQK5eMPy1/ixHK3lKbbdeUKb1EjT93O1dP6W', NULL, '2018-04-06 02:22:27', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-5-jzdg176f9o5q.png', 2, 1, '2018-04-06 00:52:58', '2018-04-06 02:22:27'),
-(3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, NULL, 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 01:03:17'),
-(4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, NULL, 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 01:03:27'),
-(5, 'thuyttt', 'thuyttt@dienkim.com', '$2y$10$AA6KmOmb/IPF2RZyy3usc.GWvSfZmgNJySKEf65tUtxJ6e3hpp1lS', NULL, NULL, 'Trần Thị Thanh Thúy', NULL, '0923111222', 'logo-3-3e4tfsqz86h2.png', 5, 1, '2018-04-06 00:56:08', '2018-04-06 01:03:38'),
-(6, 'thaoht', 'thaoht@dienkim.com', '$2y$10$HH42krxiiZhRfnaedbjw7exT3LpC5052NANqWiBIFH/As/Gvb5Soe', NULL, NULL, 'Hoàng Thị Hồng Thảo', NULL, '0944111333', 'logo-4-m30xjclwqpy7.png', 6, 1, '2018-04-06 00:57:12', '2018-04-06 01:03:53'),
-(7, 'trangttt', 'trangttt@dienkim.com', '$2y$10$1YolHwegMnyr/ewwtr4t9OHy4apeBhARteyM0cJMxd3oP1rx2XdcO', NULL, NULL, 'Trần Thị Thu Trang', NULL, '0999123321', 'logo-4-k59pac0t2zg8.png', 7, 1, '2018-04-06 00:57:56', '2018-04-06 01:04:10');
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-06 08:53:03', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-06 08:53:03'),
+(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$X4oiWN77NMqQwgYSrWQK5eMPy1/ixHK3lKbbdeUKb1EjT93O1dP6W', NULL, '2018-04-06 08:54:08', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-5-jzdg176f9o5q.png', 2, 1, '2018-04-06 00:52:58', '2018-04-06 08:54:08'),
+(3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-06 08:48:13', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 08:48:13'),
+(4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
+(5, 'thuyttt', 'thuyttt@dienkim.com', '$2y$10$AA6KmOmb/IPF2RZyy3usc.GWvSfZmgNJySKEf65tUtxJ6e3hpp1lS', NULL, '2018-04-06 08:52:03', 'Trần Thị Thanh Thúy', NULL, '0923111222', 'logo-3-3e4tfsqz86h2.png', 5, 1, '2018-04-06 00:56:08', '2018-04-06 08:52:03'),
+(6, 'thaoht', 'thaoht@dienkim.com', '$2y$10$HH42krxiiZhRfnaedbjw7exT3LpC5052NANqWiBIFH/As/Gvb5Soe', NULL, '2018-04-06 08:38:28', 'Hoàng Thị Hồng Thảo', NULL, '0944111333', 'logo-4-m30xjclwqpy7.png', 6, 1, '2018-04-06 00:57:12', '2018-04-06 08:38:28'),
+(7, 'trangttt', 'trangttt@dienkim.com', '$2y$10$1YolHwegMnyr/ewwtr4t9OHy4apeBhARteyM0cJMxd3oP1rx2XdcO', NULL, '2018-04-06 08:38:44', 'Trần Thị Thu Trang', NULL, '0999123321', 'logo-4-k59pac0t2zg8.png', 7, 1, '2018-04-06 00:57:56', '2018-04-06 08:38:44');
 
 -- --------------------------------------------------------
 
@@ -3239,7 +3247,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=842;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=855;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3329,7 +3337,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT cho bảng `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=537;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

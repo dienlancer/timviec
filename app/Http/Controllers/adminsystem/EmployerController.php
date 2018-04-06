@@ -19,6 +19,7 @@ use App\ScaleModel;
 use App\User;
 use DB;
 use Hash;
+use Sentinel;
 class EmployerController extends Controller {
   	var $_controller="employer";	
   	var $_title="Nhà tuyển dụng";
@@ -38,21 +39,24 @@ class EmployerController extends Controller {
         }
   	}	    
   	public function loadData(Request $request){
-        $filter_search="";            
-        if(!empty(@$request->filter_search)){      
-          $filter_search=trim(@$request->filter_search) ;    
-        }        
-        $data=DB::table('employer')  
-              ->leftJoin('users','employer.user_id','=','users.id')                
-                ->select('employer.id','employer.fullname','employer.email','users.fullname as user_fullname','employer.status','employer.created_at','employer.updated_at')                
-                ->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-                ->groupBy('employer.id','employer.fullname','employer.email','users.fullname','employer.status','employer.created_at','employer.updated_at')   
-                ->orderBy('employer.created_at', 'desc')                
-                ->get()->toArray();              
-        $data=convertToArray($data);    
-        $data=employerConverter($data,$this->_controller);            
-        return $data;
-    } 
+  		$user=Sentinel::getUser(); 
+  		$filter_search="";            
+  		if(!empty(@$request->filter_search)){      
+  			$filter_search=trim(@$request->filter_search) ;    
+  		}        
+  		$query=DB::table('employer')->leftJoin('users','employer.user_id','=','users.id')  ;
+  		if((int)@$user->id > 1){
+  			$query->where('employer.user_id',(int)@$user->id);
+  		}  		
+  		$query->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%');
+  		$data=$query->select('employer.id','employer.fullname','employer.email','users.fullname as user_fullname','employer.status','employer.created_at','employer.updated_at')    		                     
+  		->groupBy('employer.id','employer.fullname','employer.email','users.fullname','employer.status','employer.created_at','employer.updated_at')   
+  		->orderBy('employer.created_at', 'desc')                
+  		->get()->toArray();              
+  		$data=convertToArray($data);    
+  		$data=employerConverter($data,$this->_controller);            
+  		return $data;
+  	} 
     public function getForm($task,$id=""){     
       $controller=$this->_controller;     
       $title="";

@@ -3,18 +3,6 @@ $li_content_management='';
 $li_category_article='';
 $li_article='';
 
-$li_album_management='';
-$li_album='';
-$li_photo='';
-
-$li_video_management='';
-$li_category_video='';
-$li_video='';
-
-$li_project_management='';
-$li_project='';
-$li_project_article='';
-
 $li_employer_management='';
 $li_employer='';
 
@@ -23,14 +11,6 @@ $li_province='';
 $li_scale='';
 $li_sex='';
 $li_marriage='';
-
-$li_product_management='';
-$li_category_product='';
-$li_product='';
-
-$li_payment_method='';
-$li_invoice='';
-$li_category_param='';
 
 $li_menu_type='';
 $li_page='';
@@ -44,8 +24,6 @@ $li_group_member='';
 $li_user='';
 $li_privilege='';
 $li_media='';
-$li_supporter='';
-$li_organization='';
 switch ($controller) {
     case 'category-article':  
     $li_category_article='active open';
@@ -54,34 +32,6 @@ switch ($controller) {
     case 'article': 
     $li_article='active open';
     $li_content_management='active open';
-    break;
-
-    case 'album':  
-    $li_album='active open';   
-    $li_album_management='active open'; 
-    break; 
-    case 'photo':  
-    $li_photo='active open';   
-    $li_album_management='active open'; 
-    break;    
-    
-    case 'category-video':  
-    $li_category_video='active open';   
-    $li_video_management='active open'; 
-    break; 
-    case 'video':  
-    $li_video='active open';   
-    $li_video_management='active open'; 
-    break;    
-
-    case 'project': 
-    $li_project='active open';    
-    $li_project_management='active open';
-    break;
-
-    case 'project-article': 
-    $li_project_article='active open';    
-    $li_project_management='active open';
     break;
 
     case 'employer': 
@@ -105,27 +55,12 @@ switch ($controller) {
     $li_marriage='active open';       
     $li_category_management='active open'; 
     break;
-    case 'category-product':  
-    $li_category_product='active open';
-    $li_product_management='active open';
-    break; 
+    
     case 'category-param':  
     $li_category_param='active open';
     $li_product_management='active open';
     break;   
-    case 'product': 
-    $li_product='active open';
-    $li_product_management='active open';
-    break;
-    
-    case 'payment-method':     
-    $li_payment_method='active open';
-    $li_product_management='active open';
-    break;
-    case 'invoice':        
-    $li_invoice='active open';
-    $li_product_management='active open';
-    break; 
+
     case 'menu-type':
     case 'menu':
     $li_menu_type='active open';
@@ -146,12 +81,8 @@ switch ($controller) {
     case 'media':
     $li_media='active open';
     break;
-    case 'supporter':
-    $li_supporter='active open';
-    break; 
-    case 'organization':
-    $li_organization='active open';
-    break; 
+    
+    
     case 'group-member':
     $li_group_member='active open';
     $li_phan_quyen='active open';
@@ -165,148 +96,191 @@ switch ($controller) {
     $li_phan_quyen='active open';
     break;       
 }
+
+$user=Sentinel::getUser();                                
+$data=array();
+$source=array();
+$alias=null;
+$source=DB::table('group_member')
+->join('user_group_member','group_member.id','=','user_group_member.group_member_id')
+->join('users','users.id','=','user_group_member.user_id')
+->where('users.id',(int)@$user->id)                            
+->select('group_member.alias')
+->groupBy('group_member.alias')
+->get()->toArray();
+if(count($source) > 0){
+    $data=convertToArray($source);
+    $alias=$data[0]['alias'];
+}                   
 ?>
 <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-    <li class="sidebar-toggler-wrapper hide">
-        <div class="sidebar-toggler">
-            <span></span>
-        </div>
-    </li>                                          
-    <li class="nav-item <?php echo $li_content_management; ?>">
-        <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="fa fa-folder-open-o" ></i>
-            <span class="title">Quản lý nội dung</span>
-            <span class="arrow"></span>
-        </a>
-        <ul class="sub-menu">                                    
-            <li class="nav-item  <?php echo $li_category_article; ?>">
-                <a href="{!! route('adminsystem.category-article.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Chủ đề bài viết</span>                                            
-                </a>                                                                      
-            </li>            
-            <li class="nav-item  <?php echo $li_article; ?>">
-                <a href="{!! route('adminsystem.article.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Bài viết</span>                                            
-                </a>                                                                      
-            </li>           
-        </ul>
-    </li>
-    <li class="nav-item  <?php echo $li_category_banner; ?>">
-        <a href="{!! route('adminsystem.category-banner.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Quản lý banner</span>                                            
-        </a>                                                                      
-    </li> 
-    <li class="nav-item  <?php echo $li_page; ?>">
-        <a href="{!! route('adminsystem.page.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Trang tĩnh</span>                                            
-        </a>                                                                      
-    </li> 
+    <?php 
+    switch ($alias){
+        case 'administrator':
+        ?>
+        <li class="sidebar-toggler-wrapper hide">
+            <div class="sidebar-toggler">
+                <span></span>
+            </div>
+        </li>                                          
+        <li class="nav-item <?php echo $li_content_management; ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý nội dung</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_category_article; ?>">
+                    <a href="{!! route('adminsystem.category-article.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Chủ đề bài viết</span>                                            
+                    </a>                                                                      
+                </li>            
+                <li class="nav-item  <?php echo $li_article; ?>">
+                    <a href="{!! route('adminsystem.article.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Bài viết</span>                                            
+                    </a>                                                                      
+                </li>           
+            </ul>
+        </li>
+        <li class="nav-item  <?php echo $li_category_banner; ?>">
+            <a href="{!! route('adminsystem.category-banner.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Quản lý banner</span>                                            
+            </a>                                                                      
+        </li> 
+        <li class="nav-item  <?php echo $li_page; ?>">
+            <a href="{!! route('adminsystem.page.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Trang tĩnh</span>                                            
+            </a>                                                                      
+        </li> 
 
-    <li class="nav-item <?php echo $li_employer_management; ?>">
-        <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="fa fa-folder-open-o" ></i>
-            <span class="title">Quản lý nhà tuyển dụng</span>
-            <span class="arrow"></span>
-        </a>
-        <ul class="sub-menu">                                    
-            <li class="nav-item  <?php echo $li_employer; ?>">
-                <a href="{!! route('adminsystem.employer.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Thông tin doanh nghiệp</span>                                            
-                </a>                                                                      
-            </li>                 
-        </ul>
-    </li>
+        <li class="nav-item <?php echo $li_employer_management; ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý nhà tuyển dụng</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_employer; ?>">
+                    <a href="{!! route('adminsystem.employer.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Thông tin doanh nghiệp</span>                                            
+                    </a>                                                                      
+                </li>                 
+            </ul>
+        </li>
 
-    <li class="nav-item <?php echo $li_category_management; ?>">
-        <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="fa fa-folder-open-o" ></i>
-            <span class="title">Quản lý danh mục</span>
-            <span class="arrow"></span>
-        </a>
-        <ul class="sub-menu">                                    
-            <li class="nav-item  <?php echo $li_province; ?>">
-                <a href="{!! route('adminsystem.province.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Tỉnh / Thành phố</span>                                            
-                </a>                                                                      
-            </li>     
-            <li class="nav-item  <?php echo $li_scale; ?>">
-                <a href="{!! route('adminsystem.scale.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Quy mô công ty</span>                                            
-                </a>                                                                      
-            </li>    
-            <li class="nav-item  <?php echo $li_sex; ?>">
-                <a href="{!! route('adminsystem.sex.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Giới tính</span>                                            
-                </a>                                                                      
-            </li> 
-            <li class="nav-item  <?php echo $li_marriage; ?>">
-                <a href="{!! route('adminsystem.marriage.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Tình trạng hôn nhân</span>                                            
-                </a>                                                                      
-            </li>       
-        </ul>
-    </li>
+        <li class="nav-item <?php echo $li_category_management; ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý danh mục</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_province; ?>">
+                    <a href="{!! route('adminsystem.province.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Tỉnh / Thành phố</span>                                            
+                    </a>                                                                      
+                </li>     
+                <li class="nav-item  <?php echo $li_scale; ?>">
+                    <a href="{!! route('adminsystem.scale.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Quy mô công ty</span>                                            
+                    </a>                                                                      
+                </li>    
+                <li class="nav-item  <?php echo $li_sex; ?>">
+                    <a href="{!! route('adminsystem.sex.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Giới tính</span>                                            
+                    </a>                                                                      
+                </li> 
+                <li class="nav-item  <?php echo $li_marriage; ?>">
+                    <a href="{!! route('adminsystem.marriage.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Tình trạng hôn nhân</span>                                            
+                    </a>                                                                      
+                </li>       
+            </ul>
+        </li>
 
-    
-    <li class="nav-item  <?php echo $li_media; ?>">
-        <a href="{!! route('adminsystem.media.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Thư viện</span>                                            
-        </a>                                                                      
-    </li>
-    <li class="nav-item  <?php echo $li_menu_type; ?>">
-        <a href="{!! route('adminsystem.menu-type.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Menu</span>                                            
-        </a>                                                                      
-    </li> 
-    <li class="nav-item  <?php echo $li_module_item; ?>">
-        <a href="{!! route('adminsystem.module-item.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Module</span>                                            
-        </a>                                                                      
-    </li>     
-    
-    <li class="nav-item  <?php echo $li_setting_system; ?>">
-        <a href="{!! route('adminsystem.setting-system.getList') !!}" class="nav-link nav-toggle">
-            <i class="icon-notebook"></i>
-            <span class="title">Cấu hình</span>                                            
-        </a>                                                                      
-    </li>       
-    <li class="nav-item  <?php echo $li_phan_quyen ?>">
-        <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="fa fa-folder-open-o" ></i>
-            <span class="title">Quản lý người dùng</span>
-            <span class="arrow"></span>
-        </a>
-        <ul class="sub-menu">                                    
-            <li class="nav-item  <?php echo $li_group_member; ?>">
-                <a href="{!! route('adminsystem.group-member.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Nhóm người dùng</span>                                            
-                </a>                                                                      
-            </li>
-            <li class="nav-item  <?php echo $li_user; ?>">
-                <a href="{!! route('adminsystem.user.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Người dùng</span>                                            
-                </a>                                                                      
-            </li>
-            <li class="nav-item  <?php echo $li_privilege; ?>">
-                <a href="{!! route('adminsystem.privilege.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Nhóm quyền</span>                                            
-                </a>                                                                      
-            </li>
-        </ul>
-    </li>                                           
+
+        <li class="nav-item  <?php echo $li_media; ?>">
+            <a href="{!! route('adminsystem.media.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Thư viện</span>                                            
+            </a>                                                                      
+        </li>
+        <li class="nav-item  <?php echo $li_menu_type; ?>">
+            <a href="{!! route('adminsystem.menu-type.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Menu</span>                                            
+            </a>                                                                      
+        </li> 
+        <li class="nav-item  <?php echo $li_module_item; ?>">
+            <a href="{!! route('adminsystem.module-item.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Module</span>                                            
+            </a>                                                                      
+        </li>     
+
+        <li class="nav-item  <?php echo $li_setting_system; ?>">
+            <a href="{!! route('adminsystem.setting-system.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Cấu hình</span>                                            
+            </a>                                                                      
+        </li>       
+        <li class="nav-item  <?php echo $li_phan_quyen ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý người dùng</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_group_member; ?>">
+                    <a href="{!! route('adminsystem.group-member.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Nhóm người dùng</span>                                            
+                    </a>                                                                      
+                </li>
+                <li class="nav-item  <?php echo $li_user; ?>">
+                    <a href="{!! route('adminsystem.user.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Người dùng</span>                                            
+                    </a>                                                                      
+                </li>
+                <li class="nav-item  <?php echo $li_privilege; ?>">
+                    <a href="{!! route('adminsystem.privilege.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Nhóm quyền</span>                                            
+                    </a>                                                                      
+                </li>
+            </ul>
+        </li>          
+        <?php
+        break;
+        default:
+        ?>
+        <li class="nav-item <?php echo $li_employer_management; ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý nhà tuyển dụng</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_employer; ?>">
+                    <a href="{!! route('adminsystem.employer.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Thông tin doanh nghiệp</span>                                            
+                    </a>                                                                      
+                </li>                 
+            </ul>
+        </li>
+        <?php
+        break;
+    }
+    ?>                           
 </ul>

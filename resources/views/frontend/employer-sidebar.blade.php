@@ -1,3 +1,18 @@
+<?php 
+$arrUser=array();
+$source_employer=array();
+$source_user=array();
+$user_fullname='';
+$ssNameUser='vmuser';
+if(Session::has($ssNameUser)){
+	$arrUser=Session::get($ssNameUser);
+	$source_employer=\App\EmployerModel::find((int)@$arrUser['id'])->toArray();
+	$source_user=\App\User::find((int)@$source_employer['user_id'])->toArray();	
+	if(count($source_user) > 0){
+		$user_fullname=$source_user['fullname'];
+	}
+} 
+?>
 <div class="box-category">
 	<div class="menu-right-title">DANH MỤC</div>
 	<div>
@@ -7,7 +22,8 @@
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fab fa-spotify"></i></div><div>Đăng tin tuyển dụng</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-columns"></i></div><div>Quản lý tin tuyển dụng</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-users"></i></div><div>Hồ sơ đã lưu</div></a></li>
-			<li><a href="javascript:void(0);"><div class="category-icon"><i class="far fa-file-alt"></i></div><div>Hồ sơ đã ứng tuyển</div></a></li>			
+			<li><a href="javascript:void(0);"><div class="category-icon"><i class="far fa-file-alt"></i></div><div>Hồ sơ đã ứng tuyển</div></a></li>		
+			<li><a href="javascript:void(0);"><div class="category-icon"><i class="far fa-file-alt"></i></div><div>CSKH : <?php echo $user_fullname; ?></div></a></li>		
 			<li class="category-article-last"><a href="<?php echo route('frontend.index.logoutEmployer'); ?>"><div class="category-icon"><i class="fas fa-sign-out-alt"></i></div><div>Đăng xuất</div></a></li>
 		</ul>
 	</div>

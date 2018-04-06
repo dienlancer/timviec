@@ -14,6 +14,8 @@ use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
 use App\EmployerModel;
+use App\ProvinceModel;
+use App\ScaleModel;
 use DB;
 class EmployerController extends Controller {
   	var $_controller="employer";	
@@ -39,9 +41,9 @@ class EmployerController extends Controller {
           $filter_search=trim(@$request->filter_search) ;    
         }        
         $data=DB::table('employer')                  
-                ->select('employer.id','employer.fullname','employer.sort_order','employer.status','employer.created_at','employer.updated_at')                
+                ->select('employer.id','employer.fullname','employer.status','employer.created_at','employer.updated_at')                
                 ->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-                ->groupBy('employer.id','employer.fullname','employer.sort_order','employer.status','employer.created_at','employer.updated_at')   
+                ->groupBy('employer.id','employer.fullname','employer.status','employer.created_at','employer.updated_at')   
                 ->orderBy('employer.sort_order', 'asc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
@@ -55,6 +57,8 @@ class EmployerController extends Controller {
         $arrRowData=array();        
         $arrPrivilege=getArrPrivilege();
         $requestControllerAction=$this->_controller."-form";  
+        $arrProvince=ProvinceModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
+        $arrScale=ScaleModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
         if(in_array($requestControllerAction, $arrPrivilege)){
           switch ($task) {
            case 'edit':
@@ -65,37 +69,68 @@ class EmployerController extends Controller {
               $title=$this->_title . " : Add new";
            break;     
         }                  
-        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
+        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrProvince","arrScale","controller","task","title","icon"));
         }else{
           return view("adminsystem.no-access");
         }        
     }
      public function save(Request $request){
-          $id 					        =		trim($request->id);        
-          $fullname 				    =		trim($request->fullname);    
-          $alias                =   trim($request->alias);                                    
-          $status               =   trim($request->status);          
+          $id 					        =		trim(@$request->id);    
+          $password             =   (@$request->password);
+          $confirm_password     =   (@$request->confirm_password);    
+          $meta_keyword 				=		trim(@$request->meta_keyword);
+          $meta_description     =   trim(@$request->meta_description);     
+          $image_file           =   null;
+          if(isset($_FILES["image"])){
+            $image_file         =   $_FILES["image"];
+          }
+          $image_hidden         =   trim(@$request->image_hidden);      
+          $status               =   trim(@$request->status);          
           $data 		            =   array();
           $info 		            =   array();
           $error 		            =   array();
           $item		              =   null;
-          $checked 	            =   1;              
-          if(empty($fullname)){
-                 $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên";
-          }                   
-          if(empty($sort_order)){
-             $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+          $checked 	            =   1;      
+          $setting= getSettingSystem();
+          $width=$setting['product_width']['field_value'];
+          $height=$setting['product_height']['field_value'];        
+          if(empty($id)){
+            if(mb_strlen($password) < 6 ){
+              $checked = 0;
+              $error["password"]["type_msg"] = "has-error";
+              $error["password"]["msg"] = "Mật khẩu tối thiểu phải 6 ít tự";
+            }else{
+              if(strcmp($password, $confirm_password) !=0 ){
+                $checked = 0;
+                $error["password"]["type_msg"] = "has-error";
+                $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
+              }
+            }     
+          }else{
+            if(!empty($password) || !empty($confirm_password)){
+              if(mb_strlen($password) < 6 ){
+                $checked = 0;
+                $error["password"]["type_msg"] = "has-error";
+                $error["password"]["msg"] = "Mật khẩu tối thiểu phải 6 ít tự";
+              }else{
+                if(strcmp($password, $confirm_password) !=0 ){
+                  $checked = 0;
+                  $error["password"]["type_msg"] = "has-error";
+                  $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
+                }
+              }        
+            }     
           }
           if((int)$status==-1){
              $checked = 0;
              $error["status"]["type_msg"] 		= "has-error";
              $error["status"]["msg"] 			= "Thiếu trạng thái";
           }
-          if ($checked == 1) {    
+          if ($checked == 1) {   
+                $image_name='';
+                if($image_file != null){                      
+                  $image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+                } 
                 if(empty($id)){
                     $item         =   new EmployerModel;       
                     $item->created_at   = date("Y-m-d H:i:s",time());        
@@ -104,11 +139,13 @@ class EmployerController extends Controller {
                     $item       = EmployerModel::find((int)@$id);   
                                   
                 }  
-                $item->fullname 		    =	@$fullname;  
-                $item->alias            = @$alias;                                         
-                $item->sort_order 		  =	(int)@$sort_order;
-                $item->status 			    =	(int)@$status;    
-                $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
+                if(!empty($password)){
+                  $item->password         = Hash::make($password);
+                }
+                $item->meta_keyword       = @$meta_keyword;
+                $item->meta_description   = @$meta_description;
+                $item->status 			      =	(int)@$status;    
+                $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
                 $item->save();                                  
                 $info = array(
                   'type_msg' 			=> "has-success",
@@ -151,13 +188,7 @@ class EmployerController extends Controller {
             $id                     =   (int)$request->id;              
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";     
-            $data                   =   EmployerModel::whereRaw("scale_id = ?",[(int)@$id])->get()->toArray();  
-            if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
-            }                  
+            $msg                    =   "Xóa thành công";                             
             if($checked == 1){
               $item = EmployerModel::find((int)@$id);
                 $item->delete();                                                
@@ -213,15 +244,7 @@ class EmployerController extends Controller {
           $checked     =   0;
           $type_msg           =   "alert-warning";            
           $msg                =   "Vui lòng chọn ít nhất một phần tử";
-        }            
-        foreach ($arrID as $key => $value){
-          $data                   =   EmployerModel::whereRaw("scale_id = ?",[(int)@$value])->get()->toArray();  
-            if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
-            }
-        } 
+        }                    
         if($checked == 1){                                  
 
           DB::table('employer')->whereIn('id',@$arrID)->delete();                                      
@@ -234,82 +257,6 @@ class EmployerController extends Controller {
           'data'              => $data
         );
         return $info;
-      }
-      public function sortOrder(Request $request){
-            $sort_json              =   $request->sort_json;           
-            $data_order             =   json_decode($sort_json);       
-          
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Cập nhật thành công";      
-            if(count($data_order) > 0){              
-              foreach($data_order as $key => $value){      
-                if(!empty($value)){
-                  $item=EmployerModel::find((int)@$value->id);                
-                $item->sort_order=(int)$value->sort_order;                         
-                $item->save();                      
-                }                                                  
-              }           
-            }        
-            $data                   =   $this->loadData($request);
-            $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
-            return $info;
-      }     
-      public function createAlias(Request $request){
-          $id                =  trim($request->id)  ; 
-          $fullname                =  trim($request->fullname)  ;        
-          $data                    =  array();
-          $info                    =  array();
-          $error                   =  array();
-          $item                    =  null;
-          $checked  = 1;   
-          $alias='';                     
-          if(empty($fullname)){
-           $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
-         }else{          
-          $alias=str_slug($fullname,'-');          
-          $dataScale=array();
-          $checked_trung_alias=0;          
-          if (empty($id)) {              
-              $dataScale=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
-            }else{
-              $dataScale=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
-            }  
-           
-           if (count($dataScale) > 0) {
-            $checked_trung_alias=1;
-          }
-          if((int)$checked_trung_alias == 1){
-            $code_alias=rand(1,999999);
-            $alias=$alias.'-'.$code_alias;
-          }
-        }
-        if ($checked == 1){
-          $info = array(
-            'type_msg'      => "has-success",
-            'msg'         => 'Lưu dữ liệu thành công',
-            "checked"       => 1,
-            "error"       => $error,
-            
-            "alias"       =>$alias
-          );
-        }else {
-          $info = array(
-            'type_msg'      => "has-error",
-            'msg'         => 'Nhập dữ liệu có sự cố',
-            "checked"       => 0,
-            "error"       => $error,
-            "alias"        => $alias
-          );
-        }    
-        return $info;
-      }  
+      }            
 }
 ?>

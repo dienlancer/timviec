@@ -134,33 +134,39 @@ class DistrictController extends Controller {
             }        		 			       
             return $info;       
     }
-          public function changeStatus(Request $request){
-                  $id             =       (int)$request->id;     
-                  $checked                =   1;
-                  $type_msg               =   "alert-success";
-                  $msg                    =   "Cập nhật thành công";              
-                  $status         =       (int)@$request->status;
-                  $item           =       DistrictModel::find((int)@$id);        
-                  $item->status   =       $status;
-                  $item->save();
-                  $data                   =   $this->loadData($request);
-                  $info = array(
-                    'checked'           => $checked,
-                    'type_msg'          => $type_msg,                
-                    'msg'               => $msg,                
-                    'data'              => $data
-                  );
-                  return $info;
-          }
+    public function changeStatus(Request $request){
+      $id             =       (int)$request->id;     
+      $checked                =   1;
+      $type_msg               =   "alert-success";
+      $msg                    =   "Cập nhật thành công";              
+      $status         =       (int)@$request->status;
+      $item           =       DistrictModel::find((int)@$id);        
+      $item->status   =       $status;
+      $item->save();
+      $data                   =   $this->loadData($request);
+      $info = array(
+        'checked'           => $checked,
+        'type_msg'          => $type_msg,                
+        'msg'               => $msg,                
+        'data'              => $data
+      );
+      return $info;
+    }
         
-      public function deleteItem(Request $request){
+          public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                    
+            $msg                    =   "Xóa thành công";  
+            $data                   =   ProjectModel::whereRaw("district_id = ?",[(int)@$id])->get()->toArray();  
+            if(count($data) > 0){
+              $checked     =   0;
+              $type_msg           =   "alert-warning";            
+              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            }                       
             if($checked == 1){
               $item = DistrictModel::find((int)@$id);
-                $item->delete();                                                
+              $item->delete();                                                
             }        
             $data                   =   $this->loadData($request);
             $info = array(
@@ -170,9 +176,9 @@ class DistrictController extends Controller {
               'data'              => $data
             );
             return $info;
-      }
+          }
       public function updateStatus(Request $request){
-          $strID                 =   $request->str_id;     
+        $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
         $checked                =   1;
         $type_msg               =   "alert-success";
@@ -180,160 +186,178 @@ class DistrictController extends Controller {
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
-                    $checked                =   0;
-                    $type_msg               =   "alert-warning";            
-                    $msg                    =   "Vui lòng chọn ít nhất một phần tử";
+          $checked                =   0;
+          $type_msg               =   "alert-warning";            
+          $msg                    =   "Vui lòng chọn ít nhất một phần tử";
+        }
+        if($checked==1){
+          foreach ($arrID as $key => $value) {
+            if(!empty($value)){
+              $item=DistrictModel::find($value);
+              $item->status=$status;
+              $item->save();      
+            }            
           }
-          if($checked==1){
-              foreach ($arrID as $key => $value) {
-                if(!empty($value)){
-                    $item=DistrictModel::find($value);
-                    $item->status=$status;
-                    $item->save();      
-                }            
-              }
-          }                 
-          $data                   =   $this->loadData($request);
-          $info = array(
-            'checked'           => $checked,
-            'type_msg'          => $type_msg,                
-            'msg'               => $msg,                
-            'data'              => $data
-          );
-          return $info;
+        }                 
+        $data                   =   $this->loadData($request);
+        $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'msg'               => $msg,                
+          'data'              => $data
+        );
+        return $info;
       }
       public function trash(Request $request){
-            $strID                 =   $request->str_id;               
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                  
-            $strID=substr($strID, 0,strlen($strID) - 1);
-            $arrID=explode(',',$strID);                 
-            if(empty($strID)){  
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                =   "Vui lòng chọn ít nhất một phần tử";
-            }
-            if($checked == 1){                                                    
-                  DB::table('district')->whereIn('id',@$arrID)->delete();                               
-            }
-            $data                   =   $this->loadData($request);
-            $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
-            return $info;
+        $strID                 =   $request->str_id;               
+        $checked                =   1;
+        $type_msg               =   "alert-success";
+        $msg                    =   "Xóa thành công";                  
+        $strID=substr($strID, 0,strlen($strID) - 1);
+        $arrID=explode(',',$strID); 
+        if(empty($strID)){
+          $checked     =   0;
+          $type_msg           =   "alert-warning";            
+          $msg                =   "Vui lòng chọn ít nhất một phần tử";
+        }
+        foreach ($arrID as $key => $value){
+          $data                   =   ProjectModel::whereRaw("district_id = ?",[(int)@$value])->get()->toArray();  
+          if(count($data) > 0){
+            $checked     =   0;
+            $type_msg           =   "alert-warning";            
+            $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+          }
+        }     
+        if($checked == 1){                                                    
+          DB::table('district')->whereIn('id',@$arrID)->delete();                               
+        }
+        $data                   =   $this->loadData($request);
+        $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'msg'               => $msg,                
+          'data'              => $data
+        );
+        return $info;
       }
       public function sortOrder(Request $request){
-            $sort_json              =   $request->sort_json;           
-            $data_order             =   json_decode($sort_json);       
-          
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Cập nhật thành công";      
-            if(count($data_order) > 0){              
-              foreach($data_order as $key => $value){      
-                if(!empty($value)){
-                  $item=DistrictModel::find((int)@$value->id);                
-                $item->sort_order=(int)$value->sort_order;                         
-                $item->save();                      
-                }                                                  
-              }           
-            }        
-            $data                   =   $this->loadData($request);
-            $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
-            return $info;
+        $sort_json              =   $request->sort_json;           
+        $data_order             =   json_decode($sort_json);       
+        
+        $checked                =   1;
+        $type_msg               =   "alert-success";
+        $msg                    =   "Cập nhật thành công";      
+        if(count($data_order) > 0){              
+          foreach($data_order as $key => $value){      
+            if(!empty($value)){
+              $item=DistrictModel::find((int)@$value->id);                
+              $item->sort_order=(int)$value->sort_order;                         
+              $item->save();                      
+            }                                                  
+          }           
+        }        
+        $data                   =   $this->loadData($request);
+        $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'msg'               => $msg,                
+          'data'              => $data
+        );
+        return $info;
       }       
       public function createAlias(Request $request){
-          $id                =  trim($request->id)  ; 
-          $fullname                =  trim($request->fullname)  ;        
-          $data                    =  array();
-          $info                    =  array();
-          $error                   =  array();
-          $item                    =  null;
-          $checked  = 1;   
-          $alias='';                     
-          if(empty($fullname)){
-           $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
-         }else{          
-          $alias=str_slug($fullname,'-');
-          $dataCategoryArticle=array();
-          $dataCategoryProduct=array();
-          $dataArticle=array();
-          $dataProduct=array();
-          $dataPage=array();
-          $dataProject=array();
-          $dataProjectArticle=array();
-          $dataProvince=array();
-          $dataDistrict=array();
-          $checked_trung_alias=0;          
-          
-            $dataCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-            $dataProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-          if (count($dataCategoryArticle) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataCategoryProduct) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataArticle) > 0) {
-            $checked_trung_alias=1;
-          }
-          if (count($dataProduct) > 0) {
-            $checked_trung_alias=1;
-          }    
-          if (count($dataPage) > 0) {
-            $checked_trung_alias=1;
-          }  
-          if (count($dataProject) > 0) {
-            $checked_trung_alias=1;
-          }  
-          if (count($dataProjectArticle) > 0) {
-            $checked_trung_alias=1;
-          }      
-           if (count($dataProvince) > 0) {
-            $checked_trung_alias=1;
-          } 
-          if (count($dataDistrict) > 0) {
-            $checked_trung_alias=1;
-          }
-          if((int)$checked_trung_alias == 1){
-            $code_alias=rand(1,999999);
-            $alias=$alias.'-'.$code_alias;
-          }
+        $id                =  trim($request->id)  ; 
+        $fullname                =  trim($request->fullname)  ;        
+        $data                    =  array();
+        $info                    =  array();
+        $error                   =  array();
+        $item                    =  null;
+        $checked  = 1;   
+        $alias='';                     
+        if(empty($fullname)){
+         $checked = 0;
+         $error["fullname"]["type_msg"] = "has-error";
+         $error["fullname"]["msg"] = "Thiếu tên bài viết";
+       }else{          
+        $alias=str_slug($fullname,'-');
+        $dataCategoryArticle=array();
+        $dataCategoryProduct=array();
+        $dataArticle=array();
+        $dataProduct=array();
+        $dataPage=array();
+        $dataProject=array();
+        $dataProjectArticle=array();
+        $dataProvince=array();
+        $dataDistrict=array();
+        $checked_trung_alias=0;          
+        if (empty($id)) {              
+          $dataDistrict=DistrictModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
+        }else{
+          $dataDistrict=DistrictModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
+        }  
+        $dataCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        $dataCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        $dataProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        $dataPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        $dataProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        $dataProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        $dataProvince=ProvinceModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+        if (count($dataCategoryArticle) > 0) {
+          $checked_trung_alias=1;
         }
-        if ($checked == 1){
-          $info = array(
-            'type_msg'      => "has-success",
-            'msg'         => 'Lưu dữ liệu thành công',
-            "checked"       => 1,
-            "error"       => $error,
-            
-            "alias"       =>$alias
-          );
-        }else {
-          $info = array(
-            'type_msg'      => "has-error",
-            'msg'         => 'Nhập dữ liệu có sự cố',
-            "checked"       => 0,
-            "error"       => $error,
-            "alias"        => $alias
-          );
+        if (count($dataCategoryProduct) > 0) {
+          $checked_trung_alias=1;
+        }
+        if (count($dataArticle) > 0) {
+          $checked_trung_alias=1;
+        }
+        if (count($dataProduct) > 0) {
+          $checked_trung_alias=1;
         }    
-        return $info;
-      }  
+        if (count($dataPage) > 0) {
+          $checked_trung_alias=1;
+        }  
+        if (count($dataProject) > 0) {
+          $checked_trung_alias=1;
+        }  
+        if (count($dataProjectArticle) > 0) {
+          $checked_trung_alias=1;
+        }      
+        if (count($dataProvince) > 0) {
+          $checked_trung_alias=1;
+        }
+        if (count($dataDistrict) > 0) {
+          $checked_trung_alias=1;
+        }
+        if((int)$checked_trung_alias == 1){
+          $code_alias=rand(1,999999);
+          $alias=$alias.'-'.$code_alias;
+        }
+      }
+      if ($checked == 1){
+        $info = array(
+          'type_msg'      => "has-success",
+          'msg'         => 'Lưu dữ liệu thành công',
+          "checked"       => 1,
+          "error"       => $error,
+          
+          "alias"       =>$alias
+        );
+      }else {
+        $info = array(
+          'type_msg'      => "has-error",
+          'msg'         => 'Nhập dữ liệu có sự cố',
+          "checked"       => 0,
+          "error"       => $error,
+          "alias"        => $alias
+        );
+      }    
+      return $info;
+    }  
+    public function filterDistrictByProvince(Request $request){
+      $province_id = trim(@$request->province_id);
+      $data=DistrictModel::whereRaw('province_id = ?',[(int)@$province_id])->select('id','fullname')->get()->toArray();
+      return $data;
+    }
 }
 ?>

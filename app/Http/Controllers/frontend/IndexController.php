@@ -171,10 +171,24 @@ class IndexController extends Controller {
         $flag = 0;
       }
       if($flag==1){
-        $item               =   new EmployerModel;
+        $item               = new EmployerModel;
         $item->email        = @$email;
         $item->password     = Hash::make(@$password) ;
         $item->fullname     = @$fullname;
+        /* begin save alias */
+        $alias=str_slug(@$fullname,'-');
+        $checked_trung_alias=0;
+        $data_employer=array();        
+        $data_employer=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();        
+        if (count(@$data_employer) > 0) {
+          $checked_trung_alias=1;
+        }        
+        if((int)@$checked_trung_alias == 1){
+          $code_alias=rand(1,999999);
+          $alias=$alias.'-'.$code_alias;
+        } 
+        $item->alias=@$alias;
+        /* end save alias */
         $item->address      = @$address;
         $item->phone        = @$phone;
         $item->province_id  = @$province_id;

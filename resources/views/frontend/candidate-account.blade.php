@@ -65,6 +65,7 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 <form name="frm" method="POST" enctype="multipart/form-data">
 	{{ csrf_field() }}
+	<?php echo $inputPictureHidden; ?>
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
@@ -175,4 +176,18 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 		</div>
 	</div>
 </form>
+<script type="text/javascript" language="javascript">
+	function deleteImage(){
+        var xac_nhan = 0;
+        var msg="Bạn có muốn xóa ?";
+        if(window.confirm(msg)){ 
+            xac_nhan = 1;
+        }
+        if(xac_nhan  == 0){
+            return 0;
+        }
+        $(".picture-area").empty();
+        $("input[name='image_hidden']").val("");        
+    }
+</script>
 @endsection()

@@ -474,9 +474,13 @@ class IndexController extends Controller {
         		$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
         	}   	        	
         }
-        if(!empty($image_name)){
-            $item->logo    =   trim($image_name) ;  
+        $item->logo=null;                       
+        if(!empty($image_hidden)){
+          $item->logo =$image_hidden;          
         }
+        if(!empty($image_name))  {
+          $item->logo=$image_name;                                                
+        }   
         /* end upload logo */
         $item->intro        = @$intro;
         $item->fax          = @$fax;
@@ -611,9 +615,13 @@ class IndexController extends Controller {
         		$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
         	}   	        	
         }
-        if(!empty($image_name)){
-            $item->avatar    =   trim($image_name) ;  
+        $item->avatar=null;                       
+        if(!empty($image_hidden)){
+          $item->avatar =$image_hidden;          
         }
+        if(!empty($image_name))  {
+          $item->avatar=$image_name;                                                
+        } 
         /* end upload avatar */                         
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   

@@ -199,7 +199,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 </div> 
                 <div class="row"> 
                     <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label"><b>Trạng thái</b></label>
+                        <label class="col-md-3 control-label"><b>Trạng thái đăng nhập</b></label>
                         <div class="col-md-9">                            
                             <?php echo $ddlStatus; ?>
                             <span class="help-block"></span>

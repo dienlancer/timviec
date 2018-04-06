@@ -11,6 +11,7 @@ var vProvinceTable           =   null;
 var vDistrictTable           =   null;
 var vScaleTable           =   null;
 var vSexTable           =   null;
+var vEmployerTable           =   null;
 var vMarriageTable           =   null;
 var vProjectArticleTable           =   null;
 var vMediaTable           =   null;
@@ -318,6 +319,22 @@ var basicTable = function () {
                 { data: "checked"            },                
                 { data: "fullname"      },                    
                 { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initEmployerTable = function () {
+        vEmployerTable = $('#tbl-employer').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                                    
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                
@@ -814,6 +831,7 @@ var basicTable = function () {
             initScaleTable();  
             initSexTable();  
             initMarriageTable();
+            initEmployerTable();
         }
     };
 }();

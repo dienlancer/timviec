@@ -17,6 +17,7 @@ use App\EmployerModel;
 use App\ProvinceModel;
 use App\ScaleModel;
 use DB;
+use Hash;
 class EmployerController extends Controller {
   	var $_controller="employer";	
   	var $_title="Nhà tuyển dụng";
@@ -44,127 +45,119 @@ class EmployerController extends Controller {
                 ->select('employer.id','employer.fullname','employer.status','employer.created_at','employer.updated_at')                
                 ->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
                 ->groupBy('employer.id','employer.fullname','employer.status','employer.created_at','employer.updated_at')   
-                ->orderBy('employer.sort_order', 'asc')                
+                ->orderBy('employer.created_at', 'desc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
         $data=employerConverter($data,$this->_controller);            
         return $data;
     } 
     public function getForm($task,$id=""){     
-        $controller=$this->_controller;     
-        $title="";
-        $icon=$this->_icon; 
-        $arrRowData=array();        
-        $arrPrivilege=getArrPrivilege();
-        $requestControllerAction=$this->_controller."-form";  
-        $arrProvince=ProvinceModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
-        $arrScale=ScaleModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
-        if(in_array($requestControllerAction, $arrPrivilege)){
-          switch ($task) {
-           case 'edit':
-              $title=$this->_title . " : Update";
-              $arrRowData=EmployerModel::find((int)@$id)->toArray();                     
-           break;
-           case 'add':
-              $title=$this->_title . " : Add new";
-           break;     
-        }                  
-        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrProvince","arrScale","controller","task","title","icon"));
-        }else{
-          return view("adminsystem.no-access");
-        }        
-    }
-     public function save(Request $request){
-          $id 					        =		trim(@$request->id);    
-          $password             =   (@$request->password);
-          $confirm_password     =   (@$request->confirm_password);    
-          $meta_keyword 				=		trim(@$request->meta_keyword);
-          $meta_description     =   trim(@$request->meta_description);     
-          $image_file           =   null;
-          if(isset($_FILES["image"])){
-            $image_file         =   $_FILES["image"];
-          }
-          $image_hidden         =   trim(@$request->image_hidden);      
-          $status               =   trim(@$request->status);          
-          $data 		            =   array();
-          $info 		            =   array();
-          $error 		            =   array();
-          $item		              =   null;
-          $checked 	            =   1;      
-          $setting= getSettingSystem();
-          $width=$setting['product_width']['field_value'];
-          $height=$setting['product_height']['field_value'];        
-          if(empty($id)){
-            if(mb_strlen($password) < 6 ){
-              $checked = 0;
-              $error["password"]["type_msg"] = "has-error";
-              $error["password"]["msg"] = "Mật khẩu tối thiểu phải 6 ít tự";
-            }else{
-              if(strcmp($password, $confirm_password) !=0 ){
-                $checked = 0;
-                $error["password"]["type_msg"] = "has-error";
-                $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
+      $controller=$this->_controller;     
+      $title="";
+      $icon=$this->_icon; 
+      $arrRowData=array();        
+      $arrPrivilege=getArrPrivilege();
+      $requestControllerAction=$this->_controller."-form";  
+      
+      if(in_array($requestControllerAction, $arrPrivilege)){
+        switch ($task) {
+         case 'edit':
+         $title=$this->_title . " : Update";
+         $arrRowData=EmployerModel::find((int)@$id)->toArray();                     
+         break;
+         case 'add':
+         $title=$this->_title . " : Add new";
+         break;     
+       }                  
+       return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
+     }else{
+      return view("adminsystem.no-access");
+    }        
+  }
+            public function save(Request $request){
+              $id 					        =		trim(@$request->id);              
+              $password             =   (@$request->password);
+              $password_confirmed     =   (@$request->password_confirmed);
+              $alias                =   trim(@$request->alias);    
+              $meta_keyword 				=		trim(@$request->meta_keyword);
+              $meta_description     =   trim(@$request->meta_description);     
+              $image_file           =   null;
+              if(isset($_FILES["image"])){
+                $image_file         =   $_FILES["image"];
               }
-            }     
-          }else{
-            if(!empty($password) || !empty($confirm_password)){
-              if(mb_strlen($password) < 6 ){
-                $checked = 0;
-                $error["password"]["type_msg"] = "has-error";
-                $error["password"]["msg"] = "Mật khẩu tối thiểu phải 6 ít tự";
-              }else{
-                if(strcmp($password, $confirm_password) !=0 ){
+              $image_hidden         =   trim(@$request->image_hidden);      
+              $status               =   trim(@$request->status);          
+              $data 		            =   array();
+              $info 		            =   array();
+              $error 		            =   array();
+              $item		              =   null;
+              $checked 	            =   1;      
+              $setting= getSettingSystem();
+              $width=$setting['product_width']['field_value'];
+              $height=$setting['product_height']['field_value'];   
+              if($password != null){
+                if(mb_strlen($password) < 10 ){
                   $checked = 0;
                   $error["password"]["type_msg"] = "has-error";
-                  $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
+                  $error["password"]["msg"] = "Mật khẩu tối thiểu phải 10 ký tự";
+                }else{
+                  if(strcmp($password, $password_confirmed) !=0 ){
+                    $checked = 0;
+                    $error["password"]["type_msg"] = "has-error";
+                    $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
+                  }
                 }
-              }        
-            }     
-          }
-          if((int)$status==-1){
-             $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
-          }
-          if ($checked == 1) {   
-                $image_name='';
-                if($image_file != null){                      
-                  $image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
-                } 
-                if(empty($id)){
-                    $item         =   new EmployerModel;       
-                    $item->created_at   = date("Y-m-d H:i:s",time());        
-                      
-                } else{
-                    $item       = EmployerModel::find((int)@$id);   
-                                  
-                }  
-                if(!empty($password)){
-                  $item->password         = Hash::make($password);
-                }
-                $item->meta_keyword       = @$meta_keyword;
-                $item->meta_description   = @$meta_description;
-                $item->status 			      =	(int)@$status;    
-                $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
-                $item->save();                                  
-                $info = array(
-                  'type_msg' 			=> "has-success",
-                  'msg' 				=> 'Lưu dữ liệu thành công',
-                  "checked" 			=> 1,
-                  "error" 			=> $error,
-                  "id"    			=> $id
-                );
+              }                       
+              if($alias == null){
+                $checked = 0;
+                $error["alias"]["type_msg"] = "has-error";
+                $error["alias"]["msg"] = "Thiếu alias";
+              }
+              if((int)$status==-1){
+               $checked = 0;
+               $error["status"]["type_msg"] 		= "has-error";
+               $error["status"]["msg"] 			= "Thiếu trạng thái";
+             }
+             if ($checked == 1) {   
+              $image_name='';
+              if($image_file != null){                      
+                $image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+              } 
+              if(empty($id)){
+                $item         =   new EmployerModel;       
+                $item->created_at   = date("Y-m-d H:i:s",time());        
+
+              } else{
+                $item       = EmployerModel::find((int)@$id);   
+
+              }  
+              if($password != null){
+                $item->password         = Hash::make($password);
+              }
+              $item->alias              = @$alias;
+              $item->meta_keyword       = @$meta_keyword;
+              $item->meta_description   = @$meta_description;
+              $item->status 			      =	(int)@$status;    
+              $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
+              $item->save();                                  
+              $info = array(
+                'type_msg' 			=> "has-success",
+                'msg' 				=> 'Lưu dữ liệu thành công',
+                "checked" 			=> 1,
+                "error" 			=> $error,
+                "id"    			=> $id
+              );
             }else {
-                    $info = array(
-                      'type_msg' 			=> "has-error",
-                      'msg' 				=> 'Lưu dữ liệu thất bại',
-                      "checked" 			=> 0,
-                      "error" 			=> $error,
-                      "id"				=> ""
-                    );
+              $info = array(
+                'type_msg' 			=> "has-error",
+                'msg' 				=> 'Lưu dữ liệu thất bại',
+                "checked" 			=> 0,
+                "error" 			=> $error,
+                "id"				=> ""
+              );
             }        		 			       
             return $info;       
-    }
+          }
           public function changeStatus(Request $request){
                   $id             =       (int)$request->id;     
                   $checked                =   1;

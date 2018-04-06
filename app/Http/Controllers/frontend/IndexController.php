@@ -316,7 +316,7 @@ class IndexController extends Controller {
           $error[]="Đăng nhập sai mật khẩu";
         }              
       }else{
-        $error[]="Đăng nhập sai email";
+        $error[]="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
       }          
     }                          
     return view("frontend.employer-login",compact("error","data"));                       
@@ -351,7 +351,7 @@ class IndexController extends Controller {
           $error[]="Đăng nhập sai mật khẩu";
         }              
       }else{
-        $error[]="Đăng nhập sai email";
+        $error[]="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
       }          
     }                       
     return view("frontend.candidate-login",compact("error","data"));         

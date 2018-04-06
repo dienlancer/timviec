@@ -13,12 +13,11 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\MarriageModel;
-use App\CandidateModel;
+use App\EmployerModel;
 use DB;
-class MarriageController extends Controller {
-  	var $_controller="marriage";	
-  	var $_title="Tình trạng hôn nhân";
+class EmployerController extends Controller {
+  	var $_controller="employer";	
+  	var $_title="Nhà tuyển dụng";
   	var $_icon="icon-settings font-dark";    
   	public function getList(){		
     		$controller=$this->_controller;	
@@ -39,14 +38,14 @@ class MarriageController extends Controller {
         if(!empty(@$request->filter_search)){      
           $filter_search=trim(@$request->filter_search) ;    
         }        
-        $data=DB::table('marriage')                  
-                ->select('marriage.id','marriage.fullname','marriage.sort_order','marriage.status','marriage.created_at','marriage.updated_at')                
-                ->where('marriage.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-                ->groupBy('marriage.id','marriage.fullname','marriage.sort_order','marriage.status','marriage.created_at','marriage.updated_at')   
-                ->orderBy('marriage.sort_order', 'asc')                
+        $data=DB::table('employer')                  
+                ->select('employer.id','employer.fullname','employer.sort_order','employer.status','employer.created_at','employer.updated_at')                
+                ->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
+                ->groupBy('employer.id','employer.fullname','employer.sort_order','employer.status','employer.created_at','employer.updated_at')   
+                ->orderBy('employer.sort_order', 'asc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
-        $data=marriageConverter($data,$this->_controller);            
+        $data=employerConverter($data,$this->_controller);            
         return $data;
     } 
     public function getForm($task,$id=""){     
@@ -60,7 +59,7 @@ class MarriageController extends Controller {
           switch ($task) {
            case 'edit':
               $title=$this->_title . " : Update";
-              $arrRowData=MarriageModel::find((int)@$id)->toArray();                     
+              $arrRowData=EmployerModel::find((int)@$id)->toArray();                     
            break;
            case 'add':
               $title=$this->_title . " : Add new";
@@ -74,8 +73,7 @@ class MarriageController extends Controller {
      public function save(Request $request){
           $id 					        =		trim($request->id);        
           $fullname 				    =		trim($request->fullname);    
-          $alias                =   trim($request->alias);                          
-          $sort_order           =   trim($request->sort_order);
+          $alias                =   trim($request->alias);                                    
           $status               =   trim($request->status);          
           $data 		            =   array();
           $info 		            =   array();
@@ -99,11 +97,11 @@ class MarriageController extends Controller {
           }
           if ($checked == 1) {    
                 if(empty($id)){
-                    $item         =   new MarriageModel;       
+                    $item         =   new EmployerModel;       
                     $item->created_at   = date("Y-m-d H:i:s",time());        
                       
                 } else{
-                    $item       = MarriageModel::find((int)@$id);   
+                    $item       = EmployerModel::find((int)@$id);   
                                   
                 }  
                 $item->fullname 		    =	@$fullname;  
@@ -136,7 +134,7 @@ class MarriageController extends Controller {
                   $type_msg               =   "alert-success";
                   $msg                    =   "Cập nhật thành công";              
                   $status         =       (int)@$request->status;
-                  $item           =       MarriageModel::find((int)@$id);        
+                  $item           =       EmployerModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
                   $data                   =   $this->loadData($request);
@@ -154,14 +152,14 @@ class MarriageController extends Controller {
             $checked                =   1;
             $type_msg               =   "alert-success";
             $msg                    =   "Xóa thành công";     
-            $data                   =   CandidateModel::whereRaw("marriage_id = ?",[(int)@$id])->get()->toArray();  
+            $data                   =   EmployerModel::whereRaw("scale_id = ?",[(int)@$id])->get()->toArray();  
             if(count($data) > 0){
               $checked     =   0;
               $type_msg           =   "alert-warning";            
               $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }                  
             if($checked == 1){
-              $item = MarriageModel::find((int)@$id);
+              $item = EmployerModel::find((int)@$id);
                 $item->delete();                                                
             }        
             $data                   =   $this->loadData($request);
@@ -189,7 +187,7 @@ class MarriageController extends Controller {
         if($checked==1){
           foreach ($arrID as $key => $value) {
             if(!empty($value)){
-              $item=MarriageModel::find($value);
+              $item=EmployerModel::find($value);
               $item->status=$status;
               $item->save();      
             }            
@@ -217,7 +215,7 @@ class MarriageController extends Controller {
           $msg                =   "Vui lòng chọn ít nhất một phần tử";
         }            
         foreach ($arrID as $key => $value){
-          $data                   =   CandidateModel::whereRaw("marriage_id = ?",[(int)@$value])->get()->toArray();  
+          $data                   =   EmployerModel::whereRaw("scale_id = ?",[(int)@$value])->get()->toArray();  
             if(count($data) > 0){
               $checked     =   0;
               $type_msg           =   "alert-warning";            
@@ -226,7 +224,7 @@ class MarriageController extends Controller {
         } 
         if($checked == 1){                                  
 
-          DB::table('marriage')->whereIn('id',@$arrID)->delete();                                      
+          DB::table('employer')->whereIn('id',@$arrID)->delete();                                      
         }
         $data                   =   $this->loadData($request);
         $info = array(
@@ -247,7 +245,7 @@ class MarriageController extends Controller {
             if(count($data_order) > 0){              
               foreach($data_order as $key => $value){      
                 if(!empty($value)){
-                  $item=MarriageModel::find((int)@$value->id);                
+                  $item=EmployerModel::find((int)@$value->id);                
                 $item->sort_order=(int)$value->sort_order;                         
                 $item->save();                      
                 }                                                  
@@ -277,15 +275,15 @@ class MarriageController extends Controller {
            $error["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{          
           $alias=str_slug($fullname,'-');          
-          $dataMarriage=array();
+          $dataScale=array();
           $checked_trung_alias=0;          
           if (empty($id)) {              
-              $dataMarriage=MarriageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
+              $dataScale=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
             }else{
-              $dataMarriage=MarriageModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
+              $dataScale=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
             }  
            
-           if (count($dataMarriage) > 0) {
+           if (count($dataScale) > 0) {
             $checked_trung_alias=1;
           }
           if((int)$checked_trung_alias == 1){

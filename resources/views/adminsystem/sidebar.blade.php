@@ -209,7 +209,7 @@ switch ($controller) {
     <li class="nav-item <?php echo $li_employer_management; ?>">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-folder-open-o" ></i>
-            <span class="title">Quản lý doanh nghiệp</span>
+            <span class="title">Quản lý nhà tuyển dụng</span>
             <span class="arrow"></span>
         </a>
         <ul class="sub-menu">                                    

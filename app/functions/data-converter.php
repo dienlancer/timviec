@@ -1556,12 +1556,16 @@ function employerConverter($data=array(),$controller){
             }
             $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';                   
             $id=@$data[$i]["id"];   
-            $fullname=$data[$i]["fullname"];            
+            $fullname=$data[$i]["fullname"];   
+            $email=@$data[$i]['email'];
+            $user_fullname=@$data[$i]['user_fullname'];         
             $result[$i] = array(
                 'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
                 'is_checked'               =>   0,
                 "id"                       =>   $id,
-                "fullname"                 =>   $fullname,                                         
+                "fullname"                 =>   $fullname,
+                "email"                    =>   $email,   
+                'user_fullname'            =>   $user_fullname,                                      
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
                 "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),

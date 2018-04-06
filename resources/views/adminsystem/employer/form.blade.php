@@ -34,6 +34,7 @@ $inputWebsite = @$arrRowData['website'];
 $inputContactedName=@$arrRowData['contacted_name'];
 $inputContactedEmail=@$arrRowData['contacted_email'];
 $inputContactedPhone=@$arrRowData['contacted_phone'];
+$ddlUser      =   cmsSelectboxCategory("user_id","form-control",$arrUser,@$arrRowData['user_id'],"",'Chọn danh mục');
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
@@ -171,7 +172,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 </div> 
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label"><b>Quy mô</b></label>
+                        <label class="col-md-3 control-label"><b>Quy mô công ty</b></label>
                         <div class="col-md-9 ctrl-right">
                             <?php echo $inputScale; ?>
                             <span class="help-block"></span>
@@ -244,6 +245,15 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         </div>
                     </div>                         
                 </div> 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Chăm sóc khách hàng</b></label>
+                        <div class="col-md-9 ctrl-right">
+                            <?php echo $ddlUser; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                         
+                </div> 
                 <div class="row"> 
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Trạng thái đăng nhập</b></label>
@@ -287,7 +297,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var password_confirmed=$('input[name="password_confirmed"]').val();           
         var alias=$('input[name="alias"]').val(); 
         var meta_keyword=$('textarea[name="meta_keyword"]').val();
-        var meta_description=$('textarea[name="meta_description"]').val();  
+        var meta_description=$('textarea[name="meta_description"]').val();          
         /* begin xử lý image */
         var image_file=null;
         var image_ctrl=$('input[name="image"]');         
@@ -297,6 +307,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         }        
         var image_hidden=$('input[name="image_hidden"]').val(); 
         /* end xử lý image */                     
+        var user_id=$('select[name="user_id"]').val();  
         var status=$('select[name="status"]').val();     
         var token = $('input[name="_token"]').val();   
         resetErrorStatus();
@@ -311,6 +322,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             dataItem.append('image',image_file);
         } 
         dataItem.append('image_hidden',image_hidden);
+        dataItem.append('user_id',user_id);
         dataItem.append('status',status);                         
         dataItem.append('_token',token);      
         $.ajax({

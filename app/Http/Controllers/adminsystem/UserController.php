@@ -75,6 +75,7 @@ class UserController extends Controller {
                 $confirm_password     =   (@$request->confirm_password);
                 $status               =   trim(@$request->status);          
                 $fullname 					  = 	trim(@$request->fullname);    
+                $phone                =   trim(@$request->phone);
                 $image_file           =   null;
                 if(isset($_FILES["image"])){
                   $image_file         =   $_FILES["image"];
@@ -186,7 +187,8 @@ class UserController extends Controller {
                 $item->password         = Hash::make($password);
               }                                
               $item->status            = (int)$status;
-              $item->fullname         = $fullname;                          
+              $item->fullname         = $fullname;         
+              $item->phone            = @$phone;                 
               $item->sort_order       = (int)@$sort_order;                
               $item->updated_at       = date("Y-m-d H:i:s",time());               
             }  

@@ -106,7 +106,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 					</div>
 				</div>
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Quy mô</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-4" ><div class="xika"><div>Quy mô công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">
 						<?php echo $ddlScale; ?>
 					</div>

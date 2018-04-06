@@ -16,6 +16,7 @@ use App\SupporterModel;
 use App\EmployerModel;
 use App\ProvinceModel;
 use App\ScaleModel;
+use App\User;
 use DB;
 use Hash;
 class EmployerController extends Controller {
@@ -41,10 +42,11 @@ class EmployerController extends Controller {
         if(!empty(@$request->filter_search)){      
           $filter_search=trim(@$request->filter_search) ;    
         }        
-        $data=DB::table('employer')                  
-                ->select('employer.id','employer.fullname','employer.status','employer.created_at','employer.updated_at')                
+        $data=DB::table('employer')  
+              ->leftJoin('users','employer.user_id','=','users.id')                
+                ->select('employer.id','employer.fullname','employer.email','users.fullname as user_fullname','employer.status','employer.created_at','employer.updated_at')                
                 ->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-                ->groupBy('employer.id','employer.fullname','employer.status','employer.created_at','employer.updated_at')   
+                ->groupBy('employer.id','employer.fullname','employer.email','users.fullname','employer.status','employer.created_at','employer.updated_at')   
                 ->orderBy('employer.created_at', 'desc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
@@ -58,7 +60,7 @@ class EmployerController extends Controller {
       $arrRowData=array();        
       $arrPrivilege=getArrPrivilege();
       $requestControllerAction=$this->_controller."-form";  
-      
+      $arrUser=User::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
       if(in_array($requestControllerAction, $arrPrivilege)){
         switch ($task) {
          case 'edit':
@@ -69,7 +71,7 @@ class EmployerController extends Controller {
          $title=$this->_title . " : Add new";
          break;     
        }                  
-       return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
+       return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrUser","controller","task","title","icon"));
      }else{
       return view("adminsystem.no-access");
     }        
@@ -80,7 +82,8 @@ class EmployerController extends Controller {
               $password_confirmed     =   (@$request->password_confirmed);
               $alias                =   trim(@$request->alias);    
               $meta_keyword 				=		trim(@$request->meta_keyword);
-              $meta_description     =   trim(@$request->meta_description);     
+              $meta_description     =   trim(@$request->meta_description);    
+              $user_id              =   trim(@$request->user_id); 
               $image_file           =   null;
               if(isset($_FILES["image"])){
                 $image_file         =   $_FILES["image"];
@@ -145,6 +148,7 @@ class EmployerController extends Controller {
               $item->alias              = @$alias;
               $item->meta_keyword       = @$meta_keyword;
               $item->meta_description   = @$meta_description;
+              $item->user_id            = (int)@$user_id;
               $item->status 			      =	(int)@$status;    
               $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
               $item->save();                                  

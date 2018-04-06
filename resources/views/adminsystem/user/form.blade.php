@@ -16,6 +16,7 @@ $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"       value="'.@$arrRowData['fullname'].'">'; 
+$inputPhone          =   '<input type="text" class="form-control" name="phone"       value="'.@$arrRowData['phone'].'">'; 
 $ddlGroupMember         =   cmsSelectboxGroupMemberMultiple("group_member_id[]", 'form-control', @$arrGroupMember, @$arrUserGroupMember,"",'Chọn danh mục');
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"   value="'.@$arrRowData['sort_order'].'">';
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
@@ -93,6 +94,15 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
                         <label class="col-md-2 control-label"><b>Tên người dùng</b></label>
                         <div class="col-md-10">
                             <?php echo $inputFullName; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Điện thoại</b></label>
+                        <div class="col-md-10">
+                            <?php echo $inputPhone; ?>
                             <span class="help-block"></span>
                         </div>
                     </div> 
@@ -183,6 +193,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
         var confirm_password=$('input[name="confirm_password"]').val();
         var status=$('select[name="status"]').val();
         var fullname=$('input[name="fullname"]').val();
+        var phone=$('input[name="phone"]').val();
         /* begin xử lý image */
         var image_file=null;
         var image_ctrl=$('input[name="image"]');         
@@ -203,7 +214,8 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
         dataItem.append('password',password);        
         dataItem.append('confirm_password',confirm_password);
         dataItem.append('status',status); 
-        dataItem.append('fullname',fullname);         
+        dataItem.append('fullname',fullname);   
+        dataItem.append('phone',phone);         
         if(image_files.length > 0){
             dataItem.append('image',image_file);
         }        

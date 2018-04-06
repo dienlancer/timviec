@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 06, 2018 lúc 07:37 AM
+-- Thời gian đã tạo: Th4 06, 2018 lúc 11:45 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -49,7 +49,13 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (3, 1, 'AHbwHv4BMq4Z5b7nkdvOlvcOvXnPqMk0', 1, '2017-11-12 06:24:14', '2017-11-12 06:24:14', '2017-11-12 06:24:14'),
 (4, 1, 'JqmoT6nwuNXt0D5jape2qCQsEVQgWEqA', 1, '2017-11-12 06:26:26', '2017-11-12 06:26:26', '2017-11-12 06:26:26'),
 (5, 1, '1TnyfEnFLs7gdNZXKP2r35tc1hBvcnPg', 1, '2017-11-12 07:22:52', '2017-11-12 07:22:52', '2017-11-12 07:22:52'),
-(6, 1, 'QlzbRQWzVJgg01NkGUVewoQhT4qPKTMZ', 1, '2017-11-12 07:23:56', '2017-11-12 07:23:56', '2017-11-12 07:23:56');
+(6, 1, 'QlzbRQWzVJgg01NkGUVewoQhT4qPKTMZ', 1, '2017-11-12 07:23:56', '2017-11-12 07:23:56', '2017-11-12 07:23:56'),
+(7, 2, 'CHzIqLcv0HophdMnUDzxmxmGVVTTNTzS', 1, '2018-04-06 00:52:58', '2018-04-06 00:52:58', '2018-04-06 00:52:58'),
+(8, 3, 'buJ7i8WLEQ6KJYeuPVSBdFzqKy5lQlYY', 1, '2018-04-06 00:54:14', '2018-04-06 00:54:14', '2018-04-06 00:54:14'),
+(9, 4, 'InkbxXI6BmtJ1bSxIjvBwWPBmb0jQCEX', 1, '2018-04-06 00:55:07', '2018-04-06 00:55:07', '2018-04-06 00:55:07'),
+(10, 5, 'EGJqZZXkRXbNqmXeQJSr75JyQOLw0hge', 1, '2018-04-06 00:56:08', '2018-04-06 00:56:08', '2018-04-06 00:56:08'),
+(11, 6, 'z6h4JDz3cAQphIed0IGo2zCcT3jftTfs', 1, '2018-04-06 00:57:12', '2018-04-06 00:57:12', '2018-04-06 00:57:12'),
+(12, 7, 'xx5fe7BQXZ2XLQaCARL8GDjP2bfshTvg', 1, '2018-04-06 00:57:56', '2018-04-06 00:57:56', '2018-04-06 00:57:56');
 
 -- --------------------------------------------------------
 
@@ -253,7 +259,7 @@ CREATE TABLE `candidate` (
 
 INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthday`, `sex_id`, `marriage_id`, `province_id`, `address`, `avatar`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'tranhuyvu@dienkim.com', '$2y$10$JDy8UjKIRPmnMgyIAe3ks.p5Fgpu6HdNl8NysIKtwUvAKrx9jzGfu', 'Trần Huy Vũ', '0988162739', NULL, NULL, NULL, NULL, NULL, 'logo-5-170043946.png', 1, '2018-04-03 02:32:59', '2018-04-05 02:00:14'),
-(2, 'truongnt@dienkim.com', '$2y$10$MRkUFsVPAp5SoIMhCWlRf.SmszcSxKqQTi0kYk16pBOtfYWt161La', 'Đặng Thị Thu Hằng', '0922111222', '1990-03-29 00:00:00', 2, 2, 45, '23 Lý Thường Kiệt', 'logo-2-349029541.png', 1, '2018-04-03 07:14:21', '2018-04-05 09:22:16'),
+(2, 'truongnt@dienkim.com', '$2y$10$MRkUFsVPAp5SoIMhCWlRf.SmszcSxKqQTi0kYk16pBOtfYWt161La', 'Đặng Thị Thu Hằng', '0922111222', '1990-03-29 00:00:00', 2, 2, 45, '23 Lý Thường Kiệt', 'logo-2-j03u9rwit6op.png', 1, '2018-04-03 07:14:21', '2018-04-06 07:12:51'),
 (3, 'vientg@dienkim.com', '$2y$10$e9812Kvxwy2C8z.q/tGRQOyPBZSEyQftMBmtiWhD7cJ65RfVtTH7y', 'Trần Gia Viên', '0988223244', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:41:02', '2018-04-04 10:12:26'),
 (4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:53:22', '2018-04-04 10:12:57'),
 (5, 'duydp@dienkim.com', '$2y$10$0J9B6zMobYOaNnH3FUu/HeAc1TyoJIRf47WhxXAdOyFb.dOKHAhp2', 'Phạm Đình Duy', '0988145622', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 05:18:40', '2018-04-04 10:13:22'),
@@ -534,6 +540,7 @@ CREATE TABLE `employer` (
   `contacted_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contacted_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contacted_phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -543,14 +550,14 @@ CREATE TABLE `employer` (
 -- Đang đổ dữ liệu cho bảng `employer`
 --
 
-INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_keyword`, `meta_description`, `address`, `phone`, `province_id`, `scale_id`, `logo`, `intro`, `fax`, `website`, `contacted_name`, `contacted_email`, `contacted_phone`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'pnjcomvn@dienkim.com', '$2y$10$9x.3XOYYCCvKEMM6pA9AhuIGl9muSxYPyWMpJfwQ2vuHoLkrIdwxO', 'Công ty CP Vàng Bạc Đá Quý Phú Nhuận', 'cong-ty-cp-vang-bac-da-quy-phu-nhuan', NULL, NULL, '170E Phan Đăng Lưu, Phường 03, Quận Phú Nhuận', '0988162733', 23, 3, 'logo-7-3409.png', 'PNJ là thương hiệu hàng đầu tại Việt Nam trong lĩnh vực chế tác và bán lẻ trang sức bằng vàng, bạc, đá quý. Sản phẩm PNJ ngày càng được các nước tại thị trường Châu Á và Châu Âu ưu chuộng. \r\n\r\nHiện tại, Công ty có hơn 5.200 nhân viên với hệ thống bán sỉ, và hơn 270 cửa hàng bán lẻ trải rộng trên toàn quốc; Xí Nghiệp Nữ trang PNJ có công suất sản xuất đạt trên 4 triệu sản phẩm/năm, được đánh giá là một trong những xí nghiệp chế tác nữ trang lớn nhất khu vực Châu Á với đội ngũ hơn 1.000 nhân viên.\r\n\r\nTrải qua 30 năm hình thành và phát triển, PNJ đã đạt đươc nhiều thành tựu đáng kể: thuộc Top 500 nhà bán lẻ hàng đầu Châu Á Thái Bình Dương, Giải thưởng Chất lượng Châu Á Thái Bình Dương, Thương hiệu quốc gia, … \r\n\r\nVới những giá trị cốt lõi mà PNJ đã theo đuổi, PNJ đã sở hữu được nguồn nhân lực có tác phong làm việc chuyên nghiệp, hiệu quả lao động cao và hơn cả là mối gắn kết nhân viên với tổ chức. Cơ sở vật chất được trang bị hiện đại bảo đảm nhân viên được làm việc trong điều kiện tốt nhất. Ngoài ra công ty còn trang bị thêm phòng tập GYM và Yoga giúp người lao động tái tạo sức lao động sau một ngày làm việc. \r\n\r\nTập thể PNJ đã cùng nhau chung tay xây dựng văn hoá cảm thông, chia sẻ bằng những hoạt động hỗ trợ cộng đồng, thành lập quỹ từ thiện PNJ, chương trình “mái ấm PNJ” mang đến một cuộc sống tốt đẹp cho người dân nghèo, ươm mầm phát triển tài năng. \r\n\r\nĐể tiếp tục khẳng định vị thế PNJ tại VN và thế giới, chúng tôi đang mở rộng hệ thống phát triển kinh doanh và cần bổ sung những ứng viên tài năng vào đội ngũ nhân sự chuyên nghiệp của mình. \r\n\r\nTại PNJ, sự nghiệp của các bạn sẽ được phát triển cùng với sự lớn mạnh không ngừng của chúng tôi.', '88483127487588', 'www.pnj.com.vn', 'Trần Lệ Diễm Quyên', 'quyentld@dienkim.com', '0988162778', 1, '2018-04-03 01:48:19', '2018-04-05 01:46:20'),
-(2, 'lottevn@dienkim.com', '$2y$10$5QrmrHzQ84G0GDuwW1XY8uLDaYoy9N1KOp0n5Xk//..bdt.br5CqC', 'LOTTE MART VIỆT NAM', 'lotte-mart-viet-nam', NULL, NULL, '469 Nguyễn Hữu Thọ, Quận 7, TP Hồ Chí Minh', '0988162732', 23, 4, NULL, 'Công ty TNHH TTTM LOTTE trực thuộc tập đoàn LOTTE của Hàn Quốc. Tính đến thời điểm này, Trung tâm thương mại LOTTE Mart đã có mặt tại 4 quốc gia của châu Á là: Hàn Quốc, Trung Quốc, Indonesia và Việt Nam, với 243 trung tâm thương mại được xây dựng theo phong cách hiện đại, phù hợp với thị hiếu và nhu cầu mua sắm của người tiêu dùng. Tại Việt Nam, LOTTE Mart đã khai trương 7 trung tâm thương mại, tọa lạc tại những khu vực trung tâm thành phố Hồ Chí Minh: LOTTE Mart Nam Sài Gòn tại quận 7 và LOTTE Mart Phú Thọ quận 11, LOTTE Mart Đồng Nai, LOTTE Mart Đà Nẵng, LOTTE Mart Phan Thiết, LOTTE Mart Bình Dương, LOTTE Mart Hà Nội. Từ khi bước vào thị trường Việt Nam năm 2008 đến nay, LOTTE Mart luôn không ngừng vươn lên với mục tiêu làm hài lòng, thỏa mãn nhu cầu của quý khách, nỗ lực tối đa để cung cấp những sản phẩm, dịch vụ tốt nhất đến tay người tiêu dùng. Mục tiêu đến năm 2020 LOTTE Mart sẽ mở khoảng 60 cửa hàng trải dài khắp các tỉnh thành trên đất nước Việt Nam.', '87437372767823578', 'www.lottemart.com.vn', 'Trần Thanh Tùng', 'tungtt@dienkim.com', '0978222214', 1, '2018-04-03 01:58:47', '2018-04-06 05:26:31'),
-(3, 'spt3134@dienkim.com', '$2y$10$vXe9D1NRDa9vMA.udYBSCOkbs/s.LnwYLdwM5FNF.cHoqEYAdt/2.', 'Công ty CP DV Bưu Chính Viễn Thông Sài Gòn', 'cong-ty-cp-dv-buu-chinh-vien-thong-sai-gon', NULL, NULL, '10 Cô Giang, Phường Cầu Ông Lãnh, Q.1, TP HCM', '0983222111', 23, 3, NULL, 'TRUNG TÂM ĐIỆN THOẠI SPT (SPT Telephone Center - STC) là một Chi nhánh trực thuộc\r\nCông ty Cổ phần Dịch vụ Bưu chính Viễn thông Sài Gòn – SPT chuyên cung cấp số thuê bao điện\r\nthoại cố định, ADSL, FTTx, IPTV và các dịch vụ khác...đáp ứng nhu cầu lắp đặt tại các Công ty, Khu\r\ndân cư, Khu công nghiệp, Khu chế xuất, Khu thương mại,...', '', 'www.spt.vn', 'Đinh Thị Trường Giang', 'giangdtt@dienkim.com', '0933251718', 1, '2018-04-03 06:55:44', '2018-04-04 10:09:03'),
-(4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', NULL, NULL, '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, NULL, 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 1, '2018-04-04 05:29:16', '2018-04-06 05:33:42'),
-(5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công ty CP BĐS ĐÀ THÀNH LAND', 'cong-ty-bds-da-thanh-land', '', '', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 3, 5, NULL, 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 1, '2018-04-04 08:06:36', '2018-04-06 05:37:23'),
-(6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', NULL, NULL, '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 1, '2018-04-06 02:10:27', '2018-04-06 02:10:27'),
-(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', NULL, NULL, 'Nhà máy: Số 5 Đại lộ Tự Do, KCN Vsip I, P.Bình Hòa, TX. Thuận An, Bình Dương; TpHCM: 29-30 Song Hành, KP5, Phường An Phú, Quận 2, Tp.HCM', '0967123456', 23, 3, NULL, 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Nguyễn Văn Đạt', 'datnv@dienkim.com', '0945612888', 1, '2018-04-06 02:30:04', '2018-04-06 02:30:04');
+INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_keyword`, `meta_description`, `address`, `phone`, `province_id`, `scale_id`, `logo`, `intro`, `fax`, `website`, `contacted_name`, `contacted_email`, `contacted_phone`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'pnjcomvn@dienkim.com', '$2y$10$9x.3XOYYCCvKEMM6pA9AhuIGl9muSxYPyWMpJfwQ2vuHoLkrIdwxO', 'Công ty CP Vàng Bạc Đá Quý Phú Nhuận', 'cong-ty-cp-vang-bac-da-quy-phu-nhuan', '', '', '170E Phan Đăng Lưu, Phường 03, Quận Phú Nhuận', '0988162733', 23, 3, 'logo-7-3409.png', 'PNJ là thương hiệu hàng đầu tại Việt Nam trong lĩnh vực chế tác và bán lẻ trang sức bằng vàng, bạc, đá quý. Sản phẩm PNJ ngày càng được các nước tại thị trường Châu Á và Châu Âu ưu chuộng. \r\n\r\nHiện tại, Công ty có hơn 5.200 nhân viên với hệ thống bán sỉ, và hơn 270 cửa hàng bán lẻ trải rộng trên toàn quốc; Xí Nghiệp Nữ trang PNJ có công suất sản xuất đạt trên 4 triệu sản phẩm/năm, được đánh giá là một trong những xí nghiệp chế tác nữ trang lớn nhất khu vực Châu Á với đội ngũ hơn 1.000 nhân viên.\r\n\r\nTrải qua 30 năm hình thành và phát triển, PNJ đã đạt đươc nhiều thành tựu đáng kể: thuộc Top 500 nhà bán lẻ hàng đầu Châu Á Thái Bình Dương, Giải thưởng Chất lượng Châu Á Thái Bình Dương, Thương hiệu quốc gia, … \r\n\r\nVới những giá trị cốt lõi mà PNJ đã theo đuổi, PNJ đã sở hữu được nguồn nhân lực có tác phong làm việc chuyên nghiệp, hiệu quả lao động cao và hơn cả là mối gắn kết nhân viên với tổ chức. Cơ sở vật chất được trang bị hiện đại bảo đảm nhân viên được làm việc trong điều kiện tốt nhất. Ngoài ra công ty còn trang bị thêm phòng tập GYM và Yoga giúp người lao động tái tạo sức lao động sau một ngày làm việc. \r\n\r\nTập thể PNJ đã cùng nhau chung tay xây dựng văn hoá cảm thông, chia sẻ bằng những hoạt động hỗ trợ cộng đồng, thành lập quỹ từ thiện PNJ, chương trình “mái ấm PNJ” mang đến một cuộc sống tốt đẹp cho người dân nghèo, ươm mầm phát triển tài năng. \r\n\r\nĐể tiếp tục khẳng định vị thế PNJ tại VN và thế giới, chúng tôi đang mở rộng hệ thống phát triển kinh doanh và cần bổ sung những ứng viên tài năng vào đội ngũ nhân sự chuyên nghiệp của mình. \r\n\r\nTại PNJ, sự nghiệp của các bạn sẽ được phát triển cùng với sự lớn mạnh không ngừng của chúng tôi.', '88483127487588', 'www.pnj.com.vn', 'Trần Lệ Diễm Quyên', 'quyentld@dienkim.com', '0988162778', 2, 1, '2018-04-03 01:48:19', '2018-04-06 08:24:03'),
+(2, 'lottevn@dienkim.com', '$2y$10$5QrmrHzQ84G0GDuwW1XY8uLDaYoy9N1KOp0n5Xk//..bdt.br5CqC', 'LOTTE MART VIỆT NAM', 'lotte-mart-viet-nam', '', '', '469 Nguyễn Hữu Thọ, Quận 7, TP Hồ Chí Minh', '0988162732', 23, 4, NULL, 'Công ty TNHH TTTM LOTTE trực thuộc tập đoàn LOTTE của Hàn Quốc. Tính đến thời điểm này, Trung tâm thương mại LOTTE Mart đã có mặt tại 4 quốc gia của châu Á là: Hàn Quốc, Trung Quốc, Indonesia và Việt Nam, với 243 trung tâm thương mại được xây dựng theo phong cách hiện đại, phù hợp với thị hiếu và nhu cầu mua sắm của người tiêu dùng. Tại Việt Nam, LOTTE Mart đã khai trương 7 trung tâm thương mại, tọa lạc tại những khu vực trung tâm thành phố Hồ Chí Minh: LOTTE Mart Nam Sài Gòn tại quận 7 và LOTTE Mart Phú Thọ quận 11, LOTTE Mart Đồng Nai, LOTTE Mart Đà Nẵng, LOTTE Mart Phan Thiết, LOTTE Mart Bình Dương, LOTTE Mart Hà Nội. Từ khi bước vào thị trường Việt Nam năm 2008 đến nay, LOTTE Mart luôn không ngừng vươn lên với mục tiêu làm hài lòng, thỏa mãn nhu cầu của quý khách, nỗ lực tối đa để cung cấp những sản phẩm, dịch vụ tốt nhất đến tay người tiêu dùng. Mục tiêu đến năm 2020 LOTTE Mart sẽ mở khoảng 60 cửa hàng trải dài khắp các tỉnh thành trên đất nước Việt Nam.', '87437372767823578', 'www.lottemart.com.vn', 'Trần Thanh Tùng', 'tungtt@dienkim.com', '0978222214', 7, 1, '2018-04-03 01:58:47', '2018-04-06 08:23:52'),
+(3, 'spt3134@dienkim.com', '$2y$10$vXe9D1NRDa9vMA.udYBSCOkbs/s.LnwYLdwM5FNF.cHoqEYAdt/2.', 'Công ty CP DV Bưu Chính Viễn Thông Sài Gòn', 'cong-ty-cp-dv-buu-chinh-vien-thong-sai-gon', '', '', '10 Cô Giang, Phường Cầu Ông Lãnh, Q.1, TP HCM', '0983222111', 23, 3, NULL, 'TRUNG TÂM ĐIỆN THOẠI SPT (SPT Telephone Center - STC) là một Chi nhánh trực thuộc\r\nCông ty Cổ phần Dịch vụ Bưu chính Viễn thông Sài Gòn – SPT chuyên cung cấp số thuê bao điện\r\nthoại cố định, ADSL, FTTx, IPTV và các dịch vụ khác...đáp ứng nhu cầu lắp đặt tại các Công ty, Khu\r\ndân cư, Khu công nghiệp, Khu chế xuất, Khu thương mại,...', '', 'www.spt.vn', 'Đinh Thị Trường Giang', 'giangdtt@dienkim.com', '0933251718', 5, 1, '2018-04-03 06:55:44', '2018-04-06 08:23:44'),
+(4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, NULL, 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, '2018-04-04 05:29:16', '2018-04-06 08:23:33'),
+(5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công ty CP BĐS ĐÀ THÀNH LAND', 'cong-ty-bds-da-thanh-land', 'metakeyword Công ty CP BĐS ĐÀ THÀNH LAND 67', 'metadescription Công ty CP BĐS ĐÀ THÀNH LAND 67', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 3, 5, 'logo-5-oelvytaxmjgh.png', 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 3, 1, '2018-04-04 08:06:36', '2018-04-06 08:30:15'),
+(6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', '', '', '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 6, 1, '2018-04-06 02:10:27', '2018-04-06 08:25:35'),
+(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', 'Nhà máy: Số 5 Đại lộ Tự Do, KCN Vsip I, P.Bình Hòa, TX. Thuận An, Bình Dương; TpHCM: 29-30 Song Hành, KP5, Phường An Phú, Quận 2, Tp.HCM', '0967123456', 23, 3, NULL, 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Nguyễn Văn Đạt', 'datnv@dienkim.com', '0945612888', 2, 1, '2018-04-06 02:30:04', '2018-04-06 08:23:07');
 
 -- --------------------------------------------------------
 
@@ -573,7 +580,8 @@ CREATE TABLE `group_member` (
 --
 
 INSERT INTO `group_member` (`id`, `fullname`, `alias`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-06 04:02:19');
+(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-06 04:02:19'),
+(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-06 09:22:05');
 
 -- --------------------------------------------------------
 
@@ -660,7 +668,9 @@ INSERT INTO `group_privilege` (`id`, `group_member_id`, `privilege_id`, `created
 (4031, 1, 155, '2018-04-06 04:02:19', '2018-04-06 04:02:19'),
 (4032, 1, 156, '2018-04-06 04:02:19', '2018-04-06 04:02:19'),
 (4033, 1, 157, '2018-04-06 04:02:19', '2018-04-06 04:02:19'),
-(4034, 1, 158, '2018-04-06 04:02:19', '2018-04-06 04:02:19');
+(4034, 1, 158, '2018-04-06 04:02:19', '2018-04-06 04:02:19'),
+(4035, 2, 157, '2018-04-06 07:51:51', '2018-04-06 07:51:51'),
+(4036, 2, 158, '2018-04-06 07:51:51', '2018-04-06 07:51:51');
 
 -- --------------------------------------------------------
 
@@ -1537,7 +1547,11 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (819, 1, 'TN1wBeNuriL6bumrWygN8DOBa71SHRUg', '2018-04-05 03:17:58', '2018-04-05 03:17:58'),
 (820, 1, 's1YFj8ZTbvdQRZs31AkbCNJ4SEX2WYb2', '2018-04-05 03:20:18', '2018-04-05 03:20:18'),
 (821, 1, 'wWAsZqTuPkvRoNFQHQsBWD7vJrYJqL4l', '2018-04-05 03:54:53', '2018-04-05 03:54:53'),
-(822, 1, 'cDoYNXtRDLoekVQiUQgtxn0InSwBDrJS', '2018-04-05 18:07:57', '2018-04-05 18:07:57');
+(825, 1, 'NbqlsAQtBPvLd2EDxjE9tIBg6xSSsmpn', '2018-04-06 01:57:17', '2018-04-06 01:57:17'),
+(826, 1, '7HNy0YMwdmhHIB7uofk6zIHPwdMNGnar', '2018-04-06 01:57:54', '2018-04-06 01:57:54'),
+(827, 1, 'bf9jnJS2pQMKM86UldxloNU3CB3COwsv', '2018-04-06 02:01:01', '2018-04-06 02:01:01'),
+(829, 2, 'GvzS8H7LxbyWyGiGwHV71wfi4hdjTeDi', '2018-04-06 02:02:18', '2018-04-06 02:02:18'),
+(841, 2, 'wqakmaoVqww0oPsF0sLXAi6BfG9ET5Jd', '2018-04-06 02:22:27', '2018-04-06 02:22:27');
 
 -- --------------------------------------------------------
 
@@ -2691,7 +2705,10 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (530, 1, 'user', NULL, '2018-03-13 21:42:58', '2018-03-13 21:42:58'),
 (531, NULL, 'global', NULL, '2018-04-01 04:26:16', '2018-04-01 04:26:16'),
 (532, NULL, 'ip', '127.0.0.1', '2018-04-01 04:26:16', '2018-04-01 04:26:16'),
-(533, 1, 'user', NULL, '2018-04-01 04:26:16', '2018-04-01 04:26:16');
+(533, 1, 'user', NULL, '2018-04-01 04:26:16', '2018-04-01 04:26:16'),
+(534, NULL, 'global', NULL, '2018-04-06 02:07:34', '2018-04-06 02:07:34'),
+(535, NULL, 'ip', '127.0.0.1', '2018-04-06 02:07:34', '2018-04-06 02:07:34'),
+(536, 1, 'user', NULL, '2018-04-06 02:07:34', '2018-04-06 02:07:34');
 
 -- --------------------------------------------------------
 
@@ -2722,7 +2739,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-05 18:07:57', 'Nguyễn Kim Điền', NULL, NULL, 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-05 18:07:57');
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-06 02:22:14', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-06 02:22:14'),
+(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$X4oiWN77NMqQwgYSrWQK5eMPy1/ixHK3lKbbdeUKb1EjT93O1dP6W', NULL, '2018-04-06 02:22:27', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-5-jzdg176f9o5q.png', 2, 1, '2018-04-06 00:52:58', '2018-04-06 02:22:27'),
+(3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, NULL, 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 01:03:17'),
+(4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, NULL, 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 01:03:27'),
+(5, 'thuyttt', 'thuyttt@dienkim.com', '$2y$10$AA6KmOmb/IPF2RZyy3usc.GWvSfZmgNJySKEf65tUtxJ6e3hpp1lS', NULL, NULL, 'Trần Thị Thanh Thúy', NULL, '0923111222', 'logo-3-3e4tfsqz86h2.png', 5, 1, '2018-04-06 00:56:08', '2018-04-06 01:03:38'),
+(6, 'thaoht', 'thaoht@dienkim.com', '$2y$10$HH42krxiiZhRfnaedbjw7exT3LpC5052NANqWiBIFH/As/Gvb5Soe', NULL, NULL, 'Hoàng Thị Hồng Thảo', NULL, '0944111333', 'logo-4-m30xjclwqpy7.png', 6, 1, '2018-04-06 00:57:12', '2018-04-06 01:03:53'),
+(7, 'trangttt', 'trangttt@dienkim.com', '$2y$10$1YolHwegMnyr/ewwtr4t9OHy4apeBhARteyM0cJMxd3oP1rx2XdcO', NULL, NULL, 'Trần Thị Thu Trang', NULL, '0999123321', 'logo-4-k59pac0t2zg8.png', 7, 1, '2018-04-06 00:57:56', '2018-04-06 01:04:10');
 
 -- --------------------------------------------------------
 
@@ -2744,7 +2767,13 @@ CREATE TABLE `user_group_member` (
 --
 
 INSERT INTO `user_group_member` (`id`, `group_member_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(4, 1, 1, '2018-01-26 04:05:58', '2018-01-26 04:05:58');
+(4, 1, 1, '2018-01-26 04:05:58', '2018-01-26 04:05:58'),
+(5, 2, 2, '2018-04-06 07:52:58', '2018-04-06 07:52:58'),
+(6, 2, 3, '2018-04-06 07:54:14', '2018-04-06 07:54:14'),
+(7, 2, 4, '2018-04-06 07:55:07', '2018-04-06 07:55:07'),
+(8, 2, 5, '2018-04-06 07:56:08', '2018-04-06 07:56:08'),
+(9, 2, 6, '2018-04-06 07:57:12', '2018-04-06 07:57:12'),
+(10, 2, 7, '2018-04-06 07:57:56', '2018-04-06 07:57:56');
 
 -- --------------------------------------------------------
 
@@ -3066,7 +3095,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT cho bảng `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `album`
@@ -3144,13 +3173,13 @@ ALTER TABLE `employer`
 -- AUTO_INCREMENT cho bảng `group_member`
 --
 ALTER TABLE `group_member`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `group_privilege`
 --
 ALTER TABLE `group_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4035;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4037;
 
 --
 -- AUTO_INCREMENT cho bảng `invoice`
@@ -3210,7 +3239,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=823;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=842;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3300,19 +3329,19 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT cho bảng `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=534;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=537;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `user_group_member`
 --
 ALTER TABLE `user_group_member`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `video`

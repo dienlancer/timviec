@@ -11,7 +11,7 @@ $inputPasswordConfirmed   =   '<input type="password"  name="password_confirmed"
 $inputFullName          =   @$arrRowData['fullname']; 
 $inputAlias             =   '<input type="text" class="form-control" name="alias"            value="'.@$arrRowData['alias'].'">';
 $inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
-$inputMetadescription             =   '<textarea name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
+$inputMetadescription             =   '<textarea name="meta_description" rows="5" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
 $inputAddress           =   @$arrRowData['address'];
 $inputPhone             =   @$arrRowData['phone']; 
 /* begin tỉnh thành phố và quy mô công ty */
@@ -28,7 +28,7 @@ if((@$source_scale)!=null){
     $inputScale=$data_scale['fullname'];
 }
 /* end tỉnh thành phố và quy mô công ty */
-$inputIntro             =   '<textarea name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
+$inputIntro             =   '<textarea name="intro" rows="10" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputFax =         @$arrRowData['fax'];
 $inputWebsite = @$arrRowData['website'];
 $inputContactedName=@$arrRowData['contacted_name'];
@@ -37,6 +37,22 @@ $inputContactedPhone=@$arrRowData['contacted_phone'];
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+
+/* begin logo */
+$picture                =   "";
+$strImage               =   "";
+$setting = getSettingSystem();
+$product_width = $setting['product_width']['field_value'];
+$product_height = $setting['product_height']['field_value'];  
+if(count(@$arrRowData)>0){
+    if(!empty(@$arrRowData["logo"])){
+        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$arrRowData["logo"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
+        $strImage       =   @$arrRowData["logo"];
+    }        
+} 
+$inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
+/* end logo */
+
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
 
@@ -59,8 +75,9 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
     </div>
     <div class="portlet-body form">
         <form class="form-horizontal" name="frm" role="form" enctype="multipart/form-data">
-            {{ csrf_field() }}            
-            <?php echo  $inputID; ?>                   
+            {{ csrf_field() }}                     
+            <?php echo  $inputID; ?>
+            <?php echo $inputPictureHidden; ?>                   
             <div class="form-body">
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -106,7 +123,25 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <span class="help-block"></span>
                         </div>
                     </div>                         
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>MetaKeyword</b></label>
+                        <div class="col-md-9">
+                            <?php echo $inputMetakeyword; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                         
                 </div> 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>MetaDescription</b></label>
+                        <div class="col-md-9">
+                            <?php echo $inputMetadescription; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                         
+                </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Địa chỉ</b></label>
@@ -143,6 +178,18 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         </div>
                     </div>                         
                 </div> 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3 control-label" ><b>Logo</b></div>
+                        <div class="col-md-9 ctrl-right">
+                            <div class="recommend">
+                                <div><input type="file" name="image"  /></div>
+                                <div><font color="#E30000"><b>Khuyến khích cập nhật logo hình vuông</b></font></div>
+                            </div>
+                            <div class="picture-area"><?php echo $picture; ?>                      </div>
+                        </div>
+                    </div>                    
+                </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Sơ lược công ty</b></label>
@@ -222,20 +269,48 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         $(password).closest('.form-group').find('span').empty().hide();                    
         $(status).closest('.form-group').find('span').empty().hide();        
     }
-
+    function deleteImage(){
+        var xac_nhan = 0;
+        var msg="Bạn có muốn xóa ?";
+        if(window.confirm(msg)){ 
+            xac_nhan = 1;
+        }
+        if(xac_nhan  == 0){
+            return 0;
+        }
+        $(".picture-area").empty();
+        $("input[name='image_hidden']").val("");        
+    }
     function save(){
         var id=$('input[name="id"]').val();         
         var password=$('input[name="password"]').val();
         var password_confirmed=$('input[name="password_confirmed"]').val();           
-        var alias=$('input[name="alias"]').val();                        
+        var alias=$('input[name="alias"]').val(); 
+        var meta_keyword=$('textarea[name="meta_keyword"]').val();
+        var meta_description=$('textarea[name="meta_description"]').val();  
+        /* begin xử lý image */
+        var image_file=null;
+        var image_ctrl=$('input[name="image"]');         
+        var image_files = $(image_ctrl).get(0).files;        
+        if(image_files.length > 0){            
+            image_file  = image_files[0];  
+        }        
+        var image_hidden=$('input[name="image_hidden"]').val(); 
+        /* end xử lý image */                     
         var status=$('select[name="status"]').val();     
         var token = $('input[name="_token"]').val();   
         resetErrorStatus();
         var dataItem = new FormData();
         dataItem.append('id',id);        
         dataItem.append('password',password);        
-        dataItem.append('password_confirmed',password_confirmed);
+        dataItem.append('password_confirmed',password_confirmed);        
         dataItem.append('alias',alias);
+        dataItem.append('meta_keyword',meta_keyword);
+        dataItem.append('meta_description',meta_description);
+        if(image_files.length > 0){
+            dataItem.append('image',image_file);
+        } 
+        dataItem.append('image_hidden',image_hidden);
         dataItem.append('status',status);                         
         dataItem.append('_token',token);      
         $.ajax({

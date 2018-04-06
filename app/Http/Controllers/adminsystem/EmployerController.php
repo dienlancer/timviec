@@ -126,10 +126,18 @@ class EmployerController extends Controller {
               if(empty($id)){
                 $item         =   new EmployerModel;       
                 $item->created_at   = date("Y-m-d H:i:s",time());        
-
+                if(!empty($image_name)){
+                  $item->logo    =   trim($image_name) ;  
+                } 
               } else{
                 $item       = EmployerModel::find((int)@$id);   
-
+                $item->logo=null;                       
+                if(!empty($image_hidden)){
+                  $item->logo =$image_hidden;          
+                }
+                if(!empty($image_name))  {
+                  $item->logo=$image_name;                                                
+                }  
               }  
               if($password != null){
                 $item->password         = Hash::make($password);

@@ -179,15 +179,13 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
         var sort_order           =   $('input[name="sort_order"]');
         var status               =   $('select[name="status"]');
         
-        $(fullname).closest('.form-group').removeClass("has-error");
-        
+        $(fullname).closest('.form-group').removeClass("has-error");        
         $(alias).closest('.form-group').removeClass("has-error");
         $(category_id).closest('.form-group').removeClass("has-error");
         $(sort_order).closest('.form-group').removeClass("has-error");
         $(status).closest('.form-group').removeClass("has-error");        
 
-        $(fullname).closest('.form-group').find('span').empty().hide();
-        
+        $(fullname).closest('.form-group').find('span').empty().hide();        
         $(alias).closest('.form-group').find('span').empty().hide();
         $(category_id).closest('.form-group').find('span').empty().hide();
         $(sort_order).closest('.form-group').find('span').empty().hide();

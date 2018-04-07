@@ -7,33 +7,23 @@ $linkSave               =   route('adminsystem.'.$controller.'.save');
 
 $inputEmail             =   @$arrRowData['email']; 
 $inputPassword          =   '<input type="password"   name="password" class="form-control" />';
-$inputPasswordConfirmed   =   '<input type="password"  name="password_confirmed" class="form-control"  />';
-$inputFullName          =   @$arrRowData['fullname']; 
+$inputPasswordConfirmed =   '<input type="password"  name="password_confirmed" class="form-control"  />';
+$inputFullName          =   '<input type="text" class="form-control" name="fullname"        value="'.@$arrRowData['fullname'].'">'; 
 $inputAlias             =   '<input type="text" class="form-control" name="alias"            value="'.@$arrRowData['alias'].'">';
-$inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
-$inputMetadescription             =   '<textarea name="meta_description" rows="5" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
-$inputAddress           =   @$arrRowData['address'];
-$inputPhone             =   @$arrRowData['phone']; 
+$inputMetakeyword       =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
+$inputMetadescription   =   '<textarea name="meta_description" rows="5" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
+$inputAddress           =   '<input type="text" class="form-control" name="address"        value="'.@$arrRowData['address'].'">'; 
+$inputPhone             =   '<input type="text" class="form-control" name="phone"        value="'.@$arrRowData['phone'].'">'; 
 /* begin tỉnh thành phố và quy mô công ty */
-$inputProvince = '';
-$inputScale = '';
-$source_province=App\ProvinceModel::find((int)@$arrRowData['province_id']);
-$source_scale=App\ScaleModel::find((int)@$arrRowData['scale_id']);
-if((@$source_province)!=null){
-    $data_province=@$source_province->toArray();
-    $inputProvince=$data_province['fullname'];
-}
-if((@$source_scale)!=null){
-    $data_scale=@$source_scale->toArray();
-    $inputScale=$data_scale['fullname'];
-}
+$ddlProvince            = cmsSelectboxCategory("province_id","form-control",$arrProvince,@$arrRowData['province_id'],"",'Chọn tỉnh thành phố');
+$ddlScale               = cmsSelectboxCategory("scale_id","form-control",$arrScale,@$arrRowData['scale_id'],"",'Chọn quy mô công ty');
 /* end tỉnh thành phố và quy mô công ty */
 $inputIntro             =   '<textarea name="intro" rows="10" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
-$inputFax =         @$arrRowData['fax'];
-$inputWebsite = @$arrRowData['website'];
-$inputContactedName=@$arrRowData['contacted_name'];
-$inputContactedEmail=@$arrRowData['contacted_email'];
-$inputContactedPhone=@$arrRowData['contacted_phone'];
+$inputFax =         '<input type="text" class="form-control" name="fax"        value="'.@$arrRowData['fax'].'">'; 
+$inputWebsite = '<input type="text" class="form-control" name="website"        value="'.@$arrRowData['website'].'">'; 
+$inputContactedName='<input type="text" class="form-control" name="contacted_name"        value="'.@$arrRowData['contacted_name'].'">'; 
+$inputContactedEmail='<input type="text" class="form-control" name="contacted_email"        value="'.@$arrRowData['contacted_email'].'">'; 
+$inputContactedPhone='<input type="text" class="form-control" name="contacted_phone"        value="'.@$arrRowData['contacted_phone'].'">'; 
 $ddlUser      =   cmsSelectboxCategory("user_id","form-control",$arrUser,@$arrRowData['user_id'],"",'Chọn danh mục');
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
@@ -165,7 +155,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Tỉnh / thành phố</b></label>
                         <div class="col-md-9 ctrl-right">
-                            <?php echo $inputProvince; ?>
+                            <?php echo $ddlProvince; ?>
                             <span class="help-block"></span>
                         </div>
                     </div>                         
@@ -174,7 +164,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Quy mô công ty</b></label>
                         <div class="col-md-9 ctrl-right">
-                            <?php echo $inputScale; ?>
+                            <?php echo $ddlScale; ?>
                             <span class="help-block"></span>
                         </div>
                     </div>                         
@@ -270,12 +260,24 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
 <script type="text/javascript" language="javascript">
     function resetErrorStatus(){
         var id                   =   $('input[name="id"]');
+        var fullname             =   $('input[name="fullname"]');
+        var alias                =   $('input[name="alias"]');
+        var province_id             =   $('select[name="province_id"]');
+        var scale_id                =   $('select[name="scale_id"]');
         var password             =   $('input[name="password"]');                  
         var status               =   $('select[name="status"]');
         
+        $(fullname).closest('.form-group').removeClass("has-error");        
+        $(alias).closest('.form-group').removeClass("has-error");
+        $(province_id).closest('.form-group').removeClass("has-error");        
+        $(scale_id).closest('.form-group').removeClass("has-error");
         $(password).closest('.form-group').removeClass("has-error");                   
         $(status).closest('.form-group').removeClass("has-error");        
 
+        $(fullname).closest('.form-group').find('span').empty().hide();        
+        $(alias).closest('.form-group').find('span').empty().hide();
+        $(province_id).closest('.form-group').find('span').empty().hide();        
+        $(scale_id).closest('.form-group').find('span').empty().hide();
         $(password).closest('.form-group').find('span').empty().hide();                    
         $(status).closest('.form-group').find('span').empty().hide();        
     }
@@ -295,9 +297,20 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var id=$('input[name="id"]').val();         
         var password=$('input[name="password"]').val();
         var password_confirmed=$('input[name="password_confirmed"]').val();           
+        var fullname=$('input[name="fullname"]').val(); 
         var alias=$('input[name="alias"]').val(); 
         var meta_keyword=$('textarea[name="meta_keyword"]').val();
-        var meta_description=$('textarea[name="meta_description"]').val();          
+        var meta_description=$('textarea[name="meta_description"]').val();    
+        var address=$('input[name="address"]').val();   
+        var phone=$('input[name="phone"]').val();   
+        var province_id=$('select[name="province_id"]').val();          
+        var scale_id=$('select[name="scale_id"]').val();       
+        var intro=$('textarea[name="intro"]').val();   
+        var fax=$('input[name="fax"]').val(); 
+        var website=$('input[name="website"]').val(); 
+        var contacted_name=$('input[name="contacted_name"]').val(); 
+        var contacted_email=$('input[name="contacted_email"]').val(); 
+        var contacted_phone=$('input[name="contacted_phone"]').val(); 
         /* begin xử lý image */
         var image_file=null;
         var image_ctrl=$('input[name="image"]');         
@@ -315,9 +328,20 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         dataItem.append('id',id);        
         dataItem.append('password',password);        
         dataItem.append('password_confirmed',password_confirmed);        
+        dataItem.append('fullname',fullname);
         dataItem.append('alias',alias);
         dataItem.append('meta_keyword',meta_keyword);
         dataItem.append('meta_description',meta_description);
+        dataItem.append('address',address);
+        dataItem.append('phone',phone);
+        dataItem.append('province_id',province_id);
+        dataItem.append('scale_id',scale_id);
+        dataItem.append('intro',intro);
+        dataItem.append('fax',fax);
+        dataItem.append('website',website);
+        dataItem.append('contacted_name',contacted_name);
+        dataItem.append('contacted_email',contacted_email);
+        dataItem.append('contacted_phone',contacted_phone);
         if(image_files.length > 0){
             dataItem.append('image',image_file);
         } 
@@ -340,6 +364,21 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         $('input[name="password"]').closest('.form-group').find('span').text(data_error.password.msg);
                         $('input[name="password"]').closest('.form-group').find('span').show();                        
                     }   
+                    if(typeof data_error.fullname               != "undefined"){
+                        $('input[name="fullname"]').closest('.form-group').addClass(data_error.fullname.type_msg);
+                        $('input[name="fullname"]').closest('.form-group').find('span').text(data_error.fullname.msg);
+                        $('input[name="fullname"]').closest('.form-group').find('span').show();                        
+                    }  
+                    if(typeof data_error.province_id               != "undefined"){
+                        $('select[name="province_id"]').closest('.form-group').addClass(data_error.province_id.type_msg);
+                        $('select[name="province_id"]').closest('.form-group').find('span').text(data_error.province_id.msg);
+                        $('select[name="province_id"]').closest('.form-group').find('span').show();                        
+                    } 
+                    if(typeof data_error.scale_id               != "undefined"){
+                        $('select[name="scale_id"]').closest('.form-group').addClass(data_error.scale_id.type_msg);
+                        $('select[name="scale_id"]').closest('.form-group').find('span').text(data_error.scale_id.msg);
+                        $('select[name="scale_id"]').closest('.form-group').find('span').show();                        
+                    } 
                     if(typeof data_error.alias               != "undefined"){
                         $('input[name="alias"]').closest('.form-group').addClass(data_error.alias.type_msg);
                         $('input[name="alias"]').closest('.form-group').find('span').text(data_error.alias.msg);

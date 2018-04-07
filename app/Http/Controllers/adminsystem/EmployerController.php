@@ -2,15 +2,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\CategoryArticleModel;
 use App\CategoryProductModel;
-use App\ArticleModel;
 use App\ProductModel;
 use App\PageModel;
 use App\MenuModel;
-use App\ProjectModel;
-use App\ProjectArticleModel;
-use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
 use App\EmployerModel;
@@ -65,6 +60,8 @@ class EmployerController extends Controller {
       $arrPrivilege=getArrPrivilege();
       $requestControllerAction=$this->_controller."-form";  
       $arrUser=User::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
+      $arrProvince=ProvinceModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
+      $arrScale=ScaleModel::select("id","fullname")->orderBy("fullname","asc")->get()->toArray(); 
       if(in_array($requestControllerAction, $arrPrivilege)){
         switch ($task) {
          case 'edit':
@@ -75,7 +72,7 @@ class EmployerController extends Controller {
          $title=$this->_title . " : Add new";
          break;     
        }                  
-       return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrUser","controller","task","title","icon"));
+       return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrProvince","arrScale","arrUser","controller","task","title","icon"));
      }else{
       return view("adminsystem.no-access",compact('controller'));
     }        
@@ -84,9 +81,20 @@ class EmployerController extends Controller {
               $id 					        =		trim(@$request->id);              
               $password             =   (@$request->password);
               $password_confirmed     =   (@$request->password_confirmed);
+              $fullname             =   trim(@$request->fullname);
               $alias                =   trim(@$request->alias);    
               $meta_keyword 				=		trim(@$request->meta_keyword);
-              $meta_description     =   trim(@$request->meta_description);    
+              $meta_description     =   trim(@$request->meta_description);
+              $address              =   trim(@$request->address);
+              $phone                =   trim(@$request->phone);
+              $province_id          =   trim(@$request->province_id);
+              $scale_id             =   trim(@$request->scale_id);  
+              $intro                =   trim(@$request->intro);  
+              $fax                  =   trim(@$request->fax);
+              $website              =   trim(@$request->website);
+              $contacted_name       =   trim(@$request->contacted_name);
+              $contacted_email      =   trim(@$request->contacted_email);
+              $contacted_phone      =   trim(@$request->contacted_phone);
               $user_id              =   trim(@$request->user_id); 
               $image_file           =   null;
               if(isset($_FILES["image"])){
@@ -114,12 +122,51 @@ class EmployerController extends Controller {
                     $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
                   }
                 }
-              }                       
-              if($alias == null){
+              }         
+              if(empty($fullname)){
+                 $checked = 0;
+                 $error["fullname"]["type_msg"] = "has-error";
+                 $error["fullname"]["msg"] = "Thiếu công ty";
+               }else{
+                $data=array();
+                if (empty($id)) {
+                  $data=EmployerModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();           
+                }else{
+                  $data=EmployerModel::whereRaw("trim(lower(fullname)) = ? and id != ?",[trim(mb_strtolower($fullname,'UTF-8')),(int)@$id])->get()->toArray();   
+                }  
+                if (count($data) > 0) {
+                  $checked = 0;
+                  $error["fullname"]["type_msg"] = "has-error";
+                  $error["fullname"]["msg"] = "Tên công ty đã tồn tại";
+                }       
+              }                   
+              if(empty($alias)){
+                 $checked = 0;
+                 $error["alias"]["type_msg"] = "has-error";
+                 $error["alias"]["msg"] = "Thiếu alias";
+               }else{
+                $data=array();
+                if (empty($id)) {
+                  $data=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();           
+                }else{
+                  $data=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();   
+                }  
+                if (count($data) > 0) {
+                  $checked = 0;
+                  $error["alias"]["type_msg"] = "has-error";
+                  $error["alias"]["msg"] = "Alias đã tồn tại";
+                }       
+              }   
+              if((int)@$province_id == 0){
                 $checked = 0;
-                $error["alias"]["type_msg"] = "has-error";
-                $error["alias"]["msg"] = "Thiếu alias";
+                  $error["province_id"]["type_msg"] = "has-error";
+                  $error["province_id"]["msg"] = "Thiếu tỉnh thành phố";
               }
+              if((int)@$scale_id == 0){
+                $checked = 0;
+                  $error["scale_id"]["type_msg"] = "has-error";
+                  $error["scale_id"]["msg"] = "Thiếu quy mô công ty";
+              }   
               if((int)$status==-1){
                $checked = 0;
                $error["status"]["type_msg"] 		= "has-error";
@@ -149,9 +196,20 @@ class EmployerController extends Controller {
               if($password != null){
                 $item->password         = Hash::make($password);
               }
+              $item->fullname           = @$fullname;              
               $item->alias              = @$alias;
               $item->meta_keyword       = @$meta_keyword;
               $item->meta_description   = @$meta_description;
+              $item->address            = @$address;
+              $item->phone              = @$phone;
+              $item->province_id        = (int)@$province_id;
+              $item->scale_id           = (int)@$scale_id;
+              $item->intro              = @$intro;
+              $item->fax                = @$fax;
+              $item->website            = @$website;
+              $item->contacted_name     = @$contacted_name;
+              $item->contacted_email    = @$contacted_email;
+              $item->contacted_phone    = @$contacted_phone;
               $item->user_id            = (int)@$user_id;
               $item->status 			      =	(int)@$status;    
               $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	

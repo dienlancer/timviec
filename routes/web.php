@@ -409,6 +409,9 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.group-member.trash","uses"=>"adminsystem\GroupMemberController@trash"]);	
 		Route::post("create-alias",["as"=>"adminsystem.group-member.createAlias","uses"=>"adminsystem\GroupMemberController@createAlias"]);	
 	});	
+	Route::group(["prefix"=>"dashboard"],function(){		
+		Route::get("form",["as"=>"adminsystem.dashboard.getForm","uses"=>"adminsystem\DashboardController@getForm"]);		
+	});	
 });
 Route::match(["get","post"],"adminsystem/login",["as"=>"adminsystem.login","uses"=>"adminsystem\LoginController@login"]);
 Route::post("adminsystem/logout",["as"=>"adminsystem.logout","uses"=>"adminsystem\LoginController@logout"]);

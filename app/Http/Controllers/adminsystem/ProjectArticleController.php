@@ -29,7 +29,7 @@ class ProjectArticleController extends Controller {
           return view("adminsystem.".$this->_controller.".list",compact("controller","task","title","icon","arrProject")); 
         }
         else{
-          return view("adminsystem.no-access");
+          return view("adminsystem.no-access",compact('controller'));
         }
     }     
     public function loadData(Request $request){      
@@ -70,7 +70,7 @@ class ProjectArticleController extends Controller {
        $arrDistrict=DistrictModel::select("id","fullname")->orderBy("sort_order","asc")->get()->toArray();                        
        return view("adminsystem.".$this->_controller.".form",compact("arrProject","arrRowData","controller","task","title","icon"));
      }else{
-      return view("adminsystem.no-access");
+      return view("adminsystem.no-access",compact('controller'));
     }        
   }
      public function save(Request $request){

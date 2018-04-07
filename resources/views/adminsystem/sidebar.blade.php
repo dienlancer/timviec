@@ -1,4 +1,6 @@
 <?php 
+$li_dashboard='';
+
 $li_content_management='';
 $li_category_article='';
 $li_article='';
@@ -25,6 +27,9 @@ $li_user='';
 $li_privilege='';
 $li_media='';
 switch ($controller) {
+    case 'dashboard':
+    $li_dashboard='active open';
+    break;
     case 'category-article':  
     $li_category_article='active open';
     $li_content_management='active open';
@@ -33,12 +38,10 @@ switch ($controller) {
     $li_article='active open';
     $li_content_management='active open';
     break;
-
     case 'employer': 
     $li_employer='active open';       
     $li_employer_management='active open';
     break;
-
     case 'province': 
     $li_province='active open';       
     $li_category_management='active open'; 
@@ -54,13 +57,11 @@ switch ($controller) {
     case 'marriage': 
     $li_marriage='active open';       
     $li_category_management='active open'; 
-    break;
-    
+    break;    
     case 'category-param':  
     $li_category_param='active open';
     $li_product_management='active open';
     break;   
-
     case 'menu-type':
     case 'menu':
     $li_menu_type='active open';
@@ -80,9 +81,7 @@ switch ($controller) {
     break; 
     case 'media':
     $li_media='active open';
-    break;
-    
-    
+    break;    
     case 'group-member':
     $li_group_member='active open';
     $li_phan_quyen='active open';
@@ -114,15 +113,16 @@ if(count($source) > 0){
 }                   
 ?>
 <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-    <?php 
+    <li class="nav-item  <?php echo $li_dashboard; ?>">
+            <a href="{!! route('adminsystem.dashboard.getForm') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Bảng điều khiển</span>                                            
+            </a>                                                                      
+    </li>
+    <?php     
     switch ($alias){
         case 'administrator':
-        ?>
-        <li class="sidebar-toggler-wrapper hide">
-            <div class="sidebar-toggler">
-                <span></span>
-            </div>
-        </li>                                          
+        ?>                                            
         <li class="nav-item <?php echo $li_content_management; ?>">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-folder-open-o" ></i>

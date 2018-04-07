@@ -13,32 +13,12 @@ class LoginController extends Controller
             Sentinel::authenticate($request->all());
             if(Sentinel::check()){                
                 $user=Sentinel::getUser();                                
-                $data=array();
-                $source=array();
-                $alias=null;
-                $source=DB::table('group_member')
-                            ->join('user_group_member','group_member.id','=','user_group_member.group_member_id')
-                            ->join('users','users.id','=','user_group_member.user_id')
-                            ->where('users.id',(int)@$user->id)                            
-                            ->select('group_member.alias')
-                            ->groupBy('group_member.alias')
-                            ->get()->toArray();
-                if(count($source) > 0){
-                    $data=convertToArray($source);
-                    $alias=$data[0]['alias'];
-                }                   
-                if($alias == null){
-                    return view('adminsystem.login');
+                $arrPrivilege=getArrPrivilege();                
+                if(count($arrPrivilege) > 0){                                        
+                    return redirect()->route('adminsystem.dashboard.getForm');  
                 }else{
-                    switch ($alias) {
-                        case 'administrator':
-                            return redirect()->route('adminsystem.category-article.getList');
-                            break;                        
-                        default:
-                            return redirect()->route('adminsystem.employer.getList');
-                            break;
-                    }
-                }                                
+                    return view('adminsystem.login');
+                }                    
             }else{
                 return view('adminsystem.login');
             }      

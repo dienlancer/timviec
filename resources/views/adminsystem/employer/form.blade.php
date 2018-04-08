@@ -54,7 +54,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
-        <div class="alert-warning padding-top-5" id="alert" style="display: none;"></div>
+        <div class="note"  style="display: none;"></div>
         <div class="caption">
             <i class="{{$icon}}"></i>
             <span class="caption-subject font-dark sbold uppercase">{{$title}}</span>
@@ -271,30 +271,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         </form>
     </div>
 </div>
-<script type="text/javascript" language="javascript">
-    function resetErrorStatus(){
-        var id                   =   $('input[name="id"]');
-        var fullname             =   $('input[name="fullname"]');
-        var alias                =   $('input[name="alias"]');
-        var province_id             =   $('select[name="province_id"]');
-        var scale_id                =   $('select[name="scale_id"]');
-        var password             =   $('input[name="password"]');                  
-        var status               =   $('select[name="status"]');
-        
-        $(fullname).closest('.form-group').removeClass("has-error");        
-        $(alias).closest('.form-group').removeClass("has-error");
-        $(province_id).closest('.form-group').removeClass("has-error");        
-        $(scale_id).closest('.form-group').removeClass("has-error");
-        $(password).closest('.form-group').removeClass("has-error");                   
-        $(status).closest('.form-group').removeClass("has-error");        
-
-        $(fullname).closest('.form-group').find('span').empty().hide();        
-        $(alias).closest('.form-group').find('span').empty().hide();
-        $(province_id).closest('.form-group').find('span').empty().hide();        
-        $(scale_id).closest('.form-group').find('span').empty().hide();
-        $(password).closest('.form-group').find('span').empty().hide();                    
-        $(status).closest('.form-group').find('span').empty().hide();        
-    }
+<script type="text/javascript" language="javascript">    
     function deleteImage(){
         var xac_nhan = 0;
         var msg="Bạn có muốn xóa ?";
@@ -337,8 +314,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var user_id=$('select[name="user_id"]').val();  
         var status=$('select[name="status"]').val();   
         var status_authentication=$('select[name="status_authentication"]').val();     
-        var token = $('input[name="_token"]').val();   
-        resetErrorStatus();
+        var token = $('input[name="_token"]').val();           
         var dataItem = new FormData();
         dataItem.append('id',id);        
         dataItem.append('password',password);        
@@ -371,50 +347,10 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             data: dataItem,
             async: false,
             success: function (data) {
-                if(data.checked==1){                            
-                    window.location.href = "<?php echo $linkCancel; ?>";
-                }else{
-                    console.log(data);
-                    showMsg('alert',data.msg,data.type_msg);
-                    var data_error=data.error;                                  
-                    var ul='<ul>';
-                    $.each(data_error,function(index,value){
-                        ul+='<li>'+value+'</li>';
-                    });                    
-                    ul+='</ul>';
-                    $('#alert').show();
-                    $('#alert').empty();
-                    $('#alert').append(ul);
-                    /*if(typeof data_error.password               != "undefined"){
-                        $('input[name="password"]').closest('.form-group').addClass(data_error.password.type_msg);
-                        $('input[name="password"]').closest('.form-group').find('span').text(data_error.password.msg);
-                        $('input[name="password"]').closest('.form-group').find('span').show();                        
-                    }   
-                    if(typeof data_error.fullname               != "undefined"){
-                        $('input[name="fullname"]').closest('.form-group').addClass(data_error.fullname.type_msg);
-                        $('input[name="fullname"]').closest('.form-group').find('span').text(data_error.fullname.msg);
-                        $('input[name="fullname"]').closest('.form-group').find('span').show();                        
-                    }  
-                    if(typeof data_error.province_id               != "undefined"){
-                        $('select[name="province_id"]').closest('.form-group').addClass(data_error.province_id.type_msg);
-                        $('select[name="province_id"]').closest('.form-group').find('span').text(data_error.province_id.msg);
-                        $('select[name="province_id"]').closest('.form-group').find('span').show();                        
-                    } 
-                    if(typeof data_error.scale_id               != "undefined"){
-                        $('select[name="scale_id"]').closest('.form-group').addClass(data_error.scale_id.type_msg);
-                        $('select[name="scale_id"]').closest('.form-group').find('span').text(data_error.scale_id.msg);
-                        $('select[name="scale_id"]').closest('.form-group').find('span').show();                        
-                    } 
-                    if(typeof data_error.alias               != "undefined"){
-                        $('input[name="alias"]').closest('.form-group').addClass(data_error.alias.type_msg);
-                        $('input[name="alias"]').closest('.form-group').find('span').text(data_error.alias.msg);
-                        $('input[name="alias"]').closest('.form-group').find('span').show();                        
-                    }                                                                                           
-                    if(typeof data_error.status               != "undefined"){
-                        $('select[name="status"]').closest('.form-group').addClass(data_error.status.type_msg);
-                        $('select[name="status"]').closest('.form-group').find('span').text(data_error.status.msg);
-                        $('select[name="status"]').closest('.form-group').find('span').show();
-                    }*/                    
+                if(data.checked==1){                                                
+                    window.location.href = "<?php echo $linkCancel; ?>";                    
+                }else{                        
+                    showMsg('note',data);                                                                                                                     
                 }
                 spinner.hide();
             },
@@ -428,6 +364,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             contentType: false,
             processData: false
         });
-    }              
+    }           
+     
 </script>
 @endsection()            

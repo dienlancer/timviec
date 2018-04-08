@@ -27,20 +27,29 @@ function checkAllAgentProduct(cid){
 		checkWithListProduct(this);
 	});
 }  
-function showMsg(ctrlID,msg,type_msg){		
-	$('#'+ctrlID).removeClass();	
-	$('#'+ctrlID).addClass("alert");			
-	$('#'+ctrlID).addClass(type_msg);
-	$('#'+ctrlID).find("strong").text(msg);		
-	$('#'+ctrlID).fadeIn();		
-	if (timeout != null){
-        clearTimeout(timeout);
+function showMsg(ctrl,data){		
+	var ul='<ul>';
+	var msg=null;
+	if(parseInt(data.checked)  == 1){
+		msg=data.success;
+	}else{
+		msg=data.error;
 	}
-	timeout = setTimeout(hideMsg, second_timeout,ctrlID);			 
+	$.each(msg,function(index,value){
+		ul+='<li>'+value+'</li>';
+	});                    
+	ul+='</ul>';
+	$('.'+ctrl).empty();
+	$('.'+ctrl).removeClass('note-success');
+	$('.'+ctrl).removeClass('note-danger');
+	$('.'+ctrl).append(ul);	
+	$('.'+ctrl).addClass(data.type_msg);                    
+	$('.'+ctrl).show();     
+	setTimeout(hideMsg,10000,ctrl);		 
 }
-function hideMsg(ctrlID) {
-	$('#'+ctrlID).fadeOut();
-}    
+function hideMsg(ctrl){
+    $('.'+ctrl).fadeOut();
+}      
 function submitForm(url){
     $('form[name="frm"]').attr('action', url);
     $('form[name="frm"]').submit();
@@ -105,6 +114,5 @@ $(document).ready(function(){
 		$('table.table-recursive').find(':checkbox').each(function(){
 			this.checked = checkStatus;
 		});
-	});
-	timeout = setTimeout(hideMsg, second_timeout,'alert');		
+	});	
 });

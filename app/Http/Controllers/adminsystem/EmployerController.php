@@ -78,56 +78,57 @@ class EmployerController extends Controller {
     }        
   }
             public function save(Request $request){
-              $id 					        =		trim(@$request->id);              
-              $password             =   (@$request->password);
-              $password_confirmed     =   (@$request->password_confirmed);
-              $fullname             =   trim(@$request->fullname);
-              $alias                =   trim(@$request->alias);    
-              $meta_keyword 				=		trim(@$request->meta_keyword);
-              $meta_description     =   trim(@$request->meta_description);
-              $address              =   trim(@$request->address);
-              $phone                =   trim(@$request->phone);
-              $province_id          =   trim(@$request->province_id);
-              $scale_id             =   trim(@$request->scale_id);  
-              $intro                =   trim(@$request->intro);  
-              $fax                  =   trim(@$request->fax);
-              $website              =   trim(@$request->website);
-              $contacted_name       =   trim(@$request->contacted_name);
-              $contacted_email      =   trim(@$request->contacted_email);
-              $contacted_phone      =   trim(@$request->contacted_phone);
-              $user_id              =   trim(@$request->user_id); 
-              $image_file           =   null;
-              if(isset($_FILES["image"])){
-                $image_file         =   $_FILES["image"];
-              }
-              $image_hidden         =   trim(@$request->image_hidden);      
-              $status               =   trim(@$request->status);   
-              $status_authentication =  trim(@$request->status_authentication);       
-              $data 		            =   array();
-              $info 		            =   array();
-              $error 		            =   array();
-              $item		              =   null;
-              $checked 	            =   1;      
-              $setting= getSettingSystem();
-              $width=$setting['product_width']['field_value'];
-              $height=$setting['product_height']['field_value'];   
-              if($password != null){
-                if(mb_strlen($password) < 10 ){
-                  $checked = 0;
-                  
-                  $error["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
-                }else{
-                  if(strcmp($password, $password_confirmed) !=0 ){
-                    $checked = 0;
-                    
-                    $error["password"]= "Xác nhận mật khẩu không trùng khớp";
-                  }
+                $id 					        =		trim(@$request->id);              
+                $password             =   (@$request->password);
+                $password_confirmed   =   (@$request->password_confirmed);
+                $fullname             =   trim(@$request->fullname);
+                $alias                =   trim(@$request->alias);    
+                $meta_keyword 				=		trim(@$request->meta_keyword);
+                $meta_description     =   trim(@$request->meta_description);
+                $address              =   trim(@$request->address);
+                $phone                =   trim(@$request->phone);
+                $province_id          =   trim(@$request->province_id);
+                $scale_id             =   trim(@$request->scale_id);  
+                $intro                =   trim(@$request->intro);  
+                $fax                  =   trim(@$request->fax);
+                $website              =   trim(@$request->website);
+                $contacted_name       =   trim(@$request->contacted_name);
+                $contacted_email      =   trim(@$request->contacted_email);
+                $contacted_phone      =   trim(@$request->contacted_phone);
+                $user_id              =   trim(@$request->user_id); 
+                $image_file           =   null;
+                if(isset($_FILES["image"])){
+                  $image_file         =   $_FILES["image"];
                 }
-              }         
-              if(empty($fullname)){
-                 $checked = 0;
-                 
-                 $error["fullname"]= "Thiếu công ty";
+                $image_hidden         =   trim(@$request->image_hidden);      
+                $status               =   trim(@$request->status);   
+                $status_authentication =  trim(@$request->status_authentication);       
+                $data 		            =   array();
+                $info 		            =   array();
+
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
+
+                $item		              =   null;                
+                $setting= getSettingSystem();
+                $width=$setting['product_width']['field_value'];
+                $height=$setting['product_height']['field_value'];   
+                if($password != null){
+                  if(mb_strlen($password) < 10 ){
+                    $checked = 0;                  
+                    $error["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
+                  }else{
+                    if(strcmp($password, $password_confirmed) !=0 ){
+                      $checked = 0;                    
+                      $error["password"]= "Xác nhận mật khẩu không trùng khớp";
+                    }
+                  }
+                }         
+                if(empty($fullname)){
+                 $checked = 0;                 
+                 $error["fullname"]= "Thiếu tên công ty";
                }else{
                 $data=array();
                 if (empty($id)) {
@@ -137,43 +138,41 @@ class EmployerController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;
-                  
                   $error["fullname"]= "Tên công ty đã tồn tại";
                 }       
               }                   
               if(empty($alias)){
-                 $checked = 0;
-                 
-                 $error["alias"]= "Thiếu alias";
-               }else{
-                $data=array();
-                if (empty($id)) {
-                  $data=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();           
-                }else{
-                  $data=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();   
-                }  
-                if (count($data) > 0) {
-                  $checked = 0;
-                  
-                  $error["alias"]= "Alias đã tồn tại";
-                }       
-              }   
-              if((int)@$province_id == 0){
-                $checked = 0;
-                  
-                  $error["province_id"]= "Thiếu tỉnh thành phố";
-              }
-              if((int)@$scale_id == 0){
-                $checked = 0;
-                  
-                  $error["scale_id"] = "Thiếu quy mô công ty";
-              }   
-              if((int)$status==-1){
                $checked = 0;
-               
-               $error["status"]= "Thiếu trạng thái";
-             }
-             if ($checked == 1) {   
+               $error["alias"]= "Thiếu alias";
+             }else{
+              $data=array();
+              if (empty($id)) {
+                $data=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();           
+              }else{
+                $data=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();   
+              }  
+              if (count($data) > 0) {
+                $checked = 0;
+                $error["alias"]= "Alias đã tồn tại";
+              }       
+            }   
+            if((int)@$province_id == 0){
+              $checked = 0;
+              $error["province_id"]= "Thiếu tỉnh thành phố";
+            }
+            if((int)@$scale_id == 0){
+              $checked = 0;
+              $error["scale_id"] = "Thiếu quy mô công ty";
+            }   
+            if((int)$status==-1){
+             $checked = 0;
+             $error["status"]= "Thiếu trạng thái";
+            }
+            if((int)@$status_authentication==-1){
+             $checked = 0;           
+             $error["status_authentication"]= "Thiếu trạng thái xác thực";
+            }
+            if ($checked == 1) {   
               $image_name='';
               if($image_file != null){                      
                 $image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
@@ -215,74 +214,77 @@ class EmployerController extends Controller {
               $item->status 			      =	(int)@$status;   
               $item->status_authentication = @$status_authentication; 
               $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
-              $item->save();                                  
-              $info = array(
-                'type_msg' 			=> "has-success",
-                'msg' 				=> 'Lưu dữ liệu thành công',
-                "checked" 			=> 1,
-                "error" 			=> $error,
-                "id"    			=> $id
-              );
+              $item->save();      
+              $success[]='Lưu thành công';                                              
             }else {
-              $info = array(
-                'type_msg' 			=> "has-error",
-                'msg' 				=> 'Lưu dữ liệu thất bại',
-                "checked" 			=> 0,
-                "error" 			=> $error,
-                "id"				=> ""
-              );
-            }        		 			       
+              $type_msg           =   "note-danger";        
+            } 
+            $info = array(
+                "checked"       => $checked,   
+                'type_msg'      => $type_msg,         
+                'error'         => $error,                                                    
+                'success'       => $success,                
+                "id"            => (int)@$id
+              );      		 			       
             return $info;       
           }
           public function changeStatus(Request $request){
-                  $id             =       (int)$request->id;     
-                  $checked                =   1;
-                  $type_msg               =   "alert-success";
-                  $msg                    =   "Cập nhật thành công";              
-                  $status         =       (int)@$request->status;
-                  $item           =       EmployerModel::find((int)@$id);        
-                  $item->status   =       $status;
-                  $item->save();
-                  $data                   =   $this->loadData($request);
-                  $info = array(
-                    'checked'           => $checked,
-                    'type_msg'          => $type_msg,                
-                    'msg'               => $msg,                
-                    'data'              => $data
-                  );
-                  return $info;
-          }
-        
-      public function deleteItem(Request $request){
-            $id                     =   (int)$request->id;              
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";                             
-            if($checked == 1){
-              $item = EmployerModel::find((int)@$id);
-                $item->delete();                                                
-            }        
+            $id             =       (int)@$request->id;     
+            $checked              =   1;
+            $type_msg             =   "note-success";
+            $success              =   array();                  
+            $error                =   array();                  
+            $status         =       (int)@$request->status;
+            $item           =       EmployerModel::find((int)@$id);        
+            $item->status   =       $status;
+            $item->save();
+            $success[]='Cập nhật thành công';              
             $data                   =   $this->loadData($request);
             $info = array(
               'checked'           => $checked,
               'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
+              'error'             => $error,
+              'success'           => $success,                
               'data'              => $data
             );
             return $info;
-      }
+          }
+
+          public function deleteItem(Request $request){
+            $id                     =   (int)$request->id;              
+            $checked              =   1;
+            $type_msg             =   "note-success";
+            $success              =   array();                  
+            $error                =   array();                                              
+            if($checked == 1){
+              $item = EmployerModel::find((int)@$id);
+              $item->delete();     
+              $success[]='Xóa thành công';                                           
+            }   
+
+            $data                   =   $this->loadData($request);
+            $info = array(
+              'checked'           => $checked,
+              'type_msg'          => $type_msg,                
+              'error'             => $error,
+              'success'           => $success,                
+              'data'              => $data
+            );
+            return $info;
+          }
       public function updateStatus(Request $request){
         $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Cập nhật thành công";                  
+        $checked              =   1;
+        $type_msg             =   "note-success";
+        $success              =   array();                  
+        $error                =   array();            
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
-          $checked                =   0;
-          $type_msg               =   "alert-warning";            
-          $msg                    =   "Vui lòng chọn ít nhất một phần tử";
+          $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
@@ -292,37 +294,41 @@ class EmployerController extends Controller {
               $item->save();      
             }            
           }
+          $success[]='Cập nhật thành công';
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          'error'             => $error,
+          'success'           => $success,                
           'data'              => $data
         );
         return $info;
       }
       public function trash(Request $request){
-        $strID                 =   $request->str_id;               
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Xóa thành công";                  
+        $strID                =   $request->str_id;               
+        $checked              =   1;
+        $type_msg             =   "note-success";
+        $success              =   array();                  
+        $error                =   array();
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID); 
         if(empty($strID)){
-          $checked     =   0;
-          $type_msg           =   "alert-warning";            
-          $msg                =   "Vui lòng chọn ít nhất một phần tử";
+          $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
         }                    
         if($checked == 1){                                  
-
-          DB::table('employer')->whereIn('id',@$arrID)->delete();                                      
+          DB::table('employer')->whereIn('id',@$arrID)->delete();
+          $success[]='Xóa thành công';                                      
         }
-        $data                   =   $this->loadData($request);
+        $data                 =   $this->loadData($request);
         $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          'error'             => $error,
+          'success'           => $success,                
           'data'              => $data
         );
         return $info;

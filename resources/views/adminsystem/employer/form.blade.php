@@ -25,9 +25,13 @@ $inputContactedName='<input type="text" class="form-control" name="contacted_nam
 $inputContactedEmail='<input type="text" class="form-control" name="contacted_email"        value="'.@$arrRowData['contacted_email'].'">'; 
 $inputContactedPhone='<input type="text" class="form-control" name="contacted_phone"        value="'.@$arrRowData['contacted_phone'].'">'; 
 $ddlUser      =   cmsSelectboxCategory("user_id","form-control",$arrUser,@$arrRowData['user_id'],"",'Chọn danh mục');
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
-$arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
+$status                 =   (count($arrRowData) > 0) ? (int)@$arrRowData['status'] : 1 ;
+$arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+
+$status                 =   (count($arrRowData) > 0) ? (int)@$arrRowData['status_authentication'] : 1 ;
+$arrStatus              =   array(-1 => '- Select status -', 1 => 'Xác nhận', 0 => 'Không xác nhận');  
+$ddlStatusAuthentication              =   cmsSelectbox("status_authentication","form-control",$arrStatus,$status,"");
 
 /* begin logo */
 $picture                =   "";
@@ -50,6 +54,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
+        <div class="alert-system alert-warning padding-top-5" style="display: none;"></div>
         <div class="caption">
             <i class="{{$icon}}"></i>
             <span class="caption-subject font-dark sbold uppercase">{{$title}}</span>
@@ -252,6 +257,15 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <span class="help-block"></span>
                         </div>
                     </div>     
+                </div>  
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Xác thực</b></label>
+                        <div class="col-md-9">                            
+                            <?php echo $ddlStatusAuthentication; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
                 </div>                                                                             
             </div>              
         </form>
@@ -321,7 +335,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var image_hidden=$('input[name="image_hidden"]').val(); 
         /* end xử lý image */                     
         var user_id=$('select[name="user_id"]').val();  
-        var status=$('select[name="status"]').val();     
+        var status=$('select[name="status"]').val();   
+        var status_authentication=$('select[name="status_authentication"]').val();     
         var token = $('input[name="_token"]').val();   
         resetErrorStatus();
         var dataItem = new FormData();
@@ -347,7 +362,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         } 
         dataItem.append('image_hidden',image_hidden);
         dataItem.append('user_id',user_id);
-        dataItem.append('status',status);                         
+        dataItem.append('status',status);  
+        dataItem.append('status_authentication',status_authentication);                         
         dataItem.append('_token',token);      
         $.ajax({
             url: '<?php echo $linkSave; ?>',
@@ -358,8 +374,16 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 if(data.checked==1){                            
                     window.location.href = "<?php echo $linkCancel; ?>";
                 }else{
-                    var data_error=data.error;
-                    if(typeof data_error.password               != "undefined"){
+                    var data_error=data.error;                                  
+                        var ul='<ul>';
+                        $.each(data_error,function(index,value){
+                            ul+='<li>'+value+'</li>';
+                        });                    
+                        ul+='</ul>';
+                        $('.alert-system').show();
+                        $('.alert-system').empty();
+                        $('.alert-system').append(ul);
+                    /*if(typeof data_error.password               != "undefined"){
                         $('input[name="password"]').closest('.form-group').addClass(data_error.password.type_msg);
                         $('input[name="password"]').closest('.form-group').find('span').text(data_error.password.msg);
                         $('input[name="password"]').closest('.form-group').find('span').show();                        
@@ -388,7 +412,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         $('select[name="status"]').closest('.form-group').addClass(data_error.status.type_msg);
                         $('select[name="status"]').closest('.form-group').find('span').text(data_error.status.msg);
                         $('select[name="status"]').closest('.form-group').find('span').show();
-                    }                    
+                    }*/                    
                 }
                 spinner.hide();
             },

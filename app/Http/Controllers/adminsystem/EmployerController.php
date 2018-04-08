@@ -101,7 +101,8 @@ class EmployerController extends Controller {
                 $image_file         =   $_FILES["image"];
               }
               $image_hidden         =   trim(@$request->image_hidden);      
-              $status               =   trim(@$request->status);          
+              $status               =   trim(@$request->status);   
+              $status_authentication =  trim(@$request->status_authentication);       
               $data 		            =   array();
               $info 		            =   array();
               $error 		            =   array();
@@ -113,20 +114,20 @@ class EmployerController extends Controller {
               if($password != null){
                 if(mb_strlen($password) < 10 ){
                   $checked = 0;
-                  $error["password"]["type_msg"] = "has-error";
-                  $error["password"]["msg"] = "Mật khẩu tối thiểu phải 10 ký tự";
+                  
+                  $error["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
                 }else{
                   if(strcmp($password, $password_confirmed) !=0 ){
                     $checked = 0;
-                    $error["password"]["type_msg"] = "has-error";
-                    $error["password"]["msg"] = "Xác nhận mật khẩu không trùng khớp";
+                    
+                    $error["password"]= "Xác nhận mật khẩu không trùng khớp";
                   }
                 }
               }         
               if(empty($fullname)){
                  $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu công ty";
+                 
+                 $error["fullname"]= "Thiếu công ty";
                }else{
                 $data=array();
                 if (empty($id)) {
@@ -136,14 +137,14 @@ class EmployerController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;
-                  $error["fullname"]["type_msg"] = "has-error";
-                  $error["fullname"]["msg"] = "Tên công ty đã tồn tại";
+                  
+                  $error["fullname"]= "Tên công ty đã tồn tại";
                 }       
               }                   
               if(empty($alias)){
                  $checked = 0;
-                 $error["alias"]["type_msg"] = "has-error";
-                 $error["alias"]["msg"] = "Thiếu alias";
+                 
+                 $error["alias"]= "Thiếu alias";
                }else{
                 $data=array();
                 if (empty($id)) {
@@ -153,24 +154,24 @@ class EmployerController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;
-                  $error["alias"]["type_msg"] = "has-error";
-                  $error["alias"]["msg"] = "Alias đã tồn tại";
+                  
+                  $error["alias"]= "Alias đã tồn tại";
                 }       
               }   
               if((int)@$province_id == 0){
                 $checked = 0;
-                  $error["province_id"]["type_msg"] = "has-error";
-                  $error["province_id"]["msg"] = "Thiếu tỉnh thành phố";
+                  
+                  $error["province_id"]= "Thiếu tỉnh thành phố";
               }
               if((int)@$scale_id == 0){
                 $checked = 0;
-                  $error["scale_id"]["type_msg"] = "has-error";
-                  $error["scale_id"]["msg"] = "Thiếu quy mô công ty";
+                  
+                  $error["scale_id"] = "Thiếu quy mô công ty";
               }   
               if((int)$status==-1){
                $checked = 0;
-               $error["status"]["type_msg"] 		= "has-error";
-               $error["status"]["msg"] 			= "Thiếu trạng thái";
+               
+               $error["status"]= "Thiếu trạng thái";
              }
              if ($checked == 1) {   
               $image_name='';
@@ -211,7 +212,8 @@ class EmployerController extends Controller {
               $item->contacted_email    = @$contacted_email;
               $item->contacted_phone    = @$contacted_phone;
               $item->user_id            = (int)@$user_id;
-              $item->status 			      =	(int)@$status;    
+              $item->status 			      =	(int)@$status;   
+              $item->status_authentication = @$status_authentication; 
               $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
               $item->save();                                  
               $info = array(

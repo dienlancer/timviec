@@ -54,7 +54,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
-        <div class="alert-system alert-warning padding-top-5" style="display: none;"></div>
+        <div class="alert-warning padding-top-5" id="alert" style="display: none;"></div>
         <div class="caption">
             <i class="{{$icon}}"></i>
             <span class="caption-subject font-dark sbold uppercase">{{$title}}</span>
@@ -374,15 +374,17 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 if(data.checked==1){                            
                     window.location.href = "<?php echo $linkCancel; ?>";
                 }else{
+                    console.log(data);
+                    showMsg('alert',data.msg,data.type_msg);
                     var data_error=data.error;                                  
-                        var ul='<ul>';
-                        $.each(data_error,function(index,value){
-                            ul+='<li>'+value+'</li>';
-                        });                    
-                        ul+='</ul>';
-                        $('.alert-system').show();
-                        $('.alert-system').empty();
-                        $('.alert-system').append(ul);
+                    var ul='<ul>';
+                    $.each(data_error,function(index,value){
+                        ul+='<li>'+value+'</li>';
+                    });                    
+                    ul+='</ul>';
+                    $('#alert').show();
+                    $('#alert').empty();
+                    $('#alert').append(ul);
                     /*if(typeof data_error.password               != "undefined"){
                         $('input[name="password"]').closest('.form-group').addClass(data_error.password.type_msg);
                         $('input[name="password"]').closest('.form-group').find('span').text(data_error.password.msg);

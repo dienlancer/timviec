@@ -116,13 +116,14 @@ class CategoryArticleController extends Controller {
             $sort_order 			       =	trim($request->sort_order);
             $status 				         =  trim($request->status);
             $data 		               =  array();
-            $info 		               =  array();
+            
 
             $item		                 =  null;
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();
+            $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
             if(empty($fullname)){
              $checked = 0;
 

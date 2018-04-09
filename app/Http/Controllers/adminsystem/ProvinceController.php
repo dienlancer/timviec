@@ -79,24 +79,28 @@ class ProvinceController extends Controller {
           $sort_order           =   trim($request->sort_order);
           $status               =   trim($request->status);          
           $data 		            =   array();
-          $info 		            =   array();
-          $error 		            =   array();
+          
+          
           $item		              =   null;
-          $checked 	            =   1;              
+          $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
           if(empty($fullname)){
                  $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên";
+                 
+                 $error["fullname"] = "Thiếu tên";
           }                   
           if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+             
+             $error["sort_order"] 		= "Thiếu sắp xếp";
           }
           if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
+             
+             $error["status"] 			= "Thiếu trạng thái";
           }
           if ($checked == 1) {    
                 if(empty($id)){
@@ -113,141 +117,153 @@ class ProvinceController extends Controller {
                 $item->status 			    =	(int)@$status;    
                 $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
                 $item->save();                                  
-                $info = array(
-                  'type_msg' 			=> "has-success",
-                  'msg' 				=> 'Lưu dữ liệu thành công',
-                  "checked" 			=> 1,
-                  "error" 			=> $error,
-                  "id"    			=> $id
-                );
+                $success[]='Lưu thành công';
             }else {
-                    $info = array(
-                      'type_msg' 			=> "has-error",
-                      'msg' 				=> 'Lưu dữ liệu thất bại',
-                      "checked" 			=> 0,
-                      "error" 			=> $error,
-                      "id"				=> ""
-                    );
+                    $type_msg           =   "note-danger";       
             }        		 			       
-            return $info;       
+            $info = array(
+                "checked"       => $checked,   
+                'type_msg'      => $type_msg,         
+                'error'         => $error,                                                    
+                'success'       => $success,                
+                "id"            => (int)@$id
+              );                       
+            return $info;           
     }
           public function changeStatus(Request $request){
                   $id             =       (int)$request->id;     
-                  $checked                =   1;
-                  $type_msg               =   "alert-success";
-                  $msg                    =   "Cập nhật thành công";              
+                  $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();             
                   $status         =       (int)@$request->status;
                   $item           =       ProvinceModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
+                  $success[]='Cập nhật thành công';             
                   $data                   =   $this->loadData($request);
                   $info = array(
-                    'checked'           => $checked,
-                    'type_msg'          => $type_msg,                
-                    'msg'               => $msg,                
-                    'data'              => $data
-                  );
+              'checked'           => $checked,
+              'type_msg'          => $type_msg,                
+              'error'             => $error,
+              'success'           => $success,                
+              'data'              => $data
+            );
                   return $info;
           }
         
       public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công"; 
+            $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
             $data                   =   EmployerModel::whereRaw("province_id = ?",[(int)@$id])->get()->toArray();  
             if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+              $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
             $data                   =   CandidateModel::whereRaw("province_id = ?",[(int)@$id])->get()->toArray();  
             if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+              $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }                  
             if($checked == 1){
               $item = ProvinceModel::find((int)@$id);
-                $item->delete();                                                
+                $item->delete(); 
+                $success[]='Xóa thành công';                                                
             }        
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'error'             => $error,
+          'success'           => $success,                
+          'data'              => $data
+        );
             return $info;
       }
       public function updateStatus(Request $request){
         $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Cập nhật thành công";                  
+        $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();             
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
-          $checked                =   0;
-          $type_msg               =   "alert-warning";            
-          $msg                    =   "Vui lòng chọn ít nhất một phần tử";
+          $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
             if(!empty($value)){
               $item=ProvinceModel::find($value);
               $item->status=$status;
-              $item->save();      
+              $item->save();  
+                      
             }            
           }
+          $success[]='Cập nhật thành công';         
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          'error'             => $error,
+          'success'           => $success,                
           'data'              => $data
         );
         return $info;
       }
       public function trash(Request $request){
         $strID                 =   $request->str_id;               
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Xóa thành công";                  
+        $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();               
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID); 
         if(empty($strID)){
-          $checked     =   0;
-          $type_msg           =   "alert-warning";            
-          $msg                =   "Vui lòng chọn ít nhất một phần tử";
+          $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
         }
         foreach ($arrID as $key => $value){
           $data                   =   EmployerModel::whereRaw("province_id = ?",[(int)@$value])->get()->toArray();  
             if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+              $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
         } 
         foreach ($arrID as $key => $value){
           $data                   =   CandidateModel::whereRaw("province_id = ?",[(int)@$value])->get()->toArray();  
             if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+              $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
         }              
         if($checked == 1){                                  
 
-          DB::table('province')->whereIn('id',@$arrID)->delete();                                      
+          DB::table('province')->whereIn('id',@$arrID)->delete();          
+          $success[]='Xóa thành công';                               
         }
         $data                   =   $this->loadData($request);
         $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          'error'             => $error,
+          'success'           => $success,                
           'data'              => $data
         );
         return $info;
@@ -256,9 +272,11 @@ class ProvinceController extends Controller {
             $sort_json              =   $request->sort_json;           
             $data_order             =   json_decode($sort_json);       
           
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Cập nhật thành công";      
+            $info                 =   array();
+        $checked              =   1;
+        $type_msg             =   "note-success";
+        $success              =   array();                  
+        $error                =   array();
             if(count($data_order) > 0){              
               foreach($data_order as $key => $value){      
                 if(!empty($value)){
@@ -268,28 +286,32 @@ class ProvinceController extends Controller {
                 }                                                  
               }           
             }        
+            $success[]='Cập nhật thành công'; 
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'error'             => $error,
+          'success'           => $success,                
+          'data'              => $data
+        );
             return $info;
       }     
       public function createAlias(Request $request){
           $id                =  trim($request->id)  ; 
           $fullname                =  trim($request->fullname)  ;        
           $data                    =  array();
-          $info                    =  array();
-          $error                   =  array();
+          
           $item                    =  null;
-          $checked  = 1;   
+          $info                 =   array();
+        $checked              =   1;
+        $type_msg             =   "note-success";
+        $success              =   array();                  
+        $error                =   array();
           $alias='';                     
           if(empty($fullname)){
-           $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           $checked = 0;           
+           $error["fullname"] = "Thiếu tên bài viết";
          }else{          
           $alias=str_slug($fullname,'-');
           $dataCategoryArticle=array();
@@ -342,23 +364,17 @@ class ProvinceController extends Controller {
           }
         }
         if ($checked == 1){
-          $info = array(
-            'type_msg'      => "has-success",
-            'msg'         => 'Lưu dữ liệu thành công',
-            "checked"       => 1,
-            "error"       => $error,
-            
-            "alias"       =>$alias
-          );
+          $success[]='Lưu thành công';     
         }else {
-          $info = array(
-            'type_msg'      => "has-error",
-            'msg'         => 'Nhập dữ liệu có sự cố',
-            "checked"       => 0,
-            "error"       => $error,
-            "alias"        => $alias
-          );
+          $type_msg           =   "note-danger";  
         }    
+        $info = array(
+        "checked"       => $checked,   
+        'type_msg'      => $type_msg,         
+        'error'         => $error,                                                    
+        'success'       => $success,                
+        "alias"            => $alias
+      );    
         return $info;
       }  
 }

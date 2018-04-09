@@ -14,14 +14,39 @@ $linkSortOrder			=	route('adminsystem.'.$controller.'.sortOrder');
 	{{ csrf_field() }}    		
 	<div class="portlet light bordered">
 		<div class="portlet-title">
-			@if(Session::has("message"))
-			<div class="alert <?php echo Session::get("message")['type_msg'] ?>" id="alert" >
-				<strong>
-				 	<?php 
-                            	echo Session::get("message")['msg'];
-                            ?>
-				</strong> 
-			</div>                                                                              
+			@if(Session::has("message"))			
+			<div class="note <?php echo Session::get("message")['type_msg'] ?>" >
+				<?php 				
+				$error=Session::get("message")['error'];
+				$success=Session::get("message")['success'];
+				if(count(@$error) > 0){
+					?>					
+					<ul>
+						<?php 
+						foreach (@$error as $key => $value) {
+							?>
+							<li><?php echo $value; ?></li>
+							<?php
+						}
+						?>                              
+					</ul>					
+					<?php
+				}
+				if(count(@$success) > 0){					
+					?>					
+					<ul>
+						<?php 
+						foreach (@$success as $key => $value) {
+							?>
+							<li><?php echo $value; ?></li>
+							<?php
+						}
+						?>                              
+					</ul>					
+					<?php
+				}	
+				?>
+			</div>                                                                            
             @endif			
 			<div class="caption font-dark">
 				<i class="{{$icon}}"></i>

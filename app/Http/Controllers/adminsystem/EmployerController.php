@@ -104,14 +104,18 @@ class EmployerController extends Controller {
                 $status               =   trim(@$request->status);   
                 $status_authentication =  trim(@$request->status_authentication);       
                 $data 		            =   array();
-                $info 		            =   array();
+               
 
+                
+
+                $item		              =   null;    
+
+                $info 		            =   array();
                 $checked              =   1;
                 $type_msg             =   "note-success";
                 $success              =   array();                  
                 $error                =   array();
 
-                $item		              =   null;                
                 $setting= getSettingSystem();
                 $width=$setting['product_width']['field_value'];
                 $height=$setting['product_height']['field_value'];   
@@ -230,10 +234,11 @@ class EmployerController extends Controller {
           }
           public function changeStatus(Request $request){
             $id             =       (int)@$request->id;     
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();                  
+            $info 		            =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();    
             $status         =       (int)@$request->status;
             $item           =       EmployerModel::find((int)@$id);        
             $item->status   =       $status;
@@ -252,10 +257,11 @@ class EmployerController extends Controller {
 
           public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();                                              
+            $info 		            =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();                                    
             if($checked == 1){
               $item = EmployerModel::find((int)@$id);
               $item->delete();     
@@ -275,10 +281,11 @@ class EmployerController extends Controller {
       public function updateStatus(Request $request){
         $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();            
+        $info 		            =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
@@ -308,10 +315,11 @@ class EmployerController extends Controller {
       }
       public function trash(Request $request){
         $strID                =   $request->str_id;               
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();
+        $info 		            =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID); 
         if(empty($strID)){

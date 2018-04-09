@@ -68,14 +68,18 @@ class CategoryBannerController extends Controller {
         $status                  =  trim($request->status);
         $sort_order 			   =	trim($request->sort_order);
         $data 		= array();
-        $info 		= array();
-        $error 		= array();
+        
+
         $item		= null;
-        $checked 	= 1;              
+        $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
         if(empty($fullname)){
             $checked = 0;
-            $error["fullname"]["type_msg"] = "has-error";
-            $error["fullname"]["msg"] = "Thiếu khối banner";
+            
+            $error["fullname"] = "Thiếu khối banner";
         }else{
             $data=array();
             if (empty($id)) {
@@ -85,20 +89,25 @@ class CategoryBannerController extends Controller {
             }  
             if (count($data) > 0) {
               $checked = 0;
-              $error["fullname"]["type_msg"] = "has-error";
-              $error["fullname"]["msg"] = "Khối banner đã tồn tại";
+              
+              $error["fullname"] = "Khối banner đã tồn tại";
             }      	
         }
         if(empty($theme_location)){
             $checked = 0;
-            $error["theme_location"]["type_msg"] = "has-error";
-            $error["theme_location"]["msg"] = "Thiếu theme location";
+            
+            $error["theme_location"] = "Thiếu theme location";
         }
         if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+             
+             $error["sort_order"] 		= "Thiếu sắp xếp";
         }
+        if((int)$status==-1){
+               $checked = 0;
+
+               $error["status"]       = "Thiếu trạng thái";
+             }
         if($checked == 1) {    
              if(empty($id)){
                 $item 				      = 	new CategoryBannerModel;       
@@ -115,78 +124,87 @@ class CategoryBannerController extends Controller {
               $item->sort_order 		=	(int)$sort_order;  
               $item->updated_at 		=	date("Y-m-d H:i:s",time());    	        	
               $item->save();  	
-              $info = array(
-                'type_msg' 			 => "has-success",
-                'msg' 				   => 'Cập nhật dữ liệu thành công',
-                "checked" 			 => 1,
-                "error" 			   => $error,
-                "id"    			   => $id
-              );
+              $success[]='Lưu thành công';
         } else {
-              $info = array(
-                'type_msg' 			=> "has-error",
-                'msg' 				  => 'Dữ liệu nhập gặp sự cố',
-                "checked" 			=> 0,
-                "error" 			  => $error,
-                "id"				    => ""
-              );
-        }        		 			       
+             $type_msg           =   "note-danger";      
+        } 
+        $info = array(
+                "checked"       => $checked,   
+                'type_msg'      => $type_msg,         
+                'error'         => $error,                                                    
+                'success'       => $success,                
+                "id"            => (int)@$id
+              );                 		 			       
         return $info;       
     }
     public function changeStatus(Request $request){
         $id             =       (int)$request->id;     
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Cập nhật thành công";              
+        
+        $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();   
+
         $status         =       (int)$request->status;
         $item           =       CategoryBannerModel::find((int)@$id);        
         $item->status   =       $status;
         $item->save();
+        $success[]='Cập nhật thành công';           
         $data                   =   $this->loadData($request);
-        $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
-          'data'              => $data
-        );
-        return $info;
+            $info = array(
+              'checked'           => $checked,
+              'type_msg'          => $type_msg,                
+              'error'             => $error,
+              'success'           => $success,                
+              'data'              => $data
+            );
+            return $info;
     }
     public function deleteItem(Request $request){
       $id                     =   (int)$request->id;              
-      $checked                =   1;
-      $type_msg               =   "alert-success";
-      $msg                    =   "Xóa thành công";         
+      
+      $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();         
+
       $data=BannerModel::whereRaw("category_id = ?",[(int)@$id])->select('id')->get()->toArray();
       if(count($data) > 0){
-        $checked                =   0;
-        $type_msg               =   "alert-warning";            
-        $msg                    =   "Phần tử có dữ liệu con. Vui lòng không xoá";
+        $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
       }    
       if($checked == 1){                        
         $item               =   CategoryBannerModel::find((int)@$id);
-        $item->delete();            
+        $item->delete();  
+        $success[]='Xóa thành công';                   
       }        
       $data                   =   $this->loadData($request);
-      $info = array(
-        'checked'           => $checked,
-        'type_msg'          => $type_msg,                
-        'msg'               => $msg,                
-        'data'              => $data
-      );
-      return $info;
+            $info = array(
+              'checked'           => $checked,
+              'type_msg'          => $type_msg,                
+              'error'             => $error,
+              'success'           => $success,                
+              'data'              => $data
+            );
+            return $info;
     }
     public function updateStatus(Request $request){
       $strID                 =   $request->str_id;     
       $status                 =   $request->status;            
-      $checked                =   1;
-      $type_msg               =   "alert-success";
-      $msg                    =   "Cập nhật thành công";                  
+      $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();               
       $strID=substr($strID, 0,strlen($strID) - 1);
       $arrID=explode(',',$strID);                 
       if(empty($strID)){
-        $checked                =   0;
-        $type_msg               =   "alert-warning";            
-        $msg                    =   "Please choose at least one item to delete";
+        $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
       }
       if($checked==1){
         foreach ($arrID as $key => $value) {
@@ -196,70 +214,82 @@ class CategoryBannerController extends Controller {
             $item->save();      
           }            
         }
+        $success[]='Cập nhật thành công';
       }           
       $data                   =   $this->loadData($request);
-      $info = array(
-        'checked'           => $checked,
-        'type_msg'          => $type_msg,                
-        'msg'               => $msg,                
-        'data'              => $data
-      );
-      return $info;
+        $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'error'             => $error,
+          'success'           => $success,                
+          'data'              => $data
+        );
+        return $info;
     }
     public function trash(Request $request){
       $strID                 =   $request->str_id;               
-      $checked                =   1;
-      $type_msg               =   "alert-success";
-      $msg                    =   "Xóa thành công";                  
+      
+      $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
+
       $strID=substr($strID, 0,strlen($strID) - 1);
       $arrID=explode(',',$strID);                 
       if(empty($strID)){
-        $checked     =   0;
-        $type_msg           =   "alert-warning";            
-        $msg                =   "Please choose at least one item to delete";
+        $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
       }
       $data=DB::table('banner')->whereIn('category_id',@$arrID)->select('id')->get()->toArray();             
       if(count($data) > 0){
-        $checked                =   0;
-        $type_msg               =   "alert-warning";            
-        $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+        $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
       }   
       if($checked == 1){                                                  
         DB::table('category_banner')->whereIn('id',@$arrID)->delete();   
+        $success[]='Xóa thành công';     
       }
+      $data                   =   $this->loadData($request);
+      $info = array(
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'error'             => $error,
+          'success'           => $success,                
+          'data'              => $data
+        );
+        return $info;
+    }
+    public function sortOrder(Request $request){
+      $sort_json              =   $request->sort_json;           
+      $data_order             =   json_decode($sort_json);       
+
+      $info                 =   array();
+      $checked              =   1;
+      $type_msg             =   "note-success";
+      $success              =   array();                  
+      $error                =   array();       
+      if(count($data_order) > 0){              
+        foreach($data_order as $key => $value){
+          if(!empty($value)){
+            $item=CategoryBannerModel::find((int)$value->id);                
+            $item->sort_order=(int)$value->sort_order;                         
+            $item->save();                      
+          }                                                      
+        }           
+      }     
+      $success[]='Cập nhật thành công';      
       $data                   =   $this->loadData($request);
       $info = array(
         'checked'           => $checked,
         'type_msg'          => $type_msg,                
-        'msg'               => $msg,                
+        'error'             => $error,
+        'success'           => $success,                
         'data'              => $data
       );
       return $info;
-    }
-    public function sortOrder(Request $request){
-          $sort_json              =   $request->sort_json;           
-          $data_order             =   json_decode($sort_json);       
-          $checked                =   1;
-          $type_msg               =   "alert-success";
-          $msg                    =   "Cập nhật thành công";      
-          if(count($data_order) > 0){              
-            foreach($data_order as $key => $value){
-              if(!empty($value)){
-                $item=CategoryBannerModel::find((int)$value->id);                
-              $item->sort_order=(int)$value->sort_order;                         
-              $item->save();                      
-              }                                                      
-            }           
-          }        
-          $data                   =   $this->loadData($request);
-          $info = array(
-            'checked'           => $checked,
-            'type_msg'          => $type_msg,                
-            'msg'               => $msg,                
-            'data'              => $data
-          );
-          return $info;
-    }
-  
+    }  
 }
 ?>

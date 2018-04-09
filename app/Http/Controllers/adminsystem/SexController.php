@@ -71,168 +71,180 @@ class SexController extends Controller {
           return view("adminsystem.no-access",compact('controller'));
         }        
     }
-     public function save(Request $request){
-          $id 					        =		trim($request->id);        
-          $fullname 				    =		trim($request->fullname);    
-          $alias                =   trim($request->alias);                          
-          $sort_order           =   trim($request->sort_order);
-          $status               =   trim($request->status);          
-          $data 		            =   array();
-          $info 		            =   array();
-          $error 		            =   array();
-          $item		              =   null;
-          $checked 	            =   1;              
-          if(empty($fullname)){
-                 $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên";
-          }                   
-          if(empty($sort_order)){
-             $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
-          }
-          if((int)$status==-1){
-             $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
-          }
-          if ($checked == 1) {    
-                if(empty($id)){
-                    $item         =   new SexModel;       
-                    $item->created_at   = date("Y-m-d H:i:s",time());        
-                      
-                } else{
-                    $item       = SexModel::find((int)@$id);   
-                                  
-                }  
-                $item->fullname 		    =	@$fullname;  
-                $item->alias            = @$alias;                                         
-                $item->sort_order 		  =	(int)@$sort_order;
-                $item->status 			    =	(int)@$status;    
-                $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	                
-                $item->save();                                  
-                $info = array(
-                  'type_msg' 			=> "has-success",
-                  'msg' 				=> 'Lưu dữ liệu thành công',
-                  "checked" 			=> 1,
-                  "error" 			=> $error,
-                  "id"    			=> $id
-                );
+            public function save(Request $request){
+              $id 					        =		trim($request->id);        
+              $fullname 				    =		trim($request->fullname);    
+              $alias                =   trim($request->alias);                          
+              $sort_order           =   trim($request->sort_order);
+              $status               =   trim($request->status);          
+              $data 		            =   array();
+
+              $item		              =   null;
+              $info                 =   array();
+              $checked              =   1;
+              $type_msg             =   "note-success";
+              $success              =   array();                  
+              $error                =   array();
+              if(empty($fullname)){
+               $checked = 0;                 
+               $error["fullname"] = "Thiếu tên";
+             }                   
+             if(empty($sort_order)){
+               $checked = 0;
+
+               $error["sort_order"] 		= "Thiếu sắp xếp";
+             }
+             if((int)$status==-1){
+               $checked = 0;
+
+               $error["status"] 			= "Thiếu trạng thái";
+             }
+             if ($checked == 1) {    
+              if(empty($id)){
+                $item         =   new SexModel;       
+                $item->created_at   = date("Y-m-d H:i:s",time());        
+
+              } else{
+                $item       = SexModel::find((int)@$id);   
+
+              }  
+              $item->fullname 		    =	@$fullname;  
+              $item->alias            = @$alias;                                         
+              $item->sort_order 		  =	(int)@$sort_order;
+              $item->status 			    =	(int)@$status;    
+              $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	                
+              $item->save();                                  
+              $success[]='Lưu thành công';  
             }else {
-                    $info = array(
-                      'type_msg' 			=> "has-error",
-                      'msg' 				=> 'Lưu dữ liệu thất bại',
-                      "checked" 			=> 0,
-                      "error" 			=> $error,
-                      "id"				=> ""
-                    );
-            }        		 			       
-            return $info;       
-    }
+             $type_msg           =   "note-danger";       
+           }        		 			       
+           $info = array(
+            "checked"       => $checked,   
+            'type_msg'      => $type_msg,         
+            'error'         => $error,                                                    
+            'success'       => $success,                
+            "id"            => (int)@$id
+          );                       
+           return $info;   
+         }
           public function changeStatus(Request $request){
                   $id             =       (int)$request->id;     
-                  $checked                =   1;
-                  $type_msg               =   "alert-success";
-                  $msg                    =   "Cập nhật thành công";              
+                  $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();          
                   $status         =       (int)@$request->status;
                   $item           =       SexModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
+                  $success[]='Cập nhật thành công';
                   $data                   =   $this->loadData($request);
                   $info = array(
-                    'checked'           => $checked,
-                    'type_msg'          => $type_msg,                
-                    'msg'               => $msg,                
-                    'data'              => $data
-                  );
+              'checked'           => $checked,
+              'type_msg'          => $type_msg,                
+              'error'             => $error,
+              'success'           => $success,                
+              'data'              => $data
+            );
                   return $info;
           }
         
-      public function deleteItem(Request $request){
+          public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";    
+            $info                 =   array();
+            $checked              =   1;
+            $type_msg             =   "note-success";
+            $success              =   array();                  
+            $error                =   array(); 
             $data                   =   CandidateModel::whereRaw("sex_id = ?",[(int)@$id])->get()->toArray();  
             if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+              $checked            =   0;
+              $type_msg           =   "note-danger";            
+              $error[]            =   "Phần tử có dữ liệu con . Vui lòng không xóa";
             }                      
             if($checked == 1){
               $item = SexModel::find((int)@$id);
-                $item->delete();                                                
+              $item->delete();    
+              $success[]          =   'Xóa thành công';                                                     
             }        
             $data                   =   $this->loadData($request);
             $info = array(
               'checked'           => $checked,
               'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
+              'error'             => $error,
+              'success'           => $success,                
               'data'              => $data
             );
             return $info;
-      }
-      public function updateStatus(Request $request){
-        $strID                 =   $request->str_id;     
-        $status                 =   $request->status;            
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Cập nhật thành công";                  
-        $strID=substr($strID, 0,strlen($strID) - 1);
-        $arrID=explode(',',$strID);                 
-        if(empty($strID)){
-          $checked                =   0;
-          $type_msg               =   "alert-warning";            
-          $msg                    =   "Vui lòng chọn ít nhất một phần tử";
-        }
-        if($checked==1){
-          foreach ($arrID as $key => $value) {
-            if(!empty($value)){
-              $item=SexModel::find($value);
-              $item->status=$status;
-              $item->save();      
-            }            
           }
-        }                 
-        $data                   =   $this->loadData($request);
-        $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
-          'data'              => $data
-        );
-        return $info;
-      }
+          public function updateStatus(Request $request){
+            $strID                 =   $request->str_id;     
+            $status                 =   $request->status;            
+            $info                 =   array();
+            $checked              =   1;
+            $type_msg             =   "note-success";
+            $success              =   array();                  
+            $error                =   array();      
+            $strID=substr($strID, 0,strlen($strID) - 1);
+            $arrID=explode(',',$strID);                 
+            if(empty($strID)){
+              $checked            =   0;
+              $type_msg           =   "note-danger";            
+              $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+            }
+            if($checked==1){
+              foreach ($arrID as $key => $value) {
+                if(!empty($value)){
+                  $item=SexModel::find($value);
+                  $item->status=$status;
+                  $item->save();      
+                }            
+              }
+              $success[]='Cập nhật thành công';
+            }                 
+            $data                   =   $this->loadData($request);
+            $info = array(
+              'checked'           => $checked,
+              'type_msg'          => $type_msg,                
+              'error'             => $error,
+              'success'           => $success,                
+              'data'              => $data
+            );
+            return $info;
+          }
       public function trash(Request $request){
         $strID                 =   $request->str_id;               
-        $checked                =   1;
-        $type_msg               =   "alert-success";
-        $msg                    =   "Xóa thành công";                  
+        $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();            
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID); 
         if(empty($strID)){
-          $checked     =   0;
-          $type_msg           =   "alert-warning";            
-          $msg                =   "Vui lòng chọn ít nhất một phần tử";
+          $checked            =   0;
+          $type_msg           =   "note-danger";            
+          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
         }         
         foreach ($arrID as $key => $value){
           $data                   =   CandidateModel::whereRaw("sex_id = ?",[(int)@$value])->get()->toArray();  
             if(count($data) > 0){
-              $checked     =   0;
-              $type_msg           =   "alert-warning";            
-              $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+              $checked            =   0;
+              $type_msg           =   "note-danger";            
+              $error[]            =   "Phần tử có dữ liệu con . Vui lòng không xóa";
             }
         }    
         if($checked == 1){                                  
-
-          DB::table('sex')->whereIn('id',@$arrID)->delete();                                      
+          DB::table('sex')->whereIn('id',@$arrID)->delete();
+          $success[]='Xóa thành công';                                      
         }
         $data                   =   $this->loadData($request);
         $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          'error'             => $error,
+          'success'           => $success,                
           'data'              => $data
         );
         return $info;
@@ -241,9 +253,11 @@ class SexController extends Controller {
             $sort_json              =   $request->sort_json;           
             $data_order             =   json_decode($sort_json);       
           
-            $checked                =   1;
-            $type_msg               =   "alert-success";
-            $msg                    =   "Cập nhật thành công";      
+            $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
             if(count($data_order) > 0){              
               foreach($data_order as $key => $value){      
                 if(!empty($value)){
@@ -254,27 +268,32 @@ class SexController extends Controller {
               }           
             }        
             $data                   =   $this->loadData($request);
+            $success[]='Cập nhật thành công'; 
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
-              'data'              => $data
-            );
+          'checked'           => $checked,
+          'type_msg'          => $type_msg,                
+          'error'             => $error,
+          'success'           => $success,                
+          'data'              => $data
+        );
             return $info;
       }     
       public function createAlias(Request $request){
           $id                =  trim($request->id)  ; 
           $fullname                =  trim($request->fullname)  ;        
           $data                    =  array();
-          $info                    =  array();
-          $error                   =  array();
+          
           $item                    =  null;
-          $checked  = 1;   
+          $info                 =   array();
+                $checked              =   1;
+                $type_msg             =   "note-success";
+                $success              =   array();                  
+                $error                =   array();
           $alias='';                     
           if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           
+           $error["fullname"] = "Thiếu tên bài viết";
          }else{          
           $alias=str_slug($fullname,'-');          
           $dataSex=array();
@@ -294,23 +313,17 @@ class SexController extends Controller {
           }
         }
         if ($checked == 1){
-          $info = array(
-            'type_msg'      => "has-success",
-            'msg'         => 'Lưu dữ liệu thành công',
-            "checked"       => 1,
-            "error"       => $error,
-            
-            "alias"       =>$alias
-          );
-        }else {
-          $info = array(
-            'type_msg'      => "has-error",
-            'msg'         => 'Nhập dữ liệu có sự cố',
-            "checked"       => 0,
-            "error"       => $error,
-            "alias"        => $alias
-          );
-        }    
+        $success[]='Lưu thành công';     
+      }else {
+        $type_msg           =   "note-danger";  
+      }    
+      $info = array(
+        "checked"       => $checked,   
+        'type_msg'      => $type_msg,         
+        'error'         => $error,                                                    
+        'success'       => $success,                
+        "alias"            => $alias
+      );      
         return $info;
       }  
 }

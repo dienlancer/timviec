@@ -127,7 +127,7 @@ class CategoryArticleController extends Controller {
             if(empty($fullname)){
              $checked = 0;
 
-             $error["fullname"] = "Thiếu chủ đề bài viết";
+             $error["fullname"] = "Thiếu tên menu";
            }else{
             $data=array();
             if (empty($id)) {
@@ -226,7 +226,8 @@ class CategoryArticleController extends Controller {
             return $result;   
       }      
       public function deleteItem($id){   
-        $info=array();              
+        $info=array();       
+        $info=array();       
         $checked              =   1;
                 $type_msg             =   "note-success";
                 $success              =   array();                  

@@ -220,7 +220,7 @@ class CategoryArticleController extends Controller {
             return $result;   
       }      
       public function deleteItem($id){   
-        $info=array();       
+          
         $info                 =   array();
       $checked              =   1;                           
       $msg                =   array();

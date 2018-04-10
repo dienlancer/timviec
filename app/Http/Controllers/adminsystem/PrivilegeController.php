@@ -107,7 +107,7 @@ class PrivilegeController extends Controller {
     $item->sort_order     = (int)$sort_order;                
     $item->updated_at 		=	date("Y-m-d H:i:s",time());    	        	
     $item->save();  	                
-    $msg[]='Lưu thành công';  
+    $msg['success']='Lưu thành công';  
   }        
   $info = array(
     "checked"       => $checked,          
@@ -129,7 +129,7 @@ class PrivilegeController extends Controller {
       $item = PrivilegeModel::find($id);
       $item->delete();
       GroupPrivilegeModel::whereRaw("privilege_id = ?",[(int)@$id])->delete();      
-      $msg[]='Xóa thành công';         
+      $msg['success']='Xóa thành công';         
     }        
     $data                   =   $this->loadData($request);
     $info = array(
@@ -149,12 +149,12 @@ class PrivilegeController extends Controller {
     if(empty($strID)){
       $checked            =   0;
       
-      $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+      $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
     }
     if($checked == 1){                                  
       DB::table('privilege')->whereIn('id',@$arrID)->delete();   
       DB::table('group_privilege')->whereIn('privilege_id',@$arrID)->delete();
-      $msg[]='Xóa thành công';   
+      $msg['success']='Xóa thành công';   
     }
     $data                   =   $this->loadData($request);
     $info = array(
@@ -179,7 +179,7 @@ class PrivilegeController extends Controller {
         }                                                  
       }           
     }        
-    $msg[]='Cập nhật thành công'; 
+    $msg['success']='Cập nhật thành công'; 
     $data                   =   $this->loadData($request);
     $info = array(
       "checked"       => $checked,          

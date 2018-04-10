@@ -115,7 +115,7 @@ class ProvinceController extends Controller {
                 $item->status 			    =	(int)@$status;    
                 $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
                 $item->save();                                  
-                $msg[]='Lưu thành công';
+                $msg['success']='Lưu thành công';
             }      		 			       
             $info = array(
                 "checked"       => $checked,          
@@ -133,7 +133,7 @@ class ProvinceController extends Controller {
                   $item           =       ProvinceModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
-                  $msg[]='Cập nhật thành công';             
+                  $msg['success']='Cập nhật thành công';             
                   $data                   =   $this->loadData($request);
                   $info = array(
               "checked"       => $checked,          
@@ -152,18 +152,18 @@ class ProvinceController extends Controller {
             if(count($data) > 0){
               $checked            =   0;
          
-          $msg[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+          $msg['cannotdelete']            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
             $data                   =   CandidateModel::whereRaw("province_id = ?",[(int)@$id])->get()->toArray();  
             if(count($data) > 0){
               $checked            =   0;
         
-          $msg[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+          $msg['cannotdelete']            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }                  
             if($checked == 1){
               $item = ProvinceModel::find((int)@$id);
                 $item->delete(); 
-                $msg[]='Xóa thành công';                                                
+                $msg['success']='Xóa thành công';                                                
             }        
             $data                   =   $this->loadData($request);
             $info = array(
@@ -184,7 +184,7 @@ class ProvinceController extends Controller {
         if(empty($strID)){
           $checked            =   0;
                   
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
@@ -195,7 +195,7 @@ class ProvinceController extends Controller {
                       
             }            
           }
-          $msg[]='Cập nhật thành công';         
+          $msg['success']='Cập nhật thành công';         
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
@@ -215,14 +215,14 @@ class ProvinceController extends Controller {
         if(empty($strID)){
           $checked            =   0;
         
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
         }
         foreach ($arrID as $key => $value){
           $data                   =   EmployerModel::whereRaw("province_id = ?",[(int)@$value])->get()->toArray();  
             if(count($data) > 0){
               $checked            =   0;
          
-          $msg[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+          $msg['cannotdelete']            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
         } 
         foreach ($arrID as $key => $value){
@@ -230,13 +230,13 @@ class ProvinceController extends Controller {
             if(count($data) > 0){
               $checked            =   0;
       
-          $msg[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+          $msg['cannotdelete']            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }
         }              
         if($checked == 1){                                  
 
           DB::table('province')->whereIn('id',@$arrID)->delete();          
-          $msg[]='Xóa thành công';                               
+          $msg['success']='Xóa thành công';                               
         }
         $data                   =   $this->loadData($request);
         $info = array(
@@ -262,7 +262,7 @@ class ProvinceController extends Controller {
                 }                                                  
               }           
             }        
-            $msg[]='Cập nhật thành công'; 
+            $msg['success']='Cập nhật thành công'; 
             $data                   =   $this->loadData($request);
             $info = array(
           "checked"       => $checked,          
@@ -336,7 +336,7 @@ class ProvinceController extends Controller {
           }
         }
         if ($checked == 1){
-          $msg[]='Lưu thành công';     
+          $msg['success']='Lưu thành công';     
         }   
         $info = array(
         "checked"       => $checked,          

@@ -121,7 +121,7 @@ public function save(Request $request){
   $item->status 			    =	(int)@$status;    
   $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
   $item->save();                  
-  $msg[]='Lưu thành công';
+  $msg['success']='Lưu thành công';
 }      		 			       
 $info = array(
   "checked"       => $checked,          
@@ -139,7 +139,7 @@ public function changeStatus(Request $request){
   $item           =       BannerModel::find((int)@$id);        
   $item->status   =       $status;
   $item->save();
-  $msg[]='Cập nhật thành công';              
+  $msg['success']='Cập nhật thành công';              
   $data                   =   $this->loadData($request);
   $info = array(
     "checked"       => $checked,          
@@ -157,7 +157,7 @@ public function deleteItem(Request $request){
   if($checked == 1){
     $item = BannerModel::find((int)@$id);
     $item->delete();             
-    $msg[]='Xóa thành công';   
+    $msg['success']='Xóa thành công';   
   }        
   $data                   =   $this->loadData($request);
   $info = array(
@@ -178,7 +178,7 @@ public function updateStatus(Request $request){
   if(empty($strID)){
     $checked            =   0;
     
-    $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+    $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
   }
   if($checked==1){
     foreach ($arrID as $key => $value) {
@@ -188,7 +188,7 @@ public function updateStatus(Request $request){
         $item->save();      
       }            
     }
-    $msg[]='Cập nhật thành công';          
+    $msg['success']='Cập nhật thành công';          
   }       
   
   $data                   =   $this->loadData($request);
@@ -209,11 +209,11 @@ public function trash(Request $request){
   if(empty($strID)){  
     $checked            =   0;
     
-    $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+    $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
   }
   if($checked == 1){                                  
     DB::table('banner')->whereIn('id',@$arrID)->delete();   
-    $msg[]='Xóa thành công';                 
+    $msg['success']='Xóa thành công';                 
   }
   $data                   =   $this->loadData($request);
   $info = array(
@@ -240,7 +240,7 @@ public function sortOrder(Request $request){
     } 
 
   } 
-  $msg[]='Cập nhật thành công';       
+  $msg['success']='Cập nhật thành công';       
   $data                   =   $this->loadData($request);
   $info = array(
     "checked"       => $checked,          

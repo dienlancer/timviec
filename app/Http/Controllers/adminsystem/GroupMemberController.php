@@ -139,7 +139,7 @@ class GroupMemberController extends Controller {
         }
       }       
     }
-    $msg[]='Lưu thành công';  
+    $msg['success']='Lưu thành công';  
     }     
     $info = array(
       "checked"       => $checked,          
@@ -158,7 +158,7 @@ class GroupMemberController extends Controller {
         $item->delete();
         GroupPrivilegeModel::whereRaw("group_member_id = ?",[(int)@$id])->delete();
         UserGroupMemberModel::whereRaw('group_member_id = ?',[(int)@$id])->delete();
-        $msg[]='Xóa thành công';         
+        $msg['success']='Xóa thành công';         
       }        
       $data                   =   $this->loadData($request);
       $info = array(
@@ -178,14 +178,14 @@ class GroupMemberController extends Controller {
       if(empty($strID)){
         $checked            =   0;
         
-        $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+        $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
       }
 
       if($checked == 1){                              
         DB::table('group_member')->whereIn('id',@$arrID)->delete();   
         DB::table('group_privilege')->whereIn('group_member_id',@$arrID)->delete();  
         DB::table('user_group_member')->whereIn('group_member_id',@$arrID)->delete();   
-        $msg[]='Xóa thành công';
+        $msg['success']='Xóa thành công';
       }
       $data                   =   $this->loadData($request);
       $info = array(
@@ -210,7 +210,7 @@ class GroupMemberController extends Controller {
           }                                             
         }           
       }   
-      $msg[]='Cập nhật thành công';      
+      $msg['success']='Cập nhật thành công';      
       $data                   =   $this->loadData($request);
       $info = array(
         "checked"       => $checked,          
@@ -252,7 +252,7 @@ class GroupMemberController extends Controller {
       }
     }
     if ($checked == 1){
-      $msg[]='Lưu thành công';     
+      $msg['success']='Lưu thành công';     
     }    
     $info = array(
       "checked"       => $checked,          

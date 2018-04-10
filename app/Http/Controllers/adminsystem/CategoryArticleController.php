@@ -189,7 +189,7 @@ class CategoryArticleController extends Controller {
               DB::statement($sql);    
             }          
           } 
-          $msg[]='Lưu thành công';
+          $msg['success']='Lưu thành công';
         }      		 			       
         $info = array(
           "checked"       => $checked,          
@@ -228,18 +228,18 @@ class CategoryArticleController extends Controller {
           if(count($data) > 0){
             $checked     =   0;
                     
-            $msg[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            $msg['cannotdelete']                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
           }
           $data                   =   ArticleCategoryModel::whereRaw("category_id = ?",[(int)@$id])->get()->toArray();              
           if(count($data) > 0){
             $checked     =   0;
                
-            $msg[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            $msg['cannotdelete']                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
           }
           if($checked == 1){
             $item               =   CategoryArticleModel::find((int)@$id);
             $item->delete();            
-            $msg[]='Xóa thành công';
+            $msg['success']='Xóa thành công';
           }  
           $info = array(
               "checked"       => $checked,          
@@ -255,7 +255,7 @@ class CategoryArticleController extends Controller {
         if(count($arrID)==0){
             $checked     =   0;
             
-            $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+            $msg['chooseone']                    =   "Vui lòng chọn ít nhất 1 phần tử";
           }
           if($checked==1){
             foreach ($arrID as $key => $value) {
@@ -263,7 +263,7 @@ class CategoryArticleController extends Controller {
               $item->status=$status;
               $item->save();    
             }
-            $msg[]='Cập nhật trạng thái thành công';
+            $msg['success']='Cập nhật trạng thái thành công';
           }   
           $info = array(
               "checked"       => $checked,          
@@ -279,7 +279,7 @@ class CategoryArticleController extends Controller {
         if(count($arrID)==0){
           $checked     =   0;
           
-          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          $msg['chooseone']                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }else{
           foreach ($arrID as $key => $value) {
             if(!empty($value)){
@@ -287,20 +287,20 @@ class CategoryArticleController extends Controller {
               if(count($data) > 0){
                 $checked     =   0;
                 
-                $msg[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+                $msg['cannotdelete']                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
               }
               $data                   =   ArticleCategoryModel::whereRaw("category_id = ?",[(int)@$value])->get()->toArray();                     
               if(count($data) > 0){
                 $checked     =   0;
                  
-                $msg[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+                $msg['cannotdelete']                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
               }
             }                
           }
         }
         if($checked == 1){                            
           DB::table('category_article')->whereIn('id',@$arrID)->delete();   
-          $msg[]='Xóa thành công';
+          $msg['success']='Xóa thành công';
         }
         $info = array(
               "checked"       => $checked,          
@@ -317,7 +317,7 @@ class CategoryArticleController extends Controller {
         if(count($arrOrder) == 0){
           $checked     =   0;
           
-          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          $msg['chooseone']                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }
         if($checked==1){        
           foreach($arrOrder as $id => $value){                    
@@ -325,7 +325,7 @@ class CategoryArticleController extends Controller {
             $item->sort_order=(int)$value;            
             $item->save();            
           }     
-          $msg[]='Sắp xếp thành công';
+          $msg['success']='Sắp xếp thành công';
         }    
         $info = array(
          "checked"       => $checked,           
@@ -396,7 +396,7 @@ class CategoryArticleController extends Controller {
         }
       }
       if ($checked == 1){
-        $msg[]='Lưu thành công';     
+        $msg['success']='Lưu thành công';     
       }   
       $info = array(
                 "checked"       => $checked,          

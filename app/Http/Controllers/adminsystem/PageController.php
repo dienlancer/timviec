@@ -162,7 +162,7 @@ class PageController extends Controller {
                 DB::statement($sql);    
             }          
           }               
-                $msg[]='Lưu thành công';
+                $msg['success']='Lưu thành công';
             }      		 			       
             $info = array(
               "checked"       => $checked,          
@@ -180,7 +180,7 @@ class PageController extends Controller {
       $item           =       PageModel::find((int)@$id);        
       $item->status   =       $status;
       $item->save();
-      $msg[]='Cập nhật thành công';          
+      $msg['success']='Cập nhật thành công';          
       $data                   =   $this->loadData($request);
       $info = array(
         "checked"       => $checked,          
@@ -198,7 +198,7 @@ class PageController extends Controller {
       if($checked == 1){
         $item = PageModel::find((int)@$id);
         $item->delete();     
-        $msg[]='Xóa thành công';              
+        $msg['success']='Xóa thành công';              
       }        
       $data                   =   $this->loadData($request);
       $info = array(
@@ -221,7 +221,7 @@ class PageController extends Controller {
         if(empty($strID)){
           $checked            =   0;
                     
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
@@ -231,7 +231,7 @@ class PageController extends Controller {
               $item->save();      
             }            
           }
-          $msg[]='Cập nhật thành công';       
+          $msg['success']='Cập nhật thành công';       
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
@@ -251,12 +251,12 @@ class PageController extends Controller {
         if(empty($strID)){
           $checked            =   0;
         
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked == 1){                
 
           DB::table('page')->whereIn('id',@$arrID)->delete();  
-          $msg[]='Xóa thành công';                 
+          $msg['success']='Xóa thành công';                 
         }
         $data                   =   $this->loadData($request);
             $info = array(
@@ -282,7 +282,7 @@ class PageController extends Controller {
             }                                                  
           }           
         }      
-        $msg[]='Cập nhật thành công';  
+        $msg['success']='Cập nhật thành công';  
         $data                   =   $this->loadData($request);
         $info = array(
           "checked"       => $checked,          
@@ -354,7 +354,7 @@ class PageController extends Controller {
         }
       }
       if ($checked == 1){
-        $msg[]='Lưu thành công';
+        $msg['success']='Lưu thành công';
       }  
       $info = array(
         "checked"       => $checked,          

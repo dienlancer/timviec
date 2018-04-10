@@ -204,7 +204,7 @@ class ArticleController extends Controller {
     				}
     			}       
     		}
-    		$msg[]='Lưu thành công';  
+    		$msg['success']='Lưu thành công';  
     	}        		 			       
     	$info = array(
     		"checked"       => $checked,       		
@@ -222,7 +222,7 @@ class ArticleController extends Controller {
                   $item           =       ArticleModel::find((int)@$id);        
                   $item->status   =       $status;
                   $item->save();
-                  $msg[]='Cập nhật thành công';              
+                  $msg['success']='Cập nhật thành công';              
                   $data                   =   $this->loadData($request);
                   $info = array(
               "checked"       => $checked,       		
@@ -241,7 +241,7 @@ class ArticleController extends Controller {
               $item = ArticleModel::find((int)@$id);
                 $item->delete();
                 ArticleCategoryModel::whereRaw("article_id = ?",[(int)$id])->delete();
-                $msg[]='Xóa thành công';         
+                $msg['success']='Xóa thành công';         
             }        
             $data                   =   $this->loadData($request);
             $info = array(
@@ -262,7 +262,7 @@ class ArticleController extends Controller {
         if(empty($strID)){
           $checked            =   0;
          
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
@@ -272,7 +272,7 @@ class ArticleController extends Controller {
               $item->save();      
             }            
           }
-          $msg[]='Cập nhật thành công';
+          $msg['success']='Cập nhật thành công';
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
@@ -292,12 +292,12 @@ class ArticleController extends Controller {
             if(empty($strID)){  
               $checked            =   0;
           
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked == 1){                                    
                   DB::table('article')->whereIn('id',@$arrID)->delete();   
                   DB::table('article_category')->whereIn('article_id',@$arrID)->delete();         
-                  $msg[]='Xóa thành công';                     
+                  $msg['success']='Xóa thành công';                     
             }
             $data                 =   $this->loadData($request);
         $info = array(
@@ -324,7 +324,7 @@ class ArticleController extends Controller {
           }  
                                      
         }        
-        $msg[]='Cập nhật thành công'; 
+        $msg['success']='Cập nhật thành công'; 
         $data                   =   $this->loadData($request);
         $info = array(
           "checked"       => $checked,       		
@@ -394,7 +394,7 @@ class ArticleController extends Controller {
         }
       }
       if ($checked == 1){
-        $msg[]='Lưu thành công';     
+        $msg['success']='Lưu thành công';     
       }  
       $info = array(
         "checked"       => $checked,       		

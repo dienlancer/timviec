@@ -14,16 +14,24 @@ $linkSortOrder			=	route('adminsystem.'.$controller.'.sortOrder');
 	{{ csrf_field() }}    		
 	<div class="portlet light bordered">
 		<div class="portlet-title">
-			@if(Session::has("message"))			
-			<div class="note <?php echo Session::get("message")['type_msg'] ?>" >
+			@if(Session::has("message"))	
+			<?php 
+			$type_msg='';
+			$checked=Session::get('message')['checked'];
+			if((int)@$checked==1){
+				$type_msg='note-success';
+			}else{
+				$type_msg='note-danger';
+			}
+			?>		
+			<div class="note <?php echo $type_msg; ?>" >
 				<?php 				
-				$error=Session::get("message")['error'];
-				$success=Session::get("message")['success'];
-				if(count(@$error) > 0){
+				$msg=Session::get("message")['msg'];				
+				if(count(@$msg) > 0){
 					?>					
 					<ul>
 						<?php 
-						foreach (@$error as $key => $value) {
+						foreach (@$msg as $key => $value) {
 							?>
 							<li><?php echo $value; ?></li>
 							<?php
@@ -31,20 +39,7 @@ $linkSortOrder			=	route('adminsystem.'.$controller.'.sortOrder');
 						?>                              
 					</ul>					
 					<?php
-				}
-				if(count(@$success) > 0){					
-					?>					
-					<ul>
-						<?php 
-						foreach (@$success as $key => $value) {
-							?>
-							<li><?php echo $value; ?></li>
-							<?php
-						}
-						?>                              
-					</ul>					
-					<?php
-				}	
+				}				
 				?>
 			</div>                                                                            
             @endif			

@@ -223,7 +223,7 @@ class UserController extends Controller {
                 }
               }       
             }                            
-            $msg[]='Lưu thành công';  
+            $msg['success']='Lưu thành công';  
           }
           $info = array(
                 "checked"       => $checked,          
@@ -241,7 +241,7 @@ class UserController extends Controller {
                   $item           =       User::find((int)@$id);        
                   $item->status   =       (int)@$status;
                   $item->save();
-                  $msg[]='Cập nhật thành công';     
+                  $msg['success']='Cập nhật thành công';     
                   $data                   =   $this->loadData($request);
                   $info = array(
               "checked"       => $checked,          
@@ -261,7 +261,7 @@ class UserController extends Controller {
                 $item->delete();            
                 DB::table('activations')->where('user_id',@$id)->delete();   
                 DB::table('user_group_member')->where('user_id',@$id)->delete(); 
-                $msg[]='Xóa thành công';       
+                $msg['success']='Xóa thành công';       
             }        
             $data                   =   $this->loadData($request);
             $info = array(
@@ -282,7 +282,7 @@ class UserController extends Controller {
         if(empty($strID)){
                     $checked            =   0;
           
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
           }
           if($checked==1){
               foreach ($arrID as $key => $value) {
@@ -292,7 +292,7 @@ class UserController extends Controller {
                     $item->save();      
                 }            
               }
-              $msg[]='Cập nhật thành công';
+              $msg['success']='Cập nhật thành công';
           }                 
           $data                   =   $this->loadData($request);
           $info = array(
@@ -312,13 +312,13 @@ class UserController extends Controller {
             if(empty($strID)){
               $checked            =   0;
           
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked == 1){             
                   DB::table('users')->whereIn('id',@$arrID)->delete(); 
                   DB::table('activations')->whereIn('user_id',@$arrID)->delete(); 
                   DB::table('user_group_member')->whereIn('user_id',@$arrID)->delete(); 
-                  $msg[]='Xóa thành công';                               
+                  $msg['success']='Xóa thành công';                               
             }
             $data                   =   $this->loadData($request);
             $info = array(
@@ -343,7 +343,7 @@ class UserController extends Controller {
             }                                                  
           }           
         }  
-        $msg[]='Cập nhật thành công';       
+        $msg['success']='Cập nhật thành công';       
         $data                   =   $this->loadData($request);
         $info = array(
           "checked"       => $checked,          

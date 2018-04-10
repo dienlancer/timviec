@@ -180,7 +180,7 @@ class ModuleItemController extends Controller {
             $item->sort_order 	    =	(int)$sort_order;                
             $item->updated_at 	    =	date("Y-m-d H:i:s",time());    	        	
             $item->save();  	                
-            $msg[]='Lưu thành công';  
+            $msg['success']='Lưu thành công';  
           }  
           $info = array(
             "checked"       => $checked,          
@@ -200,7 +200,7 @@ class ModuleItemController extends Controller {
             $item           =       ModuleItemModel::find((int)@$id);        
             $item->status   =       $status;
             $item->save();
-            $msg[]='Cập nhật thành công';
+            $msg['success']='Cập nhật thành công';
             $data                   =   $this->loadData($request);
             $info = array(
               "checked"       => $checked,          
@@ -218,7 +218,7 @@ class ModuleItemController extends Controller {
             if($checked == 1){
               $item = ModuleItemModel::find((int)@$id);
               $item->delete();
-              $msg[]='Xóa thành công';
+              $msg['success']='Xóa thành công';
             }        
             $data                   =   $this->loadData($request);
             $info = array(
@@ -239,7 +239,7 @@ class ModuleItemController extends Controller {
             if(empty($strID)){
               $checked            =   0;
               
-              $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+              $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked==1){
               foreach ($arrID as $key => $value) {
@@ -249,7 +249,7 @@ class ModuleItemController extends Controller {
                   $item->save();    
                 }                
               }
-              $msg[]='Cập nhật thành công';
+              $msg['success']='Cập nhật thành công';
             }                 
             $data                   =   $this->loadData($request);
             $info = array(
@@ -269,12 +269,12 @@ class ModuleItemController extends Controller {
             if(empty($strID)){
               $checked            =   0;
               
-              $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+              $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked == 1){                                  
 
               DB::table('module_item')->whereIn('id',@$arrID)->delete();   
-              $msg[]='Xóa thành công';                  
+              $msg['success']='Xóa thành công';                  
             }
             $data                   =   $this->loadData($request);
             $info = array(
@@ -299,7 +299,7 @@ class ModuleItemController extends Controller {
                 }                                                 
               }           
             }    
-            $msg[]='Cập nhật thành công';     
+            $msg['success']='Cập nhật thành công';     
             $data                   =   $this->loadData($request);
             $info = array(
               "checked"       => $checked,          

@@ -49,7 +49,7 @@ class MediaController extends Controller {
         $media_item=uploadImage($value,$source_media_file['tmp_name'][$key],$width,$height);
       }      
     }  
-    $msg[]='Lưu thành công';     
+    $msg['success']='Lưu thành công';     
     $info = array(
                 "checked"       => $checked,          
         'msg'       => $msg,               
@@ -68,7 +68,7 @@ class MediaController extends Controller {
       	if(empty($strID)){
       		$checked            =   0;
           
-          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
       	}
       	if($checked == 1){                                  			
       		foreach ($arrID as $key => $value) {
@@ -79,7 +79,7 @@ class MediaController extends Controller {
       				}	
       			}			 	
       		}
-          $msg[]='Xóa thành công'; 	            
+          $msg['success']='Xóa thành công'; 	            
       	}
       	$data                 =   $this->loadData($request);
         $info = array(
@@ -101,7 +101,7 @@ class MediaController extends Controller {
 		if($checked == 1){
 			unlink($pathFile);
 		}        
-    $msg[]='Xóa thành công';     
+    $msg['success']='Xóa thành công';     
 		$data                   =   $this->loadData($request);
 		$info = array(
               "checked"       => $checked,          

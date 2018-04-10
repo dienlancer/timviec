@@ -178,7 +178,7 @@ class MenuController extends Controller {
                 $item->status 			     =  (int)$status;    
                 $item->updated_at 	=	date("Y-m-d H:i:s",time());    	        	
                 $item->save();  	
-                $msg[]='Lưu thành công';
+                $msg['success']='Lưu thành công';
             }    
             $info = array(
           "checked"       => $checked,          
@@ -219,12 +219,12 @@ class MenuController extends Controller {
         if(count($data) > 0){
           $checked     =   0;
           
-          $msg[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+          $msg['cannotdelete']                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
         }          
         if($checked == 1){
           $item               =   MenuModel::find((int)@$id);
           $item->delete();  
-          $msg[]='Xóa thành công';                      
+          $msg['success']='Xóa thành công';                      
         }        
         $info = array(
           "checked"       => $checked,          
@@ -240,7 +240,7 @@ class MenuController extends Controller {
         if(count($arrID)==0){
           $checked     =   0;
           
-          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          $msg['chooseone']                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
@@ -248,7 +248,7 @@ class MenuController extends Controller {
             $item->status=$status;
             $item->save();    
           }
-          $msg[]='Cập nhật trạng thái thành công';
+          $msg['success']='Cập nhật trạng thái thành công';
         }        
         $info = array(
           "checked"       => $checked,          
@@ -264,7 +264,7 @@ class MenuController extends Controller {
         if(count($arrID)==0){
           $checked     =   0;
           
-          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          $msg['chooseone']                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }else{
           foreach ($arrID as $key => $value) {
             $item=MenuModel::find($value);           
@@ -272,7 +272,7 @@ class MenuController extends Controller {
             if($count > 0){
              $checked     =   0;
              
-             $msg[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+             $msg['cannotdelete']                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
            } 
          }
        }
@@ -280,7 +280,7 @@ class MenuController extends Controller {
        if($checked == 1){        
 
         DB::table('menu')->whereIn('id',@$arrID)->delete();   
-        $msg[]='Xóa thành công';
+        $msg['success']='Xóa thành công';
 
       }
       $info = array(
@@ -298,7 +298,7 @@ class MenuController extends Controller {
         if(count($arrOrder) == 0){
           $checked     =   0;
           
-          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          $msg['chooseone']                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }
         if($checked==1){        
           foreach($arrOrder as $id => $value){                    
@@ -306,7 +306,7 @@ class MenuController extends Controller {
             $item->sort_order=(int)$value;            
             $item->save();            
           }     
-          $msg[]='Sắp xếp thành công';
+          $msg['success']='Sắp xếp thành công';
         }    
         $info = array(
           "checked"       => $checked,          

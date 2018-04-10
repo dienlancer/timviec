@@ -88,13 +88,13 @@ class OrganizationController extends Controller {
           $status               =   trim($request->status);          
           $data 		            =   array();
           $info 		            =   array();
-          $error 		            =   array();
+          $msg 		            =   array();
           $item		              =   null;
           $checked 	            =   1;              
           if(empty($fullname)){
                  $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên người hỗ trợ";
+                 $msg["fullname"]["type_msg"] = "has-error";
+                 $msg["fullname"]["msg"] = "Thiếu tên người hỗ trợ";
           }else{
               $data=array();
               if (empty($id)) {
@@ -104,19 +104,19 @@ class OrganizationController extends Controller {
               }  
               if (count($data) > 0) {
                   $checked = 0;
-                  $error["fullname"]["type_msg"] = "has-error";
-                  $error["fullname"]["msg"] = "Bài viết đã tồn tại";
+                  $msg["fullname"]["type_msg"] = "has-error";
+                  $msg["fullname"]["msg"] = "Bài viết đã tồn tại";
               }      	
           }                          
           if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+             $msg["sort_order"]["type_msg"] 	= "has-error";
+             $msg["sort_order"]["msg"] 		= "Thiếu sắp xếp";
           }
           if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
+             $msg["status"]["type_msg"] 		= "has-error";
+             $msg["status"]["msg"] 			= "Thiếu trạng thái";
           }
           if ($checked == 1) {    
                 if(empty($id)){
@@ -153,7 +153,7 @@ class OrganizationController extends Controller {
                   'type_msg' 			=> "has-success",
                   'msg' 				=> 'Lưu dữ liệu thành công',
                   "checked" 			=> 1,
-                  "error" 			=> $error,
+                  "error" 			=> $msg,
                   "id"    			=> $id
                 );
             }else {
@@ -161,7 +161,7 @@ class OrganizationController extends Controller {
                       'type_msg' 			=> "has-error",
                       'msg' 				=> 'Lưu dữ liệu thất bại',
                       "checked" 			=> 0,
-                      "error" 			=> $error,
+                      "error" 			=> $msg,
                       "id"				=> ""
                     );
             }        		 			       
@@ -290,14 +290,14 @@ class OrganizationController extends Controller {
           $fullname                =  trim($request->fullname)  ;        
           $data                    =  array();
           $info                    =  array();
-          $error                   =  array();
+          $msg                   =  array();
           $item                    =  null;
           $checked  = 1;   
           $alias='';                     
           if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           $msg["fullname"]["type_msg"] = "has-error";
+           $msg["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{
           $alias=str_slug($fullname,'-');
           $dataCategoryArticle=array();
@@ -350,7 +350,7 @@ class OrganizationController extends Controller {
             'type_msg'      => "has-success",
             'msg'         => 'Lưu dữ liệu thành công',
             "checked"       => 1,
-            "error"       => $error,
+            "error"       => $msg,
             
             "alias"       =>$alias
           );
@@ -359,7 +359,7 @@ class OrganizationController extends Controller {
             'type_msg'      => "has-error",
             'msg'         => 'Nhập dữ liệu có sự cố',
             "checked"       => 0,
-            "error"       => $error,
+            "error"       => $msg,
             "alias"        => $alias
           );
         }    

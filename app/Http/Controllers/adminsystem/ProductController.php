@@ -122,7 +122,7 @@ class ProductController extends Controller {
             $category_param_id    =   ($request->category_param_id);            
             $data 		            =   array();
             $info 		            =   array();
-            $error 		            =   array();
+            $msg 		            =   array();
             $item		              =   null;
             $checked 	            =   1;   
             $setting= getSettingSystem();
@@ -130,8 +130,8 @@ class ProductController extends Controller {
                 $height=$setting['product_height']['field_value'];           
             if(empty($code)){
                  $checked = 0;
-                 $error["code"]["type_msg"] = "has-error";
-                 $error["code"]["msg"] = "Thiếu mã sản phẩm";
+                 $msg["code"]["type_msg"] = "has-error";
+                 $msg["code"]["msg"] = "Thiếu mã sản phẩm";
             }else{
                 $data=array();
                 if (empty($id)) {
@@ -141,14 +141,14 @@ class ProductController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;
-                  $error["code"]["type_msg"] = "has-error";
-                  $error["code"]["msg"] = "Mã sản phẩm đã tồn tại";
+                  $msg["code"]["type_msg"] = "has-error";
+                  $msg["code"]["msg"] = "Mã sản phẩm đã tồn tại";
                 }       
             }      
             if(empty($fullname)){
                $checked = 0;
-               $error["fullname"]["type_msg"] = "has-error";
-               $error["fullname"]["msg"] = "Thiếu tên sản phẩm";
+               $msg["fullname"]["type_msg"] = "has-error";
+               $msg["fullname"]["msg"] = "Thiếu tên sản phẩm";
            }else{
                 $data=array();
                 if (empty($id)) {
@@ -158,25 +158,25 @@ class ProductController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;
-                  $error["fullname"]["type_msg"] = "has-error";
-                  $error["fullname"]["msg"] = "Tên sản phẩm đã tồn tại";
+                  $msg["fullname"]["type_msg"] = "has-error";
+                  $msg["fullname"]["msg"] = "Tên sản phẩm đã tồn tại";
                 }      	
             }          
       
       if(empty($category_id)){
         $checked = 0;
-        $error["category_id"]["type_msg"]   = "has-error";
-        $error["category_id"]["msg"]      = "Thiếu danh mục";
+        $msg["category_id"]["type_msg"]   = "has-error";
+        $msg["category_id"]["msg"]      = "Thiếu danh mục";
       }      
       if(empty($sort_order)){
            $checked = 0;
-           $error["sort_order"]["type_msg"] 	= "has-error";
-           $error["sort_order"]["msg"] 		= "Sort order is required";
+           $msg["sort_order"]["type_msg"] 	= "has-error";
+           $msg["sort_order"]["msg"] 		= "Sort order is required";
       }
        if((int)$status==-1){
            $checked = 0;
-           $error["status"]["type_msg"] 		= "has-error";
-           $error["status"]["msg"] 			= "Status is required";
+           $msg["status"]["type_msg"] 		= "has-error";
+           $msg["status"]["msg"] 			= "Status is required";
        }
       if ($checked == 1) {  
           $image_name='';
@@ -272,7 +272,7 @@ class ProductController extends Controller {
             'type_msg' 			=> "has-success",
             'msg' 				=> 'Save data successfully',
             "checked" 			=> 1,
-            "error" 			=> $error,
+            "error" 			=> $msg,
             "id"    			=> $id
           );
     }else {
@@ -280,7 +280,7 @@ class ProductController extends Controller {
         'type_msg' 			=> "has-error",
         'msg' 				=> 'Input data has some warning',
         "checked" 			=> 0,
-        "error" 			=> $error,
+        "error" 			=> $msg,
         "id"				=> ""
       );
     }        		 			       
@@ -425,14 +425,14 @@ class ProductController extends Controller {
           $fullname                =  trim($request->fullname)  ;        
           $data                    =  array();
           $info                    =  array();
-          $error                   =  array();
+          $msg                   =  array();
           $item                    =  null;
           $checked  = 1;   
           $alias='';                     
           if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           $msg["fullname"]["type_msg"] = "has-error";
+           $msg["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{
           $alias=str_slug($fullname,'-');
           $dataCategoryArticle=array();
@@ -475,7 +475,7 @@ class ProductController extends Controller {
             'type_msg'      => "has-success",
             'msg'         => 'Lưu dữ liệu thành công',
             "checked"       => 1,
-            "error"       => $error,
+            "error"       => $msg,
             
             "alias"       =>$alias
           );
@@ -484,7 +484,7 @@ class ProductController extends Controller {
             'type_msg'      => "has-error",
             'msg'         => 'Nhập dữ liệu có sự cố',
             "checked"       => 0,
-            "error"       => $error,
+            "error"       => $msg,
             "alias"        => $alias
           );
         }    

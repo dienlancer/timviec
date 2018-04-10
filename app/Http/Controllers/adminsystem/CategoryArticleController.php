@@ -120,14 +120,12 @@ class CategoryArticleController extends Controller {
 
             $item		                 =  null;
             $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
             if(empty($fullname)){
              $checked = 0;
 
-             $error["fullname"] = "Thiếu tên menu";
+             $msg["fullname"] = "Thiếu tên menu";
            }else{
             $data=array();
             if (empty($id)) {
@@ -138,18 +136,18 @@ class CategoryArticleController extends Controller {
             if (count($data) > 0) {
               $checked = 0;
 
-              $error["fullname"] = "Chủ đề bài viết đã tồn tại";
+              $msg["fullname"] = "Chủ đề bài viết đã tồn tại";
             }      	
           }        
           if(empty($sort_order)){
            $checked = 0;
 
-           $error["sort_order"] 		= "Thiếu sắp xếp";
+           $msg["sort_order"] 		= "Thiếu sắp xếp";
          }
          if((int)$status==-1){
            $checked = 0;
 
-           $error["status"] 			= "Thiếu trạng thái";
+           $msg["status"] 			= "Thiếu trạng thái";
          }
          if ($checked == 1) {
           $image_name='';
@@ -191,15 +189,11 @@ class CategoryArticleController extends Controller {
               DB::statement($sql);    
             }          
           } 
-          $success[]='Lưu thành công';
-        } else {
-          $type_msg           =   "note-danger";     
-        }        		 			       
+          $msg[]='Lưu thành công';
+        }      		 			       
         $info = array(
-          "checked"       => $checked,   
-          'type_msg'      => $type_msg,         
-          'error'         => $error,                                                    
-          'success'       => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           "id"            => (int)@$id
         );                       
         return $info;          
@@ -227,47 +221,41 @@ class CategoryArticleController extends Controller {
       }      
       public function deleteItem($id){   
         $info=array();       
-        $info=array();       
-        $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         $data                   =   CategoryArticleModel::whereRaw("parent_id = ?",[(int)@$id])->get()->toArray();  
           if(count($data) > 0){
             $checked     =   0;
-            $type_msg           =   "note-danger";            
-            $error[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+                    
+            $msg[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
           }
           $data                   =   ArticleCategoryModel::whereRaw("category_id = ?",[(int)@$id])->get()->toArray();              
           if(count($data) > 0){
             $checked     =   0;
-            $type_msg           =   "note-danger";            
-            $error[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+               
+            $msg[]                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
           }
           if($checked == 1){
             $item               =   CategoryArticleModel::find((int)@$id);
             $item->delete();            
-            $success[]='Xóa thành công';
+            $msg[]='Xóa thành công';
           }  
           $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                              
+              "checked"       => $checked,          
+        'msg'       => $msg,                    
             );      
           return redirect()->route("adminsystem.".$this->_controller.".getList")->with(["message"=>$info]);                             
       }
       public function updateStatus(Request $request,$status){        
         $arrID=$request->cid;
-        $info=array();              
-        $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();        
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         if(count($arrID)==0){
             $checked     =   0;
-            $type_msg           =   "note-danger";            
-            $error[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+            
+            $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
           }
           if($checked==1){
             foreach ($arrID as $key => $value) {
@@ -275,69 +263,61 @@ class CategoryArticleController extends Controller {
               $item->status=$status;
               $item->save();    
             }
-            $success[]='Cập nhật trạng thái thành công';
+            $msg[]='Cập nhật trạng thái thành công';
           }   
           $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                              
+              "checked"       => $checked,          
+        'msg'       => $msg,                           
             );        
           return redirect()->route("adminsystem.".$this->_controller.".getList")->with(["message"=>$info]);       
       }
       public function trash(Request $request){                              
-        $info=array();              
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         $arrID                 =   $request->cid;           
         if(count($arrID)==0){
           $checked     =   0;
-          $type_msg           =   "note-danger";            
-          $error[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          
+          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }else{
           foreach ($arrID as $key => $value) {
             if(!empty($value)){
               $data                   =   CategoryArticleModel::whereRaw("parent_id = ?",[(int)@$value])->get()->toArray();                    
               if(count($data) > 0){
                 $checked     =   0;
-                $type_msg           =   "note-danger";            
-                $error[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+                
+                $msg[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
               }
               $data                   =   ArticleCategoryModel::whereRaw("category_id = ?",[(int)@$value])->get()->toArray();                     
               if(count($data) > 0){
                 $checked     =   0;
-                $type_msg           =   "note-danger";            
-                $error[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+                 
+                $msg[]                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
               }
             }                
           }
         }
         if($checked == 1){                            
           DB::table('category_article')->whereIn('id',@$arrID)->delete();   
-          $success[]='Xóa thành công';
+          $msg[]='Xóa thành công';
         }
         $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                              
+              "checked"       => $checked,          
+        'msg'       => $msg,                           
             );        
         return redirect()->route("adminsystem.".$this->_controller.".getList")->with(["message"=>$info]);       
       }
       public function sortOrder(Request $request){
-        $info=array();              
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         $arrOrder=array();
         $arrOrder=$request->sort_order;          
         if(count($arrOrder) == 0){
           $checked     =   0;
-          $type_msg           =   "note-danger";            
-          $error[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
+          
+          $msg[]                    =   "Vui lòng chọn ít nhất 1 phần tử";
         }
         if($checked==1){        
           foreach($arrOrder as $id => $value){                    
@@ -345,13 +325,11 @@ class CategoryArticleController extends Controller {
             $item->sort_order=(int)$value;            
             $item->save();            
           }     
-          $success[]='Sắp xếp thành công';
+          $msg[]='Sắp xếp thành công';
         }    
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                              
+         "checked"       => $checked,           
+        'msg'       => $msg,            
         );        
         return redirect()->route("adminsystem.".$this->_controller.".getList")->with(["message"=>$info]);
       }
@@ -363,15 +341,13 @@ class CategoryArticleController extends Controller {
         
         
         $item                    =  null;
-        $info=array();              
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         $alias='';                     
         if(empty($fullname)){
          $checked = 0;         
-         $error["fullname"] = "Thiếu tên";
+         $msg["fullname"] = "Thiếu tên";
        }else{
         $alias=str_slug($fullname,'-');
         $dataCategoryArticle=array();
@@ -420,15 +396,11 @@ class CategoryArticleController extends Controller {
         }
       }
       if ($checked == 1){
-        $success[]='Lưu thành công';     
-      }else {
-        $type_msg           =   "note-danger";  
-      }    
+        $msg[]='Lưu thành công';     
+      }   
       $info = array(
-                "checked"       => $checked,   
-                'type_msg'      => $type_msg,         
-                'error'         => $error,                                                    
-                'success'       => $success,                
+                "checked"       => $checked,          
+        'msg'       => $msg,             
                 "alias"            => $alias
               );                       
             return $info;

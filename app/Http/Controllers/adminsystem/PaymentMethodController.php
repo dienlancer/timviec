@@ -68,18 +68,18 @@ public function save(Request $request){
   $sort_order           =   trim($request->sort_order);                  
   $data                 =   array();
   $info                 =   array();
-  $error                =   array();
+  $msg                =   array();
   $item                 =   null;
   $checked              =   1;                      
   if(empty($sort_order)){
    $checked = 0;
-   $error["sort_order"]["type_msg"]   = "has-error";
-   $error["sort_order"]["msg"]    = "Thiếu sắp xếp";
+   $msg["sort_order"]["type_msg"]   = "has-error";
+   $msg["sort_order"]["msg"]    = "Thiếu sắp xếp";
  }
  if((int)$status==-1){
    $checked = 0;
-   $error["status"]["type_msg"]     = "has-error";
-   $error["status"]["msg"]      = "Thiếu trạng thái";
+   $msg["status"]["type_msg"]     = "has-error";
+   $msg["status"]["msg"]      = "Thiếu trạng thái";
  }                    
  if ($checked == 1) {    
   if(empty($id)){
@@ -99,7 +99,7 @@ public function save(Request $request){
     'type_msg'      => "has-success",
     'msg'         => 'Lưu dữ liệu thành công',
     "checked"       => 1,
-    "error"       => $error,
+    "error"       => $msg,
     "id"          => $id
   );
 }else {
@@ -107,7 +107,7 @@ public function save(Request $request){
     'type_msg'      => "has-error",
     'msg'         => 'Dữ liệu nhập gặp sự cố',
     "checked"       => 0,
-    "error"       => $error,
+    "error"       => $msg,
     "id"        => ""
   );
 }                        

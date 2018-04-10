@@ -35,10 +35,8 @@ class MediaController extends Controller {
 	}
   public function save(Request $request){
     $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
     $source_media_file=array();            
     if(isset($_FILES['source_media_file'])){
       $source_media_file=$_FILES['source_media_file'];
@@ -51,12 +49,10 @@ class MediaController extends Controller {
         $media_item=uploadImage($value,$source_media_file['tmp_name'][$key],$width,$height);
       }      
     }  
-    $success[]='Lưu thành công';     
+    $msg[]='Lưu thành công';     
     $info = array(
-                "checked"       => $checked,   
-                'type_msg'      => $type_msg,         
-                'error'         => $error,                                                    
-                'success'       => $success,                
+                "checked"       => $checked,          
+        'msg'       => $msg,               
                 "id"            => 0
               );             
     return $info;                       
@@ -65,16 +61,14 @@ class MediaController extends Controller {
       public function trash(Request $request){
       	$strID                 =   $request->str_id;               
       	$info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();           
+      $checked              =   1;                           
+      $msg                =   array();
       	$strID=substr($strID, 0,strlen($strID) - 1);
       	$arrID=explode(',',$strID);                 
       	if(empty($strID)){
       		$checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+          
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
       	}
       	if($checked == 1){                                  			
       		foreach ($arrID as $key => $value) {
@@ -85,14 +79,12 @@ class MediaController extends Controller {
       				}	
       			}			 	
       		}
-          $success[]='Xóa thành công'; 	            
+          $msg[]='Xóa thành công'; 	            
       	}
       	$data                 =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,           
           'data'              => $data
         );
         return $info;
@@ -100,10 +92,8 @@ class MediaController extends Controller {
 	public function deleteItem(Request $request){
 		$id                     =   $request->id;              
 		$info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();                
+      $checked              =   1;                           
+      $msg                =   array();    
 		$pathFile 				= 	base_path("upload/".$id);			
 		if(!file_exists($pathFile)){
 			$checked=0;
@@ -111,13 +101,11 @@ class MediaController extends Controller {
 		if($checked == 1){
 			unlink($pathFile);
 		}        
-    $success[]='Xóa thành công';     
+    $msg[]='Xóa thành công';     
 		$data                   =   $this->loadData($request);
 		$info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,                     
               'data'              => $data
             );
 		return $info;

@@ -72,14 +72,12 @@ class CategoryBannerController extends Controller {
 
         $item		= null;
         $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         if(empty($fullname)){
             $checked = 0;
             
-            $error["fullname"] = "Thiếu khối banner";
+            $msg["fullname"] = "Thiếu khối banner";
         }else{
             $data=array();
             if (empty($id)) {
@@ -90,23 +88,23 @@ class CategoryBannerController extends Controller {
             if (count($data) > 0) {
               $checked = 0;
               
-              $error["fullname"] = "Khối banner đã tồn tại";
+              $msg["fullname"] = "Khối banner đã tồn tại";
             }      	
         }
         if(empty($theme_location)){
             $checked = 0;
             
-            $error["theme_location"] = "Thiếu theme location";
+            $msg["theme_location"] = "Thiếu theme location";
         }
         if(empty($sort_order)){
              $checked = 0;
              
-             $error["sort_order"] 		= "Thiếu sắp xếp";
+             $msg["sort_order"] 		= "Thiếu sắp xếp";
         }
         if((int)$status==-1){
                $checked = 0;
 
-               $error["status"]       = "Thiếu trạng thái";
+               $msg["status"]       = "Thiếu trạng thái";
              }
         if($checked == 1) {    
              if(empty($id)){
@@ -124,15 +122,11 @@ class CategoryBannerController extends Controller {
               $item->sort_order 		=	(int)$sort_order;  
               $item->updated_at 		=	date("Y-m-d H:i:s",time());    	        	
               $item->save();  	
-              $success[]='Lưu thành công';
-        } else {
-             $type_msg           =   "note-danger";      
+              $msg[]='Lưu thành công';
         } 
         $info = array(
-                "checked"       => $checked,   
-                'type_msg'      => $type_msg,         
-                'error'         => $error,                                                    
-                'success'       => $success,                
+                "checked"       => $checked,          
+        'msg'       => $msg,          
                 "id"            => (int)@$id
               );                 		 			       
         return $info;       
@@ -141,22 +135,18 @@ class CategoryBannerController extends Controller {
         $id             =       (int)$request->id;     
         
         $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();   
+      $checked              =   1;                           
+      $msg                =   array();
 
         $status         =       (int)$request->status;
         $item           =       CategoryBannerModel::find((int)@$id);        
         $item->status   =       $status;
         $item->save();
-        $success[]='Cập nhật thành công';           
+        $msg[]='Cập nhật thành công';           
         $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,              
               'data'              => $data
             );
             return $info;
@@ -165,28 +155,24 @@ class CategoryBannerController extends Controller {
       $id                     =   (int)$request->id;              
       
       $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();         
+      $checked              =   1;                           
+      $msg                =   array();
 
       $data=BannerModel::whereRaw("category_id = ?",[(int)@$id])->select('id')->get()->toArray();
       if(count($data) > 0){
         $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+               
+          $msg[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
       }    
       if($checked == 1){                        
         $item               =   CategoryBannerModel::find((int)@$id);
         $item->delete();  
-        $success[]='Xóa thành công';                   
+        $msg[]='Xóa thành công';                   
       }        
       $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,             
               'data'              => $data
             );
             return $info;
@@ -195,16 +181,14 @@ class CategoryBannerController extends Controller {
       $strID                 =   $request->str_id;     
       $status                 =   $request->status;            
       $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();               
+      $checked              =   1;                           
+      $msg                =   array();
       $strID=substr($strID, 0,strlen($strID) - 1);
       $arrID=explode(',',$strID);                 
       if(empty($strID)){
         $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+                 
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
       }
       if($checked==1){
         foreach ($arrID as $key => $value) {
@@ -214,14 +198,12 @@ class CategoryBannerController extends Controller {
             $item->save();      
           }            
         }
-        $success[]='Cập nhật thành công';
+        $msg[]='Cập nhật thành công';
       }           
       $data                   =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,                   
           'data'              => $data
         );
         return $info;
@@ -230,34 +212,30 @@ class CategoryBannerController extends Controller {
       $strID                 =   $request->str_id;               
       
       $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
 
       $strID=substr($strID, 0,strlen($strID) - 1);
       $arrID=explode(',',$strID);                 
       if(empty($strID)){
         $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+              
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
       }
       $data=DB::table('banner')->whereIn('category_id',@$arrID)->select('id')->get()->toArray();             
       if(count($data) > 0){
         $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+         
+          $msg[]            =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
       }   
       if($checked == 1){                                                  
         DB::table('category_banner')->whereIn('id',@$arrID)->delete();   
-        $success[]='Xóa thành công';     
+        $msg[]='Xóa thành công';     
       }
       $data                   =   $this->loadData($request);
       $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,                   
           'data'              => $data
         );
         return $info;
@@ -267,10 +245,8 @@ class CategoryBannerController extends Controller {
       $data_order             =   json_decode($sort_json);       
 
       $info                 =   array();
-      $checked              =   1;
-      $type_msg             =   "note-success";
-      $success              =   array();                  
-      $error                =   array();       
+      $checked              =   1;                           
+      $msg                =   array();
       if(count($data_order) > 0){              
         foreach($data_order as $key => $value){
           if(!empty($value)){
@@ -280,13 +256,11 @@ class CategoryBannerController extends Controller {
           }                                                      
         }           
       }     
-      $success[]='Cập nhật thành công';      
+      $msg[]='Cập nhật thành công';      
       $data                   =   $this->loadData($request);
       $info = array(
-        'checked'           => $checked,
-        'type_msg'          => $type_msg,                
-        'error'             => $error,
-        'success'           => $success,                
+        "checked"       => $checked,          
+        'msg'       => $msg,             
         'data'              => $data
       );
       return $info;

@@ -116,13 +116,13 @@ class CategoryProductController extends Controller {
         $status 				        =		trim($request->status);
         $data 		              =   array();
         $info 		              =   array();
-        $error 		              =   array();
+        $msg 		              =   array();
         $item		= null;
         $checked 	= 1;              
         if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên loại sản phẩm";
+           $msg["fullname"]["type_msg"] = "has-error";
+           $msg["fullname"]["msg"] = "Thiếu tên loại sản phẩm";
         }else{
             $data=array();
              if (empty($id)) {
@@ -132,19 +132,19 @@ class CategoryProductController extends Controller {
             }  
             if (count($data) > 0) {
               $checked = 0;
-              $error["fullname"]["type_msg"] = "has-error";
-              $error["fullname"]["msg"] = "Loại sản phẩm đã tồn tại";
+              $msg["fullname"]["type_msg"] = "has-error";
+              $msg["fullname"]["msg"] = "Loại sản phẩm đã tồn tại";
             }      	
         }        
         if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+             $msg["sort_order"]["type_msg"] 	= "has-error";
+             $msg["sort_order"]["msg"] 		= "Thiếu sắp xếp";
         }
         if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
+             $msg["status"]["type_msg"] 		= "has-error";
+             $msg["status"]["msg"] 			= "Thiếu trạng thái";
         }
         if ($checked == 1) {    
               $image_name='';
@@ -188,18 +188,14 @@ class CategoryProductController extends Controller {
             }          
           } 
         $info = array(
-          'type_msg' 			=> "has-success",
-          'msg' 				=> 'Lưu dữ liệu thành công',
-          "checked" 			=> 1,
-          "error" 			=> $error,
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           "id"    			=> $id
         );
       } else {
             $info = array(
-              'type_msg' 			=> "has-error",
-              'msg' 				=> 'Lưu dữ liệu gặp sự cố',
-              "checked" 			=> 0,
-              "error" 			=> $error,
+              "checked"       => $checked,          
+        'msg'       => $msg,       
               "id"				=> ""
             );
       }        		 			       
@@ -351,14 +347,14 @@ class CategoryProductController extends Controller {
           $fullname                =  trim($request->fullname)  ;        
           $data                    =  array();
           $info                    =  array();
-          $error                   =  array();
+          $msg                   =  array();
           $item                    =  null;
           $checked  = 1;   
           $alias='';                     
           if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           $msg["fullname"]["type_msg"] = "has-error";
+           $msg["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{
           $alias=str_slug($fullname,'-');
           $dataCategoryArticle=array();
@@ -400,19 +396,15 @@ class CategoryProductController extends Controller {
         }
         if ($checked == 1){
           $info = array(
-            'type_msg'      => "has-success",
-            'msg'         => 'Lưu dữ liệu thành công',
-            "checked"       => 1,
-            "error"       => $error,
+           "checked"       => $checked,           
+        'msg'       => $msg,       
             
             "alias"       =>$alias
           );
         }else {
           $info = array(
-            'type_msg'      => "has-error",
-            'msg'         => 'Nhập dữ liệu có sự cố',
-            "checked"       => 0,
-            "error"       => $error,
+           "checked"       => $checked,           
+        'msg'       => $msg,       
             "alias"        => $alias
           );
         }    

@@ -86,19 +86,17 @@ class SettingSystemController extends Controller {
 
                 $item                 =   null;
                 $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
                 if(empty($sort_order)){
                  $checked = 0;
 
-                 $error["sort_order"]    = "Thiếu sắp xếp";
+                 $msg["sort_order"]    = "Thiếu sắp xếp";
                }
                if((int)$status==-1){
                  $checked = 0;
 
-                 $error["status"]      = "Thiếu trạng thái";
+                 $msg["status"]      = "Thiếu trạng thái";
                }                    
                if ($checked == 1) {    
                 $logo_frontend_name='';
@@ -152,15 +150,11 @@ class SettingSystemController extends Controller {
                 $item->status                   = (int)@$status;    
                 $item->updated_at               = date("Y-m-d H:i:s",time());               
                 $item->save();                    
-                $success[]='Lưu thành công';  
-              }else {
-               $type_msg           =   "note-danger";   
-             }           
+                $msg[]='Lưu thành công';  
+              }          
              $info = array(
-              "checked"       => $checked,   
-              'type_msg'      => $type_msg,         
-              'error'         => $error,                                                    
-              'success'       => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,                      
               "id"            => (int)@$id
             );             
              return $info;       
@@ -168,21 +162,17 @@ class SettingSystemController extends Controller {
            public function changeStatus(Request $request){
             $id             =       (int)$request->id;     
             $info                 =   array();
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();           
+      $checked              =   1;                           
+      $msg                =   array();
             $status         =       (int)$request->status;
             $item           =       SettingSystemModel::find((int)@$id);        
             $item->status   =       $status;
             $item->save();
-            $success[]='Cập nhật thành công';
+            $msg[]='Cập nhật thành công';
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,               
               'data'              => $data
             );
             return $info;
@@ -191,21 +181,17 @@ class SettingSystemController extends Controller {
           public function deleteItem(Request $request){
             $id                     =   (int)@$request->id;              
             $info                 =   array();
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();                   
+      $checked              =   1;                           
+      $msg                =   array();         
             if($checked == 1){
               $item = SettingSystemModel::find((int)@$id);
               $item->delete();       
-              $success[]='Xóa thành công';              
+              $msg[]='Xóa thành công';              
             }        
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,               
               'data'              => $data
             );
             return $info;
@@ -214,16 +200,14 @@ class SettingSystemController extends Controller {
             $strID                 =   $request->str_id;     
             $status                 =   $request->status;            
             $info                 =   array();
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();    
+      $checked              =   1;                           
+      $msg                =   array();
             $strID=substr($strID, 0,strlen($strID) - 1);
             $arrID=explode(',',$strID);                 
             if(empty($strID)){
               $checked            =   0;
-              $type_msg           =   "note-danger";            
-              $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+              
+              $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked==1){
               foreach ($arrID as $key => $value) {
@@ -233,14 +217,12 @@ class SettingSystemController extends Controller {
                   $item->save();    
                 }                
               }
-              $success[]='Cập nhật thành công';
+              $msg[]='Cập nhật thành công';
             }                 
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,                     
               'data'              => $data
             );
             return $info;
@@ -248,28 +230,24 @@ class SettingSystemController extends Controller {
           public function trash(Request $request){
             $strID                 =   $request->str_id;               
             $info                 =   array();
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();                      
+      $checked              =   1;                           
+      $msg                =   array();             
             $strID=substr($strID, 0,strlen($strID) - 1);
             $arrID=explode(',',$strID);                 
             if(empty($strID)){
               $checked            =   0;
-              $type_msg           =   "note-danger";            
-              $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+              
+              $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked == 1){                          
              
               DB::table('setting_system')->whereIn('id',@$arrID)->delete();  
-              $success[]='Xóa thành công';        
+              $msg[]='Xóa thành công';        
             }
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,             
               'data'              => $data
             );
             return $info;
@@ -278,10 +256,8 @@ class SettingSystemController extends Controller {
             $sort_json              =   $request->sort_json;           
             $data_order             =   json_decode($sort_json);       
             $info                 =   array();
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
             if(count($data_order) > 0){              
               foreach($data_order as $key => $value){       
                 if(!empty($value)){
@@ -291,13 +267,11 @@ class SettingSystemController extends Controller {
                 }                                                 
               }           
             }      
-            $success[]='Cập nhật thành công';   
+            $msg[]='Cập nhật thành công';   
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,                
               'data'              => $data
             );
             return $info;
@@ -310,14 +284,12 @@ class SettingSystemController extends Controller {
             
             $item                    =  null;
             $info                 =   array();
-            $checked              =   1;
-            $type_msg             =   "note-success";
-            $success              =   array();                  
-            $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
             $alias='';                     
             if(empty($fullname)){
              $checked = 0;         
-             $error["fullname"] = "Thiếu tên bài viết";
+             $msg["fullname"] = "Thiếu tên bài viết";
            }else{
             $alias=str_slug($fullname,'-');
             $dataSettingSystem=array();        
@@ -336,15 +308,11 @@ class SettingSystemController extends Controller {
             }
           }
           if ($checked == 1){
-            $success[]='Lưu thành công';     
-          }else {
-            $type_msg           =   "note-danger";  
+            $msg[]='Lưu thành công';     
           } 
           $info = array(
-            "checked"       => $checked,   
-            'type_msg'      => $type_msg,         
-            'error'         => $error,                                                    
-            'success'       => $success,                
+            "checked"       => $checked,          
+        'msg'       => $msg,                    
             "alias"            => $alias
           );           
           return $info;

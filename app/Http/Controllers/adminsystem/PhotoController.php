@@ -74,13 +74,13 @@ class PhotoController extends Controller {
       $fileObj=$_FILES["image"];
       $data 		            =   array();
       $info 		            =   array();
-      $error 		            =   array();
+      $msg 		            =   array();
       $item		              =   null;
       $checked 	            =   1;  
       if(empty($album_id)){
         $checked = 0;
-        $error["album_id"]["type_msg"]   = "has-error";
-        $error["album_id"]["msg"]      = "Thiếu danh mục";
+        $msg["album_id"]["type_msg"]   = "has-error";
+        $msg["album_id"]["msg"]      = "Thiếu danh mục";
       } 
       if($fileObj['tmp_name'] == null){
         $checked=0;
@@ -105,7 +105,7 @@ class PhotoController extends Controller {
           'type_msg' 			=> "has-success",
           'msg' 				=> 'Lưu dữ liệu thành công',
           "checked" 			=> 1,
-          "error" 			=> $error,
+          "error" 			=> $msg,
           "id"    			=> $id
         );
       }else {
@@ -113,7 +113,7 @@ class PhotoController extends Controller {
           'type_msg' 			=> "has-error",
           'msg' 				=> 'Lưu dữ liệu thất bại',
           "checked" 			=> 0,
-          "error" 			=> $error,
+          "error" 			=> $msg,
           "id"				=> ""
         );
       }              		 			       
@@ -243,14 +243,14 @@ class PhotoController extends Controller {
           $fullname      =  trim($request->fullname)  ;        
           $data          =  array();
           $info          =  array();
-          $error         =  array();
+          $msg         =  array();
           $item          =  null;
           $checked       = 1;   
           $alias='';                     
           if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           $msg["fullname"]["type_msg"] = "has-error";
+           $msg["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{
           $alias=str_slug($fullname,'-');
           $dataCategoryArticle=array();
@@ -303,7 +303,7 @@ class PhotoController extends Controller {
             'type_msg'      => "has-success",
             'msg'         => 'Lưu dữ liệu thành công',
             "checked"       => 1,
-            "error"       => $error,            
+            "error"       => $msg,            
             "alias"       =>$alias
           );
         }else {
@@ -311,7 +311,7 @@ class PhotoController extends Controller {
             'type_msg'      => "has-error",
             'msg'         => 'Nhập dữ liệu có sự cố',
             "checked"       => 0,
-            "error"       => $error,
+            "error"       => $msg,
             "alias"        => $alias
           );
         }    

@@ -71,13 +71,13 @@ class InvoiceController extends Controller {
         $status 				         =  trim($request->status);        
         $data 		               =  array();
         $info 		               =  array();
-        $error 		               =  array();
+        $msg 		               =  array();
         $item		                 =  null;
         $checked 	= 1;                              
         if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
+             $msg["status"]["type_msg"] 		= "has-error";
+             $msg["status"]["msg"] 			= "Thiếu trạng thái";
         }
         if ($checked == 1) {    
              if(empty($id)){
@@ -96,18 +96,14 @@ class InvoiceController extends Controller {
         $item->updated_at 	=	date("Y-m-d H:i:s",time());    	        	
         $item->save();  	
         $info = array(
-          'type_msg' 			=> "has-success",
-          'msg' 				=> 'Lưu dữ liệu thành công',
-          "checked" 			=> 1,
-          "error" 			=> $error,
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           "id"    			=> $id
         );
       } else {
             $info = array(
-              'type_msg' 			=> "has-error",
-              'msg' 				=> 'Nhập dữ liệu gặp sự cố',
-              "checked" 			=> 0,
-              "error" 			=> $error,
+              "checked"       => $checked,          
+        'msg'       => $msg,       
               "id"				=> ""
             );
       }        		 			       

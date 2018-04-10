@@ -110,11 +110,9 @@ class EmployerController extends Controller {
 
                 $item		              =   null;    
 
-                $info 		            =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+                $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
 
                 $setting= getSettingSystem();
                 $width=$setting['product_width']['field_value'];
@@ -122,17 +120,17 @@ class EmployerController extends Controller {
                 if($password != null){
                   if(mb_strlen($password) < 10 ){
                     $checked = 0;                  
-                    $error["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
+                    $msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
                   }else{
                     if(strcmp($password, $password_confirmed) !=0 ){
                       $checked = 0;                    
-                      $error["password"]= "Xác nhận mật khẩu không trùng khớp";
+                      $msg["password"]= "Xác nhận mật khẩu không trùng khớp";
                     }
                   }
                 }         
                 if(empty($fullname)){
                  $checked = 0;                 
-                 $error["fullname"]= "Thiếu tên công ty";
+                 $msg["fullname"]= "Thiếu tên công ty";
                }else{
                 $data=array();
                 if (empty($id)) {
@@ -142,12 +140,12 @@ class EmployerController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;
-                  $error["fullname"]= "Tên công ty đã tồn tại";
+                  $msg["fullname"]= "Tên công ty đã tồn tại";
                 }       
               }                   
               if(empty($alias)){
                $checked = 0;
-               $error["alias"]= "Thiếu alias";
+               $msg["alias"]= "Thiếu alias";
              }else{
               $data=array();
               if (empty($id)) {
@@ -157,24 +155,24 @@ class EmployerController extends Controller {
               }  
               if (count($data) > 0) {
                 $checked = 0;
-                $error["alias"]= "Alias đã tồn tại";
+                $msg["alias"]= "Alias đã tồn tại";
               }       
             }   
             if((int)@$province_id == 0){
               $checked = 0;
-              $error["province_id"]= "Thiếu tỉnh thành phố";
+              $msg["province_id"]= "Thiếu tỉnh thành phố";
             }
             if((int)@$scale_id == 0){
               $checked = 0;
-              $error["scale_id"] = "Thiếu quy mô công ty";
+              $msg["scale_id"] = "Thiếu quy mô công ty";
             }   
             if((int)$status==-1){
              $checked = 0;
-             $error["status"]= "Thiếu trạng thái";
+             $msg["status"]= "Thiếu trạng thái";
             }
             if((int)@$status_authentication==-1){
              $checked = 0;           
-             $error["status_authentication"]= "Thiếu trạng thái xác thực";
+             $msg["status_authentication"]= "Thiếu trạng thái xác thực";
             }
             if ($checked == 1) {   
               $image_name='';
@@ -219,37 +217,29 @@ class EmployerController extends Controller {
               $item->status_authentication = @$status_authentication; 
               $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
               $item->save();      
-              $success[]='Lưu thành công';                                              
-            }else {
-              $type_msg           =   "note-danger";        
-            } 
+              $msg[]='Lưu thành công';                                              
+            }
             $info = array(
-                "checked"       => $checked,   
-                'type_msg'      => $type_msg,         
-                'error'         => $error,                                                    
-                'success'       => $success,                
+                "checked"       => $checked,          
+        'msg'       => $msg,                
                 "id"            => (int)@$id
               );      		 			       
             return $info;       
           }
           public function changeStatus(Request $request){
             $id             =       (int)@$request->id;     
-            $info 		            =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();    
+            $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
             $status         =       (int)@$request->status;
             $item           =       EmployerModel::find((int)@$id);        
             $item->status   =       $status;
             $item->save();
-            $success[]='Cập nhật thành công';              
+            $msg[]='Cập nhật thành công';              
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,            
               'data'              => $data
             );
             return $info;
@@ -257,23 +247,19 @@ class EmployerController extends Controller {
 
           public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
-            $info 		            =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();                                    
+            $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();                                  
             if($checked == 1){
               $item = EmployerModel::find((int)@$id);
               $item->delete();     
-              $success[]='Xóa thành công';                                           
+              $msg[]='Xóa thành công';                                           
             }   
 
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,           
               'data'              => $data
             );
             return $info;
@@ -281,17 +267,15 @@ class EmployerController extends Controller {
       public function updateStatus(Request $request){
         $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
-        $info 		            =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
           $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+            
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
         }
         if($checked==1){
           foreach ($arrID as $key => $value) {
@@ -301,42 +285,36 @@ class EmployerController extends Controller {
               $item->save();      
             }            
           }
-          $success[]='Cập nhật thành công';
+          $msg[]='Cập nhật thành công';
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           'data'              => $data
         );
         return $info;
       }
       public function trash(Request $request){
         $strID                =   $request->str_id;               
-        $info 		            =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+        $info                 =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID); 
         if(empty($strID)){
           $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+           
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
         }                    
         if($checked == 1){                                  
           DB::table('employer')->whereIn('id',@$arrID)->delete();
-          $success[]='Xóa thành công';                                      
+          $msg[]='Xóa thành công';                                      
         }
         $data                 =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,              
           'data'              => $data
         );
         return $info;

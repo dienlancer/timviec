@@ -78,13 +78,13 @@ class AlbumController extends Controller {
           $status               =   trim($request->status);          
           $data 		            =   array();
           $info 		            =   array();
-          $error 		            =   array();
+          $msg 		            =   array();
           $item		              =   null;
           $checked 	            =   1;              
           if(empty($fullname)){
                  $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên bài viết";
+                 
+                 $msg["fullname"]["msg"] = "Thiếu tên bài viết";
           }else{
               $data=array();
               if (empty($id)) {
@@ -94,19 +94,19 @@ class AlbumController extends Controller {
               }  
               if (count($data) > 0) {
                   $checked = 0;
-                  $error["fullname"]["type_msg"] = "has-error";
-                  $error["fullname"]["msg"] = "Bài viết đã tồn tại";
+                 
+                  $msg["fullname"]["msg"] = "Bài viết đã tồn tại";
               }      	
           }                    
           if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+             
+             $msg["sort_order"]["msg"] 		= "Thiếu sắp xếp";
           }
           if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
+             
+             $msg["status"]["msg"] 			= "Thiếu trạng thái";
           }
           if ($checked == 1) {    
                 if(empty($id)){
@@ -134,18 +134,18 @@ class AlbumController extends Controller {
                 $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
                 $item->save();                                  
                 $info = array(
-                  'type_msg' 			=> "has-success",
+             
                   'msg' 				=> 'Lưu dữ liệu thành công',
                   "checked" 			=> 1,
-                  "error" 			=> $error,
+                  "error" 			=> $msg,
                   "id"    			=> $id
                 );
             }else {
                     $info = array(
-                      'type_msg' 			=> "has-error",
+                     
                       'msg' 				=> 'Lưu dữ liệu thất bại',
                       "checked" 			=> 0,
-                      "error" 			=> $error,
+                      "error" 			=> $msg,
                       "id"				=> ""
                     );
             }        		 			       
@@ -154,7 +154,7 @@ class AlbumController extends Controller {
           public function changeStatus(Request $request){
                   $id             =       (int)$request->id;     
                   $checked                =   1;
-                  $type_msg               =   "alert-success";
+                 
                   $msg                    =   "Cập nhật thành công";              
                   $status         =       (int)$request->status;
                   $item           =       AlbumModel::find((int)@$id);        
@@ -163,7 +163,7 @@ class AlbumController extends Controller {
                   $data                   =   $this->loadData($request);
                   $info = array(
                     'checked'           => $checked,
-                    'type_msg'          => $type_msg,                
+                    
                     'msg'               => $msg,                
                     'data'              => $data
                   );
@@ -173,12 +173,12 @@ class AlbumController extends Controller {
       public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
             $checked                =   1;
-            $type_msg               =   "alert-success";
+          
             $msg                    =   "Xóa thành công";         
             $data=PhotoModel::whereRaw("album_id = ?",[(int)@$id])->select('id')->get()->toArray();
             if(count($data) > 0){
               $checked                =   0;
-              $type_msg               =   "alert-warning";            
+           
               $msg                    =   "Phần tử có dữ liệu con. Vui lòng không xoá";
             }                       
             if($checked == 1){
@@ -189,7 +189,7 @@ class AlbumController extends Controller {
             $data                   =   $this->loadData($request);
             $info = array(
               'checked'           => $checked,
-              'type_msg'          => $type_msg,                
+         
               'msg'               => $msg,                
               'data'              => $data
             );
@@ -199,13 +199,13 @@ class AlbumController extends Controller {
           $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
         $checked                =   1;
-        $type_msg               =   "alert-success";
+        
         $msg                    =   "Cập nhật thành công";                  
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
                     $checked                =   0;
-                    $type_msg               =   "alert-warning";            
+                     
                     $msg                    =   "Vui lòng chọn ít nhất một phần tử";
           }
           if($checked==1){
@@ -220,7 +220,7 @@ class AlbumController extends Controller {
           $data                   =   $this->loadData($request);
           $info = array(
             'checked'           => $checked,
-            'type_msg'          => $type_msg,                
+            
             'msg'               => $msg,                
             'data'              => $data
           );
@@ -229,19 +229,19 @@ class AlbumController extends Controller {
       public function trash(Request $request){
             $strID                 =   $request->str_id;               
             $checked                =   1;
-            $type_msg               =   "alert-success";
+            
             $msg                    =   "Xóa thành công";                  
             $strID=substr($strID, 0,strlen($strID) - 1);
             $arrID=explode(',',$strID);                 
             if(empty($strID)){
               $checked     =   0;
-              $type_msg           =   "alert-warning";            
+
               $msg                =   "Vui lòng chọn ít nhất một phần tử";
             }            
             $data=DB::table('photo')->whereIn('album_id',@$arrID)->select('id')->get()->toArray();             
             if(count($data) > 0){
               $checked                =   0;
-              $type_msg               =   "alert-warning";            
+
               $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }   
             if($checked == 1){                
@@ -287,14 +287,14 @@ class AlbumController extends Controller {
           $fullname      =  trim($request->fullname)  ;        
           $data          =  array();
           $info          =  array();
-          $error         =  array();
+          $msg         =  array();
           $item          =  null;
           $checked       = 1;   
           $alias='';                     
           if(empty($fullname)){
            $checked = 0;
-           $error["fullname"]["type_msg"] = "has-error";
-           $error["fullname"]["msg"] = "Thiếu tên bài viết";
+           $msg["fullname"]["type_msg"] = "has-error";
+           $msg["fullname"]["msg"] = "Thiếu tên bài viết";
          }else{
           $alias=str_slug($fullname,'-');
           $dataCategoryArticle=array();
@@ -347,7 +347,7 @@ class AlbumController extends Controller {
             'type_msg'      => "has-success",
             'msg'         => 'Lưu dữ liệu thành công',
             "checked"       => 1,
-            "error"       => $error,            
+            "error"       => $msg,            
             "alias"       =>$alias
           );
         }else {
@@ -355,7 +355,7 @@ class AlbumController extends Controller {
             'type_msg'      => "has-error",
             'msg'         => 'Nhập dữ liệu có sự cố',
             "checked"       => 0,
-            "error"       => $error,
+            "error"       => $msg,
             "alias"        => $alias
           );
         }    

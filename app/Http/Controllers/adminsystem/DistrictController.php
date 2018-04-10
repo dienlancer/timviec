@@ -82,23 +82,23 @@ class DistrictController extends Controller {
           $status               =   trim($request->status);          
           $data 		            =   array();
           $info 		            =   array();
-          $error 		            =   array();
+          $msg 		            =   array();
           $item		              =   null;
           $checked 	            =   1;              
           if(empty($fullname)){
                  $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên";
+                 $msg["fullname"]["type_msg"] = "has-error";
+                 $msg["fullname"]["msg"] = "Thiếu tên";
           }                      
           if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"] 	= "has-error";
-             $error["sort_order"]["msg"] 		= "Thiếu sắp xếp";
+             $msg["sort_order"]["type_msg"] 	= "has-error";
+             $msg["sort_order"]["msg"] 		= "Thiếu sắp xếp";
           }
           if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"] 		= "has-error";
-             $error["status"]["msg"] 			= "Thiếu trạng thái";
+             $msg["status"]["type_msg"] 		= "has-error";
+             $msg["status"]["msg"] 			= "Thiếu trạng thái";
           }
           if ($checked == 1) {    
                 if(empty($id)){
@@ -117,18 +117,14 @@ class DistrictController extends Controller {
                 $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
                 $item->save();                                  
                 $info = array(
-                  'type_msg' 			=> "has-success",
-                  'msg' 				=> 'Lưu dữ liệu thành công',
-                  "checked" 			=> 1,
-                  "error" 			=> $error,
+                  "checked"       => $checked,          
+        'msg'       => $msg,       
                   "id"    			=> $id
                 );
             }else {
                     $info = array(
-                      'type_msg' 			=> "has-error",
-                      'msg' 				=> 'Lưu dữ liệu thất bại',
-                      "checked" 			=> 0,
-                      "error" 			=> $error,
+                      "checked"       => $checked,          
+        'msg'       => $msg,       
                       "id"				=> ""
                     );
             }        		 			       
@@ -145,9 +141,8 @@ class DistrictController extends Controller {
       $item->save();
       $data                   =   $this->loadData($request);
       $info = array(
-        'checked'           => $checked,
-        'type_msg'          => $type_msg,                
-        'msg'               => $msg,                
+        "checked"       => $checked,          
+        'msg'       => $msg,       
         'data'              => $data
       );
       return $info;
@@ -170,9 +165,8 @@ class DistrictController extends Controller {
             }        
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'msg'               => $msg,                
+              "checked"       => $checked,          
+        'msg'       => $msg,       
               'data'              => $data
             );
             return $info;
@@ -201,9 +195,8 @@ class DistrictController extends Controller {
         }                 
         $data                   =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           'data'              => $data
         );
         return $info;
@@ -233,9 +226,8 @@ class DistrictController extends Controller {
         }
         $data                   =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          "checked"       => $checked,          
+        'msg'       => $msg,                
           'data'              => $data
         );
         return $info;
@@ -258,9 +250,8 @@ class DistrictController extends Controller {
         }        
         $data                   =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'msg'               => $msg,                
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           'data'              => $data
         );
         return $info;
@@ -270,14 +261,14 @@ class DistrictController extends Controller {
         $fullname                =  trim($request->fullname)  ;        
         $data                    =  array();
         $info                    =  array();
-        $error                   =  array();
+        $msg                   =  array();
         $item                    =  null;
         $checked  = 1;   
         $alias='';                     
         if(empty($fullname)){
          $checked = 0;
-         $error["fullname"]["type_msg"] = "has-error";
-         $error["fullname"]["msg"] = "Thiếu tên bài viết";
+         $msg["fullname"]["type_msg"] = "has-error";
+         $msg["fullname"]["msg"] = "Thiếu tên bài viết";
        }else{          
         $alias=str_slug($fullname,'-');
         $dataCategoryArticle=array();
@@ -336,19 +327,14 @@ class DistrictController extends Controller {
       }
       if ($checked == 1){
         $info = array(
-          'type_msg'      => "has-success",
-          'msg'         => 'Lưu dữ liệu thành công',
-          "checked"       => 1,
-          "error"       => $error,
-          
+          "checked"       => $checked,          
+        'msg'       => $msg,       
           "alias"       =>$alias
         );
       }else {
         $info = array(
-          'type_msg'      => "has-error",
-          'msg'         => 'Nhập dữ liệu có sự cố',
-          "checked"       => 0,
-          "error"       => $error,
+         "checked"       => $checked,           
+        'msg'       => $msg,       
           "alias"        => $alias
         );
       }    

@@ -82,13 +82,13 @@ class VideoController extends Controller {
           $status               =   trim(@$request->status);          
           $data                 =   array();
           $info                 =   array();
-          $error                =   array();
+          $msg                =   array();
           $item                 =   null;
           $checked              =   1;        
           if(empty($fullname)){
                  $checked = 0;
-                 $error["fullname"]["type_msg"] = "has-error";
-                 $error["fullname"]["msg"] = "Thiếu tên video";
+                 $msg["fullname"]["type_msg"] = "has-error";
+                 $msg["fullname"]["msg"] = "Thiếu tên video";
           }else{
               $data=array();
               if (empty($id)) {
@@ -98,14 +98,14 @@ class VideoController extends Controller {
               }  
               if (count($data) > 0) {
                   $checked = 0;
-                  $error["fullname"]["type_msg"] = "has-error";
-                  $error["fullname"]["msg"] = "Tên video đã tồn tại";
+                  $msg["fullname"]["type_msg"] = "has-error";
+                  $msg["fullname"]["msg"] = "Tên video đã tồn tại";
               }       
           }              
           if(empty($video_url)){
                  $checked = 0;
-                 $error["video_url"]["type_msg"] = "has-error";
-                 $error["video_url"]["msg"] = "Thiếu tên bài viết";
+                 $msg["video_url"]["type_msg"] = "has-error";
+                 $msg["video_url"]["msg"] = "Thiếu tên bài viết";
           }else{
               $data=array();
               if (empty($id)) {
@@ -115,25 +115,25 @@ class VideoController extends Controller {
               }  
               if (count($data) > 0) {
                   $checked = 0;
-                  $error["video_url"]["type_msg"] = "has-error";
-                  $error["video_url"]["msg"] = "Bài viết đã tồn tại";
+                  $msg["video_url"]["type_msg"] = "has-error";
+                  $msg["video_url"]["msg"] = "Bài viết đã tồn tại";
               }       
           }          
           
           if((int)@$category_id == 0){
               $checked = 0;
-              $error["category_id"]["type_msg"]   = "has-error";
-              $error["category_id"]["msg"]      = "Thiếu danh mục";
+              $msg["category_id"]["type_msg"]   = "has-error";
+              $msg["category_id"]["msg"]      = "Thiếu danh mục";
           }          
           if(empty($sort_order)){
              $checked = 0;
-             $error["sort_order"]["type_msg"]   = "has-error";
-             $error["sort_order"]["msg"]    = "Thiếu sắp xếp";
+             $msg["sort_order"]["type_msg"]   = "has-error";
+             $msg["sort_order"]["msg"]    = "Thiếu sắp xếp";
           }
           if((int)$status==-1){
              $checked = 0;
-             $error["status"]["type_msg"]     = "has-error";
-             $error["status"]["msg"]      = "Thiếu trạng thái";
+             $msg["status"]["type_msg"]     = "has-error";
+             $msg["status"]["msg"]      = "Thiếu trạng thái";
           }
           if ($checked == 1) {    
                 if(empty($id)){
@@ -163,7 +163,7 @@ class VideoController extends Controller {
                   'type_msg'      => "has-success",
                   'msg'         => 'Lưu dữ liệu thành công',
                   "checked"       => 1,
-                  "error"       => $error,
+                  "error"       => $msg,
                   "id"          => $id
                 );
             }else {
@@ -171,7 +171,7 @@ class VideoController extends Controller {
                       'type_msg'      => "has-error",
                       'msg'         => 'Lưu dữ liệu thất bại',
                       "checked"       => 0,
-                      "error"       => $error,
+                      "error"       => $msg,
                       "id"        => ""
                     );
             }                        

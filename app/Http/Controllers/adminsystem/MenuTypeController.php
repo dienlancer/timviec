@@ -71,13 +71,11 @@ class MenuTypeController extends Controller {
         
         $item		= null;
         $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         if(empty($fullname)){
             $checked = 0;            
-            $error["fullname"] = "Thiếu nhóm menu";
+            $msg["fullname"] = "Thiếu nhóm menu";
         }else{
             $data=array();
             if (empty($id)) {
@@ -87,20 +85,20 @@ class MenuTypeController extends Controller {
             }  
             if (count($data) > 0) {
               $checked = 0;              
-              $error["fullname"] = "Nhóm menu đã tồn tại";
+              $msg["fullname"] = "Nhóm menu đã tồn tại";
             }      	
         }
         if(empty($theme_location)){
             $checked = 0;            
-            $error["theme_location"] = "Thiếu theme location";
+            $msg["theme_location"] = "Thiếu theme location";
         }
         if(empty($sort_order)){
              $checked = 0;             
-             $error["sort_order"] 		= "Thiếu sắp xếp";
+             $msg["sort_order"] 		= "Thiếu sắp xếp";
         }
         if((int)@$status == -1){
           $checked = 0;             
-             $error["status"]     = "Thiếu trạng thái"; 
+             $msg["status"]     = "Thiếu trạng thái"; 
         }
         if($checked == 1) {    
              if(empty($id)){
@@ -118,14 +116,14 @@ class MenuTypeController extends Controller {
               $item->sort_order 		=	(int)$sort_order;  
               $item->updated_at 		=	date("Y-m-d H:i:s",time());    	        	
               $item->save();  	
-              $success[]='Lưu thành công';  
+              $msg[]='Lưu thành công';  
         } else {
               $type_msg           =   "note-danger";    
         }        		 			       
         $info = array(
                 "checked"       => $checked,   
                 'type_msg'      => $type_msg,         
-                'error'         => $error,                                                    
+                'error'         => $msg,                                                    
                 'success'       => $success,                
                 "id"            => (int)@$id
               );                       
@@ -134,20 +132,18 @@ class MenuTypeController extends Controller {
     public function changeStatus(Request $request){
         $id             =       (int)$request->id;     
         $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();              
+      $checked              =   1;                           
+      $msg                =   array();   
         $status         =       (int)$request->status;
         $item           =       MenuTypeModel::find((int)@$id);        
         $item->status   =       $status;
         $item->save();
-        $success[]='Cập nhật thành công';              
+        $msg[]='Cập nhật thành công';              
         $data                   =   $this->loadData($request);
         $info = array(
               'checked'           => $checked,
               'type_msg'          => $type_msg,                
-              'error'             => $error,
+              'error'             => $msg,
               'success'           => $success,                
               'data'              => $data
             );
@@ -156,26 +152,24 @@ class MenuTypeController extends Controller {
     public function deleteItem(Request $request){
       $id                     =   (int)$request->id;              
       $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();       
+      $checked              =   1;                           
+      $msg                =   array();
       $data=MenuModel::whereRaw("menu_type_id = ?",[(int)@$id])->select('id')->get()->toArray();
       if(count($data) > 0){
         $checked            =   0;
           $type_msg           =   "note-danger";            
-          $error[]            =   "Phần tử có dữ liệu con . Vui lòng không xóa";
+          $msg[]            =   "Phần tử có dữ liệu con . Vui lòng không xóa";
       }           
       if($checked == 1){                        
         $item               =   MenuTypeModel::find((int)@$id);
         $item->delete();            
-        $success[]='Xóa thành công';         
+        $msg[]='Xóa thành công';         
       }        
       $data                   =   $this->loadData($request);
       $info = array(
               'checked'           => $checked,
               'type_msg'          => $type_msg,                
-              'error'             => $error,
+              'error'             => $msg,
               'success'           => $success,                
               'data'              => $data
             );
@@ -185,16 +179,14 @@ class MenuTypeController extends Controller {
       $strID                 =   $request->str_id;     
       $status                 =   $request->status;            
       $info                 =   array();
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
       $strID=substr($strID, 0,strlen($strID) - 1);
       $arrID=explode(',',$strID);                 
       if(empty($strID)){
         $checked            =   0;
           $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
       }
       if($checked==1){
         foreach ($arrID as $key => $value) {
@@ -204,13 +196,13 @@ class MenuTypeController extends Controller {
             $item->save();      
           }            
         }
-        $success[]='Cập nhật thành công';
+        $msg[]='Cập nhật thành công';
       }           
       $data                   =   $this->loadData($request);
       $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'error'             => $error,
+          'error'             => $msg,
           'success'           => $success,                
           'data'              => $data
         );
@@ -219,33 +211,31 @@ class MenuTypeController extends Controller {
     public function trash(Request $request){
       $strID                 =   $request->str_id;               
       $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();                
+      $checked              =   1;                           
+      $msg                =   array();   
       $strID=substr($strID, 0,strlen($strID) - 1);
       $arrID=explode(',',$strID);                 
       if(empty($strID)){
         $checked            =   0;
           $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
       }
       $data=DB::table('menu')->whereIn('menu_type_id',@$arrID)->select('id')->get()->toArray();             
       if(count($data) > 0){
         $checked            =   0;
           $type_msg           =   "note-danger";            
-          $error[]            =   "Phần tử này có dữ liệu con . Vui lòng không xóa";
+          $msg[]            =   "Phần tử này có dữ liệu con . Vui lòng không xóa";
       }   
       if($checked == 1){                                                               
 
         DB::table('menu_type')->whereIn('id',@$arrID)->delete();   
-        $success[]='Xóa thành công';     
+        $msg[]='Xóa thành công';     
       }
       $data                   =   $this->loadData($request);
       $info = array(
           'checked'           => $checked,
           'type_msg'          => $type_msg,                
-          'error'             => $error,
+          'error'             => $msg,
           'success'           => $success,                
           'data'              => $data
         );
@@ -255,10 +245,8 @@ class MenuTypeController extends Controller {
       $sort_json              =   $request->sort_json;           
       $data_order             =   json_decode($sort_json);       
       $info                 =   array();
-      $checked              =   1;
-      $type_msg             =   "note-success";
-      $success              =   array();                  
-      $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
       if(count($data_order) > 0){              
         foreach($data_order as $key => $value){
           if(!empty($value)){
@@ -268,12 +256,12 @@ class MenuTypeController extends Controller {
           }                                                      
         }           
       }     
-      $success[]='Cập nhật thành công';    
+      $msg[]='Cập nhật thành công';    
       $data                   =   $this->loadData($request);
       $info = array(
         'checked'           => $checked,
         'type_msg'          => $type_msg,                
-        'error'             => $error,
+        'error'             => $msg,
         'success'           => $success,                
         'data'              => $data
       );

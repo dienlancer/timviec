@@ -88,24 +88,22 @@ class UserController extends Controller {
                 $item		              =   null;
                 
                 $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
                 if(empty($fullname)){
                  $checked = 0;
                  
-                 $error["fullname"] = "Thiếu tên người dùng";
+                 $msg["fullname"] = "Thiếu tên người dùng";
                }
                if(empty($group_member_id)){
                  $checked = 0;
                  
-                 $error["group_member_id"] = "Thiếu nhóm người dùng";
+                 $msg["group_member_id"] = "Thiếu nhóm người dùng";
                }
                if(empty($username)){
                  $checked = 0;
                  
-                 $error["username"] = "Thiếu username";
+                 $msg["username"] = "Thiếu username";
                }else{
                 $data=array();
                 if (empty($id)) {
@@ -115,12 +113,12 @@ class UserController extends Controller {
                 }  
                 if (count($data) > 0) {
                   $checked = 0;                  
-                  $error["username"] = "Username đã tồn tại";
+                  $msg["username"] = "Username đã tồn tại";
                 }       
               }
               if(empty($email)){
                $checked = 0;               
-               $error["email"] = "Thiếu email";
+               $msg["email"] = "Thiếu email";
              }else{
               $data=array();
               if (empty($id)) {
@@ -130,18 +128,18 @@ class UserController extends Controller {
               }  
               if (count($data) > 0) {
                 $checked = 0;                
-                $error["email"] = "Email đã tồn tại";
+                $msg["email"] = "Email đã tồn tại";
               }       
             }          
             if(empty($id)){
               if(mb_strlen($password) < 6 ){
                 $checked = 0;                
-                $error["password"] = "Mật khẩu tối thiểu phải 6 ít tự";
+                $msg["password"] = "Mật khẩu tối thiểu phải 6 ít tự";
               }else{
                 if(strcmp($password, $confirm_password) !=0 ){
                   $checked = 0;
                   
-                  $error["password"] = "Xác nhận mật khẩu không trùng khớp";
+                  $msg["password"] = "Xác nhận mật khẩu không trùng khớp";
                 }
               }     
             }else{
@@ -149,12 +147,12 @@ class UserController extends Controller {
                 if(mb_strlen($password) < 6 ){
                   $checked = 0;
                   
-                  $error["password"] = "Mật khẩu tối thiểu phải 6 ít tự";
+                  $msg["password"] = "Mật khẩu tối thiểu phải 6 ít tự";
                 }else{
                   if(strcmp($password, $confirm_password) !=0 ){
                     $checked = 0;
                     
-                    $error["password"] = "Xác nhận mật khẩu không trùng khớp";
+                    $msg["password"] = "Xác nhận mật khẩu không trùng khớp";
                   }
                 }        
               }     
@@ -162,12 +160,12 @@ class UserController extends Controller {
             if(empty($sort_order)){
              $checked = 0;
              
-             $error["sort_order"] 		= "Thiếu sắp xếp";
+             $msg["sort_order"] 		= "Thiếu sắp xếp";
            }
            if((int)$status==-1){
              $checked = 0;
              
-             $error["status"] 			= "Thiếu trạng thái";
+             $msg["status"] 			= "Thiếu trạng thái";
            }
            if ($checked == 1) {  
             $image_name='';
@@ -225,15 +223,11 @@ class UserController extends Controller {
                 }
               }       
             }                            
-            $success[]='Lưu thành công';  
-          }else {
-            $type_msg           =   "note-danger";
-          } 
+            $msg[]='Lưu thành công';  
+          }
           $info = array(
-                "checked"       => $checked,   
-                'type_msg'      => $type_msg,         
-                'error'         => $error,                                                    
-                'success'       => $success,                
+                "checked"       => $checked,          
+        'msg'       => $msg,                  
                 "id"            => (int)@$id
               );         		 			       
           return $info;       
@@ -241,21 +235,17 @@ class UserController extends Controller {
           public function changeStatus(Request $request){
                   $id             =       (int)$request->id;     
                   $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();         
+      $checked              =   1;                           
+      $msg                =   array();
                   $status         =       (int)@$request->status;
                   $item           =       User::find((int)@$id);        
                   $item->status   =       (int)@$status;
                   $item->save();
-                  $success[]='Cập nhật thành công';     
+                  $msg[]='Cập nhật thành công';     
                   $data                   =   $this->loadData($request);
                   $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,               
               'data'              => $data
             );
                   return $info;
@@ -264,23 +254,19 @@ class UserController extends Controller {
       public function deleteItem(Request $request){
             $id                     =   (int)$request->id;              
             $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();            
+      $checked              =   1;                           
+      $msg                =   array();
             if($checked == 1){
                 $item = User::find((int)@$id);
                 $item->delete();            
                 DB::table('activations')->where('user_id',@$id)->delete();   
                 DB::table('user_group_member')->where('user_id',@$id)->delete(); 
-                $success[]='Xóa thành công';       
+                $msg[]='Xóa thành công';       
             }        
             $data                   =   $this->loadData($request);
             $info = array(
-              'checked'           => $checked,
-              'type_msg'          => $type_msg,                
-              'error'             => $error,
-              'success'           => $success,                
+              "checked"       => $checked,          
+        'msg'       => $msg,       
               'data'              => $data
             );
             return $info;
@@ -289,16 +275,14 @@ class UserController extends Controller {
           $strID                 =   $request->str_id;     
         $status                 =   $request->status;            
         $info                 =   array();
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();          
+      $checked              =   1;                           
+      $msg                =   array();
         $strID=substr($strID, 0,strlen($strID) - 1);
         $arrID=explode(',',$strID);                 
         if(empty($strID)){
                     $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+          
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
           }
           if($checked==1){
               foreach ($arrID as $key => $value) {
@@ -308,14 +292,12 @@ class UserController extends Controller {
                     $item->save();      
                 }            
               }
-              $success[]='Cập nhật thành công';
+              $msg[]='Cập nhật thành công';
           }                 
           $data                   =   $this->loadData($request);
           $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,                
           'data'              => $data
         );
           return $info;
@@ -323,29 +305,25 @@ class UserController extends Controller {
       public function trash(Request $request){
             $strID                 =   $request->str_id;               
             $info                 =   array();
-                $checked              =   1;
-                $type_msg             =   "note-success";
-                $success              =   array();                  
-                $error                =   array();         
+      $checked              =   1;                           
+      $msg                =   array();
             $strID=substr($strID, 0,strlen($strID) - 1);
             $arrID=explode(',',$strID);                 
             if(empty($strID)){
               $checked            =   0;
-          $type_msg           =   "note-danger";            
-          $error[]            =   "Vui lòng chọn ít nhất một phần tử";
+          
+          $msg[]            =   "Vui lòng chọn ít nhất một phần tử";
             }
             if($checked == 1){             
                   DB::table('users')->whereIn('id',@$arrID)->delete(); 
                   DB::table('activations')->whereIn('user_id',@$arrID)->delete(); 
                   DB::table('user_group_member')->whereIn('user_id',@$arrID)->delete(); 
-                  $success[]='Xóa thành công';                               
+                  $msg[]='Xóa thành công';                               
             }
             $data                   =   $this->loadData($request);
             $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,            
           'data'              => $data
         );
             return $info;
@@ -354,10 +332,8 @@ class UserController extends Controller {
         $sort_json              =   $request->sort_json;           
         $data_order             =   json_decode($sort_json);       
         $info                 =   array();
-        $checked              =   1;
-        $type_msg             =   "note-success";
-        $success              =   array();                  
-        $error                =   array();
+      $checked              =   1;                           
+      $msg                =   array();
         if(count($data_order) > 0){              
           foreach($data_order as $key => $value){      
             if(!empty($value)){
@@ -367,13 +343,11 @@ class UserController extends Controller {
             }                                                  
           }           
         }  
-        $success[]='Cập nhật thành công';       
+        $msg[]='Cập nhật thành công';       
         $data                   =   $this->loadData($request);
         $info = array(
-          'checked'           => $checked,
-          'type_msg'          => $type_msg,                
-          'error'             => $error,
-          'success'           => $success,                
+          "checked"       => $checked,          
+        'msg'       => $msg,                  
           'data'              => $data
         );
         return $info;

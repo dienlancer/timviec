@@ -22,6 +22,7 @@ $li_sex='';
 $li_marriage='';
 $li_work='';
 $li_literacy='';
+$li_experience='';
 
 $li_media='';
 $li_menu_type='';
@@ -84,7 +85,11 @@ switch ($controller) {
     break; 
     case 'literacy': 
     $li_literacy='active open';       
-    $li_literacy_management='active open'; 
+    $li_category_management='active open'; 
+    break; 
+    case 'experience': 
+    $li_experience='active open';       
+    $li_category_management='active open'; 
     break; 
 
     case 'media':
@@ -250,6 +255,12 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.literacy.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Trình độ học vấn</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_experience; ?>">
+                    <a href="{!! route('adminsystem.experience.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Kinh nghiệm làm việc</span>                                            
                     </a>                                                                      
                 </li>       
             </ul>

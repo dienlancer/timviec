@@ -247,6 +247,18 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.literacy.trash","uses"=>"adminsystem\LiteracyController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.literacy.createAlias","uses"=>"adminsystem\LiteracyController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"experience"],function(){		
+		Route::get("list",["as"=>"adminsystem.experience.getList","uses"=>"adminsystem\ExperienceController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.experience.loadData","uses"=>"adminsystem\ExperienceController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.experience.getForm","uses"=>"adminsystem\ExperienceController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.experience.save","uses"=>"adminsystem\ExperienceController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.experience.deleteItem","uses"=>"adminsystem\ExperienceController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.experience.sortOrder","uses"=>"adminsystem\ExperienceController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.experience.updateStatus","uses"=>"adminsystem\ExperienceController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.experience.changeStatus","uses"=>"adminsystem\ExperienceController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.experience.trash","uses"=>"adminsystem\ExperienceController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.experience.createAlias","uses"=>"adminsystem\ExperienceController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"sex"],function(){		
 		Route::get("list",["as"=>"adminsystem.sex.getList","uses"=>"adminsystem\SexController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.sex.loadData","uses"=>"adminsystem\SexController@loadData"]);		

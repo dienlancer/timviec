@@ -12,6 +12,7 @@ var vDistrictTable           =   null;
 var vScaleTable           =   null;
 var vWorkTable           =   null;
 var vLiteracyTable           =   null;
+var vExperienceTable           =   null;
 var vSexTable           =   null;
 var vEmployerTable           =   null;
 var vCandidateTable           =   null;
@@ -330,6 +331,23 @@ var basicTable = function () {
     };
     var initLiteracyTable = function () {
         vLiteracyTable = $('#tbl-literacy').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initExperienceTable = function () {
+        vExperienceTable = $('#tbl-experience').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -891,6 +909,7 @@ var basicTable = function () {
             initCandidateTable();
             initWorkTable();
             initLiteracyTable();
+            initExperienceTable();
         }
     };
 }();

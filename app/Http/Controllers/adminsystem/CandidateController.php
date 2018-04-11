@@ -37,14 +37,13 @@ class CandidateController extends Controller {
 }	    
 public function loadData(Request $request){
   $user=Sentinel::getUser(); 
+  $query=DB::table('candidate')  ;
   $filter_search="";            
   if(!empty(@$request->filter_search)){      
    $filter_search=trim(@$request->filter_search) ;    
- }        
- $query=DB::table('candidate')  ;
-
- $query->where('candidate.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%');
- $data=$query->select('candidate.id','candidate.fullname','candidate.email','candidate.status','candidate.created_at','candidate.updated_at')    		                     
+   $query->where('candidate.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%');
+ }
+ $data=$query->select('candidate.id','candidate.fullname','candidate.email','candidate.status','candidate.created_at','candidate.updated_at')
  ->groupBy('candidate.id','candidate.fullname','candidate.email','candidate.status','candidate.created_at','candidate.updated_at')   
  ->orderBy('candidate.created_at', 'desc')                
  ->get()->toArray();              
@@ -161,7 +160,7 @@ if((int)@$request->province_id == 0){
 }
 if(mb_strlen(@$address) < 10){
   $checked=0;
-  $msg['address']='Thiếu số điện thoại';
+  $msg['address']='Thiếu địa chỉ';
 }
 if((int)$status==-1){
  $checked = 0;

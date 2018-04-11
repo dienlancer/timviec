@@ -36,21 +36,22 @@ for ($i=1953; $i <= (int)@$arrDate['year']; $i++) {
 }
 $source_year[0]='Năm';
 krsort($source_year);
-$ddlDay=cmsSelectbox(   "day"   ,   "vacca" ,   $source_day     ,   @$data['day']   ,   ''  );
-$ddlMonth=cmsSelectbox( "month" ,   "vacca" ,   $source_month   ,   @$data['month'] ,   ''  );
-$ddlYear=cmsSelectbox(  "year"  ,   "vacca" ,   $source_year    ,   @$data['year']  ,   ''  );
+$birthday    = date_parse_from_format('Y-m-d H:i:s', @$arrRowData['birthday']) ;
+$ddlDay=cmsSelectbox(   "day"   ,   "form-control" ,   $source_day     ,   @$birthday['day']   ,   ''  );
+$ddlMonth=cmsSelectbox( "month" ,   "form-control" ,   $source_month   ,   @$birthday['month'] ,   ''  );
+$ddlYear=cmsSelectbox(  "year"  ,   "form-control" ,   $source_year    ,   @$birthday['year']  ,   ''  );
 /* end ngày sinh */
 /* begin giới tính */
 $source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
-$ddlSex=cmsSelectboxCategory("sex_id","vacca",$source_sex,@$data['sex_id'],'','Chọn giới tính');
+$ddlSex=cmsSelectboxCategory("sex_id","form-control",$source_sex,@$arrRowData['sex_id'],'','Chọn giới tính');
 /* end giới tính */
 /* begin province */
 $source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
-$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
+$ddlProvince=cmsSelectboxCategory("province_id","form-control",$source_province,@$arrRowData['province_id'],'','Chọn tỉnh thành');
 /* end province */
 /* begin Hôn nhân */
 $source_marriage=App\MarriageModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
-$ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data['marriage_id'],'','Chọn tình trạng hôn nhân');
+$ddlMarriage=cmsSelectboxCategory("marriage_id","form-control",$source_marriage,@$arrRowData['marriage_id'],'','Chọn tình trạng hôn nhân');
 /* end Hôn nhân */
 
 $inputAddress           =   '<input type="text" class="form-control" name="address"        value="'.@$arrRowData['address'].'">'; 

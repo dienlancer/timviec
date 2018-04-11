@@ -34,16 +34,16 @@ class EmployerController extends Controller {
         }
   	}	    
   	public function loadData(Request $request){
-  		$user=Sentinel::getUser(); 
-  		$filter_search="";            
-  		if(!empty(@$request->filter_search)){      
-  			$filter_search=trim(@$request->filter_search) ;    
-  		}        
+  		$user=Sentinel::getUser();   		     
   		$query=DB::table('employer')->leftJoin('users','employer.user_id','=','users.id')  ;
   		if((int)@$user->id > 1){
   			$query->where('employer.user_id',(int)@$user->id);
   		}  		
-  		$query->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%');
+      $filter_search="";            
+      if(!empty(@$request->filter_search)){      
+        $filter_search=trim(@$request->filter_search) ;    
+        $query->where('employer.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%');
+      }     		
   		$data=$query->select('employer.id','employer.fullname','employer.email','users.fullname as user_fullname','employer.status','employer.created_at','employer.updated_at')    		                     
   		->groupBy('employer.id','employer.fullname','employer.email','users.fullname','employer.status','employer.created_at','employer.updated_at')   
   		->orderBy('employer.created_at', 'desc')                

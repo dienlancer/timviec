@@ -71,36 +71,27 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 			<div class="col-lg-9">
 				<h1 class="dn-dk-h">Tài Khoản Ứng Viên</h1>
 				<?php 
-				if(count(@$error) > 0){
+				if(count(@$msg) > 0){
+					$type_msg='';					
+					if((int)@$flag == 1){						
+						$type_msg='note-success';
+					}else{
+						$type_msg='note-danger';
+					}
 					?>
-					<div class="alert-system margin-top-10">
-						<ul class="alert-error">
+					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+						<ul>
 							<?php 
-							foreach (@$error as $key => $value) {
+							foreach (@$msg as $key => $value) {
 								?>
 								<li><?php echo $value; ?></li>
 								<?php
 							}
 							?>                              
-						</ul>
-					</div>
+						</ul>	
+					</div>      
 					<?php
-				}
-				if(count(@$success) > 0){					
-					?>
-					<div class="alert-system margin-top-10">
-						<ul class="alert-success">
-							<?php 
-							foreach (@$success as $key => $value) {
-								?>
-								<li><?php echo $value; ?></li>
-								<?php
-							}
-							?>                              
-						</ul>
-					</div>
-					<?php
-				}						
+				}			
 				?>					
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin đăng nhập</h2></div>

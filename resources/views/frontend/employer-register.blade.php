@@ -17,38 +17,29 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 			<div class="col-lg-8">
 				<h1 class="dn-dk-h">Đăng Ký Nhà Tuyển Dụng</h1>		
 				<?php 
-				if(count(@$error) > 0){
+				if(count(@$msg) > 0){
+					$type_msg='';					
+					if((int)@$flag == 1){
+						$disabled_status='disabled';
+						$register_status='';
+						$type_msg='note-success';
+					}else{
+						$type_msg='note-danger';
+					}
 					?>
-					<div class="alert-system margin-top-10">
-						<ul class="alert-error">
+					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+						<ul>
 							<?php 
-							foreach (@$error as $key => $value) {
+							foreach (@$msg as $key => $value) {
 								?>
 								<li><?php echo $value; ?></li>
 								<?php
 							}
 							?>                              
-						</ul>
-					</div>
+						</ul>	
+					</div>      
 					<?php
-				}
-				if(count(@$success) > 0){
-					$disabled_status='disabled';
-					$register_status='';
-					?>
-					<div class="margin-top-10">
-						<ul class="alert-success">
-							<?php 
-							foreach (@$success as $key => $value) {
-								?>
-								<li><?php echo $value; ?></li>
-								<?php
-							}
-							?>                              
-						</ul>
-					</div>
-					<?php
-				}
+				}				
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status,'Chọn tỉnh thành');
 				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],$disabled_status,'Chọn quy mô công ty');
 				?>					

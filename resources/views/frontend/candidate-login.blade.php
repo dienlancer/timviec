@@ -12,21 +12,27 @@ $seo=getSeo();
 		<div class="row">
 			<div class="col-lg-8">
 				<?php 
-				if(count(@$error) > 0){
+				if(count(@$msg) > 0){
+					$type_msg='';					
+					if((int)@$flag == 1){						
+						$type_msg='note-success';
+					}else{
+						$type_msg='note-danger';
+					}
 					?>
-					<div class="alert-system margin-top-10">
-						<ul class="alert-error">
+					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+						<ul>
 							<?php 
-							foreach (@$error as $key => $value) {
+							foreach (@$msg as $key => $value) {
 								?>
 								<li><?php echo $value; ?></li>
 								<?php
 							}
 							?>                              
-						</ul>
-					</div>
+						</ul>	
+					</div>      
 					<?php
-				}				
+				}		
 				?>
 				<h1 class="dn-dk-h">Đăng Nhập Ứng Viên</h1>			
 				<div class="row mia">

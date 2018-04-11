@@ -33,34 +33,25 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 			<div class="col-lg-9">
 				<h1 class="dn-dk-h">Tài Khoản Nhà Tuyển Dụng</h1>
 				<?php 
-				if(count(@$error) > 0){
+				if(count(@$msg) > 0){
+					$type_msg='';					
+					if((int)@$flag == 1){						
+						$type_msg='note-success';
+					}else{
+						$type_msg='note-danger';
+					}
 					?>
-					<div class="alert-system margin-top-10">
-						<ul class="alert-error">
+					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+						<ul>
 							<?php 
-							foreach (@$error as $key => $value) {
+							foreach (@$msg as $key => $value) {
 								?>
 								<li><?php echo $value; ?></li>
 								<?php
 							}
 							?>                              
-						</ul>
-					</div>
-					<?php
-				}
-				if(count(@$success) > 0){					
-					?>
-					<div class="alert-system margin-top-10">
-						<ul class="alert-success">
-							<?php 
-							foreach (@$success as $key => $value) {
-								?>
-								<li><?php echo $value; ?></li>
-								<?php
-							}
-							?>                              
-						</ul>
-					</div>
+						</ul>	
+					</div>      
 					<?php
 				}		
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'','Chọn tỉnh thành');

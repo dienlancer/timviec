@@ -223,6 +223,30 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.scale.trash","uses"=>"adminsystem\ScaleController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.scale.createAlias","uses"=>"adminsystem\ScaleController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"work"],function(){		
+		Route::get("list",["as"=>"adminsystem.work.getList","uses"=>"adminsystem\WorkController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.work.loadData","uses"=>"adminsystem\WorkController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.work.getForm","uses"=>"adminsystem\WorkController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.work.save","uses"=>"adminsystem\WorkController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.work.deleteItem","uses"=>"adminsystem\WorkController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.work.sortOrder","uses"=>"adminsystem\WorkController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.work.updateStatus","uses"=>"adminsystem\WorkController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.work.changeStatus","uses"=>"adminsystem\WorkController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.work.trash","uses"=>"adminsystem\WorkController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.work.createAlias","uses"=>"adminsystem\WorkController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"literacy"],function(){		
+		Route::get("list",["as"=>"adminsystem.literacy.getList","uses"=>"adminsystem\LiteracyController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.literacy.loadData","uses"=>"adminsystem\LiteracyController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.literacy.getForm","uses"=>"adminsystem\LiteracyController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.literacy.save","uses"=>"adminsystem\LiteracyController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.literacy.deleteItem","uses"=>"adminsystem\LiteracyController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.literacy.sortOrder","uses"=>"adminsystem\LiteracyController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.literacy.updateStatus","uses"=>"adminsystem\LiteracyController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.literacy.changeStatus","uses"=>"adminsystem\LiteracyController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.literacy.trash","uses"=>"adminsystem\LiteracyController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.literacy.createAlias","uses"=>"adminsystem\LiteracyController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"sex"],function(){		
 		Route::get("list",["as"=>"adminsystem.sex.getList","uses"=>"adminsystem\SexController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.sex.loadData","uses"=>"adminsystem\SexController@loadData"]);		

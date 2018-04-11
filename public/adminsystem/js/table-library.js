@@ -10,6 +10,8 @@ var vOrganizationTable           =   null;
 var vProvinceTable           =   null;
 var vDistrictTable           =   null;
 var vScaleTable           =   null;
+var vWorkTable           =   null;
+var vLiteracyTable           =   null;
 var vSexTable           =   null;
 var vEmployerTable           =   null;
 var vCandidateTable           =   null;
@@ -294,6 +296,40 @@ var basicTable = function () {
     };
     var initScaleTable = function () {
         vScaleTable = $('#tbl-scale').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initWorkTable = function () {
+        vWorkTable = $('#tbl-work').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initLiteracyTable = function () {
+        vLiteracyTable = $('#tbl-literacy').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -853,6 +889,8 @@ var basicTable = function () {
             initMarriageTable();
             initEmployerTable();
             initCandidateTable();
+            initWorkTable();
+            initLiteracyTable();
         }
     };
 }();

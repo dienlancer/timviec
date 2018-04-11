@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 11, 2018 lúc 10:00 AM
+-- Thời gian đã tạo: Th4 11, 2018 lúc 11:25 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -260,10 +260,10 @@ CREATE TABLE `candidate` (
 
 INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthday`, `sex_id`, `marriage_id`, `province_id`, `address`, `avatar`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'tranhuyvu@dienkim.com', '$2y$10$JDy8UjKIRPmnMgyIAe3ks.p5Fgpu6HdNl8NysIKtwUvAKrx9jzGfu', 'Trần Huy Vũ', '0988162739', NULL, NULL, NULL, NULL, NULL, 'logo-5-170043946.png', 1, '2018-04-03 02:32:59', '2018-04-05 02:00:14'),
-(2, 'truongnt@dienkim.com', '$2y$10$MRkUFsVPAp5SoIMhCWlRf.SmszcSxKqQTi0kYk16pBOtfYWt161La', 'Đặng Thị Thu Hằng', '0922111222', '1990-03-29 00:00:00', 2, 2, 45, '23 Lý Thường Kiệt', 'logo-2-j03u9rwit6op.png', 1, '2018-04-03 07:14:21', '2018-04-06 07:12:51'),
-(3, 'vientg@dienkim.com', '$2y$10$e9812Kvxwy2C8z.q/tGRQOyPBZSEyQftMBmtiWhD7cJ65RfVtTH7y', 'Trần Gia Viên', '0988223244', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:41:02', '2018-04-04 10:12:26'),
-(4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:53:22', '2018-04-04 10:12:57'),
-(5, 'duydp@dienkim.com', '$2y$10$0J9B6zMobYOaNnH3FUu/HeAc1TyoJIRf47WhxXAdOyFb.dOKHAhp2', 'Phạm Đình Duy', '0988145622', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 05:18:40', '2018-04-04 10:13:22'),
+(2, 'truongnt@dienkim.com', '$2y$10$jp2WuH8yQ3JhkPmL5zNBPeKK35V2W2.SU0vYLQKkJd8L/HSD441M2', 'Đặng Thị Thu Hằng', '0922111222', '1988-04-11 00:00:00', 1, 1, 2, '23 Lý Thường Kiệt', 'logo-2-xmydbuv95gtc.png', 1, '2018-04-03 07:14:21', '2018-04-11 08:31:05'),
+(3, 'vientg@dienkim.com', '$2y$10$e9812Kvxwy2C8z.q/tGRQOyPBZSEyQftMBmtiWhD7cJ65RfVtTH7y', 'Trần Gia Viên', '0988223244', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:41:02', '2018-04-11 08:31:05'),
+(4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:53:22', '2018-04-11 08:31:05'),
+(5, 'duydp@dienkim.com', '$2y$10$0J9B6zMobYOaNnH3FUu/HeAc1TyoJIRf47WhxXAdOyFb.dOKHAhp2', 'Phạm Đình Duy', '0988145622', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 05:18:40', '2018-04-11 08:31:05'),
 (6, 'doricata@dienkim.com', '$2y$10$f5xkRP6uU9xCbwatX0o4XetN8cl6VgyElfUNKHOtWzug2YiQNHbRS', 'Nguyễn Văn Cường', '0988162289', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 05:31:42', '2018-04-04 10:14:02');
 
 -- --------------------------------------------------------
@@ -556,7 +556,7 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (1, 'pnjcomvn@dienkim.com', '$2y$10$9x.3XOYYCCvKEMM6pA9AhuIGl9muSxYPyWMpJfwQ2vuHoLkrIdwxO', 'Công ty CP Vàng Bạc Đá Quý Phú Nhuận', 'cong-ty-cp-vang-bac-da-quy-phu-nhuan', '', '', '170E Phan Đăng Lưu, Phường 03, Quận Phú Nhuận', '0988162733', 23, 3, 'logo-7-3409.png', 'PNJ là thương hiệu hàng đầu tại Việt Nam trong lĩnh vực chế tác và bán lẻ trang sức bằng vàng, bạc, đá quý. Sản phẩm PNJ ngày càng được các nước tại thị trường Châu Á và Châu Âu ưu chuộng. \r\n\r\nHiện tại, Công ty có hơn 5.200 nhân viên với hệ thống bán sỉ, và hơn 270 cửa hàng bán lẻ trải rộng trên toàn quốc; Xí Nghiệp Nữ trang PNJ có công suất sản xuất đạt trên 4 triệu sản phẩm/năm, được đánh giá là một trong những xí nghiệp chế tác nữ trang lớn nhất khu vực Châu Á với đội ngũ hơn 1.000 nhân viên.\r\n\r\nTrải qua 30 năm hình thành và phát triển, PNJ đã đạt đươc nhiều thành tựu đáng kể: thuộc Top 500 nhà bán lẻ hàng đầu Châu Á Thái Bình Dương, Giải thưởng Chất lượng Châu Á Thái Bình Dương, Thương hiệu quốc gia, … \r\n\r\nVới những giá trị cốt lõi mà PNJ đã theo đuổi, PNJ đã sở hữu được nguồn nhân lực có tác phong làm việc chuyên nghiệp, hiệu quả lao động cao và hơn cả là mối gắn kết nhân viên với tổ chức. Cơ sở vật chất được trang bị hiện đại bảo đảm nhân viên được làm việc trong điều kiện tốt nhất. Ngoài ra công ty còn trang bị thêm phòng tập GYM và Yoga giúp người lao động tái tạo sức lao động sau một ngày làm việc. \r\n\r\nTập thể PNJ đã cùng nhau chung tay xây dựng văn hoá cảm thông, chia sẻ bằng những hoạt động hỗ trợ cộng đồng, thành lập quỹ từ thiện PNJ, chương trình “mái ấm PNJ” mang đến một cuộc sống tốt đẹp cho người dân nghèo, ươm mầm phát triển tài năng. \r\n\r\nĐể tiếp tục khẳng định vị thế PNJ tại VN và thế giới, chúng tôi đang mở rộng hệ thống phát triển kinh doanh và cần bổ sung những ứng viên tài năng vào đội ngũ nhân sự chuyên nghiệp của mình. \r\n\r\nTại PNJ, sự nghiệp của các bạn sẽ được phát triển cùng với sự lớn mạnh không ngừng của chúng tôi.', '88483127487588', 'www.pnj.com.vn', 'Trần Lệ Diễm Quyên', 'quyentld@dienkim.com', '0988162778', 2, 1, NULL, '2018-04-03 01:48:19', '2018-04-06 15:55:37'),
 (2, 'lottevn@dienkim.com', '$2y$10$5QrmrHzQ84G0GDuwW1XY8uLDaYoy9N1KOp0n5Xk//..bdt.br5CqC', 'LOTTE MART VIỆT NAM', 'lotte-mart-viet-nam', '', '', '469 Nguyễn Hữu Thọ, Quận 7, TP Hồ Chí Minh', '0988162732', 23, 4, NULL, 'Công ty TNHH TTTM LOTTE trực thuộc tập đoàn LOTTE của Hàn Quốc. Tính đến thời điểm này, Trung tâm thương mại LOTTE Mart đã có mặt tại 4 quốc gia của châu Á là: Hàn Quốc, Trung Quốc, Indonesia và Việt Nam, với 243 trung tâm thương mại được xây dựng theo phong cách hiện đại, phù hợp với thị hiếu và nhu cầu mua sắm của người tiêu dùng. Tại Việt Nam, LOTTE Mart đã khai trương 7 trung tâm thương mại, tọa lạc tại những khu vực trung tâm thành phố Hồ Chí Minh: LOTTE Mart Nam Sài Gòn tại quận 7 và LOTTE Mart Phú Thọ quận 11, LOTTE Mart Đồng Nai, LOTTE Mart Đà Nẵng, LOTTE Mart Phan Thiết, LOTTE Mart Bình Dương, LOTTE Mart Hà Nội. Từ khi bước vào thị trường Việt Nam năm 2008 đến nay, LOTTE Mart luôn không ngừng vươn lên với mục tiêu làm hài lòng, thỏa mãn nhu cầu của quý khách, nỗ lực tối đa để cung cấp những sản phẩm, dịch vụ tốt nhất đến tay người tiêu dùng. Mục tiêu đến năm 2020 LOTTE Mart sẽ mở khoảng 60 cửa hàng trải dài khắp các tỉnh thành trên đất nước Việt Nam.', '87437372767823578', 'www.lottemart.com.vn', 'Trần Thanh Tùng', 'tungtt@dienkim.com', '0978222214', 7, 1, 0, '2018-04-03 01:58:47', '2018-04-08 16:37:40'),
 (3, 'spt3134@dienkim.com', '$2y$10$vXe9D1NRDa9vMA.udYBSCOkbs/s.LnwYLdwM5FNF.cHoqEYAdt/2.', 'Công ty CP DV Bưu Chính Viễn Thông Sài Gòn', 'cong-ty-cp-dv-buu-chinh-vien-thong-sai-gon', '', '', '10 Cô Giang, Phường Cầu Ông Lãnh, Q.1, TP HCM', '0983222111', 23, 3, NULL, 'TRUNG TÂM ĐIỆN THOẠI SPT (SPT Telephone Center - STC) là một Chi nhánh trực thuộc\r\nCông ty Cổ phần Dịch vụ Bưu chính Viễn thông Sài Gòn – SPT chuyên cung cấp số thuê bao điện\r\nthoại cố định, ADSL, FTTx, IPTV và các dịch vụ khác...đáp ứng nhu cầu lắp đặt tại các Công ty, Khu\r\ndân cư, Khu công nghiệp, Khu chế xuất, Khu thương mại,...', '', 'www.spt.vn', 'Đinh Thị Trường Giang', 'giangdtt@dienkim.com', '0933251718', 5, 1, NULL, '2018-04-03 06:55:44', '2018-04-08 10:09:15'),
-(4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, NULL, 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, NULL, '2018-04-04 05:29:16', '2018-04-06 08:23:33'),
+(4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, 'logo-7-5yk7jo4xcgz2.png', 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, NULL, '2018-04-04 05:29:16', '2018-04-11 08:37:21'),
 (5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công Ty Bất Động Sản Đà Thành Land', 'cong-ty-bds-da-thanh-land', 'metakeyword Công ty CP BĐS ĐÀ THÀNH LAND', 'metadescription Công ty CP BĐS ĐÀ THÀNH LAND', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 12, 4, 'logo-3-2os9xabnpmtf.png', 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 6, 1, 0, '2018-04-04 08:06:36', '2018-04-08 17:02:50'),
 (6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', '', '', '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 6, 1, 0, '2018-04-06 02:10:27', '2018-04-08 16:37:40'),
 (7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', 'Nhà máy: Số 5 Đại lộ Tự Do, KCN Vsip I, P.Bình Hòa, TX. Thuận An, Bình Dương; TpHCM: 29-30 Song Hành, KP5, Phường An Phú, Quận 2, Tp.HCM', '0967123456', 23, 3, NULL, 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Nguyễn Văn Đạt', 'datnv@dienkim.com', '0945612888', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-06 08:23:07');
@@ -582,8 +582,8 @@ CREATE TABLE `group_member` (
 --
 
 INSERT INTO `group_member` (`id`, `fullname`, `alias`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-07 01:26:06'),
-(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-07 01:26:20');
+(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-11 09:21:44'),
+(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-11 08:02:10');
 
 -- --------------------------------------------------------
 
@@ -605,76 +605,82 @@ CREATE TABLE `group_privilege` (
 --
 
 INSERT INTO `group_privilege` (`id`, `group_member_id`, `privilege_id`, `created_at`, `updated_at`) VALUES
-(4037, 1, 1, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4038, 1, 2, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4039, 1, 4, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4040, 1, 5, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4041, 1, 18, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4042, 1, 19, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4043, 1, 24, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4044, 1, 25, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4045, 1, 43, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4046, 1, 44, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4047, 1, 49, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4048, 1, 50, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4049, 1, 55, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4050, 1, 56, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4051, 1, 61, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4052, 1, 62, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4053, 1, 67, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4054, 1, 68, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4055, 1, 79, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4056, 1, 80, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4057, 1, 85, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4058, 1, 86, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4059, 1, 103, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4060, 1, 104, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4061, 1, 105, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4062, 1, 106, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4063, 1, 107, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4064, 1, 108, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4065, 1, 109, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4066, 1, 110, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4067, 1, 115, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4068, 1, 116, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4069, 1, 121, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4070, 1, 122, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4071, 1, 123, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4072, 1, 124, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4073, 1, 125, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4074, 1, 126, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4075, 1, 127, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4076, 1, 128, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4077, 1, 129, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4078, 1, 130, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4079, 1, 131, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4080, 1, 132, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4081, 1, 133, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4082, 1, 134, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4083, 1, 135, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4084, 1, 136, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4085, 1, 137, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4086, 1, 138, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4087, 1, 139, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4088, 1, 140, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4089, 1, 141, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4090, 1, 142, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4091, 1, 143, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4092, 1, 144, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4093, 1, 145, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4094, 1, 146, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4095, 1, 151, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4096, 1, 152, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4097, 1, 153, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4098, 1, 154, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4099, 1, 155, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4100, 1, 156, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4101, 1, 157, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4102, 1, 158, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4103, 1, 159, '2018-04-07 01:26:07', '2018-04-07 01:26:07'),
-(4104, 2, 157, '2018-04-07 01:26:20', '2018-04-07 01:26:20'),
-(4105, 2, 158, '2018-04-07 01:26:20', '2018-04-07 01:26:20'),
-(4106, 2, 159, '2018-04-07 01:26:20', '2018-04-07 01:26:20');
+(4176, 2, 157, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
+(4177, 2, 158, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
+(4178, 2, 159, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
+(4179, 2, 160, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
+(4180, 2, 161, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
+(4181, 1, 1, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4182, 1, 2, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4183, 1, 4, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4184, 1, 5, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4185, 1, 18, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4186, 1, 19, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4187, 1, 24, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4188, 1, 25, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4189, 1, 43, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4190, 1, 44, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4191, 1, 49, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4192, 1, 50, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4193, 1, 55, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4194, 1, 56, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4195, 1, 61, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4196, 1, 62, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4197, 1, 67, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4198, 1, 68, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4199, 1, 79, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4200, 1, 80, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4201, 1, 85, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4202, 1, 86, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4203, 1, 103, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4204, 1, 104, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4205, 1, 105, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4206, 1, 106, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4207, 1, 107, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4208, 1, 108, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4209, 1, 109, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4210, 1, 110, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4211, 1, 115, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4212, 1, 116, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4213, 1, 121, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4214, 1, 122, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4215, 1, 123, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4216, 1, 124, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4217, 1, 125, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4218, 1, 126, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4219, 1, 127, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4220, 1, 128, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4221, 1, 129, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4222, 1, 130, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4223, 1, 131, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4224, 1, 132, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4225, 1, 133, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4226, 1, 134, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4227, 1, 135, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4228, 1, 136, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4229, 1, 137, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4230, 1, 138, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4231, 1, 139, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4232, 1, 140, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4233, 1, 141, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4234, 1, 142, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4235, 1, 143, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4236, 1, 144, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4237, 1, 145, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4238, 1, 146, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4239, 1, 151, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4240, 1, 152, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4241, 1, 153, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4242, 1, 154, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4243, 1, 155, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4244, 1, 156, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4245, 1, 157, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4246, 1, 158, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4247, 1, 159, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4248, 1, 160, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4249, 1, 161, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4250, 1, 162, '2018-04-11 09:21:44', '2018-04-11 09:21:44'),
+(4251, 1, 163, '2018-04-11 09:21:44', '2018-04-11 09:21:44');
 
 -- --------------------------------------------------------
 
@@ -1577,7 +1583,7 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (892, 2, 'dUeuuCBNTEhtTzI9UVTILClIDDtNcDpg', '2018-04-06 21:12:21', '2018-04-06 21:12:21'),
 (893, 1, 'Esf7XLuqt2YO4eqdGeyZ3CaA9hlwdAcl', '2018-04-08 03:04:14', '2018-04-08 03:04:14'),
 (894, 1, '7UGar6PwjqQlhE4MSTKjRDmxocZRsuxt', '2018-04-08 07:34:22', '2018-04-08 07:34:22'),
-(895, 1, 'pM4MPYrIVYRi2qvAvWHYbaGjkSYVglit', '2018-04-11 00:59:09', '2018-04-11 00:59:09');
+(897, 1, 'a7JwQZj0KtZAXubU8cxsGWZTpQw10g2V', '2018-04-11 01:20:26', '2018-04-11 01:20:26');
 
 -- --------------------------------------------------------
 
@@ -1787,7 +1793,9 @@ INSERT INTO `privilege` (`id`, `fullname`, `controller`, `action`, `sort_order`,
 (158, 'employer-form', 'employer', 'form', 1, '2018-04-06 04:02:08', '2018-04-06 04:02:08'),
 (159, 'dashboard-form', 'dashboard', 'form', 1, '2018-04-07 01:25:58', '2018-04-07 01:25:58'),
 (160, 'candidate-list', 'candidate', 'list', 1, '2018-04-11 07:59:45', '2018-04-11 07:59:45'),
-(161, 'candidate-form', 'candidate', 'form', 1, '2018-04-11 07:59:57', '2018-04-11 07:59:57');
+(161, 'candidate-form', 'candidate', 'form', 1, '2018-04-11 07:59:57', '2018-04-11 07:59:57'),
+(162, 'work-list', 'work', 'list', 1, '2018-04-11 09:21:18', '2018-04-11 09:21:18'),
+(163, 'work-form', 'work', 'form', 1, '2018-04-11 09:21:28', '2018-04-11 09:21:28');
 
 -- --------------------------------------------------------
 
@@ -2778,8 +2786,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-11 00:59:09', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-11 00:59:09'),
-(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$dyr0/0S5B7GWTxVRH6zjMezbr2SOjfrISSYhHWDqjRX5V4Uqf3YVC', NULL, '2018-04-06 21:13:22', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-06 21:13:22'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-11 01:20:26', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-11 01:20:26'),
+(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$dyr0/0S5B7GWTxVRH6zjMezbr2SOjfrISSYhHWDqjRX5V4Uqf3YVC', NULL, '2018-04-11 01:20:08', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-11 01:20:08'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-06 08:48:13', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 08:48:13'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
 (5, 'thuyttt', 'thuyttt@dienkim.com', '$2y$10$AA6KmOmb/IPF2RZyy3usc.GWvSfZmgNJySKEf65tUtxJ6e3hpp1lS', NULL, '2018-04-06 08:52:03', 'Trần Thị Thanh Thúy', NULL, '0923111222', 'logo-3-3e4tfsqz86h2.png', 5, 1, '2018-04-06 00:56:08', '2018-04-06 08:52:03'),
@@ -2848,6 +2856,35 @@ INSERT INTO `video` (`id`, `fullname`, `category_id`, `image`, `video_url`, `sor
 (9, 'Đi tham quan núi Bà Đen 6', 1, 'thuvienhinh-6.png', 'jM53ZU2MCzU', 6, 1, '2018-01-09 11:05:37', '2018-01-09 11:50:04'),
 (10, 'Đi tham quan núi Bà Đen 7', 1, 'thuvienhinh-7.png', 'u7xIydku_Yw', 7, 1, '2018-01-09 11:05:53', '2018-01-09 11:50:11'),
 (11, 'Đi tham quan núi Bà Đen 8', 1, 'thuvienhinh-8.png', 'yGvSEhQXu4g', 8, 1, '2018-01-09 11:06:08', '2018-01-09 11:50:20');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `work`
+--
+
+DROP TABLE IF EXISTS `work`;
+CREATE TABLE `work` (
+  `id` bigint(20) NOT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `work`
+--
+
+INSERT INTO `work` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Giờ hành chính', 'gio-hanh-chinh', 1, 1, '2018-04-11 09:22:07', '2018-04-11 09:22:07'),
+(2, 'Việc làm thu nhập cao', 'viec-lam-thu-nhap-cao', 2, 1, '2018-04-11 09:22:23', '2018-04-11 09:22:23'),
+(3, 'Việc làm thêm / Làm việc ngoài giờ', 'viec-lam-them-lam-viec-ngoai-gio', 3, 1, '2018-04-11 09:22:45', '2018-04-11 09:24:18'),
+(4, 'Thầu dự án / Freelancer tự do', 'thau-du-an-freelancer-tu-do', 4, 1, '2018-04-11 09:24:37', '2018-04-11 09:24:37'),
+(5, 'Việc làm online', 'viec-lam-online', 5, 1, '2018-04-11 09:24:49', '2018-04-11 09:24:49'),
+(6, 'Kinh doanh mạng lưới', 'kinh-doanh-mang-luoi', 6, 1, '2018-04-11 09:25:08', '2018-04-11 09:25:08');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -3129,6 +3166,12 @@ ALTER TABLE `video`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `work`
+--
+ALTER TABLE `work`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -3220,7 +3263,7 @@ ALTER TABLE `group_member`
 -- AUTO_INCREMENT cho bảng `group_privilege`
 --
 ALTER TABLE `group_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4252;
 
 --
 -- AUTO_INCREMENT cho bảng `invoice`
@@ -3280,7 +3323,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=896;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=898;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3298,7 +3341,7 @@ ALTER TABLE `post_param`
 -- AUTO_INCREMENT cho bảng `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
@@ -3389,6 +3432,12 @@ ALTER TABLE `user_group_member`
 --
 ALTER TABLE `video`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `work`
+--
+ALTER TABLE `work`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

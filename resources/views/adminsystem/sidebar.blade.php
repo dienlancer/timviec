@@ -8,6 +8,10 @@ $li_article='';
 $li_employer_management='';
 $li_employer='';
 
+$li_category_banner='';
+$li_page='';
+
+
 $li_candidate_management='';
 $li_candidate='';
 
@@ -16,10 +20,12 @@ $li_province='';
 $li_scale='';
 $li_sex='';
 $li_marriage='';
+$li_work='';
+$li_literacy='';
 
+$li_media='';
 $li_menu_type='';
-$li_page='';
-$li_category_banner='';
+
 $li_module_item='';
 
 $li_setting_system='';
@@ -28,7 +34,7 @@ $li_phan_quyen='';
 $li_group_member='';
 $li_user='';
 $li_privilege='';
-$li_media='';
+
 switch ($controller) {
     case 'dashboard':
     $li_dashboard='active open';
@@ -41,6 +47,13 @@ switch ($controller) {
     $li_article='active open';
     $li_content_management='active open';
     break;
+    case 'category-banner':
+    case 'banner':
+    $li_category_banner='active open';
+    break;  
+    case 'page':    
+    $li_page='active open';
+    break;  
     case 'employer': 
     $li_employer='active open';       
     $li_employer_management='active open';
@@ -64,31 +77,31 @@ switch ($controller) {
     case 'marriage': 
     $li_marriage='active open';       
     $li_category_management='active open'; 
-    break;    
-    case 'category-param':  
-    $li_category_param='active open';
-    $li_product_management='active open';
-    break;   
+    break; 
+    case 'work': 
+    $li_work='active open';       
+    $li_category_management='active open'; 
+    break; 
+    case 'literacy': 
+    $li_literacy='active open';       
+    $li_literacy_management='active open'; 
+    break; 
+
+    case 'media':
+    $li_media='active open';
+    break; 
     case 'menu-type':
     case 'menu':
     $li_menu_type='active open';
     break;  
-    case 'page':    
-    $li_page='active open';
-    break;  
-    case 'category-banner':
-    case 'banner':
-    $li_category_banner='active open';
-    break;  
+    
     case 'module-item':
     $li_module_item='active open';
     break;
     case 'setting-system':
     $li_setting_system='active open';
     break; 
-    case 'media':
-    $li_media='active open';
-    break;    
+        
     case 'group-member':
     $li_group_member='active open';
     $li_phan_quyen='active open';
@@ -121,10 +134,10 @@ if(count($source) > 0){
 ?>
 <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
     <li class="nav-item  <?php echo $li_dashboard; ?>">
-            <a href="{!! route('adminsystem.dashboard.getForm') !!}" class="nav-link nav-toggle">
-                <i class="icon-notebook"></i>
-                <span class="title">Bảng điều khiển</span>                                            
-            </a>                                                                      
+        <a href="{!! route('adminsystem.dashboard.getForm') !!}" class="nav-link nav-toggle">
+            <i class="icon-notebook"></i>
+            <span class="title">Bảng điều khiển</span>                                            
+        </a>                                                                      
     </li>
     <?php     
     switch ($alias){
@@ -225,6 +238,18 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.marriage.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Tình trạng hôn nhân</span>                                            
+                    </a>                                                                      
+                </li> 
+                <li class="nav-item  <?php echo $li_work; ?>">
+                    <a href="{!! route('adminsystem.work.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Tính chất công việc</span>                                            
+                    </a>                                                                      
+                </li>   
+                <li class="nav-item  <?php echo $li_literacy; ?>">
+                    <a href="{!! route('adminsystem.literacy.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Trình độ học vấn</span>                                            
                     </a>                                                                      
                 </li>       
             </ul>

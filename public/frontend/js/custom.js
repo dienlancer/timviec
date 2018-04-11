@@ -1,4 +1,3 @@
-
 function checkAllAgent(cid){
 	var tbl=$(cid).closest("table");	
 	var checkStatus = cid.checked;
@@ -109,6 +108,10 @@ function PhanCachSoTien(Ctrl) {
     }
     Ctrl.value = vNewMoney;
 }
+function hideMsg(ctrl){
+    $('.'+ctrl).fadeOut();
+}       
 $(document).ready(function(){	
 	basicTable.init();		
+	setTimeout(hideMsg,30000,'note');	
 });

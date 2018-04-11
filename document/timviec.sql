@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 08, 2018 lúc 07:12 PM
+-- Thời gian đã tạo: Th4 11, 2018 lúc 10:00 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -583,8 +583,7 @@ CREATE TABLE `group_member` (
 
 INSERT INTO `group_member` (`id`, `fullname`, `alias`, `sort_order`, `created_at`, `updated_at`) VALUES
 (1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-07 01:26:06'),
-(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-07 01:26:20'),
-(3, 'Thành viên', 'thanh-vien', 3, '2018-04-07 01:34:55', '2018-04-07 01:34:55');
+(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-07 01:26:20');
 
 -- --------------------------------------------------------
 
@@ -1577,7 +1576,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (889, 2, 'TjC77yHqHF6YN7qsO0D27lP9d4tPOx3g', '2018-04-06 21:10:04', '2018-04-06 21:10:04'),
 (892, 2, 'dUeuuCBNTEhtTzI9UVTILClIDDtNcDpg', '2018-04-06 21:12:21', '2018-04-06 21:12:21'),
 (893, 1, 'Esf7XLuqt2YO4eqdGeyZ3CaA9hlwdAcl', '2018-04-08 03:04:14', '2018-04-08 03:04:14'),
-(894, 1, '7UGar6PwjqQlhE4MSTKjRDmxocZRsuxt', '2018-04-08 07:34:22', '2018-04-08 07:34:22');
+(894, 1, '7UGar6PwjqQlhE4MSTKjRDmxocZRsuxt', '2018-04-08 07:34:22', '2018-04-08 07:34:22'),
+(895, 1, 'pM4MPYrIVYRi2qvAvWHYbaGjkSYVglit', '2018-04-11 00:59:09', '2018-04-11 00:59:09');
 
 -- --------------------------------------------------------
 
@@ -1785,7 +1785,9 @@ INSERT INTO `privilege` (`id`, `fullname`, `controller`, `action`, `sort_order`,
 (156, 'marriage-form', 'marriage', 'form', 1, '2018-04-05 03:49:50', '2018-04-05 03:49:50'),
 (157, 'employer-list', 'employer', 'list', 1, '2018-04-06 04:01:55', '2018-04-06 04:01:55'),
 (158, 'employer-form', 'employer', 'form', 1, '2018-04-06 04:02:08', '2018-04-06 04:02:08'),
-(159, 'dashboard-form', 'dashboard', 'form', 1, '2018-04-07 01:25:58', '2018-04-07 01:25:58');
+(159, 'dashboard-form', 'dashboard', 'form', 1, '2018-04-07 01:25:58', '2018-04-07 01:25:58'),
+(160, 'candidate-list', 'candidate', 'list', 1, '2018-04-11 07:59:45', '2018-04-11 07:59:45'),
+(161, 'candidate-form', 'candidate', 'form', 1, '2018-04-11 07:59:57', '2018-04-11 07:59:57');
 
 -- --------------------------------------------------------
 
@@ -2776,14 +2778,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-08 07:34:22', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-08 07:34:22'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-11 00:59:09', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-11 00:59:09'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$dyr0/0S5B7GWTxVRH6zjMezbr2SOjfrISSYhHWDqjRX5V4Uqf3YVC', NULL, '2018-04-06 21:13:22', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-06 21:13:22'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-06 08:48:13', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 08:48:13'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
 (5, 'thuyttt', 'thuyttt@dienkim.com', '$2y$10$AA6KmOmb/IPF2RZyy3usc.GWvSfZmgNJySKEf65tUtxJ6e3hpp1lS', NULL, '2018-04-06 08:52:03', 'Trần Thị Thanh Thúy', NULL, '0923111222', 'logo-3-3e4tfsqz86h2.png', 5, 1, '2018-04-06 00:56:08', '2018-04-06 08:52:03'),
 (6, 'thaoht', 'thaoht@dienkim.com', '$2y$10$HH42krxiiZhRfnaedbjw7exT3LpC5052NANqWiBIFH/As/Gvb5Soe', NULL, '2018-04-06 08:38:28', 'Hoàng Thị Hồng Thảo', NULL, '0944111333', 'logo-4-m30xjclwqpy7.png', 6, 1, '2018-04-06 00:57:12', '2018-04-06 08:38:28'),
 (7, 'trangttt', 'trangttt@dienkim.com', '$2y$10$1YolHwegMnyr/ewwtr4t9OHy4apeBhARteyM0cJMxd3oP1rx2XdcO', NULL, '2018-04-06 08:38:44', 'Trần Thị Thu Trang', NULL, '0999123321', 'logo-4-k59pac0t2zg8.png', 7, 1, '2018-04-06 00:57:56', '2018-04-06 08:38:44'),
-(8, 'kimly', 'kimly@dienkim.com', '$2y$10$J5v.WmXt1sULlh/vUAQRYek.kX5kl.M1sjb47IqpGR9XZHyMU5OGu', NULL, '2018-04-06 18:57:26', 'Trần Thị Kim Lý', NULL, '0988445223', 'logo-2-7bpmj9wy4xcl.png', 8, 1, '2018-04-06 18:34:42', '2018-04-06 18:57:26');
+(8, 'kimly', 'kimly@dienkim.com', '$2y$10$J5v.WmXt1sULlh/vUAQRYek.kX5kl.M1sjb47IqpGR9XZHyMU5OGu', NULL, '2018-04-06 18:57:26', 'Trần Thị Kim Lý', NULL, '0988445223', 'logo-2-7bpmj9wy4xcl.png', 8, 1, '2018-04-06 18:34:42', '2018-04-11 01:00:06');
 
 -- --------------------------------------------------------
 
@@ -2811,8 +2813,8 @@ INSERT INTO `user_group_member` (`id`, `group_member_id`, `user_id`, `created_at
 (8, 2, 5, '2018-04-06 07:56:08', '2018-04-06 07:56:08'),
 (9, 2, 6, '2018-04-06 07:57:12', '2018-04-06 07:57:12'),
 (10, 2, 7, '2018-04-06 07:57:56', '2018-04-06 07:57:56'),
-(12, 3, 8, '2018-04-07 01:35:08', '2018-04-07 01:35:08'),
-(14, 2, 2, '2018-04-07 04:12:56', '2018-04-07 04:12:56');
+(14, 2, 2, '2018-04-07 04:12:56', '2018-04-07 04:12:56'),
+(15, 2, 8, '2018-04-11 08:00:06', '2018-04-11 08:00:06');
 
 -- --------------------------------------------------------
 
@@ -3278,7 +3280,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=895;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=896;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3296,7 +3298,7 @@ ALTER TABLE `post_param`
 -- AUTO_INCREMENT cho bảng `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
@@ -3380,7 +3382,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `user_group_member`
 --
 ALTER TABLE `user_group_member`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `video`

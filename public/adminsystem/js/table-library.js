@@ -12,6 +12,7 @@ var vDistrictTable           =   null;
 var vScaleTable           =   null;
 var vSexTable           =   null;
 var vEmployerTable           =   null;
+var vCandidateTable           =   null;
 var vMarriageTable           =   null;
 var vProjectArticleTable           =   null;
 var vMediaTable           =   null;
@@ -337,6 +338,23 @@ var basicTable = function () {
                 { data: "fullname"      },      
                 { data: "email"      },    
                 { data: "user_fullname"      },                                    
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initCandidateTable = function () {
+        vCandidateTable = $('#tbl-candidate').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },      
+                { data: "email"      },                                                    
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                
@@ -834,6 +852,7 @@ var basicTable = function () {
             initSexTable();  
             initMarriageTable();
             initEmployerTable();
+            initCandidateTable();
         }
     };
 }();

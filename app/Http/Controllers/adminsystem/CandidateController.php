@@ -11,14 +11,13 @@ use App\SupporterModel;
 use App\CandidateModel;
 use App\ScaleModel;
 use App\User;
-use App\CandidateModel;
 use App\SexModel;
 use App\MarriageModel;
 use App\ProvinceModel;
 use DB;
 use Hash;
 use Sentinel;
-class EmployerController extends Controller {
+class CandidateController extends Controller {
  var $_controller='candidate';	
  var $_title="Ứng viên";
  var $_icon="icon-settings font-dark";    
@@ -42,7 +41,7 @@ public function loadData(Request $request){
   if(!empty(@$request->filter_search)){      
    $filter_search=trim(@$request->filter_search) ;    
  }        
- $query=DB::table('candidate')->leftJoin('users','candidate.user_id','=','users.id')  ;
+ $query=DB::table('candidate')  ;
 
  $query->where('candidate.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%');
  $data=$query->select('candidate.id','candidate.fullname','candidate.email','candidate.status','candidate.created_at','candidate.updated_at')    		                     

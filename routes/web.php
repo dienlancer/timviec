@@ -245,6 +245,16 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("change-status",["as"=>"adminsystem.employer.changeStatus","uses"=>"adminsystem\EmployerController@changeStatus"]);
 		Route::post("trash",["as"=>"adminsystem.employer.trash","uses"=>"adminsystem\EmployerController@trash"]);		
 	});	
+	Route::group(["prefix"=>"candidate"],function(){		
+		Route::get("list",["as"=>"adminsystem.candidate.getList","uses"=>"adminsystem\CandidateController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.candidate.loadData","uses"=>"adminsystem\CandidateController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.candidate.getForm","uses"=>"adminsystem\CandidateController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.candidate.save","uses"=>"adminsystem\CandidateController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.candidate.deleteItem","uses"=>"adminsystem\CandidateController@deleteItem"]);				
+		Route::post("update-status",["as"=>"adminsystem.candidate.updateStatus","uses"=>"adminsystem\CandidateController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.candidate.changeStatus","uses"=>"adminsystem\CandidateController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.candidate.trash","uses"=>"adminsystem\CandidateController@trash"]);		
+	});	
 	Route::group(["prefix"=>"marriage"],function(){		
 		Route::get("list",["as"=>"adminsystem.marriage.getList","uses"=>"adminsystem\MarriageController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.marriage.loadData","uses"=>"adminsystem\MarriageController@loadData"]);		

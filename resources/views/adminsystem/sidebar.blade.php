@@ -8,6 +8,9 @@ $li_article='';
 $li_employer_management='';
 $li_employer='';
 
+$li_candidate_management='';
+$li_candidate='';
+
 $li_category_management='';
 $li_province='';
 $li_scale='';
@@ -41,6 +44,10 @@ switch ($controller) {
     case 'employer': 
     $li_employer='active open';       
     $li_employer_management='active open';
+    break;
+    case 'candidate': 
+    $li_candidate='active open';       
+    $li_candidate_management='active open';
     break;
     case 'province': 
     $li_province='active open';       
@@ -173,6 +180,22 @@ if(count($source) > 0){
             </ul>
         </li>
 
+        <li class="nav-item <?php echo $li_candidate; ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý ứng viên</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_candidate; ?>">
+                    <a href="{!! route('adminsystem.candidate.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Thông tin ứng viên</span>                                            
+                    </a>                                                                      
+                </li>                 
+            </ul>
+        </li>
+
         <li class="nav-item <?php echo $li_category_management; ?>">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-folder-open-o" ></i>
@@ -275,6 +298,21 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.employer.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Thông tin doanh nghiệp</span>                                            
+                    </a>                                                                      
+                </li>                 
+            </ul>
+        </li>
+        <li class="nav-item <?php echo $li_candidate; ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-folder-open-o" ></i>
+                <span class="title">Quản lý ứng viên</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">                                    
+                <li class="nav-item  <?php echo $li_candidate; ?>">
+                    <a href="{!! route('adminsystem.candidate.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Thông tin ứng viên</span>                                            
                     </a>                                                                      
                 </li>                 
             </ul>

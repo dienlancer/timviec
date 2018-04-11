@@ -82,25 +82,7 @@ function addToCart(product_id,ajaxurl){
 		}
 	});
 }
-var timeout;
-var second_timeout=3000;
-function hideMsg() {
-	$('.alert-system').fadeOut();
-} 
-function hideMsg2(ctrlID) {
-	$('#'+ctrlID).fadeOut();
-} 
-function showMsg(ctrlID,msg,type_msg){		
-	$('#'+ctrlID).removeClass();	
-	$('#'+ctrlID).addClass("alert");			
-	$('#'+ctrlID).addClass(type_msg);
-	$('#'+ctrlID).find("strong").text(msg);		
-	$('#'+ctrlID).fadeIn();		
-	if (timeout != null){
-        clearTimeout(timeout);
-	}
-	timeout = setTimeout(hideMsg2, second_timeout,ctrlID);			 
-}
+
 function PhanCachSoTien(Ctrl) {
     var vMoney = Ctrl.value;
     vMoney = vMoney.replace(/[^\d]+/g, '');
@@ -128,6 +110,5 @@ function PhanCachSoTien(Ctrl) {
     Ctrl.value = vNewMoney;
 }
 $(document).ready(function(){	
-	timeout = setTimeout(hideMsg,10000);	
 	basicTable.init();		
 });

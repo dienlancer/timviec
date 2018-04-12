@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2018 lúc 05:35 AM
+-- Thời gian đã tạo: Th4 12, 2018 lúc 06:55 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -792,8 +792,62 @@ CREATE TABLE `job` (
 --
 
 INSERT INTO `job` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Kinh doanh', 'kinh-doanh', 1, 1, '2018-04-12 03:27:49', '2018-04-12 03:27:49'),
-(2, 'Bán hàng', 'ban-hang', 1, 1, '2018-04-12 03:27:57', '2018-04-12 03:28:57');
+(1, 'Kinh doanh', 'kinh-doanh', 1, 1, '2018-04-12 04:23:21', '2018-04-12 04:23:21'),
+(2, 'Bán hàng', 'ban-hang', 1, 1, '2018-04-12 04:23:42', '2018-04-12 04:23:42'),
+(3, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 1, 1, '2018-04-12 04:23:51', '2018-04-12 04:23:51'),
+(4, 'Lao động phổ thông', 'lao-dong-pho-thong', 1, 1, '2018-04-12 04:24:47', '2018-04-12 04:24:47'),
+(5, 'Tài chính / Kế toán / Kiểm toán', 'tai-chinh-ke-toan-kiem-toan', 1, 1, '2018-04-12 04:25:02', '2018-04-12 04:25:02'),
+(6, 'Hành chính / Thư ký / Trợ lý', 'hanh-chinh-thu-ky-tro-ly', 1, 1, '2018-04-12 04:25:16', '2018-04-12 04:25:16'),
+(7, 'Sinh viên / Mới tốt nghiệp / Thực tập', 'sinh-vien-moi-tot-nghiep-thuc-tap', 1, 1, '2018-04-12 04:26:01', '2018-04-12 04:26:01'),
+(8, 'Quảng cáo / Marketing / PR', 'quang-cao-marketing-pr', 1, 1, '2018-04-12 04:26:16', '2018-04-12 04:26:16'),
+(9, 'Cơ khí / Kỹ thuật ứng dụng', 'co-khi-ky-thuat-ung-dung', 1, 1, '2018-04-12 04:26:31', '2018-04-12 04:26:42'),
+(10, 'Báo chí / Biên tập viên', 'bao-chi-bien-tap-vien', 1, 1, '2018-04-12 04:26:55', '2018-04-12 04:26:55'),
+(11, 'Bảo vệ / Vệ sĩ / An ninh', 'bao-ve-ve-si-an-ninh', 1, 1, '2018-04-12 04:27:11', '2018-04-12 04:27:11'),
+(12, 'Bất động sản', 'bat-dong-san', 1, 1, '2018-04-12 04:27:26', '2018-04-12 04:27:26'),
+(13, 'Biên dịch / Phiên dịch', 'bien-dich-phien-dich', 1, 1, '2018-04-12 04:27:40', '2018-04-12 04:27:40'),
+(14, 'Bưu chính viễn thông', 'buu-chinh-vien-thong', 1, 1, '2018-04-12 04:27:55', '2018-04-12 04:28:04'),
+(15, 'Công nghệ thông tin', 'cong-nghe-thong-tin', 1, 1, '2018-04-12 04:28:16', '2018-04-12 04:28:16'),
+(16, 'Dầu khí / Địa chất', 'dau-khi-dia-chat', 1, 1, '2018-04-12 04:28:30', '2018-04-12 04:28:30'),
+(17, 'Dệt may', 'det-may', 1, 1, '2018-04-12 04:28:39', '2018-04-12 04:28:39'),
+(18, 'Điện / Điện tử / Điện lạnh', 'dien-dien-tu-dien-lanh', 1, 1, '2018-04-12 04:28:56', '2018-04-12 04:28:56'),
+(19, 'Du lịch / Nhà hàng / Khách sạn', 'du-lich-nha-hang-khach-san', 1, 1, '2018-04-12 04:29:18', '2018-04-12 04:29:18'),
+(20, 'Dược / Hóa chất / Sinh hóa', 'duoc-hoa-chat-sinh-hoa', 1, 1, '2018-04-12 04:29:37', '2018-04-12 04:29:37'),
+(21, 'Giải trí / Vui chơi', 'giai-tri-vui-choi', 1, 1, '2018-04-12 04:29:48', '2018-04-12 04:29:48'),
+(22, 'Giáo dục / Đào tạo / Thư viện', 'giao-duc-dao-tao-thu-vien', 1, 1, '2018-04-12 04:30:03', '2018-04-12 04:30:03'),
+(23, 'Giao thông / Vận tải / Thủy lợi / Cầu đường', 'giao-thong-van-tai-thuy-loi-cau-duong', 1, 1, '2018-04-12 04:31:28', '2018-04-12 04:31:28'),
+(24, 'Giày da / Thuộc da', 'giay-da-thuoc-da', 1, 1, '2018-04-12 04:31:47', '2018-04-12 04:31:47'),
+(25, 'Khác', 'khac', 1, 1, '2018-04-12 04:31:56', '2018-04-12 04:31:56'),
+(26, 'Kho vận / Vật tư / Thu mua', 'kho-van-vat-tu-thu-mua', 1, 1, '2018-04-12 04:32:10', '2018-04-12 04:32:10'),
+(27, 'Khu chế xuất / Khu công nghiệp', 'khu-che-xuat-khu-cong-nghiep', 1, 1, '2018-04-12 04:33:01', '2018-04-12 04:33:01'),
+(28, 'Kiến trúc / Nội thất', 'kien-truc-noi-that', 1, 1, '2018-04-12 04:33:58', '2018-04-12 04:33:58'),
+(29, 'Làm đẹp / Thể lực / Spa', 'lam-dep-the-luc-spa', 1, 1, '2018-04-12 04:34:10', '2018-04-12 04:34:10'),
+(30, 'Luật / Pháp lý', 'luat-phap-ly', 1, 1, '2018-04-12 04:34:21', '2018-04-12 04:34:21'),
+(31, 'Môi trường / Xử lý chất thải', 'moi-truong-xu-ly-chat-thai', 1, 1, '2018-04-12 04:34:41', '2018-04-12 04:34:41'),
+(32, 'Mỹ phẩm / Thời trang / Trang sức', 'my-pham-thoi-trang-trang-suc', 1, 1, '2018-04-12 04:34:56', '2018-04-12 04:34:56'),
+(33, 'Ngân hàng / Chứng khoán / Đầu tư', 'ngan-hang-chung-khoan-dau-tu', 1, 1, '2018-04-12 04:35:12', '2018-04-12 04:35:12'),
+(34, 'Nghệ thuật / Điện ảnh', 'nghe-thuat-dien-anh', 1, 1, '2018-04-12 04:35:25', '2018-04-12 04:35:25'),
+(35, 'Ngoại ngữ', 'ngoai-ngu', 1, 1, '2018-04-12 04:35:36', '2018-04-12 04:35:48'),
+(36, 'Nhân sự', 'nhan-su', 1, 1, '2018-04-12 04:36:02', '2018-04-12 04:36:02'),
+(37, 'Nông / Lâm / Ngư nghiệp', 'nong-lam-ngu-nghiep', 1, 1, '2018-04-12 04:36:48', '2018-04-12 04:36:48'),
+(38, 'PG / PB / Lễ tân', 'pg-pb-le-tan', 1, 1, '2018-04-12 04:37:06', '2018-04-12 04:37:06'),
+(39, 'Phát triển thị trường', 'phat-trien-thi-truong', 1, 1, '2018-04-12 04:37:20', '2018-04-12 04:37:20'),
+(40, 'Phục vụ / Tạp vụ / Giúp việc', 'phuc-vu-tap-vu-giup-viec', 1, 1, '2018-04-12 04:37:39', '2018-04-12 04:37:39'),
+(41, 'Quan hệ đối ngoại', 'quan-he-doi-ngoai', 1, 1, '2018-04-12 04:37:51', '2018-04-12 04:37:51'),
+(42, 'Quản lý điều hành', 'quan-ly-dieu-hanh', 1, 1, '2018-04-12 04:38:03', '2018-04-12 04:38:03'),
+(43, 'Sản xuất / Vận hành sản xuất', 'san-xuat-van-hanh-san-xuat', 1, 1, '2018-04-12 04:38:19', '2018-04-12 04:38:19'),
+(44, 'Tài xế / Lái xe / Giao nhận', 'tai-xe-lai-xe-giao-nhan', 1, 1, '2018-04-12 04:38:42', '2018-04-12 04:38:42'),
+(45, 'Thẩm định / Giám định / Quản lý chất lượng', 'tham-dinh-giam-dinh-quan-ly-chat-luong', 1, 1, '2018-04-12 04:39:01', '2018-04-12 04:39:01'),
+(46, 'Thể dục / Thể thao', 'the-duc-the-thao', 1, 1, '2018-04-12 04:39:13', '2018-04-12 04:39:13'),
+(47, 'Thiết kế / Mỹ thuật', 'thiet-ke-my-thuat', 1, 1, '2018-04-12 04:39:27', '2018-04-12 04:39:27'),
+(48, 'Thời vụ / Bán thời gian', 'thoi-vu-ban-thoi-gian', 1, 1, '2018-04-12 04:39:38', '2018-04-12 04:39:38'),
+(49, 'Thực phẩm / Dịch vụ ăn uống', 'thuc-pham-dich-vu-an-uong', 1, 1, '2018-04-12 04:39:53', '2018-04-12 04:39:53'),
+(50, 'Trang thiết bị công nghiệp', 'trang-thiet-bi-cong-nghiep', 1, 1, '2018-04-12 04:40:04', '2018-04-12 04:40:04'),
+(51, 'Thiết bị gia dụng', 'thiet-bi-gia-dung', 1, 1, '2018-04-12 04:40:15', '2018-04-12 04:40:15'),
+(52, 'Thiết bị văn phòng', 'thiet-bi-van-phong', 1, 1, '2018-04-12 04:40:29', '2018-04-12 04:40:29'),
+(53, 'Tư vấn bảo hiểm', 'tu-van-bao-hiem', 1, 1, '2018-04-12 04:40:41', '2018-04-12 04:40:41'),
+(54, 'Xây dựng', 'xay-dung', 1, 1, '2018-04-12 04:40:52', '2018-04-12 04:40:52'),
+(55, 'Xuất - Nhập khẩu / Ngoại thương', 'xuat-nhap-khau-ngoai-thuong', 1, 1, '2018-04-12 04:41:07', '2018-04-12 04:41:07'),
+(56, 'Y tế', 'y-te', 1, 1, '2018-04-12 04:41:16', '2018-04-12 04:41:16');
 
 -- --------------------------------------------------------
 
@@ -823,7 +877,8 @@ INSERT INTO `literacy` (`id`, `fullname`, `alias`, `sort_order`, `status`, `crea
 (4, 'Cao học', 'cao-hoc', 4, 1, '2018-04-11 10:32:19', '2018-04-11 10:32:19'),
 (5, 'Trung học', 'trung-hoc', 5, 1, '2018-04-11 10:32:37', '2018-04-11 10:32:37'),
 (6, 'Chứng chỉ', 'chung-chi', 6, 1, '2018-04-11 10:32:49', '2018-04-11 10:32:49'),
-(7, 'Lao động phổ thông', 'lao-dong-pho-thong', 7, 1, '2018-04-11 10:33:02', '2018-04-11 10:33:02');
+(7, 'Lao động phổ thông', 'lao-dong-pho-thong', 7, 1, '2018-04-11 10:33:02', '2018-04-11 10:33:02'),
+(8, 'Không yêu cầu', 'khong-yeu-cau', 8, 1, '2018-04-12 04:47:29', '2018-04-12 04:49:43');
 
 -- --------------------------------------------------------
 
@@ -3529,13 +3584,13 @@ ALTER TABLE `invoice_detail`
 -- AUTO_INCREMENT cho bảng `job`
 --
 ALTER TABLE `job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `literacy`
 --
 ALTER TABLE `literacy`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `marriage`

@@ -4,7 +4,7 @@
 <?php 
 $seo=getSeo();
 $source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
-$source_scale=App\ScaleModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
+$source_scale=App\ScaleModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $disabled_status='';
 $register_status='onclick="document.forms[\'frm\'].submit();"';
 ?>

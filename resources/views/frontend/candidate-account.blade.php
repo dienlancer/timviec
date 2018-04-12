@@ -49,7 +49,7 @@ $ddlMonth=cmsSelectbox(	"month"	,	"vacca"	,	$source_month	,	@$data['month']	,	''
 $ddlYear=cmsSelectbox(	"year"	,	"vacca"	,	$source_year	,	@$data['year']	,	''	);
 /* end ngày sinh */
 /* begin giới tính */
-$source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
+$source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $ddlSex=cmsSelectboxCategory("sex_id","vacca",$source_sex,@$data['sex_id'],'','Chọn giới tính');
 /* end giới tính */
 /* begin province */
@@ -57,7 +57,7 @@ $source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullnam
 $ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
 /* end province */
 /* begin Hôn nhân */
-$source_marriage=App\MarriageModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
+$source_marriage=App\MarriageModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data['marriage_id'],'','Chọn tình trạng hôn nhân');
 /* end Hôn nhân */
 ?>

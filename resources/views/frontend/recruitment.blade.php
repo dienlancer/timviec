@@ -85,11 +85,11 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>
 				</div>	
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div></div></div>
+					<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><textarea name="description" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['description']; ?></textarea></div>
 				</div>
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Yêu cầu công việc</div></div></div>
+					<div class="col-lg-4" ><div class="xika"><div>Yêu cầu công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><textarea name="requirement" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['requirement']; ?></textarea></div>
 				</div>
 				<div class="row mia">
@@ -99,7 +99,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>
 				</div>	
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Trình độ học vấn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">						
 						<?php echo $ddlLiteracy; ?>
 					</div>
@@ -121,9 +121,9 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					<div class="col-lg-8">						
 						<div class="flamentco">
 							
-							<div><input type="text" <?php echo $disabled_status; ?> name="commission_from" class="vacca" placeholder="Từ" value="<?php echo @$data['commission_from']; ?>" ></div>
+							<div><input type="text" <?php echo $disabled_status; ?> onkeypress='return isNumberKey(event);' name="commission_from" class="vacca" placeholder="Từ" value="<?php echo @$data['commission_from']; ?>" ></div>
 							
-							<div class="margin-left-5"><input type="text" <?php echo $disabled_status; ?> name="commission_to" class="vacca" placeholder="Đến" value="<?php echo @$data['commission_to']; ?>" ></div>
+							<div class="margin-left-5"><input type="text" <?php echo $disabled_status; ?> onkeypress='return isNumberKey(event);' name="commission_to" class="vacca" placeholder="Đến" value="<?php echo @$data['commission_to']; ?>" ></div>
 							<div class="margin-left-5">%</div>
 						</div>
 					</div>

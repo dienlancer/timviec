@@ -682,6 +682,10 @@ div.opacity-absolute::before{
     border-left: 5px solid #eee;
     border-radius: 0 4px 4px 0;
 }
+.flamentco{
+    display: flex;
+    align-items: center;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

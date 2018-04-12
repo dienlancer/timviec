@@ -53,7 +53,7 @@ $source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('id','asc')->selec
 $ddlSex=cmsSelectboxCategory("sex_id","vacca",$source_sex,@$data['sex_id'],'','Chọn giới tính');
 /* end giới tính */
 /* begin province */
-$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
+$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
 /* end province */
 /* begin Hôn nhân */

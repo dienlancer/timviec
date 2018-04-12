@@ -728,6 +728,9 @@ class IndexController extends Controller {
   	}    
   	return redirect()->route("frontend.index.candidateLogin");
   }
+  public function postRecruitment(){
+    return view('frontend.recruitment');
+  }
 }
 
 

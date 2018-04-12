@@ -728,8 +728,62 @@ class IndexController extends Controller {
   	}    
   	return redirect()->route("frontend.index.candidateLogin");
   }
-  public function postRecruitment(){
-    return view('frontend.recruitment');
+  
+  public function postRecruitment(Request $request){
+    $flag=1;
+    $msg=array();        
+    $data=array();
+    if($request->isMethod('post')){
+      $data             =   @$request->all();   
+      $fullname         =   trim(@$request->fullname);
+      $quantity         =   trim(@$request->quantity);
+      $sex_id           =   trim(@$request->sex_id);  
+      $description      =   trim(@$request->description);
+      $requirement      =   trim(@$request->requirement);
+      $work_id          =   trim(@$request->work_id);
+      $literacy_id      =   trim(@$request->literacy_id);
+      $experience_id    =   trim(@$request->experience_id);
+      $salary_id        =   trim(@$request->salary_id);
+      $commission_from  =   trim(@$request->commission_from);
+      $commission_to    =   trim(@$request->commission_to);
+      $working_form_id  =   trim(@$request->working_form_id);
+      $probationary_id  =   trim(@$request->probationary_id);
+      $benefit          =   trim(@$request->benefit);
+      $job_id           =   @$request->job_id;
+      $province_id      =   trim(@$request->province_id);
+      $duration         =   trim(@$request->duration);
+      $status           =   trim(@$request->status); 
+      $contacted_name   =   trim(@$request->contacted_name);
+      $contacted_email  =   trim(@$request->contacted_email);
+      $address          =   trim(@$request->address);
+      $contacted_phone  =   trim(@$request->contacted_phone);     
+      if(mb_strlen(@$fullname) < 15){
+        $msg["fullname"] = 'Tiêu đề phải từ 15 ký tự trở lên';    
+        $data['fullname']='';        
+        $flag = 0;
+      }    
+      if((int)@$quantity == 0){
+        $msg["quantity"] = 'Số lượng phải lớn hơn 0';    
+        $data['quantity']='';        
+        $flag = 0;
+      } 
+      if((int)@$sex_id == 0){
+        $msg["sex_id"] = 'Vui lòng chọn giới tính';    
+        $data['sex_id']='';        
+        $flag = 0;
+      }
+      if(mb_strlen(@$description) == 0){
+        $msg["description"] = 'Vui lòng nhập mô tả công việc';    
+        $data['description']='';        
+        $flag = 0; 
+      }
+      if(mb_strlen(@$requirement) == 0){
+        $msg["requirement"] = 'Vui lòng nhập yêu cầu công việc';    
+        $data['requirement']='';        
+        $flag = 0; 
+      }
+    }
+    return view('frontend.recruitment',compact('data','msg','flag'));     
   }
 }
 

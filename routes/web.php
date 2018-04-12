@@ -247,6 +247,54 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.literacy.trash","uses"=>"adminsystem\LiteracyController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.literacy.createAlias","uses"=>"adminsystem\LiteracyController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"salary"],function(){		
+		Route::get("list",["as"=>"adminsystem.salary.getList","uses"=>"adminsystem\SalaryController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.salary.loadData","uses"=>"adminsystem\SalaryController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.salary.getForm","uses"=>"adminsystem\SalaryController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.salary.save","uses"=>"adminsystem\SalaryController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.salary.deleteItem","uses"=>"adminsystem\SalaryController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.salary.sortOrder","uses"=>"adminsystem\SalaryController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.salary.updateStatus","uses"=>"adminsystem\SalaryController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.salary.changeStatus","uses"=>"adminsystem\SalaryController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.salary.trash","uses"=>"adminsystem\SalaryController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.salary.createAlias","uses"=>"adminsystem\SalaryController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"job"],function(){		
+		Route::get("list",["as"=>"adminsystem.job.getList","uses"=>"adminsystem\JobController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.job.loadData","uses"=>"adminsystem\JobController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.job.getForm","uses"=>"adminsystem\JobController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.job.save","uses"=>"adminsystem\JobController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.job.deleteItem","uses"=>"adminsystem\JobController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.job.sortOrder","uses"=>"adminsystem\JobController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.job.updateStatus","uses"=>"adminsystem\JobController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.job.changeStatus","uses"=>"adminsystem\JobController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.job.trash","uses"=>"adminsystem\JobController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.job.createAlias","uses"=>"adminsystem\JobController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"probationary"],function(){		
+		Route::get("list",["as"=>"adminsystem.probationary.getList","uses"=>"adminsystem\ProbationaryController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.probationary.loadData","uses"=>"adminsystem\ProbationaryController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.probationary.getForm","uses"=>"adminsystem\ProbationaryController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.probationary.save","uses"=>"adminsystem\ProbationaryController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.probationary.deleteItem","uses"=>"adminsystem\ProbationaryController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.probationary.sortOrder","uses"=>"adminsystem\ProbationaryController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.probationary.updateStatus","uses"=>"adminsystem\ProbationaryController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.probationary.changeStatus","uses"=>"adminsystem\ProbationaryController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.probationary.trash","uses"=>"adminsystem\ProbationaryController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.probationary.createAlias","uses"=>"adminsystem\ProbationaryController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"working-form"],function(){		
+		Route::get("list",["as"=>"adminsystem.working-form.getList","uses"=>"adminsystem\WorkingFormController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.working-form.loadData","uses"=>"adminsystem\WorkingFormController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.working-form.getForm","uses"=>"adminsystem\WorkingFormController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.working-form.save","uses"=>"adminsystem\WorkingFormController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.working-form.deleteItem","uses"=>"adminsystem\WorkingFormController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.working-form.sortOrder","uses"=>"adminsystem\WorkingFormController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.working-form.updateStatus","uses"=>"adminsystem\WorkingFormController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.working-form.changeStatus","uses"=>"adminsystem\WorkingFormController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.working-form.trash","uses"=>"adminsystem\WorkingFormController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.working-form.createAlias","uses"=>"adminsystem\WorkingFormController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"experience"],function(){		
 		Route::get("list",["as"=>"adminsystem.experience.getList","uses"=>"adminsystem\ExperienceController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.experience.loadData","uses"=>"adminsystem\ExperienceController@loadData"]);		

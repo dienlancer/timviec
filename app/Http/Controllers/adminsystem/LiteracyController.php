@@ -41,7 +41,7 @@ public function loadData(Request $request){
   }                  
   $data= $query->select('literacy.id','literacy.fullname','literacy.sort_order','literacy.status','literacy.created_at','literacy.updated_at')
   ->groupBy('literacy.id','literacy.fullname','literacy.sort_order','literacy.status','literacy.created_at','literacy.updated_at')   
-  ->orderBy('literacy.sort_order', 'asc')                
+  ->orderBy('literacy.id', 'asc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
   $data=literacyConverter($data,$this->_controller);            

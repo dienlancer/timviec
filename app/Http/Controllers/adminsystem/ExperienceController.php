@@ -41,7 +41,7 @@ public function loadData(Request $request){
   }                  
   $data= $query->select('experience.id','experience.fullname','experience.sort_order','experience.status','experience.created_at','experience.updated_at')
   ->groupBy('experience.id','experience.fullname','experience.sort_order','experience.status','experience.created_at','experience.updated_at')   
-  ->orderBy('experience.sort_order', 'asc')                
+  ->orderBy('experience.id', 'asc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
   $data=experienceConverter($data,$this->_controller);            

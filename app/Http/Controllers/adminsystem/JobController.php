@@ -13,12 +13,12 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\WorkModel;
+use App\JobModel;
 use App\EmployerModel;
 use DB;
-class WorkController extends Controller {
- var $_controller="work";	
- var $_title="Tính chất công việc";
+class JobController extends Controller {
+ var $_controller='job';	
+ var $_title='Ngành nghề';
  var $_icon="icon-settings font-dark";    
  public function getList(){		
   $controller=$this->_controller;	
@@ -35,16 +35,16 @@ class WorkController extends Controller {
   }
 }	    
 public function loadData(Request $request){
-  $query=DB::table('work');  
+  $query=DB::table('job');  
   if(!empty(@$request->filter_search)){          
-    $query->where('work.fullname','like','%'.trim(mb_strtolower(@$request->filter_search,'UTF-8')).'%')  ;                   
+    $query->where('job.fullname','like','%'.trim(mb_strtolower(@$request->filter_search,'UTF-8')).'%')  ;                   
   }                  
-  $data= $query->select('work.id','work.fullname','work.sort_order','work.status','work.created_at','work.updated_at')
-  ->groupBy('work.id','work.fullname','work.sort_order','work.status','work.created_at','work.updated_at')   
-  ->orderBy('work.id', 'asc')                
+  $data= $query->select('job.id','job.fullname','job.sort_order','job.status','job.created_at','job.updated_at')
+  ->groupBy('job.id','job.fullname','job.sort_order','job.status','job.created_at','job.updated_at')   
+  ->orderBy('job.id', 'asc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
-  $data=workConverter($data,$this->_controller);            
+  $data=jobConverter($data,$this->_controller);            
   return $data;
 } 
 public function getForm($task,$id=""){     
@@ -58,7 +58,7 @@ public function getForm($task,$id=""){
     switch ($task) {
      case 'edit':
      $title=$this->_title . " : Update";
-     $arrRowData=WorkModel::find((int)@$id)->toArray();                     
+     $arrRowData=JobModel::find((int)@$id)->toArray();                     
      break;
      case 'add':
      $title=$this->_title . " : Add new";
@@ -99,11 +99,11 @@ public function save(Request $request){
  }
  if ($checked == 1) {    
   if(empty($id)){
-    $item         =   new WorkModel;       
+    $item         =   new JobModel;       
     $item->created_at   = date("Y-m-d H:i:s",time());        
 
   } else{
-    $item       = WorkModel::find((int)@$id);   
+    $item       = JobModel::find((int)@$id);   
 
   }  
   $item->fullname 		    =	@$fullname;  
@@ -127,7 +127,7 @@ public function changeStatus(Request $request){
   $checked              =   1;                           
   $msg                =   array();    
   $status         =       (int)@$request->status;
-  $item           =       WorkModel::find((int)@$id);        
+  $item           =       JobModel::find((int)@$id);        
   $item->status   =       $status;
   $item->save();
   $msg['success']='Cập nhật thành công';  
@@ -144,9 +144,10 @@ public function deleteItem(Request $request){
   $id                     =   (int)$request->id;              
   $info                 =   array();
   $checked              =   1;                           
-  $msg                =   array();               
+  $msg                =   array();
+
   if($checked == 1){
-    $item = WorkModel::find((int)@$id);
+    $item = JobModel::find((int)@$id);
     $item->delete();                                                
     $msg['success']='Xóa thành công';
   }        
@@ -174,7 +175,7 @@ public function updateStatus(Request $request){
   if($checked==1){
     foreach ($arrID as $key => $value) {
       if(!empty($value)){
-        $item=WorkModel::find($value);
+        $item=JobModel::find($value);
         $item->status=$status;
         $item->save();      
       }            
@@ -200,10 +201,11 @@ public function trash(Request $request){
     $checked            =   0;
 
     $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
-  }              
+  }            
+  
   if($checked == 1){                                  
 
-    DB::table('work')->whereIn('id',@$arrID)->delete();   
+    DB::table('job')->whereIn('id',@$arrID)->delete();   
     $msg['success']='Xóa thành công';                                     
   }
   $data                   =   $this->loadData($request);
@@ -224,7 +226,7 @@ public function sortOrder(Request $request){
   if(count($data_order) > 0){              
     foreach($data_order as $key => $value){      
       if(!empty($value)){
-        $item=WorkModel::find((int)@$value->id);                
+        $item=JobModel::find((int)@$value->id);                
         $item->sort_order=(int)$value->sort_order;                         
         $item->save();                      
       }                                                  
@@ -259,9 +261,9 @@ public function createAlias(Request $request){
   $dataScale=array();
   $checked_trung_alias=0;          
   if (empty($id)) {              
-    $dataScale=WorkModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
+    $dataScale=JobModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
   }else{
-    $dataScale=WorkModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
+    $dataScale=JobModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
   }  
 
   if (count($dataScale) > 0) {

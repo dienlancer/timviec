@@ -43,7 +43,7 @@ class MarriageController extends Controller {
                 ->select('marriage.id','marriage.fullname','marriage.sort_order','marriage.status','marriage.created_at','marriage.updated_at')                
                 ->where('marriage.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
                 ->groupBy('marriage.id','marriage.fullname','marriage.sort_order','marriage.status','marriage.created_at','marriage.updated_at')   
-                ->orderBy('marriage.sort_order', 'asc')                
+                ->orderBy('marriage.id', 'asc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
         $data=marriageConverter($data,$this->_controller);            

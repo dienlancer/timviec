@@ -23,6 +23,10 @@ $li_marriage='';
 $li_work='';
 $li_literacy='';
 $li_experience='';
+$li_salary='';
+$li_working_form='';
+$li_probationary='';
+$li_job='';
 
 $li_media='';
 $li_menu_type='';
@@ -91,7 +95,22 @@ switch ($controller) {
     $li_experience='active open';       
     $li_category_management='active open'; 
     break; 
-
+    case 'salary': 
+    $li_salary='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'working-form': 
+    $li_working_form='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'probationary': 
+    $li_probationary='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'job': 
+    $li_job='active open';       
+    $li_category_management='active open'; 
+    break;
     case 'media':
     $li_media='active open';
     break; 
@@ -262,7 +281,31 @@ if(count($source) > 0){
                         <i class="icon-notebook"></i>
                         <span class="title">Kinh nghiệm làm việc</span>                                            
                     </a>                                                                      
+                </li>   
+                <li class="nav-item  <?php echo $li_salary; ?>">
+                    <a href="{!! route('adminsystem.salary.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Mức lương</span>                                            
+                    </a>                                                                      
+                </li>
+                <li class="nav-item  <?php echo $li_working_form; ?>">
+                    <a href="{!! route('adminsystem.working-form.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Hình thức làm việc</span>                                            
+                    </a>                                                                      
                 </li>       
+                <li class="nav-item  <?php echo $li_probationary; ?>">
+                    <a href="{!! route('adminsystem.probationary.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Thời gian thử việc</span>                                            
+                    </a>                                                                      
+                </li> 
+                <li class="nav-item  <?php echo $li_job; ?>">
+                    <a href="{!! route('adminsystem.job.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Ngành nghề</span>                                            
+                    </a>                                                                      
+                </li>  
             </ul>
         </li>
 

@@ -43,7 +43,7 @@ class ScaleController extends Controller {
                 ->select('scale.id','scale.fullname','scale.sort_order','scale.status','scale.created_at','scale.updated_at')                
                 ->where('scale.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
                 ->groupBy('scale.id','scale.fullname','scale.sort_order','scale.status','scale.created_at','scale.updated_at')   
-                ->orderBy('scale.sort_order', 'asc')                
+                ->orderBy('scale.id', 'asc')                
                 ->get()->toArray();              
         $data=convertToArray($data);    
         $data=scaleConverter($data,$this->_controller);            

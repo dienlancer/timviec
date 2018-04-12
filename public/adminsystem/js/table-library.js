@@ -12,6 +12,10 @@ var vDistrictTable           =   null;
 var vScaleTable           =   null;
 var vWorkTable           =   null;
 var vLiteracyTable           =   null;
+var vSalaryTable           =   null;
+var vJobTable           =   null;
+var vProbationaryTable           =   null;
+var vWorkingFormTable           =   null;
 var vExperienceTable           =   null;
 var vSexTable           =   null;
 var vEmployerTable           =   null;
@@ -331,6 +335,74 @@ var basicTable = function () {
     };
     var initLiteracyTable = function () {
         vLiteracyTable = $('#tbl-literacy').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initSalaryTable = function () {
+        vSalaryTable = $('#tbl-salary').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initJobTable = function () {
+        vJobTable = $('#tbl-job').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initProbationaryTable = function () {
+        vProbationaryTable = $('#tbl-probationary').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initWorkingFormTable = function () {
+        vWorkingFormTable = $('#tbl-working-form').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -910,6 +982,10 @@ var basicTable = function () {
             initWorkTable();
             initLiteracyTable();
             initExperienceTable();
+            initSalaryTable();
+            initWorkingFormTable();
+            initProbationaryTable();
+            initJobTable();
         }
     };
 }();

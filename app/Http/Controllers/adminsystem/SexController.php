@@ -43,7 +43,7 @@ public function loadData(Request $request){
   ->select('sex.id','sex.fullname','sex.sort_order','sex.status','sex.created_at','sex.updated_at')                
   ->where('sex.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
   ->groupBy('sex.id','sex.fullname','sex.sort_order','sex.status','sex.created_at','sex.updated_at')   
-  ->orderBy('sex.sort_order', 'asc')                
+  ->orderBy('sex.id', 'asc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
   $data=sexConverter($data,$this->_controller);            

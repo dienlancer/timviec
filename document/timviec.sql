@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2018 lúc 06:56 AM
+-- Thời gian đã tạo: Th4 12, 2018 lúc 09:18 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -583,15 +583,15 @@ CREATE TABLE `experience` (
 --
 
 INSERT INTO `experience` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Chưa có kinh nghiệm', 'chua-co-kinh-nghiem', 1, 1, '2018-04-11 19:50:34', '2018-04-11 19:50:34'),
-(2, 'Dưới 1 năm', 'duoi-1-nam', 2, 1, '2018-04-11 19:50:45', '2018-04-11 19:50:45'),
-(3, '1 năm', '1-nam', 3, 1, '2018-04-11 19:50:55', '2018-04-11 19:50:55'),
-(4, '2 năm', '2-nam', 4, 1, '2018-04-11 19:51:16', '2018-04-11 19:51:24'),
-(5, '3 năm', '3-nam', 5, 1, '2018-04-11 19:51:32', '2018-04-11 19:51:32'),
-(6, '4 năm', '4-nam', 6, 1, '2018-04-11 19:51:42', '2018-04-11 19:51:42'),
-(7, '5 năm', '5-nam', 7, 1, '2018-04-11 19:51:57', '2018-04-11 19:51:57'),
-(8, 'Trên 5 năm', 'tren-5-nam', 8, 1, '2018-04-11 19:52:14', '2018-04-11 19:52:14'),
-(9, 'Không yêu cầu kinh nghiệm', 'khong-yeu-cau-kinh-nghiem', 9, 1, '2018-04-11 19:52:29', '2018-04-11 19:52:29');
+(1, 'Chưa có kinh nghiệm', 'chua-co-kinh-nghiem', 1, 1, '2018-04-12 06:54:19', '2018-04-12 06:54:19'),
+(2, 'Dưới 1 năm', 'duoi-1-nam', 1, 1, '2018-04-12 06:54:30', '2018-04-12 06:54:30'),
+(3, '1 năm', '1-nam', 1, 1, '2018-04-12 06:54:39', '2018-04-12 06:54:39'),
+(4, '2 năm', '2-nam', 1, 1, '2018-04-12 06:54:46', '2018-04-12 06:54:46'),
+(5, '3 năm', '3-nam', 1, 1, '2018-04-12 06:54:52', '2018-04-12 06:54:52'),
+(6, '4 năm', '4-nam', 1, 1, '2018-04-12 06:54:58', '2018-04-12 06:54:58'),
+(7, '5 năm', '5-nam', 5, 1, '2018-04-12 06:55:09', '2018-04-12 06:55:09'),
+(8, 'Trên 5 năm', 'tren-5-nam', 1, 1, '2018-04-12 06:55:26', '2018-04-12 06:55:26'),
+(9, 'Không yêu cầu kinh nghiệm', 'khong-yeu-cau-kinh-nghiem', 1, 1, '2018-04-12 06:55:38', '2018-04-12 06:55:38');
 
 -- --------------------------------------------------------
 
@@ -871,14 +871,14 @@ CREATE TABLE `literacy` (
 --
 
 INSERT INTO `literacy` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Đại học', 'dai-hoc', 1, 1, '2018-04-11 10:31:48', '2018-04-11 10:31:48'),
-(2, 'Cao đẳng', 'cao-dang', 2, 1, '2018-04-11 10:31:55', '2018-04-11 10:31:55'),
-(3, 'Trung cấp', 'trung-cap', 3, 1, '2018-04-11 10:32:04', '2018-04-11 10:32:04'),
-(4, 'Cao học', 'cao-hoc', 4, 1, '2018-04-11 10:32:19', '2018-04-11 10:32:19'),
-(5, 'Trung học', 'trung-hoc', 5, 1, '2018-04-11 10:32:37', '2018-04-11 10:32:37'),
-(6, 'Chứng chỉ', 'chung-chi', 6, 1, '2018-04-11 10:32:49', '2018-04-11 10:32:49'),
-(7, 'Lao động phổ thông', 'lao-dong-pho-thong', 7, 1, '2018-04-11 10:33:02', '2018-04-11 10:33:02'),
-(8, 'Không yêu cầu', 'khong-yeu-cau', 8, 1, '2018-04-12 04:47:29', '2018-04-12 04:49:43');
+(1, 'Đại học', 'dai-hoc', 1, 1, '2018-04-12 06:48:52', '2018-04-12 06:48:52'),
+(2, 'Cao đẳng', 'cao-dang', 1, 1, '2018-04-12 06:48:59', '2018-04-12 06:48:59'),
+(3, 'Trung cấp', 'trung-cap', 1, 1, '2018-04-12 06:49:07', '2018-04-12 06:49:07'),
+(4, 'Cao học', 'cao-hoc', 1, 1, '2018-04-12 06:49:23', '2018-04-12 06:49:23'),
+(5, 'Trung học', 'trung-hoc', 1, 1, '2018-04-12 06:51:01', '2018-04-12 06:51:01'),
+(6, 'Chứng chỉ', 'chung-chi', 1, 1, '2018-04-12 06:51:08', '2018-04-12 06:51:08'),
+(7, 'Lao động phổ thông', 'lao-dong-pho-thong', 1, 1, '2018-04-12 06:51:19', '2018-04-12 06:51:19'),
+(8, 'Không yêu cầu', 'khong-yeu-cau', 1, 1, '2018-04-12 06:51:28', '2018-04-12 06:51:28');
 
 -- --------------------------------------------------------
 
@@ -1986,11 +1986,11 @@ CREATE TABLE `probationary` (
 --
 
 INSERT INTO `probationary` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhận việc ngay', 'nhan-viec-ngay', 1, 1, '2018-04-12 03:07:50', '2018-04-12 03:07:50'),
-(2, '1 tháng', '1-thang', 2, 1, '2018-04-12 03:07:57', '2018-04-12 03:08:33'),
-(3, '2 tháng', '2-thang', 3, 1, '2018-04-12 03:08:04', '2018-04-12 03:08:33'),
-(4, '3 tháng', '3-thang', 4, 1, '2018-04-12 03:08:12', '2018-04-12 03:08:33'),
-(5, 'Trao đổi trực tiếp khi phỏng vấn', 'trao-doi-truc-tiep-khi-phong-van', 5, 1, '2018-04-12 03:08:26', '2018-04-12 03:08:33');
+(1, 'Nhận việc ngay', 'nhan-viec-ngay', 1, 1, '2018-04-12 07:03:49', '2018-04-12 07:03:49'),
+(2, '1 tháng', '1-thang', 1, 1, '2018-04-12 07:03:57', '2018-04-12 07:03:57'),
+(3, '2 tháng', '2-thang', 1, 1, '2018-04-12 07:04:04', '2018-04-12 07:04:04'),
+(4, '3 tháng', '3-thang', 1, 1, '2018-04-12 07:04:10', '2018-04-12 07:04:10'),
+(5, 'Trao đổi trực tiếp khi phỏng vấn', 'trao-doi-truc-tiep-khi-phong-van', 1, 1, '2018-04-12 07:04:25', '2018-04-12 07:04:25');
 
 -- --------------------------------------------------------
 
@@ -2223,6 +2223,23 @@ INSERT INTO `province` (`id`, `fullname`, `alias`, `sort_order`, `status`, `crea
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `recruitment`
+--
+
+DROP TABLE IF EXISTS `recruitment`;
+CREATE TABLE `recruitment` (
+  `id` bigint(20) NOT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `reminders`
 --
 
@@ -2289,16 +2306,16 @@ CREATE TABLE `salary` (
 --
 
 INSERT INTO `salary` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Dưới 3 triệu', 'duoi-3-trieu', 1, 1, '2018-04-12 01:50:59', '2018-04-12 01:50:59'),
-(2, '3 - 5 triệu', '3-5-trieu', 2, 1, '2018-04-12 01:51:43', '2018-04-12 01:53:49'),
-(3, '5 - 7 triệu', '5-7-trieu', 3, 1, '2018-04-12 01:51:53', '2018-04-12 01:53:49'),
-(4, '7 -  10 triệu', '7-10-trieu', 4, 1, '2018-04-12 01:52:06', '2018-04-12 01:53:49'),
-(5, '10 - 12 triệu', '10-12-trieu', 5, 1, '2018-04-12 01:52:19', '2018-04-12 01:53:49'),
-(6, '12 - 15 triệu', '12-15-trieu', 6, 1, '2018-04-12 01:52:32', '2018-04-12 01:53:49'),
-(7, '15 -  20 triệu', '15-20-trieu', 7, 1, '2018-04-12 01:52:46', '2018-04-12 01:53:49'),
-(8, '20 - 25 triệu', '20-25-trieu', 8, 1, '2018-04-12 01:52:58', '2018-04-12 01:53:49'),
-(9, '25 -  30 triệu', '25-30-trieu', 9, 1, '2018-04-12 01:53:08', '2018-04-12 01:53:49'),
-(10, 'Trên 30 triệu', 'tren-30-trieu', 10, 1, '2018-04-12 01:53:22', '2018-04-12 01:53:49');
+(1, 'Dưới 3 triệu', 'duoi-3-trieu', 1, 1, '2018-04-12 07:00:00', '2018-04-12 07:00:00'),
+(2, '3 - 5 triệu', '3-5-trieu', 1, 1, '2018-04-12 07:00:10', '2018-04-12 07:00:10'),
+(3, '5 - 7 triệu', '5-7-trieu', 1, 1, '2018-04-12 07:00:21', '2018-04-12 07:00:21'),
+(4, '7 - 10 triệu', '7-10-trieu', 1, 1, '2018-04-12 07:00:31', '2018-04-12 07:00:31'),
+(5, '10 - 12 triệu', '10-12-trieu', 1, 1, '2018-04-12 07:00:43', '2018-04-12 07:00:43'),
+(6, '12 -  15 triệu', '12-15-trieu', 1, 1, '2018-04-12 07:01:01', '2018-04-12 07:01:01'),
+(7, '15 - 20 triệu', '15-20-trieu', 1, 1, '2018-04-12 07:01:12', '2018-04-12 07:01:12'),
+(8, '20 -  25 triệu', '20-25-trieu', 1, 1, '2018-04-12 07:01:23', '2018-04-12 07:01:23'),
+(9, '25 - 30 triệu', '25-30-trieu', 1, 1, '2018-04-12 07:01:37', '2018-04-12 07:01:37'),
+(10, 'Trên 30 triệu', 'tren-30-trieu', 1, 1, '2018-04-12 07:01:48', '2018-04-12 07:01:48');
 
 -- --------------------------------------------------------
 
@@ -2386,7 +2403,8 @@ CREATE TABLE `sex` (
 
 INSERT INTO `sex` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Nam', 'nam', 1, 1, '2018-04-05 03:35:41', '2018-04-05 03:35:41'),
-(2, 'Nữ', 'nu', 2, 1, '2018-04-05 03:35:48', '2018-04-05 03:35:53');
+(2, 'Nữ', 'nu', 2, 1, '2018-04-05 03:35:48', '2018-04-05 03:35:53'),
+(3, 'Không yêu cầu', 'khong-yeu-cau', 3, 1, '2018-04-12 06:35:12', '2018-04-12 07:11:22');
 
 -- --------------------------------------------------------
 
@@ -3107,17 +3125,17 @@ CREATE TABLE `work` (
 --
 
 INSERT INTO `work` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Giờ hành chính', 'gio-hanh-chinh', 1, 1, '2018-04-11 09:22:07', '2018-04-11 09:22:07'),
-(2, 'Việc làm thu nhập cao', 'viec-lam-thu-nhap-cao', 2, 1, '2018-04-11 09:22:23', '2018-04-11 09:22:23'),
-(3, 'Việc làm thêm / Làm việc ngoài giờ', 'viec-lam-them-lam-viec-ngoai-gio', 3, 1, '2018-04-11 09:22:45', '2018-04-11 09:24:18'),
-(4, 'Thầu dự án / Freelancer tự do', 'thau-du-an-freelancer-tu-do', 4, 1, '2018-04-11 09:24:37', '2018-04-11 09:24:37'),
-(5, 'Việc làm online', 'viec-lam-online', 5, 1, '2018-04-11 09:24:49', '2018-04-11 09:24:49'),
-(6, 'Kinh doanh mạng lưới', 'kinh-doanh-mang-luoi', 6, 1, '2018-04-11 09:25:08', '2018-04-11 09:25:08'),
-(7, 'Giúp việc gia đình', 'giup-viec-gia-dinh', 7, 1, '2018-04-11 09:31:50', '2018-04-11 09:31:50'),
-(8, 'Hợp tác lao động nước ngoài', 'hop-tac-lao-dong-nuoc-ngoai', 8, 1, '2018-04-11 09:32:14', '2018-04-11 09:32:14'),
-(9, 'Việc làm người khuyết tật', 'viec-lam-nguoi-khuyet-tat', 9, 1, '2018-04-11 09:32:30', '2018-04-11 09:32:30'),
-(10, 'Việc làm theo ca / Đổi ca', 'viec-lam-theo-ca-doi-ca', 10, 1, '2018-04-11 09:32:46', '2018-04-11 09:32:54'),
-(11, 'Việc làm cho người trí thức lớn tuổi (trên 50 tuổi)', 'viec-lam-cho-nguoi-tri-thuc-lon-tuoi-tren-50-tuoi', 11, 1, '2018-04-11 09:34:31', '2018-04-11 09:34:31');
+(1, 'Giờ hành chính', 'gio-hanh-chinh', 1, 1, '2018-04-12 06:38:50', '2018-04-12 06:38:50'),
+(2, 'Việc làm thu nhập cao', 'viec-lam-thu-nhap-cao', 1, 1, '2018-04-12 06:39:08', '2018-04-12 06:39:08'),
+(3, 'Việc làm thêm / Làm việc ngoài giờ', 'viec-lam-them-lam-viec-ngoai-gio', 1, 1, '2018-04-12 06:39:30', '2018-04-12 06:39:30'),
+(4, 'Thầu dự án / Freelance / Việc làm tự do', 'thau-du-an-freelance-viec-lam-tu-do', 1, 1, '2018-04-12 06:40:02', '2018-04-12 06:40:02'),
+(5, 'Việc làm online', 'viec-lam-online', 1, 1, '2018-04-12 06:40:18', '2018-04-12 06:40:18'),
+(6, 'Kinh doanh mạng lưới', 'kinh-doanh-mang-luoi', 1, 1, '2018-04-12 06:40:31', '2018-04-12 06:40:31'),
+(7, 'Giúp việc gia đình', 'giup-viec-gia-dinh', 1, 1, '2018-04-12 06:40:43', '2018-04-12 06:40:43'),
+(8, 'Hợp tác lao động / Nước ngoài', 'hop-tac-lao-dong-nuoc-ngoai', 1, 1, '2018-04-12 06:40:59', '2018-04-12 06:40:59'),
+(9, 'Việc làm người khuyết tật', 'viec-lam-nguoi-khuyet-tat', 1, 1, '2018-04-12 06:41:13', '2018-04-12 06:41:13'),
+(10, 'Việc làm theo ca / Đổi ca', 'viec-lam-theo-ca-doi-ca', 1, 1, '2018-04-12 06:41:28', '2018-04-12 06:41:28'),
+(11, 'Việc làm cho trí thức lớn tuổi ( trên 50 tuổi )', 'viec-lam-cho-tri-thuc-lon-tuoi-tren-50-tuoi', 1, 1, '2018-04-12 06:42:01', '2018-04-12 06:42:01');
 
 -- --------------------------------------------------------
 
@@ -3141,11 +3159,11 @@ CREATE TABLE `working_form` (
 --
 
 INSERT INTO `working_form` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên chính thức', 'nhan-vien-chinh-thuc', 1, 1, '2018-04-12 02:23:50', '2018-04-12 02:23:50'),
-(2, 'Nhân viên thời vụ', 'nhan-vien-thoi-vu', 2, 1, '2018-04-12 02:24:00', '2018-04-12 02:24:58'),
-(3, 'Bán thời gian', 'ban-thoi-gian', 3, 1, '2018-04-12 02:24:07', '2018-04-12 02:24:58'),
-(4, 'Làm thêm ngoài giờ', 'lam-them-ngoai-gio', 4, 1, '2018-04-12 02:24:17', '2018-04-12 02:24:58'),
-(5, 'Thực tập và dự án', 'thuc-tap-va-du-an', 5, 1, '2018-04-12 02:24:27', '2018-04-12 02:24:58');
+(1, 'Nhân viên chính thức', 'nhan-vien-chinh-thuc', 1, 1, '2018-04-12 07:02:39', '2018-04-12 07:02:39'),
+(2, 'Nhân viên thời vụ', 'nhan-vien-thoi-vu', 1, 1, '2018-04-12 07:02:49', '2018-04-12 07:02:49'),
+(3, 'Bán thời gian', 'ban-thoi-gian', 1, 1, '2018-04-12 07:02:58', '2018-04-12 07:02:58'),
+(4, 'Làm thêm ngoài giờ', 'lam-them-ngoai-gio', 1, 1, '2018-04-12 07:03:07', '2018-04-12 07:03:07'),
+(5, 'Thực tập và dự án', 'thuc-tap-va-du-an', 1, 1, '2018-04-12 07:03:31', '2018-04-12 07:03:31');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -3378,6 +3396,12 @@ ALTER TABLE `project_member`
 -- Chỉ mục cho bảng `province`
 --
 ALTER TABLE `province`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `recruitment`
+--
+ALTER TABLE `recruitment`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3695,6 +3719,12 @@ ALTER TABLE `province`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
+-- AUTO_INCREMENT cho bảng `recruitment`
+--
+ALTER TABLE `recruitment`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `reminders`
 --
 ALTER TABLE `reminders`
@@ -3728,7 +3758,7 @@ ALTER TABLE `setting_system`
 -- AUTO_INCREMENT cho bảng `sex`
 --
 ALTER TABLE `sex`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `supporter`

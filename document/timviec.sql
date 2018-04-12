@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2018 lúc 09:18 AM
+-- Thời gian đã tạo: Th4 12, 2018 lúc 12:55 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2231,8 +2231,39 @@ CREATE TABLE `recruitment` (
   `id` bigint(20) NOT NULL,
   `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `sex_id` int(11) DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `requirement` text COLLATE utf8_unicode_ci,
+  `work_id` int(11) DEFAULT NULL,
+  `literacy_id` int(11) DEFAULT NULL,
+  `experience_id` int(11) DEFAULT NULL,
+  `salary_id` int(11) DEFAULT NULL,
+  `commission_from` int(11) DEFAULT NULL,
+  `commission_to` int(11) DEFAULT NULL,
+  `working_form_id` int(11) DEFAULT NULL,
+  `probationary_id` int(11) DEFAULT NULL,
+  `benefit` text COLLATE utf8_unicode_ci,
+  `province_id` int(11) DEFAULT NULL,
+  `duration` datetime DEFAULT NULL,
+  `employer_id` int(11) DEFAULT NULL,
   `sort_order` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `recruitment_job`
+--
+
+DROP TABLE IF EXISTS `recruitment_job`;
+CREATE TABLE `recruitment_job` (
+  `id` bigint(20) NOT NULL,
+  `requirement_id` int(11) DEFAULT NULL,
+  `job_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -3405,6 +3436,12 @@ ALTER TABLE `recruitment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `recruitment_job`
+--
+ALTER TABLE `recruitment_job`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `reminders`
 --
 ALTER TABLE `reminders`
@@ -3722,6 +3759,12 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `recruitment_job`
+--
+ALTER TABLE `recruitment_job`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --

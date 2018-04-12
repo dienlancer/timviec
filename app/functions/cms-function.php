@@ -32,6 +32,26 @@ function cmsSelectboxCategory($name, $class, $arrValue, $val = 0,$disabled,$slog
   $xhtml .= '</select>';
   return $xhtml;
 }
+function cmsSelectboxMultiple($name, $class, $arrValue, $arrValueSelected,$disabled,$slogan=""){
+    $arrName=$name.'[]';
+    $xhtml = '<select size="20"  name="'.$arrName.'" class="'.$class.'" '.$disabled.' multiple="multiple" >';
+    $xhtml .= '<option value = "">'.$slogan.'</option>';
+    foreach($arrValue as $key => $value){
+      $id=$value["id"];
+      $name=$value["fullname"];     
+      $strOption='<option value="'.$id.'">'.$name.'</option>';
+      if(!empty($arrValueSelected)){
+          foreach($arrValueSelected as $key_1 => $value_1) {
+              if((int)$id == (int)$value_1[$name]){
+                $strOption = str_replace('<option', '<option selected="selected" ', $strOption);
+              }
+          }
+      }      
+      $xhtml .=$strOption;
+    }
+    $xhtml .= '</select>';
+    return $xhtml;
+  }
 function cmsSelectboxCategoryArticleMultiple($name, $class, $arrValue, $arrValueSelected,$disabled,$slogan=""){
     $xhtml = '<select size="20"  name="'.$name.'" class="'.$class.'" '.$disabled.' multiple="multiple" >';
     $xhtml .= '<option value = "">'.$slogan.'</option>';

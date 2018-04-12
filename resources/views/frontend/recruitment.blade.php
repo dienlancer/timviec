@@ -9,8 +9,10 @@ $source_literacy=App\LiteracyModel::whereRaw('status = ?',[1])->orderBy('id','as
 $source_experience=App\ExperienceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $source_salary=App\SalaryModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $source_working_form=App\WorkingFormModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $source_probationary=App\ProbationaryModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_job=App\JobModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+
 $arrUser=array();
 $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){
@@ -58,8 +60,16 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				$ddlSalary=cmsSelectboxCategory("salary_id","vacca",$source_salary,@$data['salary_id'],$disabled_status,'Chọn mức lương');
 				$ddlWorkingForm=cmsSelectboxCategory("working_form_id","vacca",$source_working_form,@$data['working_form_id'],$disabled_status,'Chọn hình thức làm việc');
 				$ddlProbationary=cmsSelectboxCategory("probationary_id","vacca",$source_probationary,@$data['probationary_id'],$disabled_status,'Chọn thời gian thử việc');
+				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, array(),"",'Chọn ngành nghề');
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status,'Chọn nơi làm việc');	
-				?>					
+				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
+				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  
+				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,"");
+				?>				
+				<div class="row mia">
+					<div class="col-lg-4"><h2 class="login-information">Thông tin tuyển dụng</h2></div>
+					<div class="col-lg-8"></div>
+				</div>			
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Tiêu đề</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="fullname" class="vacca" placeholder="Nhập tiêu đề" value="<?php echo @$data['fullname']; ?>" ></div>
@@ -135,15 +145,52 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					<div class="col-lg-8"><textarea name="benefit" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['benefit']; ?></textarea></div>
 				</div>
 				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Ngành nghề</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlJob; ?>
+					</div>
+				</div>	
+				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Nơi làm việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">						
 						<?php echo $ddlProvince; ?>
 					</div>
 				</div>	
 				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Hết hạn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" readonly="readonly" name="duration" class="vacca"  value="<?php echo @$data['duration']; ?>" ></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlStatus; ?>
+					</div>
+				</div>
+				<hr  />
+				<div class="row mia">
+					<div class="col-lg-4"><h2 class="login-information">Thông tin liên hệ</h2></div>
+					<div class="col-lg-8"></div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Tên người liên hệ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="contacted_name" class="vacca" placeholder="Tên người liên hệ" value="<?php echo @$data['contacted_name']; ?>" ></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Email</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="contacted_email" class="vacca" placeholder="Email người liên hệ" value="<?php echo @$data['contacted_email']; ?>" ></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Địa chỉ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="address" class="vacca" placeholder="Địa chỉ công ty" value="<?php echo @$data['address']; ?>" ></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Điện thoại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="contacted_phone" class="vacca" placeholder="Điện thoại người liên hệ" value="<?php echo @$data['contacted_phone']; ?>" ></div>
+				</div>							
+				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >Đăng tin</a></div></div>
-				</div>	
+				</div>
 			</div>
 			<div class="col-lg-3">
 				@include("frontend.employer-sidebar")				
@@ -151,5 +198,15 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 		</div>
 	</div>
 </form>
-
+<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			$( 'input[name="duration"]' ).datepicker({
+		    	dateFormat: "dd/mm/yy",
+		    	defaultDate: "+3d",
+		    	changeYear: true,
+		    	changeMonth: true,
+		    	yearRange: "1975:3000"
+		    });
+		});		
+	  </script>
 @endsection()

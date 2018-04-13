@@ -64,7 +64,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status,'Chọn nơi làm việc');	
 				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
 				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  
-				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,"");
+				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,$disabled_status);
 				?>				
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin tuyển dụng</h2></div>
@@ -158,7 +158,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Hết hạn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><input type="text" readonly="readonly" name="duration" class="vacca"  value="<?php echo @$data['duration']; ?>" ></div>
+					<div class="col-lg-8"><input type="text" readonly="readonly" <?php echo $disabled_status; ?> name="duration" class="vacca"  value="<?php echo @$data['duration']; ?>" ></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Hiển thị tin</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>

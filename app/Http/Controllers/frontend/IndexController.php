@@ -931,10 +931,13 @@ class IndexController extends Controller {
           $item2->job_id         = (int)@$value;
           $item2->save();
         }
-        $msg['success']='<span>Tạo </span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
+        $msg['success']='<span>Đăng tin thành công</span><span class="margin-left-5 review"><a href="'.route('frontend.index.reviewRecruitment',[(int)@$item->id]).'">Xem tin đã đăng</a></span>';
       }  
     }
     return view('frontend.recruitment',compact('data','msg','flag'));     
+  }
+  public function reviewRecruitment(Request $request){
+
   }
 }
 

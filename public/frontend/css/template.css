@@ -686,6 +686,9 @@ div.opacity-absolute::before{
     display: flex;
     align-items: center;
 }
+.review a{
+    color: #E30000;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

@@ -20,6 +20,15 @@ if(Session::has($ssNameUser)){
 } 
 $disabled_status='';
 $register_status='onclick="document.forms[\'frm\'].submit();"';
+$dang_tin='';
+switch ($task) {
+	case 'add':
+		$dang_tin='Đăng tin';
+		break;
+	case 'edit':
+		$dang_tin='Cập nhật';
+		break;
+}
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -189,7 +198,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				</div>							
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >Đăng tin</a></div></div>
+					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> ><?php echo $dang_tin; ?></a></div></div>
 				</div>
 			</div>
 			<div class="col-lg-3">

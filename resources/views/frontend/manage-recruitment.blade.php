@@ -26,7 +26,7 @@ $seo=getSeo();
 							$fullname=$value['fullname'];							
 							?>
 							<tr>
-								<td><a href="<?php echo route('frontend.index.reviewRecruitment',[$id]); ?>"><?php echo $fullname; ?></a></td>							
+								<td><a href="<?php echo route('frontend.index.postRecruitment',['edit',$id]); ?>"><?php echo $fullname; ?></a></td>							
 							</tr>
 							<?php
 						}

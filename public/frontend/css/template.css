@@ -544,8 +544,7 @@ div.opacity-absolute::before{
     font-size: 20px;
     position: relative;
     padding-bottom: 10px;
-    text-transform: capitalize;
-    font-style: italic;
+    text-transform: capitalize;    
     margin-top: 10px;
 }
 .dn-dk-h::before {

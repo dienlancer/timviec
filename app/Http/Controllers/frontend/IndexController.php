@@ -731,27 +731,32 @@ class IndexController extends Controller {
   	return redirect()->route("frontend.index.candidateLogin");
   }
   
-  public function postRecruitment(Request $request){
+  public function postRecruitment(Request $request,$task,$id){
     $flag=1;
     $msg=array();        
     $data=array();
-    $employer_id            = 0;
+    
     $arrUser=array();    
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }         
-    if(count($arrUser) > 0){
-      $email=@$arrUser['email'];   
-      $employer_id=(int)@$arrUser['id'];
-      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email','contacted_name','contacted_email','address','contacted_phone')->get()->toArray();
-      if(count($source) == 0){
-        return redirect()->route("frontend.index.employerLogin"); 
-      }else{
-        $data=$source[0];
-      }     
-    }else{
+    if(count($arrUser) == 0){
       return redirect()->route("frontend.index.employerLogin"); 
-    }        
+    }
+    $email=@$arrUser['email'];       
+    $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email','contacted_name','contacted_email','address','contacted_phone')->get()->toArray();
+    if(count($source) == 0){
+      return redirect()->route("frontend.index.employerLogin"); 
+    }           
+    if($task == 'edit'){
+      $data=RecruitmentModel::find((int)@$id)->toArray();
+      $data['duration']=datetimeConverterVn($data['duration']);
+      $data['contacted_name']=@$source[0]['contacted_name'];
+      $data['contacted_email']=@$source[0]['contacted_email'];
+      $data['address']=@$source[0]['address'];
+      $data['contacted_phone']=@$source[0]['contacted_phone'];
+    }
+    
     if($request->isMethod('post')){
       $data             =   @$request->all();              
       $fullname         =   trim(@$request->fullname);
@@ -891,7 +896,15 @@ class IndexController extends Controller {
         $flag = 0;
       }   
       if($flag==1){
-        $item                   = new RecruitmentModel;
+        $item=null;
+        switch ($task) {
+          case 'add':            
+          $item                   = new RecruitmentModel;
+          break;
+          case 'edit':
+          $item                   = RecruitmentModel::find((int)@$id);
+          break;          
+        }              
         $item->fullname         = @$fullname;
         /* begin save alias */
         $alias=str_slug(@$fullname,'-');
@@ -928,7 +941,7 @@ class IndexController extends Controller {
         $real_date                 = date('Y-m-d', $ts);
         /* end duration */
         $item->duration         = @$real_date;        
-        $item->employer_id      = (int)@$employer_id;        
+        $item->employer_id      = (int)@$arrUser['id'];        
         $item->status           = (int)@$status;
         $item->created_at=date("Y-m-d H:i:s");
         $item->updated_at=date("Y-m-d H:i:s");   
@@ -940,7 +953,7 @@ class IndexController extends Controller {
           $item2->job_id         = (int)@$value;
           $item2->save();
         }
-        $item3=EmployerModel::find((int)@$employer_id);
+        $item3=EmployerModel::find((int)@$arrUser['id']);
         $item3->contacted_name   = @$contacted_name;
         $item3->contacted_email  = @$contacted_email;
         $item3->address          = @$address;
@@ -949,7 +962,7 @@ class IndexController extends Controller {
         $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a href="'.route('frontend.index.reviewRecruitment',[(int)@$item->id]).'">Xem tin đã đăng</a></span>';
       }  
     }
-    return view('frontend.recruitment',compact('data','msg','flag'));     
+    return view('frontend.recruitment',compact('data','msg','flag','task'));     
   }
   public function manageRecruitment(Request $request){
     $flag=1;
@@ -970,7 +983,7 @@ class IndexController extends Controller {
     }
 
     $totalItems=0;
-    $totalItemsPerPage=2;
+    $totalItemsPerPage=20;
     $pageRange=0;      
     $currentPage=1;  
     $pagination ='';            

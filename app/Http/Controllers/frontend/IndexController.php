@@ -758,13 +758,12 @@ class IndexController extends Controller {
         }
       }      
       $data['job_id']=$source_job_id;
-      $data['duration']=datetimeConverterVn($data['duration']);
-      $data['contacted_name']=@$source[0]['contacted_name'];
-      $data['contacted_email']=@$source[0]['contacted_email'];
-      $data['address']=@$source[0]['address'];
-      $data['contacted_phone']=@$source[0]['contacted_phone'];
+      $data['duration']=datetimeConverterVn($data['duration']);      
     }
-    
+    $data['contacted_name']=@$source[0]['contacted_name'];
+    $data['contacted_email']=@$source[0]['contacted_email'];
+    $data['address']=@$source[0]['address'];
+    $data['contacted_phone']=@$source[0]['contacted_phone'];
     if($request->isMethod('post')){
       $data             =   @$request->all();              
       $fullname         =   trim(@$request->fullname);
@@ -967,7 +966,14 @@ class IndexController extends Controller {
         $item3->address          = @$address;
         $item3->contacted_phone  = @$contacted_phone; 
         $item3->save();
-        $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a href="'.route('frontend.index.reviewRecruitment',[(int)@$item->id]).'">Xem tin đã đăng</a></span>';
+        switch ($task) {
+          case 'add':            
+            $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a target="_blank" href="'.route('frontend.index.postRecruitment',['edit',@$id]).'">Xem tin đã đăng</a></span>';
+            break;
+          case 'edit':            
+            $msg['success']='<span>Cập nhật tin đăng thành công</span>';
+            break;          
+        }        
       }  
     }
     return view('frontend.recruitment',compact('data','msg','flag','task'));     

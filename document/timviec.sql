@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 13, 2018 lúc 08:01 AM
+-- Thời gian đã tạo: Th4 13, 2018 lúc 11:48 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2248,6 +2248,7 @@ CREATE TABLE `recruitment` (
   `province_id` int(11) DEFAULT NULL,
   `duration` datetime DEFAULT NULL,
   `employer_id` int(11) DEFAULT NULL,
+  `count_view` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -2257,8 +2258,11 @@ CREATE TABLE `recruitment` (
 -- Đang đổ dữ liệu cho bảng `recruitment`
 --
 
-INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `province_id`, `duration`, `employer_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Chuyên Viên BĐS Lương 38 Triệu / Tháng', 'chuyen-vien-bds-luong-38-trieu-thang', 5, 3, '-	Học làm lãnh đạo. Các bạn sẽ được làm việc và được đào tạo để trở thành lãnh đạo cho công ty chúng tôi. Có trách nhiệm với bản thân, trách nhiệm với công việc, và trách nhiệm với công ty.\r\n-	Học giao tiếp, và biết ứng xử trong công việc. Các bạn sẽ chăm sóc khách hàng, bán sản phẩm của công ty, và ứng xử với khách hàng để giải quyết tình huống.\r\n-	Học quản lý tài chính, và biết sử dụng nguồn vốn. Các bạn sẽ được hỗ trợ chi phí marketing, và sẽ phải cân đối nguồn vốn của các bạn sao để đạt doanh thu tốt nhất cho bạn, lãnh đạo của bạn sẽ giúp bạn làm điều đó nếu bạn chấp nhận bỏ công việc cũ và theo chúng tôi.\r\n-	Học cách đầu tư. Các bạn sẽ biết đầu tư vào thời gian, phân bổ thời gian làm việc và biết cách đầu tư bất động sản, 80% nhân viên của chúng tôi sau 3 năm làm việc, đã là cổ đông của công ty chúng tôi.\r\n-	Học cách tự tin, và thể hiện bản thân. Các bạn sẽ được salephone, sẽ được tư vấn giữa hàng trăm khách hàng.', '-	Không than thở, không tiêu cực trong công ty\r\n-	Làm việc đúng giờ, và báo cáo công việc mỗi khi ra về\r\n-	Có phương tiện đi lại\r\n-	Có thiết bị di động hoặc laptop\r\n-	Làm việc từ thứ ba đến Chủ nhật\r\n-	Đam mê và dám thay đổi bản thân\r\n-	Có tư duy làm chủ', 2, 2, 7, 9, 7, 10, 3, 4, '-	Chúng tôi không dám tự hào là công ty bất động sản có chế độ đãi ngộ tốt nhất. Nhưng là công ty đào tạo con người tốt nhất.\r\n-	Lương cơ bản: 6 triệu/ tháng\r\n-	Thu nhập hàng tháng: Không giới hạn\r\n-	Hoa hồng: 15- 40 triệu/ sản phẩm\r\n-	Lãnh đạo theo sát các bạn, hỗ trợ các bạn chốt khách, các bạn phải giàu, công ty mới mạnh\r\n-	Thưởng nóng hàng tháng, quý cho nhân sự\r\n-	Tổ chức đi du lịch 2 lần 1 năm', 3, '2018-04-21 00:00:00', 7, 0, '2018-04-13 05:16:16', '2018-04-13 05:16:16');
+INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `province_id`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Chuyên Viên BĐS Lương 38 Triệu / Tháng', 'chuyen-vien-bds-luong-38-trieu-thang', 5, 3, '-	Học làm lãnh đạo. Các bạn sẽ được làm việc và được đào tạo để trở thành lãnh đạo cho công ty chúng tôi. Có trách nhiệm với bản thân, trách nhiệm với công việc, và trách nhiệm với công ty.\r\n-	Học giao tiếp, và biết ứng xử trong công việc. Các bạn sẽ chăm sóc khách hàng, bán sản phẩm của công ty, và ứng xử với khách hàng để giải quyết tình huống.\r\n-	Học quản lý tài chính, và biết sử dụng nguồn vốn. Các bạn sẽ được hỗ trợ chi phí marketing, và sẽ phải cân đối nguồn vốn của các bạn sao để đạt doanh thu tốt nhất cho bạn, lãnh đạo của bạn sẽ giúp bạn làm điều đó nếu bạn chấp nhận bỏ công việc cũ và theo chúng tôi.\r\n-	Học cách đầu tư. Các bạn sẽ biết đầu tư vào thời gian, phân bổ thời gian làm việc và biết cách đầu tư bất động sản, 80% nhân viên của chúng tôi sau 3 năm làm việc, đã là cổ đông của công ty chúng tôi.\r\n-	Học cách tự tin, và thể hiện bản thân. Các bạn sẽ được salephone, sẽ được tư vấn giữa hàng trăm khách hàng.', '-	Không than thở, không tiêu cực trong công ty\r\n-	Làm việc đúng giờ, và báo cáo công việc mỗi khi ra về\r\n-	Có phương tiện đi lại\r\n-	Có thiết bị di động hoặc laptop\r\n-	Làm việc từ thứ ba đến Chủ nhật\r\n-	Đam mê và dám thay đổi bản thân\r\n-	Có tư duy làm chủ', 2, 2, 7, 9, 7, 10, 3, 4, '-	Chúng tôi không dám tự hào là công ty bất động sản có chế độ đãi ngộ tốt nhất. Nhưng là công ty đào tạo con người tốt nhất.\r\n-	Lương cơ bản: 6 triệu/ tháng\r\n-	Thu nhập hàng tháng: Không giới hạn\r\n-	Hoa hồng: 15- 40 triệu/ sản phẩm\r\n-	Lãnh đạo theo sát các bạn, hỗ trợ các bạn chốt khách, các bạn phải giàu, công ty mới mạnh\r\n-	Thưởng nóng hàng tháng, quý cho nhân sự\r\n-	Tổ chức đi du lịch 2 lần 1 năm', 3, '2018-04-21 00:00:00', 7, NULL, 0, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
+(2, 'Nhân Viên Kế Toán Tổng Hợp (Tại Bigc Trường Trinh)', 'nhan-vien-ke-toan-tong-hop-tai-bigc-truong-trinh', 1, 2, '- Thực hiện các công việc chuyên môn của kế toán tổng hợp\r\n- Quản lý hệ thống chứng từ, sổ sách theo quy định\r\n- Lập báo cáo thuế hàng tháng, quý, báo cáo tài chính năm, quyết toán thuế, lập sổ sách kèm theo\r\n- Báo cáo thu chi hằng ngày\r\n- Tính lương, thưởng cho nhân viên.\r\n- Hỗ trợ nhân viên kinh doanh in, photo,...', '- Tốt nghiệp đại học ngành kế toán, kiểm toán\r\n- Ít nhất 1 năm kinh nghiệm trong công việc kế toán tổng hợp\r\n- Sử dụng thành thạo các phần mềm kế toán và vi tính văn phòng\r\n- Có kinh nghiệm làm văn phòng, tổng hợp, hành chính, kế toán\r\n- Trung thực, cẩn thận, tận tâm và có tinh thần trách nhiệm cao trong công việc\r\n- Có ý định làm việc ổn định và lâu dài với công ty', 10, 2, 3, 3, 8, 10, 2, 3, '- Lương 6 triệu + Thưởng.\r\n- Thưởng lễ, Tết, lương tháng 13.\r\n- Hưởng đầy đủ quyền lợi BHXH, BHYT, BHTN theo quy định\r\n- Các chương trình du lịch nghỉ dưỡng, Team building thú vị hấp dẫn', 23, '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
+(3, 'Chuyên Viên Thiết Kế 3D & 2D', 'chuyen-vien-thiet-ke-3d-2d', 2, 3, '- Thiết kế Logo, Lay Out, Graphics, Bandroll, Backdrop, dựng cảnh khu vực theo không gian\r\n3D, Thiết kế Proposal Du Lịch.\r\n- Thiết kế và thi công các ấn phẩm Catalogue, Brochure, logo, banner, video,banner flash. Digital\r\nContent (bài post facebook) cho Fan Page, web.\r\n- Key Visual theo từng Campaign: banner, backdrop, standee, invitation, flyer, wobbler…\r\n- Thiết kế hình ảnh quảng cáo, nhận diện thương hiệu cho chuỗi sản phẩm của Công ty.\r\n- Thực hiện việc quản lý hình ảnh (thương hiệu) đảm bảo tính thống nhất, nhất quán và dễ nhận\r\ndạng của thương hiệu.\r\n- Thiết kế theo yêu cầu công việc, theo yêu cầu khách hàng,\r\n- Thực hiện các công việc khác dưới sự phân công của Trưởng Phòng.\r\n- Làm việc dưới sự chỉ đạo và hướng dẫn của Trưởng Phòng.\r\n- Chi tiết công việc sẽ được trao đổi cụ thể hơn khi phỏng vấn.', '- Không yêu cầu độ tuổi\r\n- Trình độ: Tốt nghiệp Cao đẳng trở lên\r\n- Kinh nghiệm: 2 năm trở lên trong lĩnh vực Design Marketting\r\n- Sử dụng thành thạo các phần mềm đồ họa ( Ưu tiên 3D, Ai, Corel, Photoshop,...).\r\n- Am hiểu về lĩnh vực Quảng Cáo, Thương Hiệu.\r\n- Sử dụng cách phối màu và bố cục sản phẩm thiết kế tốt.\r\n- Có khả năng tư duy, lên ý tưởng, sáng tạo.\r\n- Làm việc độc lập, tính cẩn thận cao, có ý chí cầu tiến', 2, 3, 4, 4, 2, 8, 1, 3, '- Lương cơ bản: 9 triệu/tháng (thỏa thuận khi pv)\r\n- Môi trường thân thiện, cơ sở vật chất tiên tiến\r\n- Chế độ phúc lợi đầy đủ, thưởng lễ tết + du lịch hàng năm\r\n- Các chế độ ưu đãi dịch vụ cho nhân viên\r\n- Đãi ngộ tương xứng với năng lực, thăng tiến theo năng lực và sự cống hiến', 23, '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
+(4, 'Nam Nhân Viên Bán Hàng Thị Trường - Hàng Tiêu Dùng P&g', 'nam-nhan-vien-ban-hang-thi-truong-hang-tieu-dung-pg', 10, 1, '- Phân phối các mặt hàng tiêu dùng của P&G như: Rejoice, Pampers, Pantene, H&S, Downy, Ariel,Tide, Gillette,.......\r\n- Thực hiện bán hàng đến khách hàng trong khu vực được phân công.\r\n- Cung cấp thông tin hàng hóa và các chương trình khuyến mãi đến khách hàng.\r\n- Xây dựng hình ảnh hàng hóa trưng bày theo quy định.\r\n- Chịu trách nhiệm đảm bảo doanh số bán hàng theo tháng trong khu vực được giao', '- Ưu tiên ứng viên có kinh nghiệm về lĩnh vực phân phối hàng tiêu dùng nhanh.\r\n- Khả năng làm việc nhóm tốt.\r\n- Khả năng giao tiếp tốt\r\n- Khả năng giải quyết vấn đề tốt.\r\n- Tác phong lịch sự.', 1, 1, 4, 11, 0, 0, 1, 3, '- Lương cứng: trên 6tr\r\n- Cơ hội thăng tiến cao, công việc ổn định lâu dài.\r\n- Định kỳ tham gia các khóa huấn luyện kỹ năng chuyên môn tại Công ty.\r\n- Đánh giá tăng lương hàng năm theo kết quả.\r\n- Thưởng định kỳ hàng tháng, quý, năm.\r\n- Chính sách phúc lợi tốt, du lịch, hiếu hỉ, Lễ tết...\r\n- Tham gia đầy đủ BHXH, BHYT, BHTN.\r\n- Tham gia Bảo hiểm tai nạn 24/24.', 23, '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 09:45:45', '2018-04-13 09:45:45');
 
 -- --------------------------------------------------------
 
@@ -2284,7 +2288,16 @@ INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `
 (2, 1, 10, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
 (3, 1, 15, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
 (4, 1, 30, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(5, 1, 35, '2018-04-13 05:16:16', '2018-04-13 05:16:16');
+(5, 1, 35, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
+(6, 2, 5, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
+(7, 2, 6, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
+(8, 2, 12, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
+(9, 3, 8, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
+(10, 3, 15, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
+(11, 3, 47, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
+(12, 4, 1, '2018-04-13 09:45:45', '2018-04-13 09:45:45'),
+(13, 4, 2, '2018-04-13 09:45:45', '2018-04-13 09:45:45'),
+(14, 4, 39, '2018-04-13 09:45:45', '2018-04-13 09:45:45');
 
 -- --------------------------------------------------------
 
@@ -3778,13 +3791,13 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`

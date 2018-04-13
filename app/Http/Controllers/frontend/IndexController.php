@@ -946,10 +946,66 @@ class IndexController extends Controller {
         $item3->address          = @$address;
         $item3->contacted_phone  = @$contacted_phone; 
         $item3->save();
-        $msg['success']='<span>Đăng tin thành công</span><span class="margin-left-5 review"><a href="'.route('frontend.index.reviewRecruitment',[(int)@$item->id]).'">Xem tin đã đăng</a></span>';
+        $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a href="'.route('frontend.index.reviewRecruitment',[(int)@$item->id]).'">Xem tin đã đăng</a></span>';
       }  
     }
     return view('frontend.recruitment',compact('data','msg','flag'));     
+  }
+  public function manageRecruitment(Request $request){
+    $flag=1;
+    $msg=array();        
+    $data=array();       
+    $arrUser=array();    
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }         
+    if(count($arrUser) > 0){
+      $email=@$arrUser['email'];   
+      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+      if(count($source) == 0){
+        return redirect()->route("frontend.index.employerLogin"); 
+      }      
+    }else{
+      return redirect()->route("frontend.index.employerLogin"); 
+    }
+
+    $totalItems=0;
+    $totalItemsPerPage=2;
+    $pageRange=0;      
+    $currentPage=1;  
+    $pagination ='';            
+    
+    $query=DB::table('recruitment')   ;     
+    $query->where('recruitment.employer_id',(int)@$arrUser['id']);    
+    $data=$query->select('recruitment.id')
+    ->groupBy('recruitment.id')                
+    ->get()->toArray();
+    $data=convertToArray($data);
+    $totalItems=count($data);    
+    $pageRange=$this->_pageRange;
+    if(isset($request->filter_page)){
+      if(!empty(@$request->filter_page)){
+        $currentPage=@$request->filter_page;
+      }
+    }          
+    $arrPagination=array(
+      "totalItems"=>$totalItems,
+      "totalItemsPerPage"=>$totalItemsPerPage,
+      "pageRange"=>$pageRange,
+      "currentPage"=>$currentPage   
+    );           
+    $pagination=new PaginationModel($arrPagination);
+    $position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
+
+    $data=$query->select('recruitment.id','recruitment.fullname')
+    ->groupBy('recruitment.id','recruitment.fullname')
+    ->orderBy('recruitment.id', 'desc')
+    ->skip($position)
+    ->take($totalItemsPerPage)
+    ->get()->toArray();   
+    $data=convertToArray($data);      
+
+    return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination"));     
   }
   public function reviewRecruitment(Request $request){
 

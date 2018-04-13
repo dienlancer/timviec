@@ -750,6 +750,14 @@ class IndexController extends Controller {
     }           
     if($task == 'edit'){
       $data=RecruitmentModel::find((int)@$id)->toArray();
+      $source_recruitment_job=RecruitmentJobModel::whereRaw('recruitment_id = ?',[(int)@$id])->select('job_id')->get()->toArray();
+      $source_job_id=array();
+      if(count($source_recruitment_job) > 0){
+        foreach ($source_recruitment_job as $key => $value) {
+          $source_job_id[]=$value['job_id'];
+        }
+      }      
+      $data['job_id']=$source_job_id;
       $data['duration']=datetimeConverterVn($data['duration']);
       $data['contacted_name']=@$source[0]['contacted_name'];
       $data['contacted_email']=@$source[0]['contacted_email'];
@@ -905,7 +913,7 @@ class IndexController extends Controller {
           $item                   = RecruitmentModel::find((int)@$id);
           break;          
         }              
-        $item->fullname         = @$fullname;
+        $item->fullname           = @$fullname;
         /* begin save alias */
         $alias=str_slug(@$fullname,'-');
         $checked_trung_alias=0;

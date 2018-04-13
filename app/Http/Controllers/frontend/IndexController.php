@@ -36,6 +36,7 @@ use App\EmployerModel;
 use App\CandidateModel;
 use App\RecruitmentModel;
 use App\RecruitmentJobModel;
+use App\RecruitmentPlaceModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -726,7 +727,7 @@ class IndexController extends Controller {
   	return redirect()->route("frontend.index.candidateLogin");
   }
   
-  public function postRecruitment(Request $request,$task,$id){
+  public function getFormRecruitment(Request $request,$task,$id){
     $flag=1;
     $msg=array();        
     $data=array();
@@ -746,13 +747,21 @@ class IndexController extends Controller {
     if($task == 'edit'){
       $data=RecruitmentModel::find((int)@$id)->toArray();
       $source_recruitment_job=RecruitmentJobModel::whereRaw('recruitment_id = ?',[(int)@$id])->select('job_id')->get()->toArray();
+      $source_recruitment_place=RecruitmentPlaceModel::whereRaw('recruitment_id = ?',[(int)@$id])->select('province_id')->get()->toArray();
       $source_job_id=array();
+      $source_province_id=array();
       if(count($source_recruitment_job) > 0){
         foreach ($source_recruitment_job as $key => $value) {
           $source_job_id[]=$value['job_id'];
         }
+      }
+      if(count($source_recruitment_place) > 0){
+        foreach ($source_recruitment_place as $key => $value) {
+          $source_province_id[]=$value['province_id'];
+        }
       }      
       $data['job_id']=$source_job_id;
+      $data['province_id']=$source_province_id;
       $data['duration']=datetimeConverterVn($data['duration']);      
     }
     $data['contacted_name']=@$source[0]['contacted_name'];
@@ -776,7 +785,7 @@ class IndexController extends Controller {
       $probationary_id  =   trim(@$request->probationary_id);
       $benefit          =   trim(@$request->benefit);
       $job_id           =   @$request->job_id;
-      $province_id      =   trim(@$request->province_id);
+      $province_id      =   @$request->province_id;
       $duration         =   trim(@$request->duration);
       $status           =   trim(@$request->status); 
       $contacted_name   =   trim(@$request->contacted_name);
@@ -862,6 +871,17 @@ class IndexController extends Controller {
           $flag = 0;      
         }
       }
+      if(count(@$province_id) == 0){
+        $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
+        $data['province_id']='';        
+        $flag = 0;      
+      }else{
+        if((int)@$province_id[0]==0){
+          $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
+          $data['province_id']='';        
+          $flag = 0;      
+        }
+      }
       if((int)@$province_id == 0){
         $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
         $data['province_id']='';        
@@ -935,8 +955,7 @@ class IndexController extends Controller {
         $item->commission_to    = (int)@$commission_to;
         $item->working_form_id  = (int)@$working_form_id;
         $item->probationary_id  = (int)@$probationary_id;
-        $item->benefit          = @$benefit;
-        $item->province_id      = (int)@$province_id;
+        $item->benefit          = @$benefit;        
         /* begin duration */
         $arrDate                = date_parse_from_format('d/m/Y',@$duration) ;
         $ts                     = mktime(@$arrDate["hour"],@$arrDate["minute"],@$arrDate["second"],@$arrDate['month'],@$arrDate['day'],@$arrDate['year']);
@@ -949,21 +968,28 @@ class IndexController extends Controller {
         $item->updated_at=date("Y-m-d H:i:s");   
         $item->save();   
         RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
+        RecruitmentPlaceModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
         foreach ($job_id as $key => $value) {
           $item2=new RecruitmentJobModel;
           $item2->recruitment_id = (int)@$item->id;
           $item2->job_id         = (int)@$value;
           $item2->save();
         }
-        $item3=EmployerModel::find((int)@$arrUser['id']);
-        $item3->contacted_name   = @$contacted_name;
-        $item3->contacted_email  = @$contacted_email;
-        $item3->address          = @$address;
-        $item3->contacted_phone  = @$contacted_phone; 
-        $item3->save();
+        foreach ($province_id as $key => $value) {
+          $item3=new RecruitmentPlaceModel;
+          $item3->recruitment_id = (int)@$item->id;
+          $item3->province_id         = (int)@$value;
+          $item3->save();
+        }
+        $item4=EmployerModel::find((int)@$arrUser['id']);
+        $item4->contacted_name   = @$contacted_name;
+        $item4->contacted_email  = @$contacted_email;
+        $item4->address          = @$address;
+        $item4->contacted_phone  = @$contacted_phone; 
+        $item4->save();
         switch ($task) {
           case 'add':            
-            $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.postRecruitment',['edit',@$item->id]).'">Xem tin đã đăng</a></span>';
+            $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.getFormRecruitment',['edit',@$item->id]).'">Xem tin đã đăng</a></span>';
             break;
           case 'edit':            
             $msg['success']='<span>Cập nhật tin đăng thành công</span>';

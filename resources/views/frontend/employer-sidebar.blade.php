@@ -19,7 +19,7 @@ if(Session::has($ssNameUser)){
 		<ul class="categoryarticle">
 			<li><a href="<?php echo route('frontend.index.viewEmployerAccount'); ?>"><div class="category-icon"><i class="far fa-user"></i></div><div>Tài khoản</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-search"></i></div><div>Tìm hồ sơ ứng viên</div></a></li>
-			<li><a href="<?php echo route('frontend.index.postRecruitment',['add',0]); ?>"><div class="category-icon"><i class="fab fa-spotify"></i></div><div>Đăng tin tuyển dụng</div></a></li>
+			<li><a href="<?php echo route('frontend.index.getFormRecruitment',['add',0]); ?>"><div class="category-icon"><i class="fab fa-spotify"></i></div><div>Đăng tin tuyển dụng</div></a></li>
 			<li><a href="<?php echo route('frontend.index.manageRecruitment'); ?>"><div class="category-icon"><i class="fas fa-columns"></i></div><div>Quản lý tin tuyển dụng</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="fas fa-users"></i></div><div>Hồ sơ đã lưu</div></a></li>
 			<li><a href="javascript:void(0);"><div class="category-icon"><i class="far fa-file-alt"></i></div><div>Hồ sơ đã ứng tuyển</div></a></li>		

@@ -736,7 +736,7 @@ class IndexController extends Controller {
     $msg=array();        
     $data=array();
     if($request->isMethod('post')){
-      $data             =   @$request->all();   
+      $data             =   @$request->all();         
       $fullname         =   trim(@$request->fullname);
       $quantity         =   trim(@$request->quantity);
       $sex_id           =   trim(@$request->sex_id);  
@@ -919,6 +919,13 @@ class IndexController extends Controller {
         $item->created_at=date("Y-m-d H:i:s",time());
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
+        RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
+        foreach ($job_id as $key => $value) {
+          $item2=new RecruitmentJobModel;
+          $item2->recruitment_id = (int)@$item->id;
+          $item2->job_id         = (int)@$value;
+          $item2->save();
+        }
       }  
     }
     return view('frontend.recruitment',compact('data','msg','flag'));     

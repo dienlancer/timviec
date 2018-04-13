@@ -60,7 +60,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				$ddlSalary=cmsSelectboxCategory("salary_id","vacca",$source_salary,@$data['salary_id'],$disabled_status,'Chọn mức lương');
 				$ddlWorkingForm=cmsSelectboxCategory("working_form_id","vacca",$source_working_form,@$data['working_form_id'],$disabled_status,'Chọn hình thức làm việc');
 				$ddlProbationary=cmsSelectboxCategory("probationary_id","vacca",$source_probationary,@$data['probationary_id'],$disabled_status,'Chọn thời gian thử việc');
-				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, array(),$disabled_status,'Chọn ngành nghề');
+				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status,'Chọn nơi làm việc');	
 				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
 				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  

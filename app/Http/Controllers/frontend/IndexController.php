@@ -968,7 +968,7 @@ class IndexController extends Controller {
         $item3->save();
         switch ($task) {
           case 'add':            
-            $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a target="_blank" href="'.route('frontend.index.postRecruitment',['edit',@$id]).'">Xem tin đã đăng</a></span>';
+            $msg['success']='<span>Đăng tin thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.postRecruitment',['edit',@$item->id]).'">Xem tin đã đăng</a></span>';
             break;
           case 'edit':            
             $msg['success']='<span>Cập nhật tin đăng thành công</span>';

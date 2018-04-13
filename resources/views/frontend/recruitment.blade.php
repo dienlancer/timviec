@@ -42,7 +42,9 @@ switch ($task) {
 				if(count(@$msg) > 0){
 					$type_msg='';					
 					if((int)@$flag == 1){
-						$disabled_status='disabled';
+						if($task == 'add'){
+							$disabled_status='disabled';
+						}						
 						$register_status='';
 						$type_msg='note-success';
 					}else{

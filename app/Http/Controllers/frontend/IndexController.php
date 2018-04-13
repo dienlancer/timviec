@@ -966,7 +966,7 @@ class IndexController extends Controller {
         $item->status           = (int)@$status;
         $item->created_at=date("Y-m-d H:i:s");
         $item->updated_at=date("Y-m-d H:i:s");   
-        $item->save();   
+        $item->save();           
         RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
         RecruitmentPlaceModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
         foreach ($job_id as $key => $value) {

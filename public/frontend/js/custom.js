@@ -113,5 +113,5 @@ function hideMsg(ctrl){
 }       
 $(document).ready(function(){	
 	basicTable.init();		
-	setTimeout(hideMsg,30000,'note');	
+	setTimeout(hideMsg,60000,'note');	
 });

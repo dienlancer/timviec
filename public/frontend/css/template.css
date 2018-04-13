@@ -688,6 +688,8 @@ div.opacity-absolute::before{
 }
 .review a{
     color: #E30000;
+    font-weight: bold;
+    font-style: italic;
 }
 @media (max-width: 768px){    
     .mobilemenu{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 13, 2018 lúc 06:39 AM
+-- Thời gian đã tạo: Th4 13, 2018 lúc 07:23 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -559,7 +559,7 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, 'logo-7-5yk7jo4xcgz2.png', 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, NULL, '2018-04-04 05:29:16', '2018-04-11 08:37:21'),
 (5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công Ty Bất Động Sản Đà Thành Land', 'cong-ty-bds-da-thanh-land', 'metakeyword Công ty CP BĐS ĐÀ THÀNH LAND', 'metadescription Công ty CP BĐS ĐÀ THÀNH LAND', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 12, 4, 'logo-3-2os9xabnpmtf.png', 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 6, 1, 0, '2018-04-04 08:06:36', '2018-04-08 17:02:50'),
 (6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', '', '', '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 6, 1, 0, '2018-04-06 02:10:27', '2018-04-08 16:37:40'),
-(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', 'Nhà máy: Số 5 Đại lộ Tự Do, KCN Vsip I, P.Bình Hòa, TX. Thuận An, Bình Dương; TpHCM: 29-30 Song Hành, KP5, Phường An Phú, Quận 2, Tp.HCM', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Nguyễn Văn Đạt', 'datnv@dienkim.com', '0945612888', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-13 03:06:13');
+(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '98 Cửu Long , Q.1 , TP. Hồ Chí Minh', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Trần Văn Bình', 'binhtv983@dienkim.com', '0966123123', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-13 05:16:16');
 
 -- --------------------------------------------------------
 
@@ -2253,6 +2253,13 @@ CREATE TABLE `recruitment` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `recruitment`
+--
+
+INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `province_id`, `duration`, `employer_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Chuyên Viên BĐS Lương 38 Triệu / Tháng', 'chuyen-vien-bds-luong-38-trieu-thang', 5, 3, '-	Học làm lãnh đạo. Các bạn sẽ được làm việc và được đào tạo để trở thành lãnh đạo cho công ty chúng tôi. Có trách nhiệm với bản thân, trách nhiệm với công việc, và trách nhiệm với công ty.\r\n-	Học giao tiếp, và biết ứng xử trong công việc. Các bạn sẽ chăm sóc khách hàng, bán sản phẩm của công ty, và ứng xử với khách hàng để giải quyết tình huống.\r\n-	Học quản lý tài chính, và biết sử dụng nguồn vốn. Các bạn sẽ được hỗ trợ chi phí marketing, và sẽ phải cân đối nguồn vốn của các bạn sao để đạt doanh thu tốt nhất cho bạn, lãnh đạo của bạn sẽ giúp bạn làm điều đó nếu bạn chấp nhận bỏ công việc cũ và theo chúng tôi.\r\n-	Học cách đầu tư. Các bạn sẽ biết đầu tư vào thời gian, phân bổ thời gian làm việc và biết cách đầu tư bất động sản, 80% nhân viên của chúng tôi sau 3 năm làm việc, đã là cổ đông của công ty chúng tôi.\r\n-	Học cách tự tin, và thể hiện bản thân. Các bạn sẽ được salephone, sẽ được tư vấn giữa hàng trăm khách hàng.', '-	Không than thở, không tiêu cực trong công ty\r\n-	Làm việc đúng giờ, và báo cáo công việc mỗi khi ra về\r\n-	Có phương tiện đi lại\r\n-	Có thiết bị di động hoặc laptop\r\n-	Làm việc từ thứ ba đến Chủ nhật\r\n-	Đam mê và dám thay đổi bản thân\r\n-	Có tư duy làm chủ', 2, 2, 7, 9, 7, 10, 3, 4, '-	Chúng tôi không dám tự hào là công ty bất động sản có chế độ đãi ngộ tốt nhất. Nhưng là công ty đào tạo con người tốt nhất.\r\n-	Lương cơ bản: 6 triệu/ tháng\r\n-	Thu nhập hàng tháng: Không giới hạn\r\n-	Hoa hồng: 15- 40 triệu/ sản phẩm\r\n-	Lãnh đạo theo sát các bạn, hỗ trợ các bạn chốt khách, các bạn phải giàu, công ty mới mạnh\r\n-	Thưởng nóng hàng tháng, quý cho nhân sự\r\n-	Tổ chức đi du lịch 2 lần 1 năm', 3, '2018-04-21 00:00:00', 7, 0, '2018-04-13 05:16:16', '2018-04-13 05:16:16');
+
 -- --------------------------------------------------------
 
 --
@@ -2267,6 +2274,17 @@ CREATE TABLE `recruitment_job` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `recruitment_job`
+--
+
+INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 5, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
+(2, 1, 10, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
+(3, 1, 15, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
+(4, 1, 30, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
+(5, 1, 35, '2018-04-13 05:16:16', '2018-04-13 05:16:16');
 
 -- --------------------------------------------------------
 
@@ -3760,13 +3778,13 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`

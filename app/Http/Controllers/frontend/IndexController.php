@@ -735,6 +735,23 @@ class IndexController extends Controller {
     $flag=1;
     $msg=array();        
     $data=array();
+    $employer_id            = 0;
+    $arrUser=array();    
+    if(Session::has($this->_ssNameUser)){
+      $arrUser=Session::get($this->_ssNameUser);
+    }         
+    if(count($arrUser) > 0){
+      $email=@$arrUser['email'];   
+      $employer_id=(int)@$arrUser['id'];
+      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email','contacted_name','contacted_email','address','contacted_phone')->get()->toArray();
+      if(count($source) == 0){
+        return redirect()->route("frontend.index.employerLogin"); 
+      }else{
+        $data=$source[0];
+      }     
+    }else{
+      return redirect()->route("frontend.index.employerLogin"); 
+    }        
     if($request->isMethod('post')){
       $data             =   @$request->all();              
       $fullname         =   trim(@$request->fullname);
@@ -910,19 +927,11 @@ class IndexController extends Controller {
         $ts                     = mktime(@$arrDate["hour"],@$arrDate["minute"],@$arrDate["second"],@$arrDate['month'],@$arrDate['day'],@$arrDate['year']);
         $real_date                 = date('Y-m-d', $ts);
         /* end duration */
-        $item->duration         = @$real_date;
-        /* begin user */
-        $employer_id            = 0;
-        $arrUser=array();        
-        if(Session::has($this->_ssNameUser)){
-          $arrUser=Session::get($this->_ssNameUser);
-          $employer_id          = (int)@$arrUser['id'];
-        } 
-        $item->employer_id      = (int)@$employer_id;
-        /* end user */        
+        $item->duration         = @$real_date;        
+        $item->employer_id      = (int)@$employer_id;        
         $item->status           = (int)@$status;
-        $item->created_at=date("Y-m-d H:i:s",time());
-        $item->updated_at=date("Y-m-d H:i:s",time());   
+        $item->created_at=date("Y-m-d H:i:s");
+        $item->updated_at=date("Y-m-d H:i:s");   
         $item->save();   
         RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
         foreach ($job_id as $key => $value) {
@@ -931,6 +940,12 @@ class IndexController extends Controller {
           $item2->job_id         = (int)@$value;
           $item2->save();
         }
+        $item3=EmployerModel::find((int)@$employer_id);
+        $item3->contacted_name   = @$contacted_name;
+        $item3->contacted_email  = @$contacted_email;
+        $item3->address          = @$address;
+        $item3->contacted_phone  = @$contacted_phone; 
+        $item3->save();
         $msg['success']='<span>Đăng tin thành công</span><span class="margin-left-5 review"><a href="'.route('frontend.index.reviewRecruitment',[(int)@$item->id]).'">Xem tin đã đăng</a></span>';
       }  
     }

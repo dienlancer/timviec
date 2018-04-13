@@ -736,7 +736,7 @@ class IndexController extends Controller {
     $msg=array();        
     $data=array();
     if($request->isMethod('post')){
-      $data             =   @$request->all();         
+      $data             =   @$request->all();              
       $fullname         =   trim(@$request->fullname);
       $quantity         =   trim(@$request->quantity);
       $sex_id           =   trim(@$request->sex_id);  
@@ -765,7 +765,7 @@ class IndexController extends Controller {
         $flag = 0;
       }    
       if((int)@$quantity == 0){
-        $msg["quantity"] = 'Số lượng phải lớn hơn 0';    
+        $msg["quantity"] = 'Số lượng cần tuyển phải lớn hơn 0';    
         $data['quantity']='';        
         $flag = 0;
       } 
@@ -823,7 +823,7 @@ class IndexController extends Controller {
         $flag = 0;      
       }
       if(mb_strlen(@$benefit)  == 0){
-        $msg["benefit"] = 'Vui lòng nhập phúc lợi';    
+        $msg["benefit"] = 'Vui lòng nhập quyền lợi';    
         $data['benefit']='';        
         $flag = 0;      
       }
@@ -831,6 +831,12 @@ class IndexController extends Controller {
         $msg["job_id"] = 'Vui lòng chọn ngành nghề';    
         $data['job_id']='';        
         $flag = 0;      
+      }else{
+        if((int)@$job_id[0]==0){
+          $msg["job_id"] = 'Vui lòng chọn ngành nghề';    
+          $data['job_id']='';        
+          $flag = 0;      
+        }
       }
       if((int)@$province_id == 0){
         $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
@@ -842,7 +848,7 @@ class IndexController extends Controller {
         $data['duration']='';        
         $flag = 0;      
       }
-      if((int)@$status == 0){
+      if((int)@$status == -1){
         $msg["status"] = 'Vui lòng chọn trạng thái hiển thị tin';    
         $data['status']='';        
         $flag = 0;      
@@ -913,9 +919,8 @@ class IndexController extends Controller {
           $employer_id          = (int)@$arrUser['id'];
         } 
         $item->employer_id      = (int)@$employer_id;
-        /* end user */
-        $item->sort_order       = 1;
-        $item->status           = @$status;
+        /* end user */        
+        $item->status           = (int)@$status;
         $item->created_at=date("Y-m-d H:i:s",time());
         $item->updated_at=date("Y-m-d H:i:s",time());   
         $item->save();   
@@ -926,6 +931,7 @@ class IndexController extends Controller {
           $item2->job_id         = (int)@$value;
           $item2->save();
         }
+        $msg['success']='<span>Tạo </span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
       }  
     }
     return view('frontend.recruitment',compact('data','msg','flag'));     

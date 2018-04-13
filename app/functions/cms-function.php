@@ -42,7 +42,7 @@ function cmsSelectboxMultiple($name, $class, $arrValue, $arrValueSelected,$disab
       $strOption='<option value="'.$id.'">'.$name.'</option>';
       if(!empty($arrValueSelected)){
           foreach($arrValueSelected as $key_1 => $value_1) {
-              if((int)$id == (int)$value_1[$name]){
+              if((int)$id == (int)$value_1){
                 $strOption = str_replace('<option', '<option selected="selected" ', $strOption);
               }
           }

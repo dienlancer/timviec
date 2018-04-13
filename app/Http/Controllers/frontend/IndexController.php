@@ -370,17 +370,16 @@ class IndexController extends Controller {
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }         
-    if(count($arrUser) > 0){
-      $email=@$arrUser['email'];   
-      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) == 0){
-        return redirect()->route("frontend.index.employerLogin"); 
-      }else{
-        $data=EmployerModel::find((int)@$source[0]['id'])->toArray();        
-      }      
-    }else{
-    	return redirect()->route("frontend.index.employerLogin"); 
+    if(count($arrUser) == 0){
+      return redirect()->route("frontend.index.employerLogin"); 
+    }    
+    $email=@$arrUser['email'];   
+    $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+    if(count($source) == 0){
+      return redirect()->route("frontend.index.employerLogin"); 
     }
+    $data=EmployerModel::find((int)@$source[0]['id'])->toArray();     
+
     if($request->isMethod('post')){
       $data               = @$request->all();          
       $fullname           = trim(@$request->fullname);
@@ -510,22 +509,20 @@ class IndexController extends Controller {
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }     
-    if(count($arrUser) > 0){
-      $email=@$arrUser['email'];   
-      $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) == 0){
-        return redirect()->route("frontend.index.candidateLogin");
-      }else{
-        $data=CandidateModel::find((int)@$source[0]['id'])->toArray();  
-        $birthday=$data['birthday'];
-        $arrDate    = date_parse_from_format('Y-m-d', $birthday) ;     
-        $data['day']=(int)@$arrDate['day'];
-        $data['month']=(int)@$arrDate['month'];
-        $data['year']=(int)@$arrDate['year']; 
-      }       
-    }else{
-    	return redirect()->route("frontend.index.candidateLogin");
+    if(count($arrUser) == 0){
+      return redirect()->route("frontend.index.candidateLogin");
+    }    
+    $email=@$arrUser['email'];   
+    $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+    if(count($source) == 0){
+      return redirect()->route("frontend.index.candidateLogin");
     }
+    $data=CandidateModel::find((int)@$source[0]['id'])->toArray();  
+    $birthday=$data['birthday'];
+    $arrDate    = date_parse_from_format('Y-m-d', $birthday) ;     
+    $data['day']=(int)@$arrDate['day'];
+    $data['month']=(int)@$arrDate['month'];
+    $data['year']=(int)@$arrDate['year'];
     if($request->isMethod('post')){
       $data               = @$request->all();      
       $fullname           = trim(@$request->fullname);
@@ -646,14 +643,13 @@ class IndexController extends Controller {
     $arrUser=array();    
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
-    }         
-    if(count($arrUser) > 0){
-      $email=@$arrUser['email'];   
-      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) == 0){
-        return redirect()->route("frontend.index.employerLogin"); 
-      }     
-    }else{
+    }   
+    if(count($arrUser) == 0){
+      return redirect()->route("frontend.index.employerLogin"); 
+    }          
+    $email=@$arrUser['email'];   
+    $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+    if(count($source) == 0){
       return redirect()->route("frontend.index.employerLogin"); 
     }
     if($request->isMethod('post')){
@@ -683,14 +679,13 @@ class IndexController extends Controller {
     $arrUser=array();    
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
-    }         
-    if(count($arrUser) > 0){
-      $email=@$arrUser['email'];   
-      $source=candidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) == 0){
-        return redirect()->route("frontend.index.candidateLogin"); 
-      }     
-    }else{
+    }   
+    if(count($arrUser)==0){
+      return redirect()->route("frontend.index.candidateLogin"); 
+    }      
+    $email=@$arrUser['email'];   
+    $source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+    if(count($source) == 0){
       return redirect()->route("frontend.index.candidateLogin"); 
     }
     if($request->isMethod('post')){
@@ -986,15 +981,14 @@ class IndexController extends Controller {
     if(Session::has($this->_ssNameUser)){
       $arrUser=Session::get($this->_ssNameUser);
     }         
-    if(count($arrUser) > 0){
-      $email=@$arrUser['email'];   
-      $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-      if(count($source) == 0){
-        return redirect()->route("frontend.index.employerLogin"); 
-      }      
-    }else{
-      return redirect()->route("frontend.index.employerLogin"); 
+    if(count($arrUser) == 0){
+      return redirect()->route("frontend.index.employerLogin");
     }
+    $email=@$arrUser['email'];   
+    $source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+    if(count($source) == 0){
+      return redirect()->route("frontend.index.employerLogin"); 
+    }  
 
     $totalItems=0;
     $totalItemsPerPage=20;
@@ -1033,9 +1027,6 @@ class IndexController extends Controller {
     $data=convertToArray($data);      
 
     return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination"));     
-  }
-  public function reviewRecruitment(Request $request){
-
   }
 }
 

@@ -525,6 +525,5 @@ Route::match(["get","post"],"doi-mat-khau-ntd",["as"=>"frontend.index.viewEmploy
 Route::match(["get","post"],"doi-mat-khau-ungvien",["as"=>"frontend.index.viewCandidateSecurity","uses"=>"frontend\IndexController@viewCandidateSecurity"]);
 Route::match(["get","post"],"dang-tin-tuyen-dung/{task}/{id}",["as"=>"frontend.index.postRecruitment","uses"=>"frontend\IndexController@postRecruitment"]);
 Route::match(["get","post"],"quan-ly-tin-tuyen-dung",["as"=>"frontend.index.manageRecruitment","uses"=>"frontend\IndexController@manageRecruitment"]);
-Route::match(["get","post"],"xem-tin-tuyen-dung/{id?}",["as"=>"frontend.index.reviewRecruitment","uses"=>"frontend\IndexController@reviewRecruitment"]);
 /* end tìm việc */
 ?>

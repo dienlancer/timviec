@@ -60,7 +60,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				$ddlSalary=cmsSelectboxCategory("salary_id","vacca",$source_salary,@$data['salary_id'],$disabled_status,'Chọn mức lương');
 				$ddlWorkingForm=cmsSelectboxCategory("working_form_id","vacca",$source_working_form,@$data['working_form_id'],$disabled_status,'Chọn hình thức làm việc');
 				$ddlProbationary=cmsSelectboxCategory("probationary_id","vacca",$source_probationary,@$data['probationary_id'],$disabled_status,'Chọn thời gian thử việc');
-				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, array(),"",'Chọn ngành nghề');
+				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, array(),$disabled_status,'Chọn ngành nghề');
 				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],$disabled_status,'Chọn nơi làm việc');	
 				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
 				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  
@@ -161,7 +161,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					<div class="col-lg-8"><input type="text" readonly="readonly" name="duration" class="vacca"  value="<?php echo @$data['duration']; ?>" ></div>
 				</div>
 				<div class="row mia">
-					<div class="col-lg-4" ></div>
+					<div class="col-lg-4" ><div class="xika"><div>Hiển thị tin</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">						
 						<?php echo $ddlStatus; ?>
 					</div>

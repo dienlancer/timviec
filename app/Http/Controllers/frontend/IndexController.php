@@ -34,6 +34,8 @@ use App\CategoryVideoModel;
 use App\VideoModel;
 use App\EmployerModel;
 use App\CandidateModel;
+use App\RecruitmentModel;
+use App\RecruitmentJobModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -782,6 +784,142 @@ class IndexController extends Controller {
         $data['requirement']='';        
         $flag = 0; 
       }
+      if((int)@$work_id == 0){
+        $msg["work_id"] = 'Vui lòng chọn tính chất công việc';    
+        $data['work_id']='';        
+        $flag = 0;  
+      }
+      if((int)@$literacy_id == 0){
+        $msg["literacy_id"] = 'Vui lòng chọn trình độ học vấn';    
+        $data['literacy_id']='';        
+        $flag = 0;   
+      }
+      if((int)@$experience_id == 0){
+        $msg["experience_id"] = 'Vui lòng chọn kinh nghiệm';    
+        $data['experience_id']='';        
+        $flag = 0;    
+      }
+      if((int)@$salary_id == 0){
+        $msg["salary_id"] = 'Vui lòng chọn mức lương';    
+        $data['salary_id']='';        
+        $flag = 0;     
+      }
+      if((int)@$commission_from != 0 || (int)@$commission_to != 0){
+        if((int)@$commission_to <= (int)@$commission_from){
+          $msg["commission_from"] = 'Mức hoa hồng không hợp lệ';    
+          $data['commission_from']='';        
+          $data['commission_to']='';        
+          $flag = 0;     
+        }
+      }
+      if((int)@$working_form_id == 0){
+        $msg["working_form_id"] = 'Vui lòng chọn hình thức công việc';    
+        $data['working_form_id']='';        
+        $flag = 0;      
+      }
+      if((int)@$probationary_id == 0){
+        $msg["probationary_id"] = 'Vui lòng chọn thời gian thử việc';    
+        $data['probationary_id']='';        
+        $flag = 0;      
+      }
+      if(mb_strlen(@$benefit)  == 0){
+        $msg["benefit"] = 'Vui lòng nhập phúc lợi';    
+        $data['benefit']='';        
+        $flag = 0;      
+      }
+      if(count(@$job_id) == 0){
+        $msg["job_id"] = 'Vui lòng chọn ngành nghề';    
+        $data['job_id']='';        
+        $flag = 0;      
+      }
+      if((int)@$province_id == 0){
+        $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
+        $data['province_id']='';        
+        $flag = 0;      
+      }
+      if(mb_strlen(@$duration)  == 0){
+        $msg["duration"] = 'Vui lòng chọn thời gian hết hạn';    
+        $data['duration']='';        
+        $flag = 0;      
+      }
+      if((int)@$status == 0){
+        $msg["status"] = 'Vui lòng chọn trạng thái hiển thị tin';    
+        $data['status']='';        
+        $flag = 0;      
+      } 
+      if(mb_strlen(@$contacted_name) < 6){
+        $msg["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
+        $data['contacted_name']='';         
+        $flag = 0;
+      } 
+      if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower(@$contacted_email,'UTF-8')   )){
+        $msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
+        $data['contacted_email']='';       
+        $flag = 0;
+      }
+      if(mb_strlen(@$address) < 15){
+        $msg["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
+        $data['address']='';      
+        $flag = 0;
+      }  
+      if(mb_strlen(@$contacted_phone) < 10){
+        $msg["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
+        $data['contacted_phone']='';
+        $flag = 0;
+      }   
+      if($flag==1){
+        $item                   = new RecruitmentModel;
+        $item->fullname         = @$fullname;
+        /* begin save alias */
+        $alias=str_slug(@$fullname,'-');
+        $checked_trung_alias=0;
+        $data_employer=array();        
+        $data_employer=RecruitmentModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();        
+        if (count(@$data_employer) > 0) {
+          $checked_trung_alias=1;
+        }        
+        if((int)@$checked_trung_alias == 1){
+          $code_alias=rand(1,999999);
+          $alias=$alias.'-'.$code_alias;
+        } 
+        $item->alias=@$alias;
+        /* end save alias */
+        $item->alias            = @$alias;
+        $item->quantity         = (int)@$quantity;
+        $item->sex_id           = (int)@$sex_id;
+        $item->description      = @$description;
+        $item->requirement      = @$requirement;
+        $item->work_id          = (int)@$work_id;
+        $item->literacy_id      = (int)@$literacy_id;
+        $item->experience_id    = (int)@$experience_id;
+        $item->salary_id        = (int)@$salary_id;
+        $item->commission_from  = (int)@$commission_from;
+        $item->commission_to    = (int)@$commission_to;
+        $item->working_form_id  = (int)@$working_form_id;
+        $item->probationary_id  = (int)@$probationary_id;
+        $item->benefit          = @$benefit;
+        $item->province_id      = (int)@$province_id;
+        /* begin duration */
+        $arrDate                = date_parse_from_format('d/m/Y',@$duration) ;
+        $ts                     = mktime(@$arrDate["hour"],@$arrDate["minute"],@$arrDate["second"],@$arrDate['month'],@$arrDate['day'],@$arrDate['year']);
+        $real_date                 = date('Y-m-d', $ts);
+        /* end duration */
+        $item->duration         = @$real_date;
+        /* begin user */
+        $employer_id            = 0;
+        $arrUser=array();        
+        if(Session::has($this->_ssNameUser)){
+          $arrUser=Session::get($this->_ssNameUser);
+          $employer_id          = (int)@$arrUser['id'];
+        } 
+        $item->employer_id      = (int)@$employer_id;
+        /* end user */
+        $item->sort_order       = 1;
+        $item->status           = @$status;
+        $item->created_at=date("Y-m-d H:i:s",time());
+        $item->updated_at=date("Y-m-d H:i:s",time());   
+        $item->save();   
+      }  
     }
     return view('frontend.recruitment',compact('data','msg','flag'));     
   }

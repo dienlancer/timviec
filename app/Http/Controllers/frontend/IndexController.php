@@ -967,20 +967,51 @@ class IndexController extends Controller {
         $item->created_at=date("Y-m-d H:i:s");
         $item->updated_at=date("Y-m-d H:i:s");   
         $item->save();           
-        RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
-        RecruitmentPlaceModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
-        foreach ($job_id as $key => $value) {
-          $item2=new RecruitmentJobModel;
-          $item2->recruitment_id = (int)@$item->id;
-          $item2->job_id         = (int)@$value;
-          $item2->save();
+        
+        $source_recruitment_job=RecruitmentJobModel::whereRaw('recruitment_id = ?',[(int)@$item->id])->select('job_id')->get()->toArray();
+        $source_recruitment_place=RecruitmentPlaceModel::whereRaw('recruitment_id = ?',[(int)@$item->id])->select('province_id')->get()->toArray();
+        $source_job_id=array();
+        $source_province_id=array();
+        if(count($source_recruitment_job) > 0){
+          foreach ($source_recruitment_job as $key => $value) {
+            $source_job_id[]=$value['job_id'];
+          }
         }
-        foreach ($province_id as $key => $value) {
-          $item3=new RecruitmentPlaceModel;
-          $item3->recruitment_id = (int)@$item->id;
-          $item3->province_id         = (int)@$value;
-          $item3->save();
+        if(count($source_recruitment_place) > 0){
+          foreach ($source_recruitment_place as $key => $value) {
+            $source_province_id[]=$value['province_id'];
+          }
+        }  
+        sort($source_job_id);
+        sort($source_province_id);
+        sort($job_id);
+        sort($province_id);
+        $compare_job=0;
+        $compare_province=0;
+        if($source_job_id == $job_id){
+          $compare_job=1;       
+        }    
+        if($source_province_id == $province_id){
+          $compare_province=1;       
         }
+        if($compare_job == 0){
+          RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();   
+          foreach ($job_id as $key => $value) {
+            $item2=new RecruitmentJobModel;
+            $item2->recruitment_id = (int)@$item->id;
+            $item2->job_id         = (int)@$value;
+            $item2->save();
+          }
+        }
+        if($compare_province == 0){
+          RecruitmentPlaceModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
+          foreach ($province_id as $key => $value) {
+            $item3=new RecruitmentPlaceModel;
+            $item3->recruitment_id = (int)@$item->id;
+            $item3->province_id         = (int)@$value;
+            $item3->save();
+          }
+        }                        
         $item4=EmployerModel::find((int)@$arrUser['id']);
         $item4->contacted_name   = @$contacted_name;
         $item4->contacted_email  = @$contacted_email;

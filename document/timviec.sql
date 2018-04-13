@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 13, 2018 lúc 06:56 PM
+-- Thời gian đã tạo: Th4 13, 2018 lúc 07:30 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2266,9 +2266,9 @@ INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `des
 (6, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc', 2, 3, '- Là Nhân viên đại diện cho các Ngân hàng ủy quyền (có bảng tên, có giấy ủy quyền);\r\n- Tiếp nhận hồ sơ từ ngân hàng chuyển qua cho Công ty;\r\n- Nghiên cứu các thông tin về khoản tín dụng;\r\n- Đánh giá hồ sơ, lập phương án và thực hiện thu hồi;\r\n- Gọi ĐT, gặp trực tiếp tư vấn tính pháp lý, sự rủi ro của hồ sơ tín dụng quá hạn;\r\n- Gợi ý các biện pháp hạn chế rủi ro biện pháp khắc phục;\r\n- Quản lý hồ sơ, xử lý hồ sơ theo quy trình trong phạm vi công việc được giao.\r\nKhách hàng hiện nay Công ty đang hỗ trợ thu hồi nợ:\r\n1. Ngân hàng Việt Nam Thịnh Vượng (VPB)\r\n2. Công ty tài chính HD Saison (HDSS)\r\n3. Ngân hàng Standard Chartered (SCB)\r\n4. Ngân hàng HSBC\r\nĐỊA CHỈ VĂN PHÒNG:\r\n- VP ĐỒNG NAI: C50, Đường N2, Khu quy hoạch Bửu Long, Khu phố 1, P. Bửu Long, TP. Biên Hòa, Đồng Nai.\r\n- VP NHA TRANG: Tầng 7, Tòa nhà VCN, đường A1, Khu đô thị Vĩnh Điềm Trung, X. Vĩnh Hiệp TP. Nha Trang, Khánh Hòa.\r\nThành.\r\n- VP BÌNH DƯƠNG: Số 815 Đường Lê Hồng Phong, KP7, P. Phú Thọ, TP. Thủ Dầu Một, Bình Dương.\r\n- VP VĨNH LONG: Làm việc tại khu vực Vĩnh Long, được đào tạo tại VP Cần Thơ.', '- Giới tính Nam – Độ tuổi từ 20 đến 35.\r\n- Tốt nghiệp Trung cấp trở lên các ngành: Kinh tế, Luật, An ninh và Hành chánh.\r\n- Biết sử dụng vi tính văn phòng (cơ bản);\r\n- Có xe gắn máy;\r\n- Trung thực, năng động, chịu khó có trách nhiệm và giao tiếp tốt;\r\n- Không tiền án tiền sự.\r\n* Ứng viên điền thông tin dự tuyển vào Phiếu ứng viên ở Link sau và gửi thông tin về cho Công ty:\r\nhttps://drive.google.com/open?id=0B_JSkhFzF3glRjE0V2JWUkF3R2s', 5, 6, 4, 4, 20, 30, 2, 2, '- Học việc có hưởng lương 4.500.000 đồng/tháng;\r\n- Phụ cấp tiền xăng xe, điện thoại theo đúng mức thực tế;\r\n- Được ký HĐLĐ sau thời gian học việc và thử việc (thời gian học việc 15 ngày và thử việc 30 ngày);\r\n- Tham gia BHXH, BHYT, BHTN và BHTN 24/24 sau khi ký HĐLĐ;\r\n- Đánh giá nâng lương định ký 2 lần/năm, kể từ ngày đầu tiên ký HĐLĐ;\r\n- Hỗ trợ nuôi con đến đủ 18 tuổi;\r\n- Được nhận lương trước làm việc sau (Tạm ứng lương trước) sau khi ký HĐLĐ;\r\n- Phép năm hưởng theo tỉ lệ ngày làm việc thực tế và nghỉ không hết phép sẽ được chuyển thành tiền lương;\r\n- Lương tháng 13-14 theo thời gian làm việc.', '2018-04-10 00:00:00', 7, NULL, 1, '2018-04-13 15:02:38', '2018-04-13 15:02:38'),
 (7, 'Nhân Viên Vẽ Triển Khai Hcm - Q.Nhơn - P.Rang', 'nhan-vien-ve-trien-khai-hcm-qnhon-prang', 6, 3, '- Đọc hiểu cấu tạo và liên kết của các chi tiết trong kết cấu cơ khí Hoặc cấu tạo và bố trí bên trong công trình kiến trúc\r\n- Triển khai bản vẽ cấu tạo bằng AutoCAD hoặc phần mền CAD chuyên dụng cho chi tiết cơ khí Hoặc công trình kiến trúc.', '- Không yêu cầu kĩ năng chuyên môn. Sau khi vào công ty sẽ được đào tạo từ đầu.\r\n- Tốt nghiệp ĐH, CĐ chuyên ngành cơ khí, kiến trúc, xây dựng\r\n- Đọc hiểu các bản vẽ kỹ thuật hoặc bản vẽ kiến trúc\r\n- Biết sử dụng phần mềm Autocad.\r\n- Biết tiếng Nhật là một lợi thế.\r\n* Yêu cầu chung:\r\n- Có khả năng suy luận, tư duy và sáng tạo trong công việc.\r\n- Cẩn thận, nhiệt tình, chịu khó, chịu được áp lực công việc.\r\n- Có nguyện vọng gắn bó lâu dài với công việc liên quan đến tiếng Nhật và cty Nhật Bản\r\n- 26 tuổi trở xuống (sinh năm 1992 trở về sau).\r\n* Chỉ nhận hồ sơ đầy đủ các điều kiện nêu trên\r\n* Nộp hồ sơ và phỏng vấn trực tiếp,không nhận hồ sơ qua bưu điện.\r\n* Địa điểm : Công ty TNHH Gifu Kogyo Việt Nam tại TP.HCM . \r\nĐịa chỉ : Lầu 1, P14, Nhà 6A, Đường 3, CVPM. Quang Trung, P.Tân Chánh Hiệp, Q.12, TP.HCM', 7, 5, 5, 4, 50, 80, 3, 3, '- Mức lương : Theo khu vực, sẽ trao đổi khi phỏng vấn.\r\nngoài ra còn có các phụ cấp như phụ cấp chuyên cần , phụ cấp năng lực tiếng Nhật (nếu có bằng cấp thích hợp), v.v…\r\n- Hưởng đầy đủ các chế độ theo qui định : Được đóng các bảo hiểm xã hội, bảo hiểm y tế, ... \r\n- Ứng viên được tuyển chọn sẽ có cơ hội làm việc tại công ty với môi trường làm việc thân thiện, sáng tạo, có cơ hội thăng tiến cao\r\n- Được đào tạo tiếng Nhật tại công ty để phục vụ cho công việc.', '2018-04-10 00:00:00', 7, NULL, 0, '2018-04-13 16:47:12', '2018-04-13 16:47:12'),
 (8, 'Nhân Viên Kinh Doanh Ngành Bao Bì', 'nhan-vien-kinh-doanh-nganh-bao-bi', 2, 3, '- Tìm kiếm khách hàng tiềm năng và khai thác nhu cầu khách hàng \r\n- Tư vấn, báo giá cho khách hàng.\r\n- Ký hợp đồng với khách hàng.\r\n- Triển khai kế hoạch kinh doanh từ cấp trên đưa xuống', '- Ưu tiên những bạn có kinh nghiệm\r\n- Giao tiếp tốt, nhiệt tình', 6, 3, 3, 4, 30, 40, 3, 2, '- Lương cơ bản : 5-7 tr(trao đổi cụ thể khi phỏng vấn) + hoa hồng hấp dẫn (thu nhập trên 10tr)\r\n- Được hưởng mức lương hấp dẫn, phù hợp với năng lực và các chế độ phúc lợi mở rộng khác \r\n- Được tham gia các chế độ theo luật định.\r\n- Được làm việc trong môi trường năng động, cơ hội thăng tiến.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 15:26:57', '2018-04-13 15:26:57'),
-(9, 'Trưởng Phòng Kinh Doanh Chuyển Phát Nhanh Tại Hà Nội Và Tp.Hcm', 'truong-phong-kinh-doanh-chuyen-phat-nhanh-tai-ha-noi-va-tphcm', 1, 3, '-	Xây dựng kế hoạch kinh doanh,định hướng sản phẩm, chính sách giá đối với dịch vụ chuyển phát dựa trên chỉ tiêu được Ban Giám Đốc giao theo từng giai đoạn phát triển của công ty.\r\n-	Triển khai việc thực hiện kế hoạch kinh doanh, định hướng phát triển theo lộ trình của khu vực miền bắc theo sự phê duyệt của Ban Giám Đốc\r\n-	Phân tích, nghiên cứu, đánh giá tiềm năng thị trường, đề xuất phát triển mạng lưới kinh doanh bao gồm: mở Bưu Cục, Chi Nhánh, Trung tâm khai thác, trình lên Giám Đốc khu Ban Giám Đốc.\r\n-	Chịu trách nhiệm khảo sát giá cả thị trường, xây dựng, đề xuất chính sách: chính sách giá, hoa hồng, chiết khấu giảm giá trình Ban Giám Đốc duyệt.\r\n-	Đánh giá lại đội ngũ nhân viên kinh doanh định kỳ hàng quý để có kế hoạch tái đào tạo hoặc thay thế nhân sự nhằm đáp ứng nhu cầu sản xuất kinh doanh của khu vực.\r\n-	Chịu trách nhiệm kiểm soát, quản lý các hợp đồng bán hàng của bộ phận kinh doanh khu vực miền bắc trong phạm vi quyền quản lý, trình lên Ban Giám Đốc xem xét, phe duyệt.\r\n-	Phối hợp với Phòng Kinh Doanh các Chi Nhánh đàm phán, gặp gỡ khách hàng và triển khai thực hiện các dự án lơn của Công Ty.\r\n-	Quản lý khách hàng và công nợ của khách hàng\r\n-	Báo cáo khách hàng và doanh số hàng tháng cho Ban Giám Đốc.\r\n-	Kiểm tra, giám sát, đôn đốc Trưởng Bưu Cục, nhân viên kinh doanh trong việc lập báo cáo tuần,báo cáo doanh số tháng.\r\n-	Chịu trách nhiệm về hiệu suất làm việc,hiệu quả hoạt đông của các văn phòng, bưu cục thuộc thuộc quyền quản lý', '- Có kĩ năng quản lí và hoạch định chiến lược.\r\n- Có kinh nghiệm trong lĩnh vực chuyển phát nhanh và năm ở vị trí cấp quản lý.\r\n- Sáng tạo,chịu khó đam mê trong công việc.\r\n- Trung thành với tổ chức, mong muốn làm việc lâu dài', 2, 1, 5, 5, 20, 30, 2, 3, '- Lương, thưởng, phụ cấp hấp dẫn\r\n- Được đóng BHXH, BHYT theo quy định\r\n- Du lịch nghỉ mát hàng năm\r\n- Nhiều cơ hội thăng tiến.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 15:32:52', '2018-04-13 15:32:52'),
-(10, 'Nhân Viên Phục Vụ Nhà Hàng – Karaoke – Sàn Nhảy', 'nhan-vien-phuc-vu-nha-hang-karaoke-san-nhay', 15, 3, '- Set up bàn ăn theo tiêu chuẩn 5 sao. \r\n- Chào đón và hướng dẫn khách sử dụng dịch vụ. \r\n- Giới thiệu sản phẩm, phục vụ khách ăn uống.', '- Nam nữ từ đủ 18 tuổi.\r\n- Đam mê ngành dịch vụ, năng động, nhanh nhẹn. \r\n- Ưu tiên có ngoại hình và biết tiếng Anh.', 3, 7, 9, 6, 23, 53, 3, 4, '- Lương thưởng hấp dẫn (tối thiểu trên 5 triệu/ tháng)\r\n- Được hỗ trợ đi tàu cao tốc 1 chiều ( chỉ 5p sang đảo).\r\n- Được đóng đầy đủ bảo hiểm theo quy định nhà nước.\r\n- Được hưởng các ưu đãi đặc biệt (Vinmec, Vinmart, VinID, du lịch nước ngoài….)\r\n- Được đào tạo và phát triển toàn diện', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 15:35:31', '2018-04-13 15:35:31'),
-(11, 'Nhân Viên Tư Vấn Thẻ Hội Viên - Miền Nam', 'nhan-vien-tu-van-the-hoi-vien-mien-nam-226288', 50, 3, '- Tìm kiếm khách hàng tiềm năng. \r\n- Hướng dẫn khách hàng tiềm năng tham quan câu lạc bộ và tư vấn về các trang thiết bị, dịch vụ \r\n- Tư vấn chương trình hội viên thích hợp nhất cho khách hàng. \r\n- Thuyết phục khách hàng tham gia thẻ hội viên (Thể hình/ Thẩm mỹ viện/Yoga)\r\n- Thường xuyên liên lạc để kịp thời nắm bắt thông tin từ hội viên đảm bảo luôn cung cấp dịch vụ vượt sự mong đợi của khách hàng.\r\n- Địa điểm làm việc tại Tp HCM:\r\n1.	126 Hùng Vương, Phường 12, Quận 5, Tp HCM\r\n2.	Saigon Center, Quận 1, Tp HCM\r\n3.	5 Nguyễn Tất Thành, Phường 12, Quận 4, Tp HCM,\r\n4.	1489 Nguyễn Văn Linh, Phường Tân Phong, Quận 7, Tp HCM\r\n5.	184 Lê Đại Hành, Phường 15, Quận 11, Tp HCM, \r\n6.	20 Cộng Hòa, Phường 12, Quận Tân Bình, Tp HCM\r\n7. 12 Quốc Hương, Thảo Điền, Quận 2, Tp HCM\r\n8. Aeon Mall, 01 Đường 17A, P. Bình Trị Đông B, Q. Bình Tân\r\n9. 464 Phan Xích Long, Q. Phú Nhuận, Tp HCM\r\n10. 2A Phan Văn Trị, Phường 10, Quận Gò Vấp, Tp. HCM\r\n11. Pearl Plaza, Q. Bình Thạnh, Tp HCM\r\n12. Lim Tower, CMT8. Quận 3, Tp HCM\r\n13. Crescent Plaza, 105 Tôn Dật Tiên, Tân Phú, Quận 7, Tp HCM \r\n- Địa điểm làm việc tại Bình Dương: \r\n01 Phú lợi, Phường Phú Lợi, Thủ Dầu Một, Bình Dương', '- Có khả năng gắn bó lâu dài với Công ty.\r\n- Kỹ năng giao tiếp, thuyết phục tốt bằng tiếng Việt và tiếng Anh.\r\n- Ngoại hình dễ nhìn, tác phong chuyên nghiệp; tuổi từ 19 - 30.\r\n- Ưu tiên cho ứng viên có 1 năm Kinh nghiệm trong lĩnh vực bán hàng.', 5, 7, 3, 4, 20, 40, 4, 3, '- Mức lương cạnh tranh, các khoản thưởng theo năng lực hàng tháng, \r\n- Chương trình tập luyện (Gym, GroupX, Yoga...) miễn phí và môi trường làm việc năng động là một trong những điểm bạn có được khi là thành viên của California Fitness & Yoga. \r\n- Được đóng BHXH, BH Thất Nghiệp, BHYT đầy đủ, bảo hiêm tai nạn 24/24.\r\n- 12 ngày nghỉ phép mỗi năm và vẫn được tính lương đầy đủ\r\n- 1 ngày nghỉ mỗi tuần\r\n- Được làm việc trong môi trường nhiều cơ hội thăng tiến nhanh chóng\r\n- Môi trường làm việc quốc tế và chuyên nghiệp.\r\n- Được giảm giá mua các sản phẩm thể thao, nước uống do công ty cung cấp.\r\n- Được đào tạo về chuyên môn và kỹ năng bán hàng.\r\n- Được đào tạo về các kỹ năng mềm hàng tháng: kỹ năng thuyết trình, kỹ năng giao tiếp...', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 16:45:46', '2018-04-13 16:45:46');
+(9, 'Trưởng Phòng Kinh Doanh Chuyển Phát Nhanh Tại Hà Nội Và Tp.Hcm', 'truong-phong-kinh-doanh-chuyen-phat-nhanh-tai-ha-noi-va-tphcm-469421', 1, 3, '-	Xây dựng kế hoạch kinh doanh,định hướng sản phẩm, chính sách giá đối với dịch vụ chuyển phát dựa trên chỉ tiêu được Ban Giám Đốc giao theo từng giai đoạn phát triển của công ty.\r\n-	Triển khai việc thực hiện kế hoạch kinh doanh, định hướng phát triển theo lộ trình của khu vực miền bắc theo sự phê duyệt của Ban Giám Đốc\r\n-	Phân tích, nghiên cứu, đánh giá tiềm năng thị trường, đề xuất phát triển mạng lưới kinh doanh bao gồm: mở Bưu Cục, Chi Nhánh, Trung tâm khai thác, trình lên Giám Đốc khu Ban Giám Đốc.\r\n-	Chịu trách nhiệm khảo sát giá cả thị trường, xây dựng, đề xuất chính sách: chính sách giá, hoa hồng, chiết khấu giảm giá trình Ban Giám Đốc duyệt.\r\n-	Đánh giá lại đội ngũ nhân viên kinh doanh định kỳ hàng quý để có kế hoạch tái đào tạo hoặc thay thế nhân sự nhằm đáp ứng nhu cầu sản xuất kinh doanh của khu vực.\r\n-	Chịu trách nhiệm kiểm soát, quản lý các hợp đồng bán hàng của bộ phận kinh doanh khu vực miền bắc trong phạm vi quyền quản lý, trình lên Ban Giám Đốc xem xét, phe duyệt.\r\n-	Phối hợp với Phòng Kinh Doanh các Chi Nhánh đàm phán, gặp gỡ khách hàng và triển khai thực hiện các dự án lơn của Công Ty.\r\n-	Quản lý khách hàng và công nợ của khách hàng\r\n-	Báo cáo khách hàng và doanh số hàng tháng cho Ban Giám Đốc.\r\n-	Kiểm tra, giám sát, đôn đốc Trưởng Bưu Cục, nhân viên kinh doanh trong việc lập báo cáo tuần,báo cáo doanh số tháng.\r\n-	Chịu trách nhiệm về hiệu suất làm việc,hiệu quả hoạt đông của các văn phòng, bưu cục thuộc thuộc quyền quản lý', '- Có kĩ năng quản lí và hoạch định chiến lược.\r\n- Có kinh nghiệm trong lĩnh vực chuyển phát nhanh và năm ở vị trí cấp quản lý.\r\n- Sáng tạo,chịu khó đam mê trong công việc.\r\n- Trung thành với tổ chức, mong muốn làm việc lâu dài', 2, 1, 5, 5, 20, 30, 2, 3, '- Lương, thưởng, phụ cấp hấp dẫn\r\n- Được đóng BHXH, BHYT theo quy định\r\n- Du lịch nghỉ mát hàng năm\r\n- Nhiều cơ hội thăng tiến.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 17:29:30', '2018-04-13 17:29:30'),
+(10, 'Nhân Viên Phục Vụ Nhà Hàng – Karaoke – Sàn Nhảy', 'nhan-vien-phuc-vu-nha-hang-karaoke-san-nhay-623321', 15, 3, '- Set up bàn ăn theo tiêu chuẩn 5 sao. \r\n- Chào đón và hướng dẫn khách sử dụng dịch vụ. \r\n- Giới thiệu sản phẩm, phục vụ khách ăn uống.', '- Nam nữ từ đủ 18 tuổi.\r\n- Đam mê ngành dịch vụ, năng động, nhanh nhẹn. \r\n- Ưu tiên có ngoại hình và biết tiếng Anh.', 3, 7, 9, 6, 23, 53, 3, 4, '- Lương thưởng hấp dẫn (tối thiểu trên 5 triệu/ tháng)\r\n- Được hỗ trợ đi tàu cao tốc 1 chiều ( chỉ 5p sang đảo).\r\n- Được đóng đầy đủ bảo hiểm theo quy định nhà nước.\r\n- Được hưởng các ưu đãi đặc biệt (Vinmec, Vinmart, VinID, du lịch nước ngoài….)\r\n- Được đào tạo và phát triển toàn diện', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
+(11, 'Nhân Viên Tư Vấn Thẻ Hội Viên - Miền Nam', 'nhan-vien-tu-van-the-hoi-vien-mien-nam', 50, 3, '- Tìm kiếm khách hàng tiềm năng. \r\n- Hướng dẫn khách hàng tiềm năng tham quan câu lạc bộ và tư vấn về các trang thiết bị, dịch vụ \r\n- Tư vấn chương trình hội viên thích hợp nhất cho khách hàng. \r\n- Thuyết phục khách hàng tham gia thẻ hội viên (Thể hình/ Thẩm mỹ viện/Yoga)\r\n- Thường xuyên liên lạc để kịp thời nắm bắt thông tin từ hội viên đảm bảo luôn cung cấp dịch vụ vượt sự mong đợi của khách hàng.\r\n- Địa điểm làm việc tại Tp HCM:\r\n1.	126 Hùng Vương, Phường 12, Quận 5, Tp HCM\r\n2.	Saigon Center, Quận 1, Tp HCM\r\n3.	5 Nguyễn Tất Thành, Phường 12, Quận 4, Tp HCM,\r\n4.	1489 Nguyễn Văn Linh, Phường Tân Phong, Quận 7, Tp HCM\r\n5.	184 Lê Đại Hành, Phường 15, Quận 11, Tp HCM, \r\n6.	20 Cộng Hòa, Phường 12, Quận Tân Bình, Tp HCM\r\n7. 12 Quốc Hương, Thảo Điền, Quận 2, Tp HCM\r\n8. Aeon Mall, 01 Đường 17A, P. Bình Trị Đông B, Q. Bình Tân\r\n9. 464 Phan Xích Long, Q. Phú Nhuận, Tp HCM\r\n10. 2A Phan Văn Trị, Phường 10, Quận Gò Vấp, Tp. HCM\r\n11. Pearl Plaza, Q. Bình Thạnh, Tp HCM\r\n12. Lim Tower, CMT8. Quận 3, Tp HCM\r\n13. Crescent Plaza, 105 Tôn Dật Tiên, Tân Phú, Quận 7, Tp HCM \r\n- Địa điểm làm việc tại Bình Dương: \r\n01 Phú lợi, Phường Phú Lợi, Thủ Dầu Một, Bình Dương', '- Có khả năng gắn bó lâu dài với Công ty.\r\n- Kỹ năng giao tiếp, thuyết phục tốt bằng tiếng Việt và tiếng Anh.\r\n- Ngoại hình dễ nhìn, tác phong chuyên nghiệp; tuổi từ 19 - 30.\r\n- Ưu tiên cho ứng viên có 1 năm Kinh nghiệm trong lĩnh vực bán hàng.', 5, 7, 3, 4, 20, 40, 4, 3, '- Mức lương cạnh tranh, các khoản thưởng theo năng lực hàng tháng, \r\n- Chương trình tập luyện (Gym, GroupX, Yoga...) miễn phí và môi trường làm việc năng động là một trong những điểm bạn có được khi là thành viên của California Fitness & Yoga. \r\n- Được đóng BHXH, BH Thất Nghiệp, BHYT đầy đủ, bảo hiêm tai nạn 24/24.\r\n- 12 ngày nghỉ phép mỗi năm và vẫn được tính lương đầy đủ\r\n- 1 ngày nghỉ mỗi tuần\r\n- Được làm việc trong môi trường nhiều cơ hội thăng tiến nhanh chóng\r\n- Môi trường làm việc quốc tế và chuyên nghiệp.\r\n- Được giảm giá mua các sản phẩm thể thao, nước uống do công ty cung cấp.\r\n- Được đào tạo về chuyên môn và kỹ năng bán hàng.\r\n- Được đào tạo về các kỹ năng mềm hàng tháng: kỹ năng thuyết trình, kỹ năng giao tiếp...', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 17:25:38', '2018-04-13 17:25:38');
 
 -- --------------------------------------------------------
 
@@ -2278,6 +2278,7 @@ INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `des
 
 DROP TABLE IF EXISTS `recruitment_job`;
 CREATE TABLE `recruitment_job` (
+  `id` bigint(20) NOT NULL,
   `recruitment_id` int(11) DEFAULT NULL,
   `job_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -2288,39 +2289,13 @@ CREATE TABLE `recruitment_job` (
 -- Đang đổ dữ liệu cho bảng `recruitment_job`
 --
 
-INSERT INTO `recruitment_job` (`recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(1, 5, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(1, 10, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(1, 15, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(1, 30, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(1, 35, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(2, 5, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
-(2, 6, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
-(2, 12, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
-(3, 8, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
-(3, 15, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
-(3, 47, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
-(6, 15, '2018-04-13 15:02:38', '2018-04-13 15:02:38'),
-(6, 18, '2018-04-13 15:02:38', '2018-04-13 15:02:38'),
-(8, 1, '2018-04-13 15:26:57', '2018-04-13 15:26:57'),
-(8, 2, '2018-04-13 15:26:57', '2018-04-13 15:26:57'),
-(8, 4, '2018-04-13 15:26:57', '2018-04-13 15:26:57'),
-(9, 14, '2018-04-13 15:32:52', '2018-04-13 15:32:52'),
-(9, 42, '2018-04-13 15:32:52', '2018-04-13 15:32:52'),
-(9, 44, '2018-04-13 15:32:52', '2018-04-13 15:32:52'),
-(10, 19, '2018-04-13 15:35:31', '2018-04-13 15:35:31'),
-(10, 21, '2018-04-13 15:35:31', '2018-04-13 15:35:31'),
-(10, 38, '2018-04-13 15:35:32', '2018-04-13 15:35:32'),
-(10, 40, '2018-04-13 15:35:32', '2018-04-13 15:35:32'),
-(10, 49, '2018-04-13 15:35:32', '2018-04-13 15:35:32'),
-(11, 2, '2018-04-13 16:45:46', '2018-04-13 16:45:46'),
-(11, 4, '2018-04-13 16:45:46', '2018-04-13 16:45:46'),
-(5, 2, '2018-04-13 16:46:23', '2018-04-13 16:46:23'),
-(5, 4, '2018-04-13 16:46:23', '2018-04-13 16:46:23'),
-(7, 2, '2018-04-13 16:47:12', '2018-04-13 16:47:12'),
-(7, 4, '2018-04-13 16:47:12', '2018-04-13 16:47:12'),
-(4, 53, '2018-04-13 16:53:39', '2018-04-13 16:53:39'),
-(4, 55, '2018-04-13 16:53:39', '2018-04-13 16:53:39');
+INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
+(3, 11, 53, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
+(4, 11, 55, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
+(5, 10, 2, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
+(6, 10, 4, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
+(7, 9, 7, '2018-04-13 17:29:30', '2018-04-13 17:29:30'),
+(8, 9, 9, '2018-04-13 17:29:30', '2018-04-13 17:29:30');
 
 -- --------------------------------------------------------
 
@@ -2330,6 +2305,7 @@ INSERT INTO `recruitment_job` (`recruitment_id`, `job_id`, `created_at`, `update
 
 DROP TABLE IF EXISTS `recruitment_place`;
 CREATE TABLE `recruitment_place` (
+  `id` bigint(20) NOT NULL,
   `recruitment_id` int(11) DEFAULT NULL,
   `province_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -2340,15 +2316,13 @@ CREATE TABLE `recruitment_place` (
 -- Đang đổ dữ liệu cho bảng `recruitment_place`
 --
 
-INSERT INTO `recruitment_place` (`recruitment_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(11, 2, '2018-04-13 16:45:46', '2018-04-13 16:45:46'),
-(11, 4, '2018-04-13 16:45:46', '2018-04-13 16:45:46'),
-(5, 2, '2018-04-13 16:46:23', '2018-04-13 16:46:23'),
-(5, 4, '2018-04-13 16:46:23', '2018-04-13 16:46:23'),
-(7, 2, '2018-04-13 16:47:12', '2018-04-13 16:47:12'),
-(7, 4, '2018-04-13 16:47:12', '2018-04-13 16:47:12'),
-(4, 59, '2018-04-13 16:53:39', '2018-04-13 16:53:39'),
-(4, 61, '2018-04-13 16:53:39', '2018-04-13 16:53:39');
+INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created_at`, `updated_at`) VALUES
+(3, 11, 59, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
+(4, 11, 61, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
+(5, 10, 2, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
+(6, 10, 4, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
+(7, 9, 7, '2018-04-13 17:29:30', '2018-04-13 17:29:30'),
+(8, 9, 11, '2018-04-13 17:29:30', '2018-04-13 17:29:30');
 
 -- --------------------------------------------------------
 
@@ -3519,6 +3493,18 @@ ALTER TABLE `recruitment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `recruitment_job`
+--
+ALTER TABLE `recruitment_job`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `recruitment_place`
+--
+ALTER TABLE `recruitment_place`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `reminders`
 --
 ALTER TABLE `reminders`
@@ -3837,6 +3823,18 @@ ALTER TABLE `province`
 --
 ALTER TABLE `recruitment`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `recruitment_job`
+--
+ALTER TABLE `recruitment_job`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `recruitment_place`
+--
+ALTER TABLE `recruitment_place`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`

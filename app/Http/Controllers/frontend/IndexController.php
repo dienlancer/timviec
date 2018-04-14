@@ -1046,15 +1046,18 @@ class IndexController extends Controller {
     if(count($source) == 0){
       return redirect()->route("frontend.index.employerLogin"); 
     }  
-
     $totalItems=0;
     $totalItemsPerPage=20;
     $pageRange=0;      
     $currentPage=1;  
     $pagination ='';            
-    
+    $q='';
     $query=DB::table('recruitment')   ;     
     $query->where('recruitment.employer_id',(int)@$arrUser['id']);    
+    if(!empty(@$request->q)){
+        $q=@$request->q;
+        $query->where('recruitment.fullname','like', '%'.trim(mb_strtolower(@$q)).'%');
+    }
     $data=$query->select('recruitment.id')
     ->groupBy('recruitment.id')                
     ->get()->toArray();
@@ -1083,7 +1086,7 @@ class IndexController extends Controller {
     ->get()->toArray();   
     $data=convertToArray($data);      
 
-    return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination"));     
+    return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination",'q'));     
   }
 }
 

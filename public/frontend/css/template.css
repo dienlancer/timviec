@@ -265,6 +265,20 @@ div.opacity-absolute::before{
     background:#337ab7;
     border: 1px solid #1b588d;
 }
+.btn-search-recruitment a{
+    display: block;
+    background: #E30000;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 1px solid #c50000;
+}
+.btn-search-recruitment a:hover{
+    background:#337ab7;
+    border: 1px solid #1b588d;
+}
 .btn-dang-ky a{
     display: inline-block;
     background: #E30000;
@@ -691,6 +705,12 @@ div.opacity-absolute::before{
 }
 .news-title{
     background: #f5f5f5;
+}
+.kaso{
+    width:50%;
+}
+.kiatisak{
+    width: 100%;
 }
 @media (max-width: 768px){    
     .mobilemenu{

@@ -13,6 +13,10 @@ $seo=getSeo();
 		<div class="row">			
 			<div class="col-lg-9">
 				<h1 class="dn-dk-h">Danh sách tin tuyển dụng</h1>
+				<div class="flamentco margin-top-15">
+					<div class="kaso"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo $q; ?>" placeholder="Nhập tiêu đề tin đăng..."></div>
+					<div class="btn-search-recruitment margin-left-15"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();">Tìm tin đăng</a></div>
+				</div>
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>

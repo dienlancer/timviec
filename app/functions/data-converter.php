@@ -1590,13 +1590,16 @@ function recruitmentConverter($data=array(),$controller){
             $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';
             
             $id=@$data[$i]["id"];   
-            $fullname=$data[$i]["fullname"];            
+            $fullname=$data[$i]["fullname"];      
+            $employer_fullname=@$data[$i]['employer_fullname'];            
+            $user_fullname=@$data[$i]['user_fullname'];                  
             $result[$i] = array(
                 'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
                 'is_checked'               =>   0,
                 "id"                       =>   $id,
                 "fullname"                 =>   $fullname,                         
-                
+                'employer_fullname'        =>   $employer_fullname,
+                'user_fullname'            =>   $user_fullname,
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
                 "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),

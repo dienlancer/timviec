@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 14, 2018 lúc 07:12 AM
+-- Thời gian đã tạo: Th4 14, 2018 lúc 07:40 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2265,7 +2265,8 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Giám Đốc Điều Hành Nhà Máy Dệt May - Vũng Tàu', 'giam-doc-dieu-hanh-nha-may-det-may-vung-tau', 1, 3, '- Quản lý mọi vấn đề về mặt sản xuất của công ty.\r\n- Đôn đốc sản xuất để đạt kế hoạch đề ra.\r\n- Quản lý nhân sự bộ phận may.\r\n- Giải quyết những vấn đề phát sinh hằng ngày trong sản xuất.\r\n- Đảm bảo rằng tất cả công nhân viên của xưởng tuân thủ các quy định của công ty.\r\n- Nhận kế hoạch và triển khai\r\n- Triển khai lại kế hoạch sản xuất cho từng chuyền với mục tiêu cụ thể từng ngày.\r\n- Kiểm soát chặt chẽ đầu vào và đầu ra\r\n- Kiểm soát chặt chẽ hàng hóa.\r\n- Giải quyết mọi vấn đề liên quan đến sản xuất .\r\n- Thay mặt tổng giám đốc giải quyết toàn bộ các vấn đề phát sinh trong sản xuất.\r\n- Chịu hoàn toàn trách nhiệm trước ban giám đốc.', '- Có kỹ năng lãnh đạo.\r\n- Giải quyết vấn đề và ra quyết định.\r\n- Kỹ năng truyền tải và tiếp nhận thông tin.\r\n- Kỹ năng lắng nghe chủ động.\r\n- Giao tiếp tiếng anh thanh thạo\r\n- Có kinh nghiệm từ 5 năm trở lên trong lĩnh vực may mặc.\r\n- Các vấn đề khác sẽ trao đổi trực tiếp khi phỏng vấn.', 2, 2, 8, 10, 20, 40, 2, 4, '- Lương 25 - 30 triệu ( thỏa thuận khi pv).\r\n- Mọi phúc lợi và quyền lợi theo chế độ của công ty.\r\n- Được hưởng đầy đủ các quyền lợi của NLĐ: BHXH, BHYT, BHTN.\r\n- Được hưởng tháng lương thứ 13, lễ, tết...\r\n- Được xét tăng lương theo định kỳ và theo năng lực.\r\n- Cơ hội phát triển và thăng tiến trong công việc.\r\n- Được đi du lịch, nghỉ mát hàng năm trong và ngoài nước.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 05:10:21', '2018-04-14 05:10:21');
+(1, 'Giám Đốc Điều Hành Nhà Máy Dệt May - Vũng Tàu', 'giam-doc-dieu-hanh-nha-may-det-may-vung-tau', 1, 3, '- Quản lý mọi vấn đề về mặt sản xuất của công ty.\r\n- Đôn đốc sản xuất để đạt kế hoạch đề ra.\r\n- Quản lý nhân sự bộ phận may.\r\n- Giải quyết những vấn đề phát sinh hằng ngày trong sản xuất.\r\n- Đảm bảo rằng tất cả công nhân viên của xưởng tuân thủ các quy định của công ty.\r\n- Nhận kế hoạch và triển khai\r\n- Triển khai lại kế hoạch sản xuất cho từng chuyền với mục tiêu cụ thể từng ngày.\r\n- Kiểm soát chặt chẽ đầu vào và đầu ra\r\n- Kiểm soát chặt chẽ hàng hóa.\r\n- Giải quyết mọi vấn đề liên quan đến sản xuất .\r\n- Thay mặt tổng giám đốc giải quyết toàn bộ các vấn đề phát sinh trong sản xuất.\r\n- Chịu hoàn toàn trách nhiệm trước ban giám đốc.', '- Có kỹ năng lãnh đạo.\r\n- Giải quyết vấn đề và ra quyết định.\r\n- Kỹ năng truyền tải và tiếp nhận thông tin.\r\n- Kỹ năng lắng nghe chủ động.\r\n- Giao tiếp tiếng anh thanh thạo\r\n- Có kinh nghiệm từ 5 năm trở lên trong lĩnh vực may mặc.\r\n- Các vấn đề khác sẽ trao đổi trực tiếp khi phỏng vấn.', 2, 2, 8, 10, 20, 40, 2, 4, '- Lương 25 - 30 triệu ( thỏa thuận khi pv).\r\n- Mọi phúc lợi và quyền lợi theo chế độ của công ty.\r\n- Được hưởng đầy đủ các quyền lợi của NLĐ: BHXH, BHYT, BHTN.\r\n- Được hưởng tháng lương thứ 13, lễ, tết...\r\n- Được xét tăng lương theo định kỳ và theo năng lực.\r\n- Cơ hội phát triển và thăng tiến trong công việc.\r\n- Được đi du lịch, nghỉ mát hàng năm trong và ngoài nước.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 05:10:21', '2018-04-14 05:14:17'),
+(4, 'Nhân Viên Kinh Doanh Biết Tiếng Trung', 'nhan-vien-kinh-doanh-biet-tieng-trung', 2, 1, '- Nghiên cứu chiến lược phát triển thị trường công ty.\r\n- Phụ trách khai thác và phát triển khách hàng.\r\n- Nghiên cứu và phân tích chiến lược phát triển của các công ty cùng ngành.\r\n- Phối hợp với các bộ phận khác trong công việc được giao.\r\n- Tham gia lên kế hoạch tổ chức hội thảo của công ty.\r\n- Các công việc khác do cấp trên yêu cầu', '1. Thành thạo 4 kỹ năng : Nghe - nói - đọc - viết tiếng Trung;\r\n2. Kỹ năng / Khả năng:\r\n- Thành thạo tin học văn phòng thông dụng (Word, Excel, Power point, Internet, Outlook…).\r\n- Khả năng giao tiếp, truyền đạt, đàm phán tốt.\r\n- Khả năng sắp xếp, phân tích công việc, giải quyết vấn đề tốt.\r\n- Khả năng làm việc dưới áp lực cao.\r\n- Ưu tiên người biết sử dụng phần mềm đồ họa và biết Xây dựng kế hoạch phát triển nội dung trên Fanpage.\r\n4. Kinh nghiệm:\r\n- Có ít nhất 2 năm kinh nghiệm làm kinh doanh.\r\n5. Phẩm chất cá nhân:\r\n- Thẳng thắn, trung thực, cẩn thận.\r\n- Nhanh nhẹn, nhiệt tình trong công việc.\r\n6. Yêu cầu khác: \r\n- Sức khoẻ: Tốt;\r\n- Ngoại hình: Ngoại hình ưa nhìn; \r\n- Tuổi từ 24 đến 40.\r\n7. Hình thức nộp hồ sơ :\r\n- Hồ sơ bằng tiếng Trung bao gồm : Sơ yếu lý lịch, Đơn xin việc làm, các bằng cấp có liên quan qua mail.\r\n- Địa điểm làm việc : 18A / 6 + 18A / 8 Nguyễn Thị Minh Khai, Phường Đa Kao, Quận 1, TpHCM', 3, 3, 4, 3, 20, 40, 2, 3, '- Được hưởng mức lương cứng (7-10TR) tùy theo năng lực của ứng viên, thưởng hấp dẫn, phù hợp với năng lực và các chế độ phúc lợi mở rộng khác như: Sinh nhật, du lịch ...\r\n- Được làm việc trong môi trường năng động, chuyên nghiệp.\r\n- Cơ hội thăng tiến không hạn chế.\r\n- Cơ hội đi nước ngoài học tập và làm việc.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 05:36:13', '2018-04-14 05:36:13');
 
 -- --------------------------------------------------------
 
@@ -2287,7 +2288,9 @@ CREATE TABLE `recruitment_job` (
 --
 
 INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 17, '2018-04-14 05:10:08', '2018-04-14 05:10:08');
+(1, 1, 17, '2018-04-14 05:10:08', '2018-04-14 05:10:08'),
+(6, 4, 5, '2018-04-14 05:36:13', '2018-04-14 05:36:13'),
+(7, 4, 6, '2018-04-14 05:36:13', '2018-04-14 05:36:13');
 
 -- --------------------------------------------------------
 
@@ -2309,7 +2312,9 @@ CREATE TABLE `recruitment_place` (
 --
 
 INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '2018-04-14 05:10:08', '2018-04-14 05:10:08');
+(1, 1, 2, '2018-04-14 05:10:08', '2018-04-14 05:10:08'),
+(6, 4, 6, '2018-04-14 05:36:13', '2018-04-14 05:36:13'),
+(7, 4, 8, '2018-04-14 05:36:13', '2018-04-14 05:36:13');
 
 -- --------------------------------------------------------
 
@@ -3812,19 +3817,19 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_place`
 --
 ALTER TABLE `recruitment_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`

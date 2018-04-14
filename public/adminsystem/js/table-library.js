@@ -377,7 +377,9 @@ var basicTable = function () {
             iDisplayLength: -1,
             columns: [                
                 { data: "checked"            },                
-                { data: "fullname"      },                                    
+                { data: "fullname"      },        
+                { data: "employer_fullname"      },        
+                { data: "user_fullname"      },                                    
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                

@@ -19,6 +19,7 @@ use App\EmployerModel;
 use App\RecruitmentJobModel;
 use App\RecruitmentPlaceModel;
 use DB;
+use Sentinel;
 class RecruitmentController extends Controller {
  var $_controller='recruitment';	
  var $_title='Tin tuyển dụng';
@@ -38,12 +39,18 @@ class RecruitmentController extends Controller {
   }
 }	    
 public function loadData(Request $request){
-  $query=DB::table('recruitment');  
+  $user=Sentinel::getUser();
+  $query=DB::table('recruitment');
+  $query->leftJoin('employer','recruitment.employer_id','=','employer.id');  
+  $query->leftJoin('users','employer.user_id','=','users.id')  ;
   if(!empty(@$request->filter_search)){          
     $query->where('recruitment.fullname','like','%'.trim(mb_strtolower(@$request->filter_search,'UTF-8')).'%')  ;                   
-  }                  
-  $data= $query->select('recruitment.id','recruitment.fullname','recruitment.status','recruitment.created_at','recruitment.updated_at')
-  ->groupBy('recruitment.id','recruitment.fullname','recruitment.status','recruitment.created_at','recruitment.updated_at')   
+  }
+  if((int)@$user->id > 1){
+    $query->where('users.id',(int)@$user->id);
+  }                      
+  $data= $query->select('recruitment.id','recruitment.fullname','employer.fullname as employer_fullname','users.fullname as user_fullname','recruitment.status','recruitment.created_at','recruitment.updated_at')
+  ->groupBy('recruitment.id','recruitment.fullname','employer.fullname','users.fullname','recruitment.status','recruitment.created_at','recruitment.updated_at')
   ->orderBy('recruitment.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    

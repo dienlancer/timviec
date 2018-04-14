@@ -16,7 +16,7 @@ $linkChangeStatus2	=	route('adminsystem.recruitment.changeStatus2');
 				<h1 class="dn-dk-h">Danh sách tin tuyển dụng</h1>
 				<div class="flamentco margin-top-15">
 					<div class="kaso"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo $q; ?>" placeholder="Nhập tiêu đề tin đăng..."></div>
-					<div class="btn-search-recruitment margin-left-15"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();">Tìm tin đăng</a></div>
+					<div class="btn-search-recruitment margin-left-15"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();">Lọc</a></div>
 				</div>
 				@if(Session::has("message"))	
 				<?php 

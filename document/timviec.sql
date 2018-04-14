@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 14, 2018 lúc 07:43 AM
+-- Thời gian đã tạo: Th4 14, 2018 lúc 02:03 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -1744,7 +1744,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (897, 1, 'a7JwQZj0KtZAXubU8cxsGWZTpQw10g2V', '2018-04-11 01:20:26', '2018-04-11 01:20:26'),
 (898, 1, 'RfnG3cRPPbXk0dXUCMrKaDFbYnirT0Cf', '2018-04-11 18:22:59', '2018-04-11 18:22:59'),
 (899, 1, 'taTvPyF5em3qhy6oCsFkwt0aoZxVuO1m', '2018-04-12 21:22:03', '2018-04-12 21:22:03'),
-(900, 1, 'Yk994bGpE8xlNvz6Jp8e7nAFZxUmMc8j', '2018-04-13 19:25:58', '2018-04-13 19:25:58');
+(900, 1, 'Yk994bGpE8xlNvz6Jp8e7nAFZxUmMc8j', '2018-04-13 19:25:58', '2018-04-13 19:25:58'),
+(901, 1, '0OW0aqPy1e3aR6cP2OqL4t2mB3dHcvZF', '2018-04-14 04:39:14', '2018-04-14 04:39:14');
 
 -- --------------------------------------------------------
 
@@ -2265,8 +2266,7 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Giám Đốc Điều Hành Nhà Máy Dệt May - Vũng Tàu', 'giam-doc-dieu-hanh-nha-may-det-may-vung-tau', 1, 3, '- Quản lý mọi vấn đề về mặt sản xuất của công ty.\r\n- Đôn đốc sản xuất để đạt kế hoạch đề ra.\r\n- Quản lý nhân sự bộ phận may.\r\n- Giải quyết những vấn đề phát sinh hằng ngày trong sản xuất.\r\n- Đảm bảo rằng tất cả công nhân viên của xưởng tuân thủ các quy định của công ty.\r\n- Nhận kế hoạch và triển khai\r\n- Triển khai lại kế hoạch sản xuất cho từng chuyền với mục tiêu cụ thể từng ngày.\r\n- Kiểm soát chặt chẽ đầu vào và đầu ra\r\n- Kiểm soát chặt chẽ hàng hóa.\r\n- Giải quyết mọi vấn đề liên quan đến sản xuất .\r\n- Thay mặt tổng giám đốc giải quyết toàn bộ các vấn đề phát sinh trong sản xuất.\r\n- Chịu hoàn toàn trách nhiệm trước ban giám đốc.', '- Có kỹ năng lãnh đạo.\r\n- Giải quyết vấn đề và ra quyết định.\r\n- Kỹ năng truyền tải và tiếp nhận thông tin.\r\n- Kỹ năng lắng nghe chủ động.\r\n- Giao tiếp tiếng anh thanh thạo\r\n- Có kinh nghiệm từ 5 năm trở lên trong lĩnh vực may mặc.\r\n- Các vấn đề khác sẽ trao đổi trực tiếp khi phỏng vấn.', 2, 2, 8, 10, 20, 40, 2, 4, '- Lương 25 - 30 triệu ( thỏa thuận khi pv).\r\n- Mọi phúc lợi và quyền lợi theo chế độ của công ty.\r\n- Được hưởng đầy đủ các quyền lợi của NLĐ: BHXH, BHYT, BHTN.\r\n- Được hưởng tháng lương thứ 13, lễ, tết...\r\n- Được xét tăng lương theo định kỳ và theo năng lực.\r\n- Cơ hội phát triển và thăng tiến trong công việc.\r\n- Được đi du lịch, nghỉ mát hàng năm trong và ngoài nước.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 05:10:21', '2018-04-14 05:14:17'),
-(4, 'Nhân Viên Kinh Doanh Biết Tiếng Trung', 'nhan-vien-kinh-doanh-biet-tieng-trung', 2, 1, '- Nghiên cứu chiến lược phát triển thị trường công ty.\r\n- Phụ trách khai thác và phát triển khách hàng.\r\n- Nghiên cứu và phân tích chiến lược phát triển của các công ty cùng ngành.\r\n- Phối hợp với các bộ phận khác trong công việc được giao.\r\n- Tham gia lên kế hoạch tổ chức hội thảo của công ty.\r\n- Các công việc khác do cấp trên yêu cầu', '1. Thành thạo 4 kỹ năng : Nghe - nói - đọc - viết tiếng Trung;\r\n2. Kỹ năng / Khả năng:\r\n- Thành thạo tin học văn phòng thông dụng (Word, Excel, Power point, Internet, Outlook…).\r\n- Khả năng giao tiếp, truyền đạt, đàm phán tốt.\r\n- Khả năng sắp xếp, phân tích công việc, giải quyết vấn đề tốt.\r\n- Khả năng làm việc dưới áp lực cao.\r\n- Ưu tiên người biết sử dụng phần mềm đồ họa và biết Xây dựng kế hoạch phát triển nội dung trên Fanpage.\r\n4. Kinh nghiệm:\r\n- Có ít nhất 2 năm kinh nghiệm làm kinh doanh.\r\n5. Phẩm chất cá nhân:\r\n- Thẳng thắn, trung thực, cẩn thận.\r\n- Nhanh nhẹn, nhiệt tình trong công việc.\r\n6. Yêu cầu khác: \r\n- Sức khoẻ: Tốt;\r\n- Ngoại hình: Ngoại hình ưa nhìn; \r\n- Tuổi từ 24 đến 40.\r\n7. Hình thức nộp hồ sơ :\r\n- Hồ sơ bằng tiếng Trung bao gồm : Sơ yếu lý lịch, Đơn xin việc làm, các bằng cấp có liên quan qua mail.\r\n- Địa điểm làm việc : 18A / 6 + 18A / 8 Nguyễn Thị Minh Khai, Phường Đa Kao, Quận 1, TpHCM', 3, 3, 4, 3, 20, 40, 2, 3, '- Được hưởng mức lương cứng (7-10TR) tùy theo năng lực của ứng viên, thưởng hấp dẫn, phù hợp với năng lực và các chế độ phúc lợi mở rộng khác như: Sinh nhật, du lịch ...\r\n- Được làm việc trong môi trường năng động, chuyên nghiệp.\r\n- Cơ hội thăng tiến không hạn chế.\r\n- Cơ hội đi nước ngoài học tập và làm việc.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 05:36:13', '2018-04-14 05:36:13');
+(7, 'Kế Toán Công Nợ Phải Thu (Q4)', 'ke-toan-cong-no-phai-thu-q4', 4, 2, '- Quản lý báo giá , đơn hàng, hợp đồng kinh tế ký kết với khách hàng\r\n- Cập nhật thông tin hợp đồng trong phần mềm kế toán để theo dõi theo từng hợp đồng của từng khách hàng\r\n- Cập nhật từng lần thanh toán của từng hợp đồng, ghi chính xác nội dung thanh toán, tạm ứng, ngày thanh toán, ngân hàng \r\nchuyển tiền.\r\n- Phối hợp với Bộ Phận Kinh Doanh lập kế hoạch dự thu theo mục tiêu dòng tiền và hoàn thành hồ sơ thanh toán trước.\r\n- Quản lý, lưu trữ hồ sơ một cách khoa học, ngăn nắp.\r\n- Điện thoại và email hỏi thăm tình trạng thanh toán cho từng hợp đồng .\r\n- Soạn thảo văn bản nếu thấy cần thiết để gởi khách hàng nhằm mục đích nhắc nợ, hoặc đôn đốc đề nghị thanh toán.\r\n- Gởi bảng đối chiếu và yêu cầu xác nhận công nợ đối với khách hàng định kì. Báo cáo cụ thể, chính xác tình hình thu hồi công nợ của từng hợp đồng cho BGĐ & các bộ phận liên quan.\r\n- Đề xuất biệp pháp thu hồi nợ đối với các khoản nợ khó đòi cho BGĐ.\r\n- Công việc khác theo yêu cầu từ BGĐ.', '- Có kinh nghiệm 2 năm vị trí tương đương.\r\n- Kỹ năng vi tính văn phòng thành thạo. \r\n- Quản lý công nợ phải thu của khách hàng với số lượng lớn\r\n- Chịu áp lực cao trong công việc\r\n- Giao tiếp hòa nhã, khéo léo .', 2, 3, 4, 4, 10, 30, 2, 2, '- Lương 6 - 8 triệu + thưởng \r\n- Môi trường làm việc chuyên nghiệp, năng động và thân thiện giúp hoàn thiện kỹ năng và kiến thức.\r\n- Đóng đầy đủ BHYT, BHXH.Lương T13, Thưởng lễ, tết, sinh nhật, theo qui định công ty. Du lịch nghỉ dưỡng hàng năm.\r\n- Lương thâm niên .Tăng lương định kì hằng năm\r\n- Cơ hội phát triển nghề nghiệp tốt, ổn định, lâu dài. Đi làm ngay khi trúng tuyển', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 11:43:52', '2018-04-14 11:43:52');
 
 -- --------------------------------------------------------
 
@@ -2288,9 +2288,9 @@ CREATE TABLE `recruitment_job` (
 --
 
 INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 17, '2018-04-14 05:10:08', '2018-04-14 05:10:08'),
-(6, 4, 5, '2018-04-14 05:36:13', '2018-04-14 05:36:13'),
-(7, 4, 6, '2018-04-14 05:36:13', '2018-04-14 05:36:13');
+(13, 7, 51, '2018-04-14 11:43:52', '2018-04-14 11:43:52'),
+(14, 7, 53, '2018-04-14 11:43:52', '2018-04-14 11:43:52'),
+(15, 7, 55, '2018-04-14 11:43:52', '2018-04-14 11:43:52');
 
 -- --------------------------------------------------------
 
@@ -2312,9 +2312,9 @@ CREATE TABLE `recruitment_place` (
 --
 
 INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '2018-04-14 05:10:08', '2018-04-14 05:10:08'),
-(6, 4, 6, '2018-04-14 05:36:13', '2018-04-14 05:36:13'),
-(7, 4, 8, '2018-04-14 05:36:13', '2018-04-14 05:36:13');
+(13, 7, 57, '2018-04-14 11:43:52', '2018-04-14 11:43:52'),
+(14, 7, 59, '2018-04-14 11:43:52', '2018-04-14 11:43:52'),
+(15, 7, 61, '2018-04-14 11:43:52', '2018-04-14 11:43:52');
 
 -- --------------------------------------------------------
 
@@ -3115,7 +3115,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-13 19:25:58', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-13 19:25:58'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-14 04:39:14', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-14 04:39:14'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$dyr0/0S5B7GWTxVRH6zjMezbr2SOjfrISSYhHWDqjRX5V4Uqf3YVC', NULL, '2018-04-11 01:20:08', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-11 01:20:08'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-06 08:48:13', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 08:48:13'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -3757,7 +3757,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=901;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=902;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3817,19 +3817,19 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_place`
 --
 ALTER TABLE `recruitment_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`

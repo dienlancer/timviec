@@ -7,6 +7,7 @@ $li_article='';
 
 $li_employer_management='';
 $li_employer='';
+$li_recruitment='';
 
 $li_category_banner='';
 $li_page='';
@@ -61,6 +62,10 @@ switch ($controller) {
     break;  
     case 'employer': 
     $li_employer='active open';       
+    $li_employer_management='active open';
+    break;
+    case 'recruitment': 
+    $li_recruitment='active open';       
     $li_employer_management='active open';
     break;
     case 'candidate': 
@@ -212,6 +217,12 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.employer.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Thông tin doanh nghiệp</span>                                            
+                    </a>                                                                      
+                </li>
+                <li class="nav-item  <?php echo $li_recruitment; ?>">
+                    <a href="{!! route('adminsystem.recruitment.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Tin tuyển dụng</span>                                            
                     </a>                                                                      
                 </li>                 
             </ul>
@@ -377,6 +388,12 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.employer.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Thông tin doanh nghiệp</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_recruitment; ?>">
+                    <a href="{!! route('adminsystem.recruitment.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Tin tuyển dụng</span>                                            
                     </a>                                                                      
                 </li>                 
             </ul>

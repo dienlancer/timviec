@@ -108,6 +108,14 @@ function PhanCachSoTien(Ctrl) {
     }
     Ctrl.value = vNewMoney;
 }
+function xacnhanxoa(){
+	var msg="Bạn chắc chắn có muốn xóa ?";
+    var xac_nhan=false;
+	if(window.confirm(msg)){
+		xac_nhan=true;
+	}
+	return xac_nhan;
+}
 function hideMsg(ctrl){
     $('.'+ctrl).fadeOut();
 }       

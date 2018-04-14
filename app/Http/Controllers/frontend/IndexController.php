@@ -932,7 +932,14 @@ class IndexController extends Controller {
         $alias=str_slug(@$fullname,'-');
         $checked_trung_alias=0;
         $data_employer=array();        
-        $data_employer=RecruitmentModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();        
+        switch ($task) {
+          case 'add':
+            $data_employer=RecruitmentModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();        
+            break;
+          case 'edit':
+            $data_employer=RecruitmentModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower(@$alias,'UTF-8')),@$id])->get()->toArray();                    
+            break;
+        }        
         if (count(@$data_employer) > 0) {
           $checked_trung_alias=1;
         }        
@@ -1056,7 +1063,7 @@ class IndexController extends Controller {
     $query->where('recruitment.employer_id',(int)@$arrUser['id']);    
     if(!empty(@$request->q)){
         $q=@$request->q;
-        $query->where('recruitment.fullname','like', '%'.trim(mb_strtolower(@$q)).'%');
+        $query->where('recruitment.fullname','like', '%'.trim(@$q).'%');
     }
     $data=$query->select('recruitment.id')
     ->groupBy('recruitment.id')                
@@ -1078,15 +1085,37 @@ class IndexController extends Controller {
     $pagination=new PaginationModel($arrPagination);
     $position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-    $data=$query->select('recruitment.id','recruitment.fullname')
-    ->groupBy('recruitment.id','recruitment.fullname')
+    $data=$query->select('recruitment.id','recruitment.fullname','recruitment.status','recruitment.created_at')
+    ->groupBy('recruitment.id','recruitment.fullname','recruitment.status','recruitment.created_at')
     ->orderBy('recruitment.id', 'desc')
     ->skip($position)
     ->take($totalItemsPerPage)
     ->get()->toArray();   
-    $data=convertToArray($data);      
-
+    $data=convertToArray($data);    
+    $data=recruitment2Converter($data,'recruitment');
     return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination",'q'));     
+  }
+  public function deleteRecruitment($id){   
+    $info                 =   array();
+    $checked              =   1;                           
+    $msg                =   array();
+    $source=RecruitmentModel::find((int)@$id);
+    if($source == null){
+      $checked=0;
+      $msg['errorid']='Không đúng id';
+    }
+    if($checked == 1){
+      $item               =   RecruitmentModel::find((int)@$id);
+      $item->delete();          
+      RecruitmentJobModel::whereRaw('recruitment_id = ?',[@$id])->delete();  
+      RecruitmentPlaceModel::whereRaw('recruitment_id = ?',[@$id])->delete();
+      $msg['success']='Xóa thành công';
+    }  
+    $info = array(
+      "checked"       => $checked,          
+      'msg'       => $msg,                    
+    );      
+    return redirect()->route('frontend.index.manageRecruitment')->with(["message"=>$info]);                             
   }
 }
 

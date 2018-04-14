@@ -1574,6 +1574,68 @@ function salaryConverter($data=array(),$controller){
     }
     return $result;
 }
+function recruitmentConverter($data=array(),$controller){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){
+            $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
+            $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
+            $kicked=0;
+            if((int)@$data[$i]["status"]==1){
+                $kicked=0;
+            }
+            else{
+                $kicked=1;
+            }
+            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';
+            
+            $id=@$data[$i]["id"];   
+            $fullname=$data[$i]["fullname"];            
+            $result[$i] = array(
+                'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
+                'is_checked'               =>   0,
+                "id"                       =>   $id,
+                "fullname"                 =>   $fullname,                         
+                
+                "status"                   =>   $status,
+                "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
+                "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),
+                "edited"                   =>   $edited,
+                "deleted"                  =>   $deleted
+            );
+        }
+    }
+    return $result;
+}
+function recruitment2Converter($data=array()){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){            
+            $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteRecruitment',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';            
+            $edited='<center><a href="'.route('frontend.index.getFormRecruitment',['edit',(int)@$data[$i]["id"]]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';          
+            $kicked=0;
+            if((int)@$data[$i]["status"]==1){
+                $kicked=0;
+            }
+            else{
+                $kicked=1;
+            }
+            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';            
+            $id=@$data[$i]["id"];   
+            $fullname=@$data[$i]['fullname'];    
+            $created_at='<center>'.datetimeConverterVn($data[$i]["created_at"]).'</center>';          
+            $result[$i] = array(                
+                "id"                       =>   $id,
+                "fullname"                 =>   $fullname,                                         
+                "status"                   =>   $status,
+                "created_at"               =>   $created_at,                                
+                "edited"                   =>   $edited,
+                "deleted"                  =>   $deleted
+            );
+        }
+    }
+    return $result;
+}
 function jobConverter($data=array(),$controller){        
     $result = array();    
     if( count($data) > 0){

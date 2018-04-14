@@ -13,6 +13,7 @@ var vScaleTable           =   null;
 var vWorkTable           =   null;
 var vLiteracyTable           =   null;
 var vSalaryTable           =   null;
+var vRecruitmentTable           =   null;
 var vJobTable           =   null;
 var vProbationaryTable           =   null;
 var vWorkingFormTable           =   null;
@@ -361,6 +362,22 @@ var basicTable = function () {
                 { data: "checked"            },                
                 { data: "fullname"      },                    
                 { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initRecruitmentTable = function () {
+        vRecruitmentTable = $('#tbl-recruitment').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                                    
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                
@@ -986,6 +1003,7 @@ var basicTable = function () {
             initWorkingFormTable();
             initProbationaryTable();
             initJobTable();
+            initRecruitmentTable();
         }
     };
 }();

@@ -259,6 +259,17 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.salary.trash","uses"=>"adminsystem\SalaryController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.salary.createAlias","uses"=>"adminsystem\SalaryController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"recruitment"],function(){		
+		Route::get("list",["as"=>"adminsystem.recruitment.getList","uses"=>"adminsystem\RecruitmentController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.recruitment.loadData","uses"=>"adminsystem\RecruitmentController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.recruitment.getForm","uses"=>"adminsystem\RecruitmentController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.recruitment.save","uses"=>"adminsystem\RecruitmentController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.recruitment.deleteItem","uses"=>"adminsystem\RecruitmentController@deleteItem"]);								
+		Route::post("change-status",["as"=>"adminsystem.recruitment.changeStatus","uses"=>"adminsystem\RecruitmentController@changeStatus"]);
+		Route::post("change-status-2",["as"=>"adminsystem.recruitment.changeStatus2","uses"=>"adminsystem\RecruitmentController@changeStatus2"]);
+		Route::post("trash",["as"=>"adminsystem.recruitment.trash","uses"=>"adminsystem\RecruitmentController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.recruitment.createAlias","uses"=>"adminsystem\RecruitmentController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"job"],function(){		
 		Route::get("list",["as"=>"adminsystem.job.getList","uses"=>"adminsystem\JobController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.job.loadData","uses"=>"adminsystem\JobController@loadData"]);		
@@ -525,5 +536,6 @@ Route::match(["get","post"],"doi-mat-khau-ntd",["as"=>"frontend.index.viewEmploy
 Route::match(["get","post"],"doi-mat-khau-ungvien",["as"=>"frontend.index.viewCandidateSecurity","uses"=>"frontend\IndexController@viewCandidateSecurity"]);
 Route::match(["get","post"],"dang-tin-tuyen-dung/{task}/{id}",["as"=>"frontend.index.getFormRecruitment","uses"=>"frontend\IndexController@getFormRecruitment"]);
 Route::match(["get","post"],"quan-ly-tin-tuyen-dung",["as"=>"frontend.index.manageRecruitment","uses"=>"frontend\IndexController@manageRecruitment"]);
+Route::get("xoa-tin-tuyen-dung/{id}",["as"=>"frontend.index.deleteRecruitment","uses"=>"frontend\IndexController@deleteRecruitment"]);
 /* end tìm việc */
 ?>

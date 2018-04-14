@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 13, 2018 lúc 08:50 PM
+-- Thời gian đã tạo: Th4 14, 2018 lúc 07:12 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -294,7 +294,7 @@ CREATE TABLE `category_article` (
 INSERT INTO `category_article` (`id`, `fullname`, `meta_keyword`, `meta_description`, `alias`, `parent_id`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
 (4, 'Hỗ trợ khách hàng', 'metakeyword Tin dự án', 'metadescription Tin dự án', 'ho-tro-khach-hang', 0, 'conmochieu-5.png', 1, 1, '2017-12-18 02:17:10', '2018-02-28 07:22:22'),
 (5, 'Đời sống số', 'metakeword Ngành gỗ', 'metadescription Ngành gỗ', 'doi-song-so', 0, 'conmochieu-6.png', 2, 1, '2017-12-18 02:17:19', '2018-02-28 08:08:31'),
-(8, 'Sản phẩm', '', '', 'san-pham', 0, NULL, 3, 1, '2018-02-28 08:08:49', '2018-02-28 08:08:49'),
+(8, 'Sản phẩm', '', '', 'san-pham', 0, NULL, 3, 1, '2018-02-28 08:08:49', '2018-04-14 03:14:07'),
 (9, 'Điện tử gia dụng', '', '', 'dien-tu-gia-dung', 0, NULL, 4, 1, '2018-02-28 08:09:03', '2018-02-28 08:09:03'),
 (11, 'Kinh nghiệm laptop', '', '', 'kinh-nghiem-laptop', 0, NULL, 6, 1, '2018-02-28 08:09:50', '2018-03-13 05:15:41');
 
@@ -559,7 +559,7 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, 'logo-7-5yk7jo4xcgz2.png', 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, NULL, '2018-04-04 05:29:16', '2018-04-11 08:37:21'),
 (5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công Ty Bất Động Sản Đà Thành Land', 'cong-ty-bds-da-thanh-land', 'metakeyword Công ty CP BĐS ĐÀ THÀNH LAND', 'metadescription Công ty CP BĐS ĐÀ THÀNH LAND', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 12, 4, 'logo-3-2os9xabnpmtf.png', 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 6, 1, 0, '2018-04-04 08:06:36', '2018-04-08 17:02:50'),
 (6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', '', '', '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 6, 1, 0, '2018-04-06 02:10:27', '2018-04-08 16:37:40'),
-(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '36 Võ Văn Tần , P.9 , Q.3 , TP. Hồ Chí Minh', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Lưu Mạnh Hà', 'halm898@dienkim.com', '0922122322', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-13 15:32:32');
+(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '65 Phạm Ngũ Lão 8', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Lưu Mạnh Hà', 'hoancn8478@dienkim.com', '9885556668', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-14 05:07:47');
 
 -- --------------------------------------------------------
 
@@ -614,8 +614,8 @@ CREATE TABLE `group_member` (
 --
 
 INSERT INTO `group_member` (`id`, `fullname`, `alias`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-12 03:19:04'),
-(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-11 08:02:10');
+(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-14 02:26:42'),
+(2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-14 02:26:52');
 
 -- --------------------------------------------------------
 
@@ -637,94 +637,98 @@ CREATE TABLE `group_privilege` (
 --
 
 INSERT INTO `group_privilege` (`id`, `group_member_id`, `privilege_id`, `created_at`, `updated_at`) VALUES
-(4176, 2, 157, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
-(4177, 2, 158, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
-(4178, 2, 159, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
-(4179, 2, 160, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
-(4180, 2, 161, '2018-04-11 08:02:10', '2018-04-11 08:02:10'),
-(4637, 1, 1, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4638, 1, 2, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4639, 1, 4, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4640, 1, 5, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4641, 1, 18, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4642, 1, 19, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4643, 1, 24, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4644, 1, 25, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4645, 1, 43, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4646, 1, 44, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4647, 1, 49, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4648, 1, 50, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4649, 1, 55, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4650, 1, 56, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4651, 1, 61, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4652, 1, 62, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4653, 1, 67, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4654, 1, 68, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4655, 1, 79, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4656, 1, 80, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4657, 1, 85, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4658, 1, 86, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4659, 1, 103, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4660, 1, 104, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4661, 1, 105, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4662, 1, 106, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4663, 1, 107, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4664, 1, 108, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4665, 1, 109, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4666, 1, 110, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4667, 1, 115, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4668, 1, 116, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4669, 1, 121, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4670, 1, 122, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4671, 1, 123, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4672, 1, 124, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4673, 1, 125, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4674, 1, 126, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4675, 1, 127, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4676, 1, 128, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4677, 1, 129, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4678, 1, 130, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4679, 1, 131, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4680, 1, 132, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4681, 1, 133, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4682, 1, 134, '2018-04-12 03:19:04', '2018-04-12 03:19:04'),
-(4683, 1, 135, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4684, 1, 136, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4685, 1, 137, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4686, 1, 138, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4687, 1, 139, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4688, 1, 140, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4689, 1, 141, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4690, 1, 142, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4691, 1, 143, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4692, 1, 144, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4693, 1, 145, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4694, 1, 146, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4695, 1, 151, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4696, 1, 152, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4697, 1, 153, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4698, 1, 154, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4699, 1, 155, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4700, 1, 156, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4701, 1, 157, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4702, 1, 158, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4703, 1, 159, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4704, 1, 160, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4705, 1, 161, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4706, 1, 162, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4707, 1, 163, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4708, 1, 164, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4709, 1, 165, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4710, 1, 166, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4711, 1, 167, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4712, 1, 168, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4713, 1, 169, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4714, 1, 170, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4715, 1, 171, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4716, 1, 172, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4717, 1, 173, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4718, 1, 174, '2018-04-12 03:19:05', '2018-04-12 03:19:05'),
-(4719, 1, 175, '2018-04-12 03:19:05', '2018-04-12 03:19:05');
+(4720, 1, 1, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4721, 1, 2, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4722, 1, 4, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4723, 1, 5, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4724, 1, 18, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4725, 1, 19, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4726, 1, 24, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4727, 1, 25, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4728, 1, 43, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4729, 1, 44, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4730, 1, 49, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4731, 1, 50, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4732, 1, 55, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4733, 1, 56, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4734, 1, 61, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4735, 1, 62, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4736, 1, 67, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4737, 1, 68, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4738, 1, 79, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4739, 1, 80, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4740, 1, 85, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4741, 1, 86, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4742, 1, 103, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4743, 1, 104, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4744, 1, 105, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4745, 1, 106, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4746, 1, 107, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4747, 1, 108, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4748, 1, 109, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4749, 1, 110, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4750, 1, 115, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4751, 1, 116, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4752, 1, 121, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4753, 1, 122, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4754, 1, 123, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4755, 1, 124, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4756, 1, 125, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4757, 1, 126, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4758, 1, 127, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4759, 1, 128, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4760, 1, 129, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4761, 1, 130, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4762, 1, 131, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4763, 1, 132, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4764, 1, 133, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4765, 1, 134, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4766, 1, 135, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4767, 1, 136, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4768, 1, 137, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4769, 1, 138, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4770, 1, 139, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4771, 1, 140, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4772, 1, 141, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4773, 1, 142, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4774, 1, 143, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4775, 1, 144, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4776, 1, 145, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4777, 1, 146, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4778, 1, 151, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4779, 1, 152, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4780, 1, 153, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4781, 1, 154, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4782, 1, 155, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4783, 1, 156, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4784, 1, 157, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4785, 1, 158, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4786, 1, 159, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4787, 1, 160, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4788, 1, 161, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4789, 1, 162, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4790, 1, 163, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4791, 1, 164, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4792, 1, 165, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4793, 1, 166, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4794, 1, 167, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4795, 1, 168, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4796, 1, 169, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4797, 1, 170, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4798, 1, 171, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4799, 1, 172, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4800, 1, 173, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4801, 1, 174, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4802, 1, 175, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4803, 1, 176, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4804, 1, 177, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
+(4805, 2, 157, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4806, 2, 158, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4807, 2, 159, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4808, 2, 160, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4809, 2, 161, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4810, 2, 176, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4811, 2, 177, '2018-04-14 02:26:52', '2018-04-14 02:26:52');
 
 -- --------------------------------------------------------
 
@@ -1739,7 +1743,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (894, 1, '7UGar6PwjqQlhE4MSTKjRDmxocZRsuxt', '2018-04-08 07:34:22', '2018-04-08 07:34:22'),
 (897, 1, 'a7JwQZj0KtZAXubU8cxsGWZTpQw10g2V', '2018-04-11 01:20:26', '2018-04-11 01:20:26'),
 (898, 1, 'RfnG3cRPPbXk0dXUCMrKaDFbYnirT0Cf', '2018-04-11 18:22:59', '2018-04-11 18:22:59'),
-(899, 1, 'taTvPyF5em3qhy6oCsFkwt0aoZxVuO1m', '2018-04-12 21:22:03', '2018-04-12 21:22:03');
+(899, 1, 'taTvPyF5em3qhy6oCsFkwt0aoZxVuO1m', '2018-04-12 21:22:03', '2018-04-12 21:22:03'),
+(900, 1, 'Yk994bGpE8xlNvz6Jp8e7nAFZxUmMc8j', '2018-04-13 19:25:58', '2018-04-13 19:25:58');
 
 -- --------------------------------------------------------
 
@@ -1963,7 +1968,9 @@ INSERT INTO `privilege` (`id`, `fullname`, `controller`, `action`, `sort_order`,
 (172, 'probationary-list', 'probationary', 'list', 1, '2018-04-12 02:49:33', '2018-04-12 02:49:33'),
 (173, 'probationary-form', 'probationary', 'form', 1, '2018-04-12 02:49:43', '2018-04-12 02:49:43'),
 (174, 'job-list', 'job', 'list', 1, '2018-04-12 03:18:49', '2018-04-12 03:18:49'),
-(175, 'job-form', 'job', 'form', 1, '2018-04-12 03:18:57', '2018-04-12 03:18:57');
+(175, 'job-form', 'job', 'form', 1, '2018-04-12 03:18:57', '2018-04-12 03:18:57'),
+(176, 'recruitment-list', 'recruitment', 'list', 1, '2018-04-14 02:26:17', '2018-04-14 02:26:17'),
+(177, 'recruitment-form', 'recruitment', 'form', 1, '2018-04-14 02:26:28', '2018-04-14 02:26:28');
 
 -- --------------------------------------------------------
 
@@ -2258,17 +2265,7 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Chuyên Viên BĐS Lương 38 Triệu / Tháng', 'chuyen-vien-bds-luong-38-trieu-thang', 5, 3, '-	Học làm lãnh đạo. Các bạn sẽ được làm việc và được đào tạo để trở thành lãnh đạo cho công ty chúng tôi. Có trách nhiệm với bản thân, trách nhiệm với công việc, và trách nhiệm với công ty.\r\n-	Học giao tiếp, và biết ứng xử trong công việc. Các bạn sẽ chăm sóc khách hàng, bán sản phẩm của công ty, và ứng xử với khách hàng để giải quyết tình huống.\r\n-	Học quản lý tài chính, và biết sử dụng nguồn vốn. Các bạn sẽ được hỗ trợ chi phí marketing, và sẽ phải cân đối nguồn vốn của các bạn sao để đạt doanh thu tốt nhất cho bạn, lãnh đạo của bạn sẽ giúp bạn làm điều đó nếu bạn chấp nhận bỏ công việc cũ và theo chúng tôi.\r\n-	Học cách đầu tư. Các bạn sẽ biết đầu tư vào thời gian, phân bổ thời gian làm việc và biết cách đầu tư bất động sản, 80% nhân viên của chúng tôi sau 3 năm làm việc, đã là cổ đông của công ty chúng tôi.\r\n-	Học cách tự tin, và thể hiện bản thân. Các bạn sẽ được salephone, sẽ được tư vấn giữa hàng trăm khách hàng.', '-	Không than thở, không tiêu cực trong công ty\r\n-	Làm việc đúng giờ, và báo cáo công việc mỗi khi ra về\r\n-	Có phương tiện đi lại\r\n-	Có thiết bị di động hoặc laptop\r\n-	Làm việc từ thứ ba đến Chủ nhật\r\n-	Đam mê và dám thay đổi bản thân\r\n-	Có tư duy làm chủ', 2, 2, 7, 9, 7, 10, 3, 4, '-	Chúng tôi không dám tự hào là công ty bất động sản có chế độ đãi ngộ tốt nhất. Nhưng là công ty đào tạo con người tốt nhất.\r\n-	Lương cơ bản: 6 triệu/ tháng\r\n-	Thu nhập hàng tháng: Không giới hạn\r\n-	Hoa hồng: 15- 40 triệu/ sản phẩm\r\n-	Lãnh đạo theo sát các bạn, hỗ trợ các bạn chốt khách, các bạn phải giàu, công ty mới mạnh\r\n-	Thưởng nóng hàng tháng, quý cho nhân sự\r\n-	Tổ chức đi du lịch 2 lần 1 năm', '2018-04-21 00:00:00', 7, NULL, 0, '2018-04-13 05:16:16', '2018-04-13 05:16:16'),
-(2, 'Nhân Viên Kế Toán Tổng Hợp (Tại Bigc Trường Trinh)', 'nhan-vien-ke-toan-tong-hop-tai-bigc-truong-trinh', 1, 2, '- Thực hiện các công việc chuyên môn của kế toán tổng hợp\r\n- Quản lý hệ thống chứng từ, sổ sách theo quy định\r\n- Lập báo cáo thuế hàng tháng, quý, báo cáo tài chính năm, quyết toán thuế, lập sổ sách kèm theo\r\n- Báo cáo thu chi hằng ngày\r\n- Tính lương, thưởng cho nhân viên.\r\n- Hỗ trợ nhân viên kinh doanh in, photo,...', '- Tốt nghiệp đại học ngành kế toán, kiểm toán\r\n- Ít nhất 1 năm kinh nghiệm trong công việc kế toán tổng hợp\r\n- Sử dụng thành thạo các phần mềm kế toán và vi tính văn phòng\r\n- Có kinh nghiệm làm văn phòng, tổng hợp, hành chính, kế toán\r\n- Trung thực, cẩn thận, tận tâm và có tinh thần trách nhiệm cao trong công việc\r\n- Có ý định làm việc ổn định và lâu dài với công ty', 10, 2, 3, 3, 8, 10, 2, 3, '- Lương 6 triệu + Thưởng.\r\n- Thưởng lễ, Tết, lương tháng 13.\r\n- Hưởng đầy đủ quyền lợi BHXH, BHYT, BHTN theo quy định\r\n- Các chương trình du lịch nghỉ dưỡng, Team building thú vị hấp dẫn', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 09:39:34', '2018-04-13 09:39:34'),
-(3, 'Chuyên Viên Thiết Kế 3D & 2D', 'chuyen-vien-thiet-ke-3d-2d', 2, 3, '- Thiết kế Logo, Lay Out, Graphics, Bandroll, Backdrop, dựng cảnh khu vực theo không gian\r\n3D, Thiết kế Proposal Du Lịch.\r\n- Thiết kế và thi công các ấn phẩm Catalogue, Brochure, logo, banner, video,banner flash. Digital\r\nContent (bài post facebook) cho Fan Page, web.\r\n- Key Visual theo từng Campaign: banner, backdrop, standee, invitation, flyer, wobbler…\r\n- Thiết kế hình ảnh quảng cáo, nhận diện thương hiệu cho chuỗi sản phẩm của Công ty.\r\n- Thực hiện việc quản lý hình ảnh (thương hiệu) đảm bảo tính thống nhất, nhất quán và dễ nhận\r\ndạng của thương hiệu.\r\n- Thiết kế theo yêu cầu công việc, theo yêu cầu khách hàng,\r\n- Thực hiện các công việc khác dưới sự phân công của Trưởng Phòng.\r\n- Làm việc dưới sự chỉ đạo và hướng dẫn của Trưởng Phòng.\r\n- Chi tiết công việc sẽ được trao đổi cụ thể hơn khi phỏng vấn.', '- Không yêu cầu độ tuổi\r\n- Trình độ: Tốt nghiệp Cao đẳng trở lên\r\n- Kinh nghiệm: 2 năm trở lên trong lĩnh vực Design Marketting\r\n- Sử dụng thành thạo các phần mềm đồ họa ( Ưu tiên 3D, Ai, Corel, Photoshop,...).\r\n- Am hiểu về lĩnh vực Quảng Cáo, Thương Hiệu.\r\n- Sử dụng cách phối màu và bố cục sản phẩm thiết kế tốt.\r\n- Có khả năng tư duy, lên ý tưởng, sáng tạo.\r\n- Làm việc độc lập, tính cẩn thận cao, có ý chí cầu tiến', 2, 3, 4, 4, 2, 8, 1, 3, '- Lương cơ bản: 9 triệu/tháng (thỏa thuận khi pv)\r\n- Môi trường thân thiện, cơ sở vật chất tiên tiến\r\n- Chế độ phúc lợi đầy đủ, thưởng lễ tết + du lịch hàng năm\r\n- Các chế độ ưu đãi dịch vụ cho nhân viên\r\n- Đãi ngộ tương xứng với năng lực, thăng tiến theo năng lực và sự cống hiến', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 09:43:01', '2018-04-13 09:43:01'),
-(4, 'Nam Nhân Viên Bán Hàng Thị Trường - Hàng Tiêu Dùng P&g', 'nam-nhan-vien-ban-hang-thi-truong-hang-tieu-dung-pg', 10, 1, '- Phân phối các mặt hàng tiêu dùng của P&G như: Rejoice, Pampers, Pantene, H&S, Downy, Ariel,Tide, Gillette,.......\r\n- Thực hiện bán hàng đến khách hàng trong khu vực được phân công.\r\n- Cung cấp thông tin hàng hóa và các chương trình khuyến mãi đến khách hàng.\r\n- Xây dựng hình ảnh hàng hóa trưng bày theo quy định.\r\n- Chịu trách nhiệm đảm bảo doanh số bán hàng theo tháng trong khu vực được giao', '- Ưu tiên ứng viên có kinh nghiệm về lĩnh vực phân phối hàng tiêu dùng nhanh.\r\n- Khả năng làm việc nhóm tốt.\r\n- Khả năng giao tiếp tốt\r\n- Khả năng giải quyết vấn đề tốt.\r\n- Tác phong lịch sự.', 1, 1, 4, 11, 0, 0, 1, 3, '- Lương cứng: trên 6tr\r\n- Cơ hội thăng tiến cao, công việc ổn định lâu dài.\r\n- Định kỳ tham gia các khóa huấn luyện kỹ năng chuyên môn tại Công ty.\r\n- Đánh giá tăng lương hàng năm theo kết quả.\r\n- Thưởng định kỳ hàng tháng, quý, năm.\r\n- Chính sách phúc lợi tốt, du lịch, hiếu hỉ, Lễ tết...\r\n- Tham gia đầy đủ BHXH, BHYT, BHTN.\r\n- Tham gia Bảo hiểm tai nạn 24/24.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 16:53:39', '2018-04-13 16:53:39'),
-(5, 'Nữ Trưởng Phòng Marketing Q.1 - Hcm', 'nu-truong-phong-marketing-q1-hcm-557739', 2, 2, 'Vị trí Trưởng phòng Marketing\r\n- Quản lý và chịu trách nhiệm chính tất cả các công việc của Phòng Marketing\r\n- Liên hệ và báo cáo với đối tác nước ngoài về tình hình Marketing của từng thương hiệu.\r\n- Phụ trách quản lý hình ảnh, trưng bày các thương hiệu của công ty trên thị trường\r\n- Quản lý chính các kênh online và xây dựng chiến lược Digital Marketing của công ty\r\n- Phụ trách các ấn phẩm Marketing của công ty\r\n- Quản lý các chương trình khuyến mãi – Event – quà tặng khách hàng của công ty', '- Trình độ: Cao đẳng/Đại học\r\n- Nam/Nữ tuổi từ 22 - 35 tuổi\r\n- Kinh nghiệm 01 năm trở lên\r\n- Chuyên môn: Quản Trị Kinh doanh, Marketing, Phát triển thị trường....\r\n- Năng động, có khả năng tiếp cận khách hàng và khả năng đàm phán thương lượng tốt.\r\n- Kiên nhẫn, chịu được áp lực công việc, có khả năng làm việc độc lập và theo nhóm.\r\n- Trình bày thuyết trình lưu loát, rõ ràng, mạch lạc, tự tin.\r\n- Nắm bắt nhanh thị trường , tinh thần học hỏi cao.\r\n- Tác phong: nhanh nhẹn, hoạt bát, chuyên nghiệp\r\n- Vi tính VP: Sử dụng tốt Word, Excel, Power point, Internet.', 6, 5, 5, 5, 30, 40, 2, 5, '- Hưởng đầy đủ các chế độ theo qui định của nhà nước\r\n- Được nghỉ các ngày lễ tết, chiều thứ 7 và chủ nhật.\r\n- Chế độ tăng lương từ 20%- 40% hàng năm.\r\n- Làm việc trong môi trường trẻ trung, năng động, nhiệt huyết, chuyên môn cao', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 16:46:23', '2018-04-13 16:46:23'),
-(6, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc', 2, 3, '- Là Nhân viên đại diện cho các Ngân hàng ủy quyền (có bảng tên, có giấy ủy quyền);\r\n- Tiếp nhận hồ sơ từ ngân hàng chuyển qua cho Công ty;\r\n- Nghiên cứu các thông tin về khoản tín dụng;\r\n- Đánh giá hồ sơ, lập phương án và thực hiện thu hồi;\r\n- Gọi ĐT, gặp trực tiếp tư vấn tính pháp lý, sự rủi ro của hồ sơ tín dụng quá hạn;\r\n- Gợi ý các biện pháp hạn chế rủi ro biện pháp khắc phục;\r\n- Quản lý hồ sơ, xử lý hồ sơ theo quy trình trong phạm vi công việc được giao.\r\nKhách hàng hiện nay Công ty đang hỗ trợ thu hồi nợ:\r\n1. Ngân hàng Việt Nam Thịnh Vượng (VPB)\r\n2. Công ty tài chính HD Saison (HDSS)\r\n3. Ngân hàng Standard Chartered (SCB)\r\n4. Ngân hàng HSBC\r\nĐỊA CHỈ VĂN PHÒNG:\r\n- VP ĐỒNG NAI: C50, Đường N2, Khu quy hoạch Bửu Long, Khu phố 1, P. Bửu Long, TP. Biên Hòa, Đồng Nai.\r\n- VP NHA TRANG: Tầng 7, Tòa nhà VCN, đường A1, Khu đô thị Vĩnh Điềm Trung, X. Vĩnh Hiệp TP. Nha Trang, Khánh Hòa.\r\nThành.\r\n- VP BÌNH DƯƠNG: Số 815 Đường Lê Hồng Phong, KP7, P. Phú Thọ, TP. Thủ Dầu Một, Bình Dương.\r\n- VP VĨNH LONG: Làm việc tại khu vực Vĩnh Long, được đào tạo tại VP Cần Thơ.', '- Giới tính Nam – Độ tuổi từ 20 đến 35.\r\n- Tốt nghiệp Trung cấp trở lên các ngành: Kinh tế, Luật, An ninh và Hành chánh.\r\n- Biết sử dụng vi tính văn phòng (cơ bản);\r\n- Có xe gắn máy;\r\n- Trung thực, năng động, chịu khó có trách nhiệm và giao tiếp tốt;\r\n- Không tiền án tiền sự.\r\n* Ứng viên điền thông tin dự tuyển vào Phiếu ứng viên ở Link sau và gửi thông tin về cho Công ty:\r\nhttps://drive.google.com/open?id=0B_JSkhFzF3glRjE0V2JWUkF3R2s', 5, 6, 4, 4, 20, 30, 2, 2, '- Học việc có hưởng lương 4.500.000 đồng/tháng;\r\n- Phụ cấp tiền xăng xe, điện thoại theo đúng mức thực tế;\r\n- Được ký HĐLĐ sau thời gian học việc và thử việc (thời gian học việc 15 ngày và thử việc 30 ngày);\r\n- Tham gia BHXH, BHYT, BHTN và BHTN 24/24 sau khi ký HĐLĐ;\r\n- Đánh giá nâng lương định ký 2 lần/năm, kể từ ngày đầu tiên ký HĐLĐ;\r\n- Hỗ trợ nuôi con đến đủ 18 tuổi;\r\n- Được nhận lương trước làm việc sau (Tạm ứng lương trước) sau khi ký HĐLĐ;\r\n- Phép năm hưởng theo tỉ lệ ngày làm việc thực tế và nghỉ không hết phép sẽ được chuyển thành tiền lương;\r\n- Lương tháng 13-14 theo thời gian làm việc.', '2018-04-10 00:00:00', 7, NULL, 1, '2018-04-13 15:02:38', '2018-04-13 15:02:38'),
-(7, 'Nhân Viên Vẽ Triển Khai Hcm - Q.Nhơn - P.Rang', 'nhan-vien-ve-trien-khai-hcm-qnhon-prang', 6, 3, '- Đọc hiểu cấu tạo và liên kết của các chi tiết trong kết cấu cơ khí Hoặc cấu tạo và bố trí bên trong công trình kiến trúc\r\n- Triển khai bản vẽ cấu tạo bằng AutoCAD hoặc phần mền CAD chuyên dụng cho chi tiết cơ khí Hoặc công trình kiến trúc.', '- Không yêu cầu kĩ năng chuyên môn. Sau khi vào công ty sẽ được đào tạo từ đầu.\r\n- Tốt nghiệp ĐH, CĐ chuyên ngành cơ khí, kiến trúc, xây dựng\r\n- Đọc hiểu các bản vẽ kỹ thuật hoặc bản vẽ kiến trúc\r\n- Biết sử dụng phần mềm Autocad.\r\n- Biết tiếng Nhật là một lợi thế.\r\n* Yêu cầu chung:\r\n- Có khả năng suy luận, tư duy và sáng tạo trong công việc.\r\n- Cẩn thận, nhiệt tình, chịu khó, chịu được áp lực công việc.\r\n- Có nguyện vọng gắn bó lâu dài với công việc liên quan đến tiếng Nhật và cty Nhật Bản\r\n- 26 tuổi trở xuống (sinh năm 1992 trở về sau).\r\n* Chỉ nhận hồ sơ đầy đủ các điều kiện nêu trên\r\n* Nộp hồ sơ và phỏng vấn trực tiếp,không nhận hồ sơ qua bưu điện.\r\n* Địa điểm : Công ty TNHH Gifu Kogyo Việt Nam tại TP.HCM . \r\nĐịa chỉ : Lầu 1, P14, Nhà 6A, Đường 3, CVPM. Quang Trung, P.Tân Chánh Hiệp, Q.12, TP.HCM', 7, 5, 5, 4, 50, 80, 3, 3, '- Mức lương : Theo khu vực, sẽ trao đổi khi phỏng vấn.\r\nngoài ra còn có các phụ cấp như phụ cấp chuyên cần , phụ cấp năng lực tiếng Nhật (nếu có bằng cấp thích hợp), v.v…\r\n- Hưởng đầy đủ các chế độ theo qui định : Được đóng các bảo hiểm xã hội, bảo hiểm y tế, ... \r\n- Ứng viên được tuyển chọn sẽ có cơ hội làm việc tại công ty với môi trường làm việc thân thiện, sáng tạo, có cơ hội thăng tiến cao\r\n- Được đào tạo tiếng Nhật tại công ty để phục vụ cho công việc.', '2018-04-10 00:00:00', 7, NULL, 0, '2018-04-13 16:47:12', '2018-04-13 16:47:12'),
-(8, 'Nhân Viên Kinh Doanh Ngành Bao Bì', 'nhan-vien-kinh-doanh-nganh-bao-bi', 2, 3, '- Tìm kiếm khách hàng tiềm năng và khai thác nhu cầu khách hàng \r\n- Tư vấn, báo giá cho khách hàng.\r\n- Ký hợp đồng với khách hàng.\r\n- Triển khai kế hoạch kinh doanh từ cấp trên đưa xuống', '- Ưu tiên những bạn có kinh nghiệm\r\n- Giao tiếp tốt, nhiệt tình', 6, 3, 3, 4, 30, 40, 3, 2, '- Lương cơ bản : 5-7 tr(trao đổi cụ thể khi phỏng vấn) + hoa hồng hấp dẫn (thu nhập trên 10tr)\r\n- Được hưởng mức lương hấp dẫn, phù hợp với năng lực và các chế độ phúc lợi mở rộng khác \r\n- Được tham gia các chế độ theo luật định.\r\n- Được làm việc trong môi trường năng động, cơ hội thăng tiến.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 15:26:57', '2018-04-13 15:26:57'),
-(9, 'Trưởng Phòng Kinh Doanh Chuyển Phát Nhanh Tại Hà Nội Và Tp.Hcm', 'truong-phong-kinh-doanh-chuyen-phat-nhanh-tai-ha-noi-va-tphcm-469421', 1, 3, '-	Xây dựng kế hoạch kinh doanh,định hướng sản phẩm, chính sách giá đối với dịch vụ chuyển phát dựa trên chỉ tiêu được Ban Giám Đốc giao theo từng giai đoạn phát triển của công ty.\r\n-	Triển khai việc thực hiện kế hoạch kinh doanh, định hướng phát triển theo lộ trình của khu vực miền bắc theo sự phê duyệt của Ban Giám Đốc\r\n-	Phân tích, nghiên cứu, đánh giá tiềm năng thị trường, đề xuất phát triển mạng lưới kinh doanh bao gồm: mở Bưu Cục, Chi Nhánh, Trung tâm khai thác, trình lên Giám Đốc khu Ban Giám Đốc.\r\n-	Chịu trách nhiệm khảo sát giá cả thị trường, xây dựng, đề xuất chính sách: chính sách giá, hoa hồng, chiết khấu giảm giá trình Ban Giám Đốc duyệt.\r\n-	Đánh giá lại đội ngũ nhân viên kinh doanh định kỳ hàng quý để có kế hoạch tái đào tạo hoặc thay thế nhân sự nhằm đáp ứng nhu cầu sản xuất kinh doanh của khu vực.\r\n-	Chịu trách nhiệm kiểm soát, quản lý các hợp đồng bán hàng của bộ phận kinh doanh khu vực miền bắc trong phạm vi quyền quản lý, trình lên Ban Giám Đốc xem xét, phe duyệt.\r\n-	Phối hợp với Phòng Kinh Doanh các Chi Nhánh đàm phán, gặp gỡ khách hàng và triển khai thực hiện các dự án lơn của Công Ty.\r\n-	Quản lý khách hàng và công nợ của khách hàng\r\n-	Báo cáo khách hàng và doanh số hàng tháng cho Ban Giám Đốc.\r\n-	Kiểm tra, giám sát, đôn đốc Trưởng Bưu Cục, nhân viên kinh doanh trong việc lập báo cáo tuần,báo cáo doanh số tháng.\r\n-	Chịu trách nhiệm về hiệu suất làm việc,hiệu quả hoạt đông của các văn phòng, bưu cục thuộc thuộc quyền quản lý', '- Có kĩ năng quản lí và hoạch định chiến lược.\r\n- Có kinh nghiệm trong lĩnh vực chuyển phát nhanh và năm ở vị trí cấp quản lý.\r\n- Sáng tạo,chịu khó đam mê trong công việc.\r\n- Trung thành với tổ chức, mong muốn làm việc lâu dài', 2, 1, 5, 5, 20, 30, 2, 3, '- Lương, thưởng, phụ cấp hấp dẫn\r\n- Được đóng BHXH, BHYT theo quy định\r\n- Du lịch nghỉ mát hàng năm\r\n- Nhiều cơ hội thăng tiến.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 17:29:30', '2018-04-13 17:29:30'),
-(10, 'Nhân Viên Phục Vụ Nhà Hàng – Karaoke – Sàn Nhảy', 'nhan-vien-phuc-vu-nha-hang-karaoke-san-nhay-623321', 15, 3, '- Set up bàn ăn theo tiêu chuẩn 5 sao. \r\n- Chào đón và hướng dẫn khách sử dụng dịch vụ. \r\n- Giới thiệu sản phẩm, phục vụ khách ăn uống.', '- Nam nữ từ đủ 18 tuổi.\r\n- Đam mê ngành dịch vụ, năng động, nhanh nhẹn. \r\n- Ưu tiên có ngoại hình và biết tiếng Anh.', 3, 7, 9, 6, 23, 53, 3, 4, '- Lương thưởng hấp dẫn (tối thiểu trên 5 triệu/ tháng)\r\n- Được hỗ trợ đi tàu cao tốc 1 chiều ( chỉ 5p sang đảo).\r\n- Được đóng đầy đủ bảo hiểm theo quy định nhà nước.\r\n- Được hưởng các ưu đãi đặc biệt (Vinmec, Vinmart, VinID, du lịch nước ngoài….)\r\n- Được đào tạo và phát triển toàn diện', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
-(11, 'Nhân Viên Tư Vấn Thẻ Hội Viên - Miền Nam', 'nhan-vien-tu-van-the-hoi-vien-mien-nam', 50, 3, '- Tìm kiếm khách hàng tiềm năng. \r\n- Hướng dẫn khách hàng tiềm năng tham quan câu lạc bộ và tư vấn về các trang thiết bị, dịch vụ \r\n- Tư vấn chương trình hội viên thích hợp nhất cho khách hàng. \r\n- Thuyết phục khách hàng tham gia thẻ hội viên (Thể hình/ Thẩm mỹ viện/Yoga)\r\n- Thường xuyên liên lạc để kịp thời nắm bắt thông tin từ hội viên đảm bảo luôn cung cấp dịch vụ vượt sự mong đợi của khách hàng.\r\n- Địa điểm làm việc tại Tp HCM:\r\n1.	126 Hùng Vương, Phường 12, Quận 5, Tp HCM\r\n2.	Saigon Center, Quận 1, Tp HCM\r\n3.	5 Nguyễn Tất Thành, Phường 12, Quận 4, Tp HCM,\r\n4.	1489 Nguyễn Văn Linh, Phường Tân Phong, Quận 7, Tp HCM\r\n5.	184 Lê Đại Hành, Phường 15, Quận 11, Tp HCM, \r\n6.	20 Cộng Hòa, Phường 12, Quận Tân Bình, Tp HCM\r\n7. 12 Quốc Hương, Thảo Điền, Quận 2, Tp HCM\r\n8. Aeon Mall, 01 Đường 17A, P. Bình Trị Đông B, Q. Bình Tân\r\n9. 464 Phan Xích Long, Q. Phú Nhuận, Tp HCM\r\n10. 2A Phan Văn Trị, Phường 10, Quận Gò Vấp, Tp. HCM\r\n11. Pearl Plaza, Q. Bình Thạnh, Tp HCM\r\n12. Lim Tower, CMT8. Quận 3, Tp HCM\r\n13. Crescent Plaza, 105 Tôn Dật Tiên, Tân Phú, Quận 7, Tp HCM \r\n- Địa điểm làm việc tại Bình Dương: \r\n01 Phú lợi, Phường Phú Lợi, Thủ Dầu Một, Bình Dương', '- Có khả năng gắn bó lâu dài với Công ty.\r\n- Kỹ năng giao tiếp, thuyết phục tốt bằng tiếng Việt và tiếng Anh.\r\n- Ngoại hình dễ nhìn, tác phong chuyên nghiệp; tuổi từ 19 - 30.\r\n- Ưu tiên cho ứng viên có 1 năm Kinh nghiệm trong lĩnh vực bán hàng.', 5, 7, 3, 4, 20, 40, 4, 3, '- Mức lương cạnh tranh, các khoản thưởng theo năng lực hàng tháng, \r\n- Chương trình tập luyện (Gym, GroupX, Yoga...) miễn phí và môi trường làm việc năng động là một trong những điểm bạn có được khi là thành viên của California Fitness & Yoga. \r\n- Được đóng BHXH, BH Thất Nghiệp, BHYT đầy đủ, bảo hiêm tai nạn 24/24.\r\n- 12 ngày nghỉ phép mỗi năm và vẫn được tính lương đầy đủ\r\n- 1 ngày nghỉ mỗi tuần\r\n- Được làm việc trong môi trường nhiều cơ hội thăng tiến nhanh chóng\r\n- Môi trường làm việc quốc tế và chuyên nghiệp.\r\n- Được giảm giá mua các sản phẩm thể thao, nước uống do công ty cung cấp.\r\n- Được đào tạo về chuyên môn và kỹ năng bán hàng.\r\n- Được đào tạo về các kỹ năng mềm hàng tháng: kỹ năng thuyết trình, kỹ năng giao tiếp...', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-13 17:25:38', '2018-04-13 17:25:38');
+(1, 'Giám Đốc Điều Hành Nhà Máy Dệt May - Vũng Tàu', 'giam-doc-dieu-hanh-nha-may-det-may-vung-tau', 1, 3, '- Quản lý mọi vấn đề về mặt sản xuất của công ty.\r\n- Đôn đốc sản xuất để đạt kế hoạch đề ra.\r\n- Quản lý nhân sự bộ phận may.\r\n- Giải quyết những vấn đề phát sinh hằng ngày trong sản xuất.\r\n- Đảm bảo rằng tất cả công nhân viên của xưởng tuân thủ các quy định của công ty.\r\n- Nhận kế hoạch và triển khai\r\n- Triển khai lại kế hoạch sản xuất cho từng chuyền với mục tiêu cụ thể từng ngày.\r\n- Kiểm soát chặt chẽ đầu vào và đầu ra\r\n- Kiểm soát chặt chẽ hàng hóa.\r\n- Giải quyết mọi vấn đề liên quan đến sản xuất .\r\n- Thay mặt tổng giám đốc giải quyết toàn bộ các vấn đề phát sinh trong sản xuất.\r\n- Chịu hoàn toàn trách nhiệm trước ban giám đốc.', '- Có kỹ năng lãnh đạo.\r\n- Giải quyết vấn đề và ra quyết định.\r\n- Kỹ năng truyền tải và tiếp nhận thông tin.\r\n- Kỹ năng lắng nghe chủ động.\r\n- Giao tiếp tiếng anh thanh thạo\r\n- Có kinh nghiệm từ 5 năm trở lên trong lĩnh vực may mặc.\r\n- Các vấn đề khác sẽ trao đổi trực tiếp khi phỏng vấn.', 2, 2, 8, 10, 20, 40, 2, 4, '- Lương 25 - 30 triệu ( thỏa thuận khi pv).\r\n- Mọi phúc lợi và quyền lợi theo chế độ của công ty.\r\n- Được hưởng đầy đủ các quyền lợi của NLĐ: BHXH, BHYT, BHTN.\r\n- Được hưởng tháng lương thứ 13, lễ, tết...\r\n- Được xét tăng lương theo định kỳ và theo năng lực.\r\n- Cơ hội phát triển và thăng tiến trong công việc.\r\n- Được đi du lịch, nghỉ mát hàng năm trong và ngoài nước.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-14 05:10:21', '2018-04-14 05:10:21');
 
 -- --------------------------------------------------------
 
@@ -2290,12 +2287,7 @@ CREATE TABLE `recruitment_job` (
 --
 
 INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(3, 11, 53, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
-(4, 11, 55, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
-(5, 10, 2, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
-(6, 10, 4, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
-(7, 9, 7, '2018-04-13 17:29:30', '2018-04-13 17:29:30'),
-(8, 9, 9, '2018-04-13 17:29:30', '2018-04-13 17:29:30');
+(1, 1, 17, '2018-04-14 05:10:08', '2018-04-14 05:10:08');
 
 -- --------------------------------------------------------
 
@@ -2317,12 +2309,7 @@ CREATE TABLE `recruitment_place` (
 --
 
 INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(3, 11, 59, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
-(4, 11, 61, '2018-04-13 17:18:30', '2018-04-13 17:18:30'),
-(5, 10, 2, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
-(6, 10, 4, '2018-04-13 17:27:15', '2018-04-13 17:27:15'),
-(7, 9, 7, '2018-04-13 17:29:30', '2018-04-13 17:29:30'),
-(8, 9, 11, '2018-04-13 17:29:30', '2018-04-13 17:29:30');
+(1, 1, 2, '2018-04-14 05:10:08', '2018-04-14 05:10:08');
 
 -- --------------------------------------------------------
 
@@ -3089,7 +3076,10 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (543, NULL, 'ip', '127.0.0.1', '2018-04-06 08:48:04', '2018-04-06 08:48:04'),
 (544, 3, 'user', NULL, '2018-04-06 08:48:04', '2018-04-06 08:48:04'),
 (545, NULL, 'global', NULL, '2018-04-06 18:27:29', '2018-04-06 18:27:29'),
-(546, NULL, 'ip', '127.0.0.1', '2018-04-06 18:27:29', '2018-04-06 18:27:29');
+(546, NULL, 'ip', '127.0.0.1', '2018-04-06 18:27:29', '2018-04-06 18:27:29'),
+(547, NULL, 'global', NULL, '2018-04-13 19:25:51', '2018-04-13 19:25:51'),
+(548, NULL, 'ip', '127.0.0.1', '2018-04-13 19:25:51', '2018-04-13 19:25:51'),
+(549, 1, 'user', NULL, '2018-04-13 19:25:51', '2018-04-13 19:25:51');
 
 -- --------------------------------------------------------
 
@@ -3120,7 +3110,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-12 21:22:03', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-12 21:22:03'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-13 19:25:58', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-13 19:25:58'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$dyr0/0S5B7GWTxVRH6zjMezbr2SOjfrISSYhHWDqjRX5V4Uqf3YVC', NULL, '2018-04-11 01:20:08', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-11 01:20:08'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-06 08:48:13', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 08:48:13'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -3690,7 +3680,7 @@ ALTER TABLE `group_member`
 -- AUTO_INCREMENT cho bảng `group_privilege`
 --
 ALTER TABLE `group_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4720;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4812;
 
 --
 -- AUTO_INCREMENT cho bảng `invoice`
@@ -3762,7 +3752,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=900;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=901;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3780,7 +3770,7 @@ ALTER TABLE `post_param`
 -- AUTO_INCREMENT cho bảng `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT cho bảng `probationary`
@@ -3822,19 +3812,19 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_place`
 --
 ALTER TABLE `recruitment_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`
@@ -3882,7 +3872,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT cho bảng `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=547;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=550;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

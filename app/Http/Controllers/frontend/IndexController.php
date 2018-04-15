@@ -1095,7 +1095,7 @@ class IndexController extends Controller {
 		$data=recruitment2Converter($data,'recruitment');
 		return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination",'q'));     
 	}
-	public function changeStatus2(Request $request){
+	public function changeRecruitmentAppearedStatus(Request $request){
 		$id             =       (int)$request->id;  
 		$status         =       (int)$request->status;
 

@@ -537,6 +537,6 @@ Route::match(["get","post"],"doi-mat-khau-ungvien",["as"=>"frontend.index.viewCa
 Route::match(["get","post"],"dang-tin-tuyen-dung/{task}/{id}",["as"=>"frontend.index.getFormRecruitment","uses"=>"frontend\IndexController@getFormRecruitment"]);
 Route::match(["get","post"],"quan-ly-tin-tuyen-dung",["as"=>"frontend.index.manageRecruitment","uses"=>"frontend\IndexController@manageRecruitment"]);
 Route::get("xoa-tin-tuyen-dung/{id}",["as"=>"frontend.index.deleteRecruitment","uses"=>"frontend\IndexController@deleteRecruitment"]);
-Route::post("change-status-2",["as"=>"frontend.index.changeStatus2","uses"=>"frontend\IndexController@changeStatus2"]);
+Route::post("change-status-2",["as"=>"frontend.index.changeRecruitmentAppearedStatus","uses"=>"frontend\IndexController@changeRecruitmentAppearedStatus"]);
 /* end tìm việc */
 ?>

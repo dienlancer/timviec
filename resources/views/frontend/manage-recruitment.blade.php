@@ -3,7 +3,7 @@
 @include("frontend.content-top-register")
 <?php 
 $seo=getSeo();
-$linkChangeStatus2	=	route('adminsystem.recruitment.changeStatus2');
+$linkChangeStatus2	=	route('frontend.index.changeStatus2');
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -114,7 +114,7 @@ $linkChangeStatus2	=	route('adminsystem.recruitment.changeStatus2');
 			url: '<?php echo $linkChangeStatus2; ?>',
 			type: 'POST',     
 			data: dataItem,
-			success: function (data, status, jqXHR) {   							   
+			success: function (data, status, jqXHR) {   				
 				var element     = 'a#status-' + data['id'];
 				var classRemove = 'publish';
 				var classAdd    = 'unpublish';

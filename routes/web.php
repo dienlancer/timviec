@@ -266,7 +266,7 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("save",["as"=>"adminsystem.recruitment.save","uses"=>"adminsystem\RecruitmentController@save"]);
 		Route::post("delete-item",["as"=>"adminsystem.recruitment.deleteItem","uses"=>"adminsystem\RecruitmentController@deleteItem"]);								
 		Route::post("change-status",["as"=>"adminsystem.recruitment.changeStatus","uses"=>"adminsystem\RecruitmentController@changeStatus"]);
-		Route::post("change-status-2",["as"=>"adminsystem.recruitment.changeStatus2","uses"=>"adminsystem\RecruitmentController@changeStatus2"]);
+		
 		Route::post("trash",["as"=>"adminsystem.recruitment.trash","uses"=>"adminsystem\RecruitmentController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.recruitment.createAlias","uses"=>"adminsystem\RecruitmentController@createAlias"]);
 	});	
@@ -537,5 +537,6 @@ Route::match(["get","post"],"doi-mat-khau-ungvien",["as"=>"frontend.index.viewCa
 Route::match(["get","post"],"dang-tin-tuyen-dung/{task}/{id}",["as"=>"frontend.index.getFormRecruitment","uses"=>"frontend\IndexController@getFormRecruitment"]);
 Route::match(["get","post"],"quan-ly-tin-tuyen-dung",["as"=>"frontend.index.manageRecruitment","uses"=>"frontend\IndexController@manageRecruitment"]);
 Route::get("xoa-tin-tuyen-dung/{id}",["as"=>"frontend.index.deleteRecruitment","uses"=>"frontend\IndexController@deleteRecruitment"]);
+Route::post("change-status-2",["as"=>"frontend.index.changeStatus2","uses"=>"frontend\IndexController@changeStatus2"]);
 /* end tìm việc */
 ?>

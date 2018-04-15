@@ -293,27 +293,7 @@ public function changeStatus(Request $request){
   );
   return $info;
 }
-public function changeStatus2(Request $request){
-  $id             =       (int)$request->id;  
-  $status         =       (int)$request->status;
 
-  $item=RecruitmentModel::find($id);
-  $trangThai=0;
-  if($status==0){
-    $trangThai=1;
-  }
-  else{
-    $trangThai=0;
-  }
-  $item->status=$status;
-  $item->save();
-  $result = array(
-    'id'      => $id, 
-    'status'  => $status, 
-    'link'    => 'javascript:changeStatus('.$id.','.$trangThai.');'
-  );
-  return $result;   
-}      
 public function deleteItem(Request $request){
   $id                     =   (int)$request->id;              
   $info                 =   array();

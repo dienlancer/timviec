@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4 tao-ho-so">
-			<a  href="javascript:void(0);">
+			<a  href="<?php echo route('frontend.index.createProFile'); ?>">
 				<div class="zidan">
 					<div >
 						<div class="ths">TẠO HỒ SƠ</div>
@@ -30,11 +30,11 @@
 			<a  href="javascript:void(0);">
 				<div class="zidan">
 					<div >
-						<div class="ths">HỎI ĐÁP TÌM VIỆC NHANH HƠN</div>
-						<div class="sloganthsmp">Tiếp cận nhanh nhất với hơn 1 triệu hồ sơ tìm việc</div>
+						<div class="ths">HỎI ĐÁP</div>
+						<div class="sloganthsmp">Tìm việc nhanh tiếp cận hàng nghìn nhà tuyển dụng</div>
 					</div>
 					<div >
-						<div class="mica-2"><i class="far fa-address-card"></i></div>
+						<div class="mica-2"><i class="fas fa-question-circle"></i></div>
 					</div>
 				</div>
 			</a>

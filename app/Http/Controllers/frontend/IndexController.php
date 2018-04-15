@@ -1138,6 +1138,24 @@ class IndexController extends Controller {
 		);      
 		return redirect()->route('frontend.index.manageRecruitment')->with(["message"=>$info]);                             
 	}
+	public function createProFile(Request $request){
+		$flag=1;
+		$msg=array();          
+		$arrUser=array();    
+		$data=array();				
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}
+		return view('frontend.create-profile',compact('data','msg','flag'));     
+	}
 }
 
 

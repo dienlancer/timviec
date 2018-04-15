@@ -16,7 +16,7 @@ if(Session::has($ssNameUser)){
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
-				<h1 class="dn-dk-h">Tài Khoản Ứng Viên</h1>
+				<h1 class="dn-dk-h">Tạo hồ sơ</h1>
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					

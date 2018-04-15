@@ -81,55 +81,199 @@ public function getForm($task,$id=""){
 }
 public function save(Request $request){
   $id 					        =		trim($request->id);        
-  $fullname 				    =		trim($request->fullname);    
-  $alias                =   trim($request->alias);                          
-  $sort_order           =   trim($request->sort_order);
-  $status               =   trim($request->status);          
+  $fullname         =   trim(@$request->fullname);
+  $alias         =   trim(@$request->alias);
+  $quantity         =   trim(@$request->quantity);
+  $sex_id           =   trim(@$request->sex_id);  
+  $description      =   trim(@$request->description);
+  $requirement      =   trim(@$request->requirement);
+  $work_id          =   trim(@$request->work_id);
+  $literacy_id      =   trim(@$request->literacy_id);
+  $experience_id    =   trim(@$request->experience_id);
+  $salary_id        =   trim(@$request->salary_id);
+  $commission_from  =   trim(@$request->commission_from);
+  $commission_to    =   trim(@$request->commission_to);
+  $working_form_id  =   trim(@$request->working_form_id);
+  $probationary_id  =   trim(@$request->probationary_id);
+  $benefit          =   trim(@$request->benefit);
+  $job_id           =   @$request->job_id;
+  $province_id      =   @$request->province_id;
+  $duration         =   trim(@$request->duration);
+  $status           =   trim(@$request->status); 
   $data 		            =   array();
-
   $item		              =   null;
-
   $info                 =   array();
   $checked              =   1;                           
   $msg                =   array();
-  if(empty($fullname)){
-   $checked = 0;
+  if(mb_strlen(@$fullname) < 15){
+    $msg["fullname"] = 'Tiêu đề phải từ 15 ký tự trở lên';    
+    $checked = 0;
+  }    
+  if((int)@$quantity == 0){
+    $msg["quantity"] = 'Số lượng cần tuyển phải lớn hơn 0';    
+    $checked = 0;
+  } 
+  if((int)@$sex_id == 0){
+    $msg["sex_id"] = 'Vui lòng chọn giới tính';    
+    $checked = 0;
+  }
+  if(mb_strlen(@$description) == 0){
+    $msg["description"] = 'Vui lòng nhập mô tả công việc';    
+    $checked = 0; 
+  }
+  if(mb_strlen(@$requirement) == 0){
+    $msg["requirement"] = 'Vui lòng nhập yêu cầu công việc';    
+    $checked = 0; 
+  }
+  if((int)@$work_id == 0){
+    $msg["work_id"] = 'Vui lòng chọn tính chất công việc';    
+    $checked = 0;  
+  }
+  if((int)@$literacy_id == 0){
+    $msg["literacy_id"] = 'Vui lòng chọn trình độ học vấn';    
+    $checked = 0;   
+  }
+  if((int)@$experience_id == 0){
+    $msg["experience_id"] = 'Vui lòng chọn kinh nghiệm';    
+    $checked = 0;    
+  }
+  if((int)@$salary_id == 0){
+    $msg["salary_id"] = 'Vui lòng chọn mức lương';    
+    $checked = 0;     
+  }
+  if((int)@$commission_from != 0 || (int)@$commission_to != 0){
+    if((int)@$commission_to <= (int)@$commission_from){
+      $msg["commission_from"] = 'Mức hoa hồng không hợp lệ';    
+      $checked = 0;     
+    }
+  }
+  if((int)@$working_form_id == 0){
+    $msg["working_form_id"] = 'Vui lòng chọn hình thức công việc';    
+    $checked = 0;      
+  }
+  if((int)@$probationary_id == 0){
+    $msg["probationary_id"] = 'Vui lòng chọn thời gian thử việc';    
+    $checked = 0;      
+  }
+  if(mb_strlen(@$benefit)  == 0){
+    $msg["benefit"] = 'Vui lòng nhập quyền lợi';    
+    $checked = 0;      
+  }
+  if(count(@$job_id) == 0){
+    $msg["job_id"] = 'Vui lòng chọn ngành nghề';    
+    $checked = 0;      
+  }else{
+    if((int)@$job_id[0]==0){
+      $msg["job_id"] = 'Vui lòng chọn ngành nghề';    
+      $checked = 0;      
+    }
+  }
+  if(count(@$province_id) == 0){
+    $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
+    $checked = 0;      
+  }else{
+    if((int)@$province_id[0]==0){
+      $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
+      $checked = 0;      
+    }
+  }
+  if((int)@$province_id == 0){
+    $msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
+    $checked = 0;      
+  }
+  if(mb_strlen(@$duration)  == 0){
+    $msg["duration"] = 'Vui lòng chọn thời gian hết hạn';      
+    $checked = 0;      
+  }
+  if((int)@$status == -1){
+    $msg["status"] = 'Vui lòng chọn trạng thái hiển thị tin';    
+    $checked = 0;      
+  }       
+  if ($checked == 1) {    
+    if(empty($id)){
+      $item         =   new RecruitmentModel;       
+      $item->created_at   = date("Y-m-d H:i:s",time());        
+    } else{
+      $item       = RecruitmentModel::find((int)@$id);   
+    }  
+    $item->fullname           = @$fullname;   
+    $item->alias            = @$alias;
+    $item->quantity         = (int)@$quantity;
+    $item->sex_id           = (int)@$sex_id;
+    $item->description      = @$description;
+    $item->requirement      = @$requirement;
+    $item->work_id          = (int)@$work_id;
+    $item->literacy_id      = (int)@$literacy_id;
+    $item->experience_id    = (int)@$experience_id;
+    $item->salary_id        = (int)@$salary_id;
+    $item->commission_from  = (int)@$commission_from;
+    $item->commission_to    = (int)@$commission_to;
+    $item->working_form_id  = (int)@$working_form_id;
+    $item->probationary_id  = (int)@$probationary_id;
+    $item->benefit          = @$benefit;        
+    /* begin duration */
+    $arrDate                = date_parse_from_format('d/m/Y',@$duration) ;
+    $ts                     = mktime(@$arrDate["hour"],@$arrDate["minute"],@$arrDate["second"],@$arrDate['month'],@$arrDate['day'],@$arrDate['year']);
+    $real_date                 = date('Y-m-d', $ts);
+    /* end duration */
+    $item->duration         = @$real_date;           
+    $item->status           = (int)@$status;    
+    $item->updated_at       = date("Y-m-d H:i:s",time());           
+    $item->save();     
 
-   $msg["fullname"] = "Thiếu tên";
- }                   
- if(empty($sort_order)){
-   $checked = 0;
+    $source_recruitment_job=RecruitmentJobModel::whereRaw('recruitment_id = ?',[(int)@$item->id])->select('job_id')->get()->toArray();
+    $source_recruitment_place=RecruitmentPlaceModel::whereRaw('recruitment_id = ?',[(int)@$item->id])->select('province_id')->get()->toArray();
+    $source_job_id=array();
+    $source_province_id=array();
+    if(count($source_recruitment_job) > 0){
+      foreach ($source_recruitment_job as $key => $value) {
+        $source_job_id[]=$value['job_id'];
+      }
+    }
+    if(count($source_recruitment_place) > 0){
+      foreach ($source_recruitment_place as $key => $value) {
+        $source_province_id[]=$value['province_id'];
+      }
+    }  
+    sort($source_job_id);
+    sort($source_province_id);
+    sort($job_id);
+    sort($province_id);
+    $compare_job=0;
+    $compare_province=0;
+    if($source_job_id == $job_id){
+      $compare_job=1;       
+    }    
+    if($source_province_id == $province_id){
+      $compare_province=1;       
+    }
+    if($compare_job == 0){
+      RecruitmentJobModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();   
+      foreach ($job_id as $key => $value) {
+        $item2=new RecruitmentJobModel;
+        $item2->recruitment_id = (int)@$item->id;
+        $item2->job_id         = (int)@$value;
+        $item2->save();
+      }
+    }
+    if($compare_province == 0){
+      RecruitmentPlaceModel::whereRaw("recruitment_id = ?",[(int)@$item->id])->delete();  
+      foreach ($province_id as $key => $value) {
+        $item3=new RecruitmentPlaceModel;
+        $item3->recruitment_id = (int)@$item->id;
+        $item3->province_id         = (int)@$value;
+        $item3->save();
+      }
+    }              
 
-   $msg["sort_order"] 		= "Thiếu sắp xếp";
- }
- if((int)$status==-1){
-   $checked = 0;
-
-   $msg["status"] 			= "Thiếu trạng thái";
- }
- if ($checked == 1) {    
-  if(empty($id)){
-    $item         =   new RecruitmentModel;       
-    $item->created_at   = date("Y-m-d H:i:s",time());        
-
-  } else{
-    $item       = RecruitmentModel::find((int)@$id);   
-
-  }  
-  $item->fullname 		    =	@$fullname;  
-  $item->alias            = @$alias;                                         
-  $item->sort_order 		  =	(int)@$sort_order;
-  $item->status 			    =	(int)@$status;    
-  $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
-  $item->save();                                  
-  $msg['success']='Lưu thành công';  
-}
-$info = array(
-  "checked"       => $checked,          
-  'msg'       => $msg,                       
-  "id"            => (int)@$id
-);                   		 			       
-return $info;       
+    $msg['success']='Lưu thành công';  
+  }
+  $info = array(
+    "checked"       => $checked,          
+    'msg'       => $msg,                       
+    "id"            => (int)@$id
+  );                   		 			       
+  return $info;       
 }
 public function changeStatus(Request $request){
   $id             =       (int)@$request->id;     

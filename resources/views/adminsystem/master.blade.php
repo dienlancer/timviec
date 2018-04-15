@@ -116,6 +116,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <script language="javascript" type="text/javascript" src="{{asset('public/adminsystem/js/jquery.fancybox.min.js')}}"                 ></script>
         <link href="{{asset('public/adminsystem/css/jquery.fancybox.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- end fancybox -->
+        <!-- begin ui-->
+        <script language="javascript" type="text/javascript" src="{{asset('public/adminsystem/jquery-ui/jquery-ui.js')}}"                 ></script>
+        <link href="{{asset('public/adminsystem/jquery-ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
+        <!-- end ui-->
         <!-- BEGIN CUSTOM LIBRARY -->
         <script language="javascript" type="text/javascript" src="{{asset('public/adminsystem/ckeditor/ckeditor.js')}}"                 ></script>
         <script language="javascript" type="text/javascript" src="{{asset('public/adminsystem/ckfinder/ckfinder.js')}}"                 ></script>

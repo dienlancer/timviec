@@ -60,7 +60,7 @@ class IndexController extends Controller {
 		return view("frontend.register-login",compact('status'));         
 	}
 	public function registerEmployer(Request $request){        
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();       
 		if($request->isMethod('post')){
@@ -82,7 +82,7 @@ class IndexController extends Controller {
 			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
 				$msg["email"] = 'Email nhà tuyển dụng không hợp lệ'; 
 				$data['email']='';           
-				$flag = 0;
+				$checked = 0;
 			}
 			else{
 				$source=array();
@@ -90,92 +90,92 @@ class IndexController extends Controller {
 				if (count($source) > 0) {
 					$msg["email"]= "Email nhà tuyển dụng đã có trong hệ thống. ";
 					$data['email']='';
-					$flag = 0;                    
+					$checked = 0;                    
 				}
 				$source=CandidateModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
 				if (count($source) > 0) {
 					$msg["email"]= "Email nhà tuyển dụng đã có trong hệ thống. ";
 					$data['email']='';
-					$flag = 0;                    
+					$checked = 0;                    
 				}       
 			}
 			if(mb_strlen($password) < 10 ){
 				$msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
 				$data['password']='';
 				$data['password_confirmed']='';
-				$flag = 0;                
+				$checked = 0;                
 			}else{
 				if(strcmp($password, $password_confirmed) !=0 ){
 					$msg["password"] = "Xác nhận mật khẩu không trùng khớp";
 					$data['password']='';
 					$data['password_confirmed']='';
-					$flag = 0;                  
+					$checked = 0;                  
 				}
 			}    
 			if(mb_strlen($fullname) < 15){
 				$msg["fullname"] = 'Tên công ty phải từ 15 ký tự trở lên';    
 				$data['fullname']='';        
-				$flag = 0;
+				$checked = 0;
 			}else{
 				$source=array();
 				$source=EmployerModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();    
 				if (count($source) > 0) {
 					$msg["fullname"] = "Tên công ty đã có trong hệ thống. ";
 					$data['fullname']='';
-					$flag = 0;                    
+					$checked = 0;                    
 				}       
 			}  
 			if(mb_strlen($address) < 15){
 				$msg["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
 				$data['address']='';      
-				$flag = 0;
+				$checked = 0;
 			}   
 			if(mb_strlen($phone) < 10){
 				$msg["phone"] = 'Điện thoại công ty phải từ 10 ký tự trở lên';   
 				$data['phone']='';         
-				$flag = 0;
+				$checked = 0;
 			}else{
 				$source=array();
 				$source=EmployerModel::whereRaw("trim(lower(phone)) = ?",[trim(mb_strtolower($phone,'UTF-8'))])->get()->toArray();    
 				if (count($source) > 0) {
 					$msg["phone"] = "Điện thoại công ty đã có trong hệ thống. ";
 					$data['phone']='';
-					$flag = 0;                
+					$checked = 0;                
 				}       
 			}  
 			if((int)@$request->province_id == 0){
 				$msg["province_id"] = 'Vui lòng chọn tỉnh thành phố';            
 				$data['province_id']=0;
-				$flag = 0;
+				$checked = 0;
 			}
 			if((int)@$request->scale_id == 0){
 				$msg["scale_id"] = 'Vui lòng chọn quy mô công ty';    
 				$data['scale_id']=0;        
-				$flag = 0;
+				$checked = 0;
 			}      
 			if(mb_strlen($website) > 0){
 				if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
 					$msg["website"] = 'Website công ty không hợp lệ';     
 					$data['website']='';       
-					$flag = 0;
+					$checked = 0;
 				}
 			}      
 			if(mb_strlen($contacted_name) < 6){
 				$msg["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
 				$data['contacted_name']='';         
-				$flag = 0;
+				$checked = 0;
 			} 
 			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($contacted_email,'UTF-8')   )){
 				$msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
 				$data['contacted_email']='';       
-				$flag = 0;
+				$checked = 0;
 			}
 			if(mb_strlen($contacted_phone) < 10){
 				$msg["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
 				$data['contacted_phone']='';
-				$flag = 0;
+				$checked = 0;
 			}
-			if($flag==1){
+			if($checked==1){
 				$item               = new EmployerModel;
 				$item->email        = @$email;
 				$item->password     = Hash::make(@$password) ;
@@ -207,10 +207,10 @@ class IndexController extends Controller {
 				$msg['success']='<span>Đăng ký tài khoản nhà tuyển dụng thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
 			}
 		}
-		return view("frontend.employer-register",compact('data','msg','flag'));         
+		return view("frontend.employer-register",compact('data','msg','checked'));         
 	}
 	public function registerCandidate(Request $request){             
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();       
 		if($request->isMethod('post')){
@@ -223,7 +223,7 @@ class IndexController extends Controller {
 			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
 				$msg["email"] = 'Email ứng viên không hợp lệ'; 
 				$data['email']='';           
-				$flag = 0;
+				$checked = 0;
 			}
 			else{
 				$source=array();
@@ -231,47 +231,47 @@ class IndexController extends Controller {
 				if (count($source) > 0) {
 					$msg["email"]= "Email ứng viên đã có trong hệ thống. ";
 					$data['email']='';
-					$flag = 0;                    
+					$checked = 0;                    
 				}
 				$source=EmployerModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();     
 				if (count($source) > 0) {
 					$msg["email"]= "Email ứng viên đã có trong hệ thống. ";
 					$data['email']='';
-					$flag = 0;                    
+					$checked = 0;                    
 				}       
 			}
 			if(mb_strlen($password) < 10 ){
 				$msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
 				$data['password']='';
 				$data['password_confirmed']='';
-				$flag = 0;                
+				$checked = 0;                
 			}else{
 				if(strcmp($password, $password_confirmed) !=0 ){
 					$msg["password"] = "Xác nhận mật khẩu không trùng khớp";
 					$data['password']='';
 					$data['password_confirmed']='';
-					$flag = 0;                  
+					$checked = 0;                  
 				}
 			}    
 			if(mb_strlen($fullname) < 6){
 				$msg["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
 				$data['fullname']='';        
-				$flag = 0;
+				$checked = 0;
 			}        
 			if(mb_strlen($phone) < 10){
 				$msg["phone"] = 'Điện thoại ứng viên phải từ 10 ký tự trở lên';   
 				$data['phone']='';         
-				$flag = 0;
+				$checked = 0;
 			}else{
 				$source=array();
 				$source=CandidateModel::whereRaw("trim(lower(phone)) = ?",[trim(mb_strtolower($phone,'UTF-8'))])->get()->toArray();    
 				if (count($source) > 0) {
 					$msg["phone"] = "Điện thoại ứng viên đã có trong hệ thống. ";
 					$data['phone']='';
-					$flag = 0;                
+					$checked = 0;                
 				}       
 			}        
-			if($flag==1){
+			if($checked==1){
 				$item               = new CandidateModel;
 				$item->email        = @$email;
 				$item->password     = Hash::make(@$password) ;
@@ -284,12 +284,12 @@ class IndexController extends Controller {
 				$msg['success']='<span>Đăng ký tài khoản ứng viên thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
 			}
 		}
-		return view("frontend.candidate-register",compact('data','msg','flag'));         
+		return view("frontend.candidate-register",compact('data','msg','checked'));         
 	}    
 	public function loginEmployer(Request $request){      
 		$msg=array();
 		$data=array();     
-		$flag=1;  
+		$checked=1;  
 		$arrUser=array();
 		$source=array();
 		if(Session::has($this->_ssNameUser)){
@@ -314,19 +314,19 @@ class IndexController extends Controller {
 					Session::put($this->_ssNameUser,$arrUser);  
 					return redirect()->route('frontend.index.viewEmployerAccount'); 
 				}else{
-					$flag=0;
+					$checked=0;
 					$msg['success']="Đăng nhập sai mật khẩu";
 				}              
 			}else{
-				$flag=0;
+				$checked=0;
 				$msg['success']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
 			}          
 		}                          
-		return view("frontend.employer-login",compact('msg',"data",'flag'));                       
+		return view("frontend.employer-login",compact('msg',"data",'checked'));                       
 	}
 	public function loginCandidate(Request $request){         
 		$msg=array();
-		$flag=1;
+		$checked=1;
 		$data=array();       
 		$arrUser=array();
 		$source=array();
@@ -353,17 +353,17 @@ class IndexController extends Controller {
 					return redirect()->route('frontend.index.viewCandidateAccount'); 
 				}else{
 					$msg['success']="Đăng nhập sai mật khẩu";
-					$flag=0;
+					$checked=0;
 				}              
 			}else{
 				$msg['success']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
-				$flag=0;
+				$checked=0;
 			}          
 		}                       
-		return view("frontend.candidate-login",compact('msg',"data",'flag'));                       
+		return view("frontend.candidate-login",compact('msg',"data",'checked'));                       
 	}    
 	public function viewEmployerAccount(Request $request){
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();       
 		$arrUser=array();    
@@ -402,67 +402,67 @@ class IndexController extends Controller {
 			if(mb_strlen($fullname) < 15){
 				$msg["fullname"] = 'Tên công ty phải từ 15 ký tự trở lên';    
 				$data['fullname']='';        
-				$flag = 0;
+				$checked = 0;
 			}else{
 				$source=array();
 				$source=EmployerModel::whereRaw("trim(lower(fullname)) = ? and id != ?",[trim(mb_strtolower($fullname,'UTF-8')),(int)@$arrUser['id']])->get()->toArray();    
 				if (count($source) > 0) {
 					$msg["fullname"] = "Tên công ty đã có trong hệ thống. ";
 					$data['fullname']='';
-					$flag = 0;                    
+					$checked = 0;                    
 				}       
 			}  
 			if(mb_strlen($address) < 15){
 				$msg["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
 				$data['address']='';      
-				$flag = 0;
+				$checked = 0;
 			}       
 			if(mb_strlen($phone) < 10){
 				$msg["phone"] = 'Điện thoại công ty phải từ 10 ký tự trở lên';   
 				$data['phone']='';         
-				$flag = 0;
+				$checked = 0;
 			}else{
 				$source=array();
 				$source=EmployerModel::whereRaw("trim(lower(phone)) = ? and id != ?",[trim(mb_strtolower($phone,'UTF-8')),(int)@$arrUser['id']])->get()->toArray();    
 				if (count($source) > 0) {
 					$msg["phone"] = "Điện thoại công ty đã có trong hệ thống. ";
 					$data['phone']='';
-					$flag = 0;                
+					$checked = 0;                
 				}       
 			}  
 			if((int)@$request->province_id == 0){
 				$msg["province_id"] = 'Vui lòng chọn tỉnh thành phố';            
 				$data['province_id']=0;
-				$flag = 0;
+				$checked = 0;
 			}
 			if((int)@$request->scale_id == 0){
 				$msg["scale_id"] = 'Vui lòng chọn quy mô công ty';    
 				$data['scale_id']=0;        
-				$flag = 0;
+				$checked = 0;
 			}      
 			if(mb_strlen($website) > 0){
 				if(!preg_match("#^(https?://(www\.)?|(www\.))[a-z0-9\-]{3,}(\.[a-z]{2,4}){1,2}$#", mb_strtolower($website,'UTF-8')   )){
 					$msg["website"] = 'Website công ty không hợp lệ';     
 					$data['website']='';       
-					$flag = 0;
+					$checked = 0;
 				}
 			}      
 			if(mb_strlen($contacted_name) < 6){
 				$msg["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
 				$data['contacted_name']='';         
-				$flag = 0;
+				$checked = 0;
 			} 
 			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($contacted_email,'UTF-8')   )){
 				$msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
 				$data['contacted_email']='';       
-				$flag = 0;
+				$checked = 0;
 			}
 			if(mb_strlen($contacted_phone) < 10){
 				$msg["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
 				$data['contacted_phone']='';
-				$flag = 0;
+				$checked = 0;
 			}
-			if($flag==1){
+			if($checked==1){
 				$item               = EmployerModel::find((int)@$arrUser['id']);
 				$item->fullname     = @$fullname;
 				$item->address      = @$address;
@@ -499,10 +499,10 @@ class IndexController extends Controller {
 				$msg['success']='<span>Cập nhật tài khoản nhà tuyển dụng thành công.</span>';
 			}
 		}
-		return view("frontend.employer-account",compact('data','msg','flag'));         
+		return view("frontend.employer-account",compact('data','msg','checked'));         
 	}
 	public function viewCandidateAccount(Request $request){
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();       
 		$arrUser=array();
@@ -545,57 +545,57 @@ class IndexController extends Controller {
 			if(mb_strlen($fullname) < 6){
 				$msg["fullname"] = 'Tên ứng viên phải từ 6 ký tự trở lên';    
 				$data['fullname']='';        
-				$flag = 0;
+				$checked = 0;
 			}        
 			if(mb_strlen($phone) < 10){
 				$msg["phone"] = 'Điện thoại ứng viên phải từ 10 ký tự trở lên';   
 				$data['phone']='';         
-				$flag = 0;
+				$checked = 0;
 			}else{
 				$source=array();
 				$source=CandidateModel::whereRaw("trim(lower(phone)) = ? and id != ?",[trim(mb_strtolower($phone,'UTF-8')),(int)@$arrUser['id']])->get()->toArray();    
 				if (count($source) > 0) {
 					$msg["phone"] = "Điện thoại ứng viên đã có trong hệ thống. ";
 					$data['phone']='';
-					$flag = 0;                
+					$checked = 0;                
 				}       
 			}        
 			if($day==0){
 				$msg["day"] = 'Thiếu ngày sinh';    
 				$data['day']='';        
-				$flag = 0;
+				$checked = 0;
 			}
 			if($month==0){
 				$msg["month"] = 'Thiếu tháng sinh';    
 				$data['month']='';        
-				$flag = 0;
+				$checked = 0;
 			}
 			if($year==0){
 				$msg["year"] = 'Thiếu năm sinh';    
 				$data['year']='';        
-				$flag = 0;
+				$checked = 0;
 			}
 			if((int)@$request->sex_id == 0){
 				$msg["sex_id"] = 'Vui lòng chọn giới tính';            
 				$data['sex_id']=0;
-				$flag = 0;
+				$checked = 0;
 			}
 			if((int)@$request->marriage_id == 0){
 				$msg["marriage_id"] = 'Vui lòng chọn tình trạng hôn nhân';            
 				$data['marriage_id']=0;
-				$flag = 0;
+				$checked = 0;
 			}
 			if((int)@$request->province_id == 0){
 				$msg["province_id"] = 'Vui lòng chọn tỉnh thành phố';            
 				$data['province_id']=0;
-				$flag = 0;
+				$checked = 0;
 			}
 			if(mb_strlen(@$address) < 10){
 				$msg["address"] = 'Vui lòng nhập chỗ ở hiện tại';            
 				$data['address']='';
-				$flag = 0;
+				$checked = 0;
 			}
-			if($flag==1){
+			if($checked==1){
 				$item               = CandidateModel::find((int)@$arrUser['id']);
 				$item->fullname     = @$fullname;
 				$item->phone        = @$phone;   
@@ -635,10 +635,10 @@ class IndexController extends Controller {
 				$msg['success']='<span>Cập nhật tài khoản ứng viên thành công.</span>';
 			}
 		}
-		return view("frontend.candidate-account",compact('data','msg','flag'));         
+		return view("frontend.candidate-account",compact('data','msg','checked'));         
 	}
 	public function viewEmployerSecurity(Request $request){   
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$arrUser=array();    
 		if(Session::has($this->_ssNameUser)){
@@ -657,24 +657,24 @@ class IndexController extends Controller {
 			$password_confirmed = @$request->password_confirmed;
 			if(mb_strlen($password) < 10 ){
 				$msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
-				$flag = 0;                
+				$checked = 0;                
 			}else{
 				if(strcmp($password, $password_confirmed) !=0 ){
 					$msg["password"] = "Xác nhận mật khẩu không trùng khớp";
-					$flag = 0;                  
+					$checked = 0;                  
 				}
 			}  
-			if($flag==1){
+			if($checked==1){
 				$item               = EmployerModel::find((int)@$arrUser['id']);
 				$item->password     = Hash::make(@$password) ;
 				$item->save();   
 				$msg['success']='<span>Đổi mật khẩu thành công.</span>';
 			} 
 		}
-		return view("frontend.employer-security",compact('msg','flag'));                               
+		return view("frontend.employer-security",compact('msg','checked'));                               
 	}
 	public function viewCandidateSecurity(Request $request){   
-		$flag=1;
+		$checked=1;
 		$msg=array();          
 		$arrUser=array();    
 		if(Session::has($this->_ssNameUser)){
@@ -693,21 +693,21 @@ class IndexController extends Controller {
 			$password_confirmed = @$request->password_confirmed;
 			if(mb_strlen($password) < 10 ){
 				$msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
-				$flag = 0;                
+				$checked = 0;                
 			}else{
 				if(strcmp($password, $password_confirmed) !=0 ){
 					$msg["password"] = "Xác nhận mật khẩu không trùng khớp";
-					$flag = 0;                  
+					$checked = 0;                  
 				}
 			}  
-			if($flag==1){
+			if($checked==1){
 				$item               = CandidateModel::find((int)@$arrUser['id']);
 				$item->password     = Hash::make(@$password) ;
 				$item->save();   
 				$msg['success']='<span>Đổi mật khẩu thành công.</span>';
 			} 
 		}
-		return view("frontend.candidate-security",compact('msg','flag'));                                   
+		return view("frontend.candidate-security",compact('msg','checked'));                                   
 	}
 	public function logoutEmployer(){
 		$arrUser=array();            
@@ -727,7 +727,7 @@ class IndexController extends Controller {
 	}
 	
 	public function getFormRecruitment(Request $request,$task,$id){
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();
 		
@@ -794,124 +794,124 @@ class IndexController extends Controller {
 			if(mb_strlen(@$fullname) < 15){
 				$msg["fullname"] = 'Tiêu đề phải từ 15 ký tự trở lên';    
 				$data['fullname']='';        
-				$flag = 0;
+				$checked = 0;
 			}    
 			if((int)@$quantity == 0){
 				$msg["quantity"] = 'Số lượng cần tuyển phải lớn hơn 0';    
 				$data['quantity']='';        
-				$flag = 0;
+				$checked = 0;
 			} 
 			if((int)@$sex_id == 0){
 				$msg["sex_id"] = 'Vui lòng chọn giới tính';    
 				$data['sex_id']='';        
-				$flag = 0;
+				$checked = 0;
 			}
 			if(mb_strlen(@$description) == 0){
 				$msg["description"] = 'Vui lòng nhập mô tả công việc';    
 				$data['description']='';        
-				$flag = 0; 
+				$checked = 0; 
 			}
 			if(mb_strlen(@$requirement) == 0){
 				$msg["requirement"] = 'Vui lòng nhập yêu cầu công việc';    
 				$data['requirement']='';        
-				$flag = 0; 
+				$checked = 0; 
 			}
 			if((int)@$work_id == 0){
 				$msg["work_id"] = 'Vui lòng chọn tính chất công việc';    
 				$data['work_id']='';        
-				$flag = 0;  
+				$checked = 0;  
 			}
 			if((int)@$literacy_id == 0){
 				$msg["literacy_id"] = 'Vui lòng chọn trình độ học vấn';    
 				$data['literacy_id']='';        
-				$flag = 0;   
+				$checked = 0;   
 			}
 			if((int)@$experience_id == 0){
 				$msg["experience_id"] = 'Vui lòng chọn kinh nghiệm';    
 				$data['experience_id']='';        
-				$flag = 0;    
+				$checked = 0;    
 			}
 			if((int)@$salary_id == 0){
 				$msg["salary_id"] = 'Vui lòng chọn mức lương';    
 				$data['salary_id']='';        
-				$flag = 0;     
+				$checked = 0;     
 			}
 			if((int)@$commission_from != 0 || (int)@$commission_to != 0){
 				if((int)@$commission_to <= (int)@$commission_from){
 					$msg["commission_from"] = 'Mức hoa hồng không hợp lệ';    
 					$data['commission_from']='';        
 					$data['commission_to']='';        
-					$flag = 0;     
+					$checked = 0;     
 				}
 			}
 			if((int)@$working_form_id == 0){
 				$msg["working_form_id"] = 'Vui lòng chọn hình thức công việc';    
 				$data['working_form_id']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}
 			if((int)@$probationary_id == 0){
 				$msg["probationary_id"] = 'Vui lòng chọn thời gian thử việc';    
 				$data['probationary_id']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}
 			if(mb_strlen(@$benefit)  == 0){
 				$msg["benefit"] = 'Vui lòng nhập quyền lợi';    
 				$data['benefit']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}
 			if(count(@$job_id) == 0){
 				$msg["job_id"] = 'Vui lòng chọn ngành nghề';    
 				$data['job_id']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}else{
 				if((int)@$job_id[0]==0){
 					$msg["job_id"] = 'Vui lòng chọn ngành nghề';    
 					$data['job_id']='';        
-					$flag = 0;      
+					$checked = 0;      
 				}
 			}
 			if(count(@$province_id) == 0){
 				$msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
 				$data['province_id']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}else{
 				if((int)@$province_id[0]==0){
 					$msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
 					$data['province_id']='';        
-					$flag = 0;      
+					$checked = 0;      
 				}
 			}			
 			if(mb_strlen(@$duration)  == 0){
 				$msg["duration"] = 'Vui lòng chọn thời gian hết hạn';    
 				$data['duration']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}
 			if((int)@$status == -1){
 				$msg["status"] = 'Vui lòng chọn trạng thái hiển thị tin';    
 				$data['status']='';        
-				$flag = 0;      
+				$checked = 0;      
 			} 
 			if(mb_strlen(@$contacted_name) < 6){
 				$msg["contacted_name"] = 'Họ tên người liên hệ phải từ 6 ký tự trở lên';   
 				$data['contacted_name']='';         
-				$flag = 0;
+				$checked = 0;
 			} 
 			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower(@$contacted_email,'UTF-8')   )){
 				$msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
 				$data['contacted_email']='';       
-				$flag = 0;
+				$checked = 0;
 			}
 			if(mb_strlen(@$address) < 15){
 				$msg["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
 				$data['address']='';      
-				$flag = 0;
+				$checked = 0;
 			}  
 			if(mb_strlen(@$contacted_phone) < 10){
 				$msg["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
 				$data['contacted_phone']='';
-				$flag = 0;
+				$checked = 0;
 			}   
-			if($flag==1){
+			if($checked==1){
 				$item=null;
 				switch ($task) {
 					case 'add':            
@@ -1027,10 +1027,10 @@ class IndexController extends Controller {
 				}        
 			}  
 		}
-		return view('frontend.recruitment',compact('data','msg','flag','task'));     
+		return view('frontend.recruitment',compact('data','msg','checked','task'));     
 	}
 	public function manageRecruitment(Request $request){
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();       
 		$arrUser=array();    
@@ -1085,7 +1085,7 @@ class IndexController extends Controller {
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=recruitment2Converter($data,'recruitment');
-		return view('frontend.manage-recruitment',compact('data','msg','flag',"pagination",'q'));     
+		return view('frontend.manage-recruitment',compact('data','msg','checked',"pagination",'q'));     
 	}
 	public function changeRecruitmentAppearedStatus(Request $request){
 		$id             =       (int)$request->id;  
@@ -1143,7 +1143,8 @@ class IndexController extends Controller {
 		return redirect()->route('frontend.index.manageRecruitment')->with(["message"=>$info]);                             
 	}
 	public function getFormProfile(Request $request,$task,$id){
-		$flag=1;
+		$info                 =   array();
+		$checked=1;
 		$msg=array();          
 		$arrUser=array();    
 		$data=array();				
@@ -1193,61 +1194,61 @@ class IndexController extends Controller {
 			if(mb_strlen(@$fullname) < 15){
 				$msg["fullname"] = 'Tiêu đề phải từ 15 ký tự trở lên';    
 				$data['fullname']='';        
-				$flag = 0;
+				$checked = 0;
 			}
 			if((int)@$literacy_id == 0){
 				$msg["literacy_id"] = 'Vui lòng chọn trình độ học vấn';    
 				$data['literacy_id']='';        
-				$flag = 0;   
+				$checked = 0;   
 			}
 			if((int)@$experience_id == 0){
 				$msg["experience_id"] = 'Vui lòng chọn số năm kinh nghiệm';    
 				$data['experience_id']='';        
-				$flag = 0;    
+				$checked = 0;    
 			}
 			if((int)@$rank_present_id == 0){
 				$msg["rank_present_id"] = 'Vui lòng chọn cấp bậc hiện tại';    
 				$data['rank_present_id']='';        
-				$flag = 0;   
+				$checked = 0;   
 			}
 			if((int)@$rank_offered_id == 0){
 				$msg["rank_offered_id"] = 'Vui lòng chọn cấp bậc mong muốn';    
 				$data['rank_offered_id']='';        
-				$flag = 0;   
+				$checked = 0;   
 			}
 			if(count(@$job_id) == 0){
 				$msg["job_id"] = 'Vui lòng chọn ngành nghề mong muốn';    
 				$data['job_id']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}else{
 				if((int)@$job_id[0]==0){
 					$msg["job_id"] = 'Vui lòng chọn ngành nghề mong muốn';    
 					$data['job_id']='';        
-					$flag = 0;      
+					$checked = 0;      
 				}
 			}
 			if((int)@$salary == 0){
 				$msg["salary"] = 'Vui lòng ghi mức lương mong muốn';    
 				$data['salary']='';        
-				$flag = 0;   
+				$checked = 0;   
 			}
 			if(count(@$province_id) == 0){
 				$msg["province_id"] = 'Vui lòng chọn nơi làm việc mong muốn';    
 				$data['province_id']='';        
-				$flag = 0;      
+				$checked = 0;      
 			}else{
 				if((int)@$province_id[0]==0){
 					$msg["province_id"] = 'Vui lòng chọn nơi làm việc mong muốn';    
 					$data['province_id']='';        
-					$flag = 0;      
+					$checked = 0;      
 				}
 			}
 			if((int)@$status == -1){
 				$msg["status"] = 'Vui lòng chọn trạng thái nhà tuyển dụng cho phép tìm kiếm thông tin hay không';    
 				$data['status']='';        
-				$flag = 0;      
+				$checked = 0;      
 			} 
-			if($flag==1){
+			if($checked==1){
 				$item=null;
 				switch ($task) {
 					case 'add':            
@@ -1331,9 +1332,13 @@ class IndexController extends Controller {
 						$item3->save();
 					}
 				}  
+				$info = array(
+					"checked"       => $checked,          
+					'msg'       => $msg,                    
+				);  
 				switch ($task) {
 					case 'add':            
-					$msg['success']='<span>Tạo hồ sơ thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.getFormProfile',['edit',@$item->id]).'">Xem lại hồ sơ đã tạo</a></span>';            
+					return redirect()->route("frontend.index.getGroupProfile")->with(["message"=>$info]);
 					break;
 					case 'edit':            
 					$msg['success']='<span>Cập nhật hồ sơ thành công</span>';
@@ -1341,10 +1346,10 @@ class IndexController extends Controller {
 				}  				
 			}
 		}
-		return view('frontend.profile',compact('data','msg','flag','task'));     
+		return view('frontend.profile',compact('data','msg','checked','task'));     
 	}
 	public function viewProfileCabinet(Request $request){
-		$flag=1;
+		$checked=1;
 		$msg=array();        
 		$data=array();       
 		$arrUser=array();    
@@ -1399,7 +1404,7 @@ class IndexController extends Controller {
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=profile2Converter($data,'profile');
-		return view('frontend.cabinet-profile',compact('data','msg','flag',"pagination",'q'));     
+		return view('frontend.cabinet-profile',compact('data','msg','checked',"pagination",'q'));     
 	}
 	public function changeProfileSearchStatus(Request $request){
 		$id             =       (int)$request->id;  
@@ -1457,6 +1462,18 @@ class IndexController extends Controller {
 		return redirect()->route('frontend.index.viewProfileCabinet')->with(["message"=>$info]);                             
 	}
 	public function getGroupProfile(){
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}
 		return view('frontend.group-profile');     
 	}
 }

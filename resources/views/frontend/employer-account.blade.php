@@ -35,7 +35,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					
-					if((int)@$flag == 1){						
+					if((int)@$checked == 1){						
 						$type_msg='note-success';
 					}else{
 						$type_msg='note-danger';

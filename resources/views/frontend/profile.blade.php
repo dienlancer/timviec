@@ -73,7 +73,7 @@ switch ($task) {
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					
-					if((int)@$flag == 1){
+					if((int)@$checked == 1){
 						if($task == 'add'){
 							$disabled_status='disabled';
 							$register_status='';

@@ -50,9 +50,9 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>
-							<th class="news-title">Tin tuyển dụng</th>	
-							<th class="news-title"><center>Ngày đăng</center></th>							
-							<th class="news-title"><center>Hiển thị</center></th>
+							<th class="news-title">Tiêu đề hồ sơ</th>	
+							<th class="news-title"><center>Ngày tạo</center></th>							
+							<th class="news-title"><center>Cho phép nhà tuyển dụng tìm kiếm</center></th>
 							<th class="news-title"><center>Sửa</center></th>
 							<th class="news-title"><center>Xóa</center></th>
 						</tr>

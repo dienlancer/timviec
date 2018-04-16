@@ -17,7 +17,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					
-					if((int)@$flag == 1){
+					if((int)@$checked == 1){
 						$disabled_status='disabled';
 						$register_status='';
 						$type_msg='note-success';

@@ -4,9 +4,7 @@
 <?php 
 $seo=getSeo();
 $setting = getSettingSystem();
-$disabled_status='';
-$register_status='onclick="document.forms[\'frm\'].submit();"';
- 
+
 $arrUser=array();
 $ssNameUser='vmuser';
 $candidate=array();
@@ -22,6 +20,17 @@ if(count(@$candidate)>0){
     if(!empty(@$candidate["avatar"])){
         $picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
     }        
+}
+$disabled_status='';
+$register_status='onclick="document.forms[\'frm\'].submit();"';
+$dang_tin='';
+switch ($task) {
+	case 'add':
+		$dang_tin='Tạo hồ sơ';
+		break;
+	case 'edit':
+		$dang_tin='Cập nhật hồ sơ';
+		break;
 }  
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
@@ -65,8 +74,10 @@ if(count(@$candidate)>0){
 				if(count(@$msg) > 0){
 					$type_msg='';					
 					if((int)@$flag == 1){
-						$disabled_status='disabled';
-						$register_status='';
+						if($task == 'add'){
+							$disabled_status='disabled';
+							$register_status='';
+						}												
 						$type_msg='note-success';
 					}else{
 						$type_msg='note-danger';
@@ -84,7 +95,7 @@ if(count(@$candidate)>0){
 						</ul>	
 					</div>      
 					<?php
-				}		
+				}
 				$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$source_rank=App\RankModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
@@ -102,7 +113,7 @@ if(count(@$candidate)>0){
 				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,$disabled_status);
 				?>		
 				<div class="row mia">
-					<div class="col-lg-4"><h2 class="login-information">Thông tin chung</h2></div>
+					<div class="col-lg-4"><h2 class="login-information">Thông tin tổng quan</h2></div>
 					<div class="col-lg-8"></div>
 				</div>							
 				<div class="row mia">
@@ -162,7 +173,7 @@ if(count(@$candidate)>0){
 							<a href="javascript:void(0);" <?php echo $register_status; ?> >
 								<div class="narit">
 									<div><i class="far fa-save"></i></div>
-									<div class="margin-left-5">Lưu hồ sơ</div>
+									<div class="margin-left-5"><?php echo $dang_tin; ?></div>
 								</div>								
 							</a>
 						</div>

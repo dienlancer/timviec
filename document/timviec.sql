@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 16, 2018 lúc 07:15 AM
+-- Thời gian đã tạo: Th4 16, 2018 lúc 10:13 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2100,7 +2100,8 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `candidate_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 2, 4, 2, 1, 9000000, 5, 0, '2018-04-16 05:05:40', '2018-04-16 05:05:40');
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 2, 4, 2, 1, 9000000, 5, 1, '2018-04-16 05:05:40', '2018-04-16 08:10:38'),
+(6, 'Nhân viên kinh doanh thiết bị điện tử', 'nhan-vien-kinh-doanh-thiet-bi-dien-tu', 3, 5, 2, 3, 8000000, 5, 1, '2018-04-16 08:02:53', '2018-04-16 08:02:53');
 
 -- --------------------------------------------------------
 
@@ -2124,7 +2125,10 @@ CREATE TABLE `profile_job` (
 INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 51, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
 (2, 1, 53, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(3, 1, 55, '2018-04-16 05:05:40', '2018-04-16 05:05:40');
+(3, 1, 55, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
+(23, 6, 2, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
+(24, 6, 4, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
+(25, 6, 6, '2018-04-16 08:02:53', '2018-04-16 08:02:53');
 
 -- --------------------------------------------------------
 
@@ -2148,7 +2152,10 @@ CREATE TABLE `profile_place` (
 INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 57, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
 (2, 1, 59, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(3, 1, 61, '2018-04-16 05:05:40', '2018-04-16 05:05:40');
+(3, 1, 61, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
+(12, 6, 2, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
+(13, 6, 4, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
+(14, 6, 6, '2018-04-16 08:02:53', '2018-04-16 08:02:53');
 
 -- --------------------------------------------------------
 
@@ -2380,7 +2387,7 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-25 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-16 03:48:42');
+(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-25 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-16 07:18:27');
 
 -- --------------------------------------------------------
 
@@ -3933,19 +3940,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT cho bảng `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `project`

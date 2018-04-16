@@ -916,9 +916,12 @@ class IndexController extends Controller {
 				switch ($task) {
 					case 'add':            
 					$item                   = new RecruitmentModel;
+					$item->created_at=date("Y-m-d H:i:s");
+					$item->updated_at=date("Y-m-d H:i:s");
 					break;
 					case 'edit':
 					$item                   = RecruitmentModel::find((int)@$id);
+					$item->updated_at=date("Y-m-d H:i:s");
 					break;          
 				}              
 				$item->fullname           = @$fullname;
@@ -961,8 +964,7 @@ class IndexController extends Controller {
 				$item->duration         = @$real_date;        
 				$item->employer_id      = (int)@$arrUser['id'];        
 				$item->status           = (int)@$status;
-				$item->created_at=date("Y-m-d H:i:s");
-				$item->updated_at=date("Y-m-d H:i:s");   
+				   
 				$item->save();           
 				
 				$source_recruitment_job=RecruitmentJobModel::whereRaw('recruitment_id = ?',[(int)@$item->id])->select('job_id')->get()->toArray();
@@ -1128,7 +1130,7 @@ class IndexController extends Controller {
 		);      
 		return redirect()->route('frontend.index.manageRecruitment')->with(["message"=>$info]);                             
 	}
-	public function createProFile(Request $request){
+	public function getFormProfile(Request $request,$task,$id){
 		$flag=1;
 		$msg=array();          
 		$arrUser=array();    
@@ -1143,6 +1145,26 @@ class IndexController extends Controller {
 		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
+		}
+		if($task == 'edit'){
+			$data=ProfileModel::find((int)@$id)->toArray();
+			$source_profile_job=ProfileJobModel::whereRaw('profile_id = ?',[(int)@$id])->select('job_id')->get()->toArray();
+			$source_profile_place=ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$id])->select('province_id')->get()->toArray();
+			$source_job_id=array();
+			$source_province_id=array();
+			if(count($source_profile_job) > 0){
+				foreach ($source_profile_job as $key => $value) {
+					$source_job_id[]=$value['job_id'];
+				}
+			}
+			if(count($source_profile_place) > 0){
+				foreach ($source_profile_place as $key => $value) {
+					$source_province_id[]=$value['province_id'];
+				}
+			}      
+			$data['job_id']=$source_job_id;
+			$data['province_id']=$source_province_id;
+			$data['salary']=convertToTextPrice($data['salary']);      
 		}
 		if($request->isMethod('post')){
 			$data             	=	@$request->all();      
@@ -1214,13 +1236,31 @@ class IndexController extends Controller {
 				$flag = 0;      
 			} 
 			if($flag==1){
-				$item                   = new ProfileModel;
+				$item=null;
+				switch ($task) {
+					case 'add':            
+					$item                   = new ProfileModel;
+					$item->created_at=date("Y-m-d H:i:s");
+					$item->updated_at=date("Y-m-d H:i:s");   
+					break;
+					case 'edit':
+					$item                   = ProfileModel::find((int)@$id);
+					$item->updated_at=date("Y-m-d H:i:s");   
+					break;          
+				}              
 				$item->fullname           = @$fullname;
 				/* begin save alias */
 				$alias=str_slug(@$fullname,'-');				
-				$data_profile=array();        
-				$data_profile=ProfileModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();         
-				if (count(@$data_profile) > 0) {
+				$data_employer=array();        
+				switch ($task) {
+					case 'add':
+					$data_employer=ProfileModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();        
+					break;
+					case 'edit':
+					$data_employer=ProfileModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower(@$alias,'UTF-8')),@$id])->get()->toArray();                    
+					break;
+				}        
+				if (count(@$data_employer) > 0) {
 					$code_alias=rand(1,999999);
 					$alias=$alias.'-'.$code_alias;
 				}        				
@@ -1233,9 +1273,7 @@ class IndexController extends Controller {
 				$item->rank_offered_id=@$rank_offered_id;
 				$item->salary=@$salary;
 				$item->candidate_id      = (int)@$arrUser['id'];        
-				$item->status           = (int)@$status;
-				$item->created_at=date("Y-m-d H:i:s");
-				$item->updated_at=date("Y-m-d H:i:s");   
+				$item->status           = (int)@$status;				
 				$item->save();    
 				$source_profile_job=ProfileJobModel::whereRaw('profile_id = ?',[(int)@$item->id])->select('job_id')->get()->toArray();
 				$source_profile_place=ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$item->id])->select('province_id')->get()->toArray();
@@ -1281,10 +1319,118 @@ class IndexController extends Controller {
 						$item3->save();
 					}
 				}  
-				$msg['success']='<span>Tạo hồ sơ thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.getFormRecruitment',['edit',@$item->id]).'">Xem lại hồ sơ đã tạo</a></span>';            
+				switch ($task) {
+					case 'add':            
+					$msg['success']='<span>Tạo hồ sơ thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.getFormProfile',['edit',@$item->id]).'">Xem lại hồ sơ đã tạo</a></span>';            
+					break;
+					case 'edit':            
+					$msg['success']='<span>Cập nhật hồ sơ thành công</span>';
+					break;          
+				}  				
 			}
 		}
-		return view('frontend.create-profile',compact('data','msg','flag'));     
+		return view('frontend.profile',compact('data','msg','flag','task'));     
+	}
+	public function viewProfileCabinet(Request $request){
+		$flag=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}
+		$totalItems=0;
+		$totalItemsPerPage=20;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ='';            
+		$q='';
+		$query=DB::table('profile')   ;     
+		$query->where('profile.candidate_id',(int)@$arrUser['id']);    
+		if(!empty(@$request->q)){
+			$q=@$request->q;
+			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
+		}
+		$data=$query->select('profile.id')
+		->groupBy('profile.id')                
+		->get()->toArray();
+		$data=convertToArray($data);
+		$totalItems=count($data);    
+		$pageRange=$this->_pageRange;
+		if(isset($request->filter_page)){
+			if(!empty(@$request->filter_page)){
+				$currentPage=@$request->filter_page;
+			}
+		}          
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
+
+		$data=$query->select('profile.id','profile.fullname','profile.status','profile.created_at')
+		->groupBy('profile.id','profile.fullname','profile.status','profile.created_at')
+		->orderBy('profile.id', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()->toArray();   
+		$data=convertToArray($data);    
+		$data=profile2Converter($data,'profile');
+		return view('frontend.cabinet-profile',compact('data','msg','flag',"pagination",'q'));     
+	}
+	public function changeProfileSearchStatus(Request $request){
+		$id             =       (int)$request->id;  
+		$status         =       (int)$request->status;
+
+		$item=ProfileModel::find($id);
+		$trangThai=0;
+		if($status==0){
+			$trangThai=1;
+		}
+		else{
+			$trangThai=0;
+		}
+		$item->status=$status;
+		$item->save();
+		$result = array(
+			'id'      => $id, 
+			'status'  => $status, 
+			'link'    => 'javascript:changeStatus('.$id.','.$trangThai.');'
+		);
+		return $result;   
+	}      
+	public function deleteProfile($id){   
+		$info                 =   array();
+		$checked              =   1;                           
+		$msg                =   array();
+		$source=ProfileModel::find((int)@$id);
+		if($source == null){
+			$checked=0;
+			$msg['errorid']='Không đúng id';
+		}
+		if($checked == 1){
+			$item               =   ProfileModel::find((int)@$id);
+			$item->delete();          
+			ProfileJobModel::whereRaw('profile_id = ?',[@$id])->delete();  
+			ProfilePlaceModel::whereRaw('profile_id = ?',[@$id])->delete();
+			$msg['success']='Xóa thành công';
+		}  
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,                    
+		);      
+		return redirect()->route('frontend.index.viewProfileCabinet')->with(["message"=>$info]);                             
 	}
 }
 

@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4 tao-ho-so">
-			<a  href="<?php echo route('frontend.index.createProFile'); ?>">
+			<a  href="<?php echo route('frontend.index.getFormProfile',['add',0]); ?>">
 				<div class="zidan">
 					<div >
 						<div class="ths">TẠO HỒ SƠ</div>

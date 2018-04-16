@@ -231,7 +231,7 @@ if(isset($alias)){
 						<div class="tim-cong-viec">
 							<?php 
 							/* begin province */
-							$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+							$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 							$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,0,'','Chọn tỉnh thành');
 							/* end province */
 							echo $ddlProvince;

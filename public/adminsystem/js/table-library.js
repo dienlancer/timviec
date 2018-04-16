@@ -1024,6 +1024,7 @@ var basicTable = function () {
             initProbationaryTable();
             initJobTable();
             initRecruitmentTable();
+            initRankTable();
         }
     };
 }();

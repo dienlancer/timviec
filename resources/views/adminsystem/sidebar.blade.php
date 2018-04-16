@@ -28,6 +28,7 @@ $li_salary='';
 $li_working_form='';
 $li_probationary='';
 $li_job='';
+$li_rank='';
 
 $li_media='';
 $li_menu_type='';
@@ -114,6 +115,10 @@ switch ($controller) {
     break;
     case 'job': 
     $li_job='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'rank': 
+    $li_rank='active open';       
     $li_category_management='active open'; 
     break;
     case 'media':
@@ -315,6 +320,12 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.job.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Ngành nghề</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_rank; ?>">
+                    <a href="{!! route('adminsystem.rank.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Cấp bậc</span>                                            
                     </a>                                                                      
                 </li>  
             </ul>

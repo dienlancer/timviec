@@ -3,8 +3,8 @@
 @include("frontend.content-top-register")
 <?php 
 $seo=getSeo();
-$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_scale=App\ScaleModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_scale=App\ScaleModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 $arrUser=array();
 $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){

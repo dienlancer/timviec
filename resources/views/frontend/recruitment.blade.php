@@ -3,15 +3,15 @@
 @include("frontend.content-top-register")
 <?php 
 $seo=getSeo();
-$source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_work=App\WorkModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_literacy=App\LiteracyModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_experience=App\ExperienceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_salary=App\SalaryModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_working_form=App\WorkingFormModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_probationary=App\ProbationaryModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_job=App\JobModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_sex=App\SexModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_work=App\WorkModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_working_form=App\WorkingFormModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_probationary=App\ProbationaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 
 $arrUser=array();
 $ssNameUser='vmuser';

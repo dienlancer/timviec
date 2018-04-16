@@ -56,10 +56,16 @@ if(count(@$candidate)>0){
 					</div>      
 					<?php
 				}		
-				$source_literacy=App\LiteracyModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
-				$source_experience=App\ExperienceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_rank=App\RankModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+
 				$ddlLiteracy=cmsSelectboxCategory("literacy_id","vacca",$source_literacy,@$data['literacy_id'],$disabled_status,'Chọn trình độ học vấn');
 				$ddlExperience=cmsSelectboxCategory("experience_id","vacca",$source_experience,@$data['experience_id'],$disabled_status,'Chọn kinh nghiệm');
+				$ddlRankPresent=cmsSelectboxCategory("rank_present_id","vacca",$source_rank,@$data['rank_id'],$disabled_status,'Chọn cấp bậc hiện tại');
+				$ddlRankOffered=cmsSelectboxCategory("rank_offered_id","vacca",$source_rank,@$data['rank_id'],$disabled_status,'Chọn cấp bậc mong muốn');
+				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
 				?>					
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
@@ -107,6 +113,24 @@ if(count(@$candidate)>0){
 					<div class="col-lg-4" ><div class="xika"><div>Số năm kinh nghiệm</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">						
 						<?php echo $ddlExperience; ?>
+					</div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Cấp bậc hiện tại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlRankPresent; ?>
+					</div>
+				</div>			
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Cấp bậc mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlRankOffered; ?>
+					</div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Ngành nghề</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlJob; ?>
 					</div>
 				</div>			
 				<div class="row mia">

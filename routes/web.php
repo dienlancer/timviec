@@ -259,6 +259,18 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.salary.trash","uses"=>"adminsystem\SalaryController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.salary.createAlias","uses"=>"adminsystem\SalaryController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"rank"],function(){		
+		Route::get("list",["as"=>"adminsystem.rank.getList","uses"=>"adminsystem\RankController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.rank.loadData","uses"=>"adminsystem\RankController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.rank.getForm","uses"=>"adminsystem\RankController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.rank.save","uses"=>"adminsystem\RankController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.rank.deleteItem","uses"=>"adminsystem\RankController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.rank.sortOrder","uses"=>"adminsystem\RankController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.rank.updateStatus","uses"=>"adminsystem\RankController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.rank.changeStatus","uses"=>"adminsystem\RankController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.rank.trash","uses"=>"adminsystem\RankController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.rank.createAlias","uses"=>"adminsystem\RankController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"recruitment"],function(){		
 		Route::get("list",["as"=>"adminsystem.recruitment.getList","uses"=>"adminsystem\RecruitmentController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.recruitment.loadData","uses"=>"adminsystem\RecruitmentController@loadData"]);		

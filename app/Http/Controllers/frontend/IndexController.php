@@ -1112,6 +1112,18 @@ class IndexController extends Controller {
 		$info                 =   array();
 		$checked              =   1;                           
 		$msg                =   array();
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}         
+		if(count($arrUser) == 0){
+			return redirect()->route("frontend.index.employerLogin");
+		}
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}  
 		$source=RecruitmentModel::find((int)@$id);
 		if($source == null){
 			$checked=0;
@@ -1414,6 +1426,18 @@ class IndexController extends Controller {
 		$info                 =   array();
 		$checked              =   1;                           
 		$msg                =   array();
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}
 		$source=ProfileModel::find((int)@$id);
 		if($source == null){
 			$checked=0;
@@ -1431,6 +1455,9 @@ class IndexController extends Controller {
 			'msg'       => $msg,                    
 		);      
 		return redirect()->route('frontend.index.viewProfileCabinet')->with(["message"=>$info]);                             
+	}
+	public function getGroupProfile(){
+		return view('frontend.group-profile');     
 	}
 }
 

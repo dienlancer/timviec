@@ -554,5 +554,6 @@ Route::match(["get","post"],"ho-so/{task}/{id}",["as"=>"frontend.index.getFormPr
 Route::match(["get","post"],"tu-ho-so",["as"=>"frontend.index.viewProfileCabinet","uses"=>"frontend\IndexController@viewProfileCabinet"]);
 Route::get("xoa-ho-so/{id}",["as"=>"frontend.index.deleteProfile","uses"=>"frontend\IndexController@deleteProfile"]);
 Route::post("cho-phep-tim-kiem-ho-so",["as"=>"frontend.index.changeProfileSearchStatus","uses"=>"frontend\IndexController@changeProfileSearchStatus"]);
+Route::get("bo-ho-so",["as"=>"frontend.index.getGroupProfile","uses"=>"frontend\IndexController@getGroupProfile"]);
 /* end tìm việc */
 ?>

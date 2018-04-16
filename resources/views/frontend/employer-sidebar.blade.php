@@ -7,8 +7,9 @@ $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){
 	$arrUser=Session::get($ssNameUser);
 	$source_employer=\App\EmployerModel::find((int)@$arrUser['id'])->toArray();
-	$source_user=\App\User::find((int)@$source_employer['user_id'])->toArray();	
-	if(count($source_user) > 0){
+	$source_user=\App\User::find((int)@$source_employer['user_id']);	
+	if($source_user != null){
+		$source_user=$source_user->toArray();
 		$user_fullname=$source_user['fullname'];
 	}
 } 

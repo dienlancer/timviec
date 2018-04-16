@@ -1338,7 +1338,7 @@ class IndexController extends Controller {
 				);  
 				switch ($task) {
 					case 'add':            
-					return redirect()->route("frontend.index.getGroupProfile")->with(["message"=>$info]);
+					return redirect()->route("frontend.index.getGroupProfile",[$item->id])->with(["message"=>$info]);
 					break;
 					case 'edit':            
 					$msg['success']='<span>Cập nhật hồ sơ thành công</span>';
@@ -1461,7 +1461,7 @@ class IndexController extends Controller {
 		);      
 		return redirect()->route('frontend.index.viewProfileCabinet')->with(["message"=>$info]);                             
 	}
-	public function getGroupProfile(){
+	public function getGroupProfile($id){
 		$arrUser=array();    
 		if(Session::has($this->_ssNameUser)){
 			$arrUser=Session::get($this->_ssNameUser);
@@ -1474,7 +1474,7 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
 		}
-		return view('frontend.group-profile');     
+		return view('frontend.group-profile',compact('id'));     
 	}
 }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 16, 2018 lúc 10:13 AM
+-- Thời gian đã tạo: Th4 16, 2018 lúc 01:14 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -559,7 +559,8 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, 'logo-7-5yk7jo4xcgz2.png', 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, NULL, '2018-04-04 05:29:16', '2018-04-11 08:37:21'),
 (5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công Ty Bất Động Sản Đà Thành Land', 'cong-ty-bds-da-thanh-land', 'metakeyword Công ty CP BĐS ĐÀ THÀNH LAND', 'metadescription Công ty CP BĐS ĐÀ THÀNH LAND', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 12, 4, 'logo-3-2os9xabnpmtf.png', 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 6, 1, 0, '2018-04-04 08:06:36', '2018-04-08 17:02:50'),
 (6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', '', '', '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 6, 1, 0, '2018-04-06 02:10:27', '2018-04-08 16:37:40'),
-(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '65 Phạm Ngũ Lão 8', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Lưu Mạnh Hà', 'hoancn8478@dienkim.com', '9885556668', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-14 05:07:47');
+(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '65 Phạm Ngũ Lão 8', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Lưu Mạnh Hà', 'hoancn8478@dienkim.com', '9885556668', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-14 05:07:47'),
+(8, 'gifukogyo@dienkim.com', '$2y$10$ST7ybxlhlJ5n5uPoBgAhOug8othgoL7Yb/JHG5ZdM7C9RCENgHtsy', 'Công ty TNHH Gifu Kogyo Vietnam', 'cong-ty-tnhh-gifu-kogyo-vietnam', '', '', 'Lầu 1, P14, Nhà 6A, Đường 3, Công Viên Phần Mềm Quang Trung, Phường Tân Chánh Hiệp, Quận 12', '0977222333', 46, 3, 'logo-7-wgsax870zvu2.png', 'Là công ty 100% vốn Nhật Bản chuyên thiết kế, thực hiện hiện các bản vẽ kỹ thuật: CAD/CAM . Giàu kinh nghiệm trong các lĩnh vực đường hầm, cầu...\r\nNgoài ra công ty còn cung cấp các phần mềm chuyên dụng, hổ trợ doanh nghiệp; thiết kế website...', '4587877878', 'www.gkv.vn', 'Trần Đức Chính', 'chinhtd@dienkim.com', '0966123321', 3, 1, 0, '2018-04-16 10:23:40', '2018-04-16 10:34:13');
 
 -- --------------------------------------------------------
 
@@ -2100,8 +2101,12 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `candidate_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 2, 4, 2, 1, 9000000, 5, 1, '2018-04-16 05:05:40', '2018-04-16 08:10:38'),
-(6, 'Nhân viên kinh doanh thiết bị điện tử', 'nhan-vien-kinh-doanh-thiet-bi-dien-tu', 3, 5, 2, 3, 8000000, 5, 1, '2018-04-16 08:02:53', '2018-04-16 08:02:53');
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 10000000, 5, 1, '2018-04-16 05:05:40', '2018-04-16 08:48:39'),
+(7, 'Nhân Viên Kinh Doanh Ngành Bao Bì', 'nhan-vien-kinh-doanh-nganh-bao-bi', 2, 3, 2, 3, 10000000, 5, 1, '2018-04-16 08:50:46', '2018-04-16 08:50:46'),
+(9, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc-589172', 4, 6, 6, 7, 6000000, 5, 1, '2018-04-16 08:51:22', '2018-04-16 08:51:22'),
+(10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 5, 1, '2018-04-16 10:12:19', '2018-04-16 10:34:46'),
+(11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 5, 1, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
+(12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 5, 1, '2018-04-16 10:18:40', '2018-04-16 10:34:39');
 
 -- --------------------------------------------------------
 
@@ -2123,12 +2128,14 @@ CREATE TABLE `profile_job` (
 --
 
 INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 51, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(2, 1, 53, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(3, 1, 55, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(23, 6, 2, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
-(24, 6, 4, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
-(25, 6, 6, '2018-04-16 08:02:53', '2018-04-16 08:02:53');
+(38, 1, 51, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
+(39, 1, 53, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
+(40, 1, 55, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
+(41, 7, 10, '2018-04-16 08:50:46', '2018-04-16 08:50:46'),
+(43, 9, 4, '2018-04-16 08:51:22', '2018-04-16 08:51:22'),
+(44, 10, 36, '2018-04-16 10:12:19', '2018-04-16 10:12:19'),
+(45, 11, 11, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
+(46, 12, 27, '2018-04-16 10:18:40', '2018-04-16 10:18:40');
 
 -- --------------------------------------------------------
 
@@ -2150,12 +2157,14 @@ CREATE TABLE `profile_place` (
 --
 
 INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 57, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(2, 1, 59, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(3, 1, 61, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
-(12, 6, 2, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
-(13, 6, 4, '2018-04-16 08:02:53', '2018-04-16 08:02:53'),
-(14, 6, 6, '2018-04-16 08:02:53', '2018-04-16 08:02:53');
+(30, 1, 57, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
+(31, 1, 59, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
+(32, 1, 61, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
+(33, 7, 5, '2018-04-16 08:50:46', '2018-04-16 08:50:46'),
+(35, 9, 12, '2018-04-16 08:51:22', '2018-04-16 08:51:22'),
+(36, 10, 10, '2018-04-16 10:12:19', '2018-04-16 10:12:19'),
+(37, 11, 7, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
+(38, 12, 7, '2018-04-16 10:18:40', '2018-04-16 10:18:40');
 
 -- --------------------------------------------------------
 
@@ -3814,7 +3823,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT cho bảng `employer`
 --
 ALTER TABLE `employer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `experience`
@@ -3940,19 +3949,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT cho bảng `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `project`

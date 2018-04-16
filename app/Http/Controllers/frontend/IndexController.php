@@ -1476,6 +1476,28 @@ class IndexController extends Controller {
 		}
 		return view('frontend.group-profile',compact('id'));     
 	}
+	public function saveFileAttached(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		$id 					=	trim($request->id); 
+		$image_file           	=   null;
+    	if(isset($_FILES["file_attached"])){
+    		$image_file         =   $_FILES["file_attached"];
+    	}    
+    	$width=0;
+    	$height=0;   
+		if ($checked == 1){
+			$image_name='';
+    		if($image_file != null){                                                
+    			$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+    		}
+    		$item				=	ProfileModel::find((int)@$id);  
+    		if(!empty($image_name))  {
+    			$item->image=$image_name;                                                
+    		}  
+		}       		
+	}
 }
 
 

@@ -110,8 +110,7 @@ $linkCancel               =   route('frontend.index.getGroupProfile',[@$id]);
         		success: function (data) {
         			if(data.checked==1){                    
         				window.location.href = "<?php echo $linkCancel; ?>";                    
-        			}
-        			
+        			}        			
         		},
         		error : function (data){
         			

@@ -15,6 +15,7 @@ var vLiteracyTable           =   null;
 var vSalaryTable           =   null;
 var vRecruitmentTable           =   null;
 var vJobTable           =   null;
+var vRankTable           =   null;
 var vProbationaryTable           =   null;
 var vWorkingFormTable           =   null;
 var vExperienceTable           =   null;
@@ -388,6 +389,23 @@ var basicTable = function () {
     };
     var initJobTable = function () {
         vJobTable = $('#tbl-job').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initRankTable = function () {
+        vRankTable = $('#tbl-rank').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]

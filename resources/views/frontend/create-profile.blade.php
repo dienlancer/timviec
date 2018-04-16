@@ -3,11 +3,26 @@
 @include("frontend.candidate-content-top")
 <?php 
 $seo=getSeo();
+$setting = getSettingSystem();
+$disabled_status='';
+$register_status='onclick="document.forms[\'frm\'].submit();"';
+ 
 $arrUser=array();
 $ssNameUser='vmuser';
+$candidate=array();
 if(Session::has($ssNameUser)){
-      $arrUser=Session::get($ssNameUser);
+    $arrUser=Session::get($ssNameUser);
+    $candidate=App\CandidateModel::find((int)@$arrUser['id'])->toArray();
+    $candidate['birthday']=datetimeConverterVn($candidate['birthday']);
 } 
+$picture                =   "";
+$product_width = $setting['product_width']['field_value'];
+$product_height = $setting['product_height']['field_value'];  
+if(count(@$candidate)>0){
+    if(!empty(@$candidate["avatar"])){
+        $picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
+    }        
+}  
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -20,7 +35,9 @@ if(Session::has($ssNameUser)){
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					
-					if((int)@$flag == 1){						
+					if((int)@$flag == 1){
+						$disabled_status='disabled';
+						$register_status='';
 						$type_msg='note-success';
 					}else{
 						$type_msg='note-danger';
@@ -38,19 +55,67 @@ if(Session::has($ssNameUser)){
 						</ul>	
 					</div>      
 					<?php
-				}			
+				}		
+				$source_literacy=App\LiteracyModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_experience=App\ExperienceModel::whereRaw('status = ?',[1])->orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$ddlLiteracy=cmsSelectboxCategory("literacy_id","vacca",$source_literacy,@$data['literacy_id'],$disabled_status,'Chọn trình độ học vấn');
+				$ddlExperience=cmsSelectboxCategory("experience_id","vacca",$source_experience,@$data['experience_id'],$disabled_status,'Chọn kinh nghiệm');
 				?>					
+				<div class="row">
+					<div class="col-lg-3"><?php echo $picture; ?></div>
+					<div class="col-lg-9">
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Họ tên:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['fullname']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Ngày sinh:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['birthday']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Số điện thoại:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['phone']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Email:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['email']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-9">
+								<div class="fatanasa"><a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>">Chỉnh sửa</a></div>
+							</div>
+						</div>			
+					</div>
+				</div>	
+				<hr  />
 				<div class="row mia">
-					<div class="col-lg-4"><h2 class="login-information">Thông tin đăng nhập</h2></div>
+					<div class="col-lg-4"><h2 class="login-information">Thông tin chung</h2></div>
 					<div class="col-lg-8"></div>
-				</div>							
+				</div>					
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Tiêu đề hồ sơ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="fullname" class="vacca" placeholder="Tiêu đề hồ sơ" value="<?php echo @$data['fullname']; ?>" ></div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Trình độ học vấn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlLiteracy; ?>
+					</div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Số năm kinh nghiệm</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlExperience; ?>
+					</div>
+				</div>			
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật</a></div></div>
+					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >Tạo hồ sơ</a></div></div>
 				</div>	
 			</div>
 			<div class="col-lg-3">
-					@include("frontend.candidate-sidebar")				
+				@include("frontend.candidate-sidebar")				
 			</div>
 		</div>
 	</div>

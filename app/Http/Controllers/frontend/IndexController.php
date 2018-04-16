@@ -1154,6 +1154,7 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
 		}
+		
 		return view('frontend.create-profile',compact('data','msg','flag'));     
 	}
 }

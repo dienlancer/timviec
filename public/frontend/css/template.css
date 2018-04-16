@@ -756,6 +756,20 @@ div.opacity-absolute::before{
 .kiatisak{
     width: 100%;
 }
+.fatanasa a {
+    display:inline-block;
+    background: #E30000;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 1px solid #c50000;
+}
+.fatanasa a:hover{
+    background:#337ab7;
+    border: 1px solid #1b588d;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

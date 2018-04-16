@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 15, 2018 lúc 12:25 PM
+-- Thời gian đã tạo: Th4 16, 2018 lúc 04:29 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -263,7 +263,7 @@ INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthd
 (2, 'truongnt@dienkim.com', '$2y$10$jp2WuH8yQ3JhkPmL5zNBPeKK35V2W2.SU0vYLQKkJd8L/HSD441M2', 'Đặng Thị Thu Hằng', '0922111222', '1988-04-11 00:00:00', 1, 1, 2, '23 Lý Thường Kiệt', 'logo-2-xmydbuv95gtc.png', 1, '2018-04-03 07:14:21', '2018-04-11 08:31:05'),
 (3, 'vientg@dienkim.com', '$2y$10$e9812Kvxwy2C8z.q/tGRQOyPBZSEyQftMBmtiWhD7cJ65RfVtTH7y', 'Trần Gia Viên', '0988223244', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:41:02', '2018-04-11 08:31:05'),
 (4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 04:53:22', '2018-04-11 08:31:05'),
-(5, 'duydp@dienkim.com', '$2y$10$0J9B6zMobYOaNnH3FUu/HeAc1TyoJIRf47WhxXAdOyFb.dOKHAhp2', 'Phạm Đình Duy', '0988145622', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 05:18:40', '2018-04-11 08:31:05'),
+(5, 'duydp@dienkim.com', '$2y$10$l.PmvBEd9gT/Dod3nJLTHe1i5Ko/uyEItXMYouG0d/od6pgNxZPlm', 'Phạm Đình Duy', '0988145622', '1989-05-06 00:00:00', 1, 1, 51, '62 Lê Thánh Tôn', 'logo-2-gj5xel7w8as0.png', 1, '2018-04-04 05:18:40', '2018-04-15 15:43:19'),
 (6, 'doricata@dienkim.com', '$2y$10$f5xkRP6uU9xCbwatX0o4XetN8cl6VgyElfUNKHOtWzug2YiQNHbRS', 'Nguyễn Văn Cường', '0988162289', NULL, NULL, NULL, NULL, NULL, '', 1, '2018-04-04 05:31:42', '2018-04-04 10:14:02');
 
 -- --------------------------------------------------------
@@ -585,12 +585,12 @@ CREATE TABLE `experience` (
 INSERT INTO `experience` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Chưa có kinh nghiệm', 'chua-co-kinh-nghiem', 1, 1, '2018-04-12 06:54:19', '2018-04-12 06:54:19'),
 (2, 'Dưới 1 năm', 'duoi-1-nam', 1, 1, '2018-04-12 06:54:30', '2018-04-12 06:54:30'),
-(3, '1 năm', '1-nam', 1, 1, '2018-04-12 06:54:39', '2018-04-12 06:54:39'),
-(4, '2 năm', '2-nam', 1, 1, '2018-04-12 06:54:46', '2018-04-12 06:54:46'),
-(5, '3 năm', '3-nam', 1, 1, '2018-04-12 06:54:52', '2018-04-12 06:54:52'),
-(6, '4 năm', '4-nam', 1, 1, '2018-04-12 06:54:58', '2018-04-12 06:54:58'),
-(7, '5 năm', '5-nam', 5, 1, '2018-04-12 06:55:09', '2018-04-12 06:55:09'),
-(8, 'Trên 5 năm', 'tren-5-nam', 1, 1, '2018-04-12 06:55:26', '2018-04-12 06:55:26'),
+(3, '1 năm kinh nghiệm trong nghề', '1-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:39', '2018-04-16 01:20:12'),
+(4, '2 năm kinh nghiệm trong nghề', '2-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:46', '2018-04-16 01:20:23'),
+(5, '3 năm kinh nghiệm trong nghề', '3-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:52', '2018-04-16 01:20:33'),
+(6, '4 năm kinh nghiệm trong nghề', '4-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:58', '2018-04-16 01:20:42'),
+(7, '5 năm kinh nghiệm trong nghề', '5-nam-kinh-nghiem-trong-nghe', 5, 1, '2018-04-12 06:55:09', '2018-04-16 01:20:54'),
+(8, 'Trên 5 năm kinh nghiệm trong nghề', 'tren-5-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:55:26', '2018-04-16 01:21:02'),
 (9, 'Không yêu cầu kinh nghiệm', 'khong-yeu-cau-kinh-nghiem', 1, 1, '2018-04-12 06:55:38', '2018-04-12 06:55:38');
 
 -- --------------------------------------------------------
@@ -1746,7 +1746,9 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (899, 1, 'taTvPyF5em3qhy6oCsFkwt0aoZxVuO1m', '2018-04-12 21:22:03', '2018-04-12 21:22:03'),
 (900, 1, 'Yk994bGpE8xlNvz6Jp8e7nAFZxUmMc8j', '2018-04-13 19:25:58', '2018-04-13 19:25:58'),
 (901, 1, '0OW0aqPy1e3aR6cP2OqL4t2mB3dHcvZF', '2018-04-14 04:39:14', '2018-04-14 04:39:14'),
-(902, 1, 'TIZEZMRt2FGXdSk5IetUthflbPcwXJhs', '2018-04-15 01:26:20', '2018-04-15 01:26:20');
+(902, 1, 'TIZEZMRt2FGXdSk5IetUthflbPcwXJhs', '2018-04-15 01:26:20', '2018-04-15 01:26:20'),
+(911, 1, 'MdRRcmW5txh7JiZtHufXNMOA9GFnz9gL', '2018-04-15 08:41:37', '2018-04-15 08:41:37'),
+(912, 1, 'h7f1gTwxVFZJ650vk5K048M7Nj59YIcu', '2018-04-15 18:19:53', '2018-04-15 18:19:53');
 
 -- --------------------------------------------------------
 
@@ -2267,7 +2269,7 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-15 10:23:28');
+(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-15 16:28:38');
 
 -- --------------------------------------------------------
 
@@ -3081,7 +3083,13 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (546, NULL, 'ip', '127.0.0.1', '2018-04-06 18:27:29', '2018-04-06 18:27:29'),
 (547, NULL, 'global', NULL, '2018-04-13 19:25:51', '2018-04-13 19:25:51'),
 (548, NULL, 'ip', '127.0.0.1', '2018-04-13 19:25:51', '2018-04-13 19:25:51'),
-(549, 1, 'user', NULL, '2018-04-13 19:25:51', '2018-04-13 19:25:51');
+(549, 1, 'user', NULL, '2018-04-13 19:25:51', '2018-04-13 19:25:51'),
+(550, NULL, 'global', NULL, '2018-04-15 08:29:19', '2018-04-15 08:29:19'),
+(551, NULL, 'ip', '127.0.0.1', '2018-04-15 08:29:19', '2018-04-15 08:29:19'),
+(552, 2, 'user', NULL, '2018-04-15 08:29:19', '2018-04-15 08:29:19'),
+(553, NULL, 'global', NULL, '2018-04-15 18:19:46', '2018-04-15 18:19:46'),
+(554, NULL, 'ip', '127.0.0.1', '2018-04-15 18:19:46', '2018-04-15 18:19:46'),
+(555, 1, 'user', NULL, '2018-04-15 18:19:46', '2018-04-15 18:19:46');
 
 -- --------------------------------------------------------
 
@@ -3112,9 +3120,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-15 01:26:20', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-15 01:26:20'),
-(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$dyr0/0S5B7GWTxVRH6zjMezbr2SOjfrISSYhHWDqjRX5V4Uqf3YVC', NULL, '2018-04-11 01:20:08', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-11 01:20:08'),
-(3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-06 08:48:13', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-06 08:48:13'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-15 18:19:53', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-15 18:19:53'),
+(2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
+(3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
 (5, 'thuyttt', 'thuyttt@dienkim.com', '$2y$10$AA6KmOmb/IPF2RZyy3usc.GWvSfZmgNJySKEf65tUtxJ6e3hpp1lS', NULL, '2018-04-06 08:52:03', 'Trần Thị Thanh Thúy', NULL, '0923111222', 'logo-3-3e4tfsqz86h2.png', 5, 1, '2018-04-06 00:56:08', '2018-04-06 08:52:03'),
 (6, 'thaoht', 'thaoht@dienkim.com', '$2y$10$HH42krxiiZhRfnaedbjw7exT3LpC5052NANqWiBIFH/As/Gvb5Soe', NULL, '2018-04-06 08:38:28', 'Hoàng Thị Hồng Thảo', NULL, '0944111333', 'logo-4-m30xjclwqpy7.png', 6, 1, '2018-04-06 00:57:12', '2018-04-06 08:38:28'),
@@ -3754,7 +3762,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=903;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=913;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -3874,7 +3882,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT cho bảng `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=550;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=556;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

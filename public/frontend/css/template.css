@@ -293,6 +293,20 @@ div.opacity-absolute::before{
     background:#337ab7;
     border: 1px solid #1b588d;
 }
+.rianmus a{
+    display: inline-block;
+    background: #E30000;
+    padding:0px 10px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 1px solid #c50000;
+}
+.rianmus a:hover{
+    background:#337ab7;
+    border: 1px solid #1b588d;
+}
 .btn-login{
     display: inline-block;
     background: #E30000;
@@ -769,6 +783,11 @@ div.opacity-absolute::before{
 .fatanasa a:hover{
     background:#337ab7;
     border: 1px solid #1b588d;
+}
+.narit{
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

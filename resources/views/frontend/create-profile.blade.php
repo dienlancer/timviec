@@ -32,6 +32,35 @@ if(count(@$candidate)>0){
 		<div class="row">			
 			<div class="col-lg-9">
 				<h1 class="dn-dk-h">Tạo hồ sơ</h1>
+					
+				<div class="row">
+					<div class="col-lg-3"><?php echo $picture; ?></div>
+					<div class="col-lg-9">
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Họ tên:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['fullname']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Ngày sinh:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['birthday']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Số điện thoại:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['phone']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3">Email:</div>
+							<div class="col-lg-9"><b><?php echo @$candidate['email']; ?></b></div>
+						</div>	
+						<div class="row margin-top-10">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-9">
+								<div class="fatanasa"><a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>">Chỉnh sửa</a></div>
+							</div>
+						</div>			
+					</div>
+				</div>	
+				<hr  />				
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					
@@ -60,45 +89,22 @@ if(count(@$candidate)>0){
 				$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$source_rank=App\RankModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 
 				$ddlLiteracy=cmsSelectboxCategory("literacy_id","vacca",$source_literacy,@$data['literacy_id'],$disabled_status,'Chọn trình độ học vấn');
-				$ddlExperience=cmsSelectboxCategory("experience_id","vacca",$source_experience,@$data['experience_id'],$disabled_status,'Chọn kinh nghiệm');
-				$ddlRankPresent=cmsSelectboxCategory("rank_present_id","vacca",$source_rank,@$data['rank_id'],$disabled_status,'Chọn cấp bậc hiện tại');
-				$ddlRankOffered=cmsSelectboxCategory("rank_offered_id","vacca",$source_rank,@$data['rank_id'],$disabled_status,'Chọn cấp bậc mong muốn');
+				$ddlExperience=cmsSelectboxCategory("experience_id","vacca",$source_experience,@$data['experience_id'],$disabled_status,'Chọn số năm kinh nghiệm');
+				$ddlRankPresent=cmsSelectboxCategory("rank_present_id","vacca",$source_rank,@$data['rank_present_id'],$disabled_status,'Chọn cấp bậc hiện tại');
+				$ddlRankOffered=cmsSelectboxCategory("rank_offered_id","vacca",$source_rank,@$data['rank_offered_id'],$disabled_status,'Chọn cấp bậc mong muốn');
 				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
-				?>					
-				<div class="row">
-					<div class="col-lg-3"><?php echo $picture; ?></div>
-					<div class="col-lg-9">
-						<div class="row margin-top-10">
-							<div class="col-lg-3">Họ tên:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['fullname']; ?></b></div>
-						</div>	
-						<div class="row margin-top-10">
-							<div class="col-lg-3">Ngày sinh:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['birthday']; ?></b></div>
-						</div>	
-						<div class="row margin-top-10">
-							<div class="col-lg-3">Số điện thoại:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['phone']; ?></b></div>
-						</div>	
-						<div class="row margin-top-10">
-							<div class="col-lg-3">Email:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['email']; ?></b></div>
-						</div>	
-						<div class="row margin-top-10">
-							<div class="col-lg-3"></div>
-							<div class="col-lg-9">
-								<div class="fatanasa"><a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>">Chỉnh sửa</a></div>
-							</div>
-						</div>			
-					</div>
-				</div>	
-				<hr  />
+				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');				
+				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
+				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn', 0 => 'Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ này chỉ dùng để ứng tuyển');  
+				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,$disabled_status);
+				?>		
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin chung</h2></div>
 					<div class="col-lg-8"></div>
-				</div>					
+				</div>							
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Tiêu đề hồ sơ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="fullname" class="vacca" placeholder="Tiêu đề hồ sơ" value="<?php echo @$data['fullname']; ?>" ></div>
@@ -128,14 +134,39 @@ if(count(@$candidate)>0){
 					</div>
 				</div>	
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Ngành nghề</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-4" ><div class="xika"><div>Ngành nghề mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">						
 						<?php echo $ddlJob; ?>
 					</div>
-				</div>			
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Mức lương mong muốn (VNĐ/tháng)</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="salary" class="vacca" placeholder="Ghi rõ mức lương bằng số" value="<?php echo @$data['salary']; ?>" onkeyup="PhanCachSoTien(this);"   ></div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Nơi làm việc mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlProvince; ?>
+					</div>
+				</div>		
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >Tạo hồ sơ</a></div></div>
+					<div class="col-lg-8">						
+						<?php echo $ddlStatus; ?>
+					</div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ></div>
+					<div class="col-lg-8">
+						<div class="rianmus">
+							<a href="javascript:void(0);" <?php echo $register_status; ?> >
+								<div class="narit">
+									<div><i class="far fa-save"></i></div>
+									<div class="margin-left-5">Lưu hồ sơ</div>
+								</div>								
+							</a>
+						</div>
+					</div>
 				</div>	
 			</div>
 			<div class="col-lg-3">

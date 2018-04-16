@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 16, 2018 lúc 04:29 AM
+-- Thời gian đã tạo: Th4 16, 2018 lúc 07:15 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -614,7 +614,7 @@ CREATE TABLE `group_member` (
 --
 
 INSERT INTO `group_member` (`id`, `fullname`, `alias`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-14 02:26:42'),
+(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-04-16 02:47:32'),
 (2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-14 02:26:52');
 
 -- --------------------------------------------------------
@@ -637,98 +637,100 @@ CREATE TABLE `group_privilege` (
 --
 
 INSERT INTO `group_privilege` (`id`, `group_member_id`, `privilege_id`, `created_at`, `updated_at`) VALUES
-(4720, 1, 1, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4721, 1, 2, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4722, 1, 4, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4723, 1, 5, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4724, 1, 18, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4725, 1, 19, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4726, 1, 24, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4727, 1, 25, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4728, 1, 43, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4729, 1, 44, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4730, 1, 49, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4731, 1, 50, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4732, 1, 55, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4733, 1, 56, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4734, 1, 61, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4735, 1, 62, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4736, 1, 67, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4737, 1, 68, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4738, 1, 79, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4739, 1, 80, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4740, 1, 85, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4741, 1, 86, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4742, 1, 103, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4743, 1, 104, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4744, 1, 105, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4745, 1, 106, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4746, 1, 107, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4747, 1, 108, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4748, 1, 109, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4749, 1, 110, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4750, 1, 115, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4751, 1, 116, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4752, 1, 121, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4753, 1, 122, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4754, 1, 123, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4755, 1, 124, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4756, 1, 125, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4757, 1, 126, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4758, 1, 127, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4759, 1, 128, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4760, 1, 129, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4761, 1, 130, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4762, 1, 131, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4763, 1, 132, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4764, 1, 133, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4765, 1, 134, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4766, 1, 135, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4767, 1, 136, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4768, 1, 137, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4769, 1, 138, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4770, 1, 139, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4771, 1, 140, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4772, 1, 141, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4773, 1, 142, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4774, 1, 143, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4775, 1, 144, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4776, 1, 145, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4777, 1, 146, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4778, 1, 151, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4779, 1, 152, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4780, 1, 153, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4781, 1, 154, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4782, 1, 155, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4783, 1, 156, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4784, 1, 157, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4785, 1, 158, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4786, 1, 159, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4787, 1, 160, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4788, 1, 161, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4789, 1, 162, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4790, 1, 163, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4791, 1, 164, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4792, 1, 165, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4793, 1, 166, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4794, 1, 167, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4795, 1, 168, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4796, 1, 169, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4797, 1, 170, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4798, 1, 171, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4799, 1, 172, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4800, 1, 173, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4801, 1, 174, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4802, 1, 175, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4803, 1, 176, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
-(4804, 1, 177, '2018-04-14 02:26:42', '2018-04-14 02:26:42'),
 (4805, 2, 157, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4806, 2, 158, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4807, 2, 159, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4808, 2, 160, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4809, 2, 161, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4810, 2, 176, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
-(4811, 2, 177, '2018-04-14 02:26:52', '2018-04-14 02:26:52');
+(4811, 2, 177, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
+(4812, 1, 1, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4813, 1, 2, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4814, 1, 4, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4815, 1, 5, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4816, 1, 18, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4817, 1, 19, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4818, 1, 24, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4819, 1, 25, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4820, 1, 43, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4821, 1, 44, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4822, 1, 49, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4823, 1, 50, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4824, 1, 55, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4825, 1, 56, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4826, 1, 61, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4827, 1, 62, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4828, 1, 67, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4829, 1, 68, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4830, 1, 79, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4831, 1, 80, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4832, 1, 85, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4833, 1, 86, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4834, 1, 103, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4835, 1, 104, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4836, 1, 105, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4837, 1, 106, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4838, 1, 107, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4839, 1, 108, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4840, 1, 109, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4841, 1, 110, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4842, 1, 115, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4843, 1, 116, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4844, 1, 121, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4845, 1, 122, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4846, 1, 123, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4847, 1, 124, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4848, 1, 125, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4849, 1, 126, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4850, 1, 127, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4851, 1, 128, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4852, 1, 129, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4853, 1, 130, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4854, 1, 131, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4855, 1, 132, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4856, 1, 133, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4857, 1, 134, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4858, 1, 135, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4859, 1, 136, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4860, 1, 137, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4861, 1, 138, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4862, 1, 139, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4863, 1, 140, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4864, 1, 141, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4865, 1, 142, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4866, 1, 143, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4867, 1, 144, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4868, 1, 145, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4869, 1, 146, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4870, 1, 151, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4871, 1, 152, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4872, 1, 153, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4873, 1, 154, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4874, 1, 155, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4875, 1, 156, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4876, 1, 157, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4877, 1, 158, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4878, 1, 159, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4879, 1, 160, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4880, 1, 161, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4881, 1, 162, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4882, 1, 163, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4883, 1, 164, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4884, 1, 165, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4885, 1, 166, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4886, 1, 167, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4887, 1, 168, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4888, 1, 169, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4889, 1, 170, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4890, 1, 171, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4891, 1, 172, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4892, 1, 173, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4893, 1, 174, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4894, 1, 175, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4895, 1, 176, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4896, 1, 177, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4897, 1, 178, '2018-04-16 02:47:32', '2018-04-16 02:47:32'),
+(4898, 1, 179, '2018-04-16 02:47:32', '2018-04-16 02:47:32');
 
 -- --------------------------------------------------------
 
@@ -1974,7 +1976,9 @@ INSERT INTO `privilege` (`id`, `fullname`, `controller`, `action`, `sort_order`,
 (174, 'job-list', 'job', 'list', 1, '2018-04-12 03:18:49', '2018-04-12 03:18:49'),
 (175, 'job-form', 'job', 'form', 1, '2018-04-12 03:18:57', '2018-04-12 03:18:57'),
 (176, 'recruitment-list', 'recruitment', 'list', 1, '2018-04-14 02:26:17', '2018-04-14 02:26:17'),
-(177, 'recruitment-form', 'recruitment', 'form', 1, '2018-04-14 02:26:28', '2018-04-14 02:26:28');
+(177, 'recruitment-form', 'recruitment', 'form', 1, '2018-04-14 02:26:28', '2018-04-14 02:26:28'),
+(178, 'rank-list', 'rank', 'list', 1, '2018-04-16 02:47:05', '2018-04-16 02:47:05'),
+(179, 'rank-form', 'rank', 'form', 1, '2018-04-16 02:47:23', '2018-04-16 02:47:23');
 
 -- --------------------------------------------------------
 
@@ -2068,6 +2072,83 @@ INSERT INTO `product` (`id`, `code`, `fullname`, `meta_keyword`, `meta_descripti
 (45, '519438267', 'Loa Kéo RINTON PL-1', 'metakeyword Loa Kéo RINTON PL-1', 'metadescription Loa Kéo RINTON PL-1', 'loa-keo-rinton-pl-1', 'loa-5.png', 1, '[\"loa-2.png\",\"loa-3.png\",\"loa-4.png\"]', '4790000.00', '0.00', 'giới thiệu Loa Kéo RINTON PL-1', '<p>chi tiết&nbsp;Loa K&eacute;o RINTON PL-1</p>', NULL, NULL, 38, 17, 45, '2018-02-28 04:42:31', '2018-03-28 09:36:57'),
 (46, '387621594', 'Loa BOSE ACOUSTIMASS 6 SERIES V', 'metakeyword LOA BOSE ACOUSTIMASS 6 SERIES V', 'metadescription LOA BOSE ACOUSTIMASS 6 SERIES V', 'loa-bose-acoustimass-6-series-v', 'loa-6.png', 1, '[\"loa-1.png\",\"loa-2.png\",\"loa-3.png\"]', '18760000.00', '0.00', 'giới thiệu LOA BOSE ACOUSTIMASS 6 SERIES V', '<p>chi tiết&nbsp;LOA BOSE ACOUSTIMASS 6 SERIES V</p>', NULL, NULL, 35, 17, 46, '2018-02-28 04:44:11', '2018-03-26 17:11:55'),
 (47, '579241683', 'Dell Latitude E6530 Core i7 3620M', 'Laptop Dell Latitude E6530 Core i7 3620M Ram 4G HDD 250G 15.6\" VGA ON', 'Laptop cũ Dell Laitutde E6530 i7 là dòng laptop chuyên gam và đồ họa. Có thể nói đây là dòng máy có cấu hình siêu mạnh. Hình dáng và cấu hình của nó phù hợp với game thủ và các chuyên viên IT. Máy được bọc nhôm nguyên khối theo tiêu chuẩn của quân đội Mỹ. Đây là dòng máy cao cấp của Dell ', 'dell-latitude-e6530-core-i7-3620m', 'laptop-cu-dell-latitude-e6530-i7-1.png', 1, NULL, '8000000.00', '0.00', '', '<p style=\"text-align:justify\"><strong>Laptop cũ Dell Latitude E6530 i7</strong>&nbsp;l&agrave; d&ograve;ng doanh nh&acirc;n cao cấp. Tuy nhi&ecirc;n hiện nay ch&uacute;ng được d&ugrave;ng nhiều cho c&aacute;c kĩ thuật vi&ecirc;n, lập tr&igrave;nh vi&ecirc;n, IT hay game thủ. Thiết kế kh&aacute; l&agrave; bắt mắt theo kiểu d&aacute;ng cho doanh nh&acirc;n. Tuy vậy th&igrave; k&iacute;ch cỡ, khối lượng cũng như cấu h&igrave;nh của n&oacute; thi ph&ugrave; hợp cho IT hơn l&agrave; doanh nh&acirc;n. D&ograve;ng laptop Dell E6530 i7 n&agrave;y c&oacute; gi&aacute; xuất xưởng l&agrave; cực k&igrave; cao, nhưng bạn chỉ cần bỏ ra 1/3 chi ph&iacute; l&agrave; c&oacute; thể sở hữu 1 chiếc m&aacute;y cực đỉnh. Những chiếc laptop cũ đang cực k&igrave; được ưa chuộng tại Việt Nam.N&oacute;i về khả năng của<strong>&nbsp;laptop cũ Dell Latitude E6530 i7</strong>&nbsp;th&igrave; phải n&oacute;i đến khả năng xử l&yacute; đồ họa cực đỉnh c&ugrave;ng khả năng chơi game ở cấu h&igrave;nh cao v&ocirc; c&ugrave;ng mượt m&agrave;. Đương nhi&ecirc;n 1 chiếc&nbsp;laptop&nbsp;mạnh như thế n&agrave;y th&igrave; chuyện văn ph&ograve;ng, học tập, nghi&ecirc;n cứu, chơi game l&agrave; rất b&igrave;nh thường. Tuy nhi&ecirc;n để thấy hết khả năng ưu việt của chiếc laptop th&igrave; ch&uacute;ng ta sẽ cho n&oacute; ở đ&uacute;ng cấu h&igrave;nh. Cấu h&igrave;nh chuẩn của laptop cũ Dell Latitude E6530 i7:<br />\n<br />\n- Cấu h&igrave;nh 1: Core i7 3620M Ram 8G HDD 500G M&agrave;n h&igrave;nh 15.6&quot; full HD trị gi&aacute; 9.5 triệu đồng<br />\n- Cấu h&igrave;nh 3: Core i7 3620M Ram 16G HDD 1TB M&agrave;n h&igrave;nh 15.6&quot; full HD trị gi&aacute; 11.5 triệu đồng<br />\n<br />\nKhi n&oacute;i về&nbsp;<strong>laptop cũ Dell Latitude E6530 i7</strong>&nbsp;người ta kh&ocirc;ng c&ograve;n từ g&igrave; để n&oacute;i về cấu h&igrave;nh m&aacute;y n&agrave;y ngo&agrave;i 1 chữ: khủng. Chiếc m&aacute;y si&ecirc;u khủng n&agrave;y cho bạn trải nghiệm ho&agrave;n to&agrave;n tuyệt vời. Muốn chơi game nặng như Li&ecirc;n Minh Huyền Thoại, Fifa online 3, Battleground, CF, V&otilde; L&acirc;m... Hay đồ họa nặng như 3Dmax, 3D, Corel, Photoshop, autocad, dựng phim...Đương nhi&ecirc;n đi k&egrave;m với m&aacute;y si&ecirc;u khủng th&igrave; cần c&oacute; những phần qu&agrave; si&ecirc;u khủng.<br />\n<br />\nTham khảo th&ecirc;m những mẫu&nbsp;<strong>laptop cũ</strong>&nbsp;của DC mobile<br />\n&nbsp;</p>\n\n<h3 style=\"text-align:justify\"><strong>Khi mua&nbsp;laptop cũ Dell Latitude E6530 i7 tại DC mobile bạn sẽ được tặng k&egrave;m:</strong></h3>\n\n<p style=\"text-align:justify\">1 balo cao cấp trị gi&aacute; 300.000 đồng</p>\n\n<p style=\"text-align:justify\">1 bộ vệ sinh m&agrave;n h&igrave;nh 6 m&oacute;n trị gi&aacute; 69.000 đồng</p>\n\n<p style=\"text-align:justify\">3 th&aacute;ng bảo h&agrave;nh nguy&ecirc;n m&aacute;y</p>\n\n<p style=\"text-align:justify\">G&oacute;i vệ sinh v&agrave; thay keo tản nhiệt 1 năm trị gi&aacute; 100.000 đồng.</p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<h3 style=\"text-align:justify\"><strong>Kh&aacute;ch h&agrave;ng c&oacute; thể chọn c&aacute;c cấu h&igrave;nh mạnh hơn nh&eacute;</strong></h3>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\">Ram 4G n&acirc;ng l&ecirc;n 8G th&ecirc;m 500k<br />\n<br />\nVGA ON l&ecirc;n VGA rời NVS 5200M th&ecirc;m 300k</p>\n\n<p style=\"text-align:justify\"><strong>Cấu h&igrave;nh 1:</strong>&nbsp;Core i7 3620m - Ram 4g - hdd 250g&nbsp;=&nbsp;<em>8.000.000vnd</em></p>\n\n<p style=\"text-align:justify\"><strong>Cấu h&igrave;nh 2:</strong>&nbsp;Core i7 3620m - Ram 4g - hdd 320g&nbsp;=&nbsp;<em>8.200.000vnd</em></p>\n\n<p style=\"text-align:justify\"><strong>Cấu h&igrave;nh 3:</strong>&nbsp;Core i7 3620m - Ram 4g - hdd 500g =&nbsp;<em>8.500.000vnd</em></p>\n\n<p style=\"text-align:justify\"><strong>Cấu h&igrave;nh 4:</strong>&nbsp;Core i7 3620m - Ram 4g -&nbsp;<strong>SSD 120g</strong>&nbsp;=&nbsp;<em>9.000.000vnd</em></p>\n\n<p style=\"text-align:justify\"><strong>Cấu h&igrave;nh 5:</strong>&nbsp;Core i7 3620m - Ram 4g -&nbsp;<strong>SSD 240g</strong>&nbsp;=&nbsp;<em>10.000.000vnd</em><br />\n<br />\nH&atilde;y đến với&nbsp;<strong>DC mobile</strong>&nbsp;để xem m&aacute;y trực tiếp hoặc c&oacute; thể gọi v&agrave;o hotline để đặt h&agrave;ng nh&eacute;. Ch&uacute;ng t&ocirc;i c&oacute; hệ thống giao h&agrave;ng to&agrave;n quốc chỉ cần kh&aacute;ch h&agrave;ng đặt h&agrave;ng l&agrave; sẽ c&oacute; người giao tận tay cho qu&yacute; kh&aacute;ch. Nếu cần th&ecirc;m th&ocirc;ng tin c&oacute; thể chat với chuy&ecirc;n vi&ecirc;n tư vấn để chọn m&aacute;y ph&ugrave; hợp nh&eacute;.&nbsp;<br />\n<br />\nH&igrave;nh ảnh thực tế của&nbsp;<strong>laptop cũ Dell Latitude E6530 i7</strong><br />\n&nbsp;</p>\n\n<p style=\"text-align:justify\"><img alt=\"Laptop Dell Latitude E6530 i7\" src=\"https://dcmobile.vn/uploads/shops/laptop-dell/latitude/e6530/laptop-dell-latitude-e6530-i7.jpg\" style=\"height:605px; width:800px\" /></p>\n\n<p style=\"text-align:justify\">laptop Dell Latitude E6530 i7</p>\n\n<p style=\"text-align:justify\"><img alt=\"Laptop Dell Latitude E6530 i7\" src=\"https://dcmobile.vn/uploads/shops/laptop-dell/latitude/e6530/laptop-dell-latitude-e6530-i7-3.jpg\" style=\"height:602px; width:800px\" /></p>\n\n<p style=\"text-align:justify\">Laptop Dell Latitude E6530 i7</p>\n\n<p style=\"text-align:justify\"><img alt=\"Laptop Dell Latitude E6530 i7 \" src=\"https://dcmobile.vn/uploads/shops/laptop-dell/latitude/e6530/laptop-dell-latitude-e6530-i7-1.jpg\" style=\"height:609px; width:800px\" /></p>\n\n<p style=\"text-align:justify\">Laptop Dell Latitude E6530 i7</p>\n\n<p style=\"text-align:justify\"><img alt=\"laptop Dell Latitude E6530 i7\" src=\"https://dcmobile.vn/uploads/shops/laptop-dell/latitude/e6530/laptop-dell-latitude-e6530-i7-2.jpg\" style=\"height:629px; width:800px\" /></p>\n\n<p style=\"text-align:justify\">Laptop Dell Latitude E6530 i7</p>', '<h2 style=\"text-align:justify\"><strong>Th&ocirc;ng số kỹ thuật&nbsp;laptop cũ Dell Latitude E6530 i7</strong></h2>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\"><strong>CPU:</strong>&nbsp;Intel&nbsp;<strong>Core i7</strong><strong>&nbsp;362</strong><strong>0m&nbsp;3.0</strong><strong>Ghz&nbsp;</strong>turbo boost<strong>&nbsp;3.2GHz</strong>,&nbsp;3M Cache&nbsp;Ivy&nbsp;Brigde&nbsp;(thế hệ 3) Xử l&yacute; si&ecirc;u&nbsp;nhanh</p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\"><strong>Ram:&nbsp;4G</strong>&nbsp;ddr3&nbsp;bus 1600 Mhz<strong>&nbsp;</strong>(n&acirc;ng cấp l&ecirc;n 8G&nbsp;th&ecirc;m 500k)</p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\"><strong>HDD: 250G</strong>&nbsp;(n&acirc;ng cấp l&ecirc;n HDD lớn hơn &nbsp;hoặc SSD thoải m&aacute;i)</p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\">Card m&agrave;n h&igrave;nh<strong>&nbsp;Onboad</strong>:&nbsp;<strong>Intel HD 4400 up to 2.1G</strong>&nbsp;- m&aacute;t, tiết kiệm pin, bền v&agrave; ổn định</p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\"><strong>Độ lớn m&agrave;n h&igrave;nh:</strong>&nbsp;<strong>15.6&nbsp;inch LED Full HD (1920*1080)</strong>-&nbsp;s&aacute;ng đẹp, phủ lớp&nbsp;chống ch&oacute;i d&agrave;nh cho doanh nh&acirc;n</p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\">Option gồm c&oacute;:&nbsp;<strong>WC Camera,</strong>&nbsp; DVD, Display port(xuất&nbsp;HDMi), Vga out, Lan, SD, SC PCi, Wifi chuẩn N,<strong>&nbsp;</strong></p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\"><strong>Sạc zin, Pin&nbsp;zin 6&nbsp;cell, 9 cell</strong></p>\n\n<p style=\"text-align:justify\">&nbsp;</p>\n\n<p style=\"text-align:justify\">Win7 pro theo m&aacute;y, c&oacute; thể&nbsp;c&agrave;i Win 10 bản quyền nh</p>', '', 64, 1, 47, '2018-03-08 08:07:46', '2018-03-28 05:08:10');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `profile`
+--
+
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE `profile` (
+  `id` bigint(20) NOT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `literacy_id` int(11) DEFAULT NULL,
+  `experience_id` int(11) DEFAULT NULL,
+  `rank_present_id` int(11) DEFAULT NULL,
+  `rank_offered_id` int(11) DEFAULT NULL,
+  `salary` int(11) DEFAULT NULL,
+  `candidate_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `profile`
+--
+
+INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `candidate_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 2, 4, 2, 1, 9000000, 5, 0, '2018-04-16 05:05:40', '2018-04-16 05:05:40');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `profile_job`
+--
+
+DROP TABLE IF EXISTS `profile_job`;
+CREATE TABLE `profile_job` (
+  `id` bigint(20) NOT NULL,
+  `profile_id` int(11) DEFAULT NULL,
+  `job_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `profile_job`
+--
+
+INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 51, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
+(2, 1, 53, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
+(3, 1, 55, '2018-04-16 05:05:40', '2018-04-16 05:05:40');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `profile_place`
+--
+
+DROP TABLE IF EXISTS `profile_place`;
+CREATE TABLE `profile_place` (
+  `id` bigint(20) NOT NULL,
+  `profile_id` int(11) DEFAULT NULL,
+  `province_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `profile_place`
+--
+
+INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 57, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
+(2, 1, 59, '2018-04-16 05:05:40', '2018-04-16 05:05:40'),
+(3, 1, 61, '2018-04-16 05:05:40', '2018-04-16 05:05:40');
 
 -- --------------------------------------------------------
 
@@ -2235,6 +2316,36 @@ INSERT INTO `province` (`id`, `fullname`, `alias`, `sort_order`, `status`, `crea
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `rank`
+--
+
+DROP TABLE IF EXISTS `rank`;
+CREATE TABLE `rank` (
+  `id` bigint(20) NOT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `rank`
+--
+
+INSERT INTO `rank` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nhân viên', 'nhan-vien', 1, 1, '2018-04-16 02:51:07', '2018-04-16 02:51:07'),
+(2, 'Cộng tác viên', 'cong-tac-vien', 1, 1, '2018-04-16 02:51:14', '2018-04-16 02:51:14'),
+(3, 'Trưởng nhóm', 'truong-nhom', 1, 1, '2018-04-16 02:51:24', '2018-04-16 02:55:39'),
+(4, 'Chuyên gia', 'chuyen-gia', 1, 1, '2018-04-16 02:51:31', '2018-04-16 02:55:44'),
+(5, 'Trưởng phó phòng', 'truong-pho-phong', 1, 1, '2018-04-16 02:52:06', '2018-04-16 02:55:39'),
+(6, 'Quản lý cấp cao', 'quan-ly-cap-cao', 1, 1, '2018-04-16 02:52:17', '2018-04-16 02:52:17'),
+(7, 'Mới tốt nghiệp', 'moi-tot-nghiep', 1, 1, '2018-04-16 04:40:07', '2018-04-16 04:40:07');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `recruitment`
 --
 
@@ -2269,7 +2380,7 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-15 16:28:38');
+(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-25 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-16 03:48:42');
 
 -- --------------------------------------------------------
 
@@ -3463,6 +3574,24 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `profile_job`
+--
+ALTER TABLE `profile_job`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `profile_place`
+--
+ALTER TABLE `profile_place`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `project`
 --
 ALTER TABLE `project`
@@ -3484,6 +3613,12 @@ ALTER TABLE `project_member`
 -- Chỉ mục cho bảng `province`
 --
 ALTER TABLE `province`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `rank`
+--
+ALTER TABLE `rank`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3690,7 +3825,7 @@ ALTER TABLE `group_member`
 -- AUTO_INCREMENT cho bảng `group_privilege`
 --
 ALTER TABLE `group_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4812;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4899;
 
 --
 -- AUTO_INCREMENT cho bảng `invoice`
@@ -3780,7 +3915,7 @@ ALTER TABLE `post_param`
 -- AUTO_INCREMENT cho bảng `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT cho bảng `probationary`
@@ -3793,6 +3928,24 @@ ALTER TABLE `probationary`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT cho bảng `profile`
+--
+ALTER TABLE `profile`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `profile_job`
+--
+ALTER TABLE `profile_job`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `profile_place`
+--
+ALTER TABLE `profile_place`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `project`
@@ -3817,6 +3970,12 @@ ALTER TABLE `project_member`
 --
 ALTER TABLE `province`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT cho bảng `rank`
+--
+ALTER TABLE `rank`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment`

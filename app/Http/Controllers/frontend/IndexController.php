@@ -37,6 +37,9 @@ use App\CandidateModel;
 use App\RecruitmentModel;
 use App\RecruitmentJobModel;
 use App\RecruitmentPlaceModel;
+use App\ProfileModel;
+use App\ProfileJobModel;
+use App\ProfilePlaceModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -178,17 +181,13 @@ class IndexController extends Controller {
 				$item->password     = Hash::make(@$password) ;
 				$item->fullname     = @$fullname;
 				/* begin save alias */
-				$alias=str_slug(@$fullname,'-');
-				$checked_trung_alias=0;
+				$alias=str_slug(@$fullname,'-');				
 				$data_employer=array();        
 				$data_employer=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();        
 				if (count(@$data_employer) > 0) {
-					$checked_trung_alias=1;
-				}        
-				if((int)@$checked_trung_alias == 1){
 					$code_alias=rand(1,999999);
 					$alias=$alias.'-'.$code_alias;
-				} 
+				}        				
 				$item->alias=@$alias;
 				/* end save alias */
 				$item->address      = @$address;
@@ -881,12 +880,7 @@ class IndexController extends Controller {
 					$data['province_id']='';        
 					$flag = 0;      
 				}
-			}
-			if((int)@$province_id == 0){
-				$msg["province_id"] = 'Vui lòng chọn nơi làm việc';    
-				$data['province_id']='';        
-				$flag = 0;      
-			}
+			}			
 			if(mb_strlen(@$duration)  == 0){
 				$msg["duration"] = 'Vui lòng chọn thời gian hết hạn';    
 				$data['duration']='';        
@@ -929,8 +923,7 @@ class IndexController extends Controller {
 				}              
 				$item->fullname           = @$fullname;
 				/* begin save alias */
-				$alias=str_slug(@$fullname,'-');
-				$checked_trung_alias=0;
+				$alias=str_slug(@$fullname,'-');				
 				$data_employer=array();        
 				switch ($task) {
 					case 'add':
@@ -941,12 +934,9 @@ class IndexController extends Controller {
 					break;
 				}        
 				if (count(@$data_employer) > 0) {
-					$checked_trung_alias=1;
-				}        
-				if((int)@$checked_trung_alias == 1){
 					$code_alias=rand(1,999999);
 					$alias=$alias.'-'.$code_alias;
-				} 
+				}        				
 				$item->alias=@$alias;
 				/* end save alias */
 				$item->alias            = @$alias;
@@ -1154,7 +1144,146 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
 		}
-		
+		if($request->isMethod('post')){
+			$data             	=	@$request->all();      
+			$fullname         	=   trim(@$request->fullname);
+			$literacy_id      	=   trim(@$request->literacy_id);
+			$experience_id    	=   trim(@$request->experience_id);
+			$rank_present_id  	=   trim(@$request->rank_present_id);
+			$rank_offered_id  	=   trim(@$request->rank_offered_id);
+			$job_id           	=   @$request->job_id;
+			$salary 			= 	trim(@$request->salary);
+			$salary            = (int)(str_replace('.', '',@$salary)) ;
+			$province_id      	=   @$request->province_id;			
+			$status 			=	trim(@$request->status);
+			if(mb_strlen(@$fullname) < 15){
+				$msg["fullname"] = 'Tiêu đề phải từ 15 ký tự trở lên';    
+				$data['fullname']='';        
+				$flag = 0;
+			}
+			if((int)@$literacy_id == 0){
+				$msg["literacy_id"] = 'Vui lòng chọn trình độ học vấn';    
+				$data['literacy_id']='';        
+				$flag = 0;   
+			}
+			if((int)@$experience_id == 0){
+				$msg["experience_id"] = 'Vui lòng chọn số năm kinh nghiệm';    
+				$data['experience_id']='';        
+				$flag = 0;    
+			}
+			if((int)@$rank_present_id == 0){
+				$msg["rank_present_id"] = 'Vui lòng chọn cấp bậc hiện tại';    
+				$data['rank_present_id']='';        
+				$flag = 0;   
+			}
+			if((int)@$rank_offered_id == 0){
+				$msg["rank_offered_id"] = 'Vui lòng chọn cấp bậc mong muốn';    
+				$data['rank_offered_id']='';        
+				$flag = 0;   
+			}
+			if(count(@$job_id) == 0){
+				$msg["job_id"] = 'Vui lòng chọn ngành nghề mong muốn';    
+				$data['job_id']='';        
+				$flag = 0;      
+			}else{
+				if((int)@$job_id[0]==0){
+					$msg["job_id"] = 'Vui lòng chọn ngành nghề mong muốn';    
+					$data['job_id']='';        
+					$flag = 0;      
+				}
+			}
+			if((int)@$salary == 0){
+				$msg["salary"] = 'Vui lòng ghi mức lương mong muốn';    
+				$data['salary']='';        
+				$flag = 0;   
+			}
+			if(count(@$province_id) == 0){
+				$msg["province_id"] = 'Vui lòng chọn nơi làm việc mong muốn';    
+				$data['province_id']='';        
+				$flag = 0;      
+			}else{
+				if((int)@$province_id[0]==0){
+					$msg["province_id"] = 'Vui lòng chọn nơi làm việc mong muốn';    
+					$data['province_id']='';        
+					$flag = 0;      
+				}
+			}
+			if((int)@$status == -1){
+				$msg["status"] = 'Vui lòng chọn trạng thái nhà tuyển dụng cho phép tìm kiếm thông tin hay không';    
+				$data['status']='';        
+				$flag = 0;      
+			} 
+			if($flag==1){
+				$item                   = new ProfileModel;
+				$item->fullname           = @$fullname;
+				/* begin save alias */
+				$alias=str_slug(@$fullname,'-');				
+				$data_profile=array();        
+				$data_profile=ProfileModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();         
+				if (count(@$data_profile) > 0) {
+					$code_alias=rand(1,999999);
+					$alias=$alias.'-'.$code_alias;
+				}        				
+				$item->alias=@$alias;
+				/* end save alias */
+				$item->alias            = @$alias;
+				$item->literacy_id = @$literacy_id;
+				$item->experience_id = @$experience_id;
+				$item->rank_present_id = @$rank_present_id;
+				$item->rank_offered_id=@$rank_offered_id;
+				$item->salary=@$salary;
+				$item->candidate_id      = (int)@$arrUser['id'];        
+				$item->status           = (int)@$status;
+				$item->created_at=date("Y-m-d H:i:s");
+				$item->updated_at=date("Y-m-d H:i:s");   
+				$item->save();    
+				$source_profile_job=ProfileJobModel::whereRaw('profile_id = ?',[(int)@$item->id])->select('job_id')->get()->toArray();
+				$source_profile_place=ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$item->id])->select('province_id')->get()->toArray();
+				$source_job_id=array();
+				$source_province_id=array();
+				if(count($source_profile_job) > 0){
+					foreach ($source_profile_job as $key => $value) {
+						$source_job_id[]=$value['job_id'];
+					}
+				}
+				if(count($source_profile_place) > 0){
+					foreach ($source_profile_place as $key => $value) {
+						$source_province_id[]=$value['province_id'];
+					}
+				}  
+				sort($source_job_id);
+				sort($source_province_id);
+				sort($job_id);
+				sort($province_id);
+				$compare_job=0;
+				$compare_province=0;
+				if($source_job_id == $job_id){
+					$compare_job=1;       
+				}    
+				if($source_province_id == $province_id){
+					$compare_province=1;       
+				}
+				if($compare_job == 0){
+					ProfileJobModel::whereRaw("profile_id = ?",[(int)@$item->id])->delete();   
+					foreach ($job_id as $key => $value) {
+						$item2=new ProfileJobModel;
+						$item2->profile_id = (int)@$item->id;
+						$item2->job_id         = (int)@$value;
+						$item2->save();
+					}
+				}
+				if($compare_province == 0){
+					ProfilePlaceModel::whereRaw("profile_id = ?",[(int)@$item->id])->delete();  
+					foreach ($province_id as $key => $value) {
+						$item3=new ProfilePlaceModel;
+						$item3->profile_id = (int)@$item->id;
+						$item3->province_id         = (int)@$value;
+						$item3->save();
+					}
+				}  
+				$msg['success']='<span>Tạo hồ sơ thành công.&nbsp;</span><span class="margin-left-5 review"><a  href="'.route('frontend.index.getFormRecruitment',['edit',@$item->id]).'">Xem lại hồ sơ đã tạo</a></span>';            
+			}
+		}
 		return view('frontend.create-profile',compact('data','msg','flag'));     
 	}
 }

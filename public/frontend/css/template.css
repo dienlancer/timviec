@@ -615,8 +615,7 @@ div.opacity-absolute::before{
     color: #E30000;
     font-size: 20px;
     position: relative;
-    padding-bottom: 10px;
-    text-transform: capitalize;    
+    padding-bottom: 10px;    
     margin-top: 10px;
 }
 .dn-dk-h::before {
@@ -820,7 +819,6 @@ div.opacity-absolute::before{
 }
 .xika2 {
     padding: 4px 0px;
-    display: flex;    
 }
 @media (max-width: 768px){    
     .mobilemenu{

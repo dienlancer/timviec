@@ -40,26 +40,26 @@ switch ($task) {
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
-				<h1 class="dn-dk-h">Tạo hồ sơ</h1>
+				<h1 class="dn-dk-h">Tạo Hồ Sơ</h1>
 					
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
 					<div class="col-lg-9">
 						<div class="row margin-top-10">
-							<div class="col-lg-3">Họ tên:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['fullname']; ?></b></div>
+							<div class="col-lg-3"><div class="xika">Họ tên</div> </div>
+							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['fullname']; ?></b></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3">Ngày sinh:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['birthday']; ?></b></div>
+							<div class="col-lg-3"><div class="xika">Ngày sinh</div></div>
+							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['birthday']; ?></b></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3">Số điện thoại:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['phone']; ?></b></div>
+							<div class="col-lg-3"><div class="xika">Số điện thoại</div></div>
+							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['phone']; ?></b></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3">Email:</div>
-							<div class="col-lg-9"><b><?php echo @$candidate['email']; ?></b></div>
+							<div class="col-lg-3"><div class="xika">Email</div></div>
+							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['email']; ?></b></div></div>
 						</div>	
 						<div class="row margin-top-10">
 							<div class="col-lg-3"></div>

@@ -37,7 +37,7 @@ switch ($task) {
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
-				<h1 class="dn-dk-h">Đăng tin tuyển dụng</h1>
+				<h1 class="dn-dk-h">Đăng Tin Tuyển Dụng</h1>
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					

@@ -1541,6 +1541,30 @@ class IndexController extends Controller {
 		}
 		return view('frontend.profile-step-by-step',compact('data','msg','checked','id'));     
 	}
+	public function updateCareerGoal(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		$id             		=   (int)@$request->id;  
+		$career_goal    		=  	trim(@$request->career_goal);
+		if(mb_strlen(@$career_goal) < 11){
+			$checked=0;
+			$msg['career_goal']='Vui lòng nhập mục tiêu trên 10 ký tự';
+		}
+		if($checked == 1){
+			$item=ProfileModel::find(@$id);		
+			$item->career_goal=$career_goal;
+			$item->save();
+			$msg['success']='Cập nhật mục tiêu nghề nghiệp thành công';
+		}		
+		$info = array(
+    		"checked"       => $checked,       		
+    		'msg'       	=> $msg,                
+    		"id"            => (int)@$id,
+    		"career_goal"	=> @$career_goal
+    	);                       
+    	return $info;   
+	}
 }
 
 

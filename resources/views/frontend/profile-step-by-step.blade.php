@@ -38,6 +38,7 @@ $source_info=$query->select('profile.fullname'
 	,'rank_present.fullname as rank_present_fullname'
 	,'rank_offered.fullname as rank_offered_fullname'
 	,'profile.salary'
+	,'profile.career_goal'
 	,'profile.status_search')
 ->groupBy('profile.fullname'
 	,'literacy.fullname'
@@ -45,6 +46,7 @@ $source_info=$query->select('profile.fullname'
 	,'rank_present.fullname'
 	,'rank_offered.fullname'
 	,'profile.salary'
+	,'profile.career_goal'
 	,'profile.status_search')	
 ->get()->toArray();	
 $info_general=array();
@@ -95,11 +97,13 @@ if(count($source_info) > 0){
 }
 $disabled_status='';
 $register_status='onclick="document.forms[\'frm\'].submit();"';
+$inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 <form name="frm" method="POST" enctype="multipart/form-data">
 	{{ csrf_field() }}
+	<?php echo $inputID; ?>
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
@@ -213,39 +217,63 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					<div class="col-lg-8">
 						<div class="fatanasa"><a href="<?php echo route('frontend.index.getFormProfile',['edit',@$id]); ?>">Chỉnh sửa</a></div>
 					</div>
-				</div>
+				</div>				
 				<hr  />		
 				<div class="row mia">
-					<div class="col-lg-4"><h2 class="login-information">Mục tiêu nghề nghiệp</h2></div>
+					<div class="col-lg-4"><div class="rarakata"><h2 class="login-information">Mục tiêu nghề nghiệp</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>
 					<div class="col-lg-8"></div>
 				</div>
+				<div class="note note_career_goal margin-top-15"  style="display: none;"></div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Mục tiêu</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca" rows="10" ></textarea></div>
-				</div>
-				<div class="row mia">
-					<div class="col-lg-4" ></div>
 					<div class="col-lg-8">
-						<div class="titanius">
-							<div class="vihamus">
-								<a href="javascript:void(0);"  >
-									<div class="narit">
-										<div><i class="far fa-save"></i></div>
-										<div class="margin-left-5">Lưu</div>
-									</div>								
-								</a>
-							</div>							
-							<div class="vihamus-2 margin-left-5">
-								<a href="javascript:void(0);"  >
+						<?php 
+						$status_career_goal_edit='';
+						$status_career_goal_save='';
+						if(empty(@$info_general['career_goal'])){
+							$status_career_goal_edit='display:none';
+							$status_career_goal_save='display:block';
+						}else{
+							$status_career_goal_edit='display:block';
+							$status_career_goal_save='display:none';
+						}
+						?>
+						<div class="career_goal_edit" style="<?php echo $status_career_goal_edit; ?>">
+							<div class="career_goal_txt"><?php echo @$info_general['career_goal']; ?></div>
+							<div class="vihamus-3 margin-top-5">
+								<a href="javascript:void(0);" onclick="showCareerGoalSave();"  >
 									<div class="narit">
 										<div><i class="far fa-times-circle"></i></div>
-										<div class="margin-left-5">Không lưu</div>
-									</div>								
+										<div class="margin-left-5">Chỉnh sửa</div>
+									</div>
 								</a>
 							</div>
 						</div>
+						<div class="career_goal_save" style="<?php echo $status_career_goal_save; ?>">
+							<div><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca" rows="10" ><?php echo @$info_general['career_goal']; ?></textarea></div>
+							<div>
+								<div class="titanius">
+									<div class="vihamus">
+										<a href="javascript:void(0);" onclick="saveCareerGoal();" >
+											<div class="narit">
+												<div><i class="far fa-save"></i></div>
+												<div class="margin-left-5">Lưu</div>
+											</div>								
+										</a>
+									</div>							
+									<div class="vihamus-2 margin-left-5">
+										<a href="javascript:void(0);" onclick="noSaveCareerGlobal();" >
+											<div class="narit">
+												<div><i class="far fa-times-circle"></i></div>
+												<div class="margin-left-5">Không lưu</div>
+											</div>								
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
+				</div>				
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8">
@@ -266,4 +294,48 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 		</div>
 	</div>
 </form>
+<script type="text/javascript" language="javascript">
+	function saveCareerGoal(){
+		var id = $("form[name='frm']").find("input[name='id']").val();
+		var career_goal = $("form[name='frm']").find("textarea[name='career_goal']").val();
+		var token = $("form[name='frm']").find("input[name='_token']").val();
+		var dataItem = new FormData();
+		dataItem.append('id',id);
+		dataItem.append('career_goal',career_goal);           
+		dataItem.append('_token',token);
+		$.ajax({
+			url: '<?php echo route("frontend.index.updateCareerGoal"); ?>',
+			type: 'POST',
+			data: dataItem,
+			async: false,
+			success: function (data) {
+				if(data.checked==1){      					
+					$('.career_goal_txt').empty();
+					$('.career_goal_txt').append(data.career_goal);										
+					$('.career_goal_edit').show();
+					$('.career_goal_save').hide();
+				} else{
+					showMsg('note_career_goal',data);    
+				}       			
+			},
+			error : function (data){
+
+			},
+			beforeSend  : function(jqXHR,setting){
+
+			},
+			cache: false,
+			contentType: false,
+			processData: false
+		});
+	}
+	function showCareerGoalSave(){
+		$('.career_goal_edit').hide();
+		$('.career_goal_save').show();
+	}
+	function noSaveCareerGlobal(){
+		$('.career_goal_edit').show();
+		$('.career_goal_save').hide();	
+	}
+</script>
 @endsection()

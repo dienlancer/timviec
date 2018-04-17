@@ -18,8 +18,8 @@ $linkCancel               =   route('frontend.index.getGroupProfile',[@$id]);
 		<div class="row">			
 			<div class="col-lg-9">
 				<h1 class="dn-dk-h">BỘ HỒ SƠ</h1>
-				<div class="box-group-profile">
-					
+				<div class="note margin-top-15"  style="display: none;"></div>
+				<div class="box-group-profile">					
 						<div class="rawon">
 							<div><center><i class="far fa-folder-open"></i></center></div>
 							<div class="mimi"><a href="javascript:void(0);">Tạo hồ sơ từng bước</a></div>
@@ -108,9 +108,12 @@ $linkCancel               =   route('frontend.index.getGroupProfile',[@$id]);
         		data: dataItem,
         		async: false,
         		success: function (data) {
-        			if(data.checked==1){                    
+        			if(data.checked==1){      
+        				alert('Lưu file đính kèm thành công');              
         				window.location.href = "<?php echo $linkCancel; ?>";                    
-        			}        			
+        			} else{
+        				showMsg('note',data);    
+        			}       			
         		},
         		error : function (data){
         			

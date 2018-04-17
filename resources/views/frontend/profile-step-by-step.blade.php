@@ -214,6 +214,38 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 						<div class="fatanasa"><a href="<?php echo route('frontend.index.getFormProfile',['edit',@$id]); ?>">Chỉnh sửa</a></div>
 					</div>
 				</div>
+				<hr  />		
+				<div class="row mia">
+					<div class="col-lg-4"><h2 class="login-information">Mục tiêu nghề nghiệp</h2></div>
+					<div class="col-lg-8"></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Mục tiêu</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+					<div class="col-lg-8"><textarea name="career_goal"  class="vacca" rows="10" ></textarea></div>
+				</div>
+				<div class="row mia">
+					<div class="col-lg-4" ></div>
+					<div class="col-lg-8">
+						<div class="titanius">
+							<div class="vihamus">
+								<a href="javascript:void(0);"  >
+									<div class="narit">
+										<div><i class="far fa-save"></i></div>
+										<div class="margin-left-5">Lưu</div>
+									</div>								
+								</a>
+							</div>							
+							<div class="vihamus-2 margin-left-5">
+								<a href="javascript:void(0);"  >
+									<div class="narit">
+										<div><i class="far fa-times-circle"></i></div>
+										<div class="margin-left-5">Không lưu</div>
+									</div>								
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8">

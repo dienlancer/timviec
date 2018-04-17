@@ -221,7 +221,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Mục tiêu</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><textarea name="career_goal"  class="vacca" rows="10" ></textarea></div>
+					<div class="col-lg-8"><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca" rows="10" ></textarea></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ></div>

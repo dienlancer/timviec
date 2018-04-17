@@ -114,7 +114,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Sơ lược công ty</div></div></div>
-					<div class="col-lg-8"><textarea name="intro"  class="vacca" rows="10" ><?php echo @$data['intro']; ?></textarea></div>
+					<div class="col-lg-8"><textarea name="intro" placeholder="Nhập sơ lược công ty"  class="vacca" rows="10" ><?php echo @$data['intro']; ?></textarea></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Fax</div></div></div>

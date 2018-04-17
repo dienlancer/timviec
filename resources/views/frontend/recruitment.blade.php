@@ -97,11 +97,11 @@ switch ($task) {
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><textarea name="description" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['description']; ?></textarea></div>
+					<div class="col-lg-8"><textarea name="description" placeholder="Nhập mô tả công việc..." <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['description']; ?></textarea></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Yêu cầu công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><textarea name="requirement" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['requirement']; ?></textarea></div>
+					<div class="col-lg-8"><textarea name="requirement" placeholder="Nhập yêu cầu công việc..." <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['requirement']; ?></textarea></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Tính chất công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
@@ -153,7 +153,7 @@ switch ($task) {
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Quyền lợi</div></div></div>
-					<div class="col-lg-8"><textarea name="benefit" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['benefit']; ?></textarea></div>
+					<div class="col-lg-8"><textarea name="benefit" placeholder="Nhập quyền lợi..." <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['benefit']; ?></textarea></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Ngành nghề</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>

@@ -90,7 +90,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Sơ lược công ty</div></div></div>
-					<div class="col-lg-8"><textarea name="intro" <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['intro']; ?></textarea></div>
+					<div class="col-lg-8"><textarea name="intro" placeholder="Nhập sơ lược công ty..." <?php echo $disabled_status; ?> class="vacca" rows="10" ><?php echo @$data['intro']; ?></textarea></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Fax</div></div></div>

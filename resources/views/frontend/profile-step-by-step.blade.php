@@ -262,7 +262,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 										</a>
 									</div>							
 									<div class="vihamus-2 margin-left-5">
-										<a href="javascript:void(0);" onclick="noSaveCareerGlobal();" >
+										<a href="javascript:void(0);" onclick="noSaveCareerGoal();" >
 											<div class="narit">
 												<div><i class="far fa-times-circle"></i></div>
 												<div class="margin-left-5">Không lưu</div>
@@ -333,7 +333,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		$('.career_goal_edit').hide();
 		$('.career_goal_save').show();
 	}
-	function noSaveCareerGlobal(){
+	function noSaveCareerGoal(){
 		$('.career_goal_edit').show();
 		$('.career_goal_save').hide();	
 	}

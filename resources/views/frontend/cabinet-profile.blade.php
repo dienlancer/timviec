@@ -63,14 +63,14 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 							$id=$value['id'];
 							$fullname=$value['fullname'];	
 							$created_at=$value['created_at'];
-							$status=$value['status'];						
+							$status_search=$value['status_search'];						
 							$edited=$value['edited'];
 							$deleted=$value['deleted'];
 							?>
 							<tr>
 								<td><?php echo $fullname; ?></td>	
 								<td><?php echo $created_at; ?></td>
-								<td><?php echo $status; ?></td>
+								<td><?php echo $status_search; ?></td>
 								<td><?php echo $edited; ?></td>
 								<td><?php echo $deleted; ?></td>						
 							</tr>

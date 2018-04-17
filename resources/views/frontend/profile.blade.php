@@ -107,10 +107,10 @@ switch ($task) {
 				$ddlRankPresent=cmsSelectboxCategory("rank_present_id","vacca",$source_rank,@$data['rank_present_id'],$disabled_status,'Chọn cấp bậc hiện tại');
 				$ddlRankOffered=cmsSelectboxCategory("rank_offered_id","vacca",$source_rank,@$data['rank_offered_id'],$disabled_status,'Chọn cấp bậc mong muốn');
 				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
-				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');				
-				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
-				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn', 0 => 'Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ này chỉ dùng để ứng tuyển');  
-				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,$disabled_status);
+				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');								
+				$status_search                 =  (isset($data['status_search'])) ? (int)@$data['status_search'] : 1 ;
+				$arrStatusSearch              =   array(-1 => '- Chọn trạng thái -', 1 => 'Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn', 0 => 'Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ này chỉ dùng để ứng tuyển');  
+				$ddlStatusSearch              =   cmsSelectbox("status_search","vacca",$arrStatusSearch,$status_search,$disabled_status);
 				?>		
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin tổng quan</h2></div>
@@ -163,7 +163,7 @@ switch ($task) {
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8">						
-						<?php echo $ddlStatus; ?>
+						<?php echo $ddlStatusSearch; ?>
 					</div>
 				</div>
 				<div class="row mia">

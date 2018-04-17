@@ -1190,7 +1190,7 @@ class IndexController extends Controller {
 			$salary 			= 	trim(@$request->salary);
 			$salary            = (int)(str_replace('.', '',@$salary)) ;
 			$province_id      	=   @$request->province_id;			
-			$status 			=	trim(@$request->status);
+			$status_search 			=	trim(@$request->status_search);
 			if(mb_strlen(@$fullname) < 15){
 				$msg["fullname"] = 'Tiêu đề phải từ 15 ký tự trở lên';    
 				$data['fullname']='';        
@@ -1243,9 +1243,9 @@ class IndexController extends Controller {
 					$checked = 0;      
 				}
 			}
-			if((int)@$status == -1){
-				$msg["status"] = 'Vui lòng chọn trạng thái nhà tuyển dụng cho phép tìm kiếm thông tin hay không';    
-				$data['status']='';        
+			if((int)@$status_search == -1){
+				$msg["status_search"] = 'Vui lòng chọn trạng thái nhà tuyển dụng cho phép tìm kiếm thông tin hay không';    
+				$data['status_search']='';        
 				$checked = 0;      
 			} 
 			if($checked==1){
@@ -1285,8 +1285,9 @@ class IndexController extends Controller {
 				$item->rank_present_id = @$rank_present_id;
 				$item->rank_offered_id=@$rank_offered_id;
 				$item->salary=@$salary;
-				$item->candidate_id      = (int)@$arrUser['id'];        
-				$item->status           = (int)@$status;				
+				$item->candidate_id      = (int)@$arrUser['id'];        				
+				$item->status_search           = (int)@$status_search;				
+				$item->status           = 0;				
 				$item->save();    
 				$source_profile_job=ProfileJobModel::whereRaw('profile_id = ?',[(int)@$item->id])->select('job_id')->get()->toArray();
 				$source_profile_place=ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$item->id])->select('province_id')->get()->toArray();
@@ -1396,8 +1397,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('profile.id','profile.fullname','profile.status','profile.created_at')
-		->groupBy('profile.id','profile.fullname','profile.status','profile.created_at')
+		$data=$query->select('profile.id','profile.fullname','profile.status_search','profile.created_at')
+		->groupBy('profile.id','profile.fullname','profile.status_search','profile.created_at')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
@@ -1418,7 +1419,7 @@ class IndexController extends Controller {
 		else{
 			$trangThai=0;
 		}
-		$item->status=$status;
+		$item->status_search=$status;
 		$item->save();
 		$result = array(
 			'id'      => $id, 
@@ -1489,10 +1490,10 @@ class IndexController extends Controller {
     		$checked=0;
 	    	$msg['notexistfileattached']='Vui lòng cập nhật file đính kèm';
     	}else{
-    		$pattern = "#^([a-zA-Z0-9\s_\\.\-:])+(.doc|.docx|.xls|.xlsx|.pdf)$#"; 
+    		$pattern = "#^([a-zA-Z0-9\s_\\.\-:])+(.doc|.docx|.pdf)$#"; 
     		if(preg_match($pattern, $source_file['name'])==false){
 	    		$checked=0;
-	    		$msg['notfileattached']='Đính kèm file lỗi . File đính kèm phải ở dạng word , excel , pdf , png , jpeg';
+	    		$msg['notfileattached']='Đính kèm file lỗi . File đính kèm phải ở dạng word , pdf';
     		}
     	}    	    
 		if ($checked == 1){

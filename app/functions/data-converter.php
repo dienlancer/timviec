@@ -1646,20 +1646,20 @@ function profile2Converter($data=array()){
             $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteProfile',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';            
             $edited='<center><a href="'.route('frontend.index.getFormProfile',['edit',(int)@$data[$i]["id"]]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';          
             $kicked=0;
-            if((int)@$data[$i]["status"]==1){
+            if((int)@$data[$i]["status_search"]==1){
                 $kicked=0;
             }
             else{
                 $kicked=1;
             }
-            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';            
+            $status_search     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status_search"],$kicked).'</center>';            
             $id=@$data[$i]["id"];   
             $fullname=@$data[$i]['fullname'];    
             $created_at='<center>'.datetimeConverterVn($data[$i]["created_at"]).'</center>';          
             $result[$i] = array(                
                 "id"                       =>   $id,
                 "fullname"                 =>   $fullname,                                         
-                "status"                   =>   $status,
+                "status_search"            =>   $status_search,
                 "created_at"               =>   $created_at,                                
                 "edited"                   =>   $edited,
                 "deleted"                  =>   $deleted

@@ -1516,6 +1516,31 @@ class IndexController extends Controller {
     	);                       
     	return $info;   		
 	}
+	public function getProfileStepByStep(Request $request,$id){
+		$info                 =   array();
+		$checked=1;
+		$msg=array();          
+		$arrUser=array();    
+		$data=array();					
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}				
+		if($request->isMethod('post')){
+			$data             	=	@$request->all();      			
+			if($checked==1){
+				
+			}
+		}
+		return view('frontend.profile-step-by-step',compact('data','msg','checked','id'));     
+	}
 }
 
 

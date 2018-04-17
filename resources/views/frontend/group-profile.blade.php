@@ -7,6 +7,7 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 $linkSave               =   route('frontend.index.saveFileAttached');
 $linkCancel               =   route('frontend.index.getGroupProfile',[@$id]);
+$linkCreateProfileStepByStep=route('frontend.index.getProfileStepByStep',[@$id]);
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -22,10 +23,8 @@ $linkCancel               =   route('frontend.index.getGroupProfile',[@$id]);
 				<div class="box-group-profile">					
 						<div class="rawon">
 							<div><center><i class="far fa-folder-open"></i></center></div>
-							<div class="mimi"><a href="javascript:void(0);">Tạo hồ sơ từng bước</a></div>
-						</div>
-					
-					
+							<div class="mimi"><a href="<?php echo $linkCreateProfileStepByStep; ?>">Tạo hồ sơ từng bước</a></div>
+						</div>										
 						<div class="rawon margin-left-15">
 							<div><center><i class="fas fa-upload"></i></center></div>
 							<div class="mimi">							

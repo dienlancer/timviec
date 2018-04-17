@@ -556,5 +556,6 @@ Route::get("xoa-ho-so/{id}",["as"=>"frontend.index.deleteProfile","uses"=>"front
 Route::post("cho-phep-tim-kiem-ho-so",["as"=>"frontend.index.changeProfileSearchStatus","uses"=>"frontend\IndexController@changeProfileSearchStatus"]);
 Route::get("bo-ho-so/{id}",["as"=>"frontend.index.getGroupProfile","uses"=>"frontend\IndexController@getGroupProfile"]);
 Route::post("save-file-attached",["as"=>"frontend.index.saveFileAttached","uses"=>"frontend\IndexController@saveFileAttached"]);
+Route::match(["get","post"],"tao-ho-so-tung-buoc/{id?}",["as"=>"frontend.index.getProfileStepByStep","uses"=>"frontend\IndexController@getProfileStepByStep"]);
 /* end tìm việc */
 ?>

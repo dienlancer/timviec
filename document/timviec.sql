@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 16, 2018 lúc 01:15 PM
+-- Thời gian đã tạo: Th4 17, 2018 lúc 07:13 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2090,7 +2090,9 @@ CREATE TABLE `profile` (
   `rank_present_id` int(11) DEFAULT NULL,
   `rank_offered_id` int(11) DEFAULT NULL,
   `salary` int(11) DEFAULT NULL,
+  `file_attached` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `candidate_id` int(11) DEFAULT NULL,
+  `status_search` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -2100,13 +2102,12 @@ CREATE TABLE `profile` (
 -- Đang đổ dữ liệu cho bảng `profile`
 --
 
-INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `candidate_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 10000000, 5, 1, '2018-04-16 05:05:40', '2018-04-16 08:48:39'),
-(7, 'Nhân Viên Kinh Doanh Ngành Bao Bì', 'nhan-vien-kinh-doanh-nganh-bao-bi', 2, 3, 2, 3, 10000000, 5, 1, '2018-04-16 08:50:46', '2018-04-16 08:50:46'),
-(9, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc-589172', 4, 6, 6, 7, 6000000, 5, 1, '2018-04-16 08:51:22', '2018-04-16 08:51:22'),
-(10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 5, 1, '2018-04-16 10:12:19', '2018-04-16 10:34:46'),
-(11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 5, 1, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
-(12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 5, 1, '2018-04-16 10:18:40', '2018-04-16 10:34:39');
+INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 10000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 1, 1, '2018-04-16 05:05:40', '2018-04-17 03:52:32'),
+(10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
+(11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
+(12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
+(13, 'Nhân viên kế toán 834', 'nhan-vien-ke-toan-834', 3, 3, 3, 4, 7000000, NULL, 5, 1, 0, '2018-04-17 03:38:34', '2018-04-17 03:47:14');
 
 -- --------------------------------------------------------
 
@@ -2131,11 +2132,12 @@ INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_
 (38, 1, 51, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
 (39, 1, 53, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
 (40, 1, 55, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
-(41, 7, 10, '2018-04-16 08:50:46', '2018-04-16 08:50:46'),
-(43, 9, 4, '2018-04-16 08:51:22', '2018-04-16 08:51:22'),
 (44, 10, 36, '2018-04-16 10:12:19', '2018-04-16 10:12:19'),
 (45, 11, 11, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
-(46, 12, 27, '2018-04-16 10:18:40', '2018-04-16 10:18:40');
+(46, 12, 27, '2018-04-16 10:18:40', '2018-04-16 10:18:40'),
+(47, 13, 2, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
+(48, 13, 4, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
+(49, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34');
 
 -- --------------------------------------------------------
 
@@ -2160,11 +2162,12 @@ INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `u
 (30, 1, 57, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
 (31, 1, 59, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
 (32, 1, 61, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
-(33, 7, 5, '2018-04-16 08:50:46', '2018-04-16 08:50:46'),
-(35, 9, 12, '2018-04-16 08:51:22', '2018-04-16 08:51:22'),
 (36, 10, 10, '2018-04-16 10:12:19', '2018-04-16 10:12:19'),
 (37, 11, 7, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
-(38, 12, 7, '2018-04-16 10:18:40', '2018-04-16 10:18:40');
+(38, 12, 7, '2018-04-16 10:18:40', '2018-04-16 10:18:40'),
+(39, 13, 2, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
+(40, 13, 4, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
+(41, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34');
 
 -- --------------------------------------------------------
 
@@ -3949,19 +3952,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT cho bảng `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT cho bảng `project`

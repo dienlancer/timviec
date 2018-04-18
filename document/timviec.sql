@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 17, 2018 lúc 12:57 PM
+-- Thời gian đã tạo: Th4 18, 2018 lúc 10:01 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2104,7 +2104,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 10000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Nếu bạn yêu thích các môn thể thao trình diễn và muốn chia sẻ với bạn bè các pha trình diễn đẹp, sáng tạo cũng như các kỹ năng cần thiết khi chơi những môn thể thao này, hãy thử cùng chúng tôi tạo ra khoảnh khắc lơ lửng chậm độc đáo bằng tính năng Super Slow-Mo trên Galaxy S9/S9+', 1, 1, '2018-04-16 05:05:40', '2018-04-17 10:48:29'),
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 10000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Mỹ, Anh, Pháp sáng 14/4 phóng 105 tên lửa hành trình vào các cơ sở ở Syria, nhằm đáp trả việc nước này bị cáo buộc sử dụng vũ khí hóa học chống lại dân thường tại thành phố Douma, ngoại ô thủ đô Damascus, làm khoảng 70 người thiệt mạng hồi đầu tháng. Nga, Syria và Iran đã lên án hành động này của Mỹ, tuy nhiên dự thảo nghị quyết chỉ trích vụ tấn công do Nga trình ra trước Hội đồng Bảo an Liên Hợp Quốc đã bị bác bỏ', 1, 1, '2018-04-16 05:05:40', '2018-04-17 17:57:26'),
 (10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
 (11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
 (12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),

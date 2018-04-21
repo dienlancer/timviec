@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 18, 2018 lúc 10:01 AM
+-- Thời gian đã tạo: Th4 21, 2018 lúc 12:24 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -559,7 +559,7 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (4, 'pmecorp@dienkim.com', '$2y$10$VmWhueq32Xuv7oXVvEU5cuNc9YxGWG3tSEow4snOKfaU6ymFgLsAq', 'CÔNG TY CỔ PHẦN TM-DV CƠ ĐIỆN LẠNH P&M', 'cong-ty-cp-tm-dv-do-dien-lanh-p-m', '', '', '436B/106/4, đường 3 tháng 2, phường 12, Q.10', '0978123479', 23, 4, 'logo-7-5yk7jo4xcgz2.png', 'Công ty TNHH TM-DV Cơ Điện Lạnh P&M (PME) là một trong những công ty chuyên nghiệp nhất Việt Nam về lĩnh vực thiết kế và thi công các hệ thống kỹ thuật Cơ - Điện – Điện lạnh cho các công trình qui mô lớn và theo tiêu chuẩn quốc tế.\r\nBan lãnh đạo công ty và các chuyên viên là những người tiên phong về lĩnh vực cơ điện lạnh công trình cao cấp tại Việt Nam từ những năm 1980 đến nay. Họ là những người đầu tiên tham gia xây dựng các khách sạn, trung tâm thương mại, cao ốc văn phòng theo tiêu chuẩn quốc tế đầu tiên tại Việt Nam, và tiếp tục đi sâu vào chuyên ngành cho đến hôm nay.', '8858349859839', 'www.pmecorp.com.vn', 'Nguyễn Thị Xuân', 'xuann@dienkim.com', '0987421908', 4, 1, NULL, '2018-04-04 05:29:16', '2018-04-11 08:37:21'),
 (5, 'dathanhland@dienkim.com', '$2y$10$q8i8QEea0jeU2s3O0n7YD.fJy0ACn0wRUOSOY2GI0tj997TmV0VNC', 'Công Ty Bất Động Sản Đà Thành Land', 'cong-ty-bds-da-thanh-land', 'metakeyword Công ty CP BĐS ĐÀ THÀNH LAND', 'metadescription Công ty CP BĐS ĐÀ THÀNH LAND', '518 đường 2/9, Phường Hoà Cường Nam, Quận Hải Châu, Thành phố Đà Nẵng', '0986123789', 12, 4, 'logo-3-2os9xabnpmtf.png', 'Được thành lập vào tháng 12/2016. Công ty với phương châm hoạt động kiến tạo sự thành vượng sẽ mang lại giải pháp đầu tư tốt nhất về tài chính cho phân khúc bất động sản cho quý khách hàng nhằm mang lại giải pháp an cư và đầu tư tốt nhất tạo nên sự thịnh vượng cho khách hàng, xã hội, toàn cầu.', '78834778238543', 'www.dathanhland.net', 'Trương Nam Thành', 'thanhtn@dienkim.com', '0982365172', 6, 1, 0, '2018-04-04 08:06:36', '2018-04-08 17:02:50'),
 (6, 'truyenthonglienviet@dienkim.com', '$2y$10$0pW9Y6V4EjK5VKNZ5Kpg2.8j2UVcAuFpnz3C3XiRyHKcfdDMwnDmO', 'Công Ty TNHH Truyền Thông Liên Việt', 'cong-ty-tnhh-truyen-thong-lien-viet', '', '', '194/7 trần bá giao, p5, gò vấp', '0986234123', 3, 3, NULL, 'Công Ty TNHH Truyền Thông Liên Việt được thành lập năm 2009, chuyên thiết kế, in ấn, thi công các hạng mục bảng hiệu, hộp đèn, quầy kệ siêu thi, sản xuất hộp quà gỗ, POSM\r\n\r\nCác nhãn hàng hàng tiêu biểu công ty đã thi công trong nhiều năm qua gồm: Bia Budweiser, Beck’s, Corona, Hoegaarden, Sơn Kansai, Sơn Alphanam, Thuốc lá Camel, Rượu Johnnie Walker, Yến Sào Khánh Hòa, Thiết bị vệ sinh Inax, Petrovietnam, Starpint…..', '4537825878', 'www.truyenthonglienviet.com', 'Vi Văn Đại', 'daivv@dienkim.com', '0988765123', 6, 1, 0, '2018-04-06 02:10:27', '2018-04-08 16:37:40'),
-(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '65 Phạm Ngũ Lão 8', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Lưu Mạnh Hà', 'hoancn8478@dienkim.com', '9885556668', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-14 05:07:47'),
+(7, 'yakultvn@dienkim.com', '$2y$10$PkM12SsRMUVqiKWlE.V8jeMLw/MZQEIsh4jdZQB5ufBTbd3kd2vua', 'Công ty TNHH Yakult Việt Nam', 'cong-ty-tnhh-yakult-viet-nam', '', '', '65 Phạm Ngũ Lão 8', '0967123456', 23, 3, 'logo-2-58pxknai6erd.png', 'Yakult là công ty được thành lập bởi Giáo sư, Bác sĩ người Nhật từ hơn 80 năm trước. Hiện có mặt tại 38 quốc gia và vùng lãnh thổ trên toàn thế giới.\r\nCông ty mẹ: Yakult Honsha Co., Ltd. \r\nNăm thành lập: 1935. \r\nĐịa chỉ: 1-19, Higashi-Shinbashi, 1-chome, Minato-ku, Tokyo, 105-8660 Nhật Bản.\r\nCông ty TNHH Yakult Việt Nam.\r\nNăm thành lập: 2006.\r\nĐịa chỉ:\r\nNhà Máy: Số 5 Đại lộ Tự Do, KCN Vsip I, p.Bình Hòa, TX. Thuận An, Bình Dương.\r\nVP chính: Số 29-30 Đường Song Hành, P.An Phú, Q.2, Tp.HCM.\r\nSản phẩm Yakult do Công ty sản xuất đã được bán rộng rãi tại tất cả các thành phố lớn tại Việt Nam. Chỉ với một chai dung tích nhỏ 65ml nhưng lại chứa đến 6,5 tỷ khuẩn Lactobacillus casei Shirota, do vậy, nếu duy trì uống Yakult thường xuyên sẽ giúp cải thiện đường ruột, từ đó sẽ giúp cơ thể có khả năng đề kháng tốt hơn. \r\nHiện sản phẩm Yakult đã có mặt ở hầu hết các siêu thị và các cửa hàng bán lẻ khắp các tỉnh thành Việt Nam. Ngoài ra, Yakult còn được phân phối trực tiếp đến tận nhà của khách hàng qua hệ thống giao hàng Yakult Lady.\r\nNhà máy chúng tôi luôn duy trì qui trình sản xuất với tiêu chuẩn chất lượng cao nhất, áp dụng qui trình sản xuất giống như Nhà máy Yakult ở Nhật Bản. Yakult không chỉ cam kết đạt chất lượng sản phẩm cao nhất mà còn cam kết về việc bảo vệ môi trường đảm bảo sức khỏe và an toàn nơi làm việc.\r\nCô nàng “họa mi tóc nâu” Mỹ Tâm vừa cùng Yakult “về chung một nhà” với vai trò đại sứ thương hiệu đấy!', '87377875782', 'www.yakult.vn', 'Lưu Mạnh Hà', 'hoancn8477@dienkim.com', '0988157998', 2, 1, NULL, '2018-04-06 02:30:04', '2018-04-21 10:19:32'),
 (8, 'gifukogyo@dienkim.com', '$2y$10$ST7ybxlhlJ5n5uPoBgAhOug8othgoL7Yb/JHG5ZdM7C9RCENgHtsy', 'Công ty TNHH Gifu Kogyo Vietnam', 'cong-ty-tnhh-gifu-kogyo-vietnam', '', '', 'Lầu 1, P14, Nhà 6A, Đường 3, Công Viên Phần Mềm Quang Trung, Phường Tân Chánh Hiệp, Quận 12', '0977222333', 46, 3, 'logo-7-wgsax870zvu2.png', 'Là công ty 100% vốn Nhật Bản chuyên thiết kế, thực hiện hiện các bản vẽ kỹ thuật: CAD/CAM . Giàu kinh nghiệm trong các lĩnh vực đường hầm, cầu...\r\nNgoài ra công ty còn cung cấp các phần mềm chuyên dụng, hổ trợ doanh nghiệp; thiết kế website...', '4587877878', 'www.gkv.vn', 'Trần Đức Chính', 'chinhtd@dienkim.com', '0966123321', 3, 1, 0, '2018-04-16 10:23:40', '2018-04-16 10:34:13');
 
 -- --------------------------------------------------------
@@ -2104,7 +2104,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 10000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Mỹ, Anh, Pháp sáng 14/4 phóng 105 tên lửa hành trình vào các cơ sở ở Syria, nhằm đáp trả việc nước này bị cáo buộc sử dụng vũ khí hóa học chống lại dân thường tại thành phố Douma, ngoại ô thủ đô Damascus, làm khoảng 70 người thiệt mạng hồi đầu tháng. Nga, Syria và Iran đã lên án hành động này của Mỹ, tuy nhiên dự thảo nghị quyết chỉ trích vụ tấn công do Nga trình ra trước Hội đồng Bảo an Liên Hợp Quốc đã bị bác bỏ', 1, 1, '2018-04-16 05:05:40', '2018-04-17 17:57:26'),
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Mục tiêu nghề nghiệp là phần không thể thiếu trong mỗi CV. Đó là một bản mô tả ngắn gọn giúp nhà tuyển dụng nắm khái quát về bản thân và lộ trình công việc của bạn, từ đó cân nhắc về mức độ phù hợp của bạn đối với vị trí ứng tuyển.', 1, 0, '2018-04-16 05:05:40', '2018-04-21 09:46:28'),
 (10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
 (11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
 (12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
@@ -2130,15 +2130,15 @@ CREATE TABLE `profile_job` (
 --
 
 INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(38, 1, 51, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
-(39, 1, 53, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
-(40, 1, 55, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
 (44, 10, 36, '2018-04-16 10:12:19', '2018-04-16 10:12:19'),
 (45, 11, 11, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
 (46, 12, 27, '2018-04-16 10:18:40', '2018-04-16 10:18:40'),
 (47, 13, 2, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
 (48, 13, 4, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
-(49, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34');
+(49, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
+(53, 1, 51, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
+(54, 1, 53, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
+(55, 1, 55, '2018-04-21 08:42:16', '2018-04-21 08:42:16');
 
 -- --------------------------------------------------------
 
@@ -2160,15 +2160,15 @@ CREATE TABLE `profile_place` (
 --
 
 INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(30, 1, 57, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
-(31, 1, 59, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
-(32, 1, 61, '2018-04-16 08:40:20', '2018-04-16 08:40:20'),
 (36, 10, 10, '2018-04-16 10:12:19', '2018-04-16 10:12:19'),
 (37, 11, 7, '2018-04-16 10:14:15', '2018-04-16 10:14:15'),
 (38, 12, 7, '2018-04-16 10:18:40', '2018-04-16 10:18:40'),
 (39, 13, 2, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
 (40, 13, 4, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
-(41, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34');
+(41, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
+(45, 1, 57, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
+(46, 1, 59, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
+(47, 1, 61, '2018-04-21 08:42:16', '2018-04-21 08:42:16');
 
 -- --------------------------------------------------------
 
@@ -2400,7 +2400,8 @@ CREATE TABLE `recruitment` (
 --
 
 INSERT INTO `recruitment` (`id`, `fullname`, `alias`, `quantity`, `sex_id`, `description`, `requirement`, `work_id`, `literacy_id`, `experience_id`, `salary_id`, `commission_from`, `commission_to`, `working_form_id`, `probationary_id`, `benefit`, `duration`, `employer_id`, `count_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-25 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-16 07:18:27');
+(1, 'Nhân Viên Kỹ Thuật Làm Việc Tại Hồ Chí Minh', 'nhan-vien-ky-thuat-lam-viec-tai-ho-chi-minh', 2, 3, '- Sửa chữa, bảo trì về thiết bị ngành nha. \n- Lắp đặt thiết bị\n- Các công việc cấp trên giao.', '- Tốt nghiệp trung cấp hoặc cao đẳng ngành kỹ thuật liên quan đến tự động hóa, cơ điện tử, điện tử. \n- Nhanh nhẹn, nhiệt tình,cẩn thận, có trách nhiệm trong công việc. \n- Ưu tiên có kinh nghiệm 1 năm trở lên.', 2, 5, 4, 4, 20, 30, 1, 3, '- Thu nhập hấp dẫn theo năng lực\n- Được đào tạo các kỹ năng làm việc chuyên nghiệp \n- Các chế độ khác đầy đủ theo quy định của Nhà nước và của Công ty. \n- Cơ hội được đào tạo tại nước ngoài.', '2018-04-25 00:00:00', 7, NULL, 1, '2018-04-15 09:57:30', '2018-04-16 07:18:27'),
+(2, 'Nhân Viên Lái Xe Taxi Tải Tại Tp. Hcm (Thu Nhập 10 - 12 Triệu Đồng) [Thành Hưng]', 'nhan-vien-lai-xe-taxi-tai-tai-tp-hcm-thu-nhap-10-12-trieu-dong-thanh-hung', 100, 1, '- Lái xe taxi tải theo sự điều động của công ty \r\n- Làm việc tại Quận 12 hoặc Quận 7 và Nhà Bè TP.HCM\r\n- Chi tiết công việc sẽ trao đổi cụ thể khi phỏng vấn', '- Trung thực, chăm chỉ\r\n- Thông thạo đường phố Hồ Chí Minh\r\n- Số lượng tuyển 100 lái xe', 2, 6, 3, 5, 10, 30, 1, 2, '- Với nhiều chế độ ưu đãi. Không phải đóng thế chấp ban đầu. \r\n- Được chia doanh thu cao đến 50%\r\n- Bổ túc tay lái miễn phí. \r\n- Được hỗ trợ lương cơ bản 02 tháng đầu\r\n- Công việc nhiều, ổn định, thu nhập cao (thu nhập từ 10 - 12 triệu đồng/tháng). \r\n- Được hỗ trợ nhà ở miễn phí cho hộ khẩu ngoại tỉnh. \r\n- Được thưởng doanh thu cao hàng tháng, quý, năm. \r\n- Được công ty hỗ trợ 5 triệu đồng khi hết hạn hợp đồng chuyển công việc khác. \r\n- 100% được đóng BHXH, BHYT, BHTN theo Luật Lao động.', '2018-04-30 00:00:00', 7, NULL, 1, '2018-04-21 10:04:43', '2018-04-21 10:19:32');
 
 -- --------------------------------------------------------
 
@@ -2422,7 +2423,10 @@ CREATE TABLE `recruitment_job` (
 --
 
 INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `updated_at`) VALUES
-(5, 1, 18, '2018-04-15 10:09:49', '2018-04-15 10:09:49');
+(5, 1, 18, '2018-04-15 10:09:49', '2018-04-15 10:09:49'),
+(12, 2, 2, '2018-04-21 10:13:46', '2018-04-21 10:13:46'),
+(13, 2, 4, '2018-04-21 10:13:46', '2018-04-21 10:13:46'),
+(14, 2, 6, '2018-04-21 10:13:46', '2018-04-21 10:13:46');
 
 -- --------------------------------------------------------
 
@@ -2444,7 +2448,10 @@ CREATE TABLE `recruitment_place` (
 --
 
 INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(4, 1, 23, '2018-04-15 10:09:49', '2018-04-15 10:09:49');
+(4, 1, 23, '2018-04-15 10:09:49', '2018-04-15 10:09:49'),
+(11, 2, 2, '2018-04-21 10:13:46', '2018-04-21 10:13:46'),
+(12, 2, 4, '2018-04-21 10:13:46', '2018-04-21 10:13:46'),
+(13, 2, 6, '2018-04-21 10:13:46', '2018-04-21 10:13:46');
 
 -- --------------------------------------------------------
 
@@ -3959,13 +3966,13 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT cho bảng `project`
@@ -4001,19 +4008,19 @@ ALTER TABLE `rank`
 -- AUTO_INCREMENT cho bảng `recruitment`
 --
 ALTER TABLE `recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `recruitment_place`
 --
 ALTER TABLE `recruitment_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `reminders`

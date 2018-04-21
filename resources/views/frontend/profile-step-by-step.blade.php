@@ -11,19 +11,19 @@ $candidate=array();
 $sex=array();
 $marriage=array();
 if(Session::has($ssNameUser)){
-    $arrUser=Session::get($ssNameUser);
-    $candidate=App\CandidateModel::find((int)@$arrUser['id'])->toArray();
-    $sex=App\SexModel::find((int)@$candidate['sex_id'])->toArray();    
-    $marriage=App\MarriageModel::find((int)@$candidate['marriage_id'])->toArray();
-    $candidate['birthday']=datetimeConverterVn($candidate['birthday']);    
+	$arrUser=Session::get($ssNameUser);
+	$candidate=App\CandidateModel::find((int)@$arrUser['id'])->toArray();
+	$sex=App\SexModel::find((int)@$candidate['sex_id'])->toArray();    
+	$marriage=App\MarriageModel::find((int)@$candidate['marriage_id'])->toArray();
+	$candidate['birthday']=datetimeConverterVn($candidate['birthday']);    
 } 
 $picture                =   "";
 $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$candidate)>0){
-    if(!empty(@$candidate["avatar"])){
-        $picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
-    }        
+	if(!empty(@$candidate["avatar"])){
+		$picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
+	}        
 }
 $query=DB::table('profile')
 ->join('literacy','profile.literacy_id','=','literacy.id')
@@ -108,7 +108,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		<div class="row">			
 			<div class="col-lg-9">
 				<h1 class="dn-dk-h">Tạo Hồ Sơ Từng Bước</h1>
-					
+				
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
 					<div class="col-lg-9">
@@ -284,23 +284,100 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						Hãy liệt kê những công việc, nhiệm vụ mà bạn đã từng đảm nhận và thực hiện. Chú ý liệt kê kinh nghiệm làm việc từ thời gian gần đây nhất trở về trước. 
 					</div>
 				</div>
-				<div class="row mia">
-					
-				</div>
-				<div class="note note_experience margin-top-15"  style="display: none;"></div>			
-				<div class="row mia">
-					<div class="col-lg-4" ></div>
-					<div class="col-lg-8">
-						<div class="rianmus">
-							<a href="javascript:void(0);" <?php echo $register_status; ?> >
-								<div class="narit">
-									<div><i class="far fa-save"></i></div>
-									<div class="margin-left-5">Lưu hồ sơ</div>
-								</div>								
-							</a>
+				<div class="note note_experience margin-top-15"  style="display: none;"></div>
+				<div class="experience_job_save">
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8"><input type="text"  name="company_name" class="vacca" placeholder="Tên công ty" value="" ></div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Chức danh</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8"><input type="text"  name="person_title" class="vacca" placeholder="Chức danh" value="" ></div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Thời gian làm việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">
+							<?php 
+							$source_month=array();
+							for($i=0;$i<=12;$i++){
+								if($i==0){
+									$source_month[]='Tháng';
+								}else{
+									$source_month[]=$i;
+								}	
+							}
+							$arrDate    = date_parse_from_format('Y-m-d H:i:s', date("Y-m-d")) ;
+							for ($i=1953; $i <= (int)@$arrDate['year']; $i++) { 
+								$source_year[$i]=$i;
+							}
+							$source_year[0]='Năm';
+							krsort($source_year);
+							$ddlMonthFrom=cmsSelectbox(	"month_from"	,	"vacca"	,	$source_month	,	0	,	''	);
+							$ddlYearFrom=cmsSelectbox(	"year_from"	,	"vacca"	,	$source_year	,	0	,	''	);
+							$ddlMonthTo=cmsSelectbox(	"month_to"	,	"vacca"	,	$source_month	,	0	,	''	);
+							$ddlYearTo=cmsSelectbox(	"year_to"	,	"vacca"	,	$source_year	,	0	,	''	);
+							?>
+							<div class="lunarnewyear">
+								<div>Từ</div>
+								<div class="margin-left-10"><?php echo $ddlMonthFrom; ?></div>
+								<div class="margin-left-10"><?php echo $ddlYearFrom; ?></div>
+								<div class="margin-left-10">Đến</div>
+								<div class="margin-left-10"><?php echo $ddlMonthTo; ?></div>
+								<div class="margin-left-10"><?php echo $ddlYearTo; ?></div>
+							</div>
 						</div>
 					</div>
-				</div>	
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Mức lương</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">
+							<?php
+							$source_currency=array(''=>'Vui lòng chọn đơn vị tiền tệ' , 'vnd'=>'VND','usd'=>'USD'); 
+							$ddlCurrency=cmsSelectbox(	"currency"	,	"vacca"	,	$source_currency	,	''	,	''	);
+							?>
+							<div class="lunarnewyear">							
+								<div ><?php echo $ddlCurrency; ?></div>				
+								<div class="margin-left-10">
+									<input type="text"  name="salary" class="vacca" placeholder="Nhập mức lương..." value="" >
+								</div>			
+							</div>
+						</div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">						
+							<textarea name="job_description" placeholder="Nhập mô tả công việc..."  class="vacca" rows="10" ></textarea>
+						</div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Thành tích đạt được</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">						
+							<textarea name="achievement" placeholder="Nhập thành tích đạt được..."  class="vacca" rows="10" ></textarea>
+						</div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="titanius">
+								<div class="vihamus">
+									<a href="javascript:void(0);" onclick="saveExperienceJob();" >
+										<div class="narit">
+											<div><i class="far fa-save"></i></div>
+											<div class="margin-left-5">Lưu</div>
+										</div>								
+									</a>
+								</div>							
+								<div class="vihamus-2 margin-left-5">
+									<a href="javascript:void(0);" onclick="noExperienceJob();" >
+										<div class="narit">
+											<div><i class="far fa-times-circle"></i></div>
+											<div class="margin-left-5">Không lưu</div>
+										</div>								
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>					
 			</div>
 			<div class="col-lg-3">
 				@include("frontend.candidate-sidebar")				

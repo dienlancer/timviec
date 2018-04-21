@@ -870,6 +870,10 @@ div.opacity-absolute::before{
 .rarakata{
     display: flex;
 }
+.lunarnewyear{
+    display: flex;
+    align-items: center;
+}
 .miakasaki{
     font-style: italic;
 }

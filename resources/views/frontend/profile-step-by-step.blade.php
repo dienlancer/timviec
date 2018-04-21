@@ -49,7 +49,7 @@ $source_info=$query->select('profile.fullname'
 	,'profile.career_goal'
 	,'profile.status_search')	
 ->get()->toArray();	
-$info_general=array();
+$profile_detail=array();
 $job_id=array();
 $province_id=array();
 $source_job=array();
@@ -61,9 +61,9 @@ $province_fullname='';
 $status_search='';
 if(count($source_info) > 0){
 	$source_info2=convertToArray($source_info);	
-	$info_general=$source_info2[0];
-	$info_general['salary']=convertToTextPrice($info_general['salary']) . ' VNĐ/tháng';	
-	if((int)@$info_general['status_search'] == 1){
+	$profile_detail=$source_info2[0];
+	$profile_detail['salary']=convertToTextPrice($profile_detail['salary']) . ' VNĐ/tháng';	
+	if((int)@$profile_detail['status_search'] == 1){
 		$status_search='Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn';
 	}else{
 		$status_search='Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ này chỉ dùng để ứng tuyển';
@@ -174,23 +174,23 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Tiêu đề hồ sơ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$info_general['fullname']; ?></div> </div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['fullname']; ?></div> </div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Trình độ cao nhất</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$info_general['literacy_fullname']; ?></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['literacy_fullname']; ?></div></div>
 				</div>					
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Số năm kinh nghiệm</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$info_general['experience_fullname']; ?></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['experience_fullname']; ?></div></div>
 				</div>					
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Cấp bậc hiện tại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$info_general['rank_present_fullname']; ?></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['rank_present_fullname']; ?></div></div>
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Cấp bậc mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$info_general['rank_offered_fullname']; ?></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['rank_offered_fullname']; ?></div></div>
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Ngành nghề mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
@@ -198,7 +198,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Mức lương mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$info_general['salary']; ?></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['salary']; ?></div></div>
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Nơi làm việc mong muốn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
@@ -230,7 +230,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<?php 
 						$status_career_goal_edit='';
 						$status_career_goal_save='';
-						if(empty(@$info_general['career_goal'])){
+						if(empty(@$profile_detail['career_goal'])){
 							$status_career_goal_edit='display:none';
 							$status_career_goal_save='display:block';
 						}else{
@@ -239,7 +239,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						}
 						?>
 						<div class="career_goal_edit" style="<?php echo $status_career_goal_edit; ?>">
-							<div class="career_goal_txt"><?php echo @$info_general['career_goal']; ?></div>
+							<div class="career_goal_txt"><?php echo @$profile_detail['career_goal']; ?></div>
 							<div class="vihamus-3 margin-top-5">
 								<a href="javascript:void(0);" onclick="showCareerGoalSave();"  >
 									<div class="narit">
@@ -250,7 +250,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							</div>
 						</div>
 						<div class="career_goal_save" style="<?php echo $status_career_goal_save; ?>">
-							<div><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca" rows="10" ><?php echo @$info_general['career_goal']; ?></textarea></div>
+							<div><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca" rows="10" ><?php echo @$profile_detail['career_goal']; ?></textarea></div>
 							<div>
 								<div class="titanius">
 									<div class="vihamus">
@@ -273,7 +273,21 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							</div>
 						</div>
 					</div>
-				</div>				
+				</div>	
+				<hr  />		
+				<div class="row mia">
+					<div class="col-lg-4"><div class="rarakata"><h2 class="login-information">Kinh nghiệm làm việc</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>
+					<div class="col-lg-8"></div>
+				</div>
+				<div class="row mia">					
+					<div class="col-lg-12">
+						Hãy liệt kê những công việc, nhiệm vụ mà bạn đã từng đảm nhận và thực hiện. Chú ý liệt kê kinh nghiệm làm việc từ thời gian gần đây nhất trở về trước. 
+					</div>
+				</div>
+				<div class="row mia">
+					
+				</div>
+				<div class="note note_experience margin-top-15"  style="display: none;"></div>			
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8">

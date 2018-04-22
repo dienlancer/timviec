@@ -285,7 +285,22 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					</div>
 				</div>
 				<div class="note note_experience margin-top-15"  style="display: none;"></div>
-				<div class="experience_job_save">
+				<?php 
+				$status_experience_job_edit='';
+				$status_experience_job_save='';
+				$source_profile_experience=App\ProfileExperienceModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
+				if(count(@$source_profile_experience) == 0){
+					$status_experience_job_edit='display:none';
+					$status_experience_job_save='display:block';
+				}else{
+					$status_experience_job_edit='display:block';
+					$status_experience_job_save='display:none';
+				}
+				?>
+				<div class="experience_job_edit" style="<?php echo $status_experience_job_edit; ?>">
+					
+				</div>
+				<div class="experience_job_save" style="<?php echo $status_experience_job_save; ?>">
 					<div class="row mia">
 						<div class="col-lg-4" ><div class="xika"><div>Công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8"><input type="text"  name="company_name" class="vacca" placeholder="Tên công ty" value="" ></div>
@@ -337,7 +352,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							<div class="lunarnewyear">							
 								<div ><?php echo $ddlCurrency; ?></div>				
 								<div class="margin-left-10">
-									<input type="text"  name="salary" class="vacca" placeholder="Nhập mức lương..." value="" >
+									<input type="text"  name="salary" class="vacca" onkeyup="PhanCachSoTien(this);"  placeholder="Nhập mức lương..." value="" >
 								</div>			
 							</div>
 						</div>
@@ -367,7 +382,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 									</a>
 								</div>							
 								<div class="vihamus-2 margin-left-5">
-									<a href="javascript:void(0);" onclick="noExperienceJob();" >
+									<a href="javascript:void(0);" onclick="noSaveExperienceJob();" >
 										<div class="narit">
 											<div><i class="far fa-times-circle"></i></div>
 											<div class="margin-left-5">Không lưu</div>
@@ -427,6 +442,64 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 	function noSaveCareerGoal(){
 		$('.career_goal_edit').show();
 		$('.career_goal_save').hide();	
+	}
+	function saveExperienceJob(){
+		var id = $("form[name='frm']").find("input[name='id']").val();
+		var company_name = $("form[name='frm']").find("input[name='company_name']").val();
+		var person_title = $("form[name='frm']").find("input[name='person_title']").val();
+		var month_from = $("form[name='frm']").find("select[name='month_from']").val();
+		var year_from = $("form[name='frm']").find("select[name='year_from']").val();
+		var month_to = $("form[name='frm']").find("select[name='month_to']").val();
+		var year_to = $("form[name='frm']").find("select[name='year_to']").val();
+		var currency = $("form[name='frm']").find("select[name='currency']").val();
+		var salary = $("form[name='frm']").find("input[name='salary']").val();
+		var job_description = $("form[name='frm']").find("textarea[name='job_description']").val();
+		var achievement = $("form[name='frm']").find("textarea[name='achievement']").val();		
+		var token = $("form[name='frm']").find("input[name='_token']").val();
+		var dataItem = new FormData();
+		dataItem.append('id',id);
+		dataItem.append('company_name',company_name);           
+		dataItem.append('person_title',person_title);           
+		dataItem.append('month_from',month_from);           
+		dataItem.append('year_from',year_from);           
+		dataItem.append('month_to',month_to);           
+		dataItem.append('year_to',year_to);           
+		dataItem.append('currency',currency);           
+		dataItem.append('salary',salary);           
+		dataItem.append('job_description',job_description);           
+		dataItem.append('achievement',achievement);           		
+		dataItem.append('_token',token);
+		$.ajax({
+			url: '<?php echo route("frontend.index.saveExperienceJob"); ?>',
+			type: 'POST',
+			data: dataItem,
+			async: false,
+			success: function (data) {
+				if(data.checked==1){      	
+					var row_mia=document.createElement('div');					
+					var col_lg_4=document.createElement('div');
+					var col_lg_8=document.createElement('div');
+					$(row_mia).addClass('row mia');
+					$(col_lg_4).addClass('col-lg-4');
+					$(col_lg_8).addClass('col-lg-8');
+					$(row_mia).append(col_lg_4)			;
+					$(row_mia).append(col_lg_8);
+					$('.experience_job_edit').show();
+					$('.experience_job_save').hide();
+				} else{
+					showMsg('note_career_goal',data);    
+				}       			
+			},
+			error : function (data){
+
+			},
+			beforeSend  : function(jqXHR,setting){
+
+			},
+			cache: false,
+			contentType: false,
+			processData: false
+		});
 	}
 </script>
 @endsection()

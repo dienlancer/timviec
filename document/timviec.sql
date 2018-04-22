@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 21, 2018 lúc 08:21 PM
+-- Thời gian đã tạo: Th4 22, 2018 lúc 06:59 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2113,6 +2113,31 @@ INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `profile_experience`
+--
+
+DROP TABLE IF EXISTS `profile_experience`;
+CREATE TABLE `profile_experience` (
+  `id` bigint(20) NOT NULL,
+  `company_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `person_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `month_from` int(11) DEFAULT NULL,
+  `year_from` int(11) DEFAULT NULL,
+  `month_to` int(11) DEFAULT NULL,
+  `year_to` int(11) DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `salary` int(11) DEFAULT NULL,
+  `job_description` text COLLATE utf8_unicode_ci,
+  `achievement` text COLLATE utf8_unicode_ci,
+  `profile_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `profile_job`
 --
 
@@ -3607,6 +3632,12 @@ ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `profile_experience`
+--
+ALTER TABLE `profile_experience`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
@@ -3961,6 +3992,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `profile`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `profile_experience`
+--
+ALTER TABLE `profile_experience`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`

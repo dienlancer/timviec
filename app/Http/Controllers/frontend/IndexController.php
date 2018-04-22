@@ -40,6 +40,7 @@ use App\RecruitmentPlaceModel;
 use App\ProfileModel;
 use App\ProfileJobModel;
 use App\ProfilePlaceModel;
+use App\ProfileExperienceModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -1564,6 +1565,86 @@ class IndexController extends Controller {
     		"career_goal"	=> @$career_goal
     	);                       
     	return $info;   
+	}
+	public function saveExperienceJob(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		
+		$item 					=	null;
+		$source_profile_experience=array();
+
+		$id             		=   (int)@$request->id;  
+		$company_name = trim(@$request->company_name);
+		$person_title =trim(@$request->person_title);
+		$month_from =trim(@$request->month_from) ;
+		$year_from =trim(@$request->year_from);
+		$month_to =trim(@$request->month_to) ;
+		$year_to = trim(@$request->year_to);
+		$currency =trim(@$request->currency);
+		$salary 			= 	trim(@$request->salary);
+		$salary            = (int)(str_replace('.', '',@$salary)) ;
+		$job_description =trim(@$request->job_description);
+		$achievement =trim(@$request->achievement) ;		
+
+		if(mb_strlen(@$company_name) < 6){
+			$checked=0;
+			$msg['company_name']='Vui lòng nhập tên công ty trên 6 ký tự';
+		}
+		if(mb_strlen(@$person_title) < 6){
+			$checked=0;
+			$msg['person_title']='Vui lòng nhập chức danh trên 6 ký tự';
+		}
+		if((int)@$month_from == 0){
+			$checked=0;
+			$msg['month_from']='Vui chọn tháng';
+		}
+		if((int)@$year_from == 0){
+			$checked=0;
+			$msg['year_from']='Vui chọn năm';
+		}
+		if((int)@$month_to == 0){
+			$checked=0;
+			$msg['month_to']='Vui chọn tháng';
+		}
+		if((int)@$year_to == 0){
+			$checked=0;
+			$msg['year_to']='Vui chọn năm';
+		}
+		if(empty(@$currency)){
+			$checked=0;
+			$msg['currency']='Vui lòng chọn đơn vị tiền tệ';
+		}
+		if(empty(@$job_description)){
+			$checked=0;
+			$msg['job_description']='Vui lòng nhập mô tả công việc';
+		}					
+		if($checked == 1){
+			$item=new ProfileExperienceModel;		
+			$item->company_name=@$company_name;
+			$item->person_title=@$person_title;
+			$item->month_from=(int)@$month_from;			
+			$item->year_from=(int)@$year_from;
+			$item->month_to=(int)@$month_to;
+			$item->year_to=(int)@$year_to;
+			$item->currency=@$currency;
+			$item->salary=(int)@$salary;
+			$item->job_description=@$job_description;
+			$item->achievement=@$achievement;
+			$item->profile_id=@$id;
+			$item->created_at=date("Y-m-d H:i:s",time());
+			$item->updated_at=date("Y-m-d H:i:s",time());   
+			$item->save();
+			$msg['success']='Cập nhật kinh nghiệm làm việc thành công';
+		}
+		$source_profile_experience=ProfileExperienceModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
+		$info = array(
+			"checked"       => $checked,       		
+			'msg'       	=> $msg,                
+			"id"            => (int)@$id,
+			'source_profile_experience' => $source_profile_experience
+		);                       
+		return $info;   
 	}
 }
 

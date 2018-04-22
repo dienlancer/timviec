@@ -352,6 +352,19 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<div class="col-lg-4" ><div class="xika"><div>Thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_achievement; ?></div> </div>
 							</div>
+							<div class="row mia">
+								<div class="col-lg-4"></div>
+								<div class="col-lg-8">
+									<div class="vihamus-3">
+										<a href="javascript:void(0);" onclick="deleteProfileExperience(<?php echo $profile_experience_id ?>);" >
+											<div class="narit">
+												<div><i class="far fa-times-circle"></i></div>
+												<div class="margin-left-5">Xóa</div>
+											</div>								
+										</a>
+									</div>
+								</div>
+							</div>
 							<hr>
 							<?php
 						}

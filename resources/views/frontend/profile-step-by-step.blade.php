@@ -681,7 +681,9 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(achievement_col_lg_4).append(achievement_xika);
 						$(achievement_col_lg_8).append(achievement_xika2);
 						$(achievement_xika).text('Thành tích đạt được');
-						$(achievement_xika2).text(value.achievement);						
+						$(achievement_xika2).text(value.achievement);		
+						var hr=document.createElement('hr');
+						$('.experience_job_txt').append(hr);				
 						/* end achievement */
 					});					
 					$('.experience_job_edit').show();
@@ -706,7 +708,17 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		$('.experience_job_save').hide();		
 	}
 	function addExperienceJob(){
-
+		$('.experience_job_save').show();
+		$("form[name='frm']").find("input[name='company_name']").val('');
+		$("form[name='frm']").find("input[name='person_title']").val('');
+		$("form[name='frm']").find("select[name='month_from']").val(0);
+		$("form[name='frm']").find("select[name='year_from']").val(0);
+		$("form[name='frm']").find("select[name='month_to']").val(0);
+		$("form[name='frm']").find("select[name='year_to']").val(0);
+		$("form[name='frm']").find("select[name='currency']").val('');
+		$("form[name='frm']").find("input[name='salary']").val('');
+		$("form[name='frm']").find("textarea[name='job_description']").val('');
+		$("form[name='frm']").find("textarea[name='achievement']").val('');		
 	}
 </script>
 @endsection()

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 22, 2018 lúc 06:59 AM
+-- Thời gian đã tạo: Th4 22, 2018 lúc 12:16 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2130,10 +2130,16 @@ CREATE TABLE `profile_experience` (
   `job_description` text COLLATE utf8_unicode_ci,
   `achievement` text COLLATE utf8_unicode_ci,
   `profile_id` int(11) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `profile_experience`
+--
+
+INSERT INTO `profile_experience` (`id`, `company_name`, `person_title`, `month_from`, `year_from`, `month_to`, `year_to`, `currency`, `salary`, `job_description`, `achievement`, `profile_id`, `created_at`, `updated_at`) VALUES
+(1, 'VinaDesign', 'Lập trình viên website', 3, 2013, 4, 2014, 'usd', 2000, 'Mọi người huy động dùng xà beng, búa phá cửa xông vào, phát hiện ông Anh nằm gục chết dưới nền nhà. Vợ ông, bà Nguyễn Thị Thu Thủy (42 tuổi) cùng ôngDương Văn Thạnh (52 tuổi, quê Long An) đang cháy. Cả hai được dập lửa, chở đến bệnh viện cấp cứu trong tình trạng bỏng nặng.', 'Tại hiện trường, cơ quan chức năng ghi nhận đồ đạc trong căn nhà có dấu hiệu bị cáo trộn, vết máu ở phòng tắm. Bình xăng xe máy dựng trong nhà bị mở nắp, ống hút được đưa vào bên trong.', 1, '2018-04-22 10:03:33', '2018-04-22 10:03:33');
 
 -- --------------------------------------------------------
 
@@ -3997,7 +4003,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`

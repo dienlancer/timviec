@@ -298,7 +298,20 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				}
 				?>
 				<div class="experience_job_edit" style="<?php echo $status_experience_job_edit; ?>">
-					
+					<div class="experience_job_txt"></div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="vihamus-4 margin-left-5">
+								<a href="javascript:void(0);" onclick="addExperienceJob();" >
+									<div class="narit">
+										<div><i class="far fa-times-circle"></i></div>
+										<div class="margin-left-5">Thêm kinh nghiệm làm việc</div>
+									</div>								
+								</a>
+							</div>
+						</div>
+					</div>					
 				</div>
 				<div class="experience_job_save" style="<?php echo $status_experience_job_save; ?>">
 					<div class="row mia">
@@ -442,7 +455,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 	function noSaveCareerGoal(){
 		$('.career_goal_edit').show();
 		$('.career_goal_save').hide();	
-	}
+	}	
 	function saveExperienceJob(){
 		var id = $("form[name='frm']").find("input[name='id']").val();
 		var company_name = $("form[name='frm']").find("input[name='company_name']").val();
@@ -476,7 +489,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 			async: false,
 			success: function (data) {
 				if(data.checked==1){      	
-					var data_profile_experience=data.data_profile_experience;						
+					var data_profile_experience=data.data_profile_experience;	
+					$('.experience_job_txt').empty();					
 					$.each(data_profile_experience,function(index,value){
 						/* begin company_name */
 						var company_name_row_mia=document.createElement('div');					
@@ -489,7 +503,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(company_name_col_lg_8).addClass('col-lg-8');
 						$(company_name_xika).addClass('xika');
 						$(company_name_xika2).addClass('xika2');
-						$('.experience_job_edit').append(company_name_row_mia);
+						$('.experience_job_txt').append(company_name_row_mia);
 						$(company_name_row_mia).append(company_name_col_lg_4);
 						$(company_name_row_mia).append(company_name_col_lg_8);
 						$(company_name_col_lg_4).append(company_name_xika);
@@ -508,7 +522,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(person_title_col_lg_8).addClass('col-lg-8');
 						$(person_title_xika).addClass('xika');
 						$(person_title_xika2).addClass('xika2');
-						$('.experience_job_edit').append(person_title_row_mia);
+						$('.experience_job_txt').append(person_title_row_mia);
 						$(person_title_row_mia).append(person_title_col_lg_4);
 						$(person_title_row_mia).append(person_title_col_lg_8);
 						$(person_title_col_lg_4).append(person_title_xika);
@@ -536,7 +550,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(business_time_month_year_from).addClass('margin-left-10');						
 						$(business_time_to).addClass('margin-left-10');
 						$(business_time_month_year_to).addClass('margin-left-10');						
-						$('.experience_job_edit').append(business_time_row_mia);
+						$('.experience_job_txt').append(business_time_row_mia);
 						$(business_time_row_mia).append(business_time_col_lg_4);
 						$(business_time_row_mia).append(business_time_col_lg_8);
 						$(business_time_col_lg_4).append(business_time_xika);
@@ -564,7 +578,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(salary_col_lg_8).addClass('col-lg-8');
 						$(salary_xika).addClass('xika');
 						$(salary_xika2).addClass('xika2');											
-						$('.experience_job_edit').append(salary_row_mia);
+						$('.experience_job_txt').append(salary_row_mia);
 						$(salary_row_mia).append(salary_col_lg_4);
 						$(salary_row_mia).append(salary_col_lg_8);
 						$(salary_col_lg_4).append(salary_xika);
@@ -584,7 +598,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(job_description_col_lg_8).addClass('col-lg-8');
 						$(job_description_xika).addClass('xika');
 						$(job_description_xika2).addClass('xika2');
-						$('.experience_job_edit').append(job_description_row_mia);
+						$('.experience_job_txt').append(job_description_row_mia);
 						$(job_description_row_mia).append(job_description_col_lg_4);
 						$(job_description_row_mia).append(job_description_col_lg_8);
 						$(job_description_col_lg_4).append(job_description_xika);
@@ -603,7 +617,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(achievement_col_lg_8).addClass('col-lg-8');
 						$(achievement_xika).addClass('xika');
 						$(achievement_xika2).addClass('xika2');
-						$('.experience_job_edit').append(achievement_row_mia);
+						$('.experience_job_txt').append(achievement_row_mia);
 						$(achievement_row_mia).append(achievement_col_lg_4);
 						$(achievement_row_mia).append(achievement_col_lg_8);
 						$(achievement_col_lg_4).append(achievement_xika);
@@ -628,6 +642,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 			contentType: false,
 			processData: false
 		});
+	}
+	function noSaveExperienceJob(){
+		$('.experience_job_edit').show();
+		$('.experience_job_save').hide();		
+	}
+	function addExperienceJob(){
+
 	}
 </script>
 @endsection()

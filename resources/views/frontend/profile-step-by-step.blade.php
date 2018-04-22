@@ -476,18 +476,146 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 			async: false,
 			success: function (data) {
 				if(data.checked==1){      	
-					var row_mia=document.createElement('div');					
-					var col_lg_4=document.createElement('div');
-					var col_lg_8=document.createElement('div');
-					$(row_mia).addClass('row mia');
-					$(col_lg_4).addClass('col-lg-4');
-					$(col_lg_8).addClass('col-lg-8');
-					$(row_mia).append(col_lg_4)			;
-					$(row_mia).append(col_lg_8);
+					var data_profile_experience=data.data_profile_experience;						
+					$.each(data_profile_experience,function(index,value){
+						/* begin company_name */
+						var company_name_row_mia=document.createElement('div');					
+						var company_name_col_lg_4=document.createElement('div');
+						var company_name_col_lg_8=document.createElement('div');
+						var company_name_xika=document.createElement('div');
+						var company_name_xika2=document.createElement('div');
+						$(company_name_row_mia).addClass('row mia');
+						$(company_name_col_lg_4).addClass('col-lg-4');
+						$(company_name_col_lg_8).addClass('col-lg-8');
+						$(company_name_xika).addClass('xika');
+						$(company_name_xika2).addClass('xika2');
+						$('.experience_job_edit').append(company_name_row_mia);
+						$(company_name_row_mia).append(company_name_col_lg_4);
+						$(company_name_row_mia).append(company_name_col_lg_8);
+						$(company_name_col_lg_4).append(company_name_xika);
+						$(company_name_col_lg_8).append(company_name_xika2);
+						$(company_name_xika).text('Tên công ty');
+						$(company_name_xika2).text(value.company_name);						
+						/* end company_name */
+						/* begin person_title */
+						var person_title_row_mia=document.createElement('div');					
+						var person_title_col_lg_4=document.createElement('div');
+						var person_title_col_lg_8=document.createElement('div');
+						var person_title_xika=document.createElement('div');
+						var person_title_xika2=document.createElement('div');
+						$(person_title_row_mia).addClass('row mia');
+						$(person_title_col_lg_4).addClass('col-lg-4');
+						$(person_title_col_lg_8).addClass('col-lg-8');
+						$(person_title_xika).addClass('xika');
+						$(person_title_xika2).addClass('xika2');
+						$('.experience_job_edit').append(person_title_row_mia);
+						$(person_title_row_mia).append(person_title_col_lg_4);
+						$(person_title_row_mia).append(person_title_col_lg_8);
+						$(person_title_col_lg_4).append(person_title_xika);
+						$(person_title_col_lg_8).append(person_title_xika2);
+						$(person_title_xika).text('Chức danh');
+						$(person_title_xika2).text(value.person_title);						
+						/* end person_title */
+						/* begin business_time */
+						var business_time_row_mia=document.createElement('div');					
+						var business_time_col_lg_4=document.createElement('div');
+						var business_time_col_lg_8=document.createElement('div');
+						var business_time_xika=document.createElement('div');
+						var business_time_xika2=document.createElement('div');
+						var business_time_general=document.createElement('div');
+						var business_time_from=document.createElement('div');
+						var business_time_month_year_from=document.createElement('div');
+						var business_time_to=document.createElement('div');
+						var business_time_month_year_to=document.createElement('div');
+						$(business_time_row_mia).addClass('row mia');
+						$(business_time_col_lg_4).addClass('col-lg-4');
+						$(business_time_col_lg_8).addClass('col-lg-8');
+						$(business_time_xika).addClass('xika');
+						$(business_time_xika2).addClass('xika2');
+						$(business_time_general).addClass('lunarnewyear');
+						$(business_time_month_year_from).addClass('margin-left-10');						
+						$(business_time_to).addClass('margin-left-10');
+						$(business_time_month_year_to).addClass('margin-left-10');						
+						$('.experience_job_edit').append(business_time_row_mia);
+						$(business_time_row_mia).append(business_time_col_lg_4);
+						$(business_time_row_mia).append(business_time_col_lg_8);
+						$(business_time_col_lg_4).append(business_time_xika);
+						$(business_time_col_lg_8).append(business_time_xika2);
+						$(business_time_xika).text('Thời gian làm việc');						
+						$(business_time_xika2).append(business_time_general);
+						$(business_time_general).append(business_time_from);
+						$(business_time_general).append(business_time_month_year_from);						
+						$(business_time_general).append(business_time_to);
+						$(business_time_general).append(business_time_month_year_to);						
+						$(business_time_from).text('Từ');
+						$(business_time_month_year_from).text(value.time_from);									
+						$(business_time_to).text('Đến');
+						$(business_time_month_year_to).text(value.time_to);											
+						/* end business_time */
+						/* begin salary */
+						var salary_row_mia=document.createElement('div');					
+						var salary_col_lg_4=document.createElement('div');
+						var salary_col_lg_8=document.createElement('div');
+						var salary_xika=document.createElement('div');
+						var salary_xika2=document.createElement('div');						
+						var salary_money=document.createElement('div');						
+						$(salary_row_mia).addClass('row mia');
+						$(salary_col_lg_4).addClass('col-lg-4');
+						$(salary_col_lg_8).addClass('col-lg-8');
+						$(salary_xika).addClass('xika');
+						$(salary_xika2).addClass('xika2');											
+						$('.experience_job_edit').append(salary_row_mia);
+						$(salary_row_mia).append(salary_col_lg_4);
+						$(salary_row_mia).append(salary_col_lg_8);
+						$(salary_col_lg_4).append(salary_xika);
+						$(salary_col_lg_8).append(salary_xika2);
+						$(salary_xika).text('Mức lương');
+						$(salary_xika2).append(salary_money);						
+						$(salary_money).text(value.salary);						
+						/* end salary */
+						/* begin job_description */
+						var job_description_row_mia=document.createElement('div');					
+						var job_description_col_lg_4=document.createElement('div');
+						var job_description_col_lg_8=document.createElement('div');
+						var job_description_xika=document.createElement('div');
+						var job_description_xika2=document.createElement('div');
+						$(job_description_row_mia).addClass('row mia');
+						$(job_description_col_lg_4).addClass('col-lg-4');
+						$(job_description_col_lg_8).addClass('col-lg-8');
+						$(job_description_xika).addClass('xika');
+						$(job_description_xika2).addClass('xika2');
+						$('.experience_job_edit').append(job_description_row_mia);
+						$(job_description_row_mia).append(job_description_col_lg_4);
+						$(job_description_row_mia).append(job_description_col_lg_8);
+						$(job_description_col_lg_4).append(job_description_xika);
+						$(job_description_col_lg_8).append(job_description_xika2);
+						$(job_description_xika).text('Mô tả công việc');
+						$(job_description_xika2).text(value.job_description);						
+						/* end job_description */
+						/* begin achievement */
+						var achievement_row_mia=document.createElement('div');					
+						var achievement_col_lg_4=document.createElement('div');
+						var achievement_col_lg_8=document.createElement('div');
+						var achievement_xika=document.createElement('div');
+						var achievement_xika2=document.createElement('div');
+						$(achievement_row_mia).addClass('row mia');
+						$(achievement_col_lg_4).addClass('col-lg-4');
+						$(achievement_col_lg_8).addClass('col-lg-8');
+						$(achievement_xika).addClass('xika');
+						$(achievement_xika2).addClass('xika2');
+						$('.experience_job_edit').append(achievement_row_mia);
+						$(achievement_row_mia).append(achievement_col_lg_4);
+						$(achievement_row_mia).append(achievement_col_lg_8);
+						$(achievement_col_lg_4).append(achievement_xika);
+						$(achievement_col_lg_8).append(achievement_xika2);
+						$(achievement_xika).text('Thành tích đạt được');
+						$(achievement_xika2).text(value.achievement);						
+						/* end achievement */
+					});					
 					$('.experience_job_edit').show();
 					$('.experience_job_save').hide();
 				} else{
-					showMsg('note_career_goal',data);    
+					showMsg('note_experience',data);    
 				}       			
 			},
 			error : function (data){

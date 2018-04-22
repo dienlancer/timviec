@@ -1637,12 +1637,38 @@ class IndexController extends Controller {
 			$item->save();
 			$msg['success']='Cập nhật kinh nghiệm làm việc thành công';
 		}
+		$data_profile_experience=array();
 		$source_profile_experience=ProfileExperienceModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
+		if(count($source_profile_experience) > 0){
+			foreach ($source_profile_experience as $key => $value) {
+				$row=array();
+				$row['id']=$value['id'];
+				$row['company_name']=$value['company_name'];
+				$row['person_title']=$value['person_title'];
+				$row['time_from']=$value['month_from'] . '/' . $value['year_from'];				
+				$row['time_to']=$value['month_to'] . '/' .$value['year_to'];				
+				$salary=convertToTextPrice($value['salary']);
+				$currency='';
+				switch ($value['currency']) {
+					case 'vnd':			
+					$currency='VNĐ';	
+					break;
+					case 'usd':
+					$currency='USD';							
+					break;
+				}				
+				$row['salary']=@$salary.' '.@$currency.'/tháng';
+				$row['job_description']=@$value['job_description'];
+				$row['achievement']=@$value['achievement'];
+				$row['profile_id']=(int)@$value['profile_id'];
+				$data_profile_experience[]=@$row;
+			}
+		}		
 		$info = array(
 			"checked"       => $checked,       		
 			'msg'       	=> $msg,                
 			"id"            => (int)@$id,
-			'source_profile_experience' => $source_profile_experience
+			'data_profile_experience' => $data_profile_experience
 		);                       
 		return $info;   
 	}

@@ -243,7 +243,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							<div class="vihamus-3 margin-top-5">
 								<a href="javascript:void(0);" onclick="showCareerGoalSave();"  >
 									<div class="narit">
-										<div><i class="far fa-times-circle"></i></div>
+										<div><i class="far fa-edit"></i></div>
 										<div class="margin-left-5">Chỉnh sửa</div>
 									</div>
 								</a>
@@ -298,14 +298,72 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				}
 				?>
 				<div class="experience_job_edit" style="<?php echo $status_experience_job_edit; ?>">
-					<div class="experience_job_txt"></div>
+					<div class="experience_job_txt">
+						<?php 
+						foreach ($source_profile_experience as $key => $value) {
+							$profile_experience_id=$value['id'];
+							$profile_experience_company_name=$value['company_name'];
+							$profile_experience_person_title=$value['person_title'];
+							$profile_experience_time_from=$value['month_from'] . '/' . $value['year_from'];
+							$profile_experience_time_to=$value['month_to'] . '/' .$value['year_to'];		
+							$profile_experience_salary=convertToTextPrice($value['salary']);
+							$currency='';
+							switch ($value['currency']) {
+								case 'vnd':			
+								$currency='VNĐ';	
+								break;
+								case 'usd':
+								$currency='USD';							
+								break;
+							}		
+							$profile_experience_salary=@$profile_experience_salary.' '.@$currency.'/tháng';
+							$profile_experience_job_description=@$value['job_description'];
+							$profile_experience_achievement=@$value['achievement'];
+							$profile_experience_profile_id=(int)@$value['profile_id'];
+							?>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_company_name; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Chức danh</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_person_title; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Thời gian làm việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8">
+									<div class="lunarnewyear">
+										<div>Từ</div>
+										<div class="margin-left-10"><?php echo @$profile_experience_time_from; ?></div>
+										<div class="margin-left-10">Đến</div>
+										<div class="margin-left-10"><?php echo @$profile_experience_time_to; ?></div>
+									</div> 
+								</div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Mức lương</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_salary; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_job_description; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_achievement; ?></div> </div>
+							</div>
+							<hr>
+							<?php
+						}
+						?>
+					</div>
 					<div class="row mia">
 						<div class="col-lg-4"></div>
 						<div class="col-lg-8">
-							<div class="vihamus-4 margin-left-5">
+							<div class="vihamus-4">
 								<a href="javascript:void(0);" onclick="addExperienceJob();" >
 									<div class="narit">
-										<div><i class="far fa-times-circle"></i></div>
+										<div><i class="far fa-plus-square"></i></div>
 										<div class="margin-left-5">Thêm kinh nghiệm làm việc</div>
 									</div>								
 								</a>

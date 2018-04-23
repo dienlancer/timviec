@@ -733,5 +733,43 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		$("form[name='frm']").find("textarea[name='job_description']").val('');
 		$("form[name='frm']").find("textarea[name='achievement']").val('');		
 	}
+	function deleteProfileExperience(profile_experience_id){
+		var xac_nhan = 0;
+		var msg="Bạn có muốn xóa ?";
+		if(window.confirm(msg)){ 
+			xac_nhan = 1;
+		}
+		if(xac_nhan  == 0){
+			return 0;
+		}
+		var id = $("form[name='frm']").find("input[name='id']").val();		
+		var token = $("form[name='frm']").find("input[name='_token']").val();
+		var dataItem = new FormData();
+		dataItem.append('id',id);
+		dataItem.append('profile_experience_id',profile_experience_id);           		
+		dataItem.append('_token',token);
+		$.ajax({
+			url: '<?php echo route("frontend.index.deleteExperienceJob"); ?>',
+			type: 'POST',
+			data: dataItem,
+			async: false,
+			success: function (data) {
+				if(data.checked==1){      	
+					
+				} else{
+					showMsg('note_experience',data);    
+				}       			
+			},
+			error : function (data){
+
+			},
+			beforeSend  : function(jqXHR,setting){
+
+			},
+			cache: false,
+			contentType: false,
+			processData: false
+		});
+	}
 </script>
 @endsection()

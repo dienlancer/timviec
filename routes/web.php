@@ -559,5 +559,6 @@ Route::post("save-file-attached",["as"=>"frontend.index.saveFileAttached","uses"
 Route::match(["get","post"],"tao-ho-so-tung-buoc/{id?}",["as"=>"frontend.index.getProfileStepByStep","uses"=>"frontend\IndexController@getProfileStepByStep"]);
 Route::post("cap-nhat-muc-tieu-nghe-nghiep",["as"=>"frontend.index.updateCareerGoal","uses"=>"frontend\IndexController@updateCareerGoal"]);
 Route::post("cap-nhat-kn-lam-viec",["as"=>"frontend.index.saveExperienceJob","uses"=>"frontend\IndexController@saveExperienceJob"]);
+Route::post("xoa-kn-lam-viec",["as"=>"frontend.index.deleteExperienceJob","uses"=>"frontend\IndexController@deleteExperienceJob"]);
 /* end tìm việc */
 ?>

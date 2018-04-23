@@ -1582,7 +1582,7 @@ class IndexController extends Controller {
 			$msg['wrongid']='Sai địa chỉ id';
 		}
 		if((int)@$checked == 1){
-			ProfileExperienceModel::find((int)@$profile_experience_id);
+			ProfileExperienceModel::find((int)@$profile_experience_id)->delete();
 			$msg['success']='Xóa kinh nghiệm làm việc thành công';
 			$source_profile_experience=ProfileExperienceModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
 			if(count($source_profile_experience) > 0){

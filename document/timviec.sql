@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 22, 2018 lúc 08:37 PM
+-- Thời gian đã tạo: Th4 23, 2018 lúc 02:04 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2139,9 +2139,7 @@ CREATE TABLE `profile_experience` (
 --
 
 INSERT INTO `profile_experience` (`id`, `company_name`, `person_title`, `month_from`, `year_from`, `month_to`, `year_to`, `currency`, `salary`, `job_description`, `achievement`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 'VinaDesign', 'Nhân viên lập trình', 2, 2012, 3, 2013, 'vnd', 4000000, 'Thỉnh thoảng người dân vẫn ra vào khu vực sạt lở để thăm nhà. Một số hộ trong lúc chờ được cấp nền tái định cư đã liều dọn về ở trong nhà cũ của mình, dù chính quyền địa phương không cho phép.', 'Tại Trường tiểu học Mỹ Hội Đông, cách nơi sạt lở khoảng 100 m, còn ba hộ ở tạm. Họ dựng dựng lều, bạt trong các dãy nhà kho của trường để ở. Đa số các hộ này đều \"buôn gánh bán bưng\" nên ban ngày đều đi làm, đêm về ngủ.', 1, '2018-04-22 17:57:20', '2018-04-22 17:57:20'),
-(2, 'TTCGROUP', 'Chuyên viên lập trình ứng dụng', 8, 2013, 10, 2016, 'vnd', 8000000, 'Ông Phạm Văn Phúc - Phó chủ tịch UBND xã Mỹ Hội Đông cho biết, vụ sạt lở khiến 106 hộ bị ảnh hưởng phải di dời khẩn cấp. Trong đó, 14 hộ dân có nhà bị trôi xuống sông Vàm Nao được chính quyền địa phương ưu tiên cấp nền và hỗ trợ kinh phí xây nhà trong khu dân cư tại trung tâm xã.', 'Ba tháng sau, tỉnh An Giang thực hiện việc lấp hố xoáy điểm sạt lở này với kinh phí 47 tỷ đồng. Có khoảng 100.000 khối cát và 8.000 khối đá được sử dụng để lấp điểm sạt lở nguy hiểm. Việc lấp hố xoáy dựa trên cơ sở tư vấn của Viện Khoa học thủy lợi Việt Nam (thuộc Bộ Nông nghiệp).', 1, '2018-04-22 18:01:56', '2018-04-22 18:01:56'),
-(3, 'Công Ty Giao Nhận Chuyển Phát Nhanh ITL', 'Lập trình viên PHP', 6, 2017, 8, 2017, 'vnd', 9000000, 'Mục tiêu của ITL là trở thành nhà cung cấp hàng đầu trong khu vực về dịch vụ và giải pháp hậu cần , tổng đại lý cho các hãng hàng không, dịch vụ kho bãi, dịch vụ giao nhận vận tải quốc tế, giao nhận hàng hóa xuất nhập khẩu và mạng lưới vận tải toàn quốc. Bằng cách đóng vai trò thiết yếu trong việc kinh doanh của các khách hàng và cung cấp các dịch vụ kèm theo tốt nhất trong hệ thống chuỗi cung ứng, chúng tôi không ngừng nỗ lực nhằm mang lại sự hài lòng cho khách hàng. ITL cam kết cung cấp dịch vụ với chất lượng tốt nhất cùng với sự minh bạch trong các lĩnh vực chúng tôi thực hiện.', 'Thành công ngày hôm nay của chúng tôi có sự đóng góp to lớn từ đội ngũ nhân viên chuyên nghiệp và trách nhiệm, đồng thời chất lượng cuộc sống ngày càng được nâng cao của nhân viên cũng là thước đo mức độ thành công của doanh nghiệp chúng tôi. Ngoài ra, chúng tôi không ngừng nỗ lực hoàn thành trách nhiệm đối với xã hội và cộng đồng.', 1, '2018-04-22 18:10:59', '2018-04-22 18:10:59');
+(1, 'Công ty cổ phần giải pháp EZ', 'Nhân Viên Triển Khai Phần Mềm Và Quản Lý Khách Hàng', 2, 2002, 3, 2003, 'vnd', 7000000, '- Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng.\r\n- Chịu trách nhiệm hướng dẫn khách hàng sử dụng phần mềm quản lý bán hàng theo đúng quy trình đã thống nhất.\r\n- Cảnh báo các lỗ hổng trong quản lý cửa hàng, kết hợp cùng chủ cửa hàng đảm bảo nhân viên luôn vận hành phần mềm đúng cách.\r\n- Hỗ trợ, chăm sóc, tạo dựng mối liên hệ với khách hàng sau bán hàng trực tiếp hoặc từ xa qua teamview.\r\n- Tư vấn bán hàng các gói dịch vụ, sản phẩm kèm theo khi khách hàng có nhu cầu mở rộng, nâng cấp.\r\n- Phát triển hệ thống tích điểm theo công nghệ Blockchain mới nhất của công ty.', '- Có khả năng học hỏi và thay đổi nhanh.\r\n- Giao tiếp tự tin, nhẹ nhàng, trình bày mạch lạc, rõ ràng, không nói lắp, nói ngọng.\r\n- Dễ mến, có khả năng tạo thiện cảm khi làm việc với khách hàng.\r\n- Biết nghĩ cho người khác.\r\n- Kiên nhẫn xử lý dứt điểm vấn đề.\r\n- Chăm chỉ, nhiệt tình.\r\n- Có kĩ năng sử dụng máy tính tốt.', 1, '2018-04-23 11:49:55', '2018-04-23 11:49:55');
 
 -- --------------------------------------------------------
 
@@ -4005,7 +4003,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`

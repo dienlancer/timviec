@@ -694,10 +694,25 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(achievement_col_lg_4).append(achievement_xika);
 						$(achievement_col_lg_8).append(achievement_xika2);
 						$(achievement_xika).text('Thành tích đạt được');
-						$(achievement_xika2).text(value.achievement);		
+						$(achievement_xika2).text(value.achievement);	
+						/* end achievement */
+						/* begin delete */
+						var delete_row_mia=document.createElement('div');					
+						var delete_col_lg_4=document.createElement('div');
+						var delete_col_lg_8=document.createElement('div');							
+						$(delete_row_mia).addClass('row mia');
+						$(delete_col_lg_4).addClass('col-lg-4');
+						$(delete_col_lg_8).addClass('col-lg-8');								
+						$('.experience_job_txt').append(delete_row_mia);
+						$(delete_row_mia).append(delete_col_lg_4);
+						$(delete_row_mia).append(delete_col_lg_8);	
+						var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileExperience('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
+						$(delete_col_lg_8).append(delete_html);									
+						/* end delete */
+						/* begin hr */
 						var hr=document.createElement('hr');
 						$('.experience_job_txt').append(hr);				
-						/* end achievement */
+						/* end hr */
 					});					
 					$('.experience_job_edit').show();
 					$('.experience_job_save').hide();
@@ -889,10 +904,25 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$(achievement_col_lg_4).append(achievement_xika);
 						$(achievement_col_lg_8).append(achievement_xika2);
 						$(achievement_xika).text('Thành tích đạt được');
-						$(achievement_xika2).text(value.achievement);		
+						$(achievement_xika2).text(value.achievement);	
+						/* end achievement */
+						/* begin delete */
+						var delete_row_mia=document.createElement('div');					
+						var delete_col_lg_4=document.createElement('div');
+						var delete_col_lg_8=document.createElement('div');							
+						$(delete_row_mia).addClass('row mia');
+						$(delete_col_lg_4).addClass('col-lg-4');
+						$(delete_col_lg_8).addClass('col-lg-8');								
+						$('.experience_job_txt').append(delete_row_mia);
+						$(delete_row_mia).append(delete_col_lg_4);
+						$(delete_row_mia).append(delete_col_lg_8);	
+						var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileExperience('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
+						$(delete_col_lg_8).append(delete_html);									
+						/* end delete */
+						/* begin hr */
 						var hr=document.createElement('hr');
 						$('.experience_job_txt').append(hr);				
-						/* end achievement */
+						/* end hr */
 					});										
 				} else{
 					showMsg('note_experience',data);    

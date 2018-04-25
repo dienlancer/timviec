@@ -20,6 +20,8 @@ var vProbationaryTable           =   null;
 var vWorkingFormTable           =   null;
 var vExperienceTable           =   null;
 var vSexTable           =   null;
+var vLanguageLevelTable           =   null;
+var vLanguageTable           =   null;
 var vGraduationTable           =   null;
 var vEmployerTable           =   null;
 var vCandidateTable           =   null;
@@ -475,6 +477,40 @@ var basicTable = function () {
     };
     var initSexTable = function () {
         vSexTable = $('#tbl-sex').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initLanguageLevelTable = function () {
+        vLanguageLevelTable = $('#tbl-language-level').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initLanguageTable = function () {
+        vLanguageTable = $('#tbl-language').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -1044,6 +1080,8 @@ var basicTable = function () {
             initJobTable();
             initRecruitmentTable();
             initRankTable();
+            initLanguageTable();
+            initLanguageLevelTable();
         }
     };
 }();

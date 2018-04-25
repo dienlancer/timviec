@@ -342,6 +342,42 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.sex.trash","uses"=>"adminsystem\SexController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.sex.createAlias","uses"=>"adminsystem\SexController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"language-level"],function(){		
+		Route::get("list",["as"=>"adminsystem.language-level.getList","uses"=>"adminsystem\LanguageLevelController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.language-level.loadData","uses"=>"adminsystem\LanguageLevelController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.language-level.getForm","uses"=>"adminsystem\LanguageLevelController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.language-level.save","uses"=>"adminsystem\LanguageLevelController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.language-level.deleteItem","uses"=>"adminsystem\LanguageLevelController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.language-level.sortOrder","uses"=>"adminsystem\LanguageLevelController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.language-level.updateStatus","uses"=>"adminsystem\LanguageLevelController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.language-level.changeStatus","uses"=>"adminsystem\LanguageLevelController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.language-level.trash","uses"=>"adminsystem\LanguageLevelController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.language-level.createAlias","uses"=>"adminsystem\LanguageLevelController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"language"],function(){		
+		Route::get("list",["as"=>"adminsystem.language.getList","uses"=>"adminsystem\LanguageController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.language.loadData","uses"=>"adminsystem\LanguageController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.language.getForm","uses"=>"adminsystem\LanguageController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.language.save","uses"=>"adminsystem\LanguageController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.language.deleteItem","uses"=>"adminsystem\LanguageController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.language.sortOrder","uses"=>"adminsystem\LanguageController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.language.updateStatus","uses"=>"adminsystem\LanguageController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.language.changeStatus","uses"=>"adminsystem\LanguageController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.language.trash","uses"=>"adminsystem\LanguageController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.language.createAlias","uses"=>"adminsystem\LanguageController@createAlias"]);
+	});	
+	Route::group(["prefix"=>"graduation"],function(){		
+		Route::get("list",["as"=>"adminsystem.graduation.getList","uses"=>"adminsystem\GraduationController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.graduation.loadData","uses"=>"adminsystem\GraduationController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.graduation.getForm","uses"=>"adminsystem\GraduationController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.graduation.save","uses"=>"adminsystem\GraduationController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.graduation.deleteItem","uses"=>"adminsystem\GraduationController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.graduation.sortOrder","uses"=>"adminsystem\GraduationController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.graduation.updateStatus","uses"=>"adminsystem\GraduationController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.graduation.changeStatus","uses"=>"adminsystem\GraduationController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.graduation.trash","uses"=>"adminsystem\GraduationController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.graduation.createAlias","uses"=>"adminsystem\GraduationController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"employer"],function(){		
 		Route::get("list",["as"=>"adminsystem.employer.getList","uses"=>"adminsystem\EmployerController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.employer.loadData","uses"=>"adminsystem\EmployerController@loadData"]);		

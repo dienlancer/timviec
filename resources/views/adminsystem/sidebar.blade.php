@@ -29,6 +29,9 @@ $li_working_form='';
 $li_probationary='';
 $li_job='';
 $li_rank='';
+$li_graduation='';
+$li_language='';
+$li_language_level='';
 
 $li_media='';
 $li_menu_type='';
@@ -119,6 +122,18 @@ switch ($controller) {
     break;
     case 'rank': 
     $li_rank='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'graduation': 
+    $li_graduation='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'language': 
+    $li_language='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'language-level': 
+    $li_language_level='active open';       
     $li_category_management='active open'; 
     break;
     case 'media':
@@ -326,6 +341,24 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.rank.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Cấp bậc</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_graduation; ?>">
+                    <a href="{!! route('adminsystem.graduation.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Xếp loại tốt nghiệp</span>                                            
+                    </a>                                                                      
+                </li> 
+                <li class="nav-item  <?php echo $li_language; ?>">
+                    <a href="{!! route('adminsystem.language.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Ngoại ngữ</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_language_level; ?>">
+                    <a href="{!! route('adminsystem.language-level.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Trình độ ngoại ngữ</span>                                            
                     </a>                                                                      
                 </li>  
             </ul>

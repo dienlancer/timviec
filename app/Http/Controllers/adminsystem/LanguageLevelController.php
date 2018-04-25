@@ -13,12 +13,12 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\GraduationModel;
+use App\LanguageLevelModel;
 use App\CandidateModel;
 use DB;
-class GraduationController extends Controller {
- var $_controller="graduation";	
- var $_title="Xếp loại tốt nghiệp";
+class LanguageLevelController extends Controller {
+ var $_controller="language-level";	
+ var $_title="Trình độ ngoại ngữ";
  var $_icon="icon-settings font-dark";    
  public function getList(){		
   $controller=$this->_controller;	
@@ -39,14 +39,14 @@ public function loadData(Request $request){
   if(!empty(@$request->filter_search)){      
     $filter_search=trim(@$request->filter_search) ;    
   }        
-  $data=DB::table('graduation')                  
-  ->select('graduation.id','graduation.fullname','graduation.sort_order','graduation.status','graduation.created_at','graduation.updated_at')                
-  ->where('graduation.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-  ->groupBy('graduation.id','graduation.fullname','graduation.sort_order','graduation.status','graduation.created_at','graduation.updated_at')   
-  ->orderBy('graduation.id', 'asc')                
+  $data=DB::table("language_level")                  
+  ->select('language_level.id','language_level.fullname','language_level.sort_order','language_level.status','language_level.created_at','language_level.updated_at')                
+  ->where('language_level.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
+  ->groupBy('language_level.id','language_level.fullname','language_level.sort_order','language_level.status','language_level.created_at','language_level.updated_at')   
+  ->orderBy('language_level.id', 'asc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
-  $data=graduationConverter($data,$this->_controller);            
+  $data=languageLevelConverter($data,$this->_controller);            
   return $data;
 } 
 public function getForm($task,$id=""){     
@@ -60,7 +60,7 @@ public function getForm($task,$id=""){
     switch ($task) {
      case 'edit':
      $title=$this->_title . " : Update";
-     $arrRowData=GraduationModel::find((int)@$id)->toArray();                     
+     $arrRowData=LanguageLevelModel::find((int)@$id)->toArray();                     
      break;
      case 'add':
      $title=$this->_title . " : Add new";
@@ -99,11 +99,11 @@ public function save(Request $request){
  }
  if ($checked == 1) {    
   if(empty($id)){
-    $item         =   new GraduationModel;       
+    $item         =   new LanguageLevelModel;       
     $item->created_at   = date("Y-m-d H:i:s",time());        
 
   } else{
-    $item       = GraduationModel::find((int)@$id);   
+    $item       = LanguageLevelModel::find((int)@$id);   
 
   }  
   $item->fullname 		    =	@$fullname;  
@@ -127,7 +127,7 @@ public function changeStatus(Request $request){
   $checked              =   1;                           
   $msg                =   array();     
   $status         =       (int)@$request->status;
-  $item           =       GraduationModel::find((int)@$id);        
+  $item           =       LanguageLevelModel::find((int)@$id);        
   $item->status   =       $status;
   $item->save();
   $msg['success']='Cập nhật thành công';
@@ -144,9 +144,10 @@ public function deleteItem(Request $request){
   $id                     =   (int)$request->id;              
   $info                 =   array();
   $checked              =   1;                           
-  $msg                =   array();                
+  $msg                =   array();
+                   
   if($checked == 1){
-    $item = GraduationModel::find((int)@$id);
+    $item = LanguageLevelModel::find((int)@$id);
     $item->delete();    
     $msg['success']          =   'Xóa thành công';                                                     
   }        
@@ -174,7 +175,7 @@ public function updateStatus(Request $request){
   if($checked==1){
     foreach ($arrID as $key => $value) {
       if(!empty($value)){
-        $item=GraduationModel::find($value);
+        $item=LanguageLevelModel::find($value);
         $item->status=$status;
         $item->save();      
       }            
@@ -203,7 +204,7 @@ public function trash(Request $request){
   }         
   
   if($checked == 1){                                  
-    DB::table('graduation')->whereIn('id',@$arrID)->delete();
+    DB::table("language_level")->whereIn('id',@$arrID)->delete();
     $msg['success']='Xóa thành công';                                      
   }
   $data                   =   $this->loadData($request);
@@ -224,7 +225,7 @@ public function sortOrder(Request $request){
   if(count($data_order) > 0){              
     foreach($data_order as $key => $value){      
       if(!empty($value)){
-        $item=GraduationModel::find((int)@$value->id);                
+        $item=LanguageLevelModel::find((int)@$value->id);                
         $item->sort_order=(int)$value->sort_order;                         
         $item->save();                      
       }                                                  
@@ -258,9 +259,9 @@ public function createAlias(Request $request){
   $dataSex=array();
   $checked_trung_alias=0;          
   if (empty($id)) {              
-    $dataSex=GraduationModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
+    $dataSex=LanguageLevelModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
   }else{
-    $dataSex=GraduationModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
+    $dataSex=LanguageLevelModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
   }  
   
   if (count($dataSex) > 0) {

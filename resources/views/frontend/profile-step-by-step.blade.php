@@ -539,7 +539,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<div class="col-lg-8"><?php echo $ddlGraduation; ?></div>
 					</div>
 					<div class="row mia">
-						<div class="col-lg-4" ><div class="xika"><div>Tải ảnh bằng</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-4" ><div class="xika"><div>Tải ảnh bằng cấp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8"><input type="file" name="degree" /></div>
 					</div>
 				</div>

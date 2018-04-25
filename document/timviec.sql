@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 23, 2018 lúc 02:04 PM
+-- Thời gian đã tạo: Th4 25, 2018 lúc 09:25 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2104,7 +2104,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Mục tiêu nghề nghiệp là phần không thể thiếu trong mỗi CV. Đó là một bản mô tả ngắn gọn giúp nhà tuyển dụng nắm khái quát về bản thân và lộ trình công việc của bạn, từ đó cân nhắc về mức độ phù hợp của bạn đối với vị trí ứng tuyển.', 1, 0, '2018-04-16 05:05:40', '2018-04-21 09:46:28'),
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 1, 0, '2018-04-16 05:05:40', '2018-04-23 12:07:49'),
 (10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
 (11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
 (12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
@@ -2139,7 +2139,7 @@ CREATE TABLE `profile_experience` (
 --
 
 INSERT INTO `profile_experience` (`id`, `company_name`, `person_title`, `month_from`, `year_from`, `month_to`, `year_to`, `currency`, `salary`, `job_description`, `achievement`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 'Công ty cổ phần giải pháp EZ', 'Nhân Viên Triển Khai Phần Mềm Và Quản Lý Khách Hàng', 2, 2002, 3, 2003, 'vnd', 7000000, '- Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng.\r\n- Chịu trách nhiệm hướng dẫn khách hàng sử dụng phần mềm quản lý bán hàng theo đúng quy trình đã thống nhất.\r\n- Cảnh báo các lỗ hổng trong quản lý cửa hàng, kết hợp cùng chủ cửa hàng đảm bảo nhân viên luôn vận hành phần mềm đúng cách.\r\n- Hỗ trợ, chăm sóc, tạo dựng mối liên hệ với khách hàng sau bán hàng trực tiếp hoặc từ xa qua teamview.\r\n- Tư vấn bán hàng các gói dịch vụ, sản phẩm kèm theo khi khách hàng có nhu cầu mở rộng, nâng cấp.\r\n- Phát triển hệ thống tích điểm theo công nghệ Blockchain mới nhất của công ty.', '- Có khả năng học hỏi và thay đổi nhanh.\r\n- Giao tiếp tự tin, nhẹ nhàng, trình bày mạch lạc, rõ ràng, không nói lắp, nói ngọng.\r\n- Dễ mến, có khả năng tạo thiện cảm khi làm việc với khách hàng.\r\n- Biết nghĩ cho người khác.\r\n- Kiên nhẫn xử lý dứt điểm vấn đề.\r\n- Chăm chỉ, nhiệt tình.\r\n- Có kĩ năng sử dụng máy tính tốt.', 1, '2018-04-23 11:49:55', '2018-04-23 11:49:55');
+(2, 'HONDA Ô TÔ CỘNG HÒA - CN CTY CP XNK & DV Ô TÔ MẶT TRỜI MỌC', 'Nhân Viên Kinh Doanh Xe Ô Tô', 3, 2003, 4, 2004, 'vnd', 15000000, '- Tư vấn và bán xe ô tô tại showroom đại lý chính thức của Honda \r\n- Tìm kiếm khách hàng mới, tiềm năng để giới thiệu xe\r\n- Tư vấn cho khách hàng về các sản phẩm, giá cả, phương thức thanh toán\r\n- Đàm phán ký kết hợp đồng với khách hàng \r\n- Chủ động liên hệ và tạo lập mối quan hệ tốt với khách hàng nhằm tăng cường khả năng bán hàng và nâng cao uy tín sản phẩm và công ty\r\n- Khai thác thị trường nhằm đạt doanh số cao nhất.', '- Nam, Nữ tuổi dưới 35; ngoại hình ưa nhìn; \r\n- Tốt nghiệp Cao Đẳng/ Đại học chuyên ngành Kinh tế, QTKD, Marketing, Cơ khí ô tô... \r\n- Có kỹ năng giao tiếp, đàm phán tốt; Có khả năng Marketing, trình bày rõ ràng, mạch lạc; \r\n- Biết về vi tính văn phòng; \r\n- Có khả năng làm việc độc lập và theo nhóm, chịu được áp lực cao trong công việc; \r\n- Ưu tiên người có kiến thức về ô tô, có bằng lái xe và đã từng có kinh nghiệm bán xe ô tô', 1, '2018-04-24 19:17:52', '2018-04-24 19:17:52');
 
 -- --------------------------------------------------------
 
@@ -4003,7 +4003,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`

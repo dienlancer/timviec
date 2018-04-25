@@ -20,6 +20,7 @@ var vProbationaryTable           =   null;
 var vWorkingFormTable           =   null;
 var vExperienceTable           =   null;
 var vSexTable           =   null;
+var vGraduationTable           =   null;
 var vEmployerTable           =   null;
 var vCandidateTable           =   null;
 var vMarriageTable           =   null;
@@ -474,6 +475,23 @@ var basicTable = function () {
     };
     var initSexTable = function () {
         vSexTable = $('#tbl-sex').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initGraduationTable = function () {
+        vGraduationTable = $('#tbl-graduation').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -1013,6 +1031,7 @@ var basicTable = function () {
             initDistrictTable();  
             initScaleTable();  
             initSexTable();  
+            initGraduationTable();  
             initMarriageTable();
             initEmployerTable();
             initCandidateTable();

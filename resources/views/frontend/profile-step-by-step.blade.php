@@ -508,15 +508,70 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				$ddlGraduationYearTo=cmsSelectbox(	"graduation_year_to"	,	"vacca"	,	$source_year	,	0	,	''	);
 				?>
 				<div class="graduation_edit" style="<?php echo $status_graduation_edit; ?>">
-					<div class="graduation_txt"></div>
+					<div class="graduation_txt">
+						<?php 
+						foreach ($source_profile_graduation as $key => $value) {
+							$profile_graduation_id=$value['id'];
+							$profile_graduation_literacy_name=$value['literacy_nam'];
+							$profile_graduation_training_unit=$value['training_unit'];
+							$profile_graduation_year_from= $value['year_from'];
+							$profile_graduation_year_to=$value['year_to'];									
+							$profile_graduation_department=@$value['department'];
+							$profile_graduation_graduation_name=@$value['graduation_name'];							
+							?>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Trình độ học vấn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_literacy_name; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Đơn vị đào tạo</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_training_unit; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Thời gian</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8">
+									<div class="lunarnewyear">
+										<div>Từ</div>
+										<div class="margin-left-10"><?php echo @$profile_graduation_year_from; ?></div>
+										<div class="margin-left-10">Đến</div>
+										<div class="margin-left-10"><?php echo @$profile_graduation_year_to; ?></div>
+									</div> 
+								</div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Chuyên ngành</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_department; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Loại tốt nghiệp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_graduation_name; ?></div> </div>
+							</div>							
+							<div class="row mia">
+								<div class="col-lg-4"></div>
+								<div class="col-lg-8">
+									<div class="vihamus-3">
+										<a href="javascript:void(0);" onclick="deleteProfileGraduation(<?php echo $profile_graduation_id ?>);" >
+											<div class="narit">
+												<div><i class="far fa-times-circle"></i></div>
+												<div class="margin-left-5">Xóa</div>
+											</div>								
+										</a>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<?php
+						}
+						?>
+					</div>
 					<div class="row mia">
 						<div class="col-lg-4"></div>
 						<div class="col-lg-8">
 							<div class="vihamus-4">
-								<a href="javascript:void(0);" onclick="addExperienceJob();" >
+								<a href="javascript:void(0);" onclick="addGraduation();" >
 									<div class="narit">
 										<div><i class="far fa-plus-square"></i></div>
-										<div class="margin-left-5">Thêm kinh nghiệm làm việc</div>
+										<div class="margin-left-5">Thêm trình độ bằng cấp</div>
 									</div>								
 								</a>
 							</div>
@@ -816,22 +871,22 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						$('.experience_job_txt').append(hr);				
 						/* end hr */
 					});					
-$('.experience_job_edit').show();
-$('.experience_job_save').hide();
-} else{
-	showMsg('note_experience',data);    
-}       			
-},
-error : function (data){
+					$('.experience_job_edit').show();
+					$('.experience_job_save').hide();
+				}else{
+					showMsg('note_experience',data);    
+				}       			
+			},
+			error : function (data){
 
-},
-beforeSend  : function(jqXHR,setting){
+			},
+			beforeSend  : function(jqXHR,setting){
 
-},
-cache: false,
-contentType: false,
-processData: false
-});
+			},
+			cache: false,
+			contentType: false,
+			processData: false
+		});
 }
 function noSaveExperienceJob(){
 	$('.experience_job_edit').show();
@@ -1026,37 +1081,431 @@ function deleteProfileExperience(profile_experience_id){
 					$('.experience_job_txt').append(hr);				
 					/* end hr */
 				});										
-} else{
-	showMsg('note_experience',data);    
-}       			
-},
-error : function (data){
+			} else{
+				showMsg('note_experience',data);    
+			}       			
+		},
+		error : function (data){
 
-},
-beforeSend  : function(jqXHR,setting){
+		},
+		beforeSend  : function(jqXHR,setting){
 
-},
-cache: false,
-contentType: false,
-processData: false
-});
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
 }
 function saveGraduation(){
 	var id = $("form[name='frm']").find("input[name='id']").val();
 	var literacy_id = $("form[name='frm']").find("select[name='literacy_id']").val();
 	var training_unit = $("form[name='frm']").find("input[name='training_unit']").val();
 	var graduation_year_from = $("form[name='frm']").find("select[name='graduation_year_from']").val();
-	var graduation_year_to = $("form[name='frm']").find("input[name='graduation_year_to']").val();
+	var graduation_year_to = $("form[name='frm']").find("select[name='graduation_year_to']").val();
 	var department = $("form[name='frm']").find("input[name='department']").val();
 	var graduation_id = $("form[name='frm']").find("select[name='graduation_id']").val();
 	/* begin xử lý image */
-        var image_file=null;
-        var image_ctrl=$('input[name="degree"]');         
-        var image_files = $(image_ctrl).get(0).files;        
-        if(image_files.length > 0){            
-            image_file  = image_files[0];  
-        }        
-    /* end xử lý image */    
+	var image_file=null;
+	var image_ctrl=$('input[name="degree"]');         
+	var image_files = $(image_ctrl).get(0).files;        
+	if(image_files.length > 0){            
+		image_file  = image_files[0];  
+	}        
+	/* end xử lý image */   
+	var token = $("form[name='frm']").find("input[name='_token']").val();
+	var dataItem = new FormData();
+	dataItem.append('id',id);
+	dataItem.append('literacy_id',literacy_id);
+	dataItem.append('training_unit',training_unit);
+	dataItem.append('graduation_year_from',graduation_year_from);
+	dataItem.append('graduation_year_to',graduation_year_to);
+	dataItem.append('department',department);
+	dataItem.append('graduation_id',graduation_id);
+	if(image_files.length > 0){
+		dataItem.append('image',image_file);
+	}  	
+	dataItem.append('_token',token);
+	$.ajax({
+		url: '<?php echo route("frontend.index.saveGraduation"); ?>',
+		type: 'POST',
+		data: dataItem,
+		async: false,
+		success: function (data) {
+			if(data.checked==1){
+				var data_profile_graduation=data.data_profile_graduation;	
+				$('.graduation_job_txt').empty();
+				$.each(data_profile_graduation,function(index,value){
+					/* begin literacy */
+					var literacy_row_mia=document.createElement('div');					
+					var literacy_col_lg_4=document.createElement('div');
+					var literacy_col_lg_8=document.createElement('div');
+					var literacy_xika=document.createElement('div');
+					var literacy_xika2=document.createElement('div');
+					$(literacy_row_mia).addClass('row mia');
+					$(literacy_col_lg_4).addClass('col-lg-4');
+					$(literacy_col_lg_8).addClass('col-lg-8');
+					$(literacy_xika).addClass('xika');
+					$(literacy_xika2).addClass('xika2');
+					$('.graduation_txt').append(literacy_row_mia);
+					$(literacy_row_mia).append(literacy_col_lg_4);
+					$(literacy_row_mia).append(literacy_col_lg_8);
+					$(literacy_col_lg_4).append(literacy_xika);
+					$(literacy_col_lg_8).append(literacy_xika2);
+					$(literacy_xika).text('Trình độ học vấn');
+					$(literacy_xika2).text(value.literacy_name);						
+					/* end literacy */
+					/* begin training_unit */
+					var training_unit_row_mia=document.createElement('div');					
+					var training_unit_col_lg_4=document.createElement('div');
+					var training_unit_col_lg_8=document.createElement('div');
+					var training_unit_xika=document.createElement('div');
+					var training_unit_xika2=document.createElement('div');
+					$(training_unit_row_mia).addClass('row mia');
+					$(training_unit_col_lg_4).addClass('col-lg-4');
+					$(training_unit_col_lg_8).addClass('col-lg-8');
+					$(training_unit_xika).addClass('xika');
+					$(training_unit_xika2).addClass('xika2');
+					$('.graduation_txt').append(training_unit_row_mia);
+					$(training_unit_row_mia).append(training_unit_col_lg_4);
+					$(training_unit_row_mia).append(training_unit_col_lg_8);
+					$(training_unit_col_lg_4).append(training_unit_xika);
+					$(training_unit_col_lg_8).append(training_unit_xika2);
+					$(training_unit_xika).text('Đơn vị đào tạo');
+					$(training_unit_xika2).text(value.training_unit);						
+					/* end training_unit */
+					/* begin business_time */
+					var business_time_row_mia=document.createElement('div');					
+					var business_time_col_lg_4=document.createElement('div');
+					var business_time_col_lg_8=document.createElement('div');
+					var business_time_xika=document.createElement('div');
+					var business_time_xika2=document.createElement('div');
+					var business_time_general=document.createElement('div');
+					var business_time_from=document.createElement('div');
+					var business_time_month_year_from=document.createElement('div');
+					var business_time_to=document.createElement('div');
+					var business_time_month_year_to=document.createElement('div');
+					$(business_time_row_mia).addClass('row mia');
+					$(business_time_col_lg_4).addClass('col-lg-4');
+					$(business_time_col_lg_8).addClass('col-lg-8');
+					$(business_time_xika).addClass('xika');
+					$(business_time_xika2).addClass('xika2');
+					$(business_time_general).addClass('lunarnewyear');
+					$(business_time_month_year_from).addClass('margin-left-10');						
+					$(business_time_to).addClass('margin-left-10');
+					$(business_time_month_year_to).addClass('margin-left-10');						
+					$('.graduation_txt').append(business_time_row_mia);
+					$(business_time_row_mia).append(business_time_col_lg_4);
+					$(business_time_row_mia).append(business_time_col_lg_8);
+					$(business_time_col_lg_4).append(business_time_xika);
+					$(business_time_col_lg_8).append(business_time_xika2);
+					$(business_time_xika).text('Thời gian');						
+					$(business_time_xika2).append(business_time_general);
+					$(business_time_general).append(business_time_from);
+					$(business_time_general).append(business_time_month_year_from);						
+					$(business_time_general).append(business_time_to);
+					$(business_time_general).append(business_time_month_year_to);						
+					$(business_time_from).text('Từ');
+					$(business_time_month_year_from).text(value.year_from);									
+					$(business_time_to).text('Đến');
+					$(business_time_month_year_to).text(value.year_to);											
+					/* end business_time */
+					/* begin department */
+					var department_row_mia=document.createElement('div');					
+					var department_col_lg_4=document.createElement('div');
+					var department_col_lg_8=document.createElement('div');
+					var department_xika=document.createElement('div');
+					var department_xika2=document.createElement('div');
+					$(department_row_mia).addClass('row mia');
+					$(department_col_lg_4).addClass('col-lg-4');
+					$(department_col_lg_8).addClass('col-lg-8');
+					$(department_xika).addClass('xika');
+					$(department_xika2).addClass('xika2');
+					$('.graduation_txt').append(department_row_mia);
+					$(department_row_mia).append(department_col_lg_4);
+					$(department_row_mia).append(department_col_lg_8);
+					$(department_col_lg_4).append(department_xika);
+					$(department_col_lg_8).append(department_xika2);
+					$(department_xika).text('Chuyên ngành');
+					$(department_xika2).text(value.department);						
+					/* end department */
+					/* begin graduation */
+					var graduation_row_mia=document.createElement('div');					
+					var graduation_col_lg_4=document.createElement('div');
+					var graduation_col_lg_8=document.createElement('div');
+					var graduation_xika=document.createElement('div');
+					var graduation_xika2=document.createElement('div');
+					$(graduation_row_mia).addClass('row mia');
+					$(graduation_col_lg_4).addClass('col-lg-4');
+					$(graduation_col_lg_8).addClass('col-lg-8');
+					$(graduation_xika).addClass('xika');
+					$(graduation_xika2).addClass('xika2');
+					$('.graduation_txt').append(graduation_row_mia);
+					$(graduation_row_mia).append(graduation_col_lg_4);
+					$(graduation_row_mia).append(graduation_col_lg_8);
+					$(graduation_col_lg_4).append(graduation_xika);
+					$(graduation_col_lg_8).append(graduation_xika2);
+					$(graduation_xika).text('Trình độ học vấn');
+					$(graduation_xika2).text(value.graduation_name);						
+					/* end graduation */
+					/* begin degree */
+					var degree_row_mia=document.createElement('div');					
+					var degree_col_lg_4=document.createElement('div');
+					var degree_col_lg_8=document.createElement('div');
+					var degree_xika=document.createElement('div');
+					var degree_xika2=document.createElement('div');
+					var degree_img=document.createElement('img');
+					$(degree_row_mia).addClass('row mia');
+					$(degree_col_lg_4).addClass('col-lg-4');
+					$(degree_col_lg_8).addClass('col-lg-8');
+					$(degree_xika).addClass('xika');
+					$(degree_xika2).addClass('xika2');
+					$('.graduation_txt').append(degree_row_mia);
+					$(degree_row_mia).append(degree_col_lg_4);
+					$(degree_row_mia).append(degree_col_lg_8);
+					$(degree_col_lg_4).append(degree_xika);
+					$(degree_col_lg_8).append(degree_xika2);
+					$(degree_xika).text('Bằng cấp');
+					$(degree_img).prop('src',value.degree);
+					$(degree_xika2).append(degree_img);
+					/* end degree */
+					/* begin delete */
+					var delete_row_mia=document.createElement('div');					
+					var delete_col_lg_4=document.createElement('div');
+					var delete_col_lg_8=document.createElement('div');							
+					$(delete_row_mia).addClass('row mia');
+					$(delete_col_lg_4).addClass('col-lg-4');
+					$(delete_col_lg_8).addClass('col-lg-8');								
+					$('.graduation_txt').append(delete_row_mia);
+					$(delete_row_mia).append(delete_col_lg_4);
+					$(delete_row_mia).append(delete_col_lg_8);	
+					var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileGraduation('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
+					$(delete_col_lg_8).append(delete_html);									
+					/* end delete */
+					/* begin hr */
+					var hr=document.createElement('hr');
+					$('.graduation_txt').append(hr);				
+					/* end hr */
+				});	
+				$('.graduation_edit').show();
+				$('.graduation_save').hide();			
+			}else{
+				showMsg('note_graduation',data);    
+			}  
+		}
+		error : function (data){
+
+		},
+		beforeSend  : function(jqXHR,setting){
+
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
+}
+function deleteProfileGraduation(profile_graduation_id){
+	var xac_nhan = 0;
+	var msg="Bạn có muốn xóa ?";
+	if(window.confirm(msg)){ 
+		xac_nhan = 1;
+	}
+	if(xac_nhan  == 0){
+		return 0;
+	}
+	var id = $("form[name='frm']").find("input[name='id']").val();		
+	var token = $("form[name='frm']").find("input[name='_token']").val();
+	var dataItem = new FormData();
+	dataItem.append('id',id);
+	dataItem.append('profile_graduation_id',profile_graduation_id);           		
+	dataItem.append('_token',token);
+	$.ajax({
+		url: '<?php echo route("frontend.index.deleteGraduation"); ?>',
+		type: 'POST',
+		data: dataItem,
+		async: false,
+		success: function (data) {
+			if(data.checked==1){      	
+				var data_profile_graduation=data.data_profile_graduation;	
+				$('.graduation_job_txt').empty();
+				$.each(data_profile_graduation,function(index,value){
+					/* begin literacy */
+					var literacy_row_mia=document.createElement('div');					
+					var literacy_col_lg_4=document.createElement('div');
+					var literacy_col_lg_8=document.createElement('div');
+					var literacy_xika=document.createElement('div');
+					var literacy_xika2=document.createElement('div');
+					$(literacy_row_mia).addClass('row mia');
+					$(literacy_col_lg_4).addClass('col-lg-4');
+					$(literacy_col_lg_8).addClass('col-lg-8');
+					$(literacy_xika).addClass('xika');
+					$(literacy_xika2).addClass('xika2');
+					$('.graduation_txt').append(literacy_row_mia);
+					$(literacy_row_mia).append(literacy_col_lg_4);
+					$(literacy_row_mia).append(literacy_col_lg_8);
+					$(literacy_col_lg_4).append(literacy_xika);
+					$(literacy_col_lg_8).append(literacy_xika2);
+					$(literacy_xika).text('Trình độ học vấn');
+					$(literacy_xika2).text(value.literacy_name);						
+					/* end literacy */
+					/* begin training_unit */
+					var training_unit_row_mia=document.createElement('div');					
+					var training_unit_col_lg_4=document.createElement('div');
+					var training_unit_col_lg_8=document.createElement('div');
+					var training_unit_xika=document.createElement('div');
+					var training_unit_xika2=document.createElement('div');
+					$(training_unit_row_mia).addClass('row mia');
+					$(training_unit_col_lg_4).addClass('col-lg-4');
+					$(training_unit_col_lg_8).addClass('col-lg-8');
+					$(training_unit_xika).addClass('xika');
+					$(training_unit_xika2).addClass('xika2');
+					$('.graduation_txt').append(training_unit_row_mia);
+					$(training_unit_row_mia).append(training_unit_col_lg_4);
+					$(training_unit_row_mia).append(training_unit_col_lg_8);
+					$(training_unit_col_lg_4).append(training_unit_xika);
+					$(training_unit_col_lg_8).append(training_unit_xika2);
+					$(training_unit_xika).text('Đơn vị đào tạo');
+					$(training_unit_xika2).text(value.training_unit);						
+					/* end training_unit */
+					/* begin business_time */
+					var business_time_row_mia=document.createElement('div');					
+					var business_time_col_lg_4=document.createElement('div');
+					var business_time_col_lg_8=document.createElement('div');
+					var business_time_xika=document.createElement('div');
+					var business_time_xika2=document.createElement('div');
+					var business_time_general=document.createElement('div');
+					var business_time_from=document.createElement('div');
+					var business_time_month_year_from=document.createElement('div');
+					var business_time_to=document.createElement('div');
+					var business_time_month_year_to=document.createElement('div');
+					$(business_time_row_mia).addClass('row mia');
+					$(business_time_col_lg_4).addClass('col-lg-4');
+					$(business_time_col_lg_8).addClass('col-lg-8');
+					$(business_time_xika).addClass('xika');
+					$(business_time_xika2).addClass('xika2');
+					$(business_time_general).addClass('lunarnewyear');
+					$(business_time_month_year_from).addClass('margin-left-10');						
+					$(business_time_to).addClass('margin-left-10');
+					$(business_time_month_year_to).addClass('margin-left-10');						
+					$('.graduation_txt').append(business_time_row_mia);
+					$(business_time_row_mia).append(business_time_col_lg_4);
+					$(business_time_row_mia).append(business_time_col_lg_8);
+					$(business_time_col_lg_4).append(business_time_xika);
+					$(business_time_col_lg_8).append(business_time_xika2);
+					$(business_time_xika).text('Thời gian');						
+					$(business_time_xika2).append(business_time_general);
+					$(business_time_general).append(business_time_from);
+					$(business_time_general).append(business_time_month_year_from);						
+					$(business_time_general).append(business_time_to);
+					$(business_time_general).append(business_time_month_year_to);						
+					$(business_time_from).text('Từ');
+					$(business_time_month_year_from).text(value.year_from);									
+					$(business_time_to).text('Đến');
+					$(business_time_month_year_to).text(value.year_to);											
+					/* end business_time */
+					/* begin department */
+					var department_row_mia=document.createElement('div');					
+					var department_col_lg_4=document.createElement('div');
+					var department_col_lg_8=document.createElement('div');
+					var department_xika=document.createElement('div');
+					var department_xika2=document.createElement('div');
+					$(department_row_mia).addClass('row mia');
+					$(department_col_lg_4).addClass('col-lg-4');
+					$(department_col_lg_8).addClass('col-lg-8');
+					$(department_xika).addClass('xika');
+					$(department_xika2).addClass('xika2');
+					$('.graduation_txt').append(department_row_mia);
+					$(department_row_mia).append(department_col_lg_4);
+					$(department_row_mia).append(department_col_lg_8);
+					$(department_col_lg_4).append(department_xika);
+					$(department_col_lg_8).append(department_xika2);
+					$(department_xika).text('Chuyên ngành');
+					$(department_xika2).text(value.department);						
+					/* end department */
+					/* begin graduation */
+					var graduation_row_mia=document.createElement('div');					
+					var graduation_col_lg_4=document.createElement('div');
+					var graduation_col_lg_8=document.createElement('div');
+					var graduation_xika=document.createElement('div');
+					var graduation_xika2=document.createElement('div');
+					$(graduation_row_mia).addClass('row mia');
+					$(graduation_col_lg_4).addClass('col-lg-4');
+					$(graduation_col_lg_8).addClass('col-lg-8');
+					$(graduation_xika).addClass('xika');
+					$(graduation_xika2).addClass('xika2');
+					$('.graduation_txt').append(graduation_row_mia);
+					$(graduation_row_mia).append(graduation_col_lg_4);
+					$(graduation_row_mia).append(graduation_col_lg_8);
+					$(graduation_col_lg_4).append(graduation_xika);
+					$(graduation_col_lg_8).append(graduation_xika2);
+					$(graduation_xika).text('Trình độ học vấn');
+					$(graduation_xika2).text(value.graduation_name);						
+					/* end graduation */
+					/* begin degree */
+					var degree_row_mia=document.createElement('div');					
+					var degree_col_lg_4=document.createElement('div');
+					var degree_col_lg_8=document.createElement('div');
+					var degree_xika=document.createElement('div');
+					var degree_xika2=document.createElement('div');
+					var degree_img=document.createElement('img');
+					$(degree_row_mia).addClass('row mia');
+					$(degree_col_lg_4).addClass('col-lg-4');
+					$(degree_col_lg_8).addClass('col-lg-8');
+					$(degree_xika).addClass('xika');
+					$(degree_xika2).addClass('xika2');
+					$('.graduation_txt').append(degree_row_mia);
+					$(degree_row_mia).append(degree_col_lg_4);
+					$(degree_row_mia).append(degree_col_lg_8);
+					$(degree_col_lg_4).append(degree_xika);
+					$(degree_col_lg_8).append(degree_xika2);
+					$(degree_xika).text('Bằng cấp');
+					$(degree_img).prop('src',value.degree);
+					$(degree_xika2).append(degree_img);
+					/* end degree */
+					/* begin delete */
+					var delete_row_mia=document.createElement('div');					
+					var delete_col_lg_4=document.createElement('div');
+					var delete_col_lg_8=document.createElement('div');							
+					$(delete_row_mia).addClass('row mia');
+					$(delete_col_lg_4).addClass('col-lg-4');
+					$(delete_col_lg_8).addClass('col-lg-8');								
+					$('.graduation_txt').append(delete_row_mia);
+					$(delete_row_mia).append(delete_col_lg_4);
+					$(delete_row_mia).append(delete_col_lg_8);	
+					var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileGraduation('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
+					$(delete_col_lg_8).append(delete_html);									
+					/* end delete */
+					/* begin hr */
+					var hr=document.createElement('hr');
+					$('.graduation_txt').append(hr);				
+					/* end hr */
+				});								
+			} else{
+				showMsg('note_experience',data);    
+			}       			
+		},
+		error : function (data){
+
+		},
+		beforeSend  : function(jqXHR,setting){
+
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
+}
+function noSaveGraduation(){
+	$('.graduation_edit').show();
+	$('.graduation_save').hide();		
+}
+function addGraduation(){
+	$('.graduation_save').show();
+	$("form[name='frm']").find("select[name='literacy_id']").val(0);
+	$("form[name='frm']").find("input[name='training_unit']").val('');
+	$("form[name='frm']").find("select[name='graduation_year_from']").val(0);
+	$("form[name='frm']").find("select[name='graduation_year_to']").val(0);
+	$("form[name='frm']").find("input[name='department']").val('');
+	$("form[name='frm']").find("select[name='graduation_id']").val(0);
 }
 </script>
 @endsection()

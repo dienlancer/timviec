@@ -41,6 +41,7 @@ use App\ProfileModel;
 use App\ProfileJobModel;
 use App\ProfilePlaceModel;
 use App\ProfileExperienceModel;
+use App\ProfileGraduationModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -1720,6 +1721,118 @@ class IndexController extends Controller {
 			'msg'       	=> $msg,                
 			"id"            => (int)@$id,
 			'data_profile_experience' => $data_profile_experience
+		);                       
+		return $info;   
+	}
+	public function saveGraduation(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		
+		$item 					=	null;
+		$data_profile_graduation=array();
+
+		$id             		=   (int)@$request->id;  
+		$literacy_id = (int)(trim(@$request->literacy_id));
+		$training_unit = trim(@$request->training_unit);
+		$graduation_year_from = (int)(trim(@$request->graduation_year_from)) ;
+		$graduation_year_to = (int)(trim(@$request->graduation_year_to));
+		$department = trim(@$request->department) ;
+		$graduation_id = (int)(trim(@$request->graduation_id));
+		$image_file           =   null;
+    	if(isset($_FILES["image"])){
+    		$image_file         =   $_FILES["image"];
+    	}  
+		if(@$literacy_id == 0){
+			$checked=0;
+			$msg['literacy_id']='Vui lòng chọn trình độ học vấn';
+		}
+		if(mb_strlen(@$training_unit) < 6){
+			$checked=0;
+			$msg['training_unit']='Vui lòng chọn đơn vị đào tạo';
+		}		
+		if(@$graduation_year_from == 0){
+			$checked=0;
+			$msg['graduation_year_from']='Vui lòng chọn năm';
+		}		
+		if(@$graduation_year_to == 0){
+			$checked=0;
+			$msg['graduation_year_to']='Vui chòng chọn năm';
+		}
+		if(empty(@$department)){
+			$checked=0;
+			$msg['department']='Vui lòng chọn chuyên ngành';
+		}
+		if(@$graduation_id==0){
+			$checked=0;
+			$msg['graduation_id']='Vui lòng chọn loại tốt nghiệp';
+		}					
+		if($checked == 1){
+			$image_name='';
+    		if($image_file != null){                                                
+    			$image_name=uploadImage($image_file['name'],$image_file['tmp_name'],0,0);
+    		}
+			$item=new ProfileGraduationModel;		
+			$item->literacy_id=@$literacy_id;
+			$item->training_unit=@$training_unit;			
+			$item->year_from=@$graduation_year_from;			
+			$item->year_to=@$graduation_year_to;
+			$item->department=@$department;
+			$item->graduation_id=@$graduation_id;	
+			if(!empty($image_name)){
+    			$item->image    =   trim($image_name) ;  
+    		}			
+			$item->profile_id=@$id;
+			$item->created_at=date("Y-m-d H:i:s",time());
+			$item->updated_at=date("Y-m-d H:i:s",time());   
+			$item->save();
+			$msg['success']='Cập nhật trình độ bằng cấp thành công';
+		}		
+		$source_profile_graduation=DB::table('profile_graduation')
+									->join('literacy','profile_graduation.literacy_id','=','literacy.id')
+									->join('graduation','profile_graduation.graduation_id','=','graduation.id')
+									->where('profile_graduation.profile_id',(int)@$id)
+									->select(
+											'profile_graduation.id',
+											'literacy.fullname as literacy_name',
+											'profile_graduation.training_unit',
+											'profile_graduation.year_from',
+											'profile_graduation.year_to',
+											'profile_graduation.department',
+											'graduation.fullname as graduation_name',
+											'profile_graduation.degree'
+											)
+									->groupBy(
+											'profile_graduation.id',
+											'literacy.fullname',
+											'profile_graduation.training_unit',
+											'profile_graduation.year_from',
+											'profile_graduation.year_to',
+											'profile_graduation.department',
+											'graduation.fullname',
+											'profile_graduation.degree'
+											)
+									->orderBy('profile_graduation.id', 'asc')
+									->get()->toArray();		
+		if(count($source_profile_graduation) > 0){
+			foreach ($source_profile_graduation as $key => $value) {
+				$row=array();
+				$row['id']=$value['id'];
+				$row['literacy_name']=$value['literacy_name'];
+				$row['training_unit']=$value['training_unit'];
+				$row['year_from']=$value['year_from'];				
+				$row['year_to']=$value['year_to'];				
+				$row['department']=$value['department'];
+				$row['graduation_name']=$value['graduation_name'];
+				$row['degree']=asset('/upload/'.$value['degree']) ;				
+				$data_profile_graduation[]=@$row;
+			}
+		}		
+		$info = array(
+			"checked"       => $checked,       		
+			'msg'       	=> $msg,                
+			"id"            => (int)@$id,
+			'data_profile_graduation' => $data_profile_graduation
 		);                       
 		return $info;   
 	}

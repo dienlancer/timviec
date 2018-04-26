@@ -1733,12 +1733,12 @@ class IndexController extends Controller {
 		$data_profile_graduation=array();
 
 		$id             		=   (int)@$request->id;  
-		$literacy_id = (int)(trim(@$request->literacy_id));
+		$literacy_id = (int)trim(@$request->literacy_id);
 		$training_unit = trim(@$request->training_unit);
-		$graduation_year_from = (int)(trim(@$request->graduation_year_from)) ;
-		$graduation_year_to = (int)(trim(@$request->graduation_year_to));
+		$graduation_year_from = (int)trim(@$request->graduation_year_from) ;
+		$graduation_year_to = (int)trim(@$request->graduation_year_to);
 		$department = trim(@$request->department) ;
-		$graduation_id = (int)(trim(@$request->graduation_id));
+		$graduation_id = (int)trim(@$request->graduation_id);
 		$image_file           =   null;
     	if(isset($_FILES["image"])){
     		$image_file         =   $_FILES["image"];
@@ -1753,11 +1753,11 @@ class IndexController extends Controller {
 		}		
 		if(@$graduation_year_from == 0){
 			$checked=0;
-			$msg['graduation_year_from']='Vui lòng chọn năm';
+			$msg['graduation_year_from']='Vui lòng chọn năm từ';
 		}		
 		if(@$graduation_year_to == 0){
 			$checked=0;
-			$msg['graduation_year_to']='Vui chòng chọn năm';
+			$msg['graduation_year_to']='Vui chòng chọn năm đến';
 		}
 		if(empty(@$department)){
 			$checked=0;
@@ -1780,7 +1780,7 @@ class IndexController extends Controller {
 			$item->department=@$department;
 			$item->graduation_id=@$graduation_id;	
 			if(!empty($image_name)){
-    			$item->image    =   trim($image_name) ;  
+    			$item->degree    =   trim($image_name) ;  
     		}			
 			$item->profile_id=@$id;
 			$item->created_at=date("Y-m-d H:i:s",time());
@@ -1814,6 +1814,7 @@ class IndexController extends Controller {
 											)
 									->orderBy('profile_graduation.id', 'asc')
 									->get()->toArray();		
+		$source_profile_graduation=convertToArray($source_profile_graduation);
 		if(count($source_profile_graduation) > 0){
 			foreach ($source_profile_graduation as $key => $value) {
 				$row=array();
@@ -1824,7 +1825,7 @@ class IndexController extends Controller {
 				$row['year_to']=$value['year_to'];				
 				$row['department']=$value['department'];
 				$row['graduation_name']=$value['graduation_name'];
-				$row['degree']=asset('/upload/'.$value['degree']) ;				
+				$row['degree']=asset('upload/'.$value['degree']) ;				
 				$data_profile_graduation[]=@$row;
 			}
 		}		
@@ -1835,6 +1836,73 @@ class IndexController extends Controller {
 			'data_profile_graduation' => $data_profile_graduation
 		);                       
 		return $info;   
+	}
+	public function deleteGraduation(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+
+		$data_profile_graduation=array();
+
+		$id             		=   (int)@$request->id;  
+		$profile_graduation_id	=	(int)@$request->profile_graduation_id;
+
+		$source_profile_graduation=ProfileGraduationModel::whereRaw('id = ? and profile_id = ?',[@$profile_graduation_id,@$id])->select()->get()->toArray();
+		if(count(@$source_profile_graduation) == 0){
+			$checked = 0;
+			$msg['wrongid']='Sai địa chỉ id';
+		}
+		if((int)@$checked == 1){
+			ProfileGraduationModel::find((int)@$profile_graduation_id)->delete();
+			$msg['success']='Xóa trình độ bằng cấp thành công';
+			$source_profile_graduation=DB::table('profile_graduation')
+			->join('literacy','profile_graduation.literacy_id','=','literacy.id')
+			->join('graduation','profile_graduation.graduation_id','=','graduation.id')
+			->where('profile_graduation.profile_id',(int)@$id)
+			->select(
+				'profile_graduation.id',
+				'literacy.fullname as literacy_name',
+				'profile_graduation.training_unit',
+				'profile_graduation.year_from',
+				'profile_graduation.year_to',
+				'profile_graduation.department',
+				'graduation.fullname as graduation_name',
+				'profile_graduation.degree'
+			)
+			->groupBy(
+				'profile_graduation.id',
+				'literacy.fullname',
+				'profile_graduation.training_unit',
+				'profile_graduation.year_from',
+				'profile_graduation.year_to',
+				'profile_graduation.department',
+				'graduation.fullname',
+				'profile_graduation.degree'
+			)
+			->orderBy('profile_graduation.id', 'asc')
+			->get()->toArray();		
+			$source_profile_graduation=convertToArray($source_profile_graduation);
+			if(count($source_profile_graduation) > 0){
+				foreach ($source_profile_graduation as $key => $value) {
+					$row=array();
+					$row['id']=$value['id'];
+					$row['literacy_name']=$value['literacy_name'];
+					$row['training_unit']=$value['training_unit'];
+					$row['year_from']=$value['year_from'];				
+					$row['year_to']=$value['year_to'];				
+					$row['department']=$value['department'];
+					$row['graduation_name']=$value['graduation_name'];
+					$row['degree']=asset('/upload/'.$value['degree']) ;				
+					$data_profile_graduation[]=@$row;
+				}
+			}		
+		}		
+		$info = array(
+			"checked"       => $checked,       		
+			'msg'       	=> $msg,                
+			'data_profile_graduation' => $data_profile_graduation
+		);                       
+		return $info;
 	}
 }
 

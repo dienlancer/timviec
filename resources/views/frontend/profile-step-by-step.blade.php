@@ -492,7 +492,33 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<?php 
 				$status_graduation_edit='';
 				$status_graduation_save='';
-				$source_profile_graduation=App\ProfileGraduationModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
+				$source_profile_graduation=DB::table('profile_graduation')
+				->join('literacy','profile_graduation.literacy_id','=','literacy.id')
+				->join('graduation','profile_graduation.graduation_id','=','graduation.id')
+				->where('profile_graduation.profile_id',(int)@$id)
+				->select(
+					'profile_graduation.id',
+					'literacy.fullname as literacy_name',
+					'profile_graduation.training_unit',
+					'profile_graduation.year_from',
+					'profile_graduation.year_to',
+					'profile_graduation.department',
+					'graduation.fullname as graduation_name',
+					'profile_graduation.degree'
+				)
+				->groupBy(
+					'profile_graduation.id',
+					'literacy.fullname',
+					'profile_graduation.training_unit',
+					'profile_graduation.year_from',
+					'profile_graduation.year_to',
+					'profile_graduation.department',
+					'graduation.fullname',
+					'profile_graduation.degree'
+				)
+				->orderBy('profile_graduation.id', 'asc')
+				->get()->toArray();		
+				$source_profile_graduation=convertToArray($source_profile_graduation);	
 				if(count(@$source_profile_graduation) == 0){
 					$status_graduation_edit='display:none';
 					$status_graduation_save='display:block';
@@ -503,7 +529,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$source_graduation=App\GraduationModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$ddlLiteracy=cmsSelectboxCategory("literacy_id","vacca",$source_literacy,0,'','Chọn trình độ học vấn');
-				$ddlGraduation=cmsSelectboxCategory("graduation_id","vacca",$source_graduation,0,'','Chọn loại tốt nghiệp');
+				$ddlGraduation=cmsSelectboxCategory("graduation_id","vacca",$source_graduation,0,'','Chọn Tốt nghiệp loại');
 				$ddlGraduationYearFrom=cmsSelectbox(	"graduation_year_from"	,	"vacca"	,	$source_year	,	0	,	''	);						
 				$ddlGraduationYearTo=cmsSelectbox(	"graduation_year_to"	,	"vacca"	,	$source_year	,	0	,	''	);
 				?>
@@ -512,12 +538,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<?php 
 						foreach ($source_profile_graduation as $key => $value) {
 							$profile_graduation_id=$value['id'];
-							$profile_graduation_literacy_name=$value['literacy_nam'];
+							$profile_graduation_literacy_name=$value['literacy_name'];
 							$profile_graduation_training_unit=$value['training_unit'];
 							$profile_graduation_year_from= $value['year_from'];
 							$profile_graduation_year_to=$value['year_to'];									
 							$profile_graduation_department=@$value['department'];
-							$profile_graduation_graduation_name=@$value['graduation_name'];							
+							$profile_graduation_graduation_name=@$value['graduation_name'];			
+							$profile_graduation_degree=@$value['degree'];				
 							?>
 							<div class="row mia">
 								<div class="col-lg-4" ><div class="xika"><div>Trình độ học vấn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
@@ -543,8 +570,14 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_department; ?></div> </div>
 							</div>
 							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Loại tốt nghiệp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-4" ><div class="xika"><div>Tốt nghiệp loại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_graduation_name; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Ảnh bằng cấp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2">
+									<img src="<?php echo asset('upload/'.@$profile_graduation_degree); ?>" />
+								</div> </div>
 							</div>							
 							<div class="row mia">
 								<div class="col-lg-4"></div>
@@ -603,7 +636,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<div class="col-lg-8"><input type="text"  name="department" class="vacca" placeholder="Chuyên ngành" value="" ></div>
 					</div>
 					<div class="row mia">
-						<div class="col-lg-4" ><div class="xika"><div>Loại tốt nghiệp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-4" ><div class="xika"><div>Tốt nghiệp loại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8"><?php echo $ddlGraduation; ?></div>
 					</div>
 					<div class="row mia">
@@ -1244,7 +1277,7 @@ function saveGraduation(){
 					$(graduation_row_mia).append(graduation_col_lg_8);
 					$(graduation_col_lg_4).append(graduation_xika);
 					$(graduation_col_lg_8).append(graduation_xika2);
-					$(graduation_xika).text('Trình độ học vấn');
+					$(graduation_xika).text('Tốt nghiệp loại');
 					$(graduation_xika2).text(value.graduation_name);						
 					/* end graduation */
 					/* begin degree */
@@ -1291,7 +1324,7 @@ function saveGraduation(){
 			}else{
 				showMsg('note_graduation',data);    
 			}  
-		}
+		},
 		error : function (data){
 
 		},
@@ -1326,7 +1359,7 @@ function deleteProfileGraduation(profile_graduation_id){
 		success: function (data) {
 			if(data.checked==1){      	
 				var data_profile_graduation=data.data_profile_graduation;	
-				$('.graduation_job_txt').empty();
+				$('.graduation_txt').empty();
 				$.each(data_profile_graduation,function(index,value){
 					/* begin literacy */
 					var literacy_row_mia=document.createElement('div');					
@@ -1437,7 +1470,7 @@ function deleteProfileGraduation(profile_graduation_id){
 					$(graduation_row_mia).append(graduation_col_lg_8);
 					$(graduation_col_lg_4).append(graduation_xika);
 					$(graduation_col_lg_8).append(graduation_xika2);
-					$(graduation_xika).text('Trình độ học vấn');
+					$(graduation_xika).text('Tốt nghiệp loại');
 					$(graduation_xika2).text(value.graduation_name);						
 					/* end graduation */
 					/* begin degree */

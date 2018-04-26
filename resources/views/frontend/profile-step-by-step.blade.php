@@ -1166,7 +1166,7 @@ function saveGraduation(){
 		success: function (data) {
 			if(data.checked==1){
 				var data_profile_graduation=data.data_profile_graduation;	
-				$('.graduation_job_txt').empty();
+				$('.graduation_txt').empty();
 				$.each(data_profile_graduation,function(index,value){
 					/* begin literacy */
 					var literacy_row_mia=document.createElement('div');					

@@ -509,6 +509,19 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				?>
 				<div class="graduation_edit" style="<?php echo $status_graduation_edit; ?>">
 					<div class="graduation_txt"></div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="vihamus-4">
+								<a href="javascript:void(0);" onclick="addExperienceJob();" >
+									<div class="narit">
+										<div><i class="far fa-plus-square"></i></div>
+										<div class="margin-left-5">Thêm kinh nghiệm làm việc</div>
+									</div>								
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="graduation_save" style="<?php echo $status_graduation_save; ?>">
 					<div class="row mia">
@@ -542,6 +555,29 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<div class="col-lg-4" ><div class="xika"><div>Tải ảnh bằng cấp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8"><input type="file" name="degree" /></div>
 					</div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="titanius">
+								<div class="vihamus">
+									<a href="javascript:void(0);" onclick="saveGraduation();" >
+										<div class="narit">
+											<div><i class="far fa-save"></i></div>
+											<div class="margin-left-5">Lưu</div>
+										</div>								
+									</a>
+								</div>							
+								<div class="vihamus-2 margin-left-5">
+									<a href="javascript:void(0);" onclick="noSaveGraduation();" >
+										<div class="narit">
+											<div><i class="far fa-times-circle"></i></div>
+											<div class="margin-left-5">Không lưu</div>
+										</div>								
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>				
 				</div>
 			</div>
 			<div class="col-lg-3">
@@ -1004,6 +1040,23 @@ cache: false,
 contentType: false,
 processData: false
 });
+}
+function saveGraduation(){
+	var id = $("form[name='frm']").find("input[name='id']").val();
+	var literacy_id = $("form[name='frm']").find("select[name='literacy_id']").val();
+	var training_unit = $("form[name='frm']").find("input[name='training_unit']").val();
+	var graduation_year_from = $("form[name='frm']").find("select[name='graduation_year_from']").val();
+	var graduation_year_to = $("form[name='frm']").find("input[name='graduation_year_to']").val();
+	var department = $("form[name='frm']").find("input[name='department']").val();
+	var graduation_id = $("form[name='frm']").find("select[name='graduation_id']").val();
+	/* begin xử lý image */
+        var image_file=null;
+        var image_ctrl=$('input[name="degree"]');         
+        var image_files = $(image_ctrl).get(0).files;        
+        if(image_files.length > 0){            
+            image_file  = image_files[0];  
+        }        
+    /* end xử lý image */    
 }
 </script>
 @endsection()

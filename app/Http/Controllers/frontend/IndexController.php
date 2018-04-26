@@ -1847,7 +1847,7 @@ class IndexController extends Controller {
 		$id             		=   (int)@$request->id;  
 		$profile_graduation_id	=	(int)@$request->profile_graduation_id;
 
-		$source_profile_graduation=ProfileGraduationModel::whereRaw('id = ? and profile_id = ?',[@$profile_graduation_id,@$id])->select()->get()->toArray();
+		$source_profile_graduation=ProfileGraduationModel::whereRaw('id = ? and profile_id = ?',[@$profile_graduation_id,@$id])->select()->get()->toArray();		
 		if(count(@$source_profile_graduation) == 0){
 			$checked = 0;
 			$msg['wrongid']='Sai địa chỉ id';

@@ -1215,7 +1215,7 @@ function deleteProfileGraduation(profile_graduation_id){
 				var data_profile_graduation=data.data_profile_graduation;	
 				loadDataProfileGraduation(data_profile_graduation);				
 			} else{
-				showMsg('note_experience',data);    
+				showMsg('note_graduation',data);    
 			}       			
 		},
 		error : function (data){

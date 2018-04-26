@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 26, 2018 lúc 07:31 AM
+-- Thời gian đã tạo: Th4 26, 2018 lúc 10:57 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2265,8 +2265,7 @@ CREATE TABLE `profile_graduation` (
 --
 
 INSERT INTO `profile_graduation` (`id`, `literacy_id`, `training_unit`, `year_from`, `year_to`, `department`, `graduation_id`, `degree`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 6, 'Đại học Công Nghệ', 2001, 2002, 'Công nghệ phần mềm', 2, 'category-2-ae7y9pg283xv.png', 1, '2018-04-26 04:57:48', '2018-04-26 04:57:48'),
-(5, 3, 'Đại học FPT', 2003, 2004, 'Công nghệ phần mềm', 2, 'category-3-g6i5m03p2wkd.png', 1, '2018-04-26 05:30:04', '2018-04-26 05:30:04');
+(1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2002, 'Kỹ thuật viên máy tính', 2, 'category-1-aqdzx6fjrcnl.png', 1, '2018-04-26 08:27:02', '2018-04-26 08:27:02');
 
 -- --------------------------------------------------------
 
@@ -4172,13 +4171,13 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_graduation`
 --
 ALTER TABLE `profile_graduation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`

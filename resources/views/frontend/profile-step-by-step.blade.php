@@ -884,6 +884,106 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					</div>				
 				</div>
 				<hr  />	
+				<div class="note note_office margin-top-15"  style="display: none;"></div>
+				<div class="office_save" >					
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Tin học văn phòng</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">
+							<table class="language-tb">
+								<tr>
+									<th class="suzuritake"></th>
+									<?php 
+									foreach ($source_classification as $key => $value) {										
+										$classification_name=$value['fullname'];
+										?>
+										<th class="suzuritake"><?php echo $classification_name; ?></th>
+										<?php
+									}
+									?>									
+								</tr>
+								<tr>
+									<td>MS Word</td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>									
+								</tr>
+								<tr>
+									<td>MS Excel</td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>		
+								</tr>
+								<tr>
+									<td>MS Power Point</td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>		
+								</tr>
+								<tr>
+									<td>MS Outlook</td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>		
+								</tr>
+							</table>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>Phần mềm khác</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><input type="text"  name="other_software" class="vacca" placeholder="Nhập tên phần mềm khác" value="" ></div>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>Các thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><input type="text"  name="medal" class="vacca" placeholder="Nhập thành tích nổi bật" value="" ></div>
+						</div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="titanius">
+								<div class="vihamus">
+									<a href="javascript:void(0);" onclick="saveOffice();" >
+										<div class="narit">
+											<div><i class="far fa-save"></i></div>
+											<div class="margin-left-5">Lưu</div>
+										</div>								
+									</a>
+								</div>							
+								<div class="vihamus-2 margin-left-5">
+									<a href="javascript:void(0);" onclick="noSaveOffice();" >
+										<div class="narit">
+											<div><i class="far fa-times-circle"></i></div>
+											<div class="margin-left-5">Không lưu</div>
+										</div>								
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>				
+				</div>
 			</div>
 			<div class="col-lg-3">
 				@include("frontend.candidate-sidebar")				

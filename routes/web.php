@@ -342,6 +342,18 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.sex.trash","uses"=>"adminsystem\SexController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.sex.createAlias","uses"=>"adminsystem\SexController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"skill"],function(){		
+		Route::get("list",["as"=>"adminsystem.skill.getList","uses"=>"adminsystem\SkillController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.skill.loadData","uses"=>"adminsystem\SkillController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.skill.getForm","uses"=>"adminsystem\SkillController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.skill.save","uses"=>"adminsystem\SkillController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.skill.deleteItem","uses"=>"adminsystem\SkillController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.skill.sortOrder","uses"=>"adminsystem\SkillController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.skill.updateStatus","uses"=>"adminsystem\SkillController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.skill.changeStatus","uses"=>"adminsystem\SkillController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.skill.trash","uses"=>"adminsystem\SkillController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.skill.createAlias","uses"=>"adminsystem\SkillController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"classification"],function(){		
 		Route::get("list",["as"=>"adminsystem.classification.getList","uses"=>"adminsystem\ClassificationController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.classification.loadData","uses"=>"adminsystem\ClassificationController@loadData"]);		

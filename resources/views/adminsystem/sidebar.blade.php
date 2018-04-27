@@ -33,6 +33,7 @@ $li_graduation='';
 $li_language='';
 $li_language_level='';
 $li_classification='';
+$li_skill='';
 
 $li_media='';
 $li_menu_type='';
@@ -139,6 +140,10 @@ switch ($controller) {
     break;
     case 'classification': 
     $li_classification='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'skill': 
+    $li_skill='active open';       
     $li_category_management='active open'; 
     break;
     case 'media':
@@ -369,7 +374,13 @@ if(count($source) > 0){
                 <li class="nav-item  <?php echo $li_classification; ?>">
                     <a href="{!! route('adminsystem.classification.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
-                        <span class="title">Xếp loại trình độ ngoại ngữ</span>                                            
+                        <span class="title">Xếp loại ngoại ngữ</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_skill; ?>">
+                    <a href="{!! route('adminsystem.skill.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Kỹ năng - Sở trường</span>                                            
                     </a>                                                                      
                 </li>  
             </ul>

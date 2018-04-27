@@ -42,6 +42,7 @@ use App\ProfileJobModel;
 use App\ProfilePlaceModel;
 use App\ProfileExperienceModel;
 use App\ProfileGraduationModel;
+use App\ProfileLanguageModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -1901,6 +1902,122 @@ class IndexController extends Controller {
 			"checked"       => $checked,       		
 			'msg'       	=> $msg,                
 			'data_profile_graduation' => $data_profile_graduation
+		);                       
+		return $info;
+	}
+	public function saveLanguage(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		
+		$item 					=	null;
+		$data_profile_language=array();
+
+		$id             		=   (int)@$request->id;  
+		$language_id = (int)trim(@$request->language_id);		
+		$language_level_id = (int)trim(@$request->language_level_id) ;
+		
+		if(@$language_id == 0){
+			$checked=0;
+			$msg['language_id']='Vui lòng chọn ngoại ngữ';
+		}				
+		if(@$language_level_id == 0){
+			$checked=0;
+			$msg['language_level_id']='Vui lòng chọn trình độ';
+		}									
+		if($checked == 1){			
+			$item=new ProfileLanguageModel;		
+			$item->language_id=@$language_id;			
+			$item->language_level_id=@$language_level_id;								
+			$item->profile_id=@$id;
+			$item->created_at=date("Y-m-d H:i:s",time());
+			$item->updated_at=date("Y-m-d H:i:s",time());   
+			$item->save();
+			$msg['success']='Cập nhật trình độ ngoại ngữ thành công';
+		}		
+		$source_profile_language=DB::table('profile_language')
+				->join('language','profile_language.language_id','=','language.id')
+				->join('language_level','profile_language.language_level_id','=','language_level.id')
+				->where('profile_language.profile_id',(int)@$id)
+				->select(
+					'profile_language.id',
+					'language.fullname as language_name',					
+					'language_level.fullname as language_level_name'				
+				)
+				->groupBy(
+					'profile_language.id',
+					'language.fullname',					
+					'language_level.fullname'
+				)
+				->orderBy('profile_language.id', 'asc')
+				->get()->toArray();		
+		$source_profile_language=convertToArray($source_profile_language);
+		if(count($source_profile_language) > 0){
+			foreach ($source_profile_language as $key => $value) {
+				$row=array();
+				$row['id']=$value['id'];
+				$row['language_name']=$value['language_name'];
+				$row['language_level_name']=$value['language_level_name'];				
+				$data_profile_language[]=@$row;
+			}
+		}		
+		$info = array(
+			"checked"       => $checked,       		
+			'msg'       	=> $msg,                
+			"id"            => (int)@$id,
+			'data_profile_language' => $data_profile_language
+		);                       
+		return $info;   
+	}
+	public function deleteLanguage(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+
+		$data_profile_language=array();
+
+		$id             		=   (int)@$request->id;  
+		$profile_language_id	=	(int)@$request->profile_language_id;
+
+		$source_profile_language=ProfileLanguageModel::whereRaw('id = ? and profile_id = ?',[@$profile_language_id,@$id])->select()->get()->toArray();		
+		if(count(@$source_profile_language) == 0){
+			$checked = 0;
+			$msg['wrongid']='Sai địa chỉ id';
+		}
+		if((int)@$checked == 1){
+			ProfileLanguageModel::find((int)@$profile_language_id)->delete();
+			$msg['success']='Xóa trình độ ngoại ngữ thành công';
+			$source_profile_language=DB::table('profile_language')
+			->join('language','profile_language.language_id','=','language.id')
+			->join('language_level','profile_language.language_level_id','=','language_level.id')
+			->where('profile_language.profile_id',(int)@$id)
+			->select(
+				'profile_language.id',
+				'language.fullname as language_name',					
+				'language_level.fullname as language_level_name'				
+			)
+			->groupBy(
+				'profile_language.id',
+				'language.fullname',					
+				'language_level.fullname'
+			)
+			->orderBy('profile_language.id', 'asc')
+			->get()->toArray();		
+			$source_profile_language=convertToArray($source_profile_language);
+			if(count($source_profile_language) > 0){
+				foreach ($source_profile_language as $key => $value) {
+					$row=array();
+					$row['id']=$value['id'];
+					$row['language_name']=$value['language_name'];
+					$row['language_level_name']=$value['language_level_name'];				
+					$data_profile_language[]=@$row;
+				}
+			}			
+		}		
+		$info = array(
+			"checked"       => $checked,       		
+			'msg'       	=> $msg,                
+			'data_profile_language' => $data_profile_language
 		);                       
 		return $info;
 	}

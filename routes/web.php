@@ -598,5 +598,8 @@ Route::post("cap-nhat-kn-lam-viec",["as"=>"frontend.index.saveExperienceJob","us
 Route::post("xoa-kn-lam-viec",["as"=>"frontend.index.deleteExperienceJob","uses"=>"frontend\IndexController@deleteExperienceJob"]);
 Route::post("cap-nhat-td-bang-cap",["as"=>"frontend.index.saveGraduation","uses"=>"frontend\IndexController@saveGraduation"]);
 Route::post("xoa-td-bang-cap",["as"=>"frontend.index.deleteGraduation","uses"=>"frontend\IndexController@deleteGraduation"]);
+
+Route::post("cap-nhat-td-ngoai-ngu",["as"=>"frontend.index.saveLanguage","uses"=>"frontend\IndexController@saveLanguage"]);
+Route::post("xoa-td-ngoai-ngu",["as"=>"frontend.index.deleteLanguage","uses"=>"frontend\IndexController@deleteLanguage"]);
 /* end tìm việc */
 ?>

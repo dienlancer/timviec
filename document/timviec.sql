@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 26, 2018 lúc 01:21 PM
+-- Thời gian đã tạo: Th4 27, 2018 lúc 07:19 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2237,7 +2237,7 @@ CREATE TABLE `profile_experience` (
 --
 
 INSERT INTO `profile_experience` (`id`, `company_name`, `person_title`, `month_from`, `year_from`, `month_to`, `year_to`, `currency`, `salary`, `job_description`, `achievement`, `profile_id`, `created_at`, `updated_at`) VALUES
-(2, 'HONDA Ô TÔ CỘNG HÒA - CN CTY CP XNK & DV Ô TÔ MẶT TRỜI MỌC', 'Nhân Viên Kinh Doanh Xe Ô Tô', 3, 2003, 4, 2004, 'vnd', 15000000, '- Tư vấn và bán xe ô tô tại showroom đại lý chính thức của Honda \r\n- Tìm kiếm khách hàng mới, tiềm năng để giới thiệu xe\r\n- Tư vấn cho khách hàng về các sản phẩm, giá cả, phương thức thanh toán\r\n- Đàm phán ký kết hợp đồng với khách hàng \r\n- Chủ động liên hệ và tạo lập mối quan hệ tốt với khách hàng nhằm tăng cường khả năng bán hàng và nâng cao uy tín sản phẩm và công ty\r\n- Khai thác thị trường nhằm đạt doanh số cao nhất.', '- Nam, Nữ tuổi dưới 35; ngoại hình ưa nhìn; \r\n- Tốt nghiệp Cao Đẳng/ Đại học chuyên ngành Kinh tế, QTKD, Marketing, Cơ khí ô tô... \r\n- Có kỹ năng giao tiếp, đàm phán tốt; Có khả năng Marketing, trình bày rõ ràng, mạch lạc; \r\n- Biết về vi tính văn phòng; \r\n- Có khả năng làm việc độc lập và theo nhóm, chịu được áp lực cao trong công việc; \r\n- Ưu tiên người có kiến thức về ô tô, có bằng lái xe và đã từng có kinh nghiệm bán xe ô tô', 1, '2018-04-24 19:17:52', '2018-04-24 19:17:52');
+(1, 'Coca-Cola Việt Nam', 'Giám Sát Bán Hàng Khu Vực Hậu Giang', 2, 2002, 3, 2003, 'vnd', 9000000, 'Trách nhiệm chính: \r\n✓ Huấn luyện, đào tạo cho các nhân viên phát triển thị trường về những kỹ năng qui trình bán hàng, phân tuyến. \r\n✓ Chịu trách nhiệm về quản lý trang thiết bị lạnh như sắp đặt, bảo trì, thu hồi. \r\n✓ Làm việc chặt chẽ với nhà phân phối và quản lý các Nhân viên Bán hàng (NVBH) của Công ty tại nhà phân phối. \r\n✓ Bố trí cấp phát các vật dụng quảng cáo. \r\n✓ Phân tuyến bán hàng. \r\n✓ Chịu trách nhiệm thi hành và bao phủ các điểm bán hàng trong địa bàn. \r\n✓ Thi hành kỷ luật, đánh giá kết quả làm việc đối với NVBH. \r\n✓ Lập Kế hoạch làm việc cho NVBH. \r\n✓ Gửi các báo cáo bán hàng đúng hạn cho cấp Quản lý trực tiếp.', '✓ Tốt nghiệp PTTH, Trung cấp hoặc Cao đẳng. Ưu tiên tốt nghiệp Đại học. \r\n✓ Kỹ năng giao tiếp tốt. Ưu tiên ứng thành thạo tiếng Anh. \r\n✓ Hiểu biết hệ thống / quy trình bán hàng trực tiếp. \r\n✓ Ưu tiên ứng viên sử dụng thành thạo vi tính văn phòng thành thạo (Word, Excel và Power Point). \r\n✓ Năng động và chăm chỉ, sẵn sàng đi lại trong khu vực được giao.', 1, '2018-04-27 04:39:09', '2018-04-27 04:39:09');
 
 -- --------------------------------------------------------
 
@@ -2265,7 +2265,7 @@ CREATE TABLE `profile_graduation` (
 --
 
 INSERT INTO `profile_graduation` (`id`, `literacy_id`, `training_unit`, `year_from`, `year_to`, `department`, `graduation_id`, `degree`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2002, 'Kỹ thuật viên máy tính', 2, 'category-1-aqdzx6fjrcnl.png', 1, '2018-04-26 08:27:02', '2018-04-26 08:27:02');
+(1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2002, 'Kỹ thuật viên máy tính', 2, 'category-1-p3iv80oayqn1.png', 1, '2018-04-27 04:46:49', '2018-04-27 04:46:49');
 
 -- --------------------------------------------------------
 
@@ -2296,6 +2296,33 @@ INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_
 (53, 1, 51, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (54, 1, 53, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (55, 1, 55, '2018-04-21 08:42:16', '2018-04-21 08:42:16');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `profile_language`
+--
+
+DROP TABLE IF EXISTS `profile_language`;
+CREATE TABLE `profile_language` (
+  `id` bigint(20) NOT NULL,
+  `language_id` int(11) DEFAULT NULL,
+  `language_level_id` int(11) DEFAULT NULL,
+  `listening` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `speaking` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reading` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `writing` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profile_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `profile_language`
+--
+
+INSERT INTO `profile_language` (`id`, `language_id`, `language_level_id`, `listening`, `speaking`, `reading`, `writing`, `profile_id`, `created_at`, `updated_at`) VALUES
+(1, 2, 3, NULL, NULL, NULL, NULL, 1, '2018-04-27 05:12:50', '2018-04-27 05:12:50');
 
 -- --------------------------------------------------------
 
@@ -3800,6 +3827,12 @@ ALTER TABLE `profile_job`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `profile_language`
+--
+ALTER TABLE `profile_language`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `profile_place`
 --
 ALTER TABLE `profile_place`
@@ -4171,19 +4204,25 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_graduation`
 --
 ALTER TABLE `profile_graduation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT cho bảng `profile_language`
+--
+ALTER TABLE `profile_language`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`

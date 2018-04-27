@@ -667,6 +667,122 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						</div>
 					</div>				
 				</div>
+				<hr>
+				<div class="note note_language margin-top-15"  style="display: none;"></div>
+				<?php 
+				$status_language_edit='';
+				$status_language_save='';
+				$source_profile_language=DB::table('profile_language')
+				->join('language','profile_language.language_id','=','language.id')
+				->join('language_level','profile_language.language_level_id','=','language_level.id')
+				->where('profile_language.profile_id',(int)@$id)
+				->select(
+					'profile_language.id',
+					'language.fullname as language_name',					
+					'language_level.fullname as language_level_name'				
+				)
+				->groupBy(
+					'profile_language.id',
+					'language.fullname',					
+					'language_level.fullname'
+				)
+				->orderBy('profile_language.id', 'asc')
+				->get()->toArray();		
+				$source_profile_language=convertToArray($source_profile_language);	
+				if(count(@$source_profile_language) == 0){
+					$status_language_edit='display:none';
+					$status_language_save='display:block';
+				}else{
+					$status_language_edit='display:block';
+					$status_language_save='display:none';
+				}				
+				$source_language=App\languageModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_language_level=App\languageLevelModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$ddlLanguage=cmsSelectboxCategory("language_id","vacca",$source_language,0,'','Chọn ngoại ngữ');
+				$ddlLanguageLevel=cmsSelectboxCategory("language_level_id","vacca",$source_language_level,0,'','Chọn trình độ');				
+				?>
+				<div class="language_edit" style="<?php echo $status_language_edit; ?>">
+					<div class="language_txt">
+						<?php 
+						foreach ($source_profile_language as $key => $value) {
+							$profile_language_id=$value['id'];
+							$profile_language_name=$value['language_name'];
+							$profile_language_level_name=$value['language_level_name'];							
+							?>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Ngoại ngữ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_name; ?></div> </div>
+							</div>
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_level_name; ?></div> </div>
+							</div>										
+							<div class="row mia">
+								<div class="col-lg-4"></div>
+								<div class="col-lg-8">
+									<div class="vihamus-3">
+										<a href="javascript:void(0);" onclick="deleteProfileLanguage(<?php echo $profile_language_id ?>);" >
+											<div class="narit">
+												<div><i class="far fa-times-circle"></i></div>
+												<div class="margin-left-5">Xóa</div>
+											</div>								
+										</a>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<?php
+						}
+						?>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="vihamus-4">
+								<a href="javascript:void(0);" onclick="addLanguage();" >
+									<div class="narit">
+										<div><i class="far fa-plus-square"></i></div>
+										<div class="margin-left-5">Thêm trình độ ngoại ngữ</div>
+									</div>								
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="language_save" style="<?php echo $status_language_save; ?>">
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Ngoại ngữ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8"><?php echo $ddlLanguage; ?></div>
+					</div>					
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8"><?php echo $ddlLanguageLevel; ?></div>
+					</div>
+					
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="titanius">
+								<div class="vihamus">
+									<a href="javascript:void(0);" onclick="saveLanguage();" >
+										<div class="narit">
+											<div><i class="far fa-save"></i></div>
+											<div class="margin-left-5">Lưu</div>
+										</div>								
+									</a>
+								</div>							
+								<div class="vihamus-2 margin-left-5">
+									<a href="javascript:void(0);" onclick="noSaveLanguage();" >
+										<div class="narit">
+											<div><i class="far fa-times-circle"></i></div>
+											<div class="margin-left-5">Không lưu</div>
+										</div>								
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>				
+				</div>
 			</div>
 			<div class="col-lg-3">
 				@include("frontend.candidate-sidebar")				
@@ -1241,6 +1357,150 @@ function addGraduation(){
 	$("form[name='frm']").find("select[name='graduation_year_to']").val(0);
 	$("form[name='frm']").find("input[name='department']").val('');
 	$("form[name='frm']").find("select[name='graduation_id']").val(0);
+}
+function loadDataProfileLanguage(data_profile_language){
+	$('.language_txt').empty();
+	$.each(data_profile_language,function(index,value){
+		/* begin language */
+		var language_row_mia=document.createElement('div');					
+		var language_col_lg_4=document.createElement('div');
+		var language_col_lg_8=document.createElement('div');
+		var language_xika=document.createElement('div');
+		var language_xika2=document.createElement('div');
+		$(language_row_mia).addClass('row mia');
+		$(language_col_lg_4).addClass('col-lg-4');
+		$(language_col_lg_8).addClass('col-lg-8');
+		$(language_xika).addClass('xika');
+		$(language_xika2).addClass('xika2');
+		$('.language_txt').append(language_row_mia);
+		$(language_row_mia).append(language_col_lg_4);
+		$(language_row_mia).append(language_col_lg_8);
+		$(language_col_lg_4).append(language_xika);
+		$(language_col_lg_8).append(language_xika2);
+		$(language_xika).text('Ngoại ngữ');
+		$(language_xika2).text(value.language_name);						
+		/* end language */
+		/* begin language_level */
+		var language_level_row_mia=document.createElement('div');					
+		var language_level_col_lg_4=document.createElement('div');
+		var language_level_col_lg_8=document.createElement('div');
+		var language_level_xika=document.createElement('div');
+		var language_level_xika2=document.createElement('div');
+		$(language_level_row_mia).addClass('row mia');
+		$(language_level_col_lg_4).addClass('col-lg-4');
+		$(language_level_col_lg_8).addClass('col-lg-8');
+		$(language_level_xika).addClass('xika');
+		$(language_level_xika2).addClass('xika2');
+		$('.language_txt').append(language_level_row_mia);
+		$(language_level_row_mia).append(language_level_col_lg_4);
+		$(language_level_row_mia).append(language_level_col_lg_8);
+		$(language_level_col_lg_4).append(language_level_xika);
+		$(language_level_col_lg_8).append(language_level_xika2);
+		$(language_level_xika).text('Trình độ');
+		$(language_level_xika2).text(value.language_level_name);						
+		/* end language_level */		
+		/* begin delete */
+		var delete_row_mia=document.createElement('div');					
+		var delete_col_lg_4=document.createElement('div');
+		var delete_col_lg_8=document.createElement('div');							
+		$(delete_row_mia).addClass('row mia');
+		$(delete_col_lg_4).addClass('col-lg-4');
+		$(delete_col_lg_8).addClass('col-lg-8');								
+		$('.language_txt').append(delete_row_mia);
+		$(delete_row_mia).append(delete_col_lg_4);
+		$(delete_row_mia).append(delete_col_lg_8);	
+		var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileLanguage('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
+		$(delete_col_lg_8).append(delete_html);									
+		/* end delete */
+		/* begin hr */
+		var hr=document.createElement('hr');
+		$('.language_txt').append(hr);				
+		/* end hr */
+	});				
+}
+function saveLanguage(){
+	var id = $("form[name='frm']").find("input[name='id']").val();
+	var language_id = $("form[name='frm']").find("select[name='language_id']").val();		
+	var language_level_id = $("form[name='frm']").find("select[name='language_level_id']").val();	
+	var token = $("form[name='frm']").find("input[name='_token']").val();
+	var dataItem = new FormData();
+	dataItem.append('id',id);
+	dataItem.append('language_id',language_id);	
+	dataItem.append('language_level_id',language_level_id);	
+	dataItem.append('_token',token);
+	$.ajax({
+		url: '<?php echo route("frontend.index.saveLanguage"); ?>',
+		type: 'POST',
+		data: dataItem,
+		async: false,
+		success: function (data) {
+			if(data.checked==1){
+				var data_profile_language=data.data_profile_language;	
+				loadDataProfileLanguage(data_profile_language);
+				$('.language_edit').show();
+				$('.language_save').hide();			
+			}else{
+				showMsg('note_language',data);    
+			}  
+		},
+		error : function (data){
+
+		},
+		beforeSend  : function(jqXHR,setting){
+
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
+}
+function deleteProfileLanguage(profile_language_id){
+	var xac_nhan = 0;
+	var msg="Bạn có muốn xóa ?";
+	if(window.confirm(msg)){ 
+		xac_nhan = 1;
+	}
+	if(xac_nhan  == 0){
+		return 0;
+	}
+	var id = $("form[name='frm']").find("input[name='id']").val();		
+	var token = $("form[name='frm']").find("input[name='_token']").val();
+	var dataItem = new FormData();
+	dataItem.append('id',id);
+	dataItem.append('profile_language_id',profile_language_id);           		
+	dataItem.append('_token',token);
+	$.ajax({
+		url: '<?php echo route("frontend.index.deleteLanguage"); ?>',
+		type: 'POST',
+		data: dataItem,
+		async: false,
+		success: function (data) {
+			if(data.checked==1){      	
+				var data_profile_language=data.data_profile_language;	
+				loadDataProfileLanguage(data_profile_language);				
+			} else{
+				showMsg('note_language',data);    
+			}       			
+		},
+		error : function (data){
+
+		},
+		beforeSend  : function(jqXHR,setting){
+
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
+}
+function noSaveLanguage(){
+	$('.language_edit').show();
+	$('.language_save').hide();		
+}
+function addLanguage(){
+	$('.language_save').show();
+	$("form[name='frm']").find("select[name='language_id']").val(0);	
+	$("form[name='frm']").find("select[name='language_level_id']").val(0);
 }
 </script>
 @endsection()

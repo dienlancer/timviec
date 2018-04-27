@@ -893,6 +893,14 @@ div.opacity-absolute::before{
     border: 1px solid #1b588d;
     color: #ffffff;
 }
+.suzuritake{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.language-tb td{
+    padding-left: 0;
+    padding-right: 0;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

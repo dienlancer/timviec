@@ -761,20 +761,41 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					<div class="row mia">
 						<div class="col-lg-4" ></div>
 						<div class="col-lg-8">
-							<table>
+							<table class="language-tb">
 								<tr>
-									<th></th>
-									<th>Tốt</th>
-									<th>Khá</th>
-									<th>Trung bình</th>
-									<th>Kém</th>
+									<th class="suzuritake"></th>
+									<th class="suzuritake">Tốt</th>
+									<th class="suzuritake">Khá</th>
+									<th class="suzuritake">Trung bình</th>
+									<th class="suzuritake">Kém</th>
 								</tr>
 								<tr>
 									<td>Nghe</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td><center><input type="radio" name="listening" value="good"></center></td>
+									<td><center><input type="radio" name="listening" value="rather"></center></td>
+									<td><center><input type="radio" name="listening" value="medium"></center></td>
+									<td><center><input type="radio" name="listening" value="least"></center></td>
+								</tr>
+								<tr>
+									<td>Nói</td>
+									<td><center><input type="radio" name="speaking" value="good"></center></td>
+									<td><center><input type="radio" name="speaking" value="rather"></center></td>
+									<td><center><input type="radio" name="speaking" value="medium"></center></td>
+									<td><center><input type="radio" name="speaking" value="least"></center></td>
+								</tr>
+								<tr>
+									<td>Đọc</td>
+									<td><center><input type="radio" name="reading" value="good"></center></td>
+									<td><center><input type="radio" name="reading" value="rather"></center></td>
+									<td><center><input type="radio" name="reading" value="medium"></center></td>
+									<td><center><input type="radio" name="reading" value="least"></center></td>
+								</tr>
+								<tr>
+									<td>Viết</td>
+									<td><center><input type="radio" name="writing" value="good"></center></td>
+									<td><center><input type="radio" name="writing" value="rather"></center></td>
+									<td><center><input type="radio" name="writing" value="medium"></center></td>
+									<td><center><input type="radio" name="writing" value="least"></center></td>
 								</tr>
 							</table>
 						</div>

@@ -1919,8 +1919,7 @@ class IndexController extends Controller {
 		$listening = (int)trim(@$request->listening);		
 		$speaking = (int)trim(@$request->speaking);		
 		$reading = (int)trim(@$request->reading);		
-		$writing = (int)trim(@$request->writing);		
-		
+		$writing = (int)trim(@$request->writing);				
 		if(@$language_id == 0){
 			$checked=0;
 			$msg['language_id']='Vui lòng chọn ngoại ngữ';
@@ -1933,6 +1932,10 @@ class IndexController extends Controller {
 			$item=new ProfileLanguageModel;		
 			$item->language_id=@$language_id;			
 			$item->language_level_id=@$language_level_id;								
+			$item->listening=@$listening;
+			$item->speaking=@$speaking;
+			$item->reading=@$reading;
+			$item->writing=@$writing;
 			$item->profile_id=@$id;
 			$item->created_at=date("Y-m-d H:i:s",time());
 			$item->updated_at=date("Y-m-d H:i:s",time());   
@@ -1942,16 +1945,28 @@ class IndexController extends Controller {
 		$source_profile_language=DB::table('profile_language')
 				->join('language','profile_language.language_id','=','language.id')
 				->join('language_level','profile_language.language_level_id','=','language_level.id')
+				->join('classification as l','profile_language.listening','=','l.id')
+				->join('classification as s','profile_language.speaking','=','s.id')
+				->join('classification as r','profile_language.reading','=','r.id')
+				->join('classification as w','profile_language.writing','=','w.id')
 				->where('profile_language.profile_id',(int)@$id)
 				->select(
 					'profile_language.id',
 					'language.fullname as language_name',					
-					'language_level.fullname as language_level_name'				
+					'language_level.fullname as language_level_name',
+					'l.fullname as listening',
+					's.fullname as speaking',
+					'r.fullname as reading',
+					'w.fullname as writing'				
 				)
 				->groupBy(
 					'profile_language.id',
 					'language.fullname',					
-					'language_level.fullname'
+					'language_level.fullname',
+					'l.fullname',
+					's.fullname',
+					'r.fullname',
+					'w.fullname'		
 				)
 				->orderBy('profile_language.id', 'asc')
 				->get()->toArray();		
@@ -1962,6 +1977,10 @@ class IndexController extends Controller {
 				$row['id']=$value['id'];
 				$row['language_name']=$value['language_name'];
 				$row['language_level_name']=$value['language_level_name'];				
+				$row['listening']=$value['listening'];
+				$row['speaking']=$value['speaking'];
+				$row['reading']=$value['reading'];
+				$row['writing']=$value['writing'];
 				$data_profile_language[]=@$row;
 			}
 		}		
@@ -1991,19 +2010,32 @@ class IndexController extends Controller {
 		if((int)@$checked == 1){
 			ProfileLanguageModel::find((int)@$profile_language_id)->delete();
 			$msg['success']='Xóa trình độ ngoại ngữ thành công';
+			
 			$source_profile_language=DB::table('profile_language')
 			->join('language','profile_language.language_id','=','language.id')
 			->join('language_level','profile_language.language_level_id','=','language_level.id')
+			->join('classification as l','profile_language.listening','=','l.id')
+			->join('classification as s','profile_language.speaking','=','s.id')
+			->join('classification as r','profile_language.reading','=','r.id')
+			->join('classification as w','profile_language.writing','=','w.id')
 			->where('profile_language.profile_id',(int)@$id)
 			->select(
 				'profile_language.id',
 				'language.fullname as language_name',					
-				'language_level.fullname as language_level_name'				
+				'language_level.fullname as language_level_name',
+				'l.fullname as listening',
+				's.fullname as speaking',
+				'r.fullname as reading',
+				'w.fullname as writing'				
 			)
 			->groupBy(
 				'profile_language.id',
 				'language.fullname',					
-				'language_level.fullname'
+				'language_level.fullname',
+				'l.fullname',
+				's.fullname',
+				'r.fullname',
+				'w.fullname'		
 			)
 			->orderBy('profile_language.id', 'asc')
 			->get()->toArray();		
@@ -2014,9 +2046,14 @@ class IndexController extends Controller {
 					$row['id']=$value['id'];
 					$row['language_name']=$value['language_name'];
 					$row['language_level_name']=$value['language_level_name'];				
+					$row['listening']=$value['listening'];
+					$row['speaking']=$value['speaking'];
+					$row['reading']=$value['reading'];
+					$row['writing']=$value['writing'];
 					$data_profile_language[]=@$row;
 				}
-			}			
+			}		
+
 		}		
 		$info = array(
 			"checked"       => $checked,       		

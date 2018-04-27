@@ -672,23 +672,37 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<?php 
 				$status_language_edit='';
 				$status_language_save='';
+				
 				$source_profile_language=DB::table('profile_language')
 				->join('language','profile_language.language_id','=','language.id')
 				->join('language_level','profile_language.language_level_id','=','language_level.id')
+				->join('classification as l','profile_language.listening','=','l.id')
+				->join('classification as s','profile_language.speaking','=','s.id')
+				->join('classification as r','profile_language.reading','=','r.id')
+				->join('classification as w','profile_language.writing','=','w.id')
 				->where('profile_language.profile_id',(int)@$id)
 				->select(
 					'profile_language.id',
 					'language.fullname as language_name',					
-					'language_level.fullname as language_level_name'				
+					'language_level.fullname as language_level_name',
+					'l.fullname as listening',
+					's.fullname as speaking',
+					'r.fullname as reading',
+					'w.fullname as writing'				
 				)
 				->groupBy(
 					'profile_language.id',
 					'language.fullname',					
-					'language_level.fullname'
+					'language_level.fullname',
+					'l.fullname',
+					's.fullname',
+					'r.fullname',
+					'w.fullname'		
 				)
 				->orderBy('profile_language.id', 'asc')
 				->get()->toArray();		
-				$source_profile_language=convertToArray($source_profile_language);	
+				$source_profile_language=convertToArray($source_profile_language);
+
 				if(count(@$source_profile_language) == 0){
 					$status_language_edit='display:none';
 					$status_language_save='display:block';
@@ -709,6 +723,10 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							$profile_language_id=$value['id'];
 							$profile_language_name=$value['language_name'];
 							$profile_language_level_name=$value['language_level_name'];							
+							$profile_listening=$value['listening'];
+							$profile_speaking=$value['speaking'];
+							$profile_reading=$value['reading'];
+							$profile_writing=$value['writing'];
 							?>
 							<div class="row mia">
 								<div class="col-lg-4" ><div class="xika"><div>Ngoại ngữ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
@@ -717,6 +735,22 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							<div class="row mia">
 								<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_level_name; ?></div> </div>
+							</div>		
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Nghe</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_listening; ?></div> </div>
+							</div>		
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Nói</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_speaking; ?></div> </div>
+							</div>		
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Đọc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_reading; ?></div> </div>
+							</div>		
+							<div class="row mia">
+								<div class="col-lg-4" ><div class="xika"><div>Viết</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_writing; ?></div> </div>
 							</div>										
 							<div class="row mia">
 								<div class="col-lg-4"></div>
@@ -849,6 +883,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						</div>
 					</div>				
 				</div>
+				<hr  />	
 			</div>
 			<div class="col-lg-3">
 				@include("frontend.candidate-sidebar")				
@@ -876,9 +911,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					$('.career_goal_txt').append(data.career_goal);										
 					$('.career_goal_edit').show();
 					$('.career_goal_save').hide();
-				} else{
-					showMsg('note_career_goal',data);    
-				}       			
+				} 
+				showMsg('note_career_goal',data);     			
 			},
 			error : function (data){
 
@@ -936,9 +970,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					loadDataProfileExperience(data_profile_experience);
 					$('.experience_job_edit').show();
 					$('.experience_job_save').hide();
-				}else{
-					showMsg('note_experience',data);    
-				}       			
+				}
+				showMsg('note_experience',data);         			
 			},
 			error : function (data){
 
@@ -1147,9 +1180,8 @@ function deleteProfileExperience(profile_experience_id){
 			if(data.checked==1){      	
 				var data_profile_experience=data.data_profile_experience;	
 				loadDataProfileExperience(data_profile_experience);
-			} else{
-				showMsg('note_experience',data);    
-			}       			
+			} 
+			showMsg('note_experience',data);       			
 		},
 		error : function (data){
 
@@ -1202,9 +1234,8 @@ function saveGraduation(){
 				loadDataProfileGraduation(data_profile_graduation);
 				$('.graduation_edit').show();
 				$('.graduation_save').hide();			
-			}else{
-				showMsg('note_graduation',data);    
-			}  
+			}
+			showMsg('note_graduation',data);    
 		},
 		error : function (data){
 
@@ -1396,9 +1427,8 @@ function deleteProfileGraduation(profile_graduation_id){
 			if(data.checked==1){      	
 				var data_profile_graduation=data.data_profile_graduation;	
 				loadDataProfileGraduation(data_profile_graduation);				
-			} else{
-				showMsg('note_graduation',data);    
-			}       			
+			} 
+			showMsg('note_graduation',data);         			
 		},
 		error : function (data){
 
@@ -1464,7 +1494,83 @@ function loadDataProfileLanguage(data_profile_language){
 		$(language_level_col_lg_8).append(language_level_xika2);
 		$(language_level_xika).text('Trình độ');
 		$(language_level_xika2).text(value.language_level_name);						
-		/* end language_level */		
+		/* end language_level */	
+		/* begin listening */
+		var listening_row_mia=document.createElement('div');					
+		var listening_col_lg_4=document.createElement('div');
+		var listening_col_lg_8=document.createElement('div');
+		var listening_xika=document.createElement('div');
+		var listening_xika2=document.createElement('div');
+		$(listening_row_mia).addClass('row mia');
+		$(listening_col_lg_4).addClass('col-lg-4');
+		$(listening_col_lg_8).addClass('col-lg-8');
+		$(listening_xika).addClass('xika');
+		$(listening_xika2).addClass('xika2');
+		$('.language_txt').append(listening_row_mia);
+		$(listening_row_mia).append(listening_col_lg_4);
+		$(listening_row_mia).append(listening_col_lg_8);
+		$(listening_col_lg_4).append(listening_xika);
+		$(listening_col_lg_8).append(listening_xika2);
+		$(listening_xika).text('Nghe');
+		$(listening_xika2).text(value.listening);						
+		/* end listening */	
+		/* begin speaking */
+		var speaking_row_mia=document.createElement('div');					
+		var speaking_col_lg_4=document.createElement('div');
+		var speaking_col_lg_8=document.createElement('div');
+		var speaking_xika=document.createElement('div');
+		var speaking_xika2=document.createElement('div');
+		$(speaking_row_mia).addClass('row mia');
+		$(speaking_col_lg_4).addClass('col-lg-4');
+		$(speaking_col_lg_8).addClass('col-lg-8');
+		$(speaking_xika).addClass('xika');
+		$(speaking_xika2).addClass('xika2');
+		$('.language_txt').append(speaking_row_mia);
+		$(speaking_row_mia).append(speaking_col_lg_4);
+		$(speaking_row_mia).append(speaking_col_lg_8);
+		$(speaking_col_lg_4).append(speaking_xika);
+		$(speaking_col_lg_8).append(speaking_xika2);
+		$(speaking_xika).text('Nói');
+		$(speaking_xika2).text(value.speaking);						
+		/* end speaking */
+		/* begin reading */
+		var reading_row_mia=document.createElement('div');					
+		var reading_col_lg_4=document.createElement('div');
+		var reading_col_lg_8=document.createElement('div');
+		var reading_xika=document.createElement('div');
+		var reading_xika2=document.createElement('div');
+		$(reading_row_mia).addClass('row mia');
+		$(reading_col_lg_4).addClass('col-lg-4');
+		$(reading_col_lg_8).addClass('col-lg-8');
+		$(reading_xika).addClass('xika');
+		$(reading_xika2).addClass('xika2');
+		$('.language_txt').append(reading_row_mia);
+		$(reading_row_mia).append(reading_col_lg_4);
+		$(reading_row_mia).append(reading_col_lg_8);
+		$(reading_col_lg_4).append(reading_xika);
+		$(reading_col_lg_8).append(reading_xika2);
+		$(reading_xika).text('Đọc');
+		$(reading_xika2).text(value.reading);						
+		/* end reading */
+		/* begin writing */
+		var writing_row_mia=document.createElement('div');					
+		var writing_col_lg_4=document.createElement('div');
+		var writing_col_lg_8=document.createElement('div');
+		var writing_xika=document.createElement('div');
+		var writing_xika2=document.createElement('div');
+		$(writing_row_mia).addClass('row mia');
+		$(writing_col_lg_4).addClass('col-lg-4');
+		$(writing_col_lg_8).addClass('col-lg-8');
+		$(writing_xika).addClass('xika');
+		$(writing_xika2).addClass('xika2');
+		$('.language_txt').append(writing_row_mia);
+		$(writing_row_mia).append(writing_col_lg_4);
+		$(writing_row_mia).append(writing_col_lg_8);
+		$(writing_col_lg_4).append(writing_xika);
+		$(writing_col_lg_8).append(writing_xika2);
+		$(writing_xika).text('Viết');
+		$(writing_xika2).text(value.writing);						
+		/* end writing */
 		/* begin delete */
 		var delete_row_mia=document.createElement('div');					
 		var delete_col_lg_4=document.createElement('div');
@@ -1488,10 +1594,10 @@ function saveLanguage(){
 	var id = $("form[name='frm']").find("input[name='id']").val();
 	var language_id = $("form[name='frm']").find("select[name='language_id']").val();		
 	var language_level_id = $("form[name='frm']").find("select[name='language_level_id']").val();
-	var listening = $("form[name='frm']").find("input[name='listening']").val();		
-	var speaking = $("form[name='frm']").find("input[name='speaking']").val();		
-	var reading = $("form[name='frm']").find("input[name='reading']").val();		
-	var writing = $("form[name='frm']").find("input[name='writing']").val();			
+	var listening = $("form[name='frm']").find("input[name='listening']:checked").val();		
+	var speaking = $("form[name='frm']").find("input[name='speaking']:checked").val();		
+	var reading = $("form[name='frm']").find("input[name='reading']:checked").val();		
+	var writing = $("form[name='frm']").find("input[name='writing']:checked").val();			
 	var token = $("form[name='frm']").find("input[name='_token']").val();
 	var dataItem = new FormData();
 	dataItem.append('id',id);
@@ -1509,13 +1615,12 @@ function saveLanguage(){
 		async: false,
 		success: function (data) {
 			if(data.checked==1){
-				var data_profile_language=data.data_profile_language;	
+				var data_profile_language=data.data_profile_language;					
 				loadDataProfileLanguage(data_profile_language);
 				$('.language_edit').show();
 				$('.language_save').hide();			
-			}else{
-				showMsg('note_language',data);    
-			}  
+			}			
+			showMsg('note_language',data); 
 		},
 		error : function (data){
 
@@ -1552,9 +1657,8 @@ function deleteProfileLanguage(profile_language_id){
 			if(data.checked==1){      	
 				var data_profile_language=data.data_profile_language;	
 				loadDataProfileLanguage(data_profile_language);				
-			} else{
-				showMsg('note_language',data);    
-			}       			
+			} 
+			showMsg('note_language',data);         			
 		},
 		error : function (data){
 

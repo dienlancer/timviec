@@ -698,6 +698,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				}				
 				$source_language=App\languageModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$source_language_level=App\languageLevelModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$source_classification=App\ClassificationModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();				
 				$ddlLanguage=cmsSelectboxCategory("language_id","vacca",$source_language,0,'','Chọn ngoại ngữ');
 				$ddlLanguageLevel=cmsSelectboxCategory("language_level_id","vacca",$source_language_level,0,'','Chọn trình độ');				
 				?>
@@ -764,38 +765,62 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							<table class="language-tb">
 								<tr>
 									<th class="suzuritake"></th>
-									<th class="suzuritake">Tốt</th>
-									<th class="suzuritake">Khá</th>
-									<th class="suzuritake">Trung bình</th>
-									<th class="suzuritake">Kém</th>
+									<?php 
+									foreach ($source_classification as $key => $value) {										
+										$classification_name=$value['fullname'];
+										?>
+										<th class="suzuritake"><?php echo $classification_name; ?></th>
+										<?php
+									}
+									?>									
 								</tr>
 								<tr>
 									<td>Nghe</td>
-									<td><center><input type="radio" name="listening" value="good"></center></td>
-									<td><center><input type="radio" name="listening" value="rather"></center></td>
-									<td><center><input type="radio" name="listening" value="medium"></center></td>
-									<td><center><input type="radio" name="listening" value="least"></center></td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="listening" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>									
 								</tr>
 								<tr>
 									<td>Nói</td>
-									<td><center><input type="radio" name="speaking" value="good"></center></td>
-									<td><center><input type="radio" name="speaking" value="rather"></center></td>
-									<td><center><input type="radio" name="speaking" value="medium"></center></td>
-									<td><center><input type="radio" name="speaking" value="least"></center></td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="speaking" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>		
 								</tr>
 								<tr>
 									<td>Đọc</td>
-									<td><center><input type="radio" name="reading" value="good"></center></td>
-									<td><center><input type="radio" name="reading" value="rather"></center></td>
-									<td><center><input type="radio" name="reading" value="medium"></center></td>
-									<td><center><input type="radio" name="reading" value="least"></center></td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="reading" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>		
 								</tr>
 								<tr>
 									<td>Viết</td>
-									<td><center><input type="radio" name="writing" value="good"></center></td>
-									<td><center><input type="radio" name="writing" value="rather"></center></td>
-									<td><center><input type="radio" name="writing" value="medium"></center></td>
-									<td><center><input type="radio" name="writing" value="least"></center></td>
+									<?php 
+									foreach ($source_classification as $key => $value) {
+										$classification_id=$value['id'];
+										$classification_name=$value['fullname'];
+										?>
+										<td><center><input type="radio" name="writing" value="<?php echo $classification_id; ?>"></center></td>
+										<?php
+									}
+									?>		
 								</tr>
 							</table>
 						</div>
@@ -1462,12 +1487,20 @@ function loadDataProfileLanguage(data_profile_language){
 function saveLanguage(){
 	var id = $("form[name='frm']").find("input[name='id']").val();
 	var language_id = $("form[name='frm']").find("select[name='language_id']").val();		
-	var language_level_id = $("form[name='frm']").find("select[name='language_level_id']").val();	
+	var language_level_id = $("form[name='frm']").find("select[name='language_level_id']").val();
+	var listening = $("form[name='frm']").find("input[name='listening']").val();		
+	var speaking = $("form[name='frm']").find("input[name='speaking']").val();		
+	var reading = $("form[name='frm']").find("input[name='reading']").val();		
+	var writing = $("form[name='frm']").find("input[name='writing']").val();			
 	var token = $("form[name='frm']").find("input[name='_token']").val();
 	var dataItem = new FormData();
 	dataItem.append('id',id);
 	dataItem.append('language_id',language_id);	
 	dataItem.append('language_level_id',language_level_id);	
+	dataItem.append('listening',listening);	
+	dataItem.append('speaking',speaking);	
+	dataItem.append('reading',reading);	
+	dataItem.append('writing',writing);	
 	dataItem.append('_token',token);
 	$.ajax({
 		url: '<?php echo route("frontend.index.saveLanguage"); ?>',

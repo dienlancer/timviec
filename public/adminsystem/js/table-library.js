@@ -20,6 +20,7 @@ var vProbationaryTable           =   null;
 var vWorkingFormTable           =   null;
 var vExperienceTable           =   null;
 var vSexTable           =   null;
+var vClassificationTable           =   null;
 var vLanguageLevelTable           =   null;
 var vLanguageTable           =   null;
 var vGraduationTable           =   null;
@@ -477,6 +478,23 @@ var basicTable = function () {
     };
     var initSexTable = function () {
         vSexTable = $('#tbl-sex').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                    
+                { data: "sort_order"    },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
+    var initClassificationTable = function () {
+        vClassificationTable = $('#tbl-classification').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -1082,6 +1100,7 @@ var basicTable = function () {
             initRankTable();
             initLanguageTable();
             initLanguageLevelTable();
+            initClassificationTable();
         }
     };
 }();

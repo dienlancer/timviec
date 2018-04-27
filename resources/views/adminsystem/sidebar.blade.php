@@ -32,6 +32,7 @@ $li_rank='';
 $li_graduation='';
 $li_language='';
 $li_language_level='';
+$li_classification='';
 
 $li_media='';
 $li_menu_type='';
@@ -134,6 +135,10 @@ switch ($controller) {
     break;
     case 'language-level': 
     $li_language_level='active open';       
+    $li_category_management='active open'; 
+    break;
+    case 'classification': 
+    $li_classification='active open';       
     $li_category_management='active open'; 
     break;
     case 'media':
@@ -359,6 +364,12 @@ if(count($source) > 0){
                     <a href="{!! route('adminsystem.language-level.getList') !!}" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
                         <span class="title">Trình độ ngoại ngữ</span>                                            
+                    </a>                                                                      
+                </li>  
+                <li class="nav-item  <?php echo $li_classification; ?>">
+                    <a href="{!! route('adminsystem.classification.getList') !!}" class="nav-link nav-toggle">
+                        <i class="icon-notebook"></i>
+                        <span class="title">Xếp loại trình độ ngoại ngữ</span>                                            
                     </a>                                                                      
                 </li>  
             </ul>

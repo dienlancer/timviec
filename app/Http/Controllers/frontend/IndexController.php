@@ -1916,6 +1916,10 @@ class IndexController extends Controller {
 		$id             		=   (int)@$request->id;  
 		$language_id = (int)trim(@$request->language_id);		
 		$language_level_id = (int)trim(@$request->language_level_id) ;
+		$listening = (int)trim(@$request->listening);		
+		$speaking = (int)trim(@$request->speaking);		
+		$reading = (int)trim(@$request->reading);		
+		$writing = (int)trim(@$request->writing);		
 		
 		if(@$language_id == 0){
 			$checked=0;

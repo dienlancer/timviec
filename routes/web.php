@@ -342,6 +342,18 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.sex.trash","uses"=>"adminsystem\SexController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.sex.createAlias","uses"=>"adminsystem\SexController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"classification"],function(){		
+		Route::get("list",["as"=>"adminsystem.classification.getList","uses"=>"adminsystem\ClassificationController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.classification.loadData","uses"=>"adminsystem\ClassificationController@loadData"]);		
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.classification.getForm","uses"=>"adminsystem\ClassificationController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.classification.save","uses"=>"adminsystem\ClassificationController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.classification.deleteItem","uses"=>"adminsystem\ClassificationController@deleteItem"]);		
+		Route::post("sort-order",["as"=>"adminsystem.classification.sortOrder","uses"=>"adminsystem\ClassificationController@sortOrder"]);
+		Route::post("update-status",["as"=>"adminsystem.classification.updateStatus","uses"=>"adminsystem\ClassificationController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.classification.changeStatus","uses"=>"adminsystem\ClassificationController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.classification.trash","uses"=>"adminsystem\ClassificationController@trash"]);
+		Route::post("create-alias",["as"=>"adminsystem.classification.createAlias","uses"=>"adminsystem\ClassificationController@createAlias"]);
+	});	
 	Route::group(["prefix"=>"language-level"],function(){		
 		Route::get("list",["as"=>"adminsystem.language-level.getList","uses"=>"adminsystem\LanguageLevelController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.language-level.loadData","uses"=>"adminsystem\LanguageLevelController@loadData"]);		

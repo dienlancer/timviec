@@ -7,7 +7,7 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 $linkSave               =   route('frontend.index.saveFileAttached');
 $linkCancel               =   route('frontend.index.getGroupProfile',[@$id]);
-$linkCreateProfileStepByStep=route('frontend.index.getProfileStepByStep',[@$id]);
+$linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>

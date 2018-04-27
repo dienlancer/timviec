@@ -758,7 +758,27 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8"><?php echo $ddlLanguageLevel; ?></div>
 					</div>
-					
+					<div class="row mia">
+						<div class="col-lg-4" ></div>
+						<div class="col-lg-8">
+							<table>
+								<tr>
+									<th></th>
+									<th>Tốt</th>
+									<th>Khá</th>
+									<th>Trung bình</th>
+									<th>Kém</th>
+								</tr>
+								<tr>
+									<td>Nghe</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+					</div>
 					<div class="row mia">
 						<div class="col-lg-4"></div>
 						<div class="col-lg-8">

@@ -1519,7 +1519,7 @@ class IndexController extends Controller {
     	);                       
     	return $info;   		
 	}
-	public function getProfileStepByStep(Request $request,$id){
+	public function getProfileDetail(Request $request,$id){
 		$info                 =   array();
 		$checked=1;
 		$msg=array();          

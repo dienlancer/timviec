@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 28, 2018 lúc 11:44 AM
+-- Thời gian đã tạo: Th4 28, 2018 lúc 01:51 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2247,7 +2247,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `hobby`, `talent`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 1, 2, 3, 4, 'MS Sharepoint', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng.', 'Bóng đá', 'Phát biểu tại buổi lễ, ông Nguyễn Đức Long, Chủ tịch tỉnh Quảng Ninh cho biết, công trình có quy mô lớn, kỹ thuật phức tạp do chính kỹ sư, công nhân Việt Nam thi công. Cây cầu không chỉ mang ý nghĩa phát triển kinh tế tam giác Hà Nội - Hải Phòng - Quảng Ninh mà còn kết nối đôi bờ sông Bạch Đằng lịch sử.', 1, 0, '2018-04-16 05:05:40', '2018-04-28 09:44:14'),
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 1, 2, 3, 4, 'MS Sharepoint  48', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng.  48', 'Bóng đá 12', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng. 12', 1, 0, '2018-04-16 05:05:40', '2018-04-28 11:22:42'),
 (10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
 (11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
 (12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
@@ -2403,6 +2403,30 @@ INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `u
 (45, 1, 57, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (46, 1, 59, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (47, 1, 61, '2018-04-21 08:42:16', '2018-04-21 08:42:16');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `profile_skill`
+--
+
+DROP TABLE IF EXISTS `profile_skill`;
+CREATE TABLE `profile_skill` (
+  `id` bigint(20) NOT NULL,
+  `skill_id` int(11) DEFAULT NULL,
+  `profile_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `profile_skill`
+--
+
+INSERT INTO `profile_skill` (`id`, `skill_id`, `profile_id`, `created_at`, `updated_at`) VALUES
+(1, 4, 1, '2018-04-28 11:49:49', '2018-04-28 11:49:49'),
+(2, 6, 1, '2018-04-28 11:49:49', '2018-04-28 11:49:49'),
+(3, 8, 1, '2018-04-28 11:49:49', '2018-04-28 11:49:49');
 
 -- --------------------------------------------------------
 
@@ -3932,6 +3956,12 @@ ALTER TABLE `profile_place`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `profile_skill`
+--
+ALTER TABLE `profile_skill`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `project`
 --
 ALTER TABLE `project`
@@ -4334,6 +4364,12 @@ ALTER TABLE `profile_language`
 --
 ALTER TABLE `profile_place`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT cho bảng `profile_skill`
+--
+ALTER TABLE `profile_skill`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `project`

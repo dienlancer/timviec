@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 28, 2018 lúc 01:51 PM
+-- Thời gian đã tạo: Th4 28, 2018 lúc 02:06 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -1876,7 +1876,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (912, 1, 'h7f1gTwxVFZJ650vk5K048M7Nj59YIcu', '2018-04-15 18:19:53', '2018-04-15 18:19:53'),
 (913, 1, 'xgOpeQ0CDrDX1iDozVC9h2nUnuehvJiX', '2018-04-25 00:38:22', '2018-04-25 00:38:22'),
 (914, 1, 'YjfpXve6BQAttIetGDdtevr2mo6DIZ2E', '2018-04-27 01:12:48', '2018-04-27 01:12:48'),
-(915, 1, '4TLnawuya6QRhCY3HokCxBcrzjfIoeRi', '2018-04-27 11:06:22', '2018-04-27 11:06:22');
+(915, 1, '4TLnawuya6QRhCY3HokCxBcrzjfIoeRi', '2018-04-27 11:06:22', '2018-04-27 11:06:22'),
+(916, 1, '22b0c7i6pHKNdoXzjiUEpaWZ5n0pnKAm', '2018-04-28 05:03:59', '2018-04-28 05:03:59');
 
 -- --------------------------------------------------------
 
@@ -2313,7 +2314,8 @@ CREATE TABLE `profile_graduation` (
 
 INSERT INTO `profile_graduation` (`id`, `literacy_id`, `training_unit`, `year_from`, `year_to`, `department`, `graduation_id`, `degree`, `profile_id`, `created_at`, `updated_at`) VALUES
 (1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2003, 'Kỹ thuật viên máy tính', 2, 'category-1-238ordk6vuqf.png', 1, '2018-04-28 04:20:34', '2018-04-28 04:20:34'),
-(2, 2, 'Đại học FPT', 2003, 2005, 'Công nghệ phần mềm', 3, 'category-2-695mavyhufjz.png', 1, '2018-04-28 04:21:22', '2018-04-28 04:21:22');
+(2, 2, 'Đại học FPT', 2003, 2005, 'Công nghệ phần mềm', 3, 'category-2-695mavyhufjz.png', 1, '2018-04-28 04:21:22', '2018-04-28 04:21:22'),
+(3, 2, 'Đại học Công Nghệ Thông Tin', 1959, 1956, 'Công nghệ phần mềm', 2, 'category-3-jw5b8khcgsfi.png', 1, '2018-04-28 12:03:42', '2018-04-28 12:03:42');
 
 -- --------------------------------------------------------
 
@@ -2424,9 +2426,9 @@ CREATE TABLE `profile_skill` (
 --
 
 INSERT INTO `profile_skill` (`id`, `skill_id`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 4, 1, '2018-04-28 11:49:49', '2018-04-28 11:49:49'),
-(2, 6, 1, '2018-04-28 11:49:49', '2018-04-28 11:49:49'),
-(3, 8, 1, '2018-04-28 11:49:49', '2018-04-28 11:49:49');
+(4, 7, 1, '2018-04-28 12:01:27', '2018-04-28 12:01:27'),
+(5, 9, 1, '2018-04-28 12:01:27', '2018-04-28 12:01:27'),
+(6, 11, 1, '2018-04-28 12:01:27', '2018-04-28 12:01:27');
 
 -- --------------------------------------------------------
 
@@ -3553,7 +3555,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-27 11:06:22', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-27 11:06:22'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-04-28 05:03:59', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-04-28 05:03:59'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4297,7 +4299,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=916;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=917;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -4345,7 +4347,7 @@ ALTER TABLE `profile_experience`
 -- AUTO_INCREMENT cho bảng `profile_graduation`
 --
 ALTER TABLE `profile_graduation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`
@@ -4369,7 +4371,7 @@ ALTER TABLE `profile_place`
 -- AUTO_INCREMENT cho bảng `profile_skill`
 --
 ALTER TABLE `profile_skill`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `project`

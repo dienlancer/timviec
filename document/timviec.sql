@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 28, 2018 lúc 06:31 AM
+-- Thời gian đã tạo: Th4 28, 2018 lúc 07:30 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2234,6 +2234,8 @@ CREATE TABLE `profile` (
   `ms_outlook` int(11) DEFAULT NULL,
   `other_software` text COLLATE utf8_unicode_ci,
   `medal` text COLLATE utf8_unicode_ci,
+  `hobby` text COLLATE utf8_unicode_ci,
+  `talent` text COLLATE utf8_unicode_ci,
   `status_search` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -2244,12 +2246,12 @@ CREATE TABLE `profile` (
 -- Đang đổ dữ liệu cho bảng `profile`
 --
 
-INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 4, 3, 2, 1, 'MS Sharepoint 6', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng. 6', 1, 0, '2018-04-16 05:05:40', '2018-04-28 04:15:12'),
-(10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
-(11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
-(12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
-(13, 'Nhân viên kế toán 834', 'nhan-vien-ke-toan-834', 3, 3, 3, 4, 7000000, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2018-04-17 03:38:34', '2018-04-17 03:47:14');
+INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `hobby`, `talent`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 1, 2, 3, 4, 'MS Sharepoint', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng.', NULL, NULL, 1, 0, '2018-04-16 05:05:40', '2018-04-28 04:51:41'),
+(10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
+(11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
+(12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
+(13, 'Nhân viên kế toán 834', 'nhan-vien-ke-toan-834', 3, 3, 3, 4, 7000000, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2018-04-17 03:38:34', '2018-04-17 03:47:14');
 
 -- --------------------------------------------------------
 
@@ -2369,7 +2371,8 @@ CREATE TABLE `profile_language` (
 
 INSERT INTO `profile_language` (`id`, `language_id`, `language_level_id`, `listening`, `speaking`, `reading`, `writing`, `profile_id`, `created_at`, `updated_at`) VALUES
 (1, 3, 3, 1, 2, 3, 4, 1, '2018-04-28 04:21:39', '2018-04-28 04:21:39'),
-(2, 4, 3, 4, 3, 2, 1, 1, '2018-04-28 04:22:59', '2018-04-28 04:22:59');
+(2, 4, 3, 4, 3, 2, 1, 1, '2018-04-28 04:22:59', '2018-04-28 04:22:59'),
+(3, 5, 3, 1, 2, 3, 4, 1, '2018-04-28 04:46:49', '2018-04-28 04:46:49');
 
 -- --------------------------------------------------------
 
@@ -4324,7 +4327,7 @@ ALTER TABLE `profile_job`
 -- AUTO_INCREMENT cho bảng `profile_language`
 --
 ALTER TABLE `profile_language`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`

@@ -2093,19 +2093,19 @@ class IndexController extends Controller {
 		$medal = trim(@$request->medal);				
 		if(@$ms_word == 0){
 			$checked=0;
-			$msg['ms_word']='Vui lòng chọn MS Word';
+			$msg['ms_word']='Vui lòng chọn kỹ năng sử dụng MS Word';
 		}	
 		if(@$ms_excel == 0){
 			$checked=0;
-			$msg['ms_excel']='Vui lòng chọn MS Excel';
+			$msg['ms_excel']='Vui lòng chọn kỹ năng sử dụng MS Excel';
 		}	
 		if(@$ms_power_point == 0){
 			$checked=0;
-			$msg['ms_power_point']='Vui lòng chọn MS Power Point';
+			$msg['ms_power_point']='Vui lòng chọn kỹ năng sử dụng MS Power Point';
 		}	
 		if(@$ms_outlook == 0){
 			$checked=0;
-			$msg['ms_outlook']='Vui lòng chọn MS Outlook';
+			$msg['ms_outlook']='Vui lòng chọn kỹ năng sử dụng MS Outlook';
 		}			
 		if($checked == 1){
 			$item=ProfileModel::find(@$id);		

@@ -627,5 +627,6 @@ Route::post("cap-nhat-td-ngoai-ngu",["as"=>"frontend.index.saveLanguage","uses"=
 Route::post("xoa-td-ngoai-ngu",["as"=>"frontend.index.deleteLanguage","uses"=>"frontend\IndexController@deleteLanguage"]);
 
 Route::post("cap-nhat-tin-hoc-vp",["as"=>"frontend.index.saveOffice","uses"=>"frontend\IndexController@saveOffice"]);
+Route::post("cap-nhat-ky-nang-so-truong",["as"=>"frontend.index.saveSkill","uses"=>"frontend\IndexController@saveSkill"]);
 /* end tìm việc */
 ?>

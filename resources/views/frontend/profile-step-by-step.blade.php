@@ -30,6 +30,10 @@ $query=DB::table('profile')
 ->join('experience','profile.experience_id','=','experience.id')
 ->join('rank as rank_present','profile.rank_present_id','=','rank_present.id')
 ->join('rank as rank_offered','profile.rank_offered_id','=','rank_offered.id')
+->join('classification as w','profile.ms_word','=','w.id')
+->join('classification as e','profile.ms_excel','=','e.id')
+->join('classification as p','profile.ms_power_point','=','p.id')
+->join('classification as o','profile.ms_outlook','=','o.id')
 ;
 $query->where('profile.id',@$id);
 $source_info=$query->select('profile.fullname'
@@ -39,6 +43,16 @@ $source_info=$query->select('profile.fullname'
 	,'rank_offered.fullname as rank_offered_fullname'
 	,'profile.salary'
 	,'profile.career_goal'
+	,'profile.ms_word'
+	,'profile.ms_excel'
+	,'profile.ms_power_point'
+	,'profile.ms_outlook'
+	,'w.fullname as ms_word_level'
+	,'e.fullname as ms_excel_level'
+	,'p.fullname as ms_power_point_level'
+	,'o.fullname as ms_outlook_level'
+	,'profile.other_software'
+	,'profile.medal'
 	,'profile.status_search')
 ->groupBy('profile.fullname'
 	,'literacy.fullname'
@@ -47,6 +61,16 @@ $source_info=$query->select('profile.fullname'
 	,'rank_offered.fullname'
 	,'profile.salary'
 	,'profile.career_goal'
+	,'profile.ms_word'
+	,'profile.ms_excel'
+	,'profile.ms_power_point'
+	,'profile.ms_outlook'
+	,'w.fullname'
+	,'e.fullname'
+	,'p.fullname'
+	,'o.fullname'
+	,'profile.other_software'
+	,'profile.medal'
 	,'profile.status_search')	
 ->get()->toArray();	
 $profile_detail=array();
@@ -884,8 +908,64 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					</div>				
 				</div>
 				<hr  />	
+				<?php 
+				$status_office_edit='';
+				$status_office_save='';
+				if((int)@$profile_detail['ms_word'] == 0 || 
+					(int)@$profile_detail['ms_excel'] == 0 ||
+					(int)@$profile_detail['ms_power_point'] == 0 ||
+					(int)@$profile_detail['ms_outlook'] == 0) 
+				{
+					$status_office_edit='display:none';
+					$status_office_save='display:block';
+				}else{
+					$status_office_edit='display:block';
+					$status_office_save='display:none';
+				}
+				?>
 				<div class="note note_office margin-top-15"  style="display: none;"></div>
-				<div class="office_save" >					
+				<div class="office_edit" style="<?php echo $status_office_edit; ?>">
+					<div class="office_txt">
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>MS Word</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['ms_word_level']; ?></div> </div>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>MS Excel</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['ms_excel_level']; ?></div> </div>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>MS Power Point</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['ms_power_point_level']; ?></div> </div>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>MS Outlook</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['ms_outlook_level']; ?></div> </div>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>Phần mềm khác</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['other_software']; ?></div> </div>
+						</div>
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>Thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['medal']; ?></div> </div>
+						</div>						
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+							<div class="vihamus-3 margin-top-5">
+								<a href="javascript:void(0);" onclick="showOfficeSave();"  >
+									<div class="narit">
+										<div><i class="far fa-edit"></i></div>
+										<div class="margin-left-5">Chỉnh sửa</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="office_save" style="<?php echo $status_office_save; ?>">					
 					<div class="row mia">
 						<div class="col-lg-4" ><div class="xika"><div>Tin học văn phòng</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8">
@@ -907,9 +987,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 									foreach ($source_classification as $key => $value) {
 										$classification_id=$value['id'];
 										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
+										if((int)@$profile_detail['ms_word'] == (int)@$classification_id){
+											?>
+												<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<?php
+										}else{
+											?>
+												<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}										
 									}
 									?>									
 								</tr>
@@ -919,9 +1005,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 									foreach ($source_classification as $key => $value) {
 										$classification_id=$value['id'];
 										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
+										if((int)@$profile_detail['ms_excel'] == (int)@$classification_id){
+											?>
+												<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<?php
+										}else{
+											?>
+												<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}										
 									}
 									?>		
 								</tr>
@@ -931,9 +1023,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 									foreach ($source_classification as $key => $value) {
 										$classification_id=$value['id'];
 										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
+										if((int)@$profile_detail['ms_power_point'] == (int)@$classification_id){
+											?>
+												<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<?php
+										}else{
+											?>
+												<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}										
 									}
 									?>		
 								</tr>
@@ -943,9 +1041,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 									foreach ($source_classification as $key => $value) {
 										$classification_id=$value['id'];
 										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
+										if((int)@$profile_detail['ms_outlook'] == (int)@$classification_id){
+											?>
+												<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<?php
+										}else{
+											?>
+												<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}										
 									}
 									?>		
 								</tr>
@@ -953,11 +1057,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						</div>
 						<div class="row mia">
 							<div class="col-lg-4" ><div class="xika"><div>Phần mềm khác</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-							<div class="col-lg-8"><input type="text"  name="other_software" class="vacca" placeholder="Nhập tên phần mềm khác" value="" ></div>
+							<div class="col-lg-8"><input type="text"  name="other_software"  class="vacca" placeholder="Nhập tên phần mềm khác" value="<?php echo @$profile_detail['other_software']; ?>" ></div>
 						</div>
 						<div class="row mia">
 							<div class="col-lg-4" ><div class="xika"><div>Các thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-							<div class="col-lg-8"><input type="text"  name="medal" class="vacca" placeholder="Nhập thành tích nổi bật" value="" ></div>
+							<div class="col-lg-8">
+								<textarea name="medal" placeholder="Nhập thành tích..." class="vacca" rows="10" ><?php echo @$profile_detail['medal']; ?></textarea>
+							</div>
 						</div>
 					</div>
 					<div class="row mia">
@@ -1779,6 +1885,171 @@ function addLanguage(){
 	$('.language_save').show();
 	$("form[name='frm']").find("select[name='language_id']").val(0);	
 	$("form[name='frm']").find("select[name='language_level_id']").val(0);
+}
+function saveOffice(){
+	var id = $("form[name='frm']").find("input[name='id']").val();	
+	var ms_word = $("form[name='frm']").find("input[name='ms_word']:checked").val();		
+	var ms_excel = $("form[name='frm']").find("input[name='ms_excel']:checked").val();		
+	var ms_power_point = $("form[name='frm']").find("input[name='ms_power_point']:checked").val();		
+	var ms_outlook = $("form[name='frm']").find("input[name='ms_outlook']:checked").val();			
+	var other_software = $("form[name='frm']").find("input[name='other_software']").val();	
+	var medal = $("form[name='frm']").find("textarea[name='medal']").val();	
+	var token = $("form[name='frm']").find("input[name='_token']").val();
+	var dataItem = new FormData();
+	dataItem.append('id',id);
+	
+	dataItem.append('ms_word',ms_word);	
+	dataItem.append('ms_excel',ms_excel);	
+	dataItem.append('ms_power_point',ms_power_point);	
+	dataItem.append('ms_outlook',ms_outlook);	
+	dataItem.append('other_software',other_software);	
+	dataItem.append('medal',medal);	
+	dataItem.append('_token',token);
+	$.ajax({
+		url: '<?php echo route("frontend.index.saveOffice"); ?>',
+		type: 'POST',
+		data: dataItem,
+		async: false,
+		success: function (data) {
+			if(data.checked==1){	
+				$('.office_txt').empty();	
+				/* begin ms_word */
+				var ms_word_row_mia=document.createElement('div');					
+				var ms_word_col_lg_4=document.createElement('div');
+				var ms_word_col_lg_8=document.createElement('div');
+				var ms_word_xika=document.createElement('div');
+				var ms_word_xika2=document.createElement('div');
+				$(ms_word_row_mia).addClass('row mia');
+				$(ms_word_col_lg_4).addClass('col-lg-4');
+				$(ms_word_col_lg_8).addClass('col-lg-8');
+				$(ms_word_xika).addClass('xika');
+				$(ms_word_xika2).addClass('xika2');
+				$('.office_txt').append(ms_word_row_mia);
+				$(ms_word_row_mia).append(ms_word_col_lg_4);
+				$(ms_word_row_mia).append(ms_word_col_lg_8);
+				$(ms_word_col_lg_4).append(ms_word_xika);
+				$(ms_word_col_lg_8).append(ms_word_xika2);
+				$(ms_word_xika).text('MS Word');
+				$(ms_word_xika2).text(data.ms_word_level);						
+				/* end ms_word */
+				/* begin ms_excel */
+				var ms_excel_row_mia=document.createElement('div');					
+				var ms_excel_col_lg_4=document.createElement('div');
+				var ms_excel_col_lg_8=document.createElement('div');
+				var ms_excel_xika=document.createElement('div');
+				var ms_excel_xika2=document.createElement('div');
+				$(ms_excel_row_mia).addClass('row mia');
+				$(ms_excel_col_lg_4).addClass('col-lg-4');
+				$(ms_excel_col_lg_8).addClass('col-lg-8');
+				$(ms_excel_xika).addClass('xika');
+				$(ms_excel_xika2).addClass('xika2');
+				$('.office_txt').append(ms_excel_row_mia);
+				$(ms_excel_row_mia).append(ms_excel_col_lg_4);
+				$(ms_excel_row_mia).append(ms_excel_col_lg_8);
+				$(ms_excel_col_lg_4).append(ms_excel_xika);
+				$(ms_excel_col_lg_8).append(ms_excel_xika2);
+				$(ms_excel_xika).text('MS Excel');
+				$(ms_excel_xika2).text(data.ms_excel_level);						
+				/* end ms_excel */
+				/* begin ms_power_point */
+				var ms_power_point_row_mia=document.createElement('div');					
+				var ms_power_point_col_lg_4=document.createElement('div');
+				var ms_power_point_col_lg_8=document.createElement('div');
+				var ms_power_point_xika=document.createElement('div');
+				var ms_power_point_xika2=document.createElement('div');
+				$(ms_power_point_row_mia).addClass('row mia');
+				$(ms_power_point_col_lg_4).addClass('col-lg-4');
+				$(ms_power_point_col_lg_8).addClass('col-lg-8');
+				$(ms_power_point_xika).addClass('xika');
+				$(ms_power_point_xika2).addClass('xika2');
+				$('.office_txt').append(ms_power_point_row_mia);
+				$(ms_power_point_row_mia).append(ms_power_point_col_lg_4);
+				$(ms_power_point_row_mia).append(ms_power_point_col_lg_8);
+				$(ms_power_point_col_lg_4).append(ms_power_point_xika);
+				$(ms_power_point_col_lg_8).append(ms_power_point_xika2);
+				$(ms_power_point_xika).text('MS Power Point');
+				$(ms_power_point_xika2).text(data.ms_power_point_level);						
+				/* end ms_power_point */
+				/* begin ms_outlook */
+				var ms_outlook_row_mia=document.createElement('div');					
+				var ms_outlook_col_lg_4=document.createElement('div');
+				var ms_outlook_col_lg_8=document.createElement('div');
+				var ms_outlook_xika=document.createElement('div');
+				var ms_outlook_xika2=document.createElement('div');
+				$(ms_outlook_row_mia).addClass('row mia');
+				$(ms_outlook_col_lg_4).addClass('col-lg-4');
+				$(ms_outlook_col_lg_8).addClass('col-lg-8');
+				$(ms_outlook_xika).addClass('xika');
+				$(ms_outlook_xika2).addClass('xika2');
+				$('.office_txt').append(ms_outlook_row_mia);
+				$(ms_outlook_row_mia).append(ms_outlook_col_lg_4);
+				$(ms_outlook_row_mia).append(ms_outlook_col_lg_8);
+				$(ms_outlook_col_lg_4).append(ms_outlook_xika);
+				$(ms_outlook_col_lg_8).append(ms_outlook_xika2);
+				$(ms_outlook_xika).text('MS Outlook');
+				$(ms_outlook_xika2).text(data.ms_outlook_level);						
+				/* end ms_outlook */
+				/* begin other_software */
+				var other_software_row_mia=document.createElement('div');					
+				var other_software_col_lg_4=document.createElement('div');
+				var other_software_col_lg_8=document.createElement('div');
+				var other_software_xika=document.createElement('div');
+				var other_software_xika2=document.createElement('div');
+				$(other_software_row_mia).addClass('row mia');
+				$(other_software_col_lg_4).addClass('col-lg-4');
+				$(other_software_col_lg_8).addClass('col-lg-8');
+				$(other_software_xika).addClass('xika');
+				$(other_software_xika2).addClass('xika2');
+				$('.office_txt').append(other_software_row_mia);
+				$(other_software_row_mia).append(other_software_col_lg_4);
+				$(other_software_row_mia).append(other_software_col_lg_8);
+				$(other_software_col_lg_4).append(other_software_xika);
+				$(other_software_col_lg_8).append(other_software_xika2);
+				$(other_software_xika).text('Phần mềm khác');
+				$(other_software_xika2).text(data.other_software);						
+				/* end other_software */
+				/* begin medal */
+				var medal_row_mia=document.createElement('div');					
+				var medal_col_lg_4=document.createElement('div');
+				var medal_col_lg_8=document.createElement('div');
+				var medal_xika=document.createElement('div');
+				var medal_xika2=document.createElement('div');
+				$(medal_row_mia).addClass('row mia');
+				$(medal_col_lg_4).addClass('col-lg-4');
+				$(medal_col_lg_8).addClass('col-lg-8');
+				$(medal_xika).addClass('xika');
+				$(medal_xika2).addClass('xika2');
+				$('.office_txt').append(medal_row_mia);
+				$(medal_row_mia).append(medal_col_lg_4);
+				$(medal_row_mia).append(medal_col_lg_8);
+				$(medal_col_lg_4).append(medal_xika);
+				$(medal_col_lg_8).append(medal_xika2);
+				$(medal_xika).text('Thành tích');
+				$(medal_xika2).text(data.medal);						
+				/* end medal */
+				$('.office_edit').show();
+				$('.office_save').hide();			
+			}			
+			showMsg('note_language',data); 
+		},
+		error : function (data){
+
+		},
+		beforeSend  : function(jqXHR,setting){
+
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
+}
+function showOfficeSave(){
+	$('.office_edit').hide();
+	$('.office_save').show();
+}
+function noSaveOffice(){
+	$('.office_edit').show();
+	$('.office_save').hide();		
 }
 </script>
 @endsection()

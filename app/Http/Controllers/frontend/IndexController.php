@@ -1919,7 +1919,8 @@ class IndexController extends Controller {
 		$listening = (int)trim(@$request->listening);		
 		$speaking = (int)trim(@$request->speaking);		
 		$reading = (int)trim(@$request->reading);		
-		$writing = (int)trim(@$request->writing);				
+		$writing = (int)trim(@$request->writing);	
+
 		if(@$language_id == 0){
 			$checked=0;
 			$msg['language_id']='Vui lòng chọn ngoại ngữ';
@@ -1927,7 +1928,23 @@ class IndexController extends Controller {
 		if(@$language_level_id == 0){
 			$checked=0;
 			$msg['language_level_id']='Vui lòng chọn trình độ';
-		}									
+		}		
+		if(@$listening == 0){
+			$checked=0;
+			$msg['listening']='Vui lòng chọn nghe';
+		}					
+		if(@$speaking == 0){
+			$checked=0;
+			$msg['speaking']='Vui lòng chọn nói';
+		}				
+		if(@$reading == 0){
+			$checked=0;
+			$msg['reading']='Vui lòng chọn đọc';
+		}				
+		if(@$writing == 0){
+			$checked=0;
+			$msg['writing']='Vui lòng chọn viết';
+		}		
 		if($checked == 1){			
 			$item=new ProfileLanguageModel;		
 			$item->language_id=@$language_id;			
@@ -2061,6 +2078,87 @@ class IndexController extends Controller {
 			'data_profile_language' => $data_profile_language
 		);                       
 		return $info;
+	}
+	public function saveOffice(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		$data_profile=array();
+		$id             		=   (int)@$request->id;  
+		$ms_word = (int)trim(@$request->ms_word);		
+		$ms_excel = (int)trim(@$request->ms_excel);		
+		$ms_power_point = (int)trim(@$request->ms_power_point);		
+		$ms_outlook = (int)trim(@$request->ms_outlook);		
+		$other_software = trim(@$request->other_software);		
+		$medal = trim(@$request->medal);				
+		if(@$ms_word == 0){
+			$checked=0;
+			$msg['ms_word']='Vui lòng chọn MS Word';
+		}	
+		if(@$ms_excel == 0){
+			$checked=0;
+			$msg['ms_excel']='Vui lòng chọn MS Excel';
+		}	
+		if(@$ms_power_point == 0){
+			$checked=0;
+			$msg['ms_power_point']='Vui lòng chọn MS Power Point';
+		}	
+		if(@$ms_outlook == 0){
+			$checked=0;
+			$msg['ms_outlook']='Vui lòng chọn MS Outlook';
+		}			
+		if($checked == 1){
+			$item=ProfileModel::find(@$id);		
+			$item->ms_word=$ms_word;
+			$item->ms_excel=$ms_excel;
+			$item->ms_power_point=$ms_power_point;
+			$item->ms_outlook=$ms_outlook;
+			$item->other_software=$other_software;
+			$item->medal=$medal;
+			$item->save();
+			$msg['success']='Cập nhật thành công';
+			$query=DB::table('profile')
+			->join('classification as w','profile.ms_word','=','w.id')
+			->join('classification as e','profile.ms_excel','=','e.id')
+			->join('classification as p','profile.ms_power_point','=','p.id')
+			->join('classification as o','profile.ms_outlook','=','o.id')
+			;
+			$query->where('profile.id',@$id);
+			$source_profile=$query->select(				
+				'w.fullname as ms_word_level'
+				,'e.fullname as ms_excel_level'
+				,'p.fullname as ms_power_point_level'
+				,'o.fullname as ms_outlook_level'
+				,'profile.other_software'
+				,'profile.medal'
+				)
+			->groupBy(
+				'w.fullname'
+				,'e.fullname'
+				,'p.fullname'
+				,'o.fullname'
+				,'profile.other_software'
+				,'profile.medal'
+				)	
+			->get()->toArray();	
+			if(count($source_profile) > 0){
+				$source_profile2=convertToArray($source_profile);	
+				$data_profile=$source_profile2[0];
+			}
+		}		
+
+		$info = array(
+			"checked"       		=> $checked,       		
+			'msg'       			=> $msg,                
+			"id"            		=> (int)@$id,
+			"ms_word_level"			=> @$data_profile['ms_word_level'],
+			"ms_excel_level"		=> @$data_profile['ms_excel_level'],
+			"ms_power_point_level"	=> @$data_profile['ms_power_point_level'],
+			"ms_outlook_level"		=> @$data_profile['ms_outlook_level'],
+			"other_software"		=> @$data_profile['other_software'],
+			"medal"					=> @$data_profile['medal']
+		);                       
+		return $info;   
 	}
 }
 

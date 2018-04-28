@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 27, 2018 lúc 09:08 PM
+-- Thời gian đã tạo: Th4 28, 2018 lúc 06:31 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -2245,7 +2245,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2018-04-16 05:05:40', '2018-04-23 12:07:49'),
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 4, 3, 2, 1, 'MS Sharepoint 6', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng. 6', 1, 0, '2018-04-16 05:05:40', '2018-04-28 04:15:12'),
 (10, 'Nhân viên kinh doanh vé máy bay', 'nhan-vien-kinh-doanh-ve-may-bay', 2, 5, 3, 6, 8000000, 'ke-hoach-tmdtx-yz7a8oqlh2ib.xlsx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:12:19', '2018-04-17 03:51:48'),
 (11, 'Nhân viên dạy tiếng anh', 'nhan-vien-day-tieng-anh', 6, 6, 4, 4, 8000000, 'wordpress-laravelx-ntsarleuf0cp.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:14:15', '2018-04-17 03:51:47'),
 (12, 'Nhân viên dạy tiếng Nga', 'nhan-vien-day-tieng-nga', 5, 6, 3, 5, 8000000, 'wordpress-laravelx-z2wvye1l3b4s.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-04-16 10:18:40', '2018-04-17 03:51:49'),
@@ -2280,7 +2280,9 @@ CREATE TABLE `profile_experience` (
 --
 
 INSERT INTO `profile_experience` (`id`, `company_name`, `person_title`, `month_from`, `year_from`, `month_to`, `year_to`, `currency`, `salary`, `job_description`, `achievement`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 'Coca-Cola Việt Nam', 'Giám Sát Bán Hàng Khu Vực Hậu Giang', 2, 2002, 3, 2003, 'vnd', 9000000, 'Trách nhiệm chính: \r\n✓ Huấn luyện, đào tạo cho các nhân viên phát triển thị trường về những kỹ năng qui trình bán hàng, phân tuyến. \r\n✓ Chịu trách nhiệm về quản lý trang thiết bị lạnh như sắp đặt, bảo trì, thu hồi. \r\n✓ Làm việc chặt chẽ với nhà phân phối và quản lý các Nhân viên Bán hàng (NVBH) của Công ty tại nhà phân phối. \r\n✓ Bố trí cấp phát các vật dụng quảng cáo. \r\n✓ Phân tuyến bán hàng. \r\n✓ Chịu trách nhiệm thi hành và bao phủ các điểm bán hàng trong địa bàn. \r\n✓ Thi hành kỷ luật, đánh giá kết quả làm việc đối với NVBH. \r\n✓ Lập Kế hoạch làm việc cho NVBH. \r\n✓ Gửi các báo cáo bán hàng đúng hạn cho cấp Quản lý trực tiếp.', '✓ Tốt nghiệp PTTH, Trung cấp hoặc Cao đẳng. Ưu tiên tốt nghiệp Đại học. \r\n✓ Kỹ năng giao tiếp tốt. Ưu tiên ứng thành thạo tiếng Anh. \r\n✓ Hiểu biết hệ thống / quy trình bán hàng trực tiếp. \r\n✓ Ưu tiên ứng viên sử dụng thành thạo vi tính văn phòng thành thạo (Word, Excel và Power Point). \r\n✓ Năng động và chăm chỉ, sẵn sàng đi lại trong khu vực được giao.', 1, '2018-04-27 04:39:09', '2018-04-27 04:39:09');
+(1, 'CÔNG TY CP TẬP ĐOÀN THÀNH HƯNG- CITYEXPRESS', 'Nhân Viên Kho Hàng Chuyển Phát Nhanh Tại Hà Nội, Hồ Chí Minh', 2, 2018, 5, 2018, 'vnd', 7000000, '-	Bảo quản toàn bộ trang thiết bị trong Kho .\r\n-	Cân,phân chia,đóng gói hàng hóa theo các tuyến .\r\n-	Học nghiệp vụ cho bản thân từ trưởng ca , trưởng kho và nhân viên cũ.\r\n-	Xếp dỡ hàng hóa từ xe vào kho và ngược lại.\r\n-	Nhận và trả hàng trực tiếp tại kho.\r\n-	Bàn giao hàng hóa,tài liệu cho các bộ phận liên quan\r\n-	Trực tiếp nhận, đóng gói, phân chia hàng hóa,tài liệu theo các tuyến. Xếp dỡ hàng hóa từ xe vào kho và ngược lại.\r\n-	Kiểm soát hàng hóa.\r\n-	Xử lý đóng gỗ hàng hóa khi khách yêu cầu trên vận đơn trước khi vận chuyển.\r\n-	Phối hợp hỗ trợ các bộ phận có liên quan đến công việc của Kho .Lập báo cáo, ghi chép sổ sách chứng từ liên quan đến công việc tại kho hàng.\r\n-	Thực hiện đúng và đầy đủ nội quy công ty, nội quy kho hàng và các bộ phận phòng ban liên quan.\r\n-	Thực hiện đúng nghiệp vụ quy trình kho hàng đã công bố.\r\n- Nơi làm việc: Bưu cục Long Biên, Thanh Xuân, Cầu Giấy, Hai Bà Trưng.', '- Tốt nghiệp trung cấp trở lên,\r\n+ Kinh nghiệm 01 năm ở vị trí tương đương\r\n+ Ưu tiên ứng viên có kinh nghiệm, am hiểu về lĩnh vực chuyển phát nhanh\r\n- Có kỹ năng giao tiếp tốt, Trung thực, nhanh nhẹn\r\n- Nhiệt tình, sức khỏe tốt và có trách nhiệm cao trong công việc', 1, '2018-04-28 04:18:14', '2018-04-28 04:18:14'),
+(2, 'CÔNG TY CỔ PHẦN ĐỊA ỐC THẮNG LỢI', 'Chuyên Viên Kinh Doanh Bất Động Sản Thu Nhập 300 ++ Triệu / Năm', 2, 2018, 5, 2018, 'vnd', 8000000, '- Tư vấn và chăm sóc khách hàng,\r\n- Cung cấp thông tin, hướng dẫn khách hàng tham quan các dự án đất nền, nhà phố, căn hộ của công ty làm chủ đầu tư.\r\n- Lập kế hoạch làm việc, thực hiện chỉ tiêu kinh doanh,\r\n- Tìm hiểu thị trường bất động sản, đối thủ cạnh tranh, nắm bắt nhu cầu khách hàng,\r\n- Thực hiện công việc theo kế hoạch làm việc của phòng kinh doanh,\r\n* Địa điểm làm việc:\r\n- Chi Nhánh Bến Lức: Đường số 2, KĐT Hưng Gia Garden City, Long An\r\n- 331 Lê quang sung, Phường 9, Quận 6, TP.HCM\r\n- Hội Sở: 340 Cộng Hòa, P.13, Q.Tân Bình, TP.HCM\r\n- Chi Nhánh Tây Nam: 337 Tên Lửa, P.Bình Trị Đông B, Q.Bình Tân, TP.HCM', '- Tốt nghiệp trung cấp trở lên,\r\n+ Kinh nghiệm 01 năm ở vị trí tương đương\r\n+ Ưu tiên ứng viên có kinh nghiệm, am hiểu về lĩnh vực chuyển phát nhanh\r\n- Có kỹ năng giao tiếp tốt, Trung thực, nhanh nhẹn\r\n- Nhiệt tình, sức khỏe tốt và có trách nhiệm cao trong công việc', 1, '2018-04-28 04:19:45', '2018-04-28 04:19:45'),
+(3, 'Công ty cổ phần dệt may Liên Phương', 'Trưởng Nhóm Kinh Doanh Quốc Tế', 3, 2018, 6, 2018, 'vnd', 12000000, '- Chịu trách nhiệm tìm kiếm khách hàng, lập kế hoạch, thu thập thông tin, tổng hợp và báo cáo kết quả thực hiện các kế hoạch kinh doanh có liên quan đến hoạt động xuất nhập khẩu như: thị trường, hàng hóa, giá cả, khách hàng, đối tác\r\n- Theo dõi đơn hàng, quản lý khách hàng….\r\n- Thiết lập mối quan hệ tốt với các đối tác nước ngoài, thực hiện tốt hoạt động kinh doanh xuất khẩu.\r\n- Và một số công việc khác sẽ được trao đổi trong quá trình phỏng vấn', '- Nam/nữ tốt nghiệp Đại học các ngành Quản trị KD, Makeeting, Tài chính,... trong/ngoài nước\r\n- Kỹ năng giao tiếp: sắc sảo, nhảy bén, tự tin, quốc tế hóa.\r\n- Kỹ năng làm việc: cẩn thận, khoa học; có trí nhớ tốt, khả năng quan sát, nhận định, đánh giá; sáng tạo, linh hoạt.\r\n- Có phẩm chất trung thực, nhiệt huyết, cống hiến, vượt khó…\r\n- Có khả năng làm việc ở cường độ cao và chịu áp lực tốt;\r\n- Không đòi hỏi kinh nghiệm.\r\n- Thông thạo Anh ngữ hoặc thông thạo Nhật ngữ.', 1, '2018-04-28 04:26:00', '2018-04-28 04:26:00');
 
 -- --------------------------------------------------------
 
@@ -2308,7 +2310,8 @@ CREATE TABLE `profile_graduation` (
 --
 
 INSERT INTO `profile_graduation` (`id`, `literacy_id`, `training_unit`, `year_from`, `year_to`, `department`, `graduation_id`, `degree`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2002, 'Kỹ thuật viên máy tính', 2, 'category-1-p3iv80oayqn1.png', 1, '2018-04-27 04:46:49', '2018-04-27 04:46:49');
+(1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2003, 'Kỹ thuật viên máy tính', 2, 'category-1-238ordk6vuqf.png', 1, '2018-04-28 04:20:34', '2018-04-28 04:20:34'),
+(2, 2, 'Đại học FPT', 2003, 2005, 'Công nghệ phần mềm', 3, 'category-2-695mavyhufjz.png', 1, '2018-04-28 04:21:22', '2018-04-28 04:21:22');
 
 -- --------------------------------------------------------
 
@@ -2365,7 +2368,8 @@ CREATE TABLE `profile_language` (
 --
 
 INSERT INTO `profile_language` (`id`, `language_id`, `language_level_id`, `listening`, `speaking`, `reading`, `writing`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 3, 4, 3, 2, 1, 1, '2018-04-27 17:52:48', '2018-04-27 17:52:48');
+(1, 3, 3, 1, 2, 3, 4, 1, '2018-04-28 04:21:39', '2018-04-28 04:21:39'),
+(2, 4, 3, 4, 3, 2, 1, 1, '2018-04-28 04:22:59', '2018-04-28 04:22:59');
 
 -- --------------------------------------------------------
 
@@ -4302,13 +4306,13 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT cho bảng `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_graduation`
 --
 ALTER TABLE `profile_graduation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_job`
@@ -4320,7 +4324,7 @@ ALTER TABLE `profile_job`
 -- AUTO_INCREMENT cho bảng `profile_language`
 --
 ALTER TABLE `profile_language`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_place`

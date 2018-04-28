@@ -2160,6 +2160,46 @@ class IndexController extends Controller {
 		);                       
 		return $info;   
 	}
+	public function saveSkill(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		$data_profile=array();
+		$id             		=   (int)@$request->id;  		
+		$hobby = trim(@$request->hobby);		
+		$talent = trim(@$request->talent);							
+		if($checked == 1){
+			$item=ProfileModel::find(@$id);					
+			$item->hobby=$hobby;
+			$item->talent=$talent;
+			$item->save();
+			$msg['success']='Cập nhật thành công';
+			$query=DB::table('profile');
+			$query->where('profile.id',@$id);
+			$source_profile=$query->select(				
+				'profile.hobby'
+				,'profile.talent'				
+				)
+			->groupBy(
+				'profile.hobby'
+				,'profile.talent'
+				)	
+			->get()->toArray();	
+			if(count($source_profile) > 0){
+				$source_profile2=convertToArray($source_profile);	
+				$data_profile=$source_profile2[0];
+			}
+		}		
+
+		$info = array(
+			"checked"       		=> $checked,       		
+			'msg'       			=> $msg,                
+			"id"            		=> (int)@$id,
+			"hobby"			=> @$data_profile['hobby'],
+			"talent"		=> @$data_profile['talent'],			
+		);                       
+		return $info;   
+	}
 }
 
 

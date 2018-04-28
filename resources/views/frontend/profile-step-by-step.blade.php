@@ -1137,15 +1137,14 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					</div>
 				</div>
 				<div class="skill_save" style="<?php echo $status_skill_save; ?>">										
-						<div class="row mia">
-							<div class="col-lg-4" ><div class="xika"><div>Sở thích</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-							<div class="col-lg-8"><input type="text"  name="hobby"  class="vacca" placeholder="Nhập sở thích" value="<?php echo @$profile_detail['hobby']; ?>" ></div>
-						</div>
-						<div class="row mia">
-							<div class="col-lg-4" ><div class="xika"><div>Kỹ năng đặc biệt</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-							<div class="col-lg-8">
-								<textarea name="talent" placeholder="Nhập kỹ năng đặc biệt" class="vacca" rows="10" ><?php echo @$profile_detail['talent']; ?></textarea>
-							</div>
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Sở thích</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8"><input type="text"  name="hobby"  class="vacca" placeholder="Nhập sở thích" value="<?php echo @$profile_detail['hobby']; ?>" ></div>
+					</div>
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Kỹ năng đặc biệt</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">
+							<textarea name="talent" placeholder="Nhập kỹ năng đặc biệt" class="vacca" rows="10" ><?php echo @$profile_detail['talent']; ?></textarea>
 						</div>
 					</div>
 					<div class="row mia">
@@ -1170,9 +1169,9 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								</div>
 							</div>
 						</div>
-					</div>				
-				</div>
-			</div>
+					</div>			
+				</div>				
+			</div>							
 			<div class="col-lg-3">
 				@include("frontend.candidate-sidebar")				
 			</div>
@@ -2135,7 +2134,7 @@ function noSaveOffice(){
 }
 function saveSkill(){
 	var id = $("form[name='frm']").find("input[name='id']").val();		
-	var hobby = $("form[name='frm']").find("textarea[name='hobby']").val();	
+	var hobby = $("form[name='frm']").find("input[name='hobby']").val();	
 	var talent = $("form[name='frm']").find("textarea[name='talent']").val();	
 	var token = $("form[name='frm']").find("input[name='_token']").val();
 	var dataItem = new FormData();
@@ -2167,7 +2166,7 @@ function saveSkill(){
 				$(hobby_row_mia).append(hobby_col_lg_8);
 				$(hobby_col_lg_4).append(hobby_xika);
 				$(hobby_col_lg_8).append(hobby_xika2);
-				$(hobby_xika).text('Phần mềm khác');
+				$(hobby_xika).text('Sở thích');
 				$(hobby_xika2).text(data.hobby);						
 				/* end hobby */
 				/* begin talent */
@@ -2186,7 +2185,7 @@ function saveSkill(){
 				$(talent_row_mia).append(talent_col_lg_8);
 				$(talent_col_lg_4).append(talent_xika);
 				$(talent_col_lg_8).append(talent_xika2);
-				$(talent_xika).text('Thành tích');
+				$(talent_xika).text('Kỹ năng đặc biệt');
 				$(talent_xika2).text(data.talent);						
 				/* end talent */
 				$('.skill_edit').show();

@@ -901,6 +901,9 @@ div.opacity-absolute::before{
     padding-left: 0;
     padding-right: 0;
 }
+.ritae{
+    float: left;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

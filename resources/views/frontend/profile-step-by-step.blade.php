@@ -1109,10 +1109,36 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					$status_skill_edit='display:block';
 					$status_skill_save='display:none';
 				}
+				$source_skill=App\SkillModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+				$data_profile_skill= DB::table('skill')
+								->join('profile_skill','skill.id','=','profile_skill.skill_id')
+								->where('profile_skill.profile_id',@$id)
+								->select('skill.id','skill.fullname')
+								->groupBy('skill.id','skill.fullname')
+								->orderBy('skill.id','asc')
+								->get()
+								->toArray();
+				$data_profile_skill=convertToArray($data_profile_skill);				
 				?>
 				<div class="note note_skill margin-top-15"  style="display: none;"></div>
 				<div class="skill_edit" style="<?php echo $status_skill_edit; ?>">
-					<div class="skill_txt">						
+					<div class="skill_txt">		
+						<div class="row mia">
+							<div class="col-lg-4" ><div class="xika"><div>Kỹ năng - Sở trường</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+							<div class="col-lg-8">
+								<?php 
+								if(count(@$data_profile_skill) > 0){
+									foreach (@$data_profile_skill as $key => $value) {
+										$skill_id=$value['id'];
+										$skill_name=$value['fullname'];
+										?>
+										<div><?php echo $skill_name; ?></div>
+										<?php
+									}							
+								}							
+								?>							
+							</div>
+						</div>							
 						<div class="row mia">
 							<div class="col-lg-4" ><div class="xika"><div>Sở thích</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['hobby']; ?></div> </div>
@@ -1136,7 +1162,43 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						</div>
 					</div>
 				</div>
-				<div class="skill_save" style="<?php echo $status_skill_save; ?>">										
+				<div class="skill_save" style="<?php echo $status_skill_save; ?>">	
+					<div class="row mia">
+						<div class="col-lg-4" ><div class="xika"><div>Kỹ năng - Sở trường</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+						<div class="col-lg-8">
+							<?php 
+							if(count(@$source_skill) > 0){
+								?>
+								<div class="row mia">
+								<?php 
+								$k=1;
+								foreach (@$source_skill as $key => $value) {
+									$skill_id=$value['id'];
+									$skill_name=$value['fullname'];
+									$checked_status='';		
+									foreach ($data_profile_skill as $key2 => $value2) {
+										$skill_id2=$value2['id'];																	
+										if((int)@$skill_id == (int)@$skill_id2){
+											$checked_status='checked';						
+										}										
+									}									
+									?>
+									<div class="col-lg-4">
+										<input type="checkbox" name="skill_id[]" <?php echo $checked_status; ?> value="<?php echo $skill_id; ?>"><?php echo $skill_name; ?>
+									</div>
+									<?php
+									if($k%3 == 0){
+										?><div class="clr"></div><?php
+									}
+									$k++;
+								}
+								?>
+								</div>
+								<?php								
+							}							
+							?>							
+						</div>
+					</div>									
 					<div class="row mia">
 						<div class="col-lg-4" ><div class="xika"><div>Sở thích</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8"><input type="text"  name="hobby"  class="vacca" placeholder="Nhập sở thích" value="<?php echo @$profile_detail['hobby']; ?>" ></div>
@@ -2133,12 +2195,17 @@ function noSaveOffice(){
 	$('.office_save').hide();		
 }
 function saveSkill(){
-	var id = $("form[name='frm']").find("input[name='id']").val();		
+	var id = $("form[name='frm']").find("input[name='id']").val();			
+	var skill_ctrl = $("form[name='frm']").find("input[name='skill_id[]']:checked");
+	var source_skill_id = $.map($(skill_ctrl), function(e,i) {
+    	return +e.value;
+	});			
 	var hobby = $("form[name='frm']").find("input[name='hobby']").val();	
 	var talent = $("form[name='frm']").find("textarea[name='talent']").val();	
 	var token = $("form[name='frm']").find("input[name='_token']").val();
 	var dataItem = new FormData();
 	dataItem.append('id',id);		
+	dataItem.append('source_skill_id',source_skill_id);	
 	dataItem.append('hobby',hobby);	
 	dataItem.append('talent',talent);	
 	dataItem.append('_token',token);
@@ -2149,7 +2216,29 @@ function saveSkill(){
 		async: false,
 		success: function (data) {
 			if(data.checked==1){	
-				$('.skill_txt').empty();					
+				$('.skill_txt').empty();	
+				/* begin skill */
+				var source_profile_skill=data.source_profile_skill;
+				var skill_row_mia=document.createElement('div');					
+				var skill_col_lg_4=document.createElement('div');
+				var skill_col_lg_8=document.createElement('div');
+				var skill_xika=document.createElement('div');
+				var skill_xika2=document.createElement('div');
+				$(skill_row_mia).addClass('row mia');
+				$(skill_col_lg_4).addClass('col-lg-4');
+				$(skill_col_lg_8).addClass('col-lg-8');
+				$(skill_xika).addClass('xika');
+				$(skill_xika2).addClass('xika2');
+				$('.skill_txt').append(skill_row_mia);
+				$(skill_row_mia).append(skill_col_lg_4);
+				$(skill_row_mia).append(skill_col_lg_8);
+				$(skill_col_lg_4).append(skill_xika);
+				$(skill_col_lg_8).append(skill_xika2);
+				$(skill_xika).text('Sở trường');
+				for(var i=0;i<source_profile_skill.length;i++){
+					$(skill_xika2).append('<div>'+source_profile_skill[i]['fullname']+'</div>');						
+				}				
+				/* end skill */				
 				/* begin hobby */
 				var hobby_row_mia=document.createElement('div');					
 				var hobby_col_lg_4=document.createElement('div');

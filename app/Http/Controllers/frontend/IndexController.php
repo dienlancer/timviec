@@ -43,6 +43,7 @@ use App\ProfilePlaceModel;
 use App\ProfileExperienceModel;
 use App\ProfileGraduationModel;
 use App\ProfileLanguageModel;
+use App\ProfileSkillModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -2164,39 +2165,70 @@ class IndexController extends Controller {
 		$info                 	=   array();
 		$checked              	=   1;                           
 		$msg                	=   array();
-		$data_profile=array();
+		$data_profile_skill=array();
+		$item=null;
 		$id             		=   (int)@$request->id;  		
+		$skill_id = @$request->source_skill_id;		
 		$hobby = trim(@$request->hobby);		
-		$talent = trim(@$request->talent);							
+		$talent = trim(@$request->talent);			
+		if($skill_id == null){
+			$checked=0;
+			$msg['skill_id']='Vui lòng chọn ít nhất 1 sở trường';
+		}		
+		if(mb_strlen(@$hobby) < 6){
+			$checked=0;
+			$msg['hobby']='Vui lòng nhập sở thích';
+		}
+		if(mb_strlen(@$talent) < 6){
+			$checked=0;
+			$msg['talent']='Vui lòng nhập kỹ năng đặc biệt';
+		}					
 		if($checked == 1){
 			$item=ProfileModel::find(@$id);					
 			$item->hobby=$hobby;
 			$item->talent=$talent;
 			$item->save();
-			$msg['success']='Cập nhật thành công';
-			$query=DB::table('profile');
-			$query->where('profile.id',@$id);
-			$source_profile=$query->select(				
-				'profile.hobby'
-				,'profile.talent'				
-				)
-			->groupBy(
-				'profile.hobby'
-				,'profile.talent'
-				)	
-			->get()->toArray();	
-			if(count($source_profile) > 0){
-				$source_profile2=convertToArray($source_profile);	
-				$data_profile=$source_profile2[0];
+			if($skill_id != null){
+				$source_selected=explode(',', $skill_id);
+				$source_skill_id=ProfileSkillModel::whereRaw("profile_id = ?",[(int)@$item->id])->select("skill_id")->get()->toArray();
+				$source_skill_id2=array();
+				foreach ($source_skill_id as $key => $value) {
+					$source_skill_id2[]=$value['skill_id'];
+				}
+				sort($source_selected);
+				sort($source_skill_id2);
+				$compare=0;
+				if($source_selected == $source_skill_id2){
+					$compare=1;
+				}
+				if((int)@$compare == 0){
+					ProfileSkillModel::whereRaw("profile_id = ?",[(int)@$item->id])->delete();
+					foreach ($source_selected as $key => $value) {
+						$item2=new ProfileSkillModel;
+						$item2->skill_id=(int)@$value;
+						$item2->profile_id=(int)@$item->id;
+						$item2->save();
+					}
+				}
 			}
+			$msg['success']='Cập nhật kỹ năng sở trường thành công';
+			$data_profile_skill= DB::table('skill')
+								->join('profile_skill','skill.id','=','profile_skill.skill_id')
+								->where('profile_skill.profile_id',@$id)
+								->select('skill.id','skill.fullname')
+								->groupBy('skill.id','skill.fullname')
+								->orderBy('skill.id','asc')
+								->get()
+								->toArray();
 		}		
 
 		$info = array(
 			"checked"       		=> $checked,       		
 			'msg'       			=> $msg,                
 			"id"            		=> (int)@$id,
-			"hobby"			=> @$data_profile['hobby'],
-			"talent"		=> @$data_profile['talent'],			
+			"hobby"			=> @$item->hobby,
+			"talent"		=> @$item->talent,	
+			"source_profile_skill"=>@$data_profile_skill		
 		);                       
 		return $info;   
 	}

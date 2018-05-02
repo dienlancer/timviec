@@ -530,6 +530,16 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("page-list",["as"=>"adminsystem.menu.getPageList","uses"=>"adminsystem\MenuController@getPageList"]);
 		Route::post("create-alias",["as"=>"adminsystem.menu.createAlias","uses"=>"adminsystem\MenuController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"profile"],function(){		
+		Route::match(["get","post"],"list/{candidate_id}",["as"=>"adminsystem.profile.getList","uses"=>"adminsystem\ProfileController@getList"]);	
+		Route::post("load-data",["as"=>"adminsystem.profile.loadData","uses"=>"adminsystem\ProfileController@loadData"]);		
+		Route::get("form/{task}/{candidate_id?}/{id?}",["as"=>"adminsystem.profile.getForm","uses"=>"adminsystem\ProfileController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.profile.save","uses"=>"adminsystem\ProfileController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.profile.deleteItem","uses"=>"adminsystem\ProfileController@deleteItem"]);				
+		Route::post("update-status",["as"=>"adminsystem.profile.updateStatus","uses"=>"adminsystem\ProfileController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.profile.changeStatus","uses"=>"adminsystem\ProfileController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.profile.trash","uses"=>"adminsystem\ProfileController@trash"]);		
+	});	
 	Route::group(["prefix"=>"group"],function(){		
 		Route::match(["get","post"],"list",["as"=>"adminsystem.group.getList","uses"=>"adminsystem\GroupController@getList"]);
 		Route::get("add",["as"=>"adminsystem.group.getAdd","uses"=>"adminsystem\GroupController@getAdd"]);

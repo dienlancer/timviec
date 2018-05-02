@@ -75,6 +75,7 @@ switch ($controller) {
     $li_employer_management='active open';
     break;
     case 'candidate': 
+    case 'profile':
     $li_candidate='active open';       
     $li_candidate_management='active open';
     break;

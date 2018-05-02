@@ -1899,6 +1899,39 @@ function sexConverter($data=array(),$controller){
     }
     return $result;
 }
+function profileConverter($data=array(),$controller){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){
+            $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
+            $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
+            $kicked=0;
+            if((int)@$data[$i]["status"]==1){
+                $kicked=0;
+            }
+            else{
+                $kicked=1;
+            }
+            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';
+            $created_at='<center>'.datetimeConverterVn($data[$i]["created_at"]).'</center>';       
+            $id=@$data[$i]["id"];   
+            $fullname=$data[$i]["fullname"];            
+            $result[$i] = array(
+                'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
+                'is_checked'               =>   0,
+                "id"                       =>   $id,
+                "fullname"                 =>   $fullname,                         
+               
+                "status"                   =>   $status,
+                "created_at"               =>   $created_at,
+                "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),
+                "edited"                   =>   $edited,
+                "deleted"                  =>   $deleted
+            );
+        }
+    }
+    return $result;
+}
 function skillConverter($data=array(),$controller){        
     $result = array();    
     if( count($data) > 0){
@@ -2105,6 +2138,7 @@ function candidateConverter($data=array(),$controller){
         for($i = 0 ;$i < count($data);$i++){
             $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
             $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
+            $entranced='<center><a href="'.route('adminsystem.profile.getList',[$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
             $kicked=0;
             if((int)@$data[$i]["status"]==1){
                 $kicked=0;
@@ -2122,6 +2156,7 @@ function candidateConverter($data=array(),$controller){
                 "id"                       =>   $id,
                 "fullname"                 =>   $fullname,
                 "email"                    =>   $email,                                           
+                "entranced"                   =>   $entranced,
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
                 "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),

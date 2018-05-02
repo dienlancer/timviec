@@ -2,16 +2,18 @@
 @section("content")
 <?php 
 
-$linkCancel			=	route('adminsystem.'.$controller.'.getList');
+$linkCancel			=	route('adminsystem.'.$controller.'.getList',[@$candidate_id]);
 $linkLoadData		=	route('adminsystem.'.$controller.'.loadData');
 $linkChangeStatus	=	route('adminsystem.'.$controller.'.changeStatus');
 $linkDelete			=	route('adminsystem.'.$controller.'.deleteItem');
 $linkUpdateStatus	=	route('adminsystem.'.$controller.'.updateStatus');
 $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_search"          value="">';
+$inputCandidateID                =   '<input type="hidden" name="candidate_id" value="'.@$candidate_id.'" />'; 
 ?>
 <form class="form-horizontal" role="form" name="frm">	
 	{{ csrf_field() }}
+	<?php echo $inputCandidateID; ?>
 	<input type="hidden" name="sort_json"  value="" />	
 	<div class="portlet light bordered">
 		<div class="portlet-title">
@@ -23,9 +25,11 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			<div class="actions">
 				<div class="table-toolbar">
 					<div class="row">
-						<div class="col-md-12">													
+						<div class="col-md-12">						
+							
 							<a href="javascript:void(0)" onclick="updateStatus(1)" class="btn blue">Hiển thị <i class="fa fa-eye"></i></a> 
 							<a href="javascript:void(0)" onclick="updateStatus(0)" class="btn yellow">Ẩn <i class="fa fa-eye-slash"></i></a> 
+							
 							<a href="javascript:void(0)" onclick="trash()" class="btn red">Xóa <i class="fa fa-trash"></i></a> 	
 							
 						</div>                                                
@@ -35,7 +39,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 		</div>
 		<div class="row">                     
                 <div class="col-md-6">
-                    <div><b>Tên ứng viên</b>  </div>
+                    <div><b>Hồ sơ ứng viên</b>  </div>
                     <div><?php echo $inputFilterSearch; ?></div>
                 </div>            
                 <div class="col-md-6">
@@ -50,10 +54,9 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 				<thead>
 					<tr>
 						<th width="1%"><input type="checkbox" onclick="checkAllAgent(this)"  name="checkall-toggle"></th>
-						<th>Tên ứng viên</th>													
-						<th>Email đăng nhập </th>																
-						<th width="5%">Hồ sơ</th>	
-						<th width="5%">Đăng nhập</th>							
+						<th>Tên</th>												
+						<th width="5%">Ngày tạo</th>	
+						<th width="5%">Trạng thái</th>							
 						<th width="1%">Sửa</th>  
 						<th width="1%">Xóa</th>                    
 					</tr>
@@ -67,9 +70,11 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 <script type="text/javascript" language="javascript">	
 
 	function getList() {  	
-		var token = $('form[name="frm"] input[name="_token"]').val();         
-        var filter_search=$('form[name="frm"] input[name="filter_search"]').val();
+		var token = $('input[name="_token"]').val();         
+        var filter_search=$('input[name="filter_search"]').val();
+        var candidate_id=$('input[name="candidate_id"]').val();
 		var dataItem={            
+			'candidate_id':candidate_id,
             '_token': token,
             'filter_search':filter_search,            
         };
@@ -78,8 +83,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			type: 'POST', 
 			data: dataItem,
 			success: function (data, status, jqXHR) {  								
-				vCandidateTable.clear().draw();
-				vCandidateTable.rows.add(data).draw();
+				vProfileTable.clear().draw();
+				vProfileTable.rows.add(data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -88,7 +93,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 		});
 	}	
 	function checkWithList(this_checkbox){
-		var dr = vCandidateTable.row( $(this_checkbox).closest('tr') ).data();       		
+		var dr = vProfileTable.row( $(this_checkbox).closest('tr') ).data();       		
 		if(parseInt(dr['is_checked']) == 0){
 			dr['checked'] ='<input type="checkbox" checked onclick="checkWithList(this)" name="cid" />';
 			dr['is_checked'] = 1;
@@ -96,7 +101,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			dr['checked'] ='<input type="checkbox" onclick="checkWithList(this)" name="cid" />';
 			dr['is_checked'] = 0;
 		}
-		vCandidateTable.row( $(this_checkbox).closest('tr') ).data(dr);
+		vProfileTable.row( $(this_checkbox).closest('tr') ).data(dr);
 	}	
 	function changeStatus(id,status){		
 		var token = $('input[name="_token"]').val();   		
@@ -110,9 +115,9 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			type: 'POST',     
 			data: dataItem,
 			success: function (data, status, jqXHR) {   							                              				
-				showMsg('note',data);		
-				vCandidateTable.clear().draw();
-				vCandidateTable.rows.add(data.data).draw();
+				showMsg('note',data);               		
+				vProfileTable.clear().draw();
+				vProfileTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -141,9 +146,9 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			type: 'POST', 			
 			data: dataItem,
 			success: function (data, status, jqXHR) {  				
-				showMsg('note',data);   		
-				vCandidateTable.clear().draw();
-				vCandidateTable.rows.add(data.data).draw();
+				showMsg('note',data);               		
+				vProfileTable.clear().draw();
+				vProfileTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -154,7 +159,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 	}
 	function updateStatus(status){				
 		var token 	= 	$('input[name="_token"]').val();   		
-		var dt 		= 	vCandidateTable.data();		
+		var dt 		= 	vProfileTable.data();		
 		var str_id	=	"";		
 		for(var i=0;i<dt.length;i++){
 			var dr=dt[i];
@@ -172,10 +177,10 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			url: '<?php echo $linkUpdateStatus; ?>',
 			type: 'POST', 			             
 			data: dataItem,
-			success: function (data, status, jqXHR) {  								                              			
-				showMsg('note',data);             		
-				vCandidateTable.clear().draw();
-				vCandidateTable.rows.add(data.data).draw();
+			success: function (data, status, jqXHR) {   							                              				
+				showMsg('note',data);               		
+				vProfileTable.clear().draw();
+				vProfileTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -194,7 +199,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			return 0;
 		}
 		var token 	= 	$('input[name="_token"]').val();   		
-		var dt 		= 	vCandidateTable.data();
+		var dt 		= 	vProfileTable.data();
 		var str_id	=	"";		
 		for(var i=0;i<dt.length;i++){
 			var dr=dt[i];
@@ -214,8 +219,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			data: dataItem,
 			success: function (data, status, jqXHR) {
 				showMsg('note',data);  
-				vCandidateTable.clear().draw();
-				vCandidateTable.rows.add(data.data).draw();
+				vProfileTable.clear().draw();
+				vProfileTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -224,9 +229,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 		});
 		$("input[name='checkall-toggle']").prop("checked",false);
 	}
-	$(document).ready(function(){		
-		getList();
-	});
+	getList();
 </script>
 @endsection()         
 

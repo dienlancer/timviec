@@ -20,6 +20,7 @@ var vProbationaryTable           =   null;
 var vWorkingFormTable           =   null;
 var vExperienceTable           =   null;
 var vSexTable           =   null;
+var vProfileTable           =   null;
 var vSkillTable           =   null;
 var vClassificationTable           =   null;
 var vLanguageLevelTable           =   null;
@@ -494,6 +495,23 @@ var basicTable = function () {
             ]
         });        
     };
+    var initProfileTable = function () {
+        vProfileTable = $('#tbl-profile').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                                    
+                { data: "created_at"        },
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
     var initSkillTable = function () {
         vSkillTable = $('#tbl-skill').DataTable({
             aLengthMenu: [
@@ -607,7 +625,8 @@ var basicTable = function () {
             columns: [                
                 { data: "checked"            },                
                 { data: "fullname"      },      
-                { data: "email"      },                                                    
+                { data: "email"      },        
+                { data: "entranced"        },                                              
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                
@@ -1120,6 +1139,7 @@ var basicTable = function () {
             initLanguageLevelTable();
             initClassificationTable();
             initSkillTable();
+            initProfileTable();
         }
     };
 }();

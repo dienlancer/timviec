@@ -533,7 +533,7 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 	Route::group(["prefix"=>"profile"],function(){		
 		Route::match(["get","post"],"list/{candidate_id}",["as"=>"adminsystem.profile.getList","uses"=>"adminsystem\ProfileController@getList"]);	
 		Route::post("load-data",["as"=>"adminsystem.profile.loadData","uses"=>"adminsystem\ProfileController@loadData"]);		
-		Route::get("form/{task}/{candidate_id?}/{id?}",["as"=>"adminsystem.profile.getForm","uses"=>"adminsystem\ProfileController@getForm"]);
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.profile.getForm","uses"=>"adminsystem\ProfileController@getForm"]);
 		Route::post("save",["as"=>"adminsystem.profile.save","uses"=>"adminsystem\ProfileController@save"]);
 		Route::post("delete-item",["as"=>"adminsystem.profile.deleteItem","uses"=>"adminsystem\ProfileController@deleteItem"]);				
 		Route::post("update-status",["as"=>"adminsystem.profile.updateStatus","uses"=>"adminsystem\ProfileController@updateStatus"]);

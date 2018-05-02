@@ -4,10 +4,7 @@
 $setting= getSettingSystem();
 $linkCancel             =   route('adminsystem.'.$controller.'.getList');
 $linkSave               =   route('adminsystem.'.$controller.'.save');
-$linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
-$inputFullName          =   '<input type="text" class="form-control" name="fullname"       onblur="createAlias();"   value="'.@$arrRowData['fullname'].'">'; 
-$inputAlias             =   '<input type="text" class="form-control" name="alias"        disabled     value="'.@$arrRowData['alias'].'">';
-$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"      value="'.@$arrRowData['sort_order'].'">';
+
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
@@ -40,30 +37,11 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hồ sơ</b></label>
-                        <div class="col-md-10">
-                            <?php echo $inputFullName; ?>
+                        <div class="col-md-10">                           
                             <span class="help-block"></span>
                         </div>
                     </div>                         
-                </div>   
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Alias</b></label>
-                        <div class="col-md-10">
-                            <?php echo $inputAlias; ?>
-                            <span class="help-block"></span>
-                        </div>
-                    </div>                         
-                </div>                                 
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Sắp xếp</b></label>
-                        <div class="col-md-10">
-                            <?php echo $inputSortOrder; ?>
-                            <span class="help-block"></span>
-                        </div>
-                    </div>  
-                </div>
+                </div>                   
                 <div class="row"> 
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Trạng thái</b></label>

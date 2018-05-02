@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 02, 2018 lúc 07:16 AM
+-- Thời gian đã tạo: Th5 02, 2018 lúc 11:31 AM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -1880,7 +1880,9 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (914, 1, 'YjfpXve6BQAttIetGDdtevr2mo6DIZ2E', '2018-04-27 01:12:48', '2018-04-27 01:12:48'),
 (915, 1, '4TLnawuya6QRhCY3HokCxBcrzjfIoeRi', '2018-04-27 11:06:22', '2018-04-27 11:06:22'),
 (916, 1, '22b0c7i6pHKNdoXzjiUEpaWZ5n0pnKAm', '2018-04-28 05:03:59', '2018-04-28 05:03:59'),
-(917, 1, 'hNveOKwlG26mRC96nJWef33RCBbJYJCM', '2018-05-01 20:08:54', '2018-05-01 20:08:54');
+(917, 1, 'hNveOKwlG26mRC96nJWef33RCBbJYJCM', '2018-05-01 20:08:54', '2018-05-01 20:08:54'),
+(918, 1, 't5hI25ie1DN3XGbheHENWmEaYrTbIEQ2', '2018-05-02 00:38:25', '2018-05-02 00:38:25'),
+(919, 1, 'Wp3vg04IN6nrn9MjeS3VBKJMVGVnLC7P', '2018-05-02 01:58:22', '2018-05-02 01:58:22');
 
 -- --------------------------------------------------------
 
@@ -2253,7 +2255,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `hobby`, `talent`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 1, 2, 3, 4, 'MS Sharepoint  48', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng.  48', 'Bóng đá 12', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng. 12', 1, 0, '2018-04-16 05:05:40', '2018-05-02 05:16:29');
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, 'Tư vấn quy trình vận hành và quản lý cửa hàng bằng phần mềm cho khách hàng trong ngành bán lẻ, nhà hàng', 1, 2, 3, 4, 'MS Sharepoint  48', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng.  48', 'Bóng đá 12', 'Rạng sáng 28/4, một đoạn đường Nam Quốc Cang, phường Phạm Ngũ Lão (quận 1), nơi có quán bar 030-X8, bị hàng trăm cảnh sát thuộc Phòng Cảnh sát quản lý Hành chính về trật tự (PC64) Công an TP HCM, cảnh sát hình sự, cơ động, CSGT, phòng chống ma tuý, 113... phong toả từ nhiều hướng. 12', 1, 1, '2018-04-16 05:05:40', '2018-05-02 08:23:18');
 
 -- --------------------------------------------------------
 
@@ -3525,7 +3527,9 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (554, NULL, 'ip', '127.0.0.1', '2018-04-15 18:19:46', '2018-04-15 18:19:46'),
 (555, 1, 'user', NULL, '2018-04-15 18:19:46', '2018-04-15 18:19:46'),
 (556, NULL, 'global', NULL, '2018-04-27 11:06:19', '2018-04-27 11:06:19'),
-(557, NULL, 'ip', '127.0.0.1', '2018-04-27 11:06:19', '2018-04-27 11:06:19');
+(557, NULL, 'ip', '127.0.0.1', '2018-04-27 11:06:19', '2018-04-27 11:06:19'),
+(558, NULL, 'global', NULL, '2018-05-02 01:58:18', '2018-05-02 01:58:18'),
+(559, NULL, 'ip', '127.0.0.1', '2018-05-02 01:58:18', '2018-05-02 01:58:18');
 
 -- --------------------------------------------------------
 
@@ -3556,7 +3560,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-01 20:08:54', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-01 20:08:54'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-02 01:58:22', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-02 01:58:22'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4300,7 +4304,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=918;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=920;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
@@ -4336,7 +4340,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT cho bảng `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_experience`
@@ -4354,7 +4358,7 @@ ALTER TABLE `profile_graduation`
 -- AUTO_INCREMENT cho bảng `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_language`
@@ -4366,7 +4370,7 @@ ALTER TABLE `profile_language`
 -- AUTO_INCREMENT cho bảng `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT cho bảng `profile_skill`
@@ -4474,7 +4478,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT cho bảng `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=558;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=560;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

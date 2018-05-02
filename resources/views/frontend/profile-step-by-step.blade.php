@@ -26,14 +26,14 @@ if(count(@$candidate)>0){
 	}        
 }
 $query=DB::table('profile')
-->join('literacy','profile.literacy_id','=','literacy.id')
-->join('experience','profile.experience_id','=','experience.id')
-->join('rank as rank_present','profile.rank_present_id','=','rank_present.id')
-->join('rank as rank_offered','profile.rank_offered_id','=','rank_offered.id')
-->join('classification as w','profile.ms_word','=','w.id')
-->join('classification as e','profile.ms_excel','=','e.id')
-->join('classification as p','profile.ms_power_point','=','p.id')
-->join('classification as o','profile.ms_outlook','=','o.id')
+->leftJoin('literacy','profile.literacy_id','=','literacy.id')
+->leftJoin('experience','profile.experience_id','=','experience.id')
+->leftJoin('rank as rank_present','profile.rank_present_id','=','rank_present.id')
+->leftJoin('rank as rank_offered','profile.rank_offered_id','=','rank_offered.id')
+->leftJoin('classification as w','profile.ms_word','=','w.id')
+->leftJoin('classification as e','profile.ms_excel','=','e.id')
+->leftJoin('classification as p','profile.ms_power_point','=','p.id')
+->leftJoin('classification as o','profile.ms_outlook','=','o.id')
 ;
 $query->where('profile.id',@$id);
 $source_info=$query->select('profile.fullname'
@@ -89,7 +89,7 @@ $province_fullname='';
 $status_search='';
 if(count($source_info) > 0){
 	$source_info2=convertToArray($source_info);	
-	$profile_detail=$source_info2[0];
+	$profile_detail=$source_info2[0];	
 	$profile_detail['salary']=convertToTextPrice($profile_detail['salary']) . ' VNĐ/tháng';	
 	if((int)@$profile_detail['status_search'] == 1){
 		$status_search='Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn';

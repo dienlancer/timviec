@@ -14,6 +14,12 @@ use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
 use App\ProfileModel;
+use App\ProfileJobModel;
+use App\ProfilePlaceModel;
+use App\ProfileExperienceModel;
+use App\ProfileGraduationModel;
+use App\ProfileLanguageModel;
+use App\ProfileSkillModel;
 use App\CandidateModel;
 use DB;
 class ProfileController extends Controller {
@@ -151,7 +157,13 @@ public function deleteItem(Request $request){
                    
   if($checked == 1){
     $item = ProfileModel::find((int)@$id);
-    $item->delete();    
+    $item->delete();        
+    ProfileJobModel::whereRaw("profile_id = ?",[(int)@$id])->delete();
+    ProfilePlaceModel::whereRaw("profile_id = ?",[(int)@$id])->delete();
+    ProfileExperienceModel::whereRaw("profile_id = ?",[(int)@$id])->delete();
+    ProfileGraduationModel::whereRaw("profile_id = ?",[(int)@$id])->delete();
+    ProfileLanguageModel::whereRaw("profile_id = ?",[(int)@$id])->delete();
+    ProfileSkillModel::whereRaw("profile_id = ?",[(int)@$id])->delete();
     $msg['success']          =   'Xóa thành công';                                                     
   }        
   $data                   =   $this->loadData($request);
@@ -207,6 +219,12 @@ public function trash(Request $request){
   }           
   if($checked == 1){                                  
     DB::table("profile")->whereIn('id',@$arrID)->delete();
+    DB::table('profile_experience')->whereIn('profile_id',@$arrID)->delete();         
+    DB::table('profile_graduation')->whereIn('profile_id',@$arrID)->delete();         
+    DB::table('profile_job')->whereIn('profile_id',@$arrID)->delete();         
+    DB::table('profile_language')->whereIn('profile_id',@$arrID)->delete();         
+    DB::table('profile_place')->whereIn('profile_id',@$arrID)->delete();         
+    DB::table('profile_skill')->whereIn('profile_id',@$arrID)->delete();         
     $msg['success']='Xóa thành công';                                      
   }
   $data                   =   $this->loadData($request);

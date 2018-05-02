@@ -10,6 +10,11 @@ $linkUpdateStatus	=	route('adminsystem.'.$controller.'.updateStatus');
 $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_search"          value="">';
 $inputCandidateID                =   '<input type="hidden" name="candidate_id" value="'.@$candidate_id.'" />'; 
+$candidate_name='';
+$candidate=App\CandidateModel::find((int)@$candidate_id);
+if($candidate != null){
+	$candidate_name=$candidate->fullname;
+}
 ?>
 <form class="form-horizontal" role="form" name="frm">	
 	{{ csrf_field() }}
@@ -20,7 +25,7 @@ $inputCandidateID                =   '<input type="hidden" name="candidate_id" v
 			<div class="note"  style="display: none;"></div>
 			<div class="caption font-dark">
 				<i class="{{$icon}}"></i>
-				<span class="caption-subject bold uppercase">{{$title}}</span>
+				<span class="caption-subject bold uppercase">{{$title}} : <?php echo $candidate_name; ?></span>
 			</div>     
 			<div class="actions">
 				<div class="table-toolbar">

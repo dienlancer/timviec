@@ -16,17 +16,15 @@ function uploadImage($name,$tmp_name,$width,$height){
   $pattern_dot='#\.#';
   $image_slug=preg_replace($pattern_ext, '', $image_slug);                      
   $image_slug=preg_replace($pattern_dot, '-', $image_slug);   
-  
   /* begin code_alias */
   $source_character = array_merge(range('a','z'), range(0,9));
   $code = implode($source_character, '');
   $code = str_shuffle($code);
   $code_alias   = substr($code, 0, 12);
   /* end code_alias */
-
-  $image_name=$image_slug. '-' . $code_alias .'.'.$ext;   
-  $image_path=base_path("upload".DS.$image_name);
-  @copy($image_tmp_name, $image_path);  
+  $image_name=$image_slug. '-' . $code_alias .'.'.$ext;     
+  $image_path=base_path("upload".DS.$image_name);  
+  move_uploaded_file($image_tmp_name, $image_path);  
   if((int)@$width > 0 && (int)@$height > 0){
     require_once base_path("app".DS."scripts".DS."PhpThumb".DS."ThumbLib.inc.php") ;       
     $thumb = PhpThumbFactory::create($image_path);        
@@ -114,7 +112,7 @@ function convertToTextPrice($value){
     $strCurrency= number_format($value,0,",",".") ;
     break;
     case "en_US":
-    $strCurrency=number_format($value,0,".",",");
+    $strCurrency='$'.number_format($value,0,".",",");
     break;
   }
   return $strCurrency;

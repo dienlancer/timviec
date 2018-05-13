@@ -136,8 +136,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 	<div class="container">
 		<div class="row">			
 			<div class="col-lg-9">
-				<h1 class="dn-dk-h">Tạo Hồ Sơ Từng Bước</h1>
-				
+				<h1 class="dn-dk-h">Tạo Hồ Sơ Từng Bước</h1>				
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
 					<div class="col-lg-9">

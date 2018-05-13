@@ -58,7 +58,7 @@ public function loadData(Request $request){
   $data=profileConverter($data,$this->_controller);            
   return $data;
 } 
-public function getForm($task,$id=""){     
+public function getForm($task,$candidate_id=0,$id=0){     
   $controller=$this->_controller;     
   $title="";
   $icon=$this->_icon; 
@@ -75,7 +75,7 @@ public function getForm($task,$id=""){
      $title=$this->_title . " : Add new";
      break;     
    }                  
-   return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
+   return view("adminsystem.".$this->_controller.".form",compact("arrRowData",'candidate_id',"controller","task","title","icon"));
  }else{
   return view("adminsystem.no-access",compact('controller'));
 }        

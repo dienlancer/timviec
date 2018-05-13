@@ -223,8 +223,9 @@ class ArticleController extends Controller {
     	}        		 			       
     	$info = array(
     		"checked"       => $checked,       		
-    		'msg'       => $msg,                
-    		"id"            => (int)@$id
+    		'msg'       => $msg,      
+        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$id]),             
+        'id'=>@$item->id; 		
     	);                       
     	return $info;       
     }

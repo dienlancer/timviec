@@ -11,9 +11,7 @@ $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 <form class="form-horizontal" role="form">	
 	<div class="portlet light bordered">
 		<div class="portlet-title">
-			<div class="alert alert-success" id="alert" style="display: none">
-				<strong>Success!</strong> 
-			</div>
+			<div class="note"  style="display: none;"></div>
 			<div class="caption font-dark">
 				<i class="{{$icon}}"></i>
 				<span class="caption-subject bold uppercase">{{$title}}</span>
@@ -33,7 +31,7 @@ $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 			</div>                                 
 		</div>
 		<div class="portlet-body">		
-			<table class="table table-striped table-bordered table-hover table-checkable order-column" id="tbl-invoice">
+			<table class="table table-striped table-bordered table-hover table-checkable order-column" id="tbl-<?php echo $controller; ?>">
 				<thead>
 					<tr>
 						<th width="1%"><input type="checkbox" onclick="checkAllAgent(this)"  name="checkall-toggle"></th>                
@@ -98,7 +96,7 @@ $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 			type: 'POST',     
 			data: dataItem,
 			success: function (data, status, jqXHR) {   							                              				
-				showMsg('alert',data.msg,data.type_msg);               		
+				showMsg('note',data);               		
 				vInvoiceTable.clear().draw();
 				vInvoiceTable.rows.add(data.data).draw();
 				spinner.hide();
@@ -129,7 +127,7 @@ $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 			type: 'POST', 			
 			data: dataItem,
 			success: function (data, status, jqXHR) {  				
-				showMsg('alert',data.msg,data.type_msg);               		
+				showMsg('note',data);               		
 				vInvoiceTable.clear().draw();
 				vInvoiceTable.rows.add(data.data).draw();
 				spinner.hide();
@@ -161,7 +159,7 @@ $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 			             
 			data: dataItem,
 			success: function (data, status, jqXHR) {   							                              				
-				showMsg('alert',data.msg,data.type_msg);               		
+				showMsg('note',data);               		
 				vInvoiceTable.clear().draw();
 				vInvoiceTable.rows.add(data.data).draw();
 				spinner.hide();
@@ -200,7 +198,7 @@ $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 			             
 			data: dataItem,
 			success: function (data, status, jqXHR) {
-				showMsg('alert',data.msg,data.type_msg);  
+				showMsg('note',data);  
 				vInvoiceTable.clear().draw();
 				vInvoiceTable.rows.add(data.data).draw();
 				spinner.hide();

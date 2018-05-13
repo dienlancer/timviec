@@ -29,6 +29,7 @@ $product_height = $setting['product_height']['field_value'];
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
+        <div class="note"  style="display: none;"></div>
         <div class="caption">
             <i class="{{$icon}}"></i>
             <span class="caption-subject font-dark sbold uppercase">{{$title}}</span>
@@ -158,32 +159,7 @@ $product_height = $setting['product_height']['field_value'];
     </div>
 </div>
 <script type="text/javascript" language="javascript">
-    function resetErrorStatus(){
-        var id              =   $('input[name="id"]');        
-        var fullname        =   $('input[name="fullname"]');
-        var address         =   $('input[name="address"]');
-        var phone           =   $('input[name="phone"]');
-
-        
-        
-        var status          =   $('select[name="status"]');
-        
-        $(fullname).closest('.form-group').removeClass("has-error");
-        $(address).closest('.form-group').removeClass("has-error");        
-        $(phone).closest('.form-group').removeClass("has-error");
-
-
-
-        $(status).closest('.form-group').removeClass("has-error");        
-        
-        $(fullname).closest('.form-group').find('span').empty().hide();
-        $(address).closest('.form-group').find('span').empty().hide();        
-        $(phone).closest('.form-group').find('span').empty().hide();
-
-
-        
-        $(status).closest('.form-group').find('span').empty().hide();        
-    }
+    
 
     function save(){
         var id=$('input[name="id"]').val();                
@@ -192,7 +168,7 @@ $product_height = $setting['product_height']['field_value'];
         var phone=$('input[name="phone"]').val();                
         var status=$('select[name="status"]').val();     
         var token = $('input[name="_token"]').val();   
-        resetErrorStatus();
+        
         var dataItem={
             "id":id,        
             "fullname":fullname,
@@ -211,31 +187,9 @@ $product_height = $setting['product_height']['field_value'];
             async: false,
             success: function (data) {
                 if(data.checked==1){                    
-                    window.location.href = "<?php echo $linkCancel; ?>";
+                    window.location.href = data.link_edit;
                 }else{
-                    var data_error=data.error;   
-                    if(typeof data_error.fullname               != "undefined"){
-                        $('input[name="fullname"]').closest('.form-group').addClass(data_error.fullname.type_msg);
-                        $('input[name="fullname"]').closest('.form-group').find('span').text(data_error.fullname.msg);
-                        $('input[name="fullname"]').closest('.form-group').find('span').show();                        
-                    }        
-                    if(typeof data_error.address               != "undefined"){
-                        $('input[name="address"]').closest('.form-group').addClass(data_error.address.type_msg);
-                        $('input[name="address"]').closest('.form-group').find('span').text(data_error.address.msg);
-                        $('input[name="address"]').closest('.form-group').find('span').show();                        
-                    }         
-                    if(typeof data_error.phone               != "undefined"){
-                        $('input[name="phone"]').closest('.form-group').addClass(data_error.phone.type_msg);
-                        $('input[name="phone"]').closest('.form-group').find('span').text(data_error.phone.msg);
-                        $('input[name="phone"]').closest('.form-group').find('span').show();                        
-                    }     
-                    
-                    
-                    if(typeof data_error.status               != "undefined"){
-                        $('select[name="status"]').closest('.form-group').addClass(data_error.status.type_msg);
-                        $('select[name="status"]').closest('.form-group').find('span').text(data_error.status.msg);
-                        $('select[name="status"]').closest('.form-group').find('span').show();
-                    }                    
+                    showMsg('note',data);    
                 }
                 spinner.hide();
             },

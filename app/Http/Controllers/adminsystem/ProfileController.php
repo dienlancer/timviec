@@ -49,8 +49,8 @@ public function loadData(Request $request){
   if((int)(@$request->candidate_id) > 0){
     $query->where('profile.candidate_id',(int)@$request->candidate_id);
   }
-  $data=$query->select('profile.id','profile.fullname','profile.status','profile.created_at','profile.updated_at')
-  ->groupBy('profile.id','profile.fullname','profile.status','profile.created_at','profile.updated_at')   
+  $data=$query->select('profile.id','profile.fullname','profile.candidate_id','profile.status','profile.created_at','profile.updated_at')
+  ->groupBy('profile.id','profile.fullname','profile.candidate_id','profile.status','profile.created_at','profile.updated_at')   
   ->orderBy('profile.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    

@@ -1242,7 +1242,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 <script type="text/javascript" language="javascript">
 	function saveCareerGoal(){
 		var id = $("form[name='frm']").find("input[name='id']").val();
-		var career_goal = $("form[name='frm']").find("textarea[name='career_goal']").val();
+		var career_goal = $("form[name='frm']").find("textarea[name='career_goal']").summernote('code');
 		var token = $("form[name='frm']").find("input[name='_token']").val();
 		var dataItem = new FormData();
 		dataItem.append('id',id);
@@ -1291,8 +1291,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		var year_to = $("form[name='frm']").find("select[name='year_to']").val();
 		var currency = $("form[name='frm']").find("select[name='currency']").val();
 		var salary = $("form[name='frm']").find("input[name='salary']").val();
-		var job_description = $("form[name='frm']").find("textarea[name='job_description']").val();
-		var achievement = $("form[name='frm']").find("textarea[name='achievement']").val();		
+		var job_description = $("form[name='frm']").find("textarea[name='job_description']").summernote('code');
+		var achievement = $("form[name='frm']").find("textarea[name='achievement']").summernote('code');		
 		var token = $("form[name='frm']").find("input[name='_token']").val();
 		var dataItem = new FormData();
 		dataItem.append('id',id);
@@ -2035,7 +2035,7 @@ function saveOffice(){
 	var ms_power_point = $("form[name='frm']").find("input[name='ms_power_point']:checked").val();		
 	var ms_outlook = $("form[name='frm']").find("input[name='ms_outlook']:checked").val();			
 	var other_software = $("form[name='frm']").find("input[name='other_software']").val();	
-	var medal = $("form[name='frm']").find("textarea[name='medal']").val();	
+	var medal = $("form[name='frm']").find("textarea[name='medal']").summernote('code');	
 	var token = $("form[name='frm']").find("input[name='_token']").val();
 	var dataItem = new FormData();
 	dataItem.append('id',id);
@@ -2200,7 +2200,7 @@ function saveSkill(){
     	return +e.value;
 	});			
 	var hobby = $("form[name='frm']").find("input[name='hobby']").val();	
-	var talent = $("form[name='frm']").find("textarea[name='talent']").val();	
+	var talent = $("form[name='frm']").find("textarea[name='talent']").summernote('code');	
 	var token = $("form[name='frm']").find("input[name='_token']").val();
 	var dataItem = new FormData();
 	dataItem.append('id',id);		

@@ -76,7 +76,8 @@ function loadSummerNote(){
     		
     		toolbar: [        		
     		['style', ['ul', 'ol']],    		
-    		['link']
+    		['link'],
+    		['codeview']
     		]
     		
     	});

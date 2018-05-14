@@ -70,7 +70,19 @@ function showMsg(ctrl,data){
 function hideMsg(ctrl){
     $('.'+ctrl).fadeOut();
 }       
+function loadSummerNote(){
+	$('textarea.summer-editor').summernote({						
+    		height: 300,    		    	
+    		
+    		toolbar: [        		
+    		['style', ['ul', 'ol']],    		
+    		['link']
+    		]
+    		
+    	});
+}
 $(document).ready(function(){	
 	basicTable.init();		
 	setTimeout(hideMsg,60000,'note');	
+	loadSummerNote();
 });

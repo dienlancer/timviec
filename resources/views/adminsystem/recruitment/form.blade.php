@@ -38,8 +38,8 @@ $inputFullName          =   '<input type="text" class="form-control" name="fulln
 $inputAlias             =   '<input type="text" class="form-control" name="alias"        disabled     value="'.@$arrRowData['alias'].'">';
 $inputQuantity          =   '<input type="text" class="form-control" name="quantity"       value="'.@$arrRowData['quantity'].'">';
 $ddlSex=cmsSelectboxCategory("sex_id","form-control",$source_sex,@$arrRowData['sex_id'],'','Chọn giới tính');  
-$inputDescription       =   '<textarea name="description" rows="10" cols="100" class="form-control" >'.@$arrRowData['description'].'</textarea>'; 
-$inputRequirement       =   '<textarea name="requirement" rows="10" cols="100" class="form-control" >'.@$arrRowData['requirement'].'</textarea>'; 
+$inputDescription       =   '<textarea name="description" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['description'].'</textarea>'; 
+$inputRequirement       =   '<textarea name="requirement" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['requirement'].'</textarea>'; 
 $ddlWork=cmsSelectboxCategory("work_id","form-control",$source_work,@$arrRowData['work_id'],'','Chọn tính chất công việc');
 $ddlLiteracy=cmsSelectboxCategory("literacy_id","form-control",$source_literacy,@$arrRowData['literacy_id'],'','Chọn trình độ học vấn');
 $ddlExperience=cmsSelectboxCategory("experience_id","form-control",$source_experience,@$arrRowData['experience_id'],'','Chọn kinh nghiệm');
@@ -48,7 +48,7 @@ $inputCommissionFrom          =   '<input type="text" class="form-control" name=
 $inputCommissionTo          =   '<input type="text" class="form-control" name="commission_to"     value="'.@$arrRowData['commission_to'].'">'; 
 $ddlWorkingForm=cmsSelectboxCategory("working_form_id","form-control",$source_working_form,@$arrRowData['working_form_id'],'','Chọn hình thức làm việc');
 $ddlProbationary=cmsSelectboxCategory("probationary_id","form-control",$source_probationary,@$arrRowData['probationary_id'],'','Chọn thời gian thử việc');
-$inputBenefit       =   '<textarea name="benefit" rows="10" cols="100" class="form-control" >'.@$arrRowData['benefit'].'</textarea>'; 
+$inputBenefit       =   '<textarea name="benefit" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['benefit'].'</textarea>'; 
 $ddlJob        =cmsSelectboxMultiple("job_id", 'form-control', @$source_job, @$arrRowData['job_id'],'','Chọn ngành nghề');
 $ddlProvince        =cmsSelectboxMultiple("province_id", 'form-control', @$source_province, @$arrRowData['province_id'],'','Chọn nơi làm việc');
 $inputDuration='<input type="text" readonly="readonly"  name="duration" class="form-control"  value="'.@$arrRowData['duration'].'" >';
@@ -258,8 +258,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var alias       = $('input[name="alias"]').val();
         var quantity       = $('input[name="quantity"]').val();
         var sex_id      = $('select[name="sex_id"]').val();
-        var description =   $('textarea[name="description"]').val();
-        var requirement = $('textarea[name="requirement"]').val();
+        var description =   $('textarea[name="description"]').summernote('code');
+        var requirement = $('textarea[name="requirement"]').summernote('code');
         var work_id     = $('select[name="work_id"]').val();
         var literacy_id = $('select[name="literacy_id"]').val();
         var experience_id = $('select[name="experience_id"]').val();
@@ -268,7 +268,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var commission_to = $('input[name="commission_to"]').val();
         var working_form_id = $('select[name="working_form_id"]').val();
         var probationary_id = $('select[name="probationary_id"]').val();
-        var benefit = $('textarea[name="benefit"]').val();
+        var benefit = $('textarea[name="benefit"]').summernote('code');
         var job_id = $('select[name="job_id[]"]').val();
         var province_id = $('select[name="province_id[]"]').val();
         var duration = $('input[name="duration"]').val();        

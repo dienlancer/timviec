@@ -278,7 +278,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							</div>
 						</div>
 						<div class="career_goal_save" style="<?php echo $status_career_goal_save; ?>">
-							<div><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca" rows="10" ><?php echo @$profile_detail['career_goal']; ?></textarea></div>
+							<div><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca summer-editor" rows="10" ><?php echo @$profile_detail['career_goal']; ?></textarea></div>
 							<div>
 								<div class="titanius">
 									<div class="vihamus">
@@ -472,13 +472,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					<div class="row mia">
 						<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8">						
-							<textarea name="job_description" placeholder="Nhập mô tả công việc..."  class="vacca" rows="10" ></textarea>
+							<textarea name="job_description" placeholder="Nhập mô tả công việc..."  class="vacca summer-editor" rows="10" ></textarea>
 						</div>
 					</div>
 					<div class="row mia">
 						<div class="col-lg-4" ><div class="xika"><div>Thành tích đạt được</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8">						
-							<textarea name="achievement" placeholder="Nhập thành tích đạt được..."  class="vacca" rows="10" ></textarea>
+							<textarea name="achievement" placeholder="Nhập thành tích đạt được..."  class="vacca summer-editor" rows="10" ></textarea>
 						</div>
 					</div>
 					<div class="row mia">
@@ -1065,7 +1065,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						<div class="row mia">
 							<div class="col-lg-4" ><div class="xika"><div>Các thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 							<div class="col-lg-8">
-								<textarea name="medal" placeholder="Nhập thành tích..." class="vacca" rows="10" ><?php echo @$profile_detail['medal']; ?></textarea>
+								<textarea name="medal" placeholder="Nhập thành tích..." class="vacca summer-editor" rows="10" ><?php echo @$profile_detail['medal']; ?></textarea>
 							</div>
 						</div>
 					</div>
@@ -1205,7 +1205,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 					<div class="row mia">
 						<div class="col-lg-4" ><div class="xika"><div>Kỹ năng đặc biệt</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 						<div class="col-lg-8">
-							<textarea name="talent" placeholder="Nhập kỹ năng đặc biệt" class="vacca" rows="10" ><?php echo @$profile_detail['talent']; ?></textarea>
+							<textarea name="talent" placeholder="Nhập kỹ năng đặc biệt" class="vacca summer-editor" rows="10" ><?php echo @$profile_detail['talent']; ?></textarea>
 						</div>
 					</div>
 					<div class="row mia">

@@ -18,7 +18,7 @@ $inputPhone             =   '<input type="text" class="form-control" name="phone
 $ddlProvince            = cmsSelectboxCategory("province_id","form-control",$arrProvince,@$arrRowData['province_id'],"",'Chọn tỉnh thành phố');
 $ddlScale               = cmsSelectboxCategory("scale_id","form-control",$arrScale,@$arrRowData['scale_id'],"",'Chọn quy mô công ty');
 /* end tỉnh thành phố và quy mô công ty */
-$inputIntro             =   '<textarea name="intro" rows="10" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
+$inputIntro             =   '<textarea name="intro" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputFax =         '<input type="text" class="form-control" name="fax"        value="'.@$arrRowData['fax'].'">'; 
 $inputWebsite = '<input type="text" class="form-control" name="website"        value="'.@$arrRowData['website'].'">'; 
 $inputContactedName='<input type="text" class="form-control" name="contacted_name"        value="'.@$arrRowData['contacted_name'].'">'; 
@@ -296,7 +296,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var phone=$('input[name="phone"]').val();   
         var province_id=$('select[name="province_id"]').val();          
         var scale_id=$('select[name="scale_id"]').val();       
-        var intro=$('textarea[name="intro"]').val();   
+        var intro=$('textarea[name="intro"]').summernote('code');   
         var fax=$('input[name="fax"]').val(); 
         var website=$('input[name="website"]').val(); 
         var contacted_name=$('input[name="contacted_name"]').val(); 

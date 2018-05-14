@@ -151,6 +151,13 @@ if(isset($alias)){
 	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/ui/jquery-ui.js')}}"                 ></script>
 	<link href="{{asset('public/frontend/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
 	<!-- end ui-->
+	<!-- begin summernote -->
+	<link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
+
+	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote.js')}}"                 ></script>
+	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
+	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>
+	<!-- end summernote -->
 	<!-- begin custom -->
 	<link rel="stylesheet" href="{{ asset('public/frontend/css/menu-horizontal-right.css') }}" />
 	<link rel="stylesheet" href="{{ asset('public/frontend/css/menu-horizontal-right-dmsp.css') }}" />

@@ -312,7 +312,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Mục tiêu</b></label>
                         <div class="col-md-9">                                   
-                            <label class="control-label"><?php echo @$arrRowData['career_goal']; ?></label>                                              
+                            <label class="control-label ribisachi-hp"><?php echo @$arrRowData['career_goal']; ?></label>                                              
                         </div>
                     </div>                         
                 </div>    

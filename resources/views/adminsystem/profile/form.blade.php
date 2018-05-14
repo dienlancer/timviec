@@ -44,6 +44,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 $product_width = $setting['product_width']['field_value'];
                 $product_height = $setting['product_height']['field_value'];  
                 $source_candidate=App\CandidateModel::find(@$candidate_id);
+                $marriage_id=0;
                 if($source_candidate != null){
                     $data_candidate=$source_candidate->toArray();
                     $candidate_fullname=$data_candidate['fullname'];
@@ -56,7 +57,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         $avatar='<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data_candidate['avatar']).'"  /></div>';
                     }else{
                         $avatar='<div class="margin-top-15"><img width="100" height="100" src="'.asset("upload/avatar-default-icon.png").'"  /></div>';
-                    }                    
+                    }          
+                    $marriage_id=$data_candidate['marriage_id'];          
                 }                            
                 ?>       
                 <div class="row">
@@ -125,7 +127,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 <hr>   
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label"><b>THÔNG TIN CHUNG</b></label>
+                        <label class="col-md-3 control-label lisa"><b>THÔNG TIN CHUNG</b></label>
                         <div class="col-md-9">                                   
                             
                         </div>
@@ -170,7 +172,348 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <label class="control-label"><?php echo @$experience_name; ?></label>                                              
                         </div>
                     </div>                         
-                </div>                                                                       
+                </div>      
+                <?php 
+                $rank_present='';
+                $source_rank_present=App\RankModel::find(@$arrRowData['rank_present_id']);
+                if($source_rank_present != null){
+                    $data_rank_present=$source_rank_present->toArray();
+                    $rank_present=$data_rank_present['fullname'];
+                }
+                ?>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Cấp bậc hiện tại</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$rank_present; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>  
+                <?php 
+                $rank_offered='';
+                $source_rank_offered=App\RankModel::find(@$arrRowData['rank_offered_id']);
+                if($source_rank_offered != null){
+                    $data_rank_offered=$source_rank_offered->toArray();
+                    $rank_offered=$data_rank_offered['fullname'];
+                }
+                ?>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Cấp bậc mong muốn</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$rank_offered; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>
+                <?php 
+                $source_profile_job=App\ProfileJobModel::whereRaw('profile_id = ?',[(int)@$arrRowData['id']])->select('id','profile_id','job_id')->get()->toArray();
+                $job_fullname='';
+                $job_id=array();
+                if(count($source_profile_job) > 0){
+                    foreach ($source_profile_job as $key => $value) {
+                        $job_id[]=$value['job_id'];
+                    }
+                    $source_job=App\JobModel::whereIn('id',@$job_id)->select('fullname')->get()->toArray();         
+                    if(count($source_job) > 0){
+                        foreach ($source_job as $key => $value) {
+                            $source_job_fullname[]=$value['fullname'];
+                        }
+                        $job_fullname=implode(' , ', $source_job_fullname);
+                    }
+                }
+                ?>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Ngành nghề mong muốn</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$job_fullname; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>
+                <?php                 
+                $salary=convertToTextPrice((int)@$arrRowData['salary']) . ' VNĐ/tháng';
+                ?>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Mức lương mong muốn</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$salary; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>   
+                <?php 
+                $source_profile_place=App\ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$arrRowData['id']])->select('id','profile_id','province_id')->get()->toArray();
+                $province_id=array();
+                $province_fullname='';                
+                if(count($source_profile_place) > 0){
+                    foreach ($source_profile_place as $key => $value) {
+                        $province_id[]=$value['province_id'];
+                    }
+                    $source_province=App\ProvinceModel::whereIn('id',@$province_id)->select('fullname')->get()->toArray();  
+                    if(count($source_province) > 0){
+                        foreach ($source_province as $key => $value) {
+                            $source_province_fullname[]=$value['fullname'];
+                        }
+                        $province_fullname=implode(' , ', $source_province_fullname);
+                    }       
+                }   
+                ?>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Nơi làm việc mong muốn</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$province_fullname; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>
+                <?php 
+                $marriage_name='';
+                $source_marriage=App\MarriageModel::find((int)@$marriage_id);          
+                if($source_marriage != null){
+                    $data_marriage=$source_marriage->toArray();
+                    $marriage_name=$data_marriage['fullname'];
+                }      
+                ?>                
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Hôn nhân</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$marriage_name; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>  
+                <?php 
+                $status_search='';
+                if((int)@$arrRowData['status_search'] == 1){
+                    $status_search='Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn';
+                }else{
+                    $status_search='Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ này chỉ dùng để ứng tuyển';
+                }   
+                ?>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Hiện tại</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$status_search; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>  
+                <hr>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label lisa"><b>MỤC TIÊU NGHỀ NGHIỆP</b></label>
+                        <div class="col-md-9">                                   
+                            
+                        </div>
+                    </div>                         
+                </div>  
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Mục tiêu</b></label>
+                        <div class="col-md-9">                                   
+                            <label class="control-label"><?php echo @$arrRowData['career_goal']; ?></label>                                              
+                        </div>
+                    </div>                         
+                </div>    
+                <hr>    
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label lisa"><b>KINH NGHIỆM LÀM VIỆC</b></label>
+                        <div class="col-md-9">                                   
+                            
+                        </div>
+                    </div>                         
+                </div>  
+                <?php 
+                $source_profile_experience=App\ProfileExperienceModel::whereRaw('profile_id = ?',[@$arrRowData['id']])->select()->get()->toArray();  
+                if(count($source_profile_experience) > 0){
+                    
+                    foreach ($source_profile_experience as $key => $value) {
+                        $profile_experience_id=$value['id'];
+                        $profile_experience_company_name=$value['company_name'];
+                        $profile_experience_person_title=$value['person_title'];
+                        $profile_experience_time_from=$value['month_from'] . '/' . $value['year_from'];
+                        $profile_experience_time_to=$value['month_to'] . '/' .$value['year_to'];        
+                        $profile_experience_salary=convertToTextPrice($value['salary']);
+                        $currency='';
+                        switch ($value['currency']) {
+                            case 'vnd':         
+                            $currency='VNĐ';    
+                            break;
+                            case 'usd':
+                            $currency='USD';                            
+                            break;
+                        }       
+                        $profile_experience_salary=@$profile_experience_salary.' '.@$currency.'/tháng';
+                        $profile_experience_job_description=@$value['job_description'];
+                        $profile_experience_achievement=@$value['achievement'];
+                        $profile_experience_profile_id=(int)@$value['profile_id'];
+                        ?>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Công ty</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_experience_company_name; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div>  
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Chức danh</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_experience_person_title; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div> 
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Thời gian làm việc</b></label>
+                                <div class="col-md-9">                                   
+                                    <div class="box-logo">
+                                        <div class="control-label">Từ</div>
+                                        <div class="margin-left-10 control-label"><?php echo @$profile_experience_time_from; ?></div>
+                                        <div class="margin-left-10 control-label">Đến</div>
+                                        <div class="margin-left-10 control-label"><?php echo @$profile_experience_time_to; ?></div>
+                                    </div> 
+                                </div>
+                            </div>                         
+                        </div> 
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Mức lương</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_experience_salary; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div>  
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Mô tả công việc</b></label>
+                                <div class="col-md-9">                                   
+                                    <div class="control-label ribisachi-hp"><?php echo @$profile_experience_job_description; ?></div>                                              
+                                </div>
+                            </div>                         
+                        </div>  
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Thành tích nổi bật</b></label>
+                                <div class="col-md-9">                                   
+                                    <div class="control-label ribisachi-hp"><?php echo @$profile_experience_achievement; ?></div>                                              
+                                </div>
+                            </div>                         
+                        </div>  
+                        <hr>                          
+                        <?php                        
+                    }
+                }
+                ?>                 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label lisa"><b>TRÌNH ĐỘ BẰNG CẤP</b></label>
+                        <div class="col-md-9">                                   
+                            
+                        </div>
+                    </div>                         
+                </div>
+                <?php 
+                $source_profile_graduation=DB::table('profile_graduation')
+                ->join('literacy','profile_graduation.literacy_id','=','literacy.id')
+                ->join('graduation','profile_graduation.graduation_id','=','graduation.id')
+                ->where('profile_graduation.profile_id',(int)@$arrRowData['id'])
+                ->select(
+                    'profile_graduation.id',
+                    'literacy.fullname as literacy_name',
+                    'profile_graduation.training_unit',
+                    'profile_graduation.year_from',
+                    'profile_graduation.year_to',
+                    'profile_graduation.department',
+                    'graduation.fullname as graduation_name',
+                    'profile_graduation.degree'
+                )
+                ->groupBy(
+                    'profile_graduation.id',
+                    'literacy.fullname',
+                    'profile_graduation.training_unit',
+                    'profile_graduation.year_from',
+                    'profile_graduation.year_to',
+                    'profile_graduation.department',
+                    'graduation.fullname',
+                    'profile_graduation.degree'
+                )
+                ->orderBy('profile_graduation.id', 'asc')
+                ->get()->toArray();     
+                $data_profile_graduation=convertToArray($source_profile_graduation);  
+                if(count($data_profile_graduation) > 0){                    
+                    foreach ($data_profile_graduation as $key => $value){
+                        $profile_graduation_id=$value['id'];
+                        $profile_graduation_literacy_name=$value['literacy_name'];
+                        $profile_graduation_training_unit=$value['training_unit'];
+                        $profile_graduation_year_from= $value['year_from'];
+                        $profile_graduation_year_to=$value['year_to'];                                  
+                        $profile_graduation_department=@$value['department'];
+                        $profile_graduation_graduation_name=@$value['graduation_name'];         
+                        $profile_graduation_degree=@$value['degree'];     
+                        ?>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Trình độ học vấn</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_graduation_literacy_name; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Đơn vị đào tạo</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_graduation_training_unit; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Thời gian</b></label>
+                                <div class="col-md-9">                                   
+                                    <div class="box-logo">
+                                        <div class="control-label">Từ</div>
+                                        <div class="margin-left-10 control-label"><?php echo @$profile_graduation_year_from; ?></div>
+                                        <div class="margin-left-10 control-label">Đến</div>
+                                        <div class="margin-left-10 control-label"><?php echo @$profile_graduation_year_to; ?></div>
+                                    </div>                                        
+                                </div>
+                            </div>                         
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Chuyên ngành</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_graduation_department; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Tốt nghiệp loại</b></label>
+                                <div class="col-md-9">                                   
+                                    <label class="control-label"><?php echo @$profile_graduation_graduation_name; ?></label>                                              
+                                </div>
+                            </div>                         
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-label"><b>Ảnh bằng cấp</b></label>
+                                <div class="col-md-9">                                   
+                                    <div class="box-logo margin-top-15">
+                                        <img src="<?php echo asset('upload/'.@$profile_graduation_degree); ?>" />                                     
+                                    </div>                                    
+                                </div>
+                            </div>                         
+                        </div>
+                        <hr>  
+                        <?php                          
+                    }
+                }
+                ?>                                                            
             </div>              
         </form>
     </div>

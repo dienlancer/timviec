@@ -6,7 +6,7 @@ $linkCancel             =   route('adminsystem.'.$controller.'.getList',[@$candi
 $linkSave               =   route('adminsystem.'.$controller.'.save');
 
 $status                 =   (count(@$arrRowData) > 0) ? (int)@$arrRowData['status'] : 1 ;
-$arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
+$arrStatus              =   array(-1 => '- Select status -', 1 => 'Duyệt', 0 => 'Ngưng duyệt');  
 $ddlStatus              =   cmsSelectbox("status","form-control",@$arrStatus,@$status,"");
 $id                     =   (count(@$arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
@@ -745,25 +745,27 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                                 <label class="control-label ribisachi-hp"><?php echo @$arrRowData['talent']; ?></label>                                              
                             </div>
                         </div>                         
-                </div>                                                   
+                </div>   
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label"><b>Trạng thái</b></label>
+                        <div class="col-md-9">                            
+                            <?php echo $ddlStatus; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>                                                 
             </div>              
         </form>
     </div>
 </div>
 <script type="text/javascript" language="javascript">   
     function save(){
-        var id=$('input[name="id"]').val();        
-        var fullname=$('input[name="fullname"]').val();                
-        var alias=$('input[name="alias"]').val();                
-        var sort_order=$('input[name="sort_order"]').val();
+        var id=$('input[name="id"]').val();                
         var status=$('select[name="status"]').val();     
-        var token = $('input[name="_token"]').val();   
-        
+        var token = $('input[name="_token"]').val();           
         var dataItem={
-            "id":id,
-            "fullname":fullname,  
-            "alias":alias,          
-            "sort_order":sort_order,
+            "id":id,            
             "status":status,
             "_token": token
         };

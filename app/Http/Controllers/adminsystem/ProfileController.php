@@ -82,9 +82,7 @@ public function getForm($task,$candidate_id=0,$id=0){
 }
 public function save(Request $request){
   $id 					        =		trim($request->id);        
-  $fullname 				    =		trim($request->fullname);    
-  $alias                =   trim($request->alias);                          
-  $sort_order           =   trim($request->sort_order);
+                    
   $status               =   trim($request->status);          
   $data 		            =   array();
 
@@ -92,15 +90,7 @@ public function save(Request $request){
   $info                 =   array();
   $checked              =   1;                           
   $msg                =   array();
-  if(empty($fullname)){
-   $checked = 0;                 
-   $msg["fullname"] = "Thiếu tên";
- }                   
- if(empty($sort_order)){
-   $checked = 0;
-
-   $msg["sort_order"] 		= "Thiếu sắp xếp";
- }
+  
  if((int)$status==-1){
    $checked = 0;
 
@@ -114,10 +104,7 @@ public function save(Request $request){
   } else{
     $item       = ProfileModel::find((int)@$id);   
 
-  }  
-  $item->fullname 		    =	@$fullname;  
-  $item->alias            = @$alias;                                         
-  $item->sort_order 		  =	(int)@$sort_order;
+  }    
   $item->status 			    =	(int)@$status;    
   $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	                
   $item->save();                                  
@@ -126,7 +113,7 @@ public function save(Request $request){
 $info = array(
         "checked"       => $checked,          
         'msg'       => $msg,      
-        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->id])
+        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->candidate_id,@$item->id])
       );                       
 return $info;   
 }

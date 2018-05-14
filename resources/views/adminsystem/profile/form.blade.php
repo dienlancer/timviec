@@ -70,6 +70,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                     </div>                         
                 </div>     
                 <?php 
+                $sex_name='';
                 $source_sex=App\SexModel::find(@$sex_id);
                 if($source_sex != null){
                     $data_sex=$source_sex->toArray();
@@ -513,13 +514,198 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         <?php                          
                     }
                 }
-                ?>                                                            
+                ?>  
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label lisa"><b>TRÌNH ĐỘ NGOẠI NGỮ</b></label>
+                        <div class="col-md-9">                                   
+                            
+                        </div>
+                    </div>                         
+                </div>   
+                <?php 
+                $source_profile_language=DB::table('profile_language')
+                ->join('language','profile_language.language_id','=','language.id')
+                ->join('language_level','profile_language.language_level_id','=','language_level.id')
+                ->join('classification as l','profile_language.listening','=','l.id')
+                ->join('classification as s','profile_language.speaking','=','s.id')
+                ->join('classification as r','profile_language.reading','=','r.id')
+                ->join('classification as w','profile_language.writing','=','w.id')
+                ->where('profile_language.profile_id',(int)@$arrRowData['id'])
+                ->select(
+                    'profile_language.id',
+                    'language.fullname as language_name',                   
+                    'language_level.fullname as language_level_name',
+                    'l.fullname as listening',
+                    's.fullname as speaking',
+                    'r.fullname as reading',
+                    'w.fullname as writing'             
+                )
+                ->groupBy(
+                    'profile_language.id',
+                    'language.fullname',                    
+                    'language_level.fullname',
+                    'l.fullname',
+                    's.fullname',
+                    'r.fullname',
+                    'w.fullname'        
+                )
+                ->orderBy('profile_language.id', 'asc')
+                ->get()->toArray();     
+                $data_profile_language=convertToArray($source_profile_language);
+                foreach ($data_profile_language as $key => $value){
+                    $profile_language_id=$value['id'];
+                    $profile_language_name=$value['language_name'];
+                    $profile_language_level_name=$value['language_level_name'];                         
+                    $profile_listening=$value['listening'];
+                    $profile_speaking=$value['speaking'];
+                    $profile_reading=$value['reading'];
+                    $profile_writing=$value['writing'];
+                    ?>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Ngoại ngữ</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$profile_language_name; ?></label>                                              
+                            </div>
+                        </div>                         
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Trình độ</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$profile_language_level_name; ?></label>                                              
+                            </div>
+                        </div>                         
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Nghe</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$profile_listening; ?></label>                                              
+                            </div>
+                        </div>                         
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Nói</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$profile_speaking; ?></label>                                              
+                            </div>
+                        </div>                         
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Đọc</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$profile_reading; ?></label>                                              
+                            </div>
+                        </div>                         
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Viết</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$profile_writing; ?></label>                                              
+                            </div>
+                        </div>                         
+                    </div>
+                    <hr>
+                    <?php
+                }
+                $skill_word='';
+                $source_skill_word=App\ClassificationModel::find(@$arrRowData['ms_word']);
+                if($source_skill_word != null){
+                    $data_skill_word=$source_skill_word->toArray();
+                    $skill_word=$data_skill_word['fullname'];
+                }
+                ?> 
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>MS Word</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$skill_word; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div>   
+                <?php
+                $skill_excel='';
+                $source_skill_excel=App\ClassificationModel::find(@$arrRowData['ms_excel']);
+                if($source_skill_excel != null){
+                    $data_skill_excel=$source_skill_excel->toArray();
+                    $skill_excel=$data_skill_excel['fullname'];
+                }
+                ?> 
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>MS Excel</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$skill_excel; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div>      
+                <?php
+                $skill_power_point='';
+                $source_skill_power_point=App\ClassificationModel::find(@$arrRowData['ms_power_point']);
+                if($source_skill_power_point != null){
+                    $data_skill_power_point=$source_skill_power_point->toArray();
+                    $skill_power_point=$data_skill_power_point['fullname'];
+                }
+                ?> 
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>MS Power Point</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$skill_power_point; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div> 
+                <?php
+                $skill_outlook='';
+                $source_skill_outlook=App\ClassificationModel::find(@$arrRowData['ms_outlook']);
+                if($source_skill_outlook != null){
+                    $data_skill_outlook=$source_skill_outlook->toArray();
+                    $skill_outlook=$data_skill_outlook['fullname'];
+                }
+                ?> 
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>MS Outlook</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$skill_outlook; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div>         
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Phần mềm khác</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label"><?php echo @$arrRowData['other_software']; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div>    
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Thành tích nổi bật</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-labe ribisachi-hp"><?php echo @$arrRowData['medal']; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div> 
+                <hr>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label lisa"><b>KỸ NĂNG / SỞ TRƯỜNG</b></label>
+                        <div class="col-md-9">                                   
+                            
+                        </div>
+                    </div>                         
+                </div>                                                        
             </div>              
         </form>
     </div>
 </div>
-<script type="text/javascript" language="javascript">
-   
+<script type="text/javascript" language="javascript">   
     function save(){
         var id=$('input[name="id"]').val();        
         var fullname=$('input[name="fullname"]').val();                

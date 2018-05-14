@@ -1543,7 +1543,7 @@ class IndexController extends Controller {
 				
 			}
 		}
-		return view('frontend.profile-step-by-step',compact('data','msg','checked','id'));     
+		return view('frontend.profile-detail',compact('data','msg','checked','id'));     
 	}
 	public function updateCareerGoal(Request $request){
 		$info                 	=   array();

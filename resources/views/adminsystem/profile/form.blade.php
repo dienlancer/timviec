@@ -688,7 +688,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         <div class="form-group col-md-12">
                             <label class="col-md-3 control-label"><b>Thành tích nổi bật</b></label>
                             <div class="col-md-9">                                   
-                                <label class="control-labe ribisachi-hp"><?php echo @$arrRowData['medal']; ?></label>                                              
+                                <label class="control-label ribisachi-hp"><?php echo @$arrRowData['medal']; ?></label>                                              
                             </div>
                         </div>                         
                 </div> 
@@ -700,7 +700,52 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             
                         </div>
                     </div>                         
-                </div>                                                        
+                </div>    
+                <?php                 
+                $data_profile_skill= DB::table('skill')
+                                ->join('profile_skill','skill.id','=','profile_skill.skill_id')
+                                ->where('profile_skill.profile_id',@$arrRowData['id'])
+                                ->select('skill.id','skill.fullname')
+                                ->groupBy('skill.id','skill.fullname')
+                                ->orderBy('skill.id','asc')
+                                ->get()
+                                ->toArray();
+                $data_profile_skill=convertToArray($data_profile_skill);                
+                ?>
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Kỹ năng</b></label>
+                            <div class="col-md-9">                                   
+                                <?php 
+                                if(count(@$data_profile_skill) > 0){
+                                    foreach (@$data_profile_skill as $key => $value) {
+                                        $skill_id=$value['id'];
+                                        $skill_name=$value['fullname'];
+                                        ?>
+                                        <div class="margin-top-10"><?php echo $skill_name; ?></div>
+                                        <?php
+                                    }                           
+                                }                           
+                                ?>                                             
+                            </div>
+                        </div>                         
+                </div>  
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Sở thích</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label ribisachi-hp"><?php echo @$arrRowData['hobby']; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div>
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-label"><b>Kỹ năng đặc biệt</b></label>
+                            <div class="col-md-9">                                   
+                                <label class="control-label ribisachi-hp"><?php echo @$arrRowData['talent']; ?></label>                                              
+                            </div>
+                        </div>                         
+                </div>                                                   
             </div>              
         </form>
     </div>

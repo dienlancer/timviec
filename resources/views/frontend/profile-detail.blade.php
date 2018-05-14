@@ -1464,7 +1464,7 @@ function loadDataProfileExperience(data_profile_experience){
 					$(job_description_col_lg_4).append(job_description_xika);
 					$(job_description_col_lg_8).append(job_description_xika2);
 					$(job_description_xika).text('Mô tả công việc');
-					$(job_description_xika2).text(value.job_description);						
+					$(job_description_xika2).append(value.job_description);						
 					/* end job_description */
 					/* begin achievement */
 					var achievement_row_mia=document.createElement('div');					
@@ -1483,7 +1483,7 @@ function loadDataProfileExperience(data_profile_experience){
 					$(achievement_col_lg_4).append(achievement_xika);
 					$(achievement_col_lg_8).append(achievement_xika2);
 					$(achievement_xika).text('Thành tích đạt được');
-					$(achievement_xika2).text(value.achievement);	
+					$(achievement_xika2).append(value.achievement);	
 					/* end achievement */
 					/* begin delete */
 					var delete_row_mia=document.createElement('div');					
@@ -2167,7 +2167,7 @@ function saveOffice(){
 				$(medal_col_lg_4).append(medal_xika);
 				$(medal_col_lg_8).append(medal_xika2);
 				$(medal_xika).text('Thành tích');
-				$(medal_xika2).text(data.medal);						
+				$(medal_xika2).append(data.medal);						
 				/* end medal */
 				$('.office_edit').show();
 				$('.office_save').hide();			
@@ -2274,7 +2274,7 @@ function saveSkill(){
 				$(talent_col_lg_4).append(talent_xika);
 				$(talent_col_lg_8).append(talent_xika2);
 				$(talent_xika).text('Kỹ năng đặc biệt');
-				$(talent_xika2).text(data.talent);						
+				$(talent_xika2).append(data.talent);						
 				/* end talent */
 				$('.skill_edit').show();
 				$('.skill_save').hide();			

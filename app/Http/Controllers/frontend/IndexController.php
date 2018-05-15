@@ -277,7 +277,7 @@ class IndexController extends Controller {
 			$msg['certification']='Thông tin kích hoạt không khớp. Vui lòng kiểm tra lại trong mail';
 			$checked=0;
 		}
-		return view("frontend.employer-certification",compact('msg','checked'));         
+		return view("frontend.certification",compact('msg','checked'));         
 	}
 	public function registerCandidate(Request $request){             
 		$checked=1;

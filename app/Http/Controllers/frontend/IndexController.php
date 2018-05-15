@@ -462,6 +462,12 @@ class IndexController extends Controller {
 		}                          
 		return view("frontend.employer-login",compact('msg',"data",'checked'));                       
 	}
+	public function resetPassWrdEmployer(Request $request){
+		$msg=array();
+		$data=array();     
+		$checked=1;  
+		return view("frontend.employer-reset-password",compact('msg',"data",'checked'));
+	}
 	public function loginCandidate(Request $request){         
 		$msg=array();
 		$checked=1;

@@ -204,7 +204,7 @@ class IndexController extends Controller {
 				$item->contacted_name   = @$contacted_name;
 				$item->contacted_email  = @$contacted_email;
 				$item->contacted_phone  = @$contacted_phone; 
-				$item->status = 1;
+				$item->status = 0;
 				$item->created_at=date("Y-m-d H:i:s",time());
 				$item->updated_at=date("Y-m-d H:i:s",time());   
 				$item->save();   

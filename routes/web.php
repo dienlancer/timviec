@@ -642,5 +642,6 @@ Route::post("cap-nhat-ky-nang-so-truong",["as"=>"frontend.index.saveSkill","uses
 Route::get("xac-thuc-tai-khoan-ntd/{id}/{certification_code}",["as"=>"frontend.index.certificateEmployer","uses"=>"frontend\IndexController@certificateEmployer"]);
 Route::get("xac-thuc-tai-khoan-ung-vien/{id}/{certification_code}",["as"=>"frontend.index.certificateCandidate","uses"=>"frontend\IndexController@certificateCandidate"]);
 Route::match(["get","post"],"lay-mat-khau-ntd",["as"=>"frontend.index.resetPassWrdEmployer","uses"=>"frontend\IndexController@resetPassWrdEmployer"]);
+Route::match(["get","post"],"lay-mat-khau-ung-vien",["as"=>"frontend.index.resetPassWrdCandidate","uses"=>"frontend\IndexController@resetPassWrdCandidate"]);
 /* end tìm việc */
 ?>

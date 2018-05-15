@@ -52,7 +52,7 @@ $seo=getSeo();
 					<div class="col-lg-8">
 						<div >
 							<a href="javascript:void(0);" class="btn-login" onclick="document.forms['frm'].submit();" >Đăng nhập</a>
-							<a href="javascript:void(0);" class="btn-remember-password">Quên mật khẩu</a>
+							<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
 						</div>
 					</div>
 				</div>

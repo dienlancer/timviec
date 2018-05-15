@@ -466,7 +466,135 @@ class IndexController extends Controller {
 		$msg=array();
 		$data=array();     
 		$checked=1;  
+		if($request->isMethod('post')){
+			$data               = @$request->all();
+			$email              = trim(@$request->email);
+			$source=EmployerModel::whereRaw('email = ?',[@$email])->select('id')->get()->toArray();
+			if(count($source) == 0){
+				$checked=0;
+				$msg['not-email']='Email này không có trong hệ thống';
+			}
+			if((int)@$checked == 1){
+				/* begin code_alias */
+				$source_character = array_merge(range('a','z'), range(0,9));
+				$code = implode($source_character, '');
+				$code = str_shuffle($code);
+				$password   = substr($code, 0, 12);
+				/* end code_alias */
+				$employer=EmployerModel::find((int)@$source[0]['id']);
+				$employer->password     = Hash::make(@$password) ;
+				$employer->save();
+				/* begin load setting */
+				$setting=getSettingSystem();    
+				$smtp_host      = @$setting['smtp_host']['field_value'];
+				$smtp_port      = @$setting['smtp_port']['field_value'];
+				$smtp_auth      = @$setting['authentication']['field_value'];
+				$encription     = @$setting['encription']['field_value'];
+				$smtp_username  = @$setting['smtp_username']['field_value'];
+				$smtp_password  = @$setting['smtp_password']['field_value'];				
+				$email_from     = 'tichtacso@gmail.com';
+				$email_to       = @$email;				
+				/* end load setting */       
+				/* begin send mail certification */
+				$mail = new PHPMailer(true);
+				$mail->SMTPDebug = 0;                           
+				$mail->isSMTP();     
+				$mail->CharSet = "UTF-8";          
+				$mail->Host = $smtp_host; 
+				$mail->SMTPAuth = $smtp_auth;                         
+				$mail->Username = $smtp_username;             
+				$mail->Password = $smtp_password;             
+				$mail->SMTPSecure = $encription;                       
+				$mail->Port = $smtp_port;                            
+				$mail->setFrom($email_from, 'CÔNG TY TNHH VIDOCO');
+				$mail->addAddress($email_to, 'Khách hàng');   
+				$mail->Subject = 'Thông tin lấy lại mật khẩu tại website '.url('/') ; 
+				$html_content='';     
+				$html_content .='<table border="1" cellspacing="5" cellpadding="5" width="50%">';
+				$html_content .='<thead>';
+				$html_content .='<tr>';
+				$html_content .='<th colspan="2"><h3>Thông tin tài khoản</h3></th>';
+				$html_content .='</tr>';
+				$html_content .='</thead>';
+				$html_content .='<tbody>';
+				$html_content .='<tr><td>Email</td><td>'.@$email.'</td></tr>';
+				$html_content .='<tr><td>Mật khẩu</td><td>'.@$password.'</td></tr>';              								  
+				$html_content .='</tbody>';
+				$html_content .='</table>';                
+				$mail->msgHTML($html_content);
+				$mail->Send();
+				/* end send mail certification */
+				$msg['success']="Mật khẩu đã được gửi về email của bạn . Vui lòng kiểm tra";
+			}
+		}
 		return view("frontend.employer-reset-password",compact('msg',"data",'checked'));
+	}
+	public function resetPassWrdCandidate(Request $request){
+		$msg=array();
+		$data=array();     
+		$checked=1;  
+		if($request->isMethod('post')){
+			$data               = @$request->all();
+			$email              = trim(@$request->email);
+			$source=CandidateModel::whereRaw('email = ?',[@$email])->select('id')->get()->toArray();
+			if(count($source) == 0){
+				$checked=0;
+				$msg['not-email']='Email này không có trong hệ thống';
+			}
+			if((int)@$checked == 1){
+				/* begin code_alias */
+				$source_character = array_merge(range('a','z'), range(0,9));
+				$code = implode($source_character, '');
+				$code = str_shuffle($code);
+				$password   = substr($code, 0, 12);
+				/* end code_alias */
+				$candidate=CandidateModel::find((int)@$source[0]['id']);
+				$candidate->password     = Hash::make(@$password) ;
+				$candidate->save();
+				/* begin load setting */
+				$setting=getSettingSystem();    
+				$smtp_host      = @$setting['smtp_host']['field_value'];
+				$smtp_port      = @$setting['smtp_port']['field_value'];
+				$smtp_auth      = @$setting['authentication']['field_value'];
+				$encription     = @$setting['encription']['field_value'];
+				$smtp_username  = @$setting['smtp_username']['field_value'];
+				$smtp_password  = @$setting['smtp_password']['field_value'];				
+				$email_from     = 'tichtacso@gmail.com';
+				$email_to       = @$email;				
+				/* end load setting */       
+				/* begin send mail certification */
+				$mail = new PHPMailer(true);
+				$mail->SMTPDebug = 0;                           
+				$mail->isSMTP();     
+				$mail->CharSet = "UTF-8";          
+				$mail->Host = $smtp_host; 
+				$mail->SMTPAuth = $smtp_auth;                         
+				$mail->Username = $smtp_username;             
+				$mail->Password = $smtp_password;             
+				$mail->SMTPSecure = $encription;                       
+				$mail->Port = $smtp_port;                            
+				$mail->setFrom($email_from, 'CÔNG TY TNHH VIDOCO');
+				$mail->addAddress($email_to, 'Khách hàng');   
+				$mail->Subject = 'Thông tin lấy lại mật khẩu tại website '.url('/') ; 
+				$html_content='';     
+				$html_content .='<table border="1" cellspacing="5" cellpadding="5" width="50%">';
+				$html_content .='<thead>';
+				$html_content .='<tr>';
+				$html_content .='<th colspan="2"><h3>Thông tin tài khoản</h3></th>';
+				$html_content .='</tr>';
+				$html_content .='</thead>';
+				$html_content .='<tbody>';
+				$html_content .='<tr><td>Email</td><td>'.@$email.'</td></tr>';
+				$html_content .='<tr><td>Mật khẩu</td><td>'.@$password.'</td></tr>';              								  
+				$html_content .='</tbody>';
+				$html_content .='</table>';                
+				$mail->msgHTML($html_content);
+				$mail->Send();
+				/* end send mail certification */
+				$msg['success']="Mật khẩu đã được gửi về email của bạn . Vui lòng kiểm tra";
+			}
+		}
+		return view("frontend.candidate-reset-password",compact('msg',"data",'checked'));
 	}
 	public function loginCandidate(Request $request){         
 		$msg=array();

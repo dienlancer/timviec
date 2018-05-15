@@ -6,11 +6,14 @@ $user_fullname='';
 $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){
 	$arrUser=Session::get($ssNameUser);
-	$source_employer=\App\EmployerModel::find((int)@$arrUser['id'])->toArray();
-	$source_user=\App\User::find((int)@$source_employer['user_id']);	
-	if($source_user != null){
-		$source_user=$source_user->toArray();
-		$user_fullname=$source_user['fullname'];
+	$source_employer=\App\EmployerModel::find((int)@$arrUser['id']);
+	if($source_employer != null){
+		$data_employer=$source_employer->toArray();
+		$source_user=\App\User::find((int)@$data_employer['user_id']);	
+		if($source_user != null){
+			$source_user=$source_user->toArray();
+			$user_fullname=$source_user['fullname'];
+		}
 	}
 } 
 ?>

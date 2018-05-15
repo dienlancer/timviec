@@ -203,15 +203,81 @@ class IndexController extends Controller {
 				$item->website      = @$website;
 				$item->contacted_name   = @$contacted_name;
 				$item->contacted_email  = @$contacted_email;
-				$item->contacted_phone  = @$contacted_phone; 
+				$item->contacted_phone  = @$contacted_phone; 				
+				/* begin code_alias */
+				$source_character = array_merge(range('a','z'), range(0,9));
+				$code = implode($source_character, '');
+				$code = str_shuffle($code);
+				$certification_code   = substr($code, 0, 30);
+				/* end code_alias */
+				$item->certification_code=$certification_code;
+				$item->certificated_number=0;
 				$item->status = 0;
 				$item->created_at=date("Y-m-d H:i:s",time());
 				$item->updated_at=date("Y-m-d H:i:s",time());   
 				$item->save();   
+				/* begin load setting */
+				$setting=getSettingSystem();    
+				$smtp_host      = @$setting['smtp_host']['field_value'];
+				$smtp_port      = @$setting['smtp_port']['field_value'];
+				$smtp_auth      = @$setting['authentication']['field_value'];
+				$encription     = @$setting['encription']['field_value'];
+				$smtp_username  = @$setting['smtp_username']['field_value'];
+				$smtp_password  = @$setting['smtp_password']['field_value'];				
+				$email_from     = 'tichtacso@gmail.com';
+				$email_to       = @$email;				
+				/* end load setting */       
+				/* begin send mail certification */
+				$mail = new PHPMailer(true);
+				$mail->SMTPDebug = 0;                           
+				$mail->isSMTP();     
+				$mail->CharSet = "UTF-8";          
+				$mail->Host = $smtp_host; 
+				$mail->SMTPAuth = $smtp_auth;                         
+				$mail->Username = $smtp_username;             
+				$mail->Password = $smtp_password;             
+				$mail->SMTPSecure = $encription;                       
+				$mail->Port = $smtp_port;                            
+				$mail->setFrom($email_from, 'CÔNG TY TNHH VIDOCO');
+				$mail->addAddress($email_to, @$fullname);   
+				$mail->Subject = 'Thông tin xác thực tài khoản tại '.url('/') ; 
+				$html_content='';
+				$html_content='<div>Vui lòng nhấn vào link bên dưới để kích hoạt tài khoản</div>';
+				$link_certification=route('frontend.index.certificateEmployer',[@$item->id,@$certification_code]);
+				$html_content.='<div><a href="'.$link_certification.'" target="_blank">'.$link_certification.'</a></div>';
+				$mail->msgHTML($html_content);
+				$mail->Send();
+				/* end send mail certification */
 				$msg['success']='<span>Đăng ký tài khoản nhà tuyển dụng thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
 			}
 		}
 		return view("frontend.employer-register",compact('data','msg','checked'));         
+	}
+	public function certificateEmployer($id,$certification_code)
+	{
+		$checked=1;
+		$msg=array();        		  		
+		$employer=EmployerModel::find((int)@$id);		
+		if($employer != null){			
+			if((int)@$employer->certificated_number > 0){
+				$msg['certification']='Tài khoản đã được xác thực . Vui lòng liên hệ lại bộ phận hỗ trợ';
+				$checked=0;	
+			}else{
+				if(strcmp(@$employer->certification_code, @$certification_code) == 0){
+					$employer->certificated_number=1;
+					$employer->status=1;
+					$employer->save();
+					$msg['success']='Kích hoạt tài khoản thành công. Vui lòng đăng nhập <a href="'.route('frontend.index.employerLogin').'">tại đây</a>';
+				}else{
+					$msg['certification']='Mã xác thực không khớp. Vui lòng kiểm tra lại trong mail';
+					$checked=0;		
+				}				
+			}			
+		}else{
+			$msg['certification']='Thông tin kích hoạt không khớp. Vui lòng kiểm tra lại trong mail';
+			$checked=0;
+		}
+		return view("frontend.employer-certification",compact('msg','checked'));         
 	}
 	public function registerCandidate(Request $request){             
 		$checked=1;

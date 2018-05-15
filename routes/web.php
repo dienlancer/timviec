@@ -639,5 +639,6 @@ Route::post("xoa-td-ngoai-ngu",["as"=>"frontend.index.deleteLanguage","uses"=>"f
 
 Route::post("cap-nhat-tin-hoc-vp",["as"=>"frontend.index.saveOffice","uses"=>"frontend\IndexController@saveOffice"]);
 Route::post("cap-nhat-ky-nang-so-truong",["as"=>"frontend.index.saveSkill","uses"=>"frontend\IndexController@saveSkill"]);
+Route::get("xac-thuc-tai-khoan-ntd/{id}/{certification}",["as"=>"frontend.index.certificateEmployer","uses"=>"frontend\IndexController@certificateEmployer"]);
 /* end tìm việc */
 ?>

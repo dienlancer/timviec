@@ -81,7 +81,7 @@ class IndexController extends Controller {
 			$fax                = trim(@$request->fax);
 			$website            = trim(@$request->website);
 			$contacted_name     = trim(@$request->contacted_name);
-			$contacted_email    = trim(@$request->contacted_email);
+			
 			$contacted_phone    = trim(@$request->contacted_phone);
 			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
 				$msg["email"] = 'Email nhà tuyển dụng không hợp lệ'; 
@@ -169,11 +169,7 @@ class IndexController extends Controller {
 				$data['contacted_name']='';         
 				$checked = 0;
 			} 
-			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($contacted_email,'UTF-8')   )){
-				$msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
-				$data['contacted_email']='';       
-				$checked = 0;
-			}
+			
 			if(mb_strlen($contacted_phone) < 10){
 				$msg["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
 				$data['contacted_phone']='';
@@ -202,7 +198,7 @@ class IndexController extends Controller {
 				$item->fax          = @$fax;
 				$item->website      = @$website;
 				$item->contacted_name   = @$contacted_name;
-				$item->contacted_email  = @$contacted_email;
+				
 				$item->contacted_phone  = @$contacted_phone; 				
 				/* begin code_alias */
 				$source_character = array_merge(range('a','z'), range(0,9));
@@ -673,7 +669,7 @@ class IndexController extends Controller {
 			$fax                = trim(@$request->fax);
 			$website            = trim(@$request->website);
 			$contacted_name     = trim(@$request->contacted_name);
-			$contacted_email    = trim(@$request->contacted_email);
+			
 			$contacted_phone    = trim(@$request->contacted_phone);
 			if(mb_strlen($fullname) < 15){
 				$msg["fullname"] = 'Tên công ty phải từ 15 ký tự trở lên';    
@@ -728,11 +724,7 @@ class IndexController extends Controller {
 				$data['contacted_name']='';         
 				$checked = 0;
 			} 
-			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($contacted_email,'UTF-8')   )){
-				$msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
-				$data['contacted_email']='';       
-				$checked = 0;
-			}
+			
 			if(mb_strlen($contacted_phone) < 10){
 				$msg["contacted_phone"] = 'Số điện thoại người liên hệ phải từ 10 ký tự trở lên';            
 				$data['contacted_phone']='';
@@ -767,7 +759,7 @@ class IndexController extends Controller {
 				$item->fax          = @$fax;
 				$item->website      = @$website;
 				$item->contacted_name   = @$contacted_name;
-				$item->contacted_email  = @$contacted_email;
+				
 				$item->contacted_phone  = @$contacted_phone;               
 				$item->updated_at=date("Y-m-d H:i:s",time());   
 				$item->save();   
@@ -1015,7 +1007,7 @@ class IndexController extends Controller {
 			return redirect()->route("frontend.index.employerLogin"); 
 		}
 		$email=@$arrUser['email'];       
-		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email','contacted_name','contacted_email','address','contacted_phone')->get()->toArray();
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','contacted_name','address','contacted_phone')->get()->toArray();
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}           
@@ -1039,8 +1031,7 @@ class IndexController extends Controller {
 			$data['province_id']=$source_province_id;
 			$data['duration']=datetimeConverterVn($data['duration']);      
 		}
-		$data['contacted_name']=@$source[0]['contacted_name'];
-		$data['contacted_email']=@$source[0]['contacted_email'];
+		$data['contacted_name']=@$source[0]['contacted_name'];		
 		$data['address']=@$source[0]['address'];
 		$data['contacted_phone']=@$source[0]['contacted_phone'];
 		if($request->isMethod('post')){
@@ -1064,7 +1055,7 @@ class IndexController extends Controller {
 			$duration         =   trim(@$request->duration);
 			$status           =   trim(@$request->status); 
 			$contacted_name   =   trim(@$request->contacted_name);
-			$contacted_email  =   trim(@$request->contacted_email);
+			
 			$address          =   trim(@$request->address);
 			$contacted_phone  =   trim(@$request->contacted_phone);     
 			if(mb_strlen(@$fullname) < 15){
@@ -1172,11 +1163,7 @@ class IndexController extends Controller {
 				$data['contacted_name']='';         
 				$checked = 0;
 			} 
-			if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower(@$contacted_email,'UTF-8')   )){
-				$msg["contacted_email"] = 'Email người liên hệ không hợp lệ';     
-				$data['contacted_email']='';       
-				$checked = 0;
-			}
+			
 			if(mb_strlen(@$address) < 15){
 				$msg["address"] = 'Địa chỉ phải từ 15 ký tự trở lên';      
 				$data['address']='';      
@@ -1288,8 +1275,7 @@ class IndexController extends Controller {
 					}
 				}                        
 				$item4=EmployerModel::find((int)@$arrUser['id']);
-				$item4->contacted_name   = @$contacted_name;
-				$item4->contacted_email  = @$contacted_email;
+				$item4->contacted_name   = @$contacted_name;				
 				$item4->address          = @$address;
 				$item4->contacted_phone  = @$contacted_phone; 
 				$item4->save();

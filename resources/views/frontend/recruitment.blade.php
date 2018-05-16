@@ -185,11 +185,7 @@ switch ($task) {
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Tên người liên hệ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="contacted_name" class="vacca" placeholder="Tên người liên hệ" value="<?php echo @$data['contacted_name']; ?>" ></div>
-				</div>
-				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><div>Email</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="contacted_email" class="vacca" placeholder="Email người liên hệ" value="<?php echo @$data['contacted_email']; ?>" ></div>
-				</div>
+				</div>				
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Địa chỉ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text" <?php echo $disabled_status; ?> name="address" class="vacca" placeholder="Địa chỉ công ty" value="<?php echo @$data['address']; ?>" ></div>

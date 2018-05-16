@@ -94,7 +94,7 @@ class EmployerController extends Controller {
     $fax                  =   trim(@$request->fax);
     $website              =   trim(@$request->website);
     $contacted_name       =   trim(@$request->contacted_name);
-    $contacted_email      =   trim(@$request->contacted_email);
+    
     $contacted_phone      =   trim(@$request->contacted_phone);
     $user_id              =   trim(@$request->user_id); 
     $image_file           =   null;
@@ -105,9 +105,9 @@ class EmployerController extends Controller {
     $status               =   trim(@$request->status);   
     $status_authentication =  trim(@$request->status_authentication);       
     $data 		            =   array();
-    
 
-    
+
+
 
     $item		              =   null;    
 
@@ -211,7 +211,7 @@ if ($checked == 1) {
   $item->fax                = @$fax;
   $item->website            = @$website;
   $item->contacted_name     = @$contacted_name;
-  $item->contacted_email    = @$contacted_email;
+
   $item->contacted_phone    = @$contacted_phone;
   $item->user_id            = (int)@$user_id;
   $item->status 			      =	(int)@$status;   

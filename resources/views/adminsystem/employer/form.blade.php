@@ -22,7 +22,7 @@ $inputIntro             =   '<textarea name="intro" rows="10" cols="100" class="
 $inputFax =         '<input type="text" class="form-control" name="fax"        value="'.@$arrRowData['fax'].'">'; 
 $inputWebsite = '<input type="text" class="form-control" name="website"        value="'.@$arrRowData['website'].'">'; 
 $inputContactedName='<input type="text" class="form-control" name="contacted_name"        value="'.@$arrRowData['contacted_name'].'">'; 
-$inputContactedEmail='<input type="text" class="form-control" name="contacted_email"        value="'.@$arrRowData['contacted_email'].'">'; 
+
 $inputContactedPhone='<input type="text" class="form-control" name="contacted_phone"        value="'.@$arrRowData['contacted_phone'].'">'; 
 $ddlUser      =   cmsSelectboxCategory("user_id","form-control",$arrUser,@$arrRowData['user_id'],"",'Chọn danh mục');
 $status                 =   (count($arrRowData) > 0) ? (int)@$arrRowData['status'] : 1 ;
@@ -221,16 +221,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <span class="help-block"></span>
                         </div>
                     </div>                         
-                </div> 
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label"><b>Email người liên hệ</b></label>
-                        <div class="col-md-9 ctrl-right">
-                            <?php echo $inputContactedEmail; ?>
-                            <span class="help-block"></span>
-                        </div>
-                    </div>                         
-                </div> 
+                </div>                 
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label"><b>Điện thoại người liên hệ</b></label>
@@ -300,7 +291,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var fax=$('input[name="fax"]').val(); 
         var website=$('input[name="website"]').val(); 
         var contacted_name=$('input[name="contacted_name"]').val(); 
-        var contacted_email=$('input[name="contacted_email"]').val(); 
+        
         var contacted_phone=$('input[name="contacted_phone"]').val(); 
         /* begin xử lý image */
         var image_file=null;
@@ -331,7 +322,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         dataItem.append('fax',fax);
         dataItem.append('website',website);
         dataItem.append('contacted_name',contacted_name);
-        dataItem.append('contacted_email',contacted_email);
+        
         dataItem.append('contacted_phone',contacted_phone);
         if(image_files.length > 0){
             dataItem.append('image',image_file);

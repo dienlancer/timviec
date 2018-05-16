@@ -14,6 +14,7 @@ use App\User;
 use App\SexModel;
 use App\MarriageModel;
 use App\ProvinceModel;
+use App\ProfileModel;
 use DB;
 use Hash;
 use Sentinel;
@@ -233,79 +234,95 @@ public function changeStatus(Request $request){
   return $info;
 }
 
-public function deleteItem(Request $request){
-  $id                     =   (int)$request->id;              
-  $info                 =   array();
-  $checked              =   1;                           
-  $msg                =   array();                                  
-  if($checked == 1){
-    $item = CandidateModel::find((int)@$id);
-    $item->delete();     
-    $msg['success']='Xóa thành công';                                           
-  }   
+  public function deleteItem(Request $request){
+    $id                     =   (int)$request->id;              
+    $info                 =   array();
+    $checked              =   1;                           
+    $msg                =   array();    
+    $data                   =   ProfileModel::whereRaw("candidate_id = ?",[(int)@$id])->get()->toArray();  
+    if(count($data) > 0){
+      $checked     =   0;          
+      $msg['cannotdelete']                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+    }                                       
+    if($checked == 1){
+      $item = CandidateModel::find((int)@$id);
+      $item->delete();     
+      $msg['success']='Xóa thành công';                                           
+    }   
 
-  $data                   =   $this->loadData($request);
-  $info = array(
-    "checked"       => $checked,          
-    'msg'       => $msg,           
-    'data'              => $data
-  );
-  return $info;
-}
-public function updateStatus(Request $request){
-  $strID                 =   $request->str_id;     
-  $status                 =   $request->status;            
-  $info                 =   array();
-  $checked              =   1;                           
-  $msg                =   array();
-  $strID=substr($strID, 0,strlen($strID) - 1);
-  $arrID=explode(',',$strID);                 
-  if(empty($strID)){
-    $checked            =   0;
-
-    $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
+    $data                   =   $this->loadData($request);
+    $info = array(
+      "checked"       => $checked,          
+      'msg'       => $msg,           
+      'data'              => $data
+    );
+    return $info;
   }
-  if($checked==1){
-    foreach ($arrID as $key => $value) {
-      if(!empty($value)){
-        $item=CandidateModel::find($value);
-        $item->status=$status;
-        $item->save();      
-      }            
+  public function updateStatus(Request $request){
+    $strID                 =   $request->str_id;     
+    $status                 =   $request->status;            
+    $info                 =   array();
+    $checked              =   1;                           
+    $msg                =   array();
+    $strID=substr($strID, 0,strlen($strID) - 1);
+    $arrID=explode(',',$strID);                 
+    if(empty($strID)){
+      $checked            =   0;
+
+      $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
     }
-    $msg['success']='Cập nhật thành công';
-  }                 
-  $data                   =   $this->loadData($request);
-  $info = array(
-    "checked"       => $checked,          
-    'msg'       => $msg,       
-    'data'              => $data
-  );
-  return $info;
-}
-public function trash(Request $request){
-  $strID                =   $request->str_id;               
-  $info                 =   array();
-  $checked              =   1;                           
-  $msg                =   array();
-  $strID=substr($strID, 0,strlen($strID) - 1);
-  $arrID=explode(',',$strID); 
-  if(empty($strID)){
-    $checked            =   0;
-
-    $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
-  }                    
-  if($checked == 1){                                  
-    DB::table('candidate')->whereIn('id',@$arrID)->delete();
-    $msg['success']='Xóa thành công';                                      
+    if($checked==1){
+      foreach ($arrID as $key => $value) {
+        if(!empty($value)){
+          $item=CandidateModel::find($value);
+          $item->status=$status;
+          $item->save();      
+        }            
+      }
+      $msg['success']='Cập nhật thành công';
+    }                 
+    $data                   =   $this->loadData($request);
+    $info = array(
+      "checked"       => $checked,          
+      'msg'       => $msg,       
+      'data'              => $data
+    );
+    return $info;
   }
-  $data                 =   $this->loadData($request);
-  $info = array(
-    "checked"       => $checked,          
-    'msg'       => $msg,              
-    'data'              => $data
-  );
-  return $info;
-}            
+  public function trash(Request $request){
+    $strID                =   $request->str_id;               
+    $info                 =   array();
+    $checked              =   1;                           
+    $msg                =   array();
+    $strID=substr($strID, 0,strlen($strID) - 1);
+    $arrID=explode(',',$strID); 
+    if(empty($strID)){
+      $checked            =   0;
+
+      $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
+    }else{
+      foreach ($arrID as $key => $value) {
+        if(!empty($value)){                  
+          $data                   =   ProfileModel::whereRaw("candidate_id = ?",[(int)@$value])->get()->toArray();                     
+          if(count($data) > 0){
+            $checked     =   0;
+
+            $msg['cannotdelete']                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+          }
+        }                
+      }
+    }                          
+    if($checked == 1){                                  
+      DB::table('candidate')->whereIn('id',@$arrID)->delete();
+      $msg['success']='Xóa thành công';                                      
+    }
+    $data                 =   $this->loadData($request);
+    $info = array(
+      "checked"       => $checked,          
+      'msg'       => $msg,              
+      'data'              => $data
+    );
+    return $info;
+  }            
 }
 ?>

@@ -78,155 +78,155 @@ class EmployerController extends Controller {
       return view("adminsystem.no-access",compact('controller'));
     }        
   }
-            public function save(Request $request){
-                $id 					        =		trim(@$request->id);              
-                $password             =   (@$request->password);
-                $password_confirmed   =   (@$request->password_confirmed);
-                $fullname             =   trim(@$request->fullname);
-                $alias                =   trim(@$request->alias);    
-                $meta_keyword 				=		trim(@$request->meta_keyword);
-                $meta_description     =   trim(@$request->meta_description);
-                $address              =   trim(@$request->address);
-                $phone                =   trim(@$request->phone);
-                $province_id          =   trim(@$request->province_id);
-                $scale_id             =   trim(@$request->scale_id);  
-                $intro                =   trim(@$request->intro);  
-                $fax                  =   trim(@$request->fax);
-                $website              =   trim(@$request->website);
-                $contacted_name       =   trim(@$request->contacted_name);
-                $contacted_email      =   trim(@$request->contacted_email);
-                $contacted_phone      =   trim(@$request->contacted_phone);
-                $user_id              =   trim(@$request->user_id); 
-                $image_file           =   null;
-                if(isset($_FILES["image"])){
-                  $image_file         =   $_FILES["image"];
-                }
-                $image_hidden         =   trim(@$request->image_hidden);      
-                $status               =   trim(@$request->status);   
-                $status_authentication =  trim(@$request->status_authentication);       
-                $data 		            =   array();
-               
+  public function save(Request $request){
+    $id 					        =		trim(@$request->id);              
+    $password             =   (@$request->password);
+    $password_confirmed   =   (@$request->password_confirmed);
+    $fullname             =   trim(@$request->fullname);
+    $alias                =   trim(@$request->alias);    
+    $meta_keyword 				=		trim(@$request->meta_keyword);
+    $meta_description     =   trim(@$request->meta_description);
+    $address              =   trim(@$request->address);
+    $phone                =   trim(@$request->phone);
+    $province_id          =   trim(@$request->province_id);
+    $scale_id             =   trim(@$request->scale_id);  
+    $intro                =   trim(@$request->intro);  
+    $fax                  =   trim(@$request->fax);
+    $website              =   trim(@$request->website);
+    $contacted_name       =   trim(@$request->contacted_name);
+    $contacted_email      =   trim(@$request->contacted_email);
+    $contacted_phone      =   trim(@$request->contacted_phone);
+    $user_id              =   trim(@$request->user_id); 
+    $image_file           =   null;
+    if(isset($_FILES["image"])){
+      $image_file         =   $_FILES["image"];
+    }
+    $image_hidden         =   trim(@$request->image_hidden);      
+    $status               =   trim(@$request->status);   
+    $status_authentication =  trim(@$request->status_authentication);       
+    $data 		            =   array();
+    
 
-                
+    
 
-                $item		              =   null;    
+    $item		              =   null;    
 
-                $info                 =   array();
-      $checked              =   1;                           
-      $msg                =   array();
+    $info                 =   array();
+    $checked              =   1;                           
+    $msg                =   array();
 
-                $setting= getSettingSystem();
-                $width=$setting['product_width']['field_value'];
-                $height=$setting['product_height']['field_value'];   
-                if($password != null){
-                  if(mb_strlen($password) < 10 ){
-                    $checked = 0;                  
-                    $msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
-                  }else{
-                    if(strcmp($password, $password_confirmed) !=0 ){
-                      $checked = 0;                    
-                      $msg["password"]= "Xác nhận mật khẩu không trùng khớp";
-                    }
-                  }
-                }         
-                if(empty($fullname)){
-                 $checked = 0;                 
-                 $msg["fullname"]= "Thiếu tên công ty";
-               }else{
-                $data=array();
-                if (empty($id)) {
-                  $data=EmployerModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();           
-                }else{
-                  $data=EmployerModel::whereRaw("trim(lower(fullname)) = ? and id != ?",[trim(mb_strtolower($fullname,'UTF-8')),(int)@$id])->get()->toArray();   
-                }  
-                if (count($data) > 0) {
-                  $checked = 0;
-                  $msg["fullname"]= "Tên công ty đã tồn tại";
-                }       
-              }                   
-              if(empty($alias)){
-               $checked = 0;
-               $msg["alias"]= "Thiếu alias";
-             }else{
-              $data=array();
-              if (empty($id)) {
-                $data=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();           
-              }else{
-                $data=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();   
-              }  
-              if (count($data) > 0) {
-                $checked = 0;
-                $msg["alias"]= "Alias đã tồn tại";
-              }       
-            }   
-            if((int)@$province_id == 0){
-              $checked = 0;
-              $msg["province_id"]= "Thiếu tỉnh thành phố";
-            }
-            if((int)@$scale_id == 0){
-              $checked = 0;
-              $msg["scale_id"] = "Thiếu quy mô công ty";
-            }   
-            if((int)$status==-1){
-             $checked = 0;
-             $msg["status"]= "Thiếu trạng thái";
-            }
-            if((int)@$status_authentication==-1){
-             $checked = 0;           
-             $msg["status_authentication"]= "Thiếu trạng thái xác thực";
-            }
-            if ($checked == 1) {   
-              $image_name='';
-              if($image_file != null){                      
-                $image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
-              } 
-              if(empty($id)){
-                $item         =   new EmployerModel;       
-                $item->created_at   = date("Y-m-d H:i:s",time());        
-                if(!empty($image_name)){
-                  $item->logo    =   trim($image_name) ;  
-                } 
-              } else{
-                $item       = EmployerModel::find((int)@$id);   
-                $item->logo=null;                       
-                if(!empty($image_hidden)){
-                  $item->logo =$image_hidden;          
-                }
-                if(!empty($image_name))  {
-                  $item->logo=$image_name;                                                
-                }  
-              }  
-              if($password != null){
-                $item->password         = Hash::make($password);
-              }
-              $item->fullname           = @$fullname;              
-              $item->alias              = @$alias;
-              $item->meta_keyword       = @$meta_keyword;
-              $item->meta_description   = @$meta_description;
-              $item->address            = @$address;
-              $item->phone              = @$phone;
-              $item->province_id        = (int)@$province_id;
-              $item->scale_id           = (int)@$scale_id;
-              $item->intro              = @$intro;
-              $item->fax                = @$fax;
-              $item->website            = @$website;
-              $item->contacted_name     = @$contacted_name;
-              $item->contacted_email    = @$contacted_email;
-              $item->contacted_phone    = @$contacted_phone;
-              $item->user_id            = (int)@$user_id;
-              $item->status 			      =	(int)@$status;   
-              $item->status_authentication = @$status_authentication; 
-              $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
-              $item->save();      
-              $msg['success']='Lưu thành công';                                              
-            }
-            $info = array(
-        "checked"       => $checked,          
-        'msg'       => $msg,      
-        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->id])
-      );     		 			       
-            return $info;       
-          }
+    $setting= getSettingSystem();
+    $width=$setting['product_width']['field_value'];
+    $height=$setting['product_height']['field_value'];   
+    if($password != null){
+      if(mb_strlen($password) < 10 ){
+        $checked = 0;                  
+        $msg["password"] = "Mật khẩu tối thiểu phải 10 ký tự";
+      }else{
+        if(strcmp($password, $password_confirmed) !=0 ){
+          $checked = 0;                    
+          $msg["password"]= "Xác nhận mật khẩu không trùng khớp";
+        }
+      }
+    }         
+    if(empty($fullname)){
+     $checked = 0;                 
+     $msg["fullname"]= "Thiếu tên công ty";
+   }else{
+    $data=array();
+    if (empty($id)) {
+      $data=EmployerModel::whereRaw("trim(lower(fullname)) = ?",[trim(mb_strtolower($fullname,'UTF-8'))])->get()->toArray();           
+    }else{
+      $data=EmployerModel::whereRaw("trim(lower(fullname)) = ? and id != ?",[trim(mb_strtolower($fullname,'UTF-8')),(int)@$id])->get()->toArray();   
+    }  
+    if (count($data) > 0) {
+      $checked = 0;
+      $msg["fullname"]= "Tên công ty đã tồn tại";
+    }       
+  }                   
+  if(empty($alias)){
+   $checked = 0;
+   $msg["alias"]= "Thiếu alias";
+ }else{
+  $data=array();
+  if (empty($id)) {
+    $data=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();           
+  }else{
+    $data=EmployerModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();   
+  }  
+  if (count($data) > 0) {
+    $checked = 0;
+    $msg["alias"]= "Alias đã tồn tại";
+  }       
+}   
+if((int)@$province_id == 0){
+  $checked = 0;
+  $msg["province_id"]= "Thiếu tỉnh thành phố";
+}
+if((int)@$scale_id == 0){
+  $checked = 0;
+  $msg["scale_id"] = "Thiếu quy mô công ty";
+}   
+if((int)$status==-1){
+ $checked = 0;
+ $msg["status"]= "Thiếu trạng thái";
+}
+if((int)@$status_authentication==-1){
+ $checked = 0;           
+ $msg["status_authentication"]= "Thiếu trạng thái xác thực";
+}
+if ($checked == 1) {   
+  $image_name='';
+  if($image_file != null){                      
+    $image_name=uploadImage($image_file['name'],$image_file['tmp_name'],$width,$height);
+  } 
+  if(empty($id)){
+    $item         =   new EmployerModel;       
+    $item->created_at   = date("Y-m-d H:i:s",time());        
+    if(!empty($image_name)){
+      $item->logo    =   trim($image_name) ;  
+    } 
+  } else{
+    $item       = EmployerModel::find((int)@$id);   
+    $item->logo=null;                       
+    if(!empty($image_hidden)){
+      $item->logo =$image_hidden;          
+    }
+    if(!empty($image_name))  {
+      $item->logo=$image_name;                                                
+    }  
+  }  
+  if($password != null){
+    $item->password         = Hash::make($password);
+  }
+  $item->fullname           = @$fullname;              
+  $item->alias              = @$alias;
+  $item->meta_keyword       = @$meta_keyword;
+  $item->meta_description   = @$meta_description;
+  $item->address            = @$address;
+  $item->phone              = @$phone;
+  $item->province_id        = (int)@$province_id;
+  $item->scale_id           = (int)@$scale_id;
+  $item->intro              = @$intro;
+  $item->fax                = @$fax;
+  $item->website            = @$website;
+  $item->contacted_name     = @$contacted_name;
+  $item->contacted_email    = @$contacted_email;
+  $item->contacted_phone    = @$contacted_phone;
+  $item->user_id            = (int)@$user_id;
+  $item->status 			      =	(int)@$status;   
+  $item->status_authentication = @$status_authentication; 
+  $item->updated_at 		    =	date("Y-m-d H:i:s",time());    	        	
+  $item->save();      
+  $msg['success']='Lưu thành công';                                              
+}
+$info = array(
+  "checked"       => $checked,          
+  'msg'       => $msg,      
+  'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->id])
+);     		 			       
+return $info;       
+}
           public function changeStatus(Request $request){
             $id             =       (int)@$request->id;     
             $info                 =   array();

@@ -248,7 +248,11 @@ class IndexController extends Controller {
 				$mail->msgHTML($html_content);
 				$mail->Send();
 				/* end send mail certification */
+				if(Session::has($this->_ssNameUser)){					
+					Session::forget($this->_ssNameUser);      
+				}    				
 				$msg['success']='<span>Đăng ký tài khoản nhà tuyển dụng thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
+
 			}
 		}
 		return view("frontend.employer-register",compact('data','msg','checked'));         

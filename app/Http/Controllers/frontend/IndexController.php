@@ -1104,6 +1104,12 @@ class IndexController extends Controller {
 				$checked = 0;     
 			}
 			if((int)@$commission_from != 0 || (int)@$commission_to != 0){
+				if((int)@$commission_from < 0 || (int)@$commission_to < 0){
+					$msg["commission_from"] = 'Mức hoa hồng phải lớn hơn 0';    
+					$data['commission_from']='';        
+					$data['commission_to']='';        
+					$checked = 0;    
+				}
 				if((int)@$commission_to <= (int)@$commission_from){
 					$msg["commission_from"] = 'Mức hoa hồng không hợp lệ';    
 					$data['commission_from']='';        

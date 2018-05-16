@@ -12,6 +12,7 @@ use App\EmployerModel;
 use App\ProvinceModel;
 use App\ScaleModel;
 use App\User;
+use App\RecruitmentModel;
 use DB;
 use Hash;
 use Sentinel;
@@ -246,10 +247,15 @@ class EmployerController extends Controller {
           }
 
           public function deleteItem(Request $request){
-            $id                     =   (int)$request->id;              
+            $id                     =   (int)@$request->id;              
             $info                 =   array();
-      $checked              =   1;                           
-      $msg                =   array();                                  
+            $checked              =   1;                           
+            $msg                =   array();     
+            $data                   =   RecruitmentModel::whereRaw("employer_id = ?",[(int)@$id])->get()->toArray();  
+            if(count($data) > 0){
+              $checked     =   0;          
+              $msg['cannotdelete']                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
+            }                             
             if($checked == 1){
               $item = EmployerModel::find((int)@$id);
               $item->delete();     
@@ -259,65 +265,76 @@ class EmployerController extends Controller {
             $data                   =   $this->loadData($request);
             $info = array(
               "checked"       => $checked,          
-        'msg'       => $msg,           
+              'msg'       => $msg,           
               'data'              => $data
             );
             return $info;
           }
-      public function updateStatus(Request $request){
-        $strID                 =   $request->str_id;     
-        $status                 =   $request->status;            
-        $info                 =   array();
-      $checked              =   1;                           
-      $msg                =   array();
-        $strID=substr($strID, 0,strlen($strID) - 1);
-        $arrID=explode(',',$strID);                 
-        if(empty($strID)){
-          $checked            =   0;
-            
-          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
-        }
-        if($checked==1){
-          foreach ($arrID as $key => $value) {
-            if(!empty($value)){
-              $item=EmployerModel::find($value);
-              $item->status=$status;
-              $item->save();      
-            }            
+          public function updateStatus(Request $request){
+            $strID                 =   $request->str_id;     
+            $status                 =   $request->status;            
+            $info                 =   array();
+            $checked              =   1;                           
+            $msg                =   array();
+            $strID=substr($strID, 0,strlen($strID) - 1);
+            $arrID=explode(',',$strID);                 
+            if(empty($strID)){
+              $checked            =   0;
+
+              $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
+            }
+            if($checked==1){
+              foreach ($arrID as $key => $value) {
+                if(!empty($value)){
+                  $item=EmployerModel::find($value);
+                  $item->status=$status;
+                  $item->save();      
+                }            
+              }
+              $msg['success']='Cập nhật thành công';
+            }                 
+            $data                   =   $this->loadData($request);
+            $info = array(
+              "checked"       => $checked,          
+              'msg'       => $msg,       
+              'data'              => $data
+            );
+            return $info;
           }
-          $msg['success']='Cập nhật thành công';
-        }                 
-        $data                   =   $this->loadData($request);
-        $info = array(
-          "checked"       => $checked,          
-        'msg'       => $msg,       
-          'data'              => $data
-        );
-        return $info;
-      }
-      public function trash(Request $request){
-        $strID                =   $request->str_id;               
-        $info                 =   array();
-      $checked              =   1;                           
-      $msg                =   array();
-        $strID=substr($strID, 0,strlen($strID) - 1);
-        $arrID=explode(',',$strID); 
-        if(empty($strID)){
-          $checked            =   0;
-           
-          $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
-        }                    
-        if($checked == 1){                                  
-          DB::table('employer')->whereIn('id',@$arrID)->delete();
-          $msg['success']='Xóa thành công';                                      
-        }
-        $data                 =   $this->loadData($request);
-        $info = array(
-          "checked"       => $checked,          
-        'msg'       => $msg,              
-          'data'              => $data
-        );
-        return $info;
-      }            
+          public function trash(Request $request){
+            $strID                =   $request->str_id;               
+            $info                 =   array();
+            $checked              =   1;                           
+            $msg                =   array();
+            $strID=substr($strID, 0,strlen($strID) - 1);
+            $arrID=explode(',',$strID); 
+            if(count($arrID) == 0){
+              $checked            =   0;
+
+              $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
+            }else{
+              foreach ($arrID as $key => $value) {
+                if(!empty($value)){                  
+                  $data                   =   RecruitmentModel::whereRaw("employer_id = ?",[(int)@$value])->get()->toArray();                     
+                  if(count($data) > 0){
+                    $checked     =   0;
+
+                    $msg['cannotdelete']                    =   "Phần tử đã có dữ liệu con vui lòng không xóa";
+                  }
+                }                
+              }
+            }                    
+            if($checked == 1){                                  
+              DB::table('employer')->whereIn('id',@$arrID)->delete();
+              $msg['success']='Xóa thành công';                                      
+            }
+            $data                 =   $this->loadData($request);
+            $info = array(
+              "checked"       => $checked,          
+              'msg'       => $msg,              
+              'data'              => $data
+            );
+            return $info;
+          }            
 }
 ?>

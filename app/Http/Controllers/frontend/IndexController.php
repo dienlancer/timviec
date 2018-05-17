@@ -1053,7 +1053,7 @@ class IndexController extends Controller {
 			$job_id           =   @$request->job_id;
 			$province_id      =   @$request->province_id;
 			$duration         =   trim(@$request->duration);
-			$status           =   trim(@$request->status); 
+			$status_employer           =   trim(@$request->status_employer); 
 			$contacted_name   =   trim(@$request->contacted_name);
 			
 			$address          =   trim(@$request->address);
@@ -1159,9 +1159,9 @@ class IndexController extends Controller {
 				$data['duration']='';        
 				$checked = 0;      
 			}
-			if((int)@$status == -1){
-				$msg["status"] = 'Vui lòng chọn trạng thái hiển thị tin';    
-				$data['status']='';        
+			if((int)@$status_employer == -1){
+				$msg["status_employer"] = 'Vui lòng chọn trạng thái hiển thị tin';    
+				$data['status_employer']='';        
 				$checked = 0;      
 			} 
 			if(mb_strlen(@$contacted_name) < 6){
@@ -1232,7 +1232,7 @@ class IndexController extends Controller {
 				/* end duration */
 				$item->duration         = @$real_date;        
 				$item->employer_id      = (int)@$arrUser['id'];        
-				$item->status           = (int)@$status;
+				$item->status_employer           = (int)@$status_employer;
 				   
 				$item->save();           
 				

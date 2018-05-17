@@ -73,9 +73,9 @@ switch ($task) {
 				$ddlProbationary=cmsSelectboxCategory("probationary_id","vacca",$source_probationary,@$data['probationary_id'],$disabled_status,'Chọn thời gian thử việc');
 				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
 				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');
-				$status                 =   (count(@$data['status']) > 0) ? @$data['status'] : 1 ;
+				$status_employer                 =   (count(@$data["status_employer"]) > 0) ? @$data["status_employer"] : 1 ;
 				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  
-				$ddlStatus              =   cmsSelectbox("status","vacca",$arrStatus,$status,$disabled_status);
+				$ddlStatusEmployer              =   cmsSelectbox("status_employer","vacca",$arrStatus,$status_employer,$disabled_status);
 				?>				
 				<div class="row mia">
 					<div class="col-lg-4"><h2 class="login-information">Thông tin tuyển dụng</h2></div>
@@ -174,7 +174,7 @@ switch ($task) {
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Hiển thị tin</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8">						
-						<?php echo $ddlStatus; ?>
+						<?php echo $ddlStatusEmployer; ?>
 					</div>
 				</div>
 				<hr  />

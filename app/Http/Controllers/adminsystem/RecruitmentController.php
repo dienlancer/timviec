@@ -49,8 +49,8 @@ public function loadData(Request $request){
   if((int)@$user->id > 1){
     $query->where('users.id',(int)@$user->id);
   }                      
-  $data= $query->select('recruitment.id','recruitment.fullname','employer.fullname as employer_fullname','users.fullname as user_fullname','recruitment.status','recruitment.created_at','recruitment.updated_at')
-  ->groupBy('recruitment.id','recruitment.fullname','employer.fullname','users.fullname','recruitment.status','recruitment.created_at','recruitment.updated_at')
+  $data= $query->select('recruitment.id','recruitment.fullname','employer.fullname as employer_fullname','users.fullname as user_fullname','recruitment.status_employer','recruitment.status','recruitment.created_at','recruitment.updated_at')
+  ->groupBy('recruitment.id','recruitment.fullname','employer.fullname','users.fullname','recruitment.status_employer','recruitment.status','recruitment.created_at','recruitment.updated_at')
   ->orderBy('recruitment.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    

@@ -1580,6 +1580,14 @@ function recruitmentConverter($data=array(),$controller){
         for($i = 0 ;$i < count($data);$i++){
             $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
             $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
+
+            $status_employer='';
+            if((int)@$data[$i]['status_employer'] == 1){
+                $status_employer='<center><a href="javascript:void(0);" class="jgrid"><span class="state publish">&nbsp;</span></a></center';
+            }else{
+                $status_employer='<center><a href="javascript:void(0);" class="jgrid"><span class="state unpublish">&nbsp;</span></a></center';
+            }            
+
             $kicked=0;
             if((int)@$data[$i]["status"]==1){
                 $kicked=0;
@@ -1588,6 +1596,7 @@ function recruitmentConverter($data=array(),$controller){
                 $kicked=1;
             }
             $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';
+
             
             $id=@$data[$i]["id"];   
             $fullname=$data[$i]["fullname"];      
@@ -1600,6 +1609,7 @@ function recruitmentConverter($data=array(),$controller){
                 "fullname"                 =>   $fullname,                         
                 'employer_fullname'        =>   $employer_fullname,
                 'user_fullname'            =>   $user_fullname,
+                "status_employer"          =>   $status_employer,
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
                 "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),
@@ -1617,13 +1627,13 @@ function recruitment2Converter($data=array()){
             $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteRecruitment',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';            
             $edited='<center><a href="'.route('frontend.index.getFormRecruitment',['edit',(int)@$data[$i]["id"]]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';          
             $kicked=0;
-            if((int)@$data[$i]["status"]==1){
+            if((int)@$data[$i]["status_employer"]==1){
                 $kicked=0;
             }
             else{
                 $kicked=1;
             }
-            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';            
+            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status_employer"],$kicked).'</center>';            
             $id=@$data[$i]["id"];   
             $fullname=@$data[$i]['fullname'];    
             $created_at='<center>'.datetimeConverterVn($data[$i]["created_at"]).'</center>';          

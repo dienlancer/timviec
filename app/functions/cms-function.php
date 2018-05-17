@@ -6,11 +6,10 @@ function cmsStatus($id,$statusValue,$kicked){
   </a>';
   return $xhtml;
 }
-
 function cmsSelectbox($name = "",$class="",$arrValue=array(), $keySelect = "",$disabled){
   $xhtml = '<select  name="'.$name.'" class="'.$class.'" '.$disabled.' >';  
   foreach($arrValue as $key => $value){
-    if($key == $keySelect ){
+    if((int)$key == (int)@$keySelect ){
       $xhtml .= '<option selected="selected" value = "'.$key.'">'.$value.'</option>';
     }else{
       $xhtml .= '<option value = "'.$key.'">'.$value.'</option>';

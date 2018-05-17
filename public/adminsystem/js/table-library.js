@@ -387,6 +387,7 @@ var basicTable = function () {
                 { data: "fullname"      },        
                 { data: "employer_fullname"      },        
                 { data: "user_fullname"      },                                    
+                { data: "status_employer"        },   
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                

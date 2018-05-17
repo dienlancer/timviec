@@ -53,7 +53,7 @@ $ddlJob        =cmsSelectboxMultiple("job_id", 'form-control', @$source_job, @$a
 $ddlProvince        =cmsSelectboxMultiple("province_id", 'form-control', @$source_province, @$arrRowData['province_id'],'','Chọn nơi làm việc');
 $inputDuration='<input type="text" readonly="readonly"  name="duration" class="form-control"  value="'.@$arrRowData['duration'].'" >';
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
-$arrStatus              =   array(-1 => '- Select status -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  
+$arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
 
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
@@ -238,7 +238,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 </div>                                                 
                 <div class="row"> 
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Hiển thị tin</b></label>
+                        <label class="col-md-2 control-label"><b>Kích hoạt</b></label>
                         <div class="col-md-10">                            
                             <?php echo $ddlStatus; ?>
                             <span class="help-block"></span>

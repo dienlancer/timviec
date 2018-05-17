@@ -1345,8 +1345,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('recruitment.id','recruitment.fullname','recruitment.status','recruitment.created_at')
-		->groupBy('recruitment.id','recruitment.fullname','recruitment.status','recruitment.created_at')
+		$data=$query->select('recruitment.id','recruitment.fullname','recruitment.status_employer','recruitment.created_at')
+		->groupBy('recruitment.id','recruitment.fullname','recruitment.status_employer','recruitment.created_at')
 		->orderBy('recruitment.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
@@ -1367,7 +1367,7 @@ class IndexController extends Controller {
 		else{
 			$trangThai=0;
 		}
-		$item->status=$status;
+		$item->status_employer=$status;
 		$item->save();
 		$result = array(
 			'id'      => $id, 

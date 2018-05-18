@@ -74,8 +74,8 @@ $height=$setting['product_height']['field_value'];
 			$data_hot_job=convertToArray($source_hot_job);
 			$k=1;
 			foreach ($data_hot_job as $key => $value) {
-				$hot_job_fullname=truncateString($value['fullname'],50) ;
-				$hot_job_employer=truncateString($value['employer_fullname'],50);
+				$hot_job_fullname=truncateString($value['fullname'],40) ;
+				$hot_job_employer=truncateString($value['employer_fullname'],40);
 				$hot_job_duration=datetimeConverterVn($value['duration']);
 				$hot_job_img='';
 				if(!empty($value['logo'])){
@@ -90,8 +90,8 @@ $height=$setting['product_height']['field_value'];
 							<img src="<?php echo $hot_job_img; ?>" width="64">
 						</div>
 						<div class="hot-job-right">
-							<div class="hot-job-name"><a href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>
-							<div class="hot-job-employer"><a href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_job_employer; ?></a></div>
+							<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>
+							<div class="hot-job-employer"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_job_employer; ?></a></div>
 							<div>
 								<div class="simantest-left"><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
 								<div class="simantest-right">Ngày hết hạn:&nbsp;<?php echo $hot_job_duration; ?></div>

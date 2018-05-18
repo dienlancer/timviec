@@ -7,6 +7,7 @@ use App\ProductModel;
 use App\ArticleModel;
 use App\CategoryProductModel;
 use App\CategoryArticleModel;
+use Illuminate\Support\Str;
 function uploadImage($name,$tmp_name,$width,$height){        
   $image_name=$name;                  
   $image_tmp_name=$tmp_name;
@@ -169,10 +170,10 @@ function getArrPrivilege(){
 function truncateString($str, $maxChars = 40){
   $chuoi='';
   if (strlen($str) > $maxChars) {
-        $chuoi= trim(substr($str, 0, $maxChars)) ."...";
-    } else {
-        $chuoi= $str;
-    }
-    return $chuoi;
+    $chuoi= Str::substr(trim($str),0, $maxChars) ."...";
+  } else {
+    $chuoi= $str;
+  }
+  return $chuoi;
 }
 ?>

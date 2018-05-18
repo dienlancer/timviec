@@ -25,48 +25,52 @@ $height=$setting['product_height']['field_value'];
 </div>
 @include("frontend.content-top-register")
 <div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="relative">
-				<div class="nikatasuzuki margin-top-15">
-					<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
-					<div class="tibolee">VIỆC LÀM MỚI</div>
-				</div>
-				<hr class="banban">
-			</div>			
-		</div>
-	</div>	
-	<div class="row">	
 	<?php 
-		$query=DB::table('recruitment')
-				->join('employer','recruitment.employer_id','=','employer.id')
-				->join('salary','recruitment.salary_id','=','salary.id');
-		$query->where('recruitment.status',1);
-		$query->where('recruitment.status_employer',1);
-		$source_hot_job=$query->select(
-								'recruitment.id',
-								'recruitment.fullname',
-								'recruitment.alias',
-								'recruitment.duration',
-								'salary.fullname as salary_name',
-								'employer.fullname as employer_fullname',
-								'employer.alias as employer_alias',
-								'employer.logo'
-								)
-							  ->groupBy(
-								'recruitment.id',
-								'recruitment.fullname',
-								'recruitment.alias',
-								'recruitment.duration',
-								'salary.fullname',
-								'employer.fullname',
-								'employer.alias',
-								'employer.logo'
-								)
-							  ->orderBy('recruitment.id', 'desc')
-							  ->get()
-							  ->toArray();		
-		if(count($source_hot_job) > 0){
+	$query=DB::table('recruitment')
+	->join('employer','recruitment.employer_id','=','employer.id')
+	->join('salary','recruitment.salary_id','=','salary.id');
+	$query->where('recruitment.status',1);
+	$query->where('recruitment.status_employer',1);
+	$source_hot_job=$query->select(
+		'recruitment.id',
+		'recruitment.fullname',
+		'recruitment.alias',
+		'recruitment.duration',
+		'salary.fullname as salary_name',
+		'employer.fullname as employer_fullname',
+		'employer.alias as employer_alias',
+		'employer.logo'
+	)
+	->groupBy(
+		'recruitment.id',
+		'recruitment.fullname',
+		'recruitment.alias',
+		'recruitment.duration',
+		'salary.fullname',
+		'employer.fullname',
+		'employer.alias',
+		'employer.logo'
+	)
+	->orderBy('recruitment.id', 'desc')
+	->take(63)
+	->get()
+	->toArray();		
+	if(count($source_hot_job) > 0){
+		?>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="relative">
+					<div class="nikatasuzuki margin-top-15">
+						<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+						<div class="tibolee">VIỆC LÀM MỚI</div>
+					</div>
+					<hr class="banban">
+					<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+				</div>			
+			</div>
+		</div>	
+		<div class="row">	
+			<?php 
 			$data_hot_job=convertToArray($source_hot_job);
 			$k=1;
 			foreach ($data_hot_job as $key => $value) {
@@ -90,7 +94,7 @@ $height=$setting['product_height']['field_value'];
 							<div class="hot-job-employer"><a href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_job_employer; ?></a></div>
 							<div>
 								<div class="simantest-left"><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
-								<div class="simantest-right"><i class="far fa-clock"></i>&nbsp;<?php echo $hot_job_duration; ?></div>
+								<div class="simantest-right">Ngày hết hạn:&nbsp;<?php echo $hot_job_duration; ?></div>
 								<div class="clr"></div>
 							</div>
 						</div>		
@@ -102,9 +106,11 @@ $height=$setting['product_height']['field_value'];
 					echo '<div class="clr"></div>';
 				}
 				$k++;
-			}
-		}				
+			}			
+			?>	
+		</div>
+		<?php
+	}
 	?>	
-	</div>
 </div>
 @endsection()               

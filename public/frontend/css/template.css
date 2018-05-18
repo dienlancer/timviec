@@ -957,11 +957,31 @@ div.opacity-absolute::before{
 }
 .banban{
         position: absolute;
-    width:1030px;
+    width:930px;
     top: 14px;
     margin-top: 0;
     margin-bottom: 0;
     left: 140px;
+}
+.lonatraction{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.xem-tat-ca a{
+        display: block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.xem-tat-ca a:hover{
+    background: #337ab7;
+    border: 1px solid #1b588d;
+    color: #ffffff;    
 }
 @media (max-width: 768px){    
     .mobilemenu{

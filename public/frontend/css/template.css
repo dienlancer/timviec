@@ -904,14 +904,64 @@ div.opacity-absolute::before{
 .ritae{
     float: left;
 }
+.hot-job-name,.hot-job-employer{
+    text-align: left;
+}
 .hot-job-name a{
     text-transform: capitalize;
     color: #363636;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 12px;
 }
 .hot-job-employer a{
-
+    color: #898989;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+.hot-job-box{
+        border: 1px solid #f1f1f1;
+    margin-top: 15px;
+    padding: 5px;
+}
+.hot-job-img{
+    float: left;
+    width: 70px;
+}
+.hot-job-right{
+    margin-left:70px;
+}
+.simantest-left{
+    float: left;
+    color: #fc205c;
+}
+.simantest-right{
+    float: right;
+    color: #1790d4;
+}
+.libia-camasa{
+    margin-left:30px;
+}
+.nikatasuzuki{
+    display: flex;
+    align-items: center;
+}
+.tibolee{
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #E30000
+}
+.tibolee-icon{
+    font-size: 20px;
+    color: #E30000
+}
+.banban{
+        position: absolute;
+    width:1030px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 140px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

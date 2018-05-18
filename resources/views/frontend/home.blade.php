@@ -3,6 +3,9 @@
 <?php 
 //use Illuminate\Support\Facades\DB;
 $seo=getSeo();
+$setting= getSettingSystem();
+$width=$setting['product_width']['field_value'];
+$height=$setting['product_height']['field_value'];  
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -21,26 +24,44 @@ $seo=getSeo();
 	</div>	
 </div>
 @include("frontend.content-top-register")
-<div class="container">	
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="relative">
+				<div class="nikatasuzuki margin-top-15">
+					<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+					<div class="tibolee">VIỆC LÀM MỚI</div>
+				</div>
+				<hr class="banban">
+			</div>			
+		</div>
+	</div>	
 	<div class="row">	
 	<?php 
 		$query=DB::table('recruitment')
-				->join('employer','recruitment.employer_id','=','employer.id');
+				->join('employer','recruitment.employer_id','=','employer.id')
+				->join('salary','recruitment.salary_id','=','salary.id');
 		$query->where('recruitment.status',1);
 		$query->where('recruitment.status_employer',1);
 		$source_hot_job=$query->select(
 								'recruitment.id',
 								'recruitment.fullname',
 								'recruitment.alias',
+								'recruitment.duration',
+								'salary.fullname as salary_name',
 								'employer.fullname as employer_fullname',
-								'employer.alias as employer_alias'
+								'employer.alias as employer_alias',
+								'employer.logo'
 								)
 							  ->groupBy(
 								'recruitment.id',
 								'recruitment.fullname',
 								'recruitment.alias',
+								'recruitment.duration',
+								'salary.fullname',
 								'employer.fullname',
-								'employer.alias'
+								'employer.alias',
+								'employer.logo'
 								)
 							  ->orderBy('recruitment.id', 'desc')
 							  ->get()
@@ -49,12 +70,31 @@ $seo=getSeo();
 			$data_hot_job=convertToArray($source_hot_job);
 			$k=1;
 			foreach ($data_hot_job as $key => $value) {
-				$hot_job_fullname=truncateString($value['fullname'],40,'...') ;
+				$hot_job_fullname=truncateString($value['fullname'],50) ;
+				$hot_job_employer=truncateString($value['employer_fullname'],50);
+				$hot_job_duration=datetimeConverterVn($value['duration']);
+				$hot_job_img='';
+				if(!empty($value['logo'])){
+					$hot_job_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+				}else{
+					$hot_job_img=asset('upload/no-logo.png');
+				}
 				?>
 				<div class="col-lg-4">
-					<div class="margin-top-15">
-						<div class="hot-job-name"><a href="javascript:void(0);"><?php echo $hot_job_fullname; ?></a></div>
-						<div class="hot-job-employer"><a href="javascript:void(0);"><?php echo $value['employer_fullname']; ?></a></div>
+					<div class="hot-job-box">
+						<div class="hot-job-img">
+							<img src="<?php echo $hot_job_img; ?>" width="64">
+						</div>
+						<div class="hot-job-right">
+							<div class="hot-job-name"><a href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>
+							<div class="hot-job-employer"><a href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_job_employer; ?></a></div>
+							<div>
+								<div class="simantest-left"><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
+								<div class="simantest-right"><i class="far fa-clock"></i>&nbsp;<?php echo $hot_job_duration; ?></div>
+								<div class="clr"></div>
+							</div>
+						</div>		
+						<div class="clr"></div>				
 					</div>
 				</div>
 				<?php

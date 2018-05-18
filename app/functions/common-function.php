@@ -166,10 +166,10 @@ function getArrPrivilege(){
   /* end quyền truy cập */  
   return $arrPrivilege;
 }
-function truncateString($str, $maxChars = 40, $holder = "..."){
+function truncateString($str, $maxChars = 40){
   $chuoi='';
   if (strlen($str) > $maxChars) {
-        $chuoi= trim(substr($str, 0, $maxChars)) . $holder;
+        $chuoi= trim(substr($str, 0, $maxChars)) ."...";
     } else {
         $chuoi= $str;
     }

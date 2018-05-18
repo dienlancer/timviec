@@ -166,5 +166,13 @@ function getArrPrivilege(){
   /* end quyền truy cập */  
   return $arrPrivilege;
 }
-
+function truncateString($str, $maxChars = 40, $holder = "..."){
+  $chuoi='';
+  if (strlen($str) > $maxChars) {
+        $chuoi= trim(substr($str, 0, $maxChars)) . $holder;
+    } else {
+        $chuoi= $str;
+    }
+    return $chuoi;
+}
 ?>

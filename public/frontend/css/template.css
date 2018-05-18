@@ -904,6 +904,15 @@ div.opacity-absolute::before{
 .ritae{
     float: left;
 }
+.hot-job-name a{
+    text-transform: capitalize;
+    color: #363636;
+    font-weight: bold;
+    font-size: 13px;
+}
+.hot-job-employer a{
+
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

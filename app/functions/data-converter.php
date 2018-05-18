@@ -1654,7 +1654,8 @@ function profile2Converter($data=array()){
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){            
             $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteProfile',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';            
-            $edited='<center><a href="'.route('frontend.index.getFormProfile',['edit',(int)@$data[$i]["id"]]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';          
+            $edited='<center><a href="'.route('frontend.index.getFormProfile',['edit',(int)@$data[$i]["id"]]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>'; 
+            $profile_detail='<center><a href="'.route('frontend.index.getProfileDetail',[(int)@$data[$i]["id"]]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';          
             $kicked=0;
             if((int)@$data[$i]["status_search"]==1){
                 $kicked=0;
@@ -1672,6 +1673,7 @@ function profile2Converter($data=array()){
                 "status_search"            =>   $status_search,
                 "created_at"               =>   $created_at,                                
                 "edited"                   =>   $edited,
+                "detail"                   =>   $profile_detail,
                 "deleted"                  =>   $deleted
             );
         }

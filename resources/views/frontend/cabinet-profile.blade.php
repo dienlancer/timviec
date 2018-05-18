@@ -54,6 +54,7 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 							<th class="news-title"><center>Ngày tạo</center></th>							
 							<th class="news-title"><center>Cho phép nhà tuyển dụng tìm kiếm</center></th>
 							<th class="news-title"><center>Sửa</center></th>
+							<th class="news-title"><center>Chi tiết hồ sơ</center></th>
 							<th class="news-title"><center>Xóa</center></th>
 						</tr>
 					</thead>
@@ -65,6 +66,7 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 							$created_at=$value['created_at'];
 							$status_search=$value['status_search'];						
 							$edited=$value['edited'];
+							$detail=$value['detail'];
 							$deleted=$value['deleted'];
 							?>
 							<tr>
@@ -72,6 +74,7 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 								<td><?php echo $created_at; ?></td>
 								<td><?php echo $status_search; ?></td>
 								<td><?php echo $edited; ?></td>
+								<td><?php echo $detail; ?></td>
 								<td><?php echo $deleted; ?></td>						
 							</tr>
 							<?php

@@ -1699,7 +1699,7 @@ class IndexController extends Controller {
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
-		$data=profile2Converter($data,'profile');
+		$data=profile2Converter($data);
 		return view('frontend.cabinet-profile',compact('data','msg','checked',"pagination",'q'));     
 	}
 	public function changeProfileSearchStatus(Request $request){

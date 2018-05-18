@@ -1006,13 +1006,24 @@ class IndexController extends Controller {
 		if(count($arrUser) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}
+
 		$email=@$arrUser['email'];       
 		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','contacted_name','address','contacted_phone')->get()->toArray();
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}           
 		if($task == 'edit'){
-			$data=RecruitmentModel::find((int)@$id)->toArray();
+			$source2=RecruitmentModel::find((int)@$id);
+			if($source2==null){
+				Session::forget($this->_ssNameUser);   
+				return redirect()->route("frontend.index.employerLogin");    
+			}else{
+				$data=$source2->toArray();
+				if((int)@$data['employer_id'] != (int)@$arrUser['id']){
+					Session::forget($this->_ssNameUser);   
+					return redirect()->route("frontend.index.employerLogin");    
+				}
+			}		
 			$source_recruitment_job=RecruitmentJobModel::whereRaw('recruitment_id = ?',[(int)@$id])->select('job_id')->get()->toArray();
 			$source_recruitment_place=RecruitmentPlaceModel::whereRaw('recruitment_id = ?',[(int)@$id])->select('province_id')->get()->toArray();
 			$source_job_id=array();
@@ -1392,10 +1403,16 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}  
-		$source=RecruitmentModel::find((int)@$id);
-		if($source == null){
+		$source2=RecruitmentModel::find((int)@$id);
+		if($source2 == null){
 			$checked=0;
 			$msg['errorid']='Không đúng id';
+		}else{
+			$data=$source2->toArray();
+			if((int)@$data['employer_id'] != (int)@$arrUser['id']){
+				$checked=0;
+				$msg['errorid']='Sai tin tuyển dụng';
+			}
 		}
 		if($checked == 1){
 			$item               =   RecruitmentModel::find((int)@$id);
@@ -1427,8 +1444,18 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
 		}
-		if($task == 'edit'){
-			$data=ProfileModel::find((int)@$id)->toArray();
+		if($task == 'edit'){			
+			$source2=ProfileModel::find((int)@$id);
+			if($source2==null){
+				Session::forget($this->_ssNameUser);   
+				return redirect()->route("frontend.index.candidateLogin");    
+			}else{
+				$data=$source2->toArray();
+				if((int)@$data['candidate_id'] != (int)@$arrUser['id']){
+					Session::forget($this->_ssNameUser);   
+					return redirect()->route("frontend.index.candidateLogin");    
+				}
+			}			
 			$source_profile_job=ProfileJobModel::whereRaw('profile_id = ?',[(int)@$id])->select('job_id')->get()->toArray();
 			$source_profile_place=ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$id])->select('province_id')->get()->toArray();
 			$source_job_id=array();
@@ -1701,6 +1728,7 @@ class IndexController extends Controller {
 		$checked              =   1;                           
 		$msg                =   array();
 		$arrUser=array();    
+		$data=array();
 		if(Session::has($this->_ssNameUser)){
 			$arrUser=Session::get($this->_ssNameUser);
 		}   
@@ -1711,12 +1739,19 @@ class IndexController extends Controller {
 		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
-		}
-		$source=ProfileModel::find((int)@$id);
-		if($source == null){
-			$checked=0;
-			$msg['errorid']='Không đúng id';
-		}
+		}else{
+			$source2=ProfileModel::find((int)@$id);
+			if($source2 == null){
+				$checked=0;
+				$msg['errorid']='Không đúng id';
+			}else{
+				$data=$source2->toArray();
+				if((int)@$data['candidate_id'] != (int)@$arrUser['id']){
+					$checked=0;
+					$msg['errorid']='Sai hồ sơ';
+				}
+			}
+		}		
 		if($checked == 1){
 			$item               =   ProfileModel::find((int)@$id);
 			$item->delete();          
@@ -1732,6 +1767,7 @@ class IndexController extends Controller {
 	}
 	public function getGroupProfile($id){
 		$arrUser=array();    
+		$data=array();
 		if(Session::has($this->_ssNameUser)){
 			$arrUser=Session::get($this->_ssNameUser);
 		}   
@@ -1742,6 +1778,18 @@ class IndexController extends Controller {
 		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
+		}else{
+			$source2=ProfileModel::find((int)@$id);
+			if($source2==null){
+				Session::forget($this->_ssNameUser);   
+				return redirect()->route("frontend.index.candidateLogin");    
+			}else{
+				$data=$source2->toArray();
+				if((int)@$data['candidate_id'] != (int)@$arrUser['id']){
+					Session::forget($this->_ssNameUser);   
+					return redirect()->route("frontend.index.candidateLogin");    
+				}
+			}	
 		}
 		return view('frontend.group-profile',compact('id'));     
 	}
@@ -1800,13 +1848,19 @@ class IndexController extends Controller {
 		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
-		}				
-		if($request->isMethod('post')){
-			$data             	=	@$request->all();      			
-			if($checked==1){
-				
-			}
-		}
+		}else{
+			$source2=ProfileModel::find((int)@$id);
+			if($source2==null){
+				Session::forget($this->_ssNameUser);   
+				return redirect()->route("frontend.index.candidateLogin");    
+			}else{
+				$data=$source2->toArray();
+				if((int)@$data['candidate_id'] != (int)@$arrUser['id']){
+					Session::forget($this->_ssNameUser);   
+					return redirect()->route("frontend.index.candidateLogin");    
+				}
+			}	
+		}						
 		return view('frontend.profile-detail',compact('data','msg','checked','id'));     
 	}
 	public function updateCareerGoal(Request $request){

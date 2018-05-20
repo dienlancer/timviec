@@ -111,11 +111,11 @@ $height=$setting['product_height']['field_value'];
 		</div>
 		<?php
 	}
-	$query=DB::table('recruitment')
+	$query_attractive_job=DB::table('recruitment')
 	->join('employer','recruitment.employer_id','=','employer.id')
 	->join('salary','recruitment.salary_id','=','salary.id');
-	$query->where('recruitment.status',1);
-	$query->where('recruitment.status_employer',1);
+	$query_attractive_job->where('recruitment.status',1);
+	$query_attractive_job->where('recruitment.status_employer',1);
 	$source_attractive_job=$query->select(
 		'recruitment.id',
 		'recruitment.fullname',
@@ -166,6 +166,7 @@ $height=$setting['product_height']['field_value'];
 							$hot_attractive_fullname=truncateString($value['fullname'],40) ;
 							$hot_attractive_employer=truncateString($value['employer_fullname'],40);
 							$hot_attractive_duration=datetimeConverterVn($value['duration']);
+							
 							?>
 							<tr>
 								<td>

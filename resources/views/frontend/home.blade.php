@@ -137,7 +137,7 @@ $height=$setting['product_height']['field_value'];
 		'employer.logo'
 	)
 	->orderBy('recruitment.id', 'desc')
-	->take(63)
+	->take(10)
 	->get()
 	->toArray();		
 	if(count($source_attractive_job) > 0){
@@ -200,10 +200,110 @@ $height=$setting['product_height']['field_value'];
 						?>						
 					</table>
 				</div>
+				<?php 
+				$query_high_salary=DB::table('recruitment')
+				->join('employer','recruitment.employer_id','=','employer.id')
+				->join('salary','recruitment.salary_id','=','salary.id');
+				$query_high_salary->where('recruitment.status',1);
+				$query_high_salary->where('recruitment.status_employer',1);
+				$source_high_salary=$query_high_salary->select(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'salary.fullname as salary_name',
+					'employer.fullname as employer_fullname',
+					'employer.alias as employer_alias',
+					'employer.logo'
+				)
+				->groupBy(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'salary.fullname',
+					'employer.fullname',
+					'employer.alias',
+					'employer.logo'
+				)
+				->orderBy('recruitment.id', 'desc')
+				->take(10)
+				->get()
+				->toArray();		
+				if(count($source_high_salary) > 0){
+					$data_high_salary=convertToArray($source_high_salary);
+					?>
+					<div class="relative">
+						<div class="nikatasuzuki margin-top-15">
+							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+							<div class="tibolee">VIỆC LÀM LƯƠNG CAO</div>
+						</div>
+						<hr class="royal">
+						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+					</div>	
+					<div>
+						<?php 
+						foreach ($data_high_salary as $key => $value){
+							$hight_salary_fullname=truncateString($value['fullname'],40) ;
+							$hight_salary_employer=truncateString($value['employer_fullname'],40);
+							$hight_salary_duration=datetimeConverterVn($value['duration']);
+							$hight_salary_img='';
+							if(!empty($value['logo'])){
+								$hight_salary_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+							}else{
+								$hight_salary_img=asset('upload/no-logo.png');
+							}
+							?>
+							<div class="hot-job-box">
+								
+							</div>
+							<?php
+						}
+						?>
+					</div>	
+					<?php 
+				}
+				?>				
 			</div>
 			<div class="col-lg-4">
 				<div class="nhathongminhquata">
 					<h3 class="menu-highlight">TÌM KIẾM VIỆC LÀM</h3>
+					<div class="america">
+						<?php 
+						$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+						$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+						$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+						$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();			
+						$source_sex=App\SexModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
+						$source_working_form=App\WorkingFormModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
+						$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
+						$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, 0,'','Chọn ngành nghề');
+						$ddlProvince        =cmsSelectboxCategory("province_id", 'vacca', @$source_province, 0,'','Chọn tỉnh thành');
+						$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, 0,'','Chọn mức lương');
+						$ddlLiteracy        =cmsSelectboxCategory("literacy_id", 'vacca', @$source_literacy, 0,'','Chọn trình độ học vấn');
+						$ddlSex        =cmsSelectboxCategory("sex_id", 'vacca', @$source_sex, 0,'','Chọn giới tính');
+						$ddlWorkingForm        =cmsSelectboxCategory("working_form_id", 'vacca', @$source_working_form, 0,'','Chọn loại hình công việc');
+						$ddlExperience        =cmsSelectboxCategory("experience_id", 'vacca', @$source_experience, 0,'','Chọn kinh nghiệm');
+						?>
+						<div class="ritacruista"><input type="text" name="q" class="vacca" placeholder="Nhập từ khóa"></div>						
+						<div class="ritacruista"><?php echo $ddlJob; ?></div>
+						<div class="ritacruista"><?php echo $ddlProvince; ?></div>						
+						<div class="ritacruista"><?php echo $ddlSalary; ?></div>
+						<div class="ritacruista"><?php echo $ddlLiteracy; ?></div>						
+						<div class="ritacruista"><?php echo $ddlSex; ?></div>	
+						<div class="ritacruista"><?php echo $ddlWorkingForm; ?></div>				
+						<div class="ritacruista"><?php echo $ddlExperience; ?></div>	
+						<div class="ritacruista margin-bottom-5">	
+							<div class="vihamus-3">
+									<a href="javascript:void(0);" >
+										<div class="narit">
+											<div><i class="fas fa-search"></i></div>
+											<div class="margin-left-5">Tìm kiếm</div>
+										</div>								
+									</a>
+							</div>
+						</div>					
+					</div>
 				</div>
 			</div>
 		</div>

@@ -990,7 +990,7 @@ div.opacity-absolute::before{
     top: 14px;
     margin-top: 0;
     margin-bottom: 0;
-    left: 190px;
+    left: 200px;
 }
 .cidu td{
         padding-left: 0px;
@@ -1019,6 +1019,13 @@ div.opacity-absolute::before{
 }
 .nhathongminhquata{
     margin-top: 15px;
+}
+.america{
+    padding: 0px 10px;
+    border: 1px solid #f1f1f1;
+}
+.ritacruista{
+    margin-top: 5px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

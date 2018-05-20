@@ -1027,6 +1027,12 @@ div.opacity-absolute::before{
 .ritacruista{
     margin-top: 5px;
 }
+.nysaki{
+    float: left;
+}
+.batay{
+    margin-left:550px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

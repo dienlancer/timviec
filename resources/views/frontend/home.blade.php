@@ -26,12 +26,12 @@ $height=$setting['product_height']['field_value'];
 @include("frontend.content-top-register")
 <div class="container">
 	<?php 
-	$query=DB::table('recruitment')
+	$query_hot_job=DB::table('recruitment')
 	->join('employer','recruitment.employer_id','=','employer.id')
 	->join('salary','recruitment.salary_id','=','salary.id');
-	$query->where('recruitment.status',1);
-	$query->where('recruitment.status_employer',1);
-	$source_hot_job=$query->select(
+	$query_hot_job->where('recruitment.status',1);
+	$query_hot_job->where('recruitment.status_employer',1);
+	$source_hot_job=$query_hot_job->select(
 		'recruitment.id',
 		'recruitment.fullname',
 		'recruitment.alias',
@@ -116,7 +116,7 @@ $height=$setting['product_height']['field_value'];
 	->join('salary','recruitment.salary_id','=','salary.id');
 	$query_attractive_job->where('recruitment.status',1);
 	$query_attractive_job->where('recruitment.status_employer',1);
-	$source_attractive_job=$query->select(
+	$source_attractive_job=$query_hot_job->select(
 		'recruitment.id',
 		'recruitment.fullname',
 		'recruitment.alias',
@@ -171,7 +171,7 @@ $height=$setting['product_height']['field_value'];
 							<tr>
 								<td>
 									<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_attractive_fullname; ?></a></div>
-									<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_attractive_duration; ?></a></div>
+									<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_attractive_employer; ?></a></div>
 								</td>
 								<td></td>
 								<td><?php echo $value['salary_name']; ?></td>

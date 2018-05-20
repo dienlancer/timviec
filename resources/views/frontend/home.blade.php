@@ -116,7 +116,7 @@ $height=$setting['product_height']['field_value'];
 	->join('salary','recruitment.salary_id','=','salary.id');
 	$query_attractive_job->where('recruitment.status',1);
 	$query_attractive_job->where('recruitment.status_employer',1);
-	$source_attractive_job=$query_hot_job->select(
+	$source_attractive_job=$query_attractive_job->select(
 		'recruitment.id',
 		'recruitment.fullname',
 		'recruitment.alias',
@@ -166,14 +166,32 @@ $height=$setting['product_height']['field_value'];
 							$hot_attractive_fullname=truncateString($value['fullname'],40) ;
 							$hot_attractive_employer=truncateString($value['employer_fullname'],40);
 							$hot_attractive_duration=datetimeConverterVn($value['duration']);
-							
+							$source_province=DB::table('province')
+							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+							->where('recruitment_place.recruitment_id',(int)@$value['id'])
+							->select(								
+								'province.fullname',
+								'province.alias'								
+							)
+							->groupBy(								
+								'province.fullname',
+								'province.alias'								
+							)
+							->orderBy('province.id', 'desc')						
+							->get()
+							->toArray();	
+							$data_province=convertToArray($source_province);					
+							$province_text='';
+							foreach ($data_province as $key_province => $value_province) {
+								$province_text.='<div class="padding-top-5 padding-bottom-5 madrid"><a href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></div>';
+							}
 							?>
 							<tr>
 								<td>
 									<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_attractive_fullname; ?></a></div>
 									<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_attractive_employer; ?></a></div>
 								</td>
-								<td></td>
+								<td><?php echo $province_text; ?></td>
 								<td><?php echo $value['salary_name']; ?></td>
 								<td><?php echo $hot_attractive_duration; ?></td>
 							</tr>
@@ -184,7 +202,9 @@ $height=$setting['product_height']['field_value'];
 				</div>
 			</div>
 			<div class="col-lg-4">
-
+				<div class="nhathongminhquata">
+					<h3 class="menu-highlight">TÌM KIẾM VIỆC LÀM</h3>
+				</div>
 			</div>
 		</div>
 		<?php

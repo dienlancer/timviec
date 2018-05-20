@@ -15,6 +15,7 @@ body{
     color:#333;
     background:#ffffff;
     font-family: 'OpenSans';
+    font-size: 12px;
     
 }
 a:hover,a:focus{
@@ -229,7 +230,7 @@ div.opacity-absolute::before{
     padding: 10px 0px;
 }
 .tieplua a{
-    font-size: 12px;
+
     color: #333;
 }
 .nipad{
@@ -240,7 +241,7 @@ div.opacity-absolute::before{
 }
 .nipad li a{
     color: #333;
-    font-size: 12px;
+
 }
 .tim-cong-viec{
     float: left;
@@ -249,7 +250,7 @@ div.opacity-absolute::before{
 .kiem-cong-viec{
     border: 1px solid #ccc;
     padding: 5px 5px;
-    font-size: 12px;
+
 }
 .btn-search-job a{
     display: block;
@@ -394,7 +395,7 @@ div.opacity-absolute::before{
 }
 .tao-ho-so a .sloganthsmp{
     color: #333;
-    font-size: 12px;
+
     margin-top: 5px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
@@ -433,7 +434,7 @@ div.opacity-absolute::before{
 }
 .lam-dep-ho-so a .sloganthsmp{
     color: #333;
-    font-size: 12px;
+
     margin-top: 5px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
@@ -491,7 +492,7 @@ div.opacity-absolute::before{
 }
 .dang-tin-mien-phi a .sloganthsmp{
     color: #333;
-    font-size: 12px;
+
     margin-top: 5px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
@@ -539,7 +540,7 @@ div.opacity-absolute::before{
     list-style: none;
 }
 .thong-tin-dn-dk li{
-    font-size: 12px;
+
     margin-top: 10px;
     text-align: justify;
     margin-left: 0;
@@ -646,7 +647,7 @@ div.opacity-absolute::before{
     width: 100%;
         border: 1px solid #ccc;
     padding: 5px 5px;
-    font-size: 12px;
+
 }
 .xika{
     padding: 4px 0px;
@@ -669,7 +670,7 @@ div.opacity-absolute::before{
     align-items: center;
 }
 .lili{
-    font-size: 12px;
+
 }
 .tattoo{
     width: 60%;
@@ -909,14 +910,14 @@ div.opacity-absolute::before{
 }
 .hot-job-name a{
     text-transform: capitalize;
-    color: #363636;
+    color:#333;
     font-weight: bold;
-    font-size: 12px;
+
 }
 .hot-job-employer a{
     color: #898989;
     text-transform: capitalize;
-    font-size: 12px;
+
 }
 .hot-job-box{
         border: 1px solid #f1f1f1;
@@ -971,7 +972,7 @@ div.opacity-absolute::before{
 .xem-tat-ca a{
         display: block;
     padding: 5px 10px;
-    font-size: 12px;
+
     font-weight: bold;
     background: #f5f5f5;
     border: 1px solid #ccc;
@@ -1006,6 +1007,18 @@ div.opacity-absolute::before{
 .vivan-hd{
     margin-top: 5px;
     margin-bottom: 5px;
+}
+.madrid a{
+    color:#333;
+}
+.menu-highlight {
+    background:  #337ab7;
+    color: #ffffff;    
+    font-size: 15px;
+    padding: 10px 10px;    
+}
+.nhathongminhquata{
+    margin-top: 15px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

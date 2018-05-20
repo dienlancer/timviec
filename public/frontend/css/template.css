@@ -983,6 +983,30 @@ div.opacity-absolute::before{
     border: 1px solid #1b588d;
     color: #ffffff;    
 }
+.royal {
+        position: absolute;
+    width: 470px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 190px;
+}
+.cidu td{
+        padding-left: 0px;
+    padding-bottom: 0px;
+}
+.cidu th{
+    font-size: 13px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.cidu tr{
+    border-bottom: 1px dotted #e1e1e1;
+}
+.vivan-hd{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

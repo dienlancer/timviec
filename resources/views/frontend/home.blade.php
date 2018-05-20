@@ -111,6 +111,83 @@ $height=$setting['product_height']['field_value'];
 		</div>
 		<?php
 	}
-	?>	
+	$query=DB::table('recruitment')
+	->join('employer','recruitment.employer_id','=','employer.id')
+	->join('salary','recruitment.salary_id','=','salary.id');
+	$query->where('recruitment.status',1);
+	$query->where('recruitment.status_employer',1);
+	$source_attractive_job=$query->select(
+		'recruitment.id',
+		'recruitment.fullname',
+		'recruitment.alias',
+		'recruitment.duration',
+		'salary.fullname as salary_name',
+		'employer.fullname as employer_fullname',
+		'employer.alias as employer_alias',
+		'employer.logo'
+	)
+	->groupBy(
+		'recruitment.id',
+		'recruitment.fullname',
+		'recruitment.alias',
+		'recruitment.duration',
+		'salary.fullname',
+		'employer.fullname',
+		'employer.alias',
+		'employer.logo'
+	)
+	->orderBy('recruitment.id', 'desc')
+	->take(63)
+	->get()
+	->toArray();		
+	if(count($source_attractive_job) > 0){
+		$data_attractive_job=convertToArray($source_attractive_job);		
+		?>
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="relative">
+					<div class="nikatasuzuki margin-top-15">
+						<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+						<div class="tibolee">VIỆC LÀM HẤP DẪN</div>
+					</div>
+					<hr class="royal">
+					<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+				</div>		
+				<div>
+					<table class="cidu margin-top-15">
+						<tr>
+							<th width="40%">Vị trí tuyển dụng</th>
+							<th width="30%">Khu vực</th>
+							<th width="20%">Mức lương</th>
+							<th width="10%">Hạn nộp HS</th>
+						</tr>
+						<?php 
+						foreach ($data_attractive_job as $key => $value) {
+							$hot_attractive_fullname=truncateString($value['fullname'],40) ;
+							$hot_attractive_employer=truncateString($value['employer_fullname'],40);
+							$hot_attractive_duration=datetimeConverterVn($value['duration']);
+							?>
+							<tr>
+								<td>
+									<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_attractive_fullname; ?></a></div>
+									<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_attractive_duration; ?></a></div>
+								</td>
+								<td></td>
+								<td><?php echo $value['salary_name']; ?></td>
+								<td><?php echo $hot_attractive_duration; ?></td>
+							</tr>
+							<?php
+						}
+						?>						
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-4">
+
+			</div>
+		</div>
+		<?php
+	}
+	?>		
 </div>
 @endsection()               

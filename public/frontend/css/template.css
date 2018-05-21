@@ -1036,6 +1036,12 @@ div.opacity-absolute::before{
 .fackyou{
     border-bottom: 1px solid #f1f1f1;
 }
+.xibatuba{
+    float: left;
+}
+.miranbaros{
+    margin-left: 100px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

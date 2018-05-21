@@ -382,14 +382,41 @@ $height=$setting['product_height']['field_value'];
 								$quick_job_fullname=truncateString($value['fullname'],40) ;
 								$quick_job_employer=truncateString($value['employer_fullname'],40);
 								$quick_job_duration=datetimeConverterVn($value['duration']);
+								$source_province3=DB::table('province')
+								->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+								->where('recruitment_place.recruitment_id',(int)@$value['id'])
+								->select(								
+									'province.fullname',
+									'province.alias'								
+								)
+								->groupBy(								
+									'province.fullname',
+									'province.alias'								
+								)
+								->orderBy('province.id', 'desc')						
+								->get()
+								->toArray();	
+								$data_province3=convertToArray($source_province3);					
+								$province_text3='';
+								foreach ($data_province3 as $key_province3 => $value_province3) {
+									$province_text3.=$value_province3['fullname'].' ,';
+								}
+								$province_text3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
 								?>
 								<div class="fackyou">
-									<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a></div>
-									<div class="hot-job-employer"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
-								</div>
-								<?php
-							}
-							?>
+									<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a></div>
+									<div class="hot-job-employer"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
+									<div class="margin-top-15">
+										<div class="xibatuba">
+											<div><i class="fas fa-map-marker-alt">&nbsp;Hồ Chí Minh</div>
+												<div><i class="fas fa-dollar-sign"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
+											</div>
+											<div class="miranbaros"></div>
+										</div>
+									</div>
+									<?php
+								}
+								?>
 						</div>
 					</div>
 					<?php

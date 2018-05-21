@@ -331,12 +331,12 @@ $height=$setting['product_height']['field_value'];
 						<div class="ritacruista"><?php echo $ddlExperience; ?></div>	
 						<div class="ritacruista margin-bottom-5">	
 							<div class="vihamus-3">
-									<a href="javascript:void(0);" >
-										<div class="narit">
-											<div><i class="fas fa-search"></i></div>
-											<div class="margin-left-5">Tìm kiếm</div>
-										</div>								
-									</a>
+								<a href="javascript:void(0);" >
+									<div class="narit">
+										<div><i class="fas fa-search"></i></div>
+										<div class="margin-left-5">Tìm kiếm</div>
+									</div>								
+								</a>
 							</div>
 						</div>					
 					</div>

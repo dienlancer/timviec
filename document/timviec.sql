@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2018 at 01:17 PM
+-- Generation Time: May 21, 2018 at 07:17 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -537,12 +537,12 @@ CREATE TABLE `experience` (
 INSERT INTO `experience` (`id`, `fullname`, `alias`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Chưa có kinh nghiệm', 'chua-co-kinh-nghiem', 1, 1, '2018-04-12 06:54:19', '2018-04-12 06:54:19'),
 (2, 'Dưới 1 năm', 'duoi-1-nam', 1, 1, '2018-04-12 06:54:30', '2018-04-12 06:54:30'),
-(3, '1 năm kinh nghiệm trong nghề', '1-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:39', '2018-04-16 01:20:12'),
-(4, '2 năm kinh nghiệm trong nghề', '2-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:46', '2018-04-16 01:20:23'),
-(5, '3 năm kinh nghiệm trong nghề', '3-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:52', '2018-04-16 01:20:33'),
-(6, '4 năm kinh nghiệm trong nghề', '4-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:54:58', '2018-04-16 01:20:42'),
-(7, '5 năm kinh nghiệm trong nghề', '5-nam-kinh-nghiem-trong-nghe', 5, 1, '2018-04-12 06:55:09', '2018-04-16 01:20:54'),
-(8, 'Trên 5 năm kinh nghiệm trong nghề', 'tren-5-nam-kinh-nghiem-trong-nghe', 1, 1, '2018-04-12 06:55:26', '2018-04-16 01:21:02'),
+(3, '1 năm kinh nghiệm', '1-nam-kinh-nghiem', 1, 1, '2018-04-12 06:54:39', '2018-05-21 04:55:04'),
+(4, '2 năm kinh nghiệm', '2-nam-kinh-nghiem', 1, 1, '2018-04-12 06:54:46', '2018-05-21 04:55:44'),
+(5, '3 năm kinh nghiệm', '3-nam-kinh-nghiem', 1, 1, '2018-04-12 06:54:52', '2018-05-21 04:56:12'),
+(6, '4 năm kinh nghiệm', '4-nam-kinh-nghiem', 1, 1, '2018-04-12 06:54:58', '2018-05-21 04:56:35'),
+(7, '5 năm kinh nghiệm', '5-nam-kinh-nghiem', 5, 1, '2018-04-12 06:55:09', '2018-05-21 04:56:56'),
+(8, 'Trên 5 năm kinh nghiệm', 'tren-5-nam-kinh-nghiem', 1, 1, '2018-04-12 06:55:26', '2018-05-21 04:57:30'),
 (9, 'Không yêu cầu kinh nghiệm', 'khong-yeu-cau-kinh-nghiem', 1, 1, '2018-04-12 06:55:38', '2018-04-12 06:55:38');
 
 -- --------------------------------------------------------
@@ -1753,7 +1753,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (936, 1, 'LHJc2rPg6btE7b1bNsQY8u12PLcZu24s', '2018-05-17 02:19:03', '2018-05-17 02:19:03'),
 (937, 1, 'BLmC03sRMpTICIjeZtUanOiuqoTrIQR0', '2018-05-17 02:23:42', '2018-05-17 02:23:42'),
 (938, 1, 'bZc1gGPO3BxKlLXO3nVdCTavVqY4So2x', '2018-05-17 09:20:19', '2018-05-17 09:20:19'),
-(939, 1, 'pJrGPllRnwdDQNzKzgE5G09qKJMyaAQ9', '2018-05-17 23:57:58', '2018-05-17 23:57:58');
+(939, 1, 'pJrGPllRnwdDQNzKzgE5G09qKJMyaAQ9', '2018-05-17 23:57:58', '2018-05-17 23:57:58'),
+(940, 1, 'mL2zk7QFHrh9oGJKiAsdGo22EtUBaeH2', '2018-05-20 21:54:02', '2018-05-20 21:54:02');
 
 -- --------------------------------------------------------
 
@@ -3671,7 +3672,10 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (556, NULL, 'global', NULL, '2018-04-27 11:06:19', '2018-04-27 11:06:19'),
 (557, NULL, 'ip', '127.0.0.1', '2018-04-27 11:06:19', '2018-04-27 11:06:19'),
 (558, NULL, 'global', NULL, '2018-05-02 01:58:18', '2018-05-02 01:58:18'),
-(559, NULL, 'ip', '127.0.0.1', '2018-05-02 01:58:18', '2018-05-02 01:58:18');
+(559, NULL, 'ip', '127.0.0.1', '2018-05-02 01:58:18', '2018-05-02 01:58:18'),
+(560, NULL, 'global', NULL, '2018-05-20 21:53:55', '2018-05-20 21:53:55'),
+(561, NULL, 'ip', '127.0.0.1', '2018-05-20 21:53:55', '2018-05-20 21:53:55'),
+(562, 1, 'user', NULL, '2018-05-20 21:53:55', '2018-05-20 21:53:55');
 
 -- --------------------------------------------------------
 
@@ -3702,7 +3706,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-17 23:57:58', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-17 23:57:58'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-20 21:54:02', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-20 21:54:02'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4446,7 +4450,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=940;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=941;
 
 --
 -- AUTO_INCREMENT for table `photo`
@@ -4620,7 +4624,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT for table `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=560;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
 
 --
 -- AUTO_INCREMENT for table `users`

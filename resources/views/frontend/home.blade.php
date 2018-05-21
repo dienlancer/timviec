@@ -280,13 +280,13 @@ $height=$setting['product_height']['field_value'];
 									</div>
 									<div class="hot-job-right">
 										<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $high_salary_fullname; ?></a></div>
-										<div class="hot-job-employer"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $high_salary_employer; ?></a></div>										
+										<div class="hot-job-employer margin-top-10"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $high_salary_employer; ?></a></div>										
 									</div>		
 									<div class="clr"></div>		
 								</div>
 								<div class="batay">
 									<div><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
-									<div>
+									<div class="margin-top-10">
 										<i class="far fa-clock"></i>&nbsp;<?php echo $high_salary_duration; ?>&nbsp;
 										<i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text2; ?>
 									</div>
@@ -344,7 +344,8 @@ $height=$setting['product_height']['field_value'];
 				<?php 
 				$query_quick_job=DB::table('recruitment')
 				->join('employer','recruitment.employer_id','=','employer.id')
-				->join('salary','recruitment.salary_id','=','salary.id');
+				->join('salary','recruitment.salary_id','=','salary.id')
+				->join('experience','recruitment.experience_id','=','experience.id');
 				$query_quick_job->where('recruitment.status',1);
 				$query_quick_job->where('recruitment.status_employer',1);
 				$source_quick_job=$query_quick_job->select(
@@ -352,6 +353,7 @@ $height=$setting['product_height']['field_value'];
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'experience.fullname as experience_name',
 					'salary.fullname as salary_name',
 					'employer.fullname as employer_fullname',
 					'employer.alias as employer_alias',
@@ -362,13 +364,14 @@ $height=$setting['product_height']['field_value'];
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'experience.fullname',
 					'salary.fullname',
 					'employer.fullname',
 					'employer.alias',
 					'employer.logo'
 				)
 				->orderBy('recruitment.id', 'desc')
-				->take(20)
+				->take(12)
 				->get()
 				->toArray();
 				if(count($source_quick_job) > 0){
@@ -401,19 +404,24 @@ $height=$setting['product_height']['field_value'];
 								foreach ($data_province3 as $key_province3 => $value_province3) {
 									$province_text3.=$value_province3['fullname'].' ,';
 								}
-								$province_text3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
+								$province_title3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
+								$province_text3=truncateString($province_title3,20);
 								?>
-								<div class="fackyou">
+								<div class="fackyou margin-top-10 padding-bottom-10">
 									<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a></div>
-									<div class="hot-job-employer"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
-									<div class="margin-top-15">
+									<div class="hot-job-employer  margin-top-5"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
+									<div class="margin-top-10">
 										<div class="xibatuba">
-											<div><i class="fas fa-map-marker-alt">&nbsp;Hồ Chí Minh</div>
-												<div><i class="fas fa-dollar-sign"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
-											</div>
-											<div class="miranbaros"></div>
+											<div title="<?php echo $province_title3; ?>"><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text3; ?></div>
+											<div class="margin-top-5"><i class="fas fa-dollar-sign"></i>&nbsp;<?php echo $value['salary_name']; ?></div>											
 										</div>
+										<div class="miranbaros">
+											<div><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $value['experience_name']; ?></div>
+											<div><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $quick_job_duration; ?></div>
+										</div>
+										<div class="clr"></div>
 									</div>
+								</div>
 									<?php
 								}
 								?>

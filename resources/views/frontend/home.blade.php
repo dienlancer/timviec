@@ -341,6 +341,60 @@ $height=$setting['product_height']['field_value'];
 						</div>					
 					</div>
 				</div>
+				<?php 
+				$query_quick_job=DB::table('recruitment')
+				->join('employer','recruitment.employer_id','=','employer.id')
+				->join('salary','recruitment.salary_id','=','salary.id');
+				$query_quick_job->where('recruitment.status',1);
+				$query_quick_job->where('recruitment.status_employer',1);
+				$source_quick_job=$query_quick_job->select(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'salary.fullname as salary_name',
+					'employer.fullname as employer_fullname',
+					'employer.alias as employer_alias',
+					'employer.logo'
+				)
+				->groupBy(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'salary.fullname',
+					'employer.fullname',
+					'employer.alias',
+					'employer.logo'
+				)
+				->orderBy('recruitment.id', 'desc')
+				->take(20)
+				->get()
+				->toArray();
+				if(count($source_quick_job) > 0){
+					$data_quick_job=convertToArray($source_quick_job);
+					?>
+					<div class="nhathongminhquata">
+						<h3 class="menu-highlight">VIỆC LÀM TUYỂN GẤP</h3>
+						<div class="america">
+							<?php 
+							foreach ($data_quick_job as $key => $value){
+								$quick_job_fullname=truncateString($value['fullname'],40) ;
+								$quick_job_employer=truncateString($value['employer_fullname'],40);
+								$quick_job_duration=datetimeConverterVn($value['duration']);
+								?>
+								<div class="fackyou">
+									<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a></div>
+									<div class="hot-job-employer"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+					</div>
+					<?php
+				}
+				?>				
 			</div>
 		</div>
 		<?php

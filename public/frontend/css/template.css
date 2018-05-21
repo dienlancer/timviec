@@ -1033,6 +1033,9 @@ div.opacity-absolute::before{
 .batay{
     margin-left:550px;
 }
+.fackyou{
+    border-bottom: 1px solid #f1f1f1;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

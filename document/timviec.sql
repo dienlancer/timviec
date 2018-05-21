@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2018 at 07:17 AM
+-- Generation Time: May 21, 2018 at 12:37 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -1090,6 +1090,13 @@ CREATE TABLE `page` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `page`
+--
+
+INSERT INTO `page` (`id`, `fullname`, `alias`, `theme_location`, `image`, `intro`, `content`, `description`, `meta_keyword`, `meta_description`, `count_view`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Fanpage', 'fanpage', 'right', NULL, '<div class=\"fb-page\" data-href=\"https://www.facebook.com/Trung-Tâm-Tiếp-Lửa-1922029917839211\" data-tabs=\"timeline\" data-width=\"370\" data-height=\"250\" data-small-header=\"true\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"true\"><blockquote cite=\"https://www.facebook.com/Trung-Tâm-Tiếp-Lửa-1922029917839211\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/gonguyenlieumy/\">Trung Tâm Tiếp Lửa</a></blockquote></div>', '<p><br></p>', '', '', '', NULL, 1, 1, '2018-05-21 06:55:09', '2018-05-21 09:43:53');
 
 -- --------------------------------------------------------
 
@@ -4438,7 +4445,7 @@ ALTER TABLE `module_item`
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment_method`

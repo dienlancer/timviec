@@ -992,6 +992,14 @@ div.opacity-absolute::before{
     margin-bottom: 0;
     left: 200px;
 }
+.royal-bira {
+    position: absolute;
+    width: 400px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 270px;
+}
 .cidu td{
         padding-left: 0px;
     padding-bottom: 0px;

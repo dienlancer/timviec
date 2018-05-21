@@ -299,7 +299,46 @@ $height=$setting['product_height']['field_value'];
 					</div>	
 					<?php 
 				}
-				?>				
+				$source_job2=DB::table('job')
+				->join('recruitment_job','job.id','=','recruitment_job.job_id')
+				->join('recruitment','recruitment.id','=','recruitment_job.recruitment_id')
+				->where('recruitment.status',1)
+				->where('recruitment.status_employer',1)
+				->select('job.id','job.fullname','job.alias',DB::raw('count(recruitment.id) as recruitment_quantity'))
+				->groupBy('job.id','job.fullname','job.alias')
+				->orderBy('job.id','asc')					
+				->get()
+				->toArray();
+				if(count($source_job2) > 0){
+					?>
+					<div class="relative">
+						<div class="nikatasuzuki margin-top-15">
+							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+							<div class="tibolee">VIỆC LÀM THEO NGÀNH NGHỀ</div>
+						</div>
+						<hr class="royal-bira">
+						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0);">XEM TẤT CẢ</a></div>
+					</div>	
+					<div>
+						<?php 					
+						$data_job2=convertToArray($source_job2);
+						$k=1;
+						foreach ($data_job2 as $key => $value) {
+							?>
+							<div class="col-lg-6">
+								<div class="margin-top-10 madrid"><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?></a>&nbsp;(<?php echo @$value['recruitment_quantity']; ?>)</div>
+							</div>
+							<?php
+							if($k%2==0 || $k == count($data_job2)){
+								echo '<div class="clr"></div>';
+							}
+							$k++;
+						}
+						?> 
+					</div>				
+					<?php
+				}
+				?>					
 			</div>
 			<div class="col-lg-4">
 				<div class="nhathongminhquata">

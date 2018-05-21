@@ -373,8 +373,7 @@ $height=$setting['product_height']['field_value'];
 				->get()
 				->toArray();	
 				if(count($source_hot_job) > 0){
-					$data_hot_job=convertToArray($source_hot_job);		
-					echo "<pre>".print_r($data_hot_job,true)."</pre>";			
+					$data_hot_job=convertToArray($source_hot_job);							
 				}	
 				?>					
 			</div>

@@ -1,7 +1,6 @@
 @extends("frontend.master")
 @section("content")
 <?php 
-//use Illuminate\Support\Facades\DB;
 $seo=getSeo();
 $setting= getSettingSystem();
 $width=$setting['product_width']['field_value'];
@@ -243,19 +242,19 @@ $height=$setting['product_height']['field_value'];
 					</div>	
 					<div>
 						<?php 
-						foreach ($data_high_salary as $key_high_salary => $value_high_salary){
-							$high_salary_fullname=truncateString($value_high_salary['fullname'],40) ;
-							$high_salary_employer=truncateString($value_high_salary['employer_fullname'],40);
-							$high_salary_duration=datetimeConverterVn($value_high_salary['duration']);
+						foreach ($data_high_salary as $key => $value){
+							$high_salary_fullname=truncateString($value['fullname'],40) ;
+							$high_salary_employer=truncateString($value['employer_fullname'],40);
+							$high_salary_duration=datetimeConverterVn($value['duration']);
 							$high_salary_img='';
 							if(!empty($value['logo'])){
-								$high_salary_img=asset('upload/'.$width.'x'.$height.'-'.$value_high_salary['logo']);
+								$high_salary_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
 							}else{
 								$high_salary_img=asset('upload/no-logo.png');
 							}
 							$source_province2=DB::table('province')
 							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
-							->where('recruitment_place.recruitment_id',(int)@$value_high_salary['id'])
+							->where('recruitment_place.recruitment_id',(int)@$value['id'])
 							->select(								
 								'province.fullname',
 								'province.alias'								
@@ -280,13 +279,13 @@ $height=$setting['product_height']['field_value'];
 										<img src="<?php echo $high_salary_img; ?>" width="64">
 									</div>
 									<div class="hot-job-right">
-										<div class="hot-job-name"><a title="<?php echo $value_high_salary['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value_high_salary['alias']]); ?>"><?php echo $high_salary_fullname; ?></a></div>
-										<div class="hot-job-employer"><a title="<?php echo $value_high_salary['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value_high_salary['employer_alias']]); ?>"><?php echo $high_salary_employer; ?></a></div>										
+										<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $high_salary_fullname; ?></a></div>
+										<div class="hot-job-employer"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $high_salary_employer; ?></a></div>										
 									</div>		
 									<div class="clr"></div>		
 								</div>
 								<div class="batay">
-									<div><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value_high_salary['salary_name']; ?></div>
+									<div><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
 									<div>
 										<i class="far fa-clock"></i>&nbsp;<?php echo $high_salary_duration; ?>&nbsp;
 										<i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text2; ?>

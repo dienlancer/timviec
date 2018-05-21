@@ -1042,6 +1042,10 @@ div.opacity-absolute::before{
 .miranbaros{
     margin-left: 200px;
 }
+.ramadan {
+    padding: 0px 10px 10px 10px;
+    border: 1px solid #f1f1f1;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

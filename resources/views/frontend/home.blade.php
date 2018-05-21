@@ -356,8 +356,7 @@ $height=$setting['product_height']['field_value'];
 					'experience.fullname as experience_name',
 					'salary.fullname as salary_name',
 					'employer.fullname as employer_fullname',
-					'employer.alias as employer_alias',
-					'employer.logo'
+					'employer.alias as employer_alias'
 				)
 				->groupBy(
 					'recruitment.id',
@@ -367,8 +366,7 @@ $height=$setting['product_height']['field_value'];
 					'experience.fullname',
 					'salary.fullname',
 					'employer.fullname',
-					'employer.alias',
-					'employer.logo'
+					'employer.alias'
 				)
 				->orderBy('recruitment.id', 'desc')
 				->take(12)
@@ -379,8 +377,9 @@ $height=$setting['product_height']['field_value'];
 					?>
 					<div class="nhathongminhquata">
 						<h3 class="menu-highlight">VIỆC LÀM TUYỂN GẤP</h3>
-						<div class="america">
+						<div class="ramadan">
 							<?php 
+							$k=0;
 							foreach ($data_quick_job as $key => $value){
 								$quick_job_fullname=truncateString($value['fullname'],40) ;
 								$quick_job_employer=truncateString($value['employer_fullname'],40);
@@ -406,8 +405,12 @@ $height=$setting['product_height']['field_value'];
 								}
 								$province_title3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
 								$province_text3=truncateString($province_title3,20);
+								$class_quick_job='fackyou';
+								if((int)$k == count($data_quick_job)-1){
+									$class_quick_job='';
+								}
 								?>
-								<div class="fackyou margin-top-10 padding-bottom-10">
+								<div class="<?php echo $class_quick_job; ?> margin-top-10 padding-bottom-10">
 									<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a></div>
 									<div class="hot-job-employer  margin-top-5"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
 									<div class="margin-top-10">
@@ -416,20 +419,30 @@ $height=$setting['product_height']['field_value'];
 											<div class="margin-top-5"><i class="fas fa-dollar-sign"></i>&nbsp;<?php echo $value['salary_name']; ?></div>											
 										</div>
 										<div class="miranbaros">
-											<div><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $value['experience_name']; ?></div>
-											<div><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $quick_job_duration; ?></div>
+											<div><i class="far fa-chart-bar"></i>&nbsp;<?php echo $value['experience_name']; ?></div>
+											<div><i class="far fa-clock"></i>&nbsp;<?php echo $quick_job_duration; ?></div>
 										</div>
 										<div class="clr"></div>
 									</div>
 								</div>
 									<?php
+									$k++;
 								}
 								?>
 						</div>
 					</div>
 					<?php
 				}
-				?>				
+				?>	
+				<div class="nhathongminhquata">
+					<?php 
+					$fanpage=getPage("right");						
+					if(count($fanpage) > 0){								
+						$intro=$fanpage["intro"];					
+						echo $intro;		
+					}
+					?>		
+				</div>				
 			</div>
 		</div>
 		<?php

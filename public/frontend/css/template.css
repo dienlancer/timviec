@@ -1088,6 +1088,9 @@ div.opacity-absolute::before{
 .sementec{
     font-weight: bold;
 }
+.fenando{
+    color: #333;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

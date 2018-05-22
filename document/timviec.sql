@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2018 at 12:37 PM
+-- Generation Time: May 22, 2018 at 12:41 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -137,6 +137,13 @@ CREATE TABLE `banner` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`id`, `category_id`, `caption`, `alt`, `image`, `page_url`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Hotline chọn việc', 'Hotline chọn việc', 'hotline-chon-viec-a8l6o4zhi9xm.png', 'http://chonviec.vn', 1, 1, '2018-05-22 10:05:26', '2018-05-22 10:05:26');
+
 -- --------------------------------------------------------
 
 --
@@ -213,6 +220,13 @@ CREATE TABLE `category_banner` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `category_banner`
+--
+
+INSERT INTO `category_banner` (`id`, `fullname`, `theme_location`, `status`, `sort_order`, `created_at`, `updated_at`) VALUES
+(1, 'Hotline', 'hotline-right', 1, 1, '2018-05-22 10:04:36', '2018-05-22 10:04:36');
 
 -- --------------------------------------------------------
 
@@ -1761,7 +1775,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (937, 1, 'BLmC03sRMpTICIjeZtUanOiuqoTrIQR0', '2018-05-17 02:23:42', '2018-05-17 02:23:42'),
 (938, 1, 'bZc1gGPO3BxKlLXO3nVdCTavVqY4So2x', '2018-05-17 09:20:19', '2018-05-17 09:20:19'),
 (939, 1, 'pJrGPllRnwdDQNzKzgE5G09qKJMyaAQ9', '2018-05-17 23:57:58', '2018-05-17 23:57:58'),
-(940, 1, 'mL2zk7QFHrh9oGJKiAsdGo22EtUBaeH2', '2018-05-20 21:54:02', '2018-05-20 21:54:02');
+(940, 1, 'mL2zk7QFHrh9oGJKiAsdGo22EtUBaeH2', '2018-05-20 21:54:02', '2018-05-20 21:54:02'),
+(941, 1, 'SR3WuSaMNg47gEFCK1StjQ8W1XG2Kf6F', '2018-05-22 03:02:24', '2018-05-22 03:02:24');
 
 -- --------------------------------------------------------
 
@@ -3713,7 +3728,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-20 21:54:02', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-20 21:54:02'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-22 03:02:24', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-22 03:02:24'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4295,7 +4310,7 @@ ALTER TABLE `article_category`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `candidate`
@@ -4313,7 +4328,7 @@ ALTER TABLE `category_article`
 -- AUTO_INCREMENT for table `category_banner`
 --
 ALTER TABLE `category_banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `category_param`
@@ -4457,7 +4472,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=941;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=942;
 
 --
 -- AUTO_INCREMENT for table `photo`

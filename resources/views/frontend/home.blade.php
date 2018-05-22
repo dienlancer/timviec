@@ -412,7 +412,7 @@ $height=$setting['product_height']['field_value'];
 							$hot_job_data_province=convertToArray($hot_job_source_province);					
 							$hot_job_province_text='';
 							foreach ($hot_job_data_province as $hot_job_key_province => $hot_job_value_province) {
-								$hot_job_province_text.=$hot_job_value_province['fullname'].' ,';
+								$hot_job_province_text.='<a class="fenando" href="'.route('frontend.index.index',[@$hot_job_value_province['alias']]).'">'.$hot_job_value_province['fullname'].'</a>' .' ,';
 							}
 							$hot_job_province_text=mb_substr($hot_job_province_text, 0,mb_strlen($hot_job_province_text)-1);
 							?>
@@ -429,9 +429,9 @@ $height=$setting['product_height']['field_value'];
 								<hr>
 								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>	
 								<div class="margin-top-10">
-									<div class="col-lg-4 no-padding-left"><span class="sementec">Mức lương :</span>&nbsp;<font color="#1790d4"><?php echo @$value['salary_name']; ?></font> </div>
-									<div class="col-lg-4"><span class="sementec">Địa điểm :</span>&nbsp;<font color="#1790d4"><?php echo $hot_job_province_text; ?></font></div>
-									<div class="col-lg-4"><span class="sementec">Hạn nộp :</span>&nbsp;<font color="#1790d4"><?php echo $hot_job_duration; ?></font></div>
+									<div class="col-lg-4 no-padding-left"><span class="sementec"><i class="far fa-money-bill-alt"></i>&nbsp;Mức lương :</span>&nbsp;<?php echo @$value['salary_name']; ?> </div>
+									<div class="col-lg-4"><span class="sementec"><i class="fas fa-map-marker-alt"></i>&nbsp;Địa điểm :</span>&nbsp;<?php echo $hot_job_province_text; ?></div>
+									<div class="col-lg-4"><span class="sementec"><i class="far fa-clock"></i>&nbsp;Hạn nộp :</span>&nbsp;<?php echo $hot_job_duration; ?></div>
 									<div class="clr"></div>
 								</div>					
 							</div>
@@ -578,12 +578,25 @@ $height=$setting['product_height']['field_value'];
 				?>	
 				<div class="nhathongminhquata">
 					<?php 
-					$fanpage=getPage("right");						
+					$fanpage=getPage("right");							
 					if(count($fanpage) > 0){								
 						$intro=$fanpage["intro"];					
 						echo $intro;		
 					}
 					?>		
+				</div>
+				<div class="nhathongminhquata">
+					<?php 
+					$source_hotline_right=getBanner('hotline-right');
+					if(count($source_hotline_right) > 0){
+						$items_hotline_right=$source_hotline_right['items'];
+						foreach ($items_hotline_right as $key_hotline_right => $value_hotline_right) {
+							?>
+							<center><img src="<?php echo asset('upload/'.$value_hotline_right['image']) ; ?>"></center>
+							<?php
+						}
+					}
+					?>
 				</div>				
 			</div>
 		</div>

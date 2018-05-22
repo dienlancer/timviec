@@ -369,7 +369,7 @@ $height=$setting['product_height']['field_value'];
 					'employer.logo'
 				)
 				->orderBy('recruitment.id', 'desc')
-				->take(63)
+				->take(12)
 				->get()
 				->toArray();	
 				if(count($source_hot_job) > 0){
@@ -386,8 +386,8 @@ $height=$setting['product_height']['field_value'];
 					<div>
 						<?php 
 						foreach ($data_hot_job as $key => $value) {
-							$hot_job_fullname=truncateString($value['fullname'],40) ;
-							$hot_job_employer=truncateString($value['employer_fullname'],40);
+							$hot_job_fullname=truncateString($value['fullname'],100) ;
+							$hot_job_employer=$value['employer_fullname'];
 							$hot_job_duration=datetimeConverterVn($value['duration']);
 							$hot_job_img='';
 							if(!empty($value['logo'])){
@@ -395,14 +395,44 @@ $height=$setting['product_height']['field_value'];
 							}else{
 								$hot_job_img=asset('upload/no-logo.png');
 							}
+							$hot_job_source_province=DB::table('province')
+							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+							->where('recruitment_place.recruitment_id',(int)@$value['id'])
+							->select(								
+								'province.fullname',
+								'province.alias'								
+							)
+							->groupBy(								
+								'province.fullname',
+								'province.alias'								
+							)
+							->orderBy('province.id', 'desc')						
+							->get()
+							->toArray();	
+							$hot_job_data_province=convertToArray($hot_job_source_province);					
+							$hot_job_province_text='';
+							foreach ($hot_job_data_province as $hot_job_key_province => $hot_job_value_province) {
+								$hot_job_province_text.=$hot_job_value_province['fullname'].' ,';
+							}
+							$hot_job_province_text=mb_substr($hot_job_province_text, 0,mb_strlen($hot_job_province_text)-1);
 							?>
 							<div class="labasa">
 								<div>
-									<div class="nysaki"><img src="<?php echo $hot_job_img; ?>" width="74"></div>
-									<div class="nibi">fdsfs</div>
+									<div class="nysaki"><img src="<?php echo $hot_job_img; ?>" width="100"></div>
+									<div class="nibi">
+										<div class="faraykta"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$hot_job_employer; ?></a></div>
+										<div class="margin-top-10"><span class="oppacafe">Địa chỉ&nbsp;:</span>&nbsp;<span><?php echo @$value['address']; ?></span></div>
+										<div class="margin-top-10"><span class="oppacafe">Quy mô công ty&nbsp;:</span>&nbsp;<span><b><?php echo @$value['scale_name']; ?></b></span></div>
+									</div>
 									<div class="clr"></div>
 								</div>
-								<div></div>								
+								<hr>
+								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>	
+								<div class="margin-top-10 zidan">
+									<div>Mức lương : <?php echo @$value['salary_name']; ?></div>
+									<div></div>
+									<div>Hạn nộp : <?php echo $hot_job_duration; ?></div>
+								</div>					
 							</div>
 							<?php
 						}

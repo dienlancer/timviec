@@ -1083,7 +1083,10 @@ div.opacity-absolute::before{
     text-transform: capitalize;
     color: #333;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
+}
+.sementec{
+    font-weight: bold;
 }
 @media (max-width: 768px){    
     .mobilemenu{

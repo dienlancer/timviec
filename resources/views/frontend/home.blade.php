@@ -420,7 +420,7 @@ $height=$setting['product_height']['field_value'];
 								<div>
 									<div class="nysaki"><img src="<?php echo $hot_job_img; ?>" width="100"></div>
 									<div class="nibi">
-										<div class="faraykta"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$hot_job_employer; ?></a></div>
+										<div class="faraykta"><b><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$hot_job_employer; ?></a></b></div>
 										<div class="margin-top-10"><span class="oppacafe">Địa chỉ&nbsp;:</span>&nbsp;<span><?php echo @$value['address']; ?></span></div>
 										<div class="margin-top-10"><span class="oppacafe">Quy mô công ty&nbsp;:</span>&nbsp;<span><b><?php echo @$value['scale_name']; ?></b></span></div>
 									</div>
@@ -428,10 +428,11 @@ $height=$setting['product_height']['field_value'];
 								</div>
 								<hr>
 								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>	
-								<div class="margin-top-10 zidan">
-									<div>Mức lương : <?php echo @$value['salary_name']; ?></div>
-									<div></div>
-									<div>Hạn nộp : <?php echo $hot_job_duration; ?></div>
+								<div class="margin-top-10">
+									<div class="col-lg-4 no-padding-left"><span class="sementec">Mức lương :</span>&nbsp;<font color="#1790d4"><?php echo @$value['salary_name']; ?></font> </div>
+									<div class="col-lg-4"><span class="sementec">Địa điểm :</span>&nbsp;<font color="#1790d4"><?php echo $hot_job_province_text; ?></font></div>
+									<div class="col-lg-4"><span class="sementec">Hạn nộp :</span>&nbsp;<font color="#1790d4"><?php echo $hot_job_duration; ?></font></div>
+									<div class="clr"></div>
 								</div>					
 							</div>
 							<?php

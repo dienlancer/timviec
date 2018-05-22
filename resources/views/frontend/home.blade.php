@@ -383,6 +383,31 @@ $height=$setting['product_height']['field_value'];
 						<hr class="subachuem">
 						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
 					</div>	
+					<div>
+						<?php 
+						foreach ($data_hot_job as $key => $value) {
+							$hot_job_fullname=truncateString($value['fullname'],40) ;
+							$hot_job_employer=truncateString($value['employer_fullname'],40);
+							$hot_job_duration=datetimeConverterVn($value['duration']);
+							$hot_job_img='';
+							if(!empty($value['logo'])){
+								$hot_job_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+							}else{
+								$hot_job_img=asset('upload/no-logo.png');
+							}
+							?>
+							<div class="labasa">
+								<div>
+									<div class="nysaki"><img src="<?php echo $hot_job_img; ?>" width="74"></div>
+									<div class="nibi">fdsfs</div>
+									<div class="clr"></div>
+								</div>
+								<div></div>								
+							</div>
+							<?php
+						}
+						?>
+					</div>
 					<?php			
 				}	
 				?>					

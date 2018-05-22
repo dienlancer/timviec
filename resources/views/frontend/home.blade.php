@@ -373,7 +373,17 @@ $height=$setting['product_height']['field_value'];
 				->get()
 				->toArray();	
 				if(count($source_hot_job) > 0){
-					$data_hot_job=convertToArray($source_hot_job);							
+					$data_hot_job=convertToArray($source_hot_job);				
+					?>
+					<div class="relative">
+						<div class="nikatasuzuki margin-top-15">
+							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+							<div class="tibolee">VIỆC LÀM HOT</div>
+						</div>
+						<hr class="subachuem">
+						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+					</div>	
+					<?php			
 				}	
 				?>					
 			</div>

@@ -1138,6 +1138,11 @@ div.opacity-absolute::before{
 .jamaramdo{
     float: right;
 }
+.jamaramdo a{
+    padding: 10px 0px 10px 0px;
+    display: block;
+    color: #aaa;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

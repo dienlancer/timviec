@@ -22,7 +22,8 @@
 				?>     	
 				<div class="jamaramdo">
 					<a href="javascript:void(0);">
-						
+						<i class="fas fa-arrow-circle-up"></i>&nbsp;
+						Về đầu trang
 					</a>
 				</div>												
 			</div>

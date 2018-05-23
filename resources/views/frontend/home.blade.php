@@ -645,12 +645,12 @@ $height=$setting['product_height']['field_value'];
 				</div>
 				<div class="nhathongminhquata">
 					<?php 
-					$source_hotline_right=getBanner('hotline-right');
-					if(count($source_hotline_right) > 0){
-						$items_hotline_right=$source_hotline_right['items'];
-						foreach ($items_hotline_right as $key_hotline_right => $value_hotline_right) {
+					$source_hotline_r=getBanner('hotline-right');
+					if(count($source_hotline_r) > 0){
+						$items_hotline_r=$source_hotline_r['items'];
+						foreach ($items_hotline_r as $key_hotline_r => $value_hotline_r) {
 							?>
-							<center><img src="<?php echo asset('upload/'.$value_hotline_right['image']) ; ?>"></center>
+							<center><img src="<?php echo asset('upload/'.$value_hotline_r['image']) ; ?>"></center>
 							<?php
 						}
 					}

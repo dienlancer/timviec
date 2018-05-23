@@ -1122,6 +1122,22 @@ div.opacity-absolute::before{
     display: flex;
     align-items: center;
 }
+.ranoo{
+    background: #333333;
+}
+.menu-footer li{
+    display: inline-block;
+    margin-left: 0;
+}
+.menu-footer li a{
+    color: #aaa;
+    display: block;
+    padding: 10px 20px;
+    border-left: 1px solid #4a4a4a;    
+}
+.jamaramdo{
+    float: right;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

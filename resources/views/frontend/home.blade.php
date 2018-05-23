@@ -574,8 +574,66 @@ $height=$setting['product_height']['field_value'];
 						</div>
 					</div>
 					<?php
+				}				
+				$data_employer_r=App\EmployerModel::whereRaw('status = 1')->select('id','fullname','alias','logo')->orderBy('id','desc')->take(9)->get()->toArray();
+				if(count($data_employer_r) > 0){			
+					?>
+					<div class="nhathongminhquata">
+						<h3 class="menu-highlight">NHÀ TUYỂN DỤNG HÀNG ĐẦU</h3>
+						<div class="americaasia padding-bottom-5">
+							<?php 
+							$k=1;				
+							foreach ($data_employer_r as $key => $value) {
+								$employer_r_img='';
+								if(!empty($value['logo'])){
+									$employer_r_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+								}else{
+									$employer_r_img=asset('upload/no-logo.png');
+								}
+								?>
+								<div class="col-lg-4">
+									<div class="employer-box margin-top-5">
+										<a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><img src="<?php echo $employer_r_img; ?>"></a>
+									</div>
+								</div>
+								<?php 
+								if($k%3 == 0 || $k==count($data_employer_r)){
+									?>
+									<div class="clr"></div>
+									<?php
+								}	
+								$k++;							
+							}							
+							?>
+						</div>
+					</div>
+					<?php	
 				}
-				?>	
+				$data_province_r=App\ProvinceModel::whereIn('alias',['ho-chi-minh','ha-noi','dong-nai','da-nang','binh-duong'])->select('id','fullname','alias')->orderBy('id','desc')->get()->toArray();
+				if(count($data_province_r) > 0){
+					?>
+					<div class="nhathongminhquata">
+						<h3 class="menu-highlight">VIỆC LÀM TẠI THÀNH PHỐ LỚN</h3>
+						<ul class="lafata">
+							<?php 
+							foreach ($data_province_r as $key => $value) {								
+								?>
+								<li>
+									<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>">
+										<div class="hihu">
+											<div><img src="<?php echo asset('upload/square-menu.jpg'); ?>"></div>
+											<div class="margin-left-10">Việc làm tại <?php echo @$value['fullname']; ?></div>
+										</div>																					
+									</a>
+								</li>
+								<?php
+							}
+							?>							
+						</ul>
+					</div>							
+					<?php
+				}				
+				?>					
 				<div class="nhathongminhquata">
 					<?php 
 					$fanpage=getPage("right");							
@@ -598,11 +656,7 @@ $height=$setting['product_height']['field_value'];
 					}
 					?>
 				</div>	
-				<div class="nhathongminhquata">
-					<?php 
-					
-					?>
-				</div>			
+								
 			</div>
 		</div>
 		<?php

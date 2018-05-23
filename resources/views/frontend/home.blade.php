@@ -597,7 +597,12 @@ $height=$setting['product_height']['field_value'];
 						}
 					}
 					?>
-				</div>				
+				</div>	
+				<div class="nhathongminhquata">
+					<?php 
+					
+					?>
+				</div>			
 			</div>
 		</div>
 		<?php

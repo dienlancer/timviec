@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2018 at 12:46 PM
+-- Generation Time: May 23, 2018 at 12:41 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -102,6 +102,20 @@ CREATE TABLE `article` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `fullname`, `alias`, `image`, `intro`, `content`, `description`, `meta_keyword`, `meta_description`, `count_view`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nhân viên trẻ - Làm gì để có thể thăng tiến trong công việc ?', 'nhan-vien-tre-lam-gi-de-co-the-thang-tien-trong-cong-viec', NULL, 'Trong quá trình làm việc, thăng tiến là điều mà bất kì người lao động nào cũng mong muốn. Tuy nhiên, rất nhiều người phấn đấu “cả đời” mà vẫn dậm chân tại chỗ. Sau đây, Việc làm Báo Lao Động chia sẻ cho độc giả những “bí kíp” thăng tiến trong công việc.', '<p>Lựa chọn công việc phù hợp với năng lực</p><p>Bạn là người có năng lực, nhưng lại không làm đúng công việc thuộc sở trường và đam mê của mình thì năng lực đó khó có thể bộc lộ hết. Vì vậy, muốn tiến xa hơn trong công việc yếu tố đầu tiên bạn cần phải tìm được công việc phù hợp với khả năng của bản thân.</p><p>Lúc này, bạn có thể thỏa sức đưa ra những kế hoạch, dự định táo bạo thực hiện đam mê của mình với công việc. Làm công việc mình yêu thích là động lực lớn nhất giúp bạn phát triển được bản thân và ứng dụng những kiến thức, kĩ năng mình tích lũy một cách hiệu quả trong công việc.</p><p>Làm tốt công việc hiện tại</p><p>Cách tốt nhất để có thể được thừa nhận và thăng tiến trong nghề nghiệp là đam mê công việc và thực hiện chúng một cách hoàn hảo. Các công ty săn đầu người luôn tìm những người có triển vọng để quan sát và nghe ngóng những thông tin về họ từ bạn bè và đồng nghiệp. Một cách để xác định xem bạn đã tốt công việc của mình chưa là xem lại và tự hỏi bạn đã làm được những gì trong 12 tháng qua để có thể đưa vào resume. Nếu bạn không biết bổ sung thêm thông tin gì, có nghĩa là bạn đang chìm dần.</p><p>Vì vậy, làm tốt công việc hiện tại là yếu tố căn cốt giúp bạn phát triển, thăng tiến trong nghề nghiệp một cách bền vững nhất. Nếu mỗi cá nhân đều nhận thức được điều này, thì tạo nên một tập thể vững mạnh và phát triển.</p><p>Học hỏi từ những người đi trước</p><p>Bên cạnh khẳng định mình trong công việc, bạn cần học hỏi kiến thức, kinh nghiệm, kĩ năng từ nhiều đối tượng khác. Vì mỗi cá nhân không thể ôm hết được cả vũ trụ. Học hỏi từ những người đi trước giúp bạn tích lũy nhiều kinh nghiệm quý báu trong quá trình làm việc. Điều này, bạn cần có sự khiêm tốn, cầu thị.</p><p>Tuy nhiên, học hỏi từ người đi trước không phải là bạn đi “copy” hoàn toàn người đó. Bạn cần học tập những điểm tích cực, chọn lọc những yếu tố phù hợp với bản thân mình làm động lực phát triển. Bạn cần biến những thứ của người khác để phù hợp nhất với bản thân mình. Đây được coi là cách hiệu quả khi học hỏi từ người đi trước.</p><p>Nỗ lực gấp đôi để phát triển các mối quan hệ mới</p><p>Đây chỉ là cách nói hoa mỹ rằng bạn cần phải phát triển mạng lưới quan hệ của mình nhưng có một thực tế là quá ít nhà quản lý dành thời gian để gặp người mới. Hãy cố gắng mời ai đó đi ăn trưa hoặc ăn tối ít nhất một tháng một lần. Nếu làm được điều này, thì mỗi năm bạn đã có thêm 24 mối quan hệ mới.</p><p>Mở rộng mối quan hệ giúp ích rất lớn cho bạn trong công việc. Đây là những động lực giúp bạn giải quyết công việc một cách nhanh chóng và thuận lợi nhất. Bạn nên trân trọng và duy trì những mối quan hệ trong công việc cũng như cuộc sống.</p>', '', '', '', NULL, 1, 1, '2018-05-23 10:16:36', '2018-05-23 10:17:26'),
+(2, 'Nhọc nhằn mưu sinh trong “chảo lửa”', 'nhoc-nhan-muu-sinh-trong-chao-lua', NULL, 'Những ngày qua, Hà Nội phải đối mặt với đợt nắng nóng khủng khiếp, cao kỉ lục trong hơn 40 năm. Nhiệt độ ngoài trời, đặc biệt là nơi có nền bê - tông có thể lên đến hơn 50 độ C, nắng chói chang từ sáng sớm đến chiều muộn khiến con người mệt mỏi, kiệt sức. Thế nhưng, khi nhiều người “giam mình” trong phòng có điều hoà để tránh nắng, vì việc làm đặc thù, những người lao động vì cuộc mưu sinh vẫn phải lao động trong cái nóng bỏng rát như rắc lửa trên đường', '<p>đang cập nhật...</p>', '', '', '', NULL, 2, 1, '2018-05-23 10:18:47', '2018-05-23 10:18:47'),
+(3, 'Làm ngay 4 điều này khi bạn có ý định tìm việc mới', 'lam-ngay-4-dieu-nay-khi-ban-co-y-dinh-tim-viec-moi', NULL, 'Hãy tưởng tượng việc tìm việc trên mạng như trúng số jackpot. Sau nhiều ngày lướt qua hết tất cả các công việc mà không hề có chút hứng thú với bạn, cuối cùng bạn cũng tìm được một công việc hoàn hảo mà mình hằng mơ ước, hoàn toàn phù hợp với những kỹ năng và kinh nghiệm của mình. Thêm vào đó, công ty này là nơi mà bạn đã khao khát nhắm đến từ rất lâu! Không còn gì có thể ngăn bạn ứng tuyển việc làm nữa đúng không?', '<p>Hãy luôn nhớ rằng để việc tìm việc tối ưu, sự chuẩn bị là chìa khóa then chốt. Sự chuẩn bị sẽ lên chiến lược cho từng bước chuyển biến của bạn và giúp cho bạn là một ứng viên tiềm năng trong mắt nhà tuyển dụng. Nó giống như là học sinh đã chuẩn bị như thế nào cho kì thi, hay các vận động viên đã luyện tập ra sao trước khi tham gia một cuộc thi đấu. Nếu bạn đang có ý định tìm việc, đừng bỏ qua 4 điều này:</p><p>1.&nbsp; Nhìn lại những kỹ năng và thành tựu mình đạt được<br></p><p>Đo lường các kỹ năng của bản thân và suy xét những gì bạn có thể làm để làm bản thân mình nổi bật hơn trong cuộc cạnh tranh.</p><p>Dù có là sinh viên mới tốt nghiệp hay nhân viên nhiều kinh nghiệm, những khả năng và trải nghiệm trong quá khứ quyết định bạn đi theo hướng tìm việc nào trong thị trường nghề nghiệp rộng mở, vì vậy hãy dành thời gian để suy nghĩ thật cẩn thận về những điều mà nhà tuyển dụng có thể thấy được từ bạn trước khi ứng tuyển. Đo lường các kỹ năng của bản thân và suy xét những gì bạn có thể làm để làm bản thân mình nổi bật hơn trong cuộc cạnh tranh.<br></p><p>Tiếp theo đó, hãy tìm hiểu xem nhà tuyển dụng đang tìm kiếm điều gì và xem coi mình có đáp ứng được những điều họ cần. Việc này sẽ giúp bạn thể hiện hình ảnh bản thân tốt hơn trước nhà tuyển dụng trong khi đó, trong sâu thẳm bạn biết rằng mình đã hoàn toàn phù hợp với công ty nào.<br></p><p>2. Tìm hiểu mọi thứ liên quan công ty mà bạn nộp đơn<br></p><p>Biết những cái mà bạn phải thể hiện cho nhà tuyển dụng là một chuyện, những ứng cử viên thông minh còn cần phải biết rằng họ còn phải để ý đến nhà tuyển dụng, điều này có nghĩa là phải biết được những nhà tuyển dụng có thể đưa ra những câu hỏi gì cho họ. Hãy nghĩ đến việc tìm việc như là đường hai chiều – người tìm việc cũng như nhà tuyển dụng đều đang tìm kiếm đối phương phù hợp với mình. Trong khi bạn tìm một chỗ trống phù hợp với những kỹ năng và thành tựu của mình, những yếu tố như văn hóa doanh nghiệp, phong cách quản lí cũng là những cân nhắc hàng đầu trước khi bạn nhấn nút&nbsp; ứng tuyển.<br></p><p>Lưu ý 1: với những công ty có đánh giá doanh nghiệp: một trong những điểm mới – Đánh giá doanh nghiệp – sẽ giúp bạn: Xem những nhân viên cũ và nhân viên hiện tại của công ty nói về chính công ty mà bạn đang quan tâm hoặc tìm và thấy được một công ty phù hợp không chỉ với những kỹ năng mà còn tính cách và phong cách sống của bạn. Tốt hơn hết, bạn có cơ hội biết đến những nhân viên cũ và nhân viên hiện tại của công ty cũng như giúp các ứng cử viên khác.<br></p><p>Những yếu tố như văn hóa doanh nghiệp, phong cách quản lí cũng là những cân nhắc hàng đầu trước khi bạn nhấn nút ứng tuyển</p><p>Lưu ý 2 : với những nhóm công ty không có Đánh giá doanh nghiệp: bạn có thể bắt đầu bằng việc tìm kiếm websites của công ty (nếu có) để biết xem nội bô công ty và tìm hiểu về sản phẩm và dịch vụ của công ty. Sau đó, bạn có thể tìm những tin tức trong ngành để biết về những thành tích của công ty trên thị trường. Cuối cùng, bạn có thể liên lạc với những người quen biết để hỏi họ biết gì về công ty – tốt hơn là bạn nên tìm những nhân viên cũ hoặc nhân viên hiện tại của công ty để có cái nhìn thấu đáo về nhà tuyển dụng tiềm năng.<br></p><p>3. Tự tìm bản thân mình trên mạng và xem bạn đã thể hiện như thế nào<br></p><p>Đây là một vài điều bạn nên luôn ghi nhớ khi bắt đầu săn việc: để thành công, bạn phải kiểm soát được những gì xung quanh liên quan đến bản thân mình. Ngoài tài liệu chuẩn và nghiên cứu công ty trước, bạn phải biết được rằng nhà tuyển dụng có thể tìm kiếm bạn trên mạng. Những chuyên viên nhân sự sẽ tìm hiểu bạn trên mạng rất kỹ trước khi đưa ra quyết định cho một buổi phỏng vấn. Nên bạn phải bắt tay vào việc “dọn dẹp” mạng xã hội của mình trước khiứng tuyển bất kì công việc gì.<br></p><p>Bắt đầu bằng việc cập nhật thông tin cá nhân thật chi tiết trên mạng và bất kì sơ yếu lí lịch nào của bạn trên mạng với thông tin mới nhất. Sau đó, tự tìm bản thân mình trên google và xem kết quả là gì. Bạn đã tìm ra được điều gi đã làm cho nhà tuyển dụng phải cân nhắc khi thuê bạn chưa? Cuối cùng, kiểm tra lại hồ sơ trên các phương tiện truyền thông và xem những gì bạn đã đăng tải trên đó. Bạn luôn muốn thể hiện bản thân mình theo cách tốt nhất vì vậy hãy xóa hoặc tối thiểu là ẩn những bài viết hoặc hình ảnh làm cho bạn trông mất uy tín và thiếu chuyên nghiệp.<br></p><p>Hãy nghĩ như một dạng thương hiệu – những điều mà một ứng cử viên làm trong suốt quá trình tìm việc là một cách quảng cáo bản thân mình bằng cách này hay cách khác và đó chỉ là một chiến thuật khác giúp cho bạn giới thiệu bản thân mình tốt hơn trước mắt nhà tuyển dụng.<br></p><p>Hãy xóa hoặc tối thiểu là ẩn những bài viết hoặc hình ảnh làm cho bạn trông mất uy tín và thiếu chuyên nghiệp trên mạng xã hội.</p><p>4.&nbsp; Tự tin với những cơ hội dành cho bạn<br></p><p>Những bước này không hề có vấn đề gì nếu bạn không có đủ tự tin sau khi đã tìm được công việc mong muốn, thông thường các ứng viên bỏ lỡ rất nhiều cơ hội vì lo sợ. Có một nỗi sợ rằng họ không thuộc về công việc đó, sợ họ không đáp ứng được các yêu cầu công việc, hoặc sợ thử điều mới. Đúng vậy, tìm việc rất đáng sợ, nhưng bạn sẽ không đi đến đâu hết nếu như bạn không thử. Nhớ rằng ai cũng bắt đầu từ chỗ bạn đang đứng lúc này, và những người thành công nhất trên thế giới có rất nhiều hoài nghi, nhưng họ vẫn kiên định và làm việc chăm chỉ để có được ngày hôm nay.<br></p><p>Tự tin rất thu hút, và khi nhà tuyển dụng cảm nhận được bạn biết được bạn muốn gì và bạn đã sẵn sàng cho họ thấy được những thứ họ cần, họ sẽ rất ấn tượng với bạn. Kiểm soát cảm xúc, tự tạo sự tự tin trước khi tìm việc, bạn sẽ ứng phó được những thách thức xảy ra và chắc chắn rằng bạn là người thắng cuộc.<br></p><p>Tìm việc giờ đây không còn là chuyện đùa nữa. Dành thời gian chuẩn bị cách tốt nhất để đối mặt với thử thách này, đảm bảo rằng bạn sẽ chinh phục được đỉnh cao. Đọc xong bài viết này là một bước khởi đầu tốt, và bây giờ phần còn lại là dành cho bạn: làm theo những bí quyết này và bắt đầu thực hiện nó trong công cuộc tìm kiếm công việc mơ ước. Chúc bạn may mắn!<br></p>', '', '', '', NULL, 3, 1, '2018-05-23 10:21:44', '2018-05-23 10:22:36'),
+(4, 'Sinh viên tốt nghiệp tìm việc và… ‘chê việc’', 'sinh-vien-tot-nghiep-tim-viec-va-che-viec', NULL, 'Cầm tấm bằng tốt nghiệp ĐH trong tay, nhiều cử nhân, kỹ sư được nhà tuyển dụng tiếp nhận nhưng đã từ chối chỉ vì lương thấp, công ty nhỏ không có tên tuổi, thậm chí do ‘nhìn không hoành tráng’', '<p>Muốn làm việc tại doanh nghiệp lớn</p><p>Ông Cao Trung Hiếu, sáng lập và điều hành một công ty phần mềm tại TP.HCM, cho biết: “Công ty chúng tôi hoạt động theo mô hình khởi nghiệp tinh gọn (lean startup) nên không có văn phòng lớn, đội ngũ nhân viên ít và không quảng bá rầm rộ. Chúng tôi tập trung chính sách lương và phúc lợi nhân sự tốt hơn cả với công ty lớn, ví dụ lương nhân viên chăm sóc khách hàng 13 triệu/tháng, nhân viên triển khai phần mềm và nhân viên bán hàng 15 triệu/tháng…) nhưng vẫn bị sinh viên mới ra trường “chê””.</p><p>Cùng trong hoàn cảnh trên, tổ chức Business Matching VN cần tuyển một vị trí toàn thời gian lương 5 triệu/tháng, được cấp máy tính và một số chế độ ưu đãi khác… Sau khi đăng tuyển dụng, nhiều sinh viên (SV) mới tốt nghiệp đến nộp hồ sơ, nhưng cuối cùng không có ai đến làm việc. Ông Vũ Tuấn Anh, Giám đốc Viện quản lý VN, cho biết: “Ngày nay, hiện tượng “soái ca” sinh viên chê việc diễn ra nhan nhản. Không ít bạn quan niệm phải làm việc ở các doanh nghiệp lớn, thuê văn phòng hoành tráng, mặc quần áo đồng phục đẹp đẽ, sử dụng máy tính xịn thì mới xứng đáng với tấm bằng cử nhân. Quan niệm đó là không sai, nhưng trước khi đặt ra tiêu chí đó, bạn có bao giờ tự hỏi: mình là ai, mình đã có kinh nghiệm hay chưa, năng lực mình đến đâu…”.</p><p>Chia sẻ về vấn đề này, ông Trần Anh Tuấn, Phó giám đốc Trung tâm Dự báo nhân lực và thông tin thị trường lao động TP.HCM, cho rằng phần đông SV mới ra trường luôn muốn được vào làm việc tại các doanh nghiệp có quy mô lớn. Tại các hội thảo tư vấn việc làm, nhiều bạn trẻ băn khoăn, cho rằng môi trường làm việc và chính sách phát triển của doanh nghiệp nhỏ không bằng các doanh nghiệp quy mô lớn.</p><p>“Thật ra, mọi chính sách phát triển và tiền lương thu nhập ở bất kỳ doanh nghiệp nào cũng được thực hiện theo đúng quy định pháp luật lao động. Tùy theo điều kiện và quy mô, tính chất hoạt động sản xuất kinh doanh của từng loại hình doanh nghiệp mà có những chế độ đãi ngộ có khác nhau (mức thu nhập cao hay thấp tùy theo hiệu quả sản xuất kinh doanh). Không phải tất cả mọi doanh nghiệp lớn đều có chế độ đãi ngộ cao hơn hay quan hệ lao động tốt hơn các doanh nghiệp vừa và nhỏ. Người lao động có quyền lựa chọn nơi làm việc theo mong muốn, nhưng phải phù hợp với năng lực nghề nghiệp của mình”, ông Tuấn nhìn nhận.</p><p>Ngộ nhận về bản thân</p><p>Thạc sĩ Phạm Thái Sơn, Phó giám đốc Trung tâm tuyển sinh, Trường ĐH Công nghiệp thực phẩm TP.HCM, lý giải: “Một số em, đặc biệt là tốt nghiệp các trường ĐH lớn hoặc ngành học tốt, thì cũng có một chút ảo tưởng về vị trí của bản thân. Bên cạnh đó, các em nghĩ ra trường phải làm một công việc có lương cao, nhưng thực tế mức thu nhập mà doanh nghiệp trả thấp hơn nên không chịu làm. Một số em thì vào doanh nghiệp nhỏ thấy phải làm nhiều việc và có những việc không dính đến chuyên môn được đào tạo nên nghỉ việc. Các em nghĩ rằng mình cần phải được phát huy kiến thức mình học mà không biết rằng ngoài chuyên môn ra, một doanh nghiệp còn diễn ra rất nhiều hoạt động khác”.</p><p>Nhưng theo ông Vũ Tuấn Anh, Giám đốc điều hành Viện Quản lý Việt Nam, nguồn gốc sâu xa của tình trạng “chê việc” này chính là do bạn trẻ được bố mẹ bao cấp, không đi làm vẫn được “nuôi” nên không có ý thức phải kiếm cho được một công việc. Nguyên nhân thứ hai, theo ông Tuấn Anh, là do bạn trẻ chưa hiểu rõ bản chất của công việc.</p><p>“Các em nhận lương 5 triệu thì phải tạo ra doanh thu ít nhất 6-7 lần tương ứng, là 30-35 triệu/tháng. Doanh nghiệp ngoài trả lương còn phải chi trả rất nhiều chi phí tạo dựng hệ thống. Trường ĐH và các giảng viên đã không chỉ cho các em thấy sự khắc nghiệt và hiện thực của kinh doanh, mà thường chia sẻ những thông tin hoang tưởng về việc làm cho sinh viên, thiếu đi những góc nhìn thực tế. Bên cạnh đó, truyền thông truyền tải về những trường hợp tốt nghiệp được trả lương 2.000-5.000 đô la, đã tạo ra sự hoang tưởng. Các em cần biết rằng đó là những trường hợp hiếm và phải xuất sắc thế nào mới đạt được mức lương đó”, ông Tuấn Anh nêu quan điểm.</p><p>Theo thống kê của Phòng Thương mại và Công nghiệp VN, hệ thống các doanh nghiệp gồm nhiều cấp độ, trong đó, doanh nghiệp vừa và nhỏ, công ty khởi nghiệp chiếm hơn 90% ở VN, 10% còn lại là công ty lớn, tập đoàn. Do đó, theo ông Cao Trung Hiếu, khát khao nhân lực của 90% này luôn lớn nhưng xã hội lại xem thường vai trò này. “Điều đó tạo độ vênh khiến tình trạng thất nghiệp tại VN ngày càng tăng, còn doanh nghiệp thì than thở không có nhân lực. Chỉ có thay đổi tư duy, nhận thức để hiểu đúng hơn về vai trò của doanh nghiệp vừa và nhỏ, doanh nghiệp khởi nghiệp thì mới giải quyết được gốc rễ của tình trạng thất nghiệp và thiếu nhân lực này”, ông Hiếu chia sẻ.</p><p>Thạc sĩ Phạm Thái Sơn đưa ra lời khuyên, trước hết bạn trẻ cần có sự trải nghiệm và nỗ lực học hỏi từ công việc ở những doanh nghiệp vừa sức với mình để tích lũy kinh nghiệm. Sau khi có kinh nghiệm, chuyên môn và kỹ năng được rèn giũa thì một công việc tốt với mức thu nhập cao sẽ ở trong tầm tay.</p>', '', '', '', NULL, 4, 1, '2018-05-23 10:23:50', '2018-05-23 10:23:50'),
+(5, 'Khi nào bạn có thể nói dối trong một buổi phỏng vấn?', 'khi-nao-ban-co-the-noi-doi-trong-mot-buoi-phong-van', NULL, 'Thật thà luôn là đức tính quan trọng mà nhà tuyển dụng luôn tìm kiếm ở ứng viên. Một sự thật là không ai trong chúng ta đủ hoàn hảo để có thể chinh phục nhà tuyển dụng một cách xuất sắc. Mặc dù vậy, chúng ta luôn có tâm lý e ngại phải đưa ra những câu trả lời không chính xác vì e sợ nhà tuyển dụng sẽ nhìn ra và khi đó sẽ bị vuột mất cơ hội trúng tuyển', '<p>Thực tế, không phải lúc nào thật thà cũng đem lại hiệu quả tốt. Cùng tham khảo các dạng câu hỏi từ nhà tuyển dụng mà bạn có quyền “chém gió”, nhưng lưu ý là phải chém sao cho khéo léo nhé :</p><p>1 – Bạn có những điểm yếu nào ?</p><p>Đây là câu hỏi ứng viên thường gặp sau câu hỏi về điểm mạnh. Cũng như thế mạnh, bạn cũng cần phải cân nhắc kĩ lưỡng để có cách trả lời phỏng hay và khéo léo nhất tới nhà tuyển dụng. Bạn không nên đưa ra những câu trả lời thật thà như: điểm yếu là đi làm muộn, thường xuyên trễ deadline, không hòa đồng với đồng nghiệp,… Lời khuyên cho bạn là sử dụng thái độ tự tin khi trả lời phỏng vấn vì đây cũng là lúc nhà tuyển dụng sẽ quan sát rất kĩ thái độ của bạn. Tiếp đó hãy lựa chọn những điểm yếu không gây ảnh hưởng đến công việc ứng tuyển, ví dụ như chọn điểm yếu “kém giao tiếp” khi ứng tuyển ngành truyền thông chả hạn. Bên cạnh đó, bạn cũng có thể lựa chọn biến tiêu cực thành tích cực khi trả lời phỏng vấn. Tuy nhiên cách này khá nguy hiểm vì rất có thể người tuyển dụng khó tính sẽ nhìn ra bạn đang cố gắng che dấu và đánh giá bạn lạc đề đấy !</p><p>2 – Bạn có ý định gắn bó lâu dài với công ty chúng tôi không ?<br></p><p>Bất cứ nhà tuyển dụng cũng mong muốn có thể tìm được một nhân viên có thể gắn bó lâu dài với doanh nghiệp của họ. Tuy nhiên không phải ứng viên nào cũng có ý định muốn ổn định lâu dài vì các mục tiêu ngắn hạn khác nhau. Đương nhiên là các lý do của bạn là chính đáng, nhưng trong trường hợp này, thẳng thắn không phải là một cách hay. Bạn có thể xây dựng niềm tin bằng cách đưa ra câu trả lời phỏng vấn khéo léo như: “Mục tiêu nghề nghiệp của tôi là gắn bó với một doanh nghiệp và xây dựng sự nghiệp lâu dài của mình. Nếu có cơ hội, tôi thực sự mong muốn có thể cống hiến để góp phần vào sự phát triển của công ty”.</p><p>3 – Tại sao bạn lại nghỉ việc ở công ty cũ ?<br></p><p>Không một nhà tuyển dụng muốn nghe một câu trả lời như: Vì tôi gây ra sai lầm nghiêm trọng, vì tôi xích mích với sếp cũ, tôi bị đuổi việc,… dù đúng là nó thể hiện một đức tính rất tốt đẹp của bạn là thật thà. Bạn nên chuẩn bị sẵn một câu hỏi để không phải rơi vào tình huống tiến thoái lưỡng nan, không muốn nói thật nhưng nói dối thì lại sợ bị nhìn ra nhé. Một trong những cách trả lời phỏng vấn thông minh bạn có thể tham khảo là: “ Tôi nghĩ đã đến lúc tôi phải thử thách bản thân với những môi trường mới. Và quý công ty là nơi tôi cảm thấy mình sẽ học hỏi và phát triển được rất nhiều trong tương lai”.</p>', '', '', '', NULL, 5, 1, '2018-05-23 10:26:32', '2018-05-23 10:26:32'),
+(6, 'Nghề cho những thanh niên năng động', 'nghe-cho-nhung-thanh-nien-nang-dong', NULL, 'Quản trị khách sạn là ngành được xem là khá mới mẻ tại Việt Nam. Nhu cầu nguồn nhân lực lớn, tuy nhiên việc đào tạo nhân lực ngành này tại Việt Nam hiện còn nhiều hạn chế về số lượng và cả chất lượng.', '<p>Nhiều vị trí việc làm</p><p>Theo tiêu chuẩn của Tổng cục Du lịch Việt Nam và châu Âu, sinh viên ngành Quản trị khách sạn sẽ được cung cấp kiến thức về quản lý và tổ chức các hoạt động của khách sạn một cách hiệu quả và hợp lý, kiến thức về kinh doanh lưu trú và các kỹ năng nghiệp vụ khách sạn, đồng thời rèn luyện các kỹ năng mềm cần thiết cho công việc đáp ứng nhu cầu tuyển dụng thực tế.</p><p>Quản trị khách sạn được nhận định là rất thích hợp cho những thanh niên tự tin, năng động, có năng khiếu tổ chức quản lý, sắp xếp công việc, có tư duy logic…</p><p>Cử nhân ngành Quản trị khách sạn có thể làm nhiều công việc khác nhau từ bộ phận nhân sự, bộ phận tiền sảnh, bộ phận ẩm thực cho đến công tác quản lý tại các doanh nghiệp du lịch.</p><p>Đảm nhận công việc trong các bộ phận của một khách sạn – nhà hàng từ 3 – 5 sao như: Tiền sảnh – lễ tân, bộ phận phòng, ẩm thực, bếp, nhân sự, tài chính – kế toán, kinh doanh – tiếp thị.</p><p>Công tác tại các vị trí quản lý dịch vụ tại khách sạn. Điều hành, tiếp thị, nhân sự, tài chính tại các cơ quan nghiên cứu, kinh doanh du lịch trong và ngoài nước.</p><p>Làm việc tại các khu du lịch nghỉ dưỡng, vui chơi giải trí với các vị trí quản lý, hành chính, nhân lực, tài chính,marketing… Ngoài ra còn có thể làm việc tại các cơ quan quản lý, viện nghiên cứu về du lịch; hoặc giảng dạy tại các cơ sở đào tạo thuộc lĩnh vực du lịch.</p><p>Ở các trình độ trung cấp và cao đẳng ngành Quản trị khách sạn, sinh viên có nhiều cơ hội tại các vị trí việc làm cụ thể như lễ tân, phòng, bếp, tiếp thị, hướng dẫn…</p><p>Ưu thế của các lao động trình độ cao đẳng và trung cấp là dễ tìm được việc làm, nhanh chóng tiếp cận với môi trường công việc thực tế, qua đó nhanh chóng nắm bắt được kinh nghiệm làm việc, mở ra cơ hội thăng tiến trong nghề nghiệp.</p><p>Nhân lực chưa đáp ứng kịp nhu cầu</p><p>Thực trạng hiện nay nguồn nhân lực ngành Quản trị khách sạn nói riêng và nhân lực ngành du lịch nói chung là chưa đáp ứng được về số lượng và chất lượng so với nhu cầu.</p><p>Việc thu hút, đào tạo và sử dụng nhân lực khối ngành này còn hạn chế so với nhu cầu chung. Khảo sát tại một số công ty du lịch cho thấy, có tới 30 – 45% hướng dẫn viên du lịch, điều hành tour và 70 – 80% nhân viên lễ tân nhà hàng không đạt chuẩn ngoại ngữ.</p><p>Trình độ ngoại ngữ yếu, kỹ năng nghiệp vụ còn thiếu đã hạn chế các đơn vị du lịch không khai thác hết được nguồn lợi du lịch từ khách nước ngoài….</p><p>Ông Trần Anh Tuấn – Phó Giám đốc Trung tâm Dự báo nhu cầu nhân lực và Thông tin thị trường lao động TPHCM – cho biết, nhóm ngành du lịch, nhà hàng, khách sạn là một trong 12 nhóm ngành cần nhiều lao động tại TPHCM.</p><p>Vì vậy, cần chú trọng đầu tư vào việc đào tạo chất lượng nguồn nhân lực theo hướng gắn với nhu cầu của doanh nghiệp; phải thống kê chính xác lượng cung – cầu lao động của ngành này để việc đào tạo cân đối cung – cầu thị trường lao động, tránh tình trạng nhân lực khối ngành du lịch vừa thừa vừa thiếu.<br></p>', '', '', '', NULL, 6, 1, '2018-05-23 10:29:07', '2018-05-23 10:29:07'),
+(7, 'Động lực nào giúp bạn “sốc” lại tinh thần làm việc?', 'dong-luc-nao-giup-ban-soc-lai-tinh-than-lam-viec', NULL, 'Bạn từng tìm được công việc yêu thích và phù hợp với năng lực, thời gian đầu dành toàn bộ nhiệt huyết, tâm sức cho công việc. Tuy nhiên, sau một thời gian dài làm việc, nhiều người lao động nhận ra mình không còn niềm đam mê với công việc như xưa. Vậy, bạn cần làm gì để lấy lại động lực và tinh thần làm việc như ban đầu.', '<p>Lập lại mục tiêu công việc</p><p>Khi bạn đang chán nản với công việc hiện tại, việc lập lại mục tiêu công việc rõ ràng là việc cần thiết. Việc đặt ra cho mình những cái đích cần đạt được sẽ khơi dậy được sự nỗ lực trong mỗi con người. Lúc này, bạn cần đặt ra những mục tiêu ngắn hạn và dài hạn. Mục tiêu này càng chi tiết, tỉ mỉ và cao hơn những gì bạn đang có là điều cần thiết.</p><p>Sau khi có mục tiêu rõ ràng, buộc bạn phải lập kế hoạch tiếp theo để thực hiện hóa những mục tiêu trên. Mục tiêu càng khó khăn bao nhiêu thì khả năng vực bạn khỏi “giấc ngủ” càng lớn hơn. Tuy nhiên, bạn cần nỗ lực thực hiện mục tiêu đề ra, thì hiệu suất công việc của bạn mới hiệu quả. Nếu cứ “đánh trống bỏ dùi” thì những mục tiêu dù có hay ho đến đâu cũng không thể thành hiện thực.</p><p>Coi trọng những thành công nhỏ</p><p>Điều đó đồng nghĩa với việc bạn cần sắp xếp lại những thứ bạn cho là “tiến bộ”. Thay vì liên tục tập trung vào việc bản thân đã tiến xa tới đâu thì hãy chú ý đến những bước tiến giúp cho bạn đi đúng hướng ngay cả khi chúng không thực sự nổi bật.</p><p>Ngoài ra, bạn nên dành thời gian tự hỏi bản thân mình những câu hỏi: \"Hôm nay mình đã giải quyết được vấn đề gì?\", hay \"Mình đã mở rộng được mối quan hệ tới đâu?\"... Hãy từ từ tiến từng bước nhỏ đến gần mục tiêu tưởng chừng không đạt được.</p><p>Những thành công tuy nhỏ nhưng là liều thuốc tinh thần to lớn giúp bạn có những hào hứng và phấn khởi đối với công việc. Vì vậy, để thực hiện những mục tiêu lớn, bạn nên góp nhặt những thành công nhỏ và lấy lại tinh thần làm việc sôi nổi như những ngày đầu.</p><p>Để người khác đánh giá hiệu suất công việc của bản thân</p><p>Khả năng chịu trách nhiệm và hành vi củng cố tích cực là những yếu tố quan trọng hình thành nên cảm xúc tích cực tại nơi làm việc. Nhưng bạn cũng không cần phải chờ đợi sếp đi tới đi lui kiểm tra mức độ chăm chỉ làm việc, hay nhận được những nhận xét tích cực về mình mới cảm thấy có động lực làm việc.</p><p>Thay vào đó, đề nghị mỗi tháng hãy thử tập hợp một nhóm nhỏ đồng nghiệp trong phòng hoặc trong mạng lưới làm việc lại với nhau để đánh giá hiệu suất công việc của mỗi người. Mọi người cũng có thể đặt ra một mục tiêu trong buổi họp và báo cáo tiến độ hoàn thành chúng trong buổi họp kế tiếp.</p><p>Điều này không chỉ giúp bạn tạo ra một cộng đồng có trách nhiệm mà còn cung cấp cho bạn những thông tin phản hồi cũng như lời khuyên từ phía các đồng nghiệp.</p><p>Thay đổi quan điểm của bản thân</p><p>Đôi khi bạn thường hạn chế khả năng của mình bằng cách nghĩ rằng “Mình đã làm rất tốt và không thể tốt hơn được nữa” và làm cho sự nghiệp chững lại. Trong vô vàn thứ thay đổi trong công sở hàng ngày, một yếu tố quan trọng mà bạn có thể kiểm soát là quan điểm của mình. Động lực sẽ tạo ra nhiều động lực hơn. Vì vậy, đừng tự thỏa mãn với bản thân mà hãy luôn luôn tìm kiếm và tiếp cận với những thử thách mới trong công việc. Việc thay đổi quan điểm như vậy giúp bạn có thêm động lực tiến xa hơn trong công việc.</p>', '', '', '', NULL, 7, 1, '2018-05-23 10:31:30', '2018-05-23 10:31:30'),
+(8, 'Tạo việc làm cho hàng nghìn lao động', 'tao-viec-lam-cho-hang-nghin-lao-dong', NULL, 'Tiếng búa nện đều đặn, tiếng rèn, mài rũa rền vang là âm thanh quen thuộc tại làng nghề rèn truyền thống Đa Sỹ (Hà Đông, Hà Nội). Nghề rèn trăm năm tuổi này đã và đang là nguồn thu nhập chính, tạo việc làm cho hàng nghìn lao động của gần 900 hộ gia đình. Ít ai biết rằng, ngoài xuất bán từ Bắc vào Nam, sản phẩm rèn của Đa Sỹ còn được “xuất khẩu” đến các nước Đức, Mỹ', '<p>đang cập nhật</p>', '', '', '', NULL, 8, 1, '2018-05-23 10:36:26', '2018-05-23 10:36:26');
+
 -- --------------------------------------------------------
 
 --
@@ -116,6 +130,20 @@ CREATE TABLE `article_category` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `article_category`
+--
+
+INSERT INTO `article_category` (`id`, `article_id`, `category_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2018-05-23 10:16:36', '2018-05-23 10:16:36'),
+(2, 2, 1, '2018-05-23 10:18:47', '2018-05-23 10:18:47'),
+(3, 3, 1, '2018-05-23 10:21:44', '2018-05-23 10:21:44'),
+(4, 4, 1, '2018-05-23 10:23:50', '2018-05-23 10:23:50'),
+(5, 5, 1, '2018-05-23 10:26:32', '2018-05-23 10:26:32'),
+(6, 6, 1, '2018-05-23 10:29:07', '2018-05-23 10:29:07'),
+(7, 7, 1, '2018-05-23 10:31:30', '2018-05-23 10:31:30'),
+(8, 8, 1, '2018-05-23 10:36:26', '2018-05-23 10:36:26');
 
 -- --------------------------------------------------------
 
@@ -203,6 +231,13 @@ CREATE TABLE `category_article` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `category_article`
+--
+
+INSERT INTO `category_article` (`id`, `fullname`, `meta_keyword`, `meta_description`, `alias`, `parent_id`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Cẩm nang nghề nghiệp', '', '', 'cam-nang-nghe-nghiep', 0, NULL, 1, 1, '2018-05-23 10:11:16', '2018-05-23 10:11:16');
 
 -- --------------------------------------------------------
 
@@ -995,6 +1030,19 @@ CREATE TABLE `menu` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id`, `fullname`, `alias`, `parent_id`, `menu_type_id`, `level`, `menu_class`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Trang chủ', 'trang-chu', 0, 1, 0, '', 1, 1, '2018-05-23 07:29:05', '2018-05-23 07:29:05'),
+(2, 'Tin tức', 'tin-tuc', 0, 1, 0, '', 2, 1, '2018-05-23 07:31:29', '2018-05-23 07:32:23'),
+(3, 'Người tìm việc', 'nguoi-tim-viec', 0, 1, 0, '', 3, 1, '2018-05-23 07:33:29', '2018-05-23 07:53:08'),
+(4, 'Nhà tuyển dụng', 'nha-tuyen-dung', 0, 1, 0, '', 4, 1, '2018-05-23 07:38:57', '2018-05-23 07:54:58'),
+(5, 'Điều khoản sử dụng', 'dieu-khoan-su-dung', 0, 1, 0, '', 5, 1, '2018-05-23 07:44:15', '2018-05-23 07:55:38'),
+(6, 'Báo giá', 'bao-gia', 0, 1, 0, '', 6, 1, '2018-05-23 07:45:23', '2018-05-23 07:57:06'),
+(7, 'Cẩm nang nghề nghiệp', 'cam-nang-nghe-nghiep', 0, 1, 0, '', 7, 1, '2018-05-23 07:46:52', '2018-05-23 07:57:37');
+
 -- --------------------------------------------------------
 
 --
@@ -1011,6 +1059,13 @@ CREATE TABLE `menu_type` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `menu_type`
+--
+
+INSERT INTO `menu_type` (`id`, `fullname`, `theme_location`, `status`, `sort_order`, `created_at`, `updated_at`) VALUES
+(1, 'MenuFooter', 'menu-footer', 1, 1, '2018-05-23 07:26:59', '2018-05-23 07:26:59');
 
 -- --------------------------------------------------------
 
@@ -1110,7 +1165,8 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`id`, `fullname`, `alias`, `theme_location`, `image`, `intro`, `content`, `description`, `meta_keyword`, `meta_description`, `count_view`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Fanpage', 'fanpage', 'right', NULL, '<div class=\"fb-page\" data-href=\"https://www.facebook.com/Trung-Tâm-Tiếp-Lửa-1922029917839211\" data-tabs=\"timeline\" data-width=\"370\" data-height=\"250\" data-small-header=\"true\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"true\"><blockquote cite=\"https://www.facebook.com/Trung-Tâm-Tiếp-Lửa-1922029917839211\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/gonguyenlieumy/\">Trung Tâm Tiếp Lửa</a></blockquote></div>', '<p><br></p>', '', '', '', NULL, 1, 1, '2018-05-21 06:55:09', '2018-05-21 09:43:53');
+(1, 'Fanpage', 'fanpage', 'right', NULL, '<div class=\"fb-page\" data-href=\"https://www.facebook.com/Trung-Tâm-Tiếp-Lửa-1922029917839211\" data-tabs=\"timeline\" data-width=\"370\" data-height=\"250\" data-small-header=\"true\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"true\"><blockquote cite=\"https://www.facebook.com/Trung-Tâm-Tiếp-Lửa-1922029917839211\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/gonguyenlieumy/\">Trung Tâm Tiếp Lửa</a></blockquote></div>', '<p><br></p>', '', '', '', NULL, 1, 1, '2018-05-21 06:55:09', '2018-05-21 09:43:53'),
+(2, 'Giới thiệu footer', 'gioi-thieu-footer', 'footer-intro', NULL, '', '<p><b style=\"color: rgb(8, 82, 148);\"><span style=\"font-size: 20px;\">Công Ty Cổ Phần Câu Lạc Bộ Tiếp Lửa</span></b></p><p><b style=\"color: inherit; font-size: 14px;\"><span style=\"font-size: 14px;\">Trụ sở:&nbsp;</span></b><span style=\"color: inherit; font-size: 14px;\">35/6 Bùi Quang Là - Phường 12 - Quận Gò Vấp</span></p><p><b style=\"color: inherit;\"><span style=\"font-size: 14px;\">Điện thoại:</span></b><span style=\"color: inherit; font-size: 14px;\"> 0988162753 | Fax: (028) 361 028 00&nbsp;</span></p><p><b style=\"color: inherit;\"><span style=\"font-size: 14px;\">Email hỗ trợ NTD:</span></b><span style=\"color: inherit; font-size: 14px;\"> tichtacso@gmail.com | <b>Email hỗ trợ NTV:</b> tichtacso@gmail.com</span></p>', '', '', '', NULL, 2, 1, '2018-05-23 09:17:37', '2018-05-23 09:54:30');
 
 -- --------------------------------------------------------
 
@@ -1776,7 +1832,9 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (938, 1, 'bZc1gGPO3BxKlLXO3nVdCTavVqY4So2x', '2018-05-17 09:20:19', '2018-05-17 09:20:19'),
 (939, 1, 'pJrGPllRnwdDQNzKzgE5G09qKJMyaAQ9', '2018-05-17 23:57:58', '2018-05-17 23:57:58'),
 (940, 1, 'mL2zk7QFHrh9oGJKiAsdGo22EtUBaeH2', '2018-05-20 21:54:02', '2018-05-20 21:54:02'),
-(941, 1, 'SR3WuSaMNg47gEFCK1StjQ8W1XG2Kf6F', '2018-05-22 03:02:24', '2018-05-22 03:02:24');
+(941, 1, 'SR3WuSaMNg47gEFCK1StjQ8W1XG2Kf6F', '2018-05-22 03:02:24', '2018-05-22 03:02:24'),
+(942, 1, '32mH8hkjGSefpVsAl9cuaB4M9WQXNo55', '2018-05-23 00:22:35', '2018-05-23 00:22:35'),
+(943, 1, 'T3kxzR07sAcviFzfqmY4onLoiTgr8ZbR', '2018-05-23 02:13:13', '2018-05-23 02:13:13');
 
 -- --------------------------------------------------------
 
@@ -3728,7 +3786,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-22 03:02:24', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-22 03:02:24'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-23 02:13:13', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-23 02:13:13'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4298,13 +4356,13 @@ ALTER TABLE `album`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `article_category`
 --
 ALTER TABLE `article_category`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `banner`
@@ -4322,7 +4380,7 @@ ALTER TABLE `candidate`
 -- AUTO_INCREMENT for table `category_article`
 --
 ALTER TABLE `category_article`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `category_banner`
@@ -4436,13 +4494,13 @@ ALTER TABLE `marriage`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `menu_type`
 --
 ALTER TABLE `menu_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -4460,7 +4518,7 @@ ALTER TABLE `module_item`
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment_method`
@@ -4472,7 +4530,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=942;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=944;
 
 --
 -- AUTO_INCREMENT for table `photo`

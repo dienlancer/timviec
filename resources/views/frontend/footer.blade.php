@@ -31,5 +31,23 @@
 	</div>
 </div>	
 <footer>
-	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="margin-top-15"><center><a href="<?php url('/'); ?>"><img src="<?php echo asset('/upload/logo.png'); ?>"></a></center></div>
+				<div class="margin-top-15"><center><img src="<?php echo asset('/upload/bo-cong-thuong.png'); ?>"></center></div>
+			</div>
+			<div class="col-lg-8">
+				<div class="margin-top-15">
+					<?php 
+				$page_footer_intro=getPage("footer-intro");							
+				if(count($page_footer_intro) > 0){								
+					$page_footer_intro_content=$page_footer_intro["content"];					
+					echo $page_footer_intro_content;		
+				}
+				?>
+				</div>					
+			</div>
+		</div>
+	</div>
 </footer>

@@ -441,7 +441,7 @@ $height=$setting['product_height']['field_value'];
 					</div>
 					<?php			
 				}
-				$data_article=App\ArticleModel::whereRaw('status = 1')->select('id','fullname','alias','image')->orderBy('id','desc')->take(8)->get()->toArray();	
+				$data_article=App\ArticleModel::whereRaw('status = 1')->select('id','fullname','alias','image','intro')->orderBy('id','desc')->take(8)->get()->toArray();	
 				if(count($data_article) > 0){
 					?>
 					<div class="relative">

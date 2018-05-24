@@ -440,7 +440,39 @@ $height=$setting['product_height']['field_value'];
 						?>
 					</div>
 					<?php			
-				}	
+				}
+				$data_article=App\ArticleModel::whereRaw('status = 1')->select('id','fullname','alias','image')->orderBy('id','desc')->take(8)->get()->toArray();	
+				if(count($data_article) > 0){
+					?>
+					<div class="relative">
+						<div class="nikatasuzuki margin-top-15">
+							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+							<div class="tibolee">CẨM NANG NGHỀ NGHIỆP</div>
+						</div>
+						<hr class="subachuem">
+						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+					</div>	
+					<div>
+						<?php 
+						$k=1;
+						foreach ($data_article as $key => $value) {
+							?>
+							<div class="col-lg-6">
+								<div class="margin-top-15">
+									<div class="ritae"></div>
+									<div class=""></div>
+								</div>
+							</div>
+							<?php
+							if($k%2 == 0 || $k == count($data_article)){
+								echo '<div class="clr"></div>';
+							}
+							$k++;
+						}
+						?>
+					</div>
+					<?php					
+				}
 				?>					
 			</div>
 			<div class="col-lg-4">

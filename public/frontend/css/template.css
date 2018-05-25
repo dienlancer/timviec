@@ -1168,7 +1168,14 @@ div.opacity-absolute::before{
     display: flex;
     align-items: center;
 }
-
+.telarik {
+        position: absolute;
+    width: 475px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 200px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

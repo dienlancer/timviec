@@ -133,9 +133,7 @@ h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:0;}
     position: relative;
     
 }
-.justify{
-    text-align: justify;
-}
+
 table td{padding-left:10px;padding-bottom:10px;}
 figure{overflow:hidden;position:relative;display:inline-block;vertical-align:top;}
 figure img{-webkit-transition:all 0.5s linear;transition:all 0.5s linear;-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1);}
@@ -991,11 +989,11 @@ div.opacity-absolute::before{
 }
 .royal {
         position: absolute;
-    width: 470px;
+    width: 500px;
     top: 14px;
     margin-top: 0;
     margin-bottom: 0;
-    left: 200px;
+    left: 175px;
 }
 .royal-bira {
     position: absolute;
@@ -1061,11 +1059,11 @@ div.opacity-absolute::before{
 }
 .subachuem{
     position: absolute;
-    width: 530px;
+    width: 840px;
     top: 14px;
     margin-top: 0;
     margin-bottom: 0;
-    left: 140px;
+    left: 230px;
 }
 .labasa{
     padding:10px 10px 10px 10px;
@@ -1143,6 +1141,34 @@ div.opacity-absolute::before{
     display: block;
     color: #aaa;
 }
+.vidola{
+    text-align: justify;
+}
+.box-featured-article-title a{
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+}
+.box-featured-article-readmore{
+    text-align: right;
+}
+.box-featured-article-readmore a{
+    display: inline-block;
+    font-size: 13px;
+}
+.flera {
+    position: absolute;
+    width: 520px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 150px;
+}
+.lialo {
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

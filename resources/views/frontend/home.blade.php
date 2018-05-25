@@ -5,6 +5,8 @@ $seo=getSeo();
 $setting= getSettingSystem();
 $width=$setting['product_width']['field_value'];
 $height=$setting['product_height']['field_value'];  
+$article_width=$setting['article_width']['field_value'];
+$article_height=$setting['article_height']['field_value'];  
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -299,7 +301,7 @@ $height=$setting['product_height']['field_value'];
 					</div>	
 					<?php 
 				}
-				$source_job_l=DB::table('job')
+				$source_job_r=DB::table('job')
 				->join('recruitment_job','job.id','=','recruitment_job.job_id')
 				->join('recruitment','recruitment.id','=','recruitment_job.recruitment_id')
 				->where('recruitment.status',1)
@@ -309,7 +311,7 @@ $height=$setting['product_height']['field_value'];
 				->orderBy('job.id','asc')					
 				->get()
 				->toArray();
-				if(count($source_job_l) > 0){
+				if(count($source_job_r) > 0){
 					?>
 					<div class="relative">
 						<div class="nikatasuzuki margin-top-15">
@@ -321,15 +323,15 @@ $height=$setting['product_height']['field_value'];
 					</div>	
 					<div>
 						<?php 					
-						$data_job_l=convertToArray($source_job_l);
+						$data_job_r=convertToArray($source_job_r);
 						$k=1;
-						foreach ($data_job_l as $key => $value) {
+						foreach ($data_job_r as $key => $value) {
 							?>
 							<div class="col-lg-6">
 								<div class="margin-top-10 madrid"><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?></a>&nbsp;(<?php echo @$value['recruitment_quantity']; ?>)</div>
 							</div>
 							<?php
-							if($k%2==0 || $k == count($data_job_l)){
+							if($k%2==0 || $k == count($data_job_r)){
 								echo '<div class="clr"></div>';
 							}
 							$k++;
@@ -380,7 +382,7 @@ $height=$setting['product_height']['field_value'];
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee">VIỆC LÀM HOT</div>
 						</div>
-						<hr class="subachuem">
+						<hr class="flera">
 						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
 					</div>	
 					<div>
@@ -440,39 +442,7 @@ $height=$setting['product_height']['field_value'];
 						?>
 					</div>
 					<?php			
-				}
-				$data_article=App\ArticleModel::whereRaw('status = 1')->select('id','fullname','alias','image','intro')->orderBy('id','desc')->take(8)->get()->toArray();	
-				if(count($data_article) > 0){
-					?>
-					<div class="relative">
-						<div class="nikatasuzuki margin-top-15">
-							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
-							<div class="tibolee">CẨM NANG NGHỀ NGHIỆP</div>
-						</div>
-						<hr class="subachuem">
-						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
-					</div>	
-					<div>
-						<?php 
-						$k=1;
-						foreach ($data_article as $key => $value) {
-							?>
-							<div class="col-lg-6">
-								<div class="margin-top-15">
-									<div class="ritae"></div>
-									<div class=""></div>
-								</div>
-							</div>
-							<?php
-							if($k%2 == 0 || $k == count($data_article)){
-								echo '<div class="clr"></div>';
-							}
-							$k++;
-						}
-						?>
-					</div>
-					<?php					
-				}
+				}				
 				?>					
 			</div>
 			<div class="col-lg-4">
@@ -691,6 +661,62 @@ $height=$setting['product_height']['field_value'];
 			</div>
 		</div>
 		<?php
+	}
+	$data_featured_article=App\ArticleModel::whereRaw('status = 1')->select('id','fullname','alias','image','intro')->orderBy('id','desc')->take(8)->get()->toArray();	
+	if(count(@$data_featured_article) > 0){
+		?>
+		<div class="relative">
+			<div class="nikatasuzuki margin-top-15">
+				<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
+				<div class="tibolee">CẨM NANG NGHỀ NGHIỆP</div>
+			</div>
+			<hr class="subachuem">
+			<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+		</div>	
+		<div>
+			<?php 
+			$k=1;
+			foreach ($data_featured_article as $key => $value) {
+				$featured_article_fullname=truncateString($value['fullname'],900) ;
+				$featured_article_intro=truncateString($value['intro'],200) ;
+				$featured_article_img='';
+				if(!empty($value['image'])){
+					$featured_article_img=asset('upload/'.$article_width.'x'.$article_height.'-'.$value['image']);
+				}else{
+					$featured_article_img=asset('upload/no-logo.png');
+				}
+				?>
+				<div class="col-lg-6 no-padding-left">
+					<div class="margin-top-15">
+						<div class="col-lg-4">
+							<div class="box-featured-article">
+								<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><img src="<?php echo $featured_article_img; ?>"></a>
+							</div>
+						</div>
+						<div class="col-lg-8">
+							<div class="box-featured-article-title"><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $featured_article_fullname; ?></a></div>
+							<div class="vidola margin-top-5"><?php echo $featured_article_intro; ?></div>
+							<div class="box-featured-article-readmore">
+								<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>">
+									<div class="lialo">
+										<div><i class="fas fa-arrow-circle-right"></i></div>
+										<div class="margin-left-5">Xem thêm</div>
+									</div>									
+								</a>
+							</div>
+						</div>
+						<div class="clr"></div>					
+					</div>
+				</div>
+				<?php
+				if($k%2 == 0 || $k == count($data_featured_article)){
+					echo '<div class="clr"></div>';
+				}
+				$k++;
+			}
+			?>
+		</div>
+		<?php					
 	}
 	?>		
 </div>

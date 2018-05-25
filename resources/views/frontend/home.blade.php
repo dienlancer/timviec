@@ -66,7 +66,7 @@ $article_height=$setting['article_height']['field_value'];
 						<div class="tibolee">VIỆC LÀM MỚI</div>
 					</div>
 					<hr class="banban">
-					<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-moi']); ?>">XEM TẤT CẢ</a></div>
+					<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.getNewRecruitment'); ?>">XEM TẤT CẢ</a></div>
 				</div>			
 			</div>
 		</div>	

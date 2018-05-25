@@ -8,6 +8,13 @@ $linkChangeStatus	=	route('adminsystem.'.$controller.'.changeStatus');
 $linkDelete			=	route('adminsystem.'.$controller.'.deleteItem');
 $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_search"          value="">';
+$arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
+$ddlStatusNew              =   cmsSelectbox("status_new","form-control",@$arrStatus,0,"Việc làm mới");
+$ddlStatusAttractive              =   cmsSelectbox("status_attractive","form-control",@$arrStatus,0,"Việc làm hấp dẫn");
+$ddlStatusHighSalary              =   cmsSelectbox("status_high_salary","form-control",@$arrStatus,0,"Việc làm lương cao");
+$ddlStatusHot              =   cmsSelectbox("status_hot","form-control",@$arrStatus,0,"Việc làm hot");
+$ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$arrStatus,0,"Việc làm tuyển gấp");
+
 ?>
 <form class="form-horizontal" role="form" name="frm">	
 	{{ csrf_field() }}
@@ -31,17 +38,29 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			</div>                                 
 		</div>
 		<div class="row">                     
-                <div class="col-md-6">
-                    <div><b>Tiêu đề tin tuyển dụng</b>  </div>
-                    <div><?php echo $inputFilterSearch; ?></div>
-                </div>            
-                <div class="col-md-6">
-                    <div>&nbsp;</div>
-                    <div>
-                        <button type="button" class="btn dark btn-outline sbold uppercase btn-product" onclick="getList();">Tìm kiếm</button>                                         
-                    </div>                
-                </div>                
-        </div>   
+			<div class="col-md-12">
+				<table cellpadding="2" cellspacing="2" class="katana">
+					<tr>
+						<th>Tiêu đề tin tuyển dụng</th>
+						<th>Việc làm mới</th>
+						<th>Việc làm hấp dẫn</th>
+						<th>Việc làm lương cao</th>
+						<th>Việc làm hot</th>
+						<th>Việc làm tuyển gấp</th>
+						<th></th>
+					</tr>
+					<tr>
+						<td><?php echo $inputFilterSearch; ?></td>
+						<td><?php echo $ddlStatusNew; ?></td>
+						<td><?php echo $ddlStatusAttractive; ?></td>
+						<td><?php echo $ddlStatusHighSalary; ?></td>
+						<td><?php echo $ddlStatusHot; ?></td>
+						<td><?php echo $ddlStatusQuick; ?></td>
+						<td><button type="button" class="btn dark btn-outline sbold uppercase btn-product" onclick="getList();">Tìm kiếm</button></td>
+					</tr>
+				</table>                    
+			</div>                             
+		</div>   
 		<div class="portlet-body">		
 			<table class="table table-striped table-bordered table-hover table-checkable order-column" id="tbl-<?php echo $controller; ?>">
 				<thead>
@@ -68,9 +87,22 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 	function getList() {  	
 		var token = $('form[name="frm"] input[name="_token"]').val();         
         var filter_search=$('form[name="frm"] input[name="filter_search"]').val();
+
+        var status_new=$('form[name="frm"] select[name="status_new"]').val();
+        var status_attractive=$('form[name="frm"] select[name="status_attractive"]').val();
+        var status_high_salary=$('form[name="frm"] select[name="status_high_salary"]').val();
+        var status_hot=$('form[name="frm"] select[name="status_hot"]').val();
+        var status_quick=$('form[name="frm"] select[name="status_quick"]').val();
+
 		var dataItem={            
             '_token': token,
             'filter_search':filter_search,            
+
+            'status_new':status_new,    
+            'status_attractive':status_attractive,    
+            'status_high_salary':status_high_salary,    
+            'status_hot':status_hot,    
+            'status_quick':status_quick,    
         };
 		$.ajax({
 			url: '<?php echo $linkLoadData; ?>',

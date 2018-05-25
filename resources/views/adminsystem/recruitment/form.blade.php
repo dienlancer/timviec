@@ -52,9 +52,14 @@ $inputBenefit       =   '<textarea name="benefit" rows="10" cols="100" class="fo
 $ddlJob        =cmsSelectboxMultiple("job_id", 'form-control', @$source_job, @$arrRowData['job_id'],'','Chọn ngành nghề');
 $ddlProvince        =cmsSelectboxMultiple("province_id", 'form-control', @$source_province, @$arrRowData['province_id'],'','Chọn nơi làm việc');
 $inputDuration='<input type="text" readonly="readonly"  name="duration" class="form-control"  value="'.@$arrRowData['duration'].'" >';
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
+
+$ddlStatusNew              =   cmsSelectbox("status_new","form-control",@$arrStatus,(int)@$arrRowData['status_new'],"");
+$ddlStatusAttractive              =   cmsSelectbox("status_attractive","form-control",@$arrStatus,(int)@$arrRowData['status_attractive'],"");
+$ddlStatusHighSalary              =   cmsSelectbox("status_high_salary","form-control",@$arrStatus,(int)@$arrRowData['status_high_salary'],"");
+$ddlStatusHot              =   cmsSelectbox("status_hot","form-control",@$arrStatus,(int)@$arrRowData['status_hot'],"");
+$ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$arrStatus,(int)@$arrRowData['status_quick'],"");
 
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
 
@@ -235,7 +240,52 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <span class="help-block"></span>
                         </div>
                     </div>                         
-                </div>                                                 
+                </div>       
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Việc làm mới</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlStatusNew; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>      
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Việc làm hấp dẫn</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlStatusAttractive; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>      
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Việc làm lương cao</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlStatusHighSalary; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>      
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Việc làm hot</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlStatusHot; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>      
+                <div class="row"> 
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Việc làm tuyển gấp</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlStatusQuick; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>      
                 <div class="row"> 
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Kích hoạt</b></label>
@@ -272,6 +322,13 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var job_id = $('select[name="job_id[]"]').val();
         var province_id = $('select[name="province_id[]"]').val();
         var duration = $('input[name="duration"]').val();        
+
+        var status_new=$('select[name="status_new"]').val();   
+        var status_attractive=$('select[name="status_attractive"]').val();   
+        var status_high_salary=$('select[name="status_high_salary"]').val();   
+        var status_hot=$('select[name="status_hot"]').val();   
+        var status_quick=$('select[name="status_quick"]').val();   
+
         var status=$('select[name="status"]').val();     
         var token = $('input[name="_token"]').val();   
         
@@ -295,6 +352,13 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             "job_id":job_id,
             "province_id":province_id,
             "duration":duration,
+
+            "status_new":status_new,
+            "status_attractive":status_attractive,
+            "status_high_salary":status_high_salary,
+            "status_hot":status_hot,
+            "status_quick":status_quick,
+
             "status":status,
             "_token": token
         };

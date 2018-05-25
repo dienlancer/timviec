@@ -48,7 +48,22 @@ public function loadData(Request $request){
   }
   if((int)@$user->id > 1){
     $query->where('users.id',(int)@$user->id);
-  }                      
+  }       
+  if((int)@$request->status_new==1){
+    $query->where('recruitment.status_new',(int)@$request->status_new);
+  }               
+  if((int)@$request->status_attractive==1){
+    $query->where('recruitment.status_attractive',(int)@$request->status_attractive);
+  }
+  if((int)@$request->status_high_salary==1){
+    $query->where('recruitment.status_high_salary',(int)@$request->status_high_salary);
+  }
+  if((int)@$request->status_hot==1){
+    $query->where('recruitment.status_hot',(int)@$request->status_hot);
+  }
+  if((int)@$request->status_quick==1){
+    $query->where('recruitment.status_quick',(int)@$request->status_quick);
+  }
   $data= $query->select('recruitment.id','recruitment.fullname','employer.fullname as employer_fullname','users.fullname as user_fullname','recruitment.status_employer','recruitment.status','recruitment.created_at','recruitment.updated_at')
   ->groupBy('recruitment.id','recruitment.fullname','employer.fullname','users.fullname','recruitment.status_employer','recruitment.status','recruitment.created_at','recruitment.updated_at')
   ->orderBy('recruitment.id', 'desc')                
@@ -99,6 +114,11 @@ public function save(Request $request){
   $job_id           =   @$request->job_id;
   $province_id      =   @$request->province_id;
   $duration         =   trim(@$request->duration);
+  $status_new           =   trim(@$request->status_new); 
+  $status_attractive           =   trim(@$request->status_attractive); 
+  $status_high_salary           =   trim(@$request->status_high_salary); 
+  $status_hot           =   trim(@$request->status_hot); 
+  $status_quick           =   trim(@$request->status_quick); 
   $status           =   trim(@$request->status); 
   $data 		            =   array();
   $item		              =   null;
@@ -217,6 +237,11 @@ public function save(Request $request){
     $real_date                 = date('Y-m-d', $ts);
     /* end duration */
     $item->duration         = @$real_date;           
+    $item->status_new           = (int)@$status_new; 
+    $item->status_attractive           = (int)@$status_attractive; 
+    $item->status_high_salary           = (int)@$status_high_salary; 
+    $item->status_hot           = (int)@$status_hot; 
+    $item->status_quick           = (int)@$status_quick; 
     $item->status           = (int)@$status;    
     $item->updated_at       = date("Y-m-d H:i:s",time());           
     $item->save();     
@@ -268,11 +293,11 @@ public function save(Request $request){
 
     $msg['success']='Lưu thành công';  
   }
-$info = array(
-        "checked"       => $checked,          
-        'msg'       => $msg,      
-        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->id])
-      );                  		 			       
+  $info = array(
+    "checked"       => $checked,          
+    'msg'       => $msg,      
+    'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->id])
+  );                  		 			       
   return $info;       
 }
 public function changeStatus(Request $request){

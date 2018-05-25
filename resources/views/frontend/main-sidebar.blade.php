@@ -44,6 +44,7 @@
 				->join('experience','recruitment.experience_id','=','experience.id');
 				$query_quick_job->where('recruitment.status',1);
 				$query_quick_job->where('recruitment.status_employer',1);
+				$query_quick_job->where('recruitment.status_quick',1);
 				$source_quick_job=$query_quick_job->select(
 					'recruitment.id',
 					'recruitment.fullname',

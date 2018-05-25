@@ -62,9 +62,9 @@ class IndexController extends Controller {
 	} 
 	public function getNewRecruitment(Request $request){
 		/* begin standard */
-		$title="";
-		$meta_keyword="";
-		$meta_description="";                                                                
+		$title="Việc làm mới";
+		$meta_keyword="viec lam moi";
+		$meta_description="viec lam moi cho ung vien";                                                                
 		$totalItems=0;
 		$totalItemsPerPage=0;
 		$pageRange=0;      
@@ -77,6 +77,7 @@ class IndexController extends Controller {
 		->join('salary','recruitment.salary_id','=','salary.id');
 		$query->where('recruitment.status',1);
 		$query->where('recruitment.status_employer',1);
+		$query->where('recruitment.status_new',1);
 		$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
 		$data=convertToArray($source);
 		$totalItems=count($data);

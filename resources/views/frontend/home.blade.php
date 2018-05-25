@@ -32,6 +32,7 @@ $article_height=$setting['article_height']['field_value'];
 	->join('salary','recruitment.salary_id','=','salary.id');
 	$query_new_job->where('recruitment.status',1);
 	$query_new_job->where('recruitment.status_employer',1);
+	$query_new_job->where('recruitment.status_new',1);
 	$source_new_job=$query_new_job->select(
 		'recruitment.id',
 		'recruitment.fullname',
@@ -117,6 +118,7 @@ $article_height=$setting['article_height']['field_value'];
 	->join('salary','recruitment.salary_id','=','salary.id');
 	$query_attractive_job->where('recruitment.status',1);
 	$query_attractive_job->where('recruitment.status_employer',1);
+	$query_attractive_job->where('recruitment.status_attractive',1);
 	$source_attractive_job=$query_attractive_job->select(
 		'recruitment.id',
 		'recruitment.fullname',
@@ -207,6 +209,7 @@ $article_height=$setting['article_height']['field_value'];
 				->join('salary','recruitment.salary_id','=','salary.id');
 				$query_high_salary->where('recruitment.status',1);
 				$query_high_salary->where('recruitment.status_employer',1);
+				$query_high_salary->where('recruitment.status_high_salary',1);
 				$source_high_salary=$query_high_salary->select(
 					'recruitment.id',
 					'recruitment.fullname',
@@ -346,6 +349,7 @@ $article_height=$setting['article_height']['field_value'];
 				->join('scale','employer.scale_id','=','scale.id');
 				$query_hot_job->where('recruitment.status',1);
 				$query_hot_job->where('recruitment.status_employer',1);
+				$query_hot_job->where('recruitment.status_hot',1);
 				$source_hot_job=$query_hot_job->select(
 					'recruitment.id',
 					'recruitment.fullname',

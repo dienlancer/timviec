@@ -126,7 +126,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             data: dataItem,
             async: false,
             success: function (data) {
-                if(data.checked==1){                            
+                if(data.checked==1){     
+                alert(data.msg.success);                             
                     window.location.href = data.link_edit;
                 }else{
                     var data_error=data.error;

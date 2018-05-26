@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2018 at 01:30 PM
+-- Generation Time: May 26, 2018 at 01:03 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -1836,7 +1836,9 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (942, 1, '32mH8hkjGSefpVsAl9cuaB4M9WQXNo55', '2018-05-23 00:22:35', '2018-05-23 00:22:35'),
 (943, 1, 'T3kxzR07sAcviFzfqmY4onLoiTgr8ZbR', '2018-05-23 02:13:13', '2018-05-23 02:13:13'),
 (944, 1, 'GCB8Tqylf4B0LdYuqe8Kcua4ARtuhtxr', '2018-05-23 18:16:59', '2018-05-23 18:16:59'),
-(945, 1, 'ALcs2prlDawWtpXcQMnpexkdKwSgtDN8', '2018-05-25 03:00:15', '2018-05-25 03:00:15');
+(945, 1, 'ALcs2prlDawWtpXcQMnpexkdKwSgtDN8', '2018-05-25 03:00:15', '2018-05-25 03:00:15'),
+(946, 1, '2yUrI0iIfOYglVAggNL0lTXKoPNRMnaS', '2018-05-25 21:28:26', '2018-05-25 21:28:26'),
+(947, 1, 'nuP1nIfnp4wrSeeeEH9RyiZ49fCY1ZFG', '2018-05-26 03:12:43', '2018-05-26 03:12:43');
 
 -- --------------------------------------------------------
 
@@ -3762,7 +3764,10 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (559, NULL, 'ip', '127.0.0.1', '2018-05-02 01:58:18', '2018-05-02 01:58:18'),
 (560, NULL, 'global', NULL, '2018-05-20 21:53:55', '2018-05-20 21:53:55'),
 (561, NULL, 'ip', '127.0.0.1', '2018-05-20 21:53:55', '2018-05-20 21:53:55'),
-(562, 1, 'user', NULL, '2018-05-20 21:53:55', '2018-05-20 21:53:55');
+(562, 1, 'user', NULL, '2018-05-20 21:53:55', '2018-05-20 21:53:55'),
+(563, NULL, 'global', NULL, '2018-05-25 21:27:07', '2018-05-25 21:27:07'),
+(564, NULL, 'ip', '127.0.0.1', '2018-05-25 21:27:07', '2018-05-25 21:27:07'),
+(565, 1, 'user', NULL, '2018-05-25 21:27:07', '2018-05-25 21:27:07');
 
 -- --------------------------------------------------------
 
@@ -3793,7 +3798,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-25 03:00:15', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-25 03:00:15'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$hJkvWc.IvqSEoXnRj/b3nO7r5a6wiUXvRauDRiaoO/2guW5oOrNNe', NULL, '2018-05-26 03:12:43', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-05-26 03:12:43'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4537,7 +4542,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=946;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=948;
 
 --
 -- AUTO_INCREMENT for table `photo`
@@ -4711,7 +4716,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT for table `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=566;
 
 --
 -- AUTO_INCREMENT for table `users`

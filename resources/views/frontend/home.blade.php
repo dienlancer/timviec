@@ -38,6 +38,7 @@ $article_height=$setting['article_height']['field_value'];
 		'recruitment.fullname',
 		'recruitment.alias',
 		'recruitment.duration',
+		'recruitment.status_hot',
 		'salary.fullname as salary_name',
 		'employer.fullname as employer_fullname',
 		'employer.alias as employer_alias',
@@ -48,6 +49,7 @@ $article_height=$setting['article_height']['field_value'];
 		'recruitment.fullname',
 		'recruitment.alias',
 		'recruitment.duration',
+		'recruitment.status_hot',
 		'salary.fullname',
 		'employer.fullname',
 		'employer.alias',
@@ -85,6 +87,10 @@ $article_height=$setting['article_height']['field_value'];
 				}else{
 					$new_job_img=asset('upload/no-logo.png');
 				}
+				$new_job_hot_gif='';
+				if((int)$value['status_hot'] == 1){
+					$new_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="30" />';
+				}
 				?>
 				<div class="col-lg-4">
 					<div class="hot-job-box">
@@ -92,7 +98,8 @@ $article_height=$setting['article_height']['field_value'];
 							<img src="<?php echo $new_job_img; ?>" width="64">
 						</div>
 						<div class="hot-job-right">
-							<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $new_job_fullname; ?></a></div>
+							<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $new_job_fullname; ?></a><?php echo $new_job_hot_gif; ?>								
+							</div>
 							<div class="hot-job-employer"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $new_job_employer; ?></a></div>
 							<div>
 								<div class="simantest-left"><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
@@ -124,6 +131,7 @@ $article_height=$setting['article_height']['field_value'];
 		'recruitment.fullname',
 		'recruitment.alias',
 		'recruitment.duration',
+		'recruitment.status_hot',
 		'salary.fullname as salary_name',
 		'employer.fullname as employer_fullname',
 		'employer.alias as employer_alias',
@@ -134,6 +142,7 @@ $article_height=$setting['article_height']['field_value'];
 		'recruitment.fullname',
 		'recruitment.alias',
 		'recruitment.duration',
+		'recruitment.status_hot',
 		'salary.fullname',
 		'employer.fullname',
 		'employer.alias',
@@ -215,6 +224,7 @@ $article_height=$setting['article_height']['field_value'];
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'recruitment.status_hot',
 					'salary.fullname as salary_name',
 					'employer.fullname as employer_fullname',
 					'employer.alias as employer_alias',
@@ -225,6 +235,7 @@ $article_height=$setting['article_height']['field_value'];
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'recruitment.status_hot',
 					'salary.fullname',
 					'employer.fullname',
 					'employer.alias',
@@ -355,6 +366,7 @@ $article_height=$setting['article_height']['field_value'];
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'recruitment.status_hot',
 					'salary.fullname as salary_name',
 					'employer.fullname as employer_fullname',
 					'employer.address',
@@ -367,6 +379,7 @@ $article_height=$setting['article_height']['field_value'];
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'recruitment.status_hot',
 					'salary.fullname',
 					'employer.fullname',
 					'employer.address',

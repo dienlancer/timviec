@@ -64,6 +64,9 @@ public function loadData(Request $request){
   if((int)@$request->status_quick==1){
     $query->where('recruitment.status_quick',(int)@$request->status_quick);
   }
+  if((int)@$request->status_interested==1){
+    $query->where('recruitment.status_interested',(int)@$request->status_interested);
+  }
   $data= $query->select('recruitment.id','recruitment.fullname','employer.fullname as employer_fullname','users.fullname as user_fullname','recruitment.status_employer','recruitment.status','recruitment.created_at','recruitment.updated_at')
   ->groupBy('recruitment.id','recruitment.fullname','employer.fullname','users.fullname','recruitment.status_employer','recruitment.status','recruitment.created_at','recruitment.updated_at')
   ->orderBy('recruitment.id', 'desc')                
@@ -119,6 +122,7 @@ public function save(Request $request){
   $status_high_salary           =   trim(@$request->status_high_salary); 
   $status_hot           =   trim(@$request->status_hot); 
   $status_quick           =   trim(@$request->status_quick); 
+  $status_interested           =   trim(@$request->status_interested); 
   $status           =   trim(@$request->status); 
   $data 		            =   array();
   $item		              =   null;
@@ -242,6 +246,7 @@ public function save(Request $request){
     $item->status_high_salary           = (int)@$status_high_salary; 
     $item->status_hot           = (int)@$status_hot; 
     $item->status_quick           = (int)@$status_quick; 
+    $item->status_interested           = (int)@$status_interested; 
     $item->status           = (int)@$status;    
     $item->updated_at       = date("Y-m-d H:i:s",time());           
     $item->save();     

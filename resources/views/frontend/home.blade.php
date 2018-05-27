@@ -343,14 +343,14 @@ $article_height=$setting['article_height']['field_value'];
 					</div>				
 					<?php
 				}
-				$query_hot_job=DB::table('recruitment')
+				$query_interested=DB::table('recruitment')
 				->join('employer','recruitment.employer_id','=','employer.id')
 				->join('salary','recruitment.salary_id','=','salary.id')
 				->join('scale','employer.scale_id','=','scale.id');
-				$query_hot_job->where('recruitment.status',1);
-				$query_hot_job->where('recruitment.status_employer',1);
-				$query_hot_job->where('recruitment.status_hot',1);
-				$source_hot_job=$query_hot_job->select(
+				$query_interested->where('recruitment.status',1);
+				$query_interested->where('recruitment.status_employer',1);
+				$query_interested->where('recruitment.status_interested',1);
+				$source_interested=$query_interested->select(
 					'recruitment.id',
 					'recruitment.fullname',
 					'recruitment.alias',
@@ -378,30 +378,30 @@ $article_height=$setting['article_height']['field_value'];
 				->take(12)
 				->get()
 				->toArray();	
-				if(count($source_hot_job) > 0){
-					$data_hot_job=convertToArray($source_hot_job);				
+				if(count($source_interested) > 0){
+					$data_interested=convertToArray($source_interested);				
 					?>
 					<div class="relative">
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
-							<div class="tibolee">VIỆC LÀM HOT</div>
+							<div class="tibolee">VIỆC LÀM ĐƯỢC QUAN TÂM NHIỀU NHẤT</div>
 						</div>
-						<hr class="flera">
+						<hr class="larada">
 						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
 					</div>	
 					<div>
 						<?php 
-						foreach ($data_hot_job as $key => $value) {
-							$hot_job_fullname=truncateString($value['fullname'],100) ;
-							$hot_job_employer=$value['employer_fullname'];
-							$hot_job_duration=datetimeConverterVn($value['duration']);
-							$hot_job_img='';
+						foreach ($data_interested as $key => $value) {
+							$interested_fullname=truncateString($value['fullname'],100) ;
+							$interested_employer=$value['employer_fullname'];
+							$interested_duration=datetimeConverterVn($value['duration']);
+							$interested_img='';
 							if(!empty($value['logo'])){
-								$hot_job_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+								$interested_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
 							}else{
-								$hot_job_img=asset('upload/no-logo.png');
+								$interested_img=asset('upload/no-logo.png');
 							}
-							$hot_job_source_province=DB::table('province')
+							$interested_source_province=DB::table('province')
 							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 							->where('recruitment_place.recruitment_id',(int)@$value['id'])
 							->select(								
@@ -415,29 +415,29 @@ $article_height=$setting['article_height']['field_value'];
 							->orderBy('province.id', 'desc')						
 							->get()
 							->toArray();	
-							$hot_job_data_province=convertToArray($hot_job_source_province);					
-							$hot_job_province_text='';
-							foreach ($hot_job_data_province as $hot_job_key_province => $hot_job_value_province) {
-								$hot_job_province_text.='<a class="fenando" href="'.route('frontend.index.index',[@$hot_job_value_province['alias']]).'">'.$hot_job_value_province['fullname'].'</a>' .' ,';
+							$interested_data_province=convertToArray($interested_source_province);					
+							$interested_province_text='';
+							foreach ($interested_data_province as $interested_key_province => $interested_value_province) {
+								$interested_province_text.='<a class="fenando" href="'.route('frontend.index.index',[@$interested_value_province['alias']]).'">'.$interested_value_province['fullname'].'</a>' .' ,';
 							}
-							$hot_job_province_text=mb_substr($hot_job_province_text, 0,mb_strlen($hot_job_province_text)-1);
+							$interested_province_text=mb_substr($interested_province_text, 0,mb_strlen($interested_province_text)-1);
 							?>
 							<div class="labasa">
 								<div>
-									<div class="nysaki"><img src="<?php echo $hot_job_img; ?>" width="100"></div>
+									<div class="nysaki"><img src="<?php echo $interested_img; ?>" width="100"></div>
 									<div class="nibi">
-										<div class="faraykta"><b><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$hot_job_employer; ?></a></b></div>
+										<div class="faraykta"><b><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$interested_employer; ?></a></b></div>
 										<div class="margin-top-10"><span class="oppacafe">Địa chỉ&nbsp;:</span>&nbsp;<span><?php echo @$value['address']; ?></span></div>
 										<div class="margin-top-10"><span class="oppacafe">Quy mô công ty&nbsp;:</span>&nbsp;<span><b><?php echo @$value['scale_name']; ?></b></span></div>
 									</div>
 									<div class="clr"></div>
 								</div>
 								<hr>
-								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_job_fullname; ?></a></div>	
+								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $interested_fullname; ?></a></div>	
 								<div class="margin-top-10">
 									<div class="col-lg-4 no-padding-left"><span class="sementec"><i class="far fa-money-bill-alt"></i>&nbsp;Mức lương :</span>&nbsp;<?php echo @$value['salary_name']; ?> </div>
-									<div class="col-lg-4"><span class="sementec"><i class="fas fa-map-marker-alt"></i>&nbsp;Địa điểm :</span>&nbsp;<?php echo $hot_job_province_text; ?></div>
-									<div class="col-lg-4"><span class="sementec"><i class="far fa-clock"></i>&nbsp;Hạn nộp :</span>&nbsp;<?php echo $hot_job_duration; ?></div>
+									<div class="col-lg-4"><span class="sementec"><i class="fas fa-map-marker-alt"></i>&nbsp;Địa điểm :</span>&nbsp;<?php echo $interested_province_text; ?></div>
+									<div class="col-lg-4"><span class="sementec"><i class="far fa-clock"></i>&nbsp;Hạn nộp :</span>&nbsp;<?php echo $interested_duration; ?></div>
 									<div class="clr"></div>
 								</div>					
 							</div>

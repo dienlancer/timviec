@@ -60,6 +60,7 @@ $ddlStatusAttractive              =   cmsSelectbox("status_attractive","form-con
 $ddlStatusHighSalary              =   cmsSelectbox("status_high_salary","form-control",@$arrStatus,(int)@$arrRowData['status_high_salary'],"");
 $ddlStatusHot              =   cmsSelectbox("status_hot","form-control",@$arrStatus,(int)@$arrRowData['status_hot'],"");
 $ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$arrStatus,(int)@$arrRowData['status_quick'],"");
+$ddlStatusInterested              =   cmsSelectbox("status_interested","form-control",@$arrStatus,(int)@$arrRowData['status_interested'],"");
 
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
 
@@ -288,6 +289,15 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 </div>      
                 <div class="row"> 
                     <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Việc làm được quan tâm nhiều nhất</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlStatusInterested; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>    
+                <div class="row"> 
+                    <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Kích hoạt</b></label>
                         <div class="col-md-10">                            
                             <?php echo $ddlStatus; ?>
@@ -327,7 +337,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var status_attractive=$('select[name="status_attractive"]').val();   
         var status_high_salary=$('select[name="status_high_salary"]').val();   
         var status_hot=$('select[name="status_hot"]').val();   
-        var status_quick=$('select[name="status_quick"]').val();   
+        var status_quick=$('select[name="status_quick"]').val(); 
+        var status_interested=$('select[name="status_interested"]').val();   
 
         var status=$('select[name="status"]').val();     
         var token = $('input[name="_token"]').val();   
@@ -358,6 +369,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             "status_high_salary":status_high_salary,
             "status_hot":status_hot,
             "status_quick":status_quick,
+            "status_interested":status_interested,
 
             "status":status,
             "_token": token
@@ -369,7 +381,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             async: false,
             success: function (data) {
                 if(data.checked==1){     
-                alert(data.msg.success);                             
+                    alert(data.msg.success);                             
                     window.location.href = data.link_edit;
                 }else{
                     showMsg('note',data);                    

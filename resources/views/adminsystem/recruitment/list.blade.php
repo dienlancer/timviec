@@ -14,7 +14,7 @@ $ddlStatusAttractive              =   cmsSelectbox("status_attractive","form-con
 $ddlStatusHighSalary              =   cmsSelectbox("status_high_salary","form-control",@$arrStatus,0,"Việc làm lương cao");
 $ddlStatusHot              =   cmsSelectbox("status_hot","form-control",@$arrStatus,0,"Việc làm hot");
 $ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$arrStatus,0,"Việc làm tuyển gấp");
-
+$ddlStatusInterested              =   cmsSelectbox("status_interested","form-control",@$arrStatus,0,"Việc làm được quan tâm nhiều nhất");
 ?>
 <form class="form-horizontal" role="form" name="frm">	
 	{{ csrf_field() }}
@@ -47,6 +47,7 @@ $ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$ar
 						<th>Việc làm lương cao</th>
 						<th>Việc làm hot</th>
 						<th>Việc làm tuyển gấp</th>
+						<th>Việc làm được quan tâm nhiều nhất</th>
 						<th></th>
 					</tr>
 					<tr>
@@ -56,6 +57,7 @@ $ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$ar
 						<td><?php echo $ddlStatusHighSalary; ?></td>
 						<td><?php echo $ddlStatusHot; ?></td>
 						<td><?php echo $ddlStatusQuick; ?></td>
+						<td><?php echo $ddlStatusInterested; ?></td>
 						<td><button type="button" class="btn dark btn-outline sbold uppercase btn-product" onclick="getList();">Tìm kiếm</button></td>
 					</tr>
 				</table>                    
@@ -93,16 +95,17 @@ $ddlStatusQuick              =   cmsSelectbox("status_quick","form-control",@$ar
         var status_high_salary=$('form[name="frm"] select[name="status_high_salary"]').val();
         var status_hot=$('form[name="frm"] select[name="status_hot"]').val();
         var status_quick=$('form[name="frm"] select[name="status_quick"]').val();
+        var status_interested=$('form[name="frm"] select[name="status_interested"]').val();
 
 		var dataItem={            
             '_token': token,
             'filter_search':filter_search,            
-
             'status_new':status_new,    
             'status_attractive':status_attractive,    
             'status_high_salary':status_high_salary,    
             'status_hot':status_hot,    
-            'status_quick':status_quick,    
+            'status_quick':status_quick,  
+            'status_interested':status_interested  
         };
 		$.ajax({
 			url: '<?php echo $linkLoadData; ?>',

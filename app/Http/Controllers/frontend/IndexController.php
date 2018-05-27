@@ -125,6 +125,7 @@ class IndexController extends Controller {
 	public function index(Request $request,$alias)
 	{                     
 		/* begin standard */
+
 		$title="";
 		$meta_keyword="";
 		$meta_description="";                                                                
@@ -132,7 +133,7 @@ class IndexController extends Controller {
 		$totalItemsPerPage=0;
 		$pageRange=0;      
 		$currentPage=1;  
-		$pagination =null;                                              
+		$pagination ;                                              
 		$setting= getSettingSystem();    
 		$layout="";       
 		/* end standard */          
@@ -141,18 +142,49 @@ class IndexController extends Controller {
 		$category=array();  
 		$component="";         
 		$menu=MenuModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
-		$lstCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    	
-		$lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();		
-		$lstPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    		
+		$lstCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
+		$lstCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
+		$lstProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstOrganization=OrganizationModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstAlbum=AlbumModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstCategoryVideo=CategoryVideoModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
 		if(count($lstCategoryArticle) > 0){
 			$component='category-article';
-		}		
+		}
+		if(count($lstCategoryProduct) > 0){
+			$component='category-product';
+		}
 		if(count($lstArticle) > 0){
 			$component='article';
-		}		
+		}
+		if(count($lstProduct) > 0){
+			$component='product';
+		}
 		if(count($lstPage) > 0){
 			$component='page';
-		}		
+		}
+		if(count($lstProject) > 0){
+			$component='project';
+		} 
+		if(count($lstProject) > 0){
+			$component='project';
+		} 
+		if(count($lstProjectArticle) > 0){
+			$component='project-article';
+		}
+		if(count($lstOrganization) > 0){
+			$component='organization';
+		}
+		if(count($lstAlbum) > 0){
+			$component='album';
+		}    
+		if(count($lstCategoryVideo) > 0){
+			$component='category-video';
+		}             
 		switch ($component) {
 			case 'category-article':      
 			$category_id=0;
@@ -232,7 +264,7 @@ class IndexController extends Controller {
 			}
 		}    
 		\Artisan::call('sitemap:auto');        
-		return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","category"));   
+		return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","category"));   		
 	}
 	public function registerLogin(Request $request,$status){             
 		return view("frontend.register-login",compact('status'));         

@@ -50,6 +50,7 @@
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'recruitment.status_hot',
 					'experience.fullname as experience_name',
 					'salary.fullname as salary_name',
 					'employer.fullname as employer_fullname',
@@ -60,6 +61,7 @@
 					'recruitment.fullname',
 					'recruitment.alias',
 					'recruitment.duration',
+					'recruitment.status_hot',
 					'experience.fullname',
 					'salary.fullname',
 					'employer.fullname',
@@ -81,6 +83,10 @@
 								$quick_job_fullname=truncateString($value['fullname'],40) ;
 								$quick_job_employer=truncateString($value['employer_fullname'],40);
 								$quick_job_duration=datetimeConverterVn($value['duration']);
+								$quick_job_hot_gif='';
+								if((int)@$value['status_hot'] == 1){
+									$quick_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+								}
 								$source_province3=DB::table('province')
 								->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 								->where('recruitment_place.recruitment_id',(int)@$value['id'])
@@ -108,7 +114,7 @@
 								}
 								?>
 								<div class="<?php echo $class_quick_job; ?> margin-top-10 padding-bottom-10">
-									<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a></div>
+									<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a><?php echo $quick_job_hot_gif; ?></div>
 									<div class="hot-job-employer  margin-top-5"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
 									<div class="margin-top-10">
 										<div class="xibatuba">

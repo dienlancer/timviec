@@ -78,7 +78,7 @@ $article_height=$setting['article_height']['field_value'];
 			$data_new_job=convertToArray($source_new_job);
 			$k=1;
 			foreach ($data_new_job as $key => $value) {
-				$new_job_fullname=truncateString($value['fullname'],40) ;
+				$new_job_fullname=truncateString($value['fullname'],30) ;
 				$new_job_employer=truncateString($value['employer_fullname'],40);
 				$new_job_duration=datetimeConverterVn($value['duration']);
 				$new_job_img='';
@@ -88,8 +88,8 @@ $article_height=$setting['article_height']['field_value'];
 					$new_job_img=asset('upload/no-logo.png');
 				}
 				$new_job_hot_gif='';
-				if((int)$value['status_hot'] == 1){
-					$new_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="30" />';
+				if((int)@$value['status_hot'] == 1){
+					$new_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
 				}
 				?>
 				<div class="col-lg-4">
@@ -175,9 +175,13 @@ $article_height=$setting['article_height']['field_value'];
 						</tr>
 						<?php 
 						foreach ($data_attractive_job as $key => $value) {
-							$hot_attractive_fullname=truncateString($value['fullname'],40) ;
+							$hot_attractive_fullname=truncateString($value['fullname'],30) ;
 							$hot_attractive_employer=truncateString($value['employer_fullname'],40);
 							$hot_attractive_duration=datetimeConverterVn($value['duration']);
+							$hot_attractive_hot_gif='';
+				if((int)@$value['status_hot'] == 1){
+					$hot_attractive_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+				}
 							$source_province=DB::table('province')
 							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 							->where('recruitment_place.recruitment_id',(int)@$value['id'])
@@ -200,7 +204,7 @@ $article_height=$setting['article_height']['field_value'];
 							?>
 							<tr>
 								<td>
-									<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_attractive_fullname; ?></a></div>
+									<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $hot_attractive_fullname; ?></a><?php echo $hot_attractive_hot_gif; ?></div>
 									<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $hot_attractive_employer; ?></a></div>
 								</td>
 								<td><?php echo $province_text; ?></td>
@@ -259,9 +263,13 @@ $article_height=$setting['article_height']['field_value'];
 					<div>
 						<?php 
 						foreach ($data_high_salary as $key => $value){
-							$high_salary_fullname=truncateString($value['fullname'],40) ;
+							$high_salary_fullname=truncateString($value['fullname'],30) ;
 							$high_salary_employer=truncateString($value['employer_fullname'],40);
 							$high_salary_duration=datetimeConverterVn($value['duration']);
+							$high_salary_hot_gif='';
+				if((int)@$value['status_hot'] == 1){
+					$high_salary_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+				}
 							$high_salary_img='';
 							if(!empty($value['logo'])){
 								$high_salary_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
@@ -295,7 +303,7 @@ $article_height=$setting['article_height']['field_value'];
 										<img src="<?php echo $high_salary_img; ?>" width="64">
 									</div>
 									<div class="hot-job-right">
-										<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $high_salary_fullname; ?></a></div>
+										<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $high_salary_fullname; ?></a><?php echo $high_salary_hot_gif; ?></div>
 										<div class="hot-job-employer margin-top-10"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $high_salary_employer; ?></a></div>										
 									</div>		
 									<div class="clr"></div>		
@@ -408,6 +416,10 @@ $article_height=$setting['article_height']['field_value'];
 							$interested_fullname=truncateString($value['fullname'],100) ;
 							$interested_employer=$value['employer_fullname'];
 							$interested_duration=datetimeConverterVn($value['duration']);
+							$interested_hot_gif='';
+				if((int)@$value['status_hot'] == 1){
+					$interested_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+				}
 							$interested_img='';
 							if(!empty($value['logo'])){
 								$interested_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
@@ -446,7 +458,7 @@ $article_height=$setting['article_height']['field_value'];
 									<div class="clr"></div>
 								</div>
 								<hr>
-								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $interested_fullname; ?></a></div>	
+								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $interested_fullname; ?></a><?php echo $interested_hot_gif; ?></div>	
 								<div class="margin-top-10">
 									<div class="col-lg-4 no-padding-left"><span class="sementec"><i class="far fa-money-bill-alt"></i>&nbsp;Mức lương :</span>&nbsp;<?php echo @$value['salary_name']; ?> </div>
 									<div class="col-lg-4"><span class="sementec"><i class="fas fa-map-marker-alt"></i>&nbsp;Địa điểm :</span>&nbsp;<?php echo $interested_province_text; ?></div>

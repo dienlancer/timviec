@@ -997,7 +997,7 @@ div.opacity-absolute::before{
 }
 .royal-bira {
     position: absolute;
-    width: 400px;
+    width: 500px;
     top: 14px;
     margin-top: 0;
     margin-bottom: 0;
@@ -1194,6 +1194,12 @@ div.opacity-absolute::before{
     margin-top: 0;
     margin-bottom: 0;
     left: 140px;
+}
+.fiho{
+    margin-left: 30px;
+}
+.rido{
+    margin-left: 35px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

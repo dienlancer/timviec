@@ -29,8 +29,7 @@ if(!empty(@$meta_description)){
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee rambada"><?php echo @$seo_title; ?></div>
-						</div>
-						<hr class="linhbanban">
+						</div>						
 						<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-moi']); ?>">XEM TẤT CẢ</a></div>
 					</div>			
 					<table width="100%"  class="cidu margin-top-15">

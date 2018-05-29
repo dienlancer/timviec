@@ -163,7 +163,7 @@ $article_height=$setting['article_height']['field_value'];
 						<div class="tibolee">VIỆC LÀM HẤP DẪN</div>
 					</div>
 					<hr class="royal">
-					<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+					<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-hap-dan']); ?>">XEM TẤT CẢ</a></div>
 				</div>		
 				<div>
 					<table class="cidu margin-top-15">
@@ -258,7 +258,7 @@ $article_height=$setting['article_height']['field_value'];
 							<div class="tibolee">VIỆC LÀM LƯƠNG CAO</div>
 						</div>
 						<hr class="telarik">
-						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+						<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-luong-cao']); ?>">XEM TẤT CẢ</a></div>
 					</div>	
 					<div>
 						<?php 
@@ -340,8 +340,7 @@ $article_height=$setting['article_height']['field_value'];
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee">VIỆC LÀM THEO NGÀNH NGHỀ</div>
 						</div>
-						<hr class="royal-bira">
-						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0);">XEM TẤT CẢ</a></div>
+						<hr class="royal-bira">						
 					</div>	
 					<div>
 						<?php 					
@@ -408,7 +407,7 @@ $article_height=$setting['article_height']['field_value'];
 							<div class="tibolee">VIỆC LÀM ĐƯỢC QUAN TÂM NHIỀU NHẤT</div>
 						</div>
 						<hr class="larada">
-						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+						<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-duoc-quan-tam']); ?>">XEM TẤT CẢ</a></div>
 					</div>	
 					<div>
 						<?php 

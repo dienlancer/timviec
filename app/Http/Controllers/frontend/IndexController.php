@@ -137,7 +137,6 @@ class IndexController extends Controller {
 			if(count($row) > 0){
 				$item=$row[0];
 			}            
-
 			break;        
 			case 'page':
 			$row=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
@@ -196,7 +195,166 @@ class IndexController extends Controller {
 			->get()
 			->toArray();        
 			$items=convertToArray($data);   
-			break; 			
+			break; 	
+			case 'viec-lam-hap-dan':
+			$title='Việc làm hấp dẫn';
+			$meta_keyword='';
+			$meta_description='viec hap dan cho sinh vien hoc sinh';
+			$query=DB::table('recruitment')
+			->join('employer','recruitment.employer_id','=','employer.id')
+			->join('salary','recruitment.salary_id','=','salary.id');
+			$query->where('recruitment.status',1);
+			$query->where('recruitment.status_employer',1);
+			$query->where('recruitment.status_attractive',1);
+			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+			$data=convertToArray($source);
+			$totalItems=count($data);
+			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+			$pageRange=$this->_pageRange;
+			if(!empty(@$request->filter_page)){
+				$currentPage=(int)@$request->filter_page;
+			}       
+			$arrPagination=array(
+				"totalItems"=>$totalItems,
+				"totalItemsPerPage"=>$totalItemsPerPage,
+				"pageRange"=>$pageRange,
+				"currentPage"=>$currentPage   
+			);           
+			$pagination=new PaginationModel($arrPagination);
+			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+			$data=$query->select(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname as salary_name',
+				'employer.fullname as employer_fullname',
+				'employer.alias as employer_alias',
+				'employer.logo'
+			)                
+			->groupBy(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname',
+				'employer.fullname',
+				'employer.alias',
+				'employer.logo'
+			)
+			->orderBy('recruitment.id', 'desc')
+			->skip($position)
+			->take($totalItemsPerPage)
+			->get()
+			->toArray();        
+			$items=convertToArray($data);   
+			break; 		
+			case 'viec-lam-luong-cao':
+			$title='Việc làm lương cao';
+			$meta_keyword='';
+			$meta_description='viec lam luong cao cho sinh vien hoc sinh';
+			$query=DB::table('recruitment')
+			->join('employer','recruitment.employer_id','=','employer.id')
+			->join('salary','recruitment.salary_id','=','salary.id');
+			$query->where('recruitment.status',1);
+			$query->where('recruitment.status_employer',1);
+			$query->where('recruitment.status_high_salary',1);
+			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+			$data=convertToArray($source);
+			$totalItems=count($data);
+			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+			$pageRange=$this->_pageRange;
+			if(!empty(@$request->filter_page)){
+				$currentPage=(int)@$request->filter_page;
+			}       
+			$arrPagination=array(
+				"totalItems"=>$totalItems,
+				"totalItemsPerPage"=>$totalItemsPerPage,
+				"pageRange"=>$pageRange,
+				"currentPage"=>$currentPage   
+			);           
+			$pagination=new PaginationModel($arrPagination);
+			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+			$data=$query->select(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname as salary_name',
+				'employer.fullname as employer_fullname',
+				'employer.alias as employer_alias',
+				'employer.logo'
+			)                
+			->groupBy(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname',
+				'employer.fullname',
+				'employer.alias',
+				'employer.logo'
+			)
+			->orderBy('recruitment.id', 'desc')
+			->skip($position)
+			->take($totalItemsPerPage)
+			->get()
+			->toArray();        
+			$items=convertToArray($data);   
+			break; 	
+			case 'viec-lam-duoc-quan-tam':
+			$title='Việc làm được quan tâm nhiều nhất';
+			$meta_keyword='';
+			$meta_description='viec duoc quan tam nhiều nhất cho sinh vien hoc sinh';
+			$query=DB::table('recruitment')
+			->join('employer','recruitment.employer_id','=','employer.id')
+			->join('salary','recruitment.salary_id','=','salary.id');
+			$query->where('recruitment.status',1);
+			$query->where('recruitment.status_employer',1);
+			$query->where('recruitment.status_interested',1);
+			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+			$data=convertToArray($source);
+			$totalItems=count($data);
+			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+			$pageRange=$this->_pageRange;
+			if(!empty(@$request->filter_page)){
+				$currentPage=(int)@$request->filter_page;
+			}       
+			$arrPagination=array(
+				"totalItems"=>$totalItems,
+				"totalItemsPerPage"=>$totalItemsPerPage,
+				"pageRange"=>$pageRange,
+				"currentPage"=>$currentPage   
+			);           
+			$pagination=new PaginationModel($arrPagination);
+			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+			$data=$query->select(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname as salary_name',
+				'employer.fullname as employer_fullname',
+				'employer.alias as employer_alias',
+				'employer.logo'
+			)                
+			->groupBy(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname',
+				'employer.fullname',
+				'employer.alias',
+				'employer.logo'
+			)
+			->orderBy('recruitment.id', 'desc')
+			->skip($position)
+			->take($totalItemsPerPage)
+			->get()
+			->toArray();        
+			$items=convertToArray($data);   
+			break; 					
 		}  
 		if(count($menu) > 0){
 			$menu=convertToArray($menu);

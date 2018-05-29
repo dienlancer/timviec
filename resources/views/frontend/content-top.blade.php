@@ -11,7 +11,9 @@ if(count($arrUser) > 0){
 	$source_employer=App\EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
 	$source_candidate=App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
 	if(count($source_employer) > 0){
-		echo "<pre>".print_r("employer",true)."</pre>";
+		?>
+		@include("frontend.employer-content-top")
+		<?php
 	}
 	if(count($source_candidate) > 0){
 		?>

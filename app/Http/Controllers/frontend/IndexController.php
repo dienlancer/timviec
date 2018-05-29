@@ -60,72 +60,9 @@ class IndexController extends Controller {
 		\Artisan::call('sitemap:auto');   
 		return view("frontend.home");        
 	} 
-	public function getNewRecruitment(Request $request){
-		/* begin standard */
-		$title="Việc làm mới";
-		$meta_keyword="viec lam moi";
-		$meta_description="viec lam moi cho ung vien";                                                                
-		$totalItems=0;
-		$totalItemsPerPage=0;
-		$pageRange=0;      
-		$currentPage=1;  
-		$pagination =null;                                              
-		$setting= getSettingSystem();    
-		/* end standard */    
-		$query=DB::table('recruitment')
-		->join('employer','recruitment.employer_id','=','employer.id')
-		->join('salary','recruitment.salary_id','=','salary.id');
-		$query->where('recruitment.status',1);
-		$query->where('recruitment.status_employer',1);
-		$query->where('recruitment.status_new',1);
-		$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-		$data=convertToArray($source);
-		$totalItems=count($data);
-		$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-		$pageRange=$this->_pageRange;
-		if(!empty(@$request->filter_page)){
-			$currentPage=@$request->filter_page;
-		}       
-		$arrPagination=array(
-			"totalItems"=>$totalItems,
-			"totalItemsPerPage"=>$totalItemsPerPage,
-			"pageRange"=>$pageRange,
-			"currentPage"=>$currentPage   
-		);           
-		$pagination=new PaginationModel($arrPagination);
-		$position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;   
-		$data=$query->select(
-			'recruitment.id',
-			'recruitment.fullname',
-			'recruitment.alias',
-			'recruitment.duration',
-			'salary.fullname as salary_name',
-			'employer.fullname as employer_fullname',
-			'employer.alias as employer_alias',
-			'employer.logo'
-		)                
-		->groupBy(
-			'recruitment.id',
-			'recruitment.fullname',
-			'recruitment.alias',
-			'recruitment.duration',
-			'salary.fullname',
-			'employer.fullname',
-			'employer.alias',
-			'employer.logo'
-		)
-		->orderBy('recruitment.id', 'desc')
-		->skip($position)
-		->take($totalItemsPerPage)
-		->get()
-		->toArray();        
-		$items=convertToArray($data);   
-		return view("frontend.source-recruitment",compact("title","meta_keyword","meta_description","items","pagination"));             
-	}
 	public function index(Request $request,$alias)
 	{                     
 		/* begin standard */
-
 		$title="";
 		$meta_keyword="";
 		$meta_description="";                                                                
@@ -140,51 +77,20 @@ class IndexController extends Controller {
 		$item=array();     
 		$items=array();                  
 		$category=array();  
-		$component="";         
+		$component=$alias;         
 		$menu=MenuModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
-		$lstCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
-		$lstCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-		$lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-		$lstProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$lstCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    	
+		$lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();		
 		$lstPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
-		$lstProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-		$lstProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-		$lstOrganization=OrganizationModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-		$lstAlbum=AlbumModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-		$lstCategoryVideo=CategoryVideoModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
 		if(count($lstCategoryArticle) > 0){
 			$component='category-article';
-		}
-		if(count($lstCategoryProduct) > 0){
-			$component='category-product';
 		}
 		if(count($lstArticle) > 0){
 			$component='article';
 		}
-		if(count($lstProduct) > 0){
-			$component='product';
-		}
 		if(count($lstPage) > 0){
 			$component='page';
-		}
-		if(count($lstProject) > 0){
-			$component='project';
-		} 
-		if(count($lstProject) > 0){
-			$component='project';
-		} 
-		if(count($lstProjectArticle) > 0){
-			$component='project-article';
-		}
-		if(count($lstOrganization) > 0){
-			$component='organization';
-		}
-		if(count($lstAlbum) > 0){
-			$component='album';
-		}    
-		if(count($lstCategoryVideo) > 0){
-			$component='category-video';
-		}             
+		}            		
 		switch ($component) {
 			case 'category-article':      
 			$category_id=0;
@@ -224,21 +130,72 @@ class IndexController extends Controller {
 				->toArray();        
 				$items=convertToArray($data);                            
 			}              
-			$layout="two-column";  
+
 			break;
 			case 'article':
 			$row=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
 			}            
-			$layout="two-column";       
+
 			break;        
 			case 'page':
 			$row=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
 			}      
-			$layout="two-column";         
+			case 'viec-lam-moi':
+			$title='Việc làm mới';
+			$meta_keyword='';
+			$meta_description='viec lam moi cho sinh vien hoc sinh';
+			$query=DB::table('recruitment')
+			->join('employer','recruitment.employer_id','=','employer.id')
+			->join('salary','recruitment.salary_id','=','salary.id');
+			$query->where('recruitment.status',1);
+			$query->where('recruitment.status_employer',1);
+			$query->where('recruitment.status_new',1);
+			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+			$data=convertToArray($source);
+			$totalItems=count($data);
+			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+			$pageRange=$this->_pageRange;
+			if(!empty(@$request->filter_page)){
+				$currentPage=(int)@$request->filter_page;
+			}       
+			$arrPagination=array(
+				"totalItems"=>$totalItems,
+				"totalItemsPerPage"=>$totalItemsPerPage,
+				"pageRange"=>$pageRange,
+				"currentPage"=>$currentPage   
+			);           
+			$pagination=new PaginationModel($arrPagination);
+			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+			$data=$query->select(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname as salary_name',
+				'employer.fullname as employer_fullname',
+				'employer.alias as employer_alias',
+				'employer.logo'
+			)                
+			->groupBy(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname',
+				'employer.fullname',
+				'employer.alias',
+				'employer.logo'
+			)
+			->orderBy('recruitment.id', 'desc')
+			->skip($position)
+			->take($totalItemsPerPage)
+			->get()
+			->toArray();        
+			$items=convertToArray($data);   
 			break; 			
 		}  
 		if(count($menu) > 0){
@@ -264,7 +221,7 @@ class IndexController extends Controller {
 			}
 		}    
 		\Artisan::call('sitemap:auto');        
-		return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","category"));   		
+		return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
 	}
 	public function registerLogin(Request $request,$status){             
 		return view("frontend.register-login",compact('status'));         

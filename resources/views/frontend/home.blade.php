@@ -69,7 +69,7 @@ $article_height=$setting['article_height']['field_value'];
 						<div class="tibolee">VIỆC LÀM MỚI</div>
 					</div>
 					<hr class="banban">
-					<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.getNewRecruitment'); ?>">XEM TẤT CẢ</a></div>
+					<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-moi']); ?>">XEM TẤT CẢ</a></div>
 				</div>			
 			</div>
 		</div>	
@@ -175,13 +175,13 @@ $article_height=$setting['article_height']['field_value'];
 						</tr>
 						<?php 
 						foreach ($data_attractive_job as $key => $value) {
-							$hot_attractive_fullname=truncateString($value['fullname'],30) ;
+							$hot_attractive_fullname=truncateString($value['fullname'],70) ;
 							$hot_attractive_employer=truncateString($value['employer_fullname'],40);
 							$hot_attractive_duration=datetimeConverterVn($value['duration']);
 							$hot_attractive_hot_gif='';
-				if((int)@$value['status_hot'] == 1){
-					$hot_attractive_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
-				}
+							if((int)@$value['status_hot'] == 1){
+								$hot_attractive_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+							}
 							$source_province=DB::table('province')
 							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 							->where('recruitment_place.recruitment_id',(int)@$value['id'])

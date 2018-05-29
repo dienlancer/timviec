@@ -1184,6 +1184,17 @@ div.opacity-absolute::before{
     margin-bottom: 0;
     left: 200px;
 }
+.rambada{
+    text-transform: uppercase;
+}
+.linhbanban {
+    position: absolute;
+    width: 535px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 140px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

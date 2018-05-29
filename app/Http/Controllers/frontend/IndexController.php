@@ -44,6 +44,7 @@ use App\ProfileExperienceModel;
 use App\ProfileGraduationModel;
 use App\ProfileLanguageModel;
 use App\ProfileSkillModel;
+use App\ProvinceModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -78,19 +79,23 @@ class IndexController extends Controller {
 		$items=array();                  
 		$category=array();  
 		$component=$alias;         
-		$menu=MenuModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
-		$lstCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    	
-		$lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();		
-		$lstPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
-		if(count($lstCategoryArticle) > 0){
+		$source_menu=MenuModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
+		$source_category_article=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+		$source_article=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();		
+		$source_page=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();   
+		$source_province=ProvinceModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
+		if(count($source_category_article) > 0){
 			$component='category-article';
 		}
-		if(count($lstArticle) > 0){
+		if(count($source_article) > 0){
 			$component='article';
 		}
-		if(count($lstPage) > 0){
+		if(count($source_page) > 0){
 			$component='page';
 		}            		
+		if(count($source_province) > 0){
+			$component='job-by-province';
+		}
 		switch ($component) {
 			case 'category-article':      
 			$category_id=0;
@@ -130,7 +135,6 @@ class IndexController extends Controller {
 				->toArray();        
 				$items=convertToArray($data);                            
 			}              
-
 			break;
 			case 'article':
 			$row=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
@@ -414,9 +418,9 @@ class IndexController extends Controller {
 			$items=convertToArray($data);   
 			break; 				
 		}  
-		if(count($menu) > 0){
-			$menu=convertToArray($menu);
-			$title=$menu[0]['fullname'];
+		if(count(@$source_menu) > 0){
+			$source_menu=convertToArray(@$source_menu);
+			$title=@$source_menu[0]['fullname'];
 		}       
 		if(count($item) > 0){
 			$title=$item['fullname'];                      

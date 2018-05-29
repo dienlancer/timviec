@@ -15,7 +15,7 @@ if(!empty(@$meta_description)){
 ?>
 <h1 style="display: none;"><?php echo @$seo_title; ?></h1>
 <h2 style="display: none;"><?php echo @$seo_meta_description; ?></h2>
-@include("frontend.content-top-register")
+@include("frontend.content-top")
 <form name="frm" method="POST" enctype="multipart/form-data" class="margin-top-15">
 	<input type="hidden" name="filter_page" value="1">        
 	{{ csrf_field() }}	

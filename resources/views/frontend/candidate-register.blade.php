@@ -1,6 +1,6 @@
 @extends("frontend.master")
 @section("content")
-@include("frontend.content-top-register")
+@include("frontend.content-top")
 <?php 
 $seo=getSeo();
 $disabled_status='';

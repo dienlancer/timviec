@@ -24,7 +24,7 @@ $article_height=$setting['article_height']['field_value'];
 		</div>	
 	</div>	
 </div>
-@include("frontend.content-top-register")
+@include("frontend.content-top")
 <div class="container">
 	<?php 
 	$query_new_job=DB::table('recruitment')
@@ -78,7 +78,7 @@ $article_height=$setting['article_height']['field_value'];
 			$data_new_job=convertToArray($source_new_job);
 			$k=1;
 			foreach ($data_new_job as $key => $value) {
-				$new_job_fullname=truncateString($value['fullname'],30) ;
+				$new_job_fullname=truncateString($value['fullname'],40) ;
 				$new_job_employer=truncateString($value['employer_fullname'],40);
 				$new_job_duration=datetimeConverterVn($value['duration']);
 				$new_job_img='';
@@ -263,7 +263,7 @@ $article_height=$setting['article_height']['field_value'];
 					<div>
 						<?php 
 						foreach ($data_high_salary as $key => $value){
-							$high_salary_fullname=truncateString($value['fullname'],30) ;
+							$high_salary_fullname=truncateString($value['fullname'],80) ;
 							$high_salary_employer=truncateString($value['employer_fullname'],40);
 							$high_salary_duration=datetimeConverterVn($value['duration']);
 							$high_salary_hot_gif='';
@@ -413,7 +413,7 @@ $article_height=$setting['article_height']['field_value'];
 					<div>
 						<?php 
 						foreach ($data_interested as $key => $value) {
-							$interested_fullname=truncateString($value['fullname'],100) ;
+							$interested_fullname=truncateString($value['fullname'],9999) ;
 							$interested_employer=$value['employer_fullname'];
 							$interested_duration=datetimeConverterVn($value['duration']);
 							$interested_hot_gif='';

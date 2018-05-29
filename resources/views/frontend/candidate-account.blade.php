@@ -1,6 +1,6 @@
 @extends("frontend.master")
 @section("content")
-@include("frontend.candidate-content-top")
+@include("frontend.content-top")
 <?php 
 $seo=getSeo();
 $arrUser=array();

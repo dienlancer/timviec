@@ -1,3 +1,5 @@
+@extends("frontend.master")
+@section("content")
 <?php 
 $seo=getSeo();
 $seo_title="";
@@ -90,3 +92,5 @@ if(!empty(@$meta_description)){
 		</div>		
 	</div>
 </form>
+@endsection()               
+

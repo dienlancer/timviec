@@ -981,6 +981,7 @@ div.opacity-absolute::before{
     border: 1px solid #ccc;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
+    text-align: center;
 }
 .xem-tat-ca a:hover{
     background: #337ab7;

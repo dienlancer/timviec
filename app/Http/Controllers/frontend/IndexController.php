@@ -72,7 +72,7 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ;                                              
 		$setting= getSettingSystem();    
-		$layout="";       
+		$view="";       
 		/* end standard */          
 		$item=array();     
 		$items=array();                  
@@ -143,10 +143,11 @@ class IndexController extends Controller {
 			if(count($row) > 0){
 				$item=$row[0];
 			}      
-			case 'viec-lam-moi':
+			case 'viec-lam-moi':			
 			$title='Việc làm mới';
 			$meta_keyword='';
 			$meta_description='viec lam moi cho sinh vien hoc sinh';
+			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -200,6 +201,7 @@ class IndexController extends Controller {
 			$title='Việc làm hấp dẫn';
 			$meta_keyword='';
 			$meta_description='viec hap dan cho sinh vien hoc sinh';
+			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -253,6 +255,7 @@ class IndexController extends Controller {
 			$title='Việc làm lương cao';
 			$meta_keyword='';
 			$meta_description='viec lam luong cao cho sinh vien hoc sinh';
+			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -306,6 +309,7 @@ class IndexController extends Controller {
 			$title='Việc làm được quan tâm nhiều nhất';
 			$meta_keyword='';
 			$meta_description='viec duoc quan tam nhiều nhất cho sinh vien hoc sinh';
+			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -354,7 +358,61 @@ class IndexController extends Controller {
 			->get()
 			->toArray();        
 			$items=convertToArray($data);   
-			break; 					
+			break; 		
+			case 'viec-lam-tuyen-gap':
+			$title='Việc làm tuyển gấp';
+			$meta_keyword='';
+			$meta_description='viec lam tuyển gấp cho sinh vien hoc sinh';
+			$view="frontend.source-recruitment";
+			$query=DB::table('recruitment')
+			->join('employer','recruitment.employer_id','=','employer.id')
+			->join('salary','recruitment.salary_id','=','salary.id');
+			$query->where('recruitment.status',1);
+			$query->where('recruitment.status_employer',1);
+			$query->where('recruitment.status_quick',1);
+			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+			$data=convertToArray($source);
+			$totalItems=count($data);
+			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+			$pageRange=$this->_pageRange;
+			if(!empty(@$request->filter_page)){
+				$currentPage=(int)@$request->filter_page;
+			}       
+			$arrPagination=array(
+				"totalItems"=>$totalItems,
+				"totalItemsPerPage"=>$totalItemsPerPage,
+				"pageRange"=>$pageRange,
+				"currentPage"=>$currentPage   
+			);           
+			$pagination=new PaginationModel($arrPagination);
+			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+			$data=$query->select(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname as salary_name',
+				'employer.fullname as employer_fullname',
+				'employer.alias as employer_alias',
+				'employer.logo'
+			)                
+			->groupBy(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'salary.fullname',
+				'employer.fullname',
+				'employer.alias',
+				'employer.logo'
+			)
+			->orderBy('recruitment.id', 'desc')
+			->skip($position)
+			->take($totalItemsPerPage)
+			->get()
+			->toArray();        
+			$items=convertToArray($data);   
+			break; 				
 		}  
 		if(count($menu) > 0){
 			$menu=convertToArray($menu);
@@ -378,8 +436,9 @@ class IndexController extends Controller {
 				$meta_description=$category['meta_description'];
 			}
 		}    
+
 		\Artisan::call('sitemap:auto');        
-		return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
+		return view(@$view,compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
 	}
 	public function registerLogin(Request $request,$status){             
 		return view("frontend.register-login",compact('status'));         

@@ -132,6 +132,9 @@
 									$k++;
 								}
 								?>
+								<div class="xem-tat-ca">
+									<a href="<?php echo route('frontend.index.index',['viec-lam-tuyen-gap']); ?>">XEM TẤT CẢ</a>
+								</div>
 						</div>
 					</div>
 					<?php

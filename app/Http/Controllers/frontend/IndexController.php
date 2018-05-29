@@ -61,6 +61,76 @@ class IndexController extends Controller {
 		\Artisan::call('sitemap:auto');   
 		return view("frontend.home");        
 	} 
+	public function searchRecruitment(Request $request){
+		/* begin standard */
+		$title="";
+		$meta_keyword="";
+		$meta_description="";                                                                
+		$totalItems=0;
+		$totalItemsPerPage=0;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ;                                              
+		$setting= getSettingSystem();   
+		$seo=getSeo(); 
+		$view="frontend.source-recruitment";       
+		/* end standard */   
+		$q='';  		
+		$title=@$seo["title"];
+		$meta_description=@$seo["meta_description"];
+		$query=DB::table('recruitment')
+		->join('employer','recruitment.employer_id','=','employer.id')
+		->join('salary','recruitment.salary_id','=','salary.id');		
+		$query->where('recruitment.status',1);
+		$query->where('recruitment.status_employer',1);	
+		if(!empty(@$request->q)){
+			$query->where('recruitment.fullname','like','%'.trim(@$request->q).'%');
+			$q=trim(@$request->q);
+		}		
+		$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+		$data=convertToArray($source);
+		$totalItems=count($data);
+		$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+		$pageRange=$this->_pageRange;
+		if(!empty(@$request->filter_page)){
+			$currentPage=(int)@$request->filter_page;
+		}       
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+		$data=$query->select(
+			'recruitment.id',
+			'recruitment.fullname',
+			'recruitment.alias',
+			'recruitment.duration',
+			'salary.fullname as salary_name',
+			'employer.fullname as employer_fullname',
+			'employer.alias as employer_alias',
+			'employer.logo'
+		)                
+		->groupBy(
+			'recruitment.id',
+			'recruitment.fullname',
+			'recruitment.alias',
+			'recruitment.duration',
+			'salary.fullname',
+			'employer.fullname',
+			'employer.alias',
+			'employer.logo'
+		)
+		->orderBy('recruitment.id', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()
+		->toArray();        
+		$items=convertToArray($data);   
+		return view(@$view,compact("alias","title","meta_keyword","meta_description","items","q","pagination"));   	
+	}
 	public function index(Request $request,$alias)
 	{                     
 		/* begin standard */
@@ -416,7 +486,65 @@ class IndexController extends Controller {
 			->get()
 			->toArray();        
 			$items=convertToArray($data);   
-			break; 				
+			break; 			
+			case 'job-by-province':						
+			$view="frontend.source-recruitment";
+			if(count(@$source_province) > 0){
+				$data_province=convertToArray(@$source_province);
+				$province_id=@$data_province[0]['id'];
+				$title='Việc làm tại '. @$data_province[0]['fullname'];
+				$meta_description='Việc làm tại '. @$data_province[0]['fullname'];
+				$query=DB::table('recruitment')
+				->join('employer','recruitment.employer_id','=','employer.id')
+				->join('salary','recruitment.salary_id','=','salary.id')
+				->join('recruitment_place','recruitment.id','=','recruitment_place.recruitment_id');
+				$query->where('recruitment.status',1);
+				$query->where('recruitment.status_employer',1);
+				$query->where('recruitment_place.province_id',@$province_id);			
+				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+				$data=convertToArray($source);
+				$totalItems=count($data);
+				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+				$pageRange=$this->_pageRange;
+				if(!empty(@$request->filter_page)){
+					$currentPage=(int)@$request->filter_page;
+				}       
+				$arrPagination=array(
+					"totalItems"=>$totalItems,
+					"totalItemsPerPage"=>$totalItemsPerPage,
+					"pageRange"=>$pageRange,
+					"currentPage"=>$currentPage   
+				);           
+				$pagination=new PaginationModel($arrPagination);
+				$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+				$data=$query->select(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'salary.fullname as salary_name',
+					'employer.fullname as employer_fullname',
+					'employer.alias as employer_alias',
+					'employer.logo'
+				)                
+				->groupBy(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'salary.fullname',
+					'employer.fullname',
+					'employer.alias',
+					'employer.logo'
+				)
+				->orderBy('recruitment.id', 'desc')
+				->skip($position)
+				->take($totalItemsPerPage)
+				->get()
+				->toArray();        
+				$items=convertToArray($data);   
+			}			
+			break; 		
 		}  
 		if(count(@$source_menu) > 0){
 			$source_menu=convertToArray(@$source_menu);
@@ -430,19 +558,19 @@ class IndexController extends Controller {
 			if(!empty($item['meta_description'])){
 				$meta_description=$item['meta_description'];
 			}                
-		}         
-		if(count($category) > 0){      
-			$title=$category['fullname'];                         
-			if(!empty($category['meta_keyword'])){
-				$meta_keyword=$category['meta_keyword'];
+		}         		
+		if(count(@$category) > 0){      
+			$title=@$category['fullname'];                         
+			if(!empty(@$category['meta_keyword'])){
+				$meta_keyword=@$category['meta_keyword'];
 			}                
 			if(!empty($category['meta_description'])){
-				$meta_description=$category['meta_description'];
+				$meta_description=@$category['meta_description'];
 			}
 		}    
 
 		\Artisan::call('sitemap:auto');        
-		return view(@$view,compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
+		return view(@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
 	}
 	public function registerLogin(Request $request,$status){             
 		return view("frontend.register-login",compact('status'));         

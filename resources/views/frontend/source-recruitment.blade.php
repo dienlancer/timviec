@@ -18,12 +18,13 @@ if(!empty(@$meta_description)){
 <h1 style="display: none;"><?php echo @$seo_title; ?></h1>
 <h2 style="display: none;"><?php echo @$seo_meta_description; ?></h2>
 @include("frontend.content-top")
-<form name="frm" method="POST" enctype="multipart/form-data" class="margin-top-15">
-	<input type="hidden" name="filter_page" value="1">        
-	{{ csrf_field() }}	
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8">
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+			<form name="frm" method="POST" enctype="multipart/form-data" class="margin-top-15">
+				<input type="hidden" name="filter_page" value="1">        
+				{{ csrf_field() }}
 				<?php 
 				if(count(@$items) > 0){
 					?>
@@ -86,11 +87,11 @@ if(!empty(@$meta_description)){
 					<?php
 					echo '<div class="margin-top-15">'.@$pagination->showPagination().'</div>';
 				}  
-				?>					
-			</div>
-			<div class="col-lg-4">@include("frontend.main-sidebar")</div>
-		</div>		
-	</div>
-</form>
+				?>		
+			</form>			
+		</div>
+		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
+	</div>		
+</div>
 @endsection()               
 

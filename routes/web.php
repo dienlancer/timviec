@@ -603,7 +603,6 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 });
 Route::match(["get","post"],"adminsystem/login",["as"=>"adminsystem.login","uses"=>"adminsystem\LoginController@login"]);
 Route::post("adminsystem/logout",["as"=>"adminsystem.logout","uses"=>"adminsystem\LoginController@logout"]);
-/* begin tìm việc */
 Route::match(["get","post"],"/",["as"=>"frontend.index.getHome","uses"=>"frontend\IndexController@getHome"]);
 Route::match(["get","post"],"{alias}.html",["as"=>"frontend.index.index","uses"=>"frontend\IndexController@index"]);
 Route::match(["get","post"],"dk-dn/{status}",["as"=>"frontend.index.registerLogin","uses"=>"frontend\IndexController@registerLogin"]);
@@ -643,6 +642,5 @@ Route::get("xac-thuc-tai-khoan-ntd/{id}/{certification_code}",["as"=>"frontend.i
 Route::get("xac-thuc-tai-khoan-ung-vien/{id}/{certification_code}",["as"=>"frontend.index.certificateCandidate","uses"=>"frontend\IndexController@certificateCandidate"]);
 Route::match(["get","post"],"lay-mat-khau-ntd",["as"=>"frontend.index.resetPassWrdEmployer","uses"=>"frontend\IndexController@resetPassWrdEmployer"]);
 Route::match(["get","post"],"lay-mat-khau-ung-vien",["as"=>"frontend.index.resetPassWrdCandidate","uses"=>"frontend\IndexController@resetPassWrdCandidate"]);
-
-/* end tìm việc */
+Route::match(["get","post"],"tim-viec",["as"=>"frontend.index.searchRecruitment","uses"=>"frontend\IndexController@searchRecruitment"]);
 ?>

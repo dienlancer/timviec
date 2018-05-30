@@ -277,7 +277,7 @@ class IndexController extends Controller {
 			case 'viec-lam-moi':			
 			$title='Việc làm mới';
 			$meta_keyword='';
-			$meta_description='viec lam moi cho sinh vien hoc sinh';
+			$meta_description='viec lam moi cho ứng viên';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -333,7 +333,7 @@ class IndexController extends Controller {
 			case 'viec-lam-hap-dan':
 			$title='Việc làm hấp dẫn';
 			$meta_keyword='';
-			$meta_description='viec hap dan cho sinh vien hoc sinh';
+			$meta_description='viec hap dan cho ứng viên';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -389,7 +389,7 @@ class IndexController extends Controller {
 			case 'viec-lam-luong-cao':
 			$title='Việc làm lương cao';
 			$meta_keyword='';
-			$meta_description='viec lam luong cao cho sinh vien hoc sinh';
+			$meta_description='viec lam luong cao cho ung vien';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -445,7 +445,7 @@ class IndexController extends Controller {
 			case 'viec-lam-duoc-quan-tam':
 			$title='Việc làm được quan tâm nhiều nhất';
 			$meta_keyword='';
-			$meta_description='viec duoc quan tam nhiều nhất cho sinh vien hoc sinh';
+			$meta_description='viec duoc quan tam nhieu nhat cho ung vien';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -501,7 +501,7 @@ class IndexController extends Controller {
 			case 'viec-lam-tuyen-gap':
 			$title='Việc làm tuyển gấp';
 			$meta_keyword='';
-			$meta_description='viec lam tuyển gấp cho sinh vien hoc sinh';
+			$meta_description='viec lam tuyen gap cho ung vien';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')

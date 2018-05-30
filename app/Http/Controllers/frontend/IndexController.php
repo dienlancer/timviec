@@ -76,17 +76,63 @@ class IndexController extends Controller {
 		$view="frontend.source-recruitment";       
 		/* end standard */   
 		$q='';  		
+		$job_id=0;
+		$province_id=0;
+		$salary_id=0;
+		$literacy_id=0;
+		$sex_id=0;
+		$work_id=0;
+		$working_form_id=0;
+		$experience_id=0;		
 		$title=@$seo["title"];
 		$meta_description=@$seo["meta_description"];
 		$query=DB::table('recruitment')
 		->join('employer','recruitment.employer_id','=','employer.id')
-		->join('salary','recruitment.salary_id','=','salary.id');		
-		$query->where('recruitment.status',1);
-		$query->where('recruitment.status_employer',1);	
+		->join('salary','recruitment.salary_id','=','salary.id');	
+		if((int)@$request->job_id > 0){
+			$query->join('recruitment_job','recruitment.id','=','recruitment_job.recruitment_id');
+		}	
+		if((int)@$request->province_id > 0){
+			$query->join('recruitment_place','recruitment.id','=','recruitment_place.recruitment_id');
+		}						
 		if(!empty(@$request->q)){
 			$query->where('recruitment.fullname','like','%'.trim(@$request->q).'%');
 			$q=trim(@$request->q);
-		}		
+		}	
+		if((int)@$request->job_id > 0){
+			$job_id=(int)@$request->job_id;
+			$query->where('recruitment_job.job_id','=',@$job_id);
+		}	
+		if((int)@$request->province_id > 0){
+			$province_id=(int)@$request->province_id;
+			$query->where('recruitment_place.province_id','=',@$province_id);
+		}
+		if((int)@$request->salary_id > 0){
+			$salary_id=(int)@$request->salary_id;
+			$query->where('recruitment.salary_id','=',@$salary_id);
+		}
+		if((int)@$request->literacy_id > 0){
+			$literacy_id=(int)@$request->literacy_id;
+			$query->where('recruitment.literacy_id','=',@$literacy_id);
+		}
+		if((int)@$request->sex_id > 0){
+			$sex_id=(int)@$request->sex_id;
+			$query->where('recruitment.sex_id','=',@$sex_id);
+		}
+		if((int)@$request->work_id > 0){
+			$work_id=(int)@$request->work_id;
+			$query->where('recruitment.work_id','=',@$work_id);
+		}
+		if((int)@$request->working_form_id > 0){
+			$working_form_id=(int)@$request->working_form_id;
+			$query->where('recruitment.working_form_id','=',@$working_form_id);
+		}
+		if((int)@$request->experience_id > 0){
+			$experience_id=(int)@$request->experience_id;
+			$query->where('recruitment.experience_id','=',@$experience_id);
+		}
+		$query->where('recruitment.status',1);
+		$query->where('recruitment.status_employer',1);	
 		$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
 		$data=convertToArray($source);
 		$totalItems=count($data);
@@ -129,7 +175,7 @@ class IndexController extends Controller {
 		->get()
 		->toArray();        
 		$items=convertToArray($data);   
-		return view(@$view,compact("alias","title","meta_keyword","meta_description","items","q","pagination"));   	
+		return view(@$view,compact("alias","title","meta_keyword","meta_description","items","q","job_id","province_id","salary_id","literacy_id","sex_id","work_id","working_form_id","experience_id","pagination"));   	
 	}
 	public function index(Request $request,$alias)
 	{                     

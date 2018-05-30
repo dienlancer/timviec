@@ -86,6 +86,8 @@ if(!empty(@$meta_description)){
 					</table>
 					<?php
 					echo '<div class="margin-top-15">'.@$pagination->showPagination().'</div>';
+				}else{
+					?><center>Chưa có dữ liệu...</center><?php
 				}  
 				?>		
 			</form>			

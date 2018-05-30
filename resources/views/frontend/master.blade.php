@@ -222,23 +222,21 @@ if(isset($alias)){
 			<div class="row">
 				<div class="col-lg-3"><a href="<?php echo url('/'); ?>"><img src="<?php echo asset('/upload/logo.png'); ?>"></a></div>
 				<div class="col-lg-9">
-					<form action="" method="post" name="frm-search-job">
-						<div class="tim-cong-viec"><input type="text" name="job_name" class="kiem-cong-viec" placeholder="Nhập tên công việc..."></div>
+					<form action="<?php echo route('frontend.index.searchRecruitment'); ?>" method="POST" name="frm-search-job">
+						{{ csrf_field() }}
+						<div class="tim-cong-viec"><input type="text" name="q" value="<?php echo @$q; ?>" class="kiem-cong-viec" placeholder="Nhập tên công việc..."></div>
 						<div class="tim-cong-viec">
-							<select name="job" class="kiem-cong-viec">
-								<option>Chọn ngành nghề</option>
-								<option>Dầu khí</option>
-								<option>Địa chất</option>
-								<option>Dệt may</option>
-								<option>Điện tử / Điện lạnh</option>
-								<option>Du lịch / Nhà hàng / Khách sạn</option>
-							</select>
+							<?php 
+							$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, @$job_id,'','Chọn ngành nghề');
+							echo $ddlJob;
+							?>							
 						</div>
 						<div class="tim-cong-viec">
 							<?php 
 							/* begin province */
 							$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-							$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,0,'','Chọn tỉnh thành');
+							$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$province_id,'','Chọn tỉnh thành');
 							/* end province */
 							echo $ddlProvince;
 							?>							

@@ -9,15 +9,17 @@
 							$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 							$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();			
 							$source_sex=App\SexModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
+							$source_work=App\WorkModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
 							$source_working_form=App\WorkingFormModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
 							$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
-							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, 0,'','Chọn ngành nghề');
-							$ddlProvince        =cmsSelectboxCategory("province_id", 'vacca', @$source_province, 0,'','Chọn tỉnh thành');
-							$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, 0,'','Chọn mức lương');
-							$ddlLiteracy        =cmsSelectboxCategory("literacy_id", 'vacca', @$source_literacy, 0,'','Chọn trình độ học vấn');
-							$ddlSex        =cmsSelectboxCategory("sex_id", 'vacca', @$source_sex, 0,'','Chọn giới tính');
-							$ddlWorkingForm        =cmsSelectboxCategory("working_form_id", 'vacca', @$source_working_form, 0,'','Chọn loại hình công việc');
-							$ddlExperience        =cmsSelectboxCategory("experience_id", 'vacca', @$source_experience, 0,'','Chọn kinh nghiệm');
+							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, @$job_id,'','Chọn ngành nghề');
+							$ddlProvince        =cmsSelectboxCategory("province_id", 'vacca', @$source_province, @$province_id,'','Chọn tỉnh thành');
+							$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, @$salary_id,'','Chọn mức lương');
+							$ddlLiteracy        =cmsSelectboxCategory("literacy_id", 'vacca', @$source_literacy, @$literacy_id,'','Chọn trình độ học vấn');
+							$ddlSex        =cmsSelectboxCategory("sex_id", 'vacca', @$source_sex, @$sex_id,'','Chọn giới tính');
+							$ddlWork        =cmsSelectboxCategory("work_id", 'vacca', @$source_work, @$work_id,'','Chọn công việc');
+							$ddlWorkingForm        =cmsSelectboxCategory("working_form_id", 'vacca', @$source_working_form, @$working_form_id,'','Chọn loại hình công việc');
+							$ddlExperience        =cmsSelectboxCategory("experience_id", 'vacca', @$source_experience,@$experience_id ,'','Chọn kinh nghiệm');
 							?>
 							<div class="ritacruista"><input type="text" name="q" value="<?php echo @$q; ?>" class="vacca" placeholder="Nhập từ khóa"></div>					
 							<div class="ritacruista"><?php echo $ddlJob; ?></div>
@@ -25,6 +27,7 @@
 							<div class="ritacruista"><?php echo $ddlSalary; ?></div>
 							<div class="ritacruista"><?php echo $ddlLiteracy; ?></div>						
 							<div class="ritacruista"><?php echo $ddlSex; ?></div>	
+							<div class="ritacruista"><?php echo $ddlWork; ?></div>	
 							<div class="ritacruista"><?php echo $ddlWorkingForm; ?></div>				
 							<div class="ritacruista"><?php echo $ddlExperience; ?></div>	
 							<div class="ritacruista margin-bottom-5">	

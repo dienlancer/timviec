@@ -37,6 +37,7 @@ use App\CandidateModel;
 use App\RecruitmentModel;
 use App\RecruitmentJobModel;
 use App\RecruitmentPlaceModel;
+use App\JobModel;
 use App\ProfileModel;
 use App\ProfileJobModel;
 use App\ProfilePlaceModel;
@@ -202,18 +203,25 @@ class IndexController extends Controller {
 		$source_article=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();		
 		$source_page=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();   
 		$source_province=ProvinceModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
-
-		if(count($source_category_article) > 0){
+		$source_employer=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
+		$source_job=JobModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
+		if(count(@$source_category_article) > 0){
 			$component='category-article';
 		}
-		if(count($source_article) > 0){
+		if(count(@$source_article) > 0){
 			$component='article';
 		}
-		if(count($source_page) > 0){
+		if(count(@$source_page) > 0){
 			$component='page';
 		}            		
-		if(count($source_province) > 0){
-			$component='job-by-province';
+		if(count(@$source_province) > 0){
+			$component='recruitment-by-province';
+		}
+		if(count(@$source_employer) > 0){
+			$component='recruitment-by-employer';
+		}
+		if(count(@$source_job) > 0){
+			$component='recruitment-by-job';
 		}
 		switch ($component) {
 			case 'category-article':      
@@ -546,7 +554,7 @@ class IndexController extends Controller {
 			->toArray();        
 			$items=convertToArray($data);   
 			break; 			
-			case 'job-by-province':						
+			case 'recruitment-by-province':						
 			$view="frontend.source-recruitment";
 			if(count(@$source_province) > 0){
 				$data_province=convertToArray(@$source_province);
@@ -559,7 +567,7 @@ class IndexController extends Controller {
 				->join('recruitment_place','recruitment.id','=','recruitment_place.recruitment_id');
 				$query->where('recruitment.status',1);
 				$query->where('recruitment.status_employer',1);
-				$query->where('recruitment_place.province_id',@$province_id);			
+				$query->where('recruitment_place.province_id',(int)@$province_id);			
 				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
 				$data=convertToArray($source);
 				$totalItems=count($data);
@@ -606,6 +614,125 @@ class IndexController extends Controller {
 				$items=convertToArray($data);   
 			}			
 			break; 		
+			case 'recruitment-by-employer':						
+			$view="frontend.source-recruitment";
+			if(count(@$source_employer) > 0){
+				$data_employer=convertToArray(@$source_employer);
+				$employer_id=@$data_employer[0]['id'];
+				$title=@$data_employer[0]['fullname'];
+				$meta_description=@$data_employer[0]['fullname'];
+				$query=DB::table('recruitment')
+				->join('employer','recruitment.employer_id','=','employer.id')
+				->join('salary','recruitment.salary_id','=','salary.id');
+				$query->where('recruitment.status',1);
+				$query->where('recruitment.status_employer',1);
+				$query->where('recruitment.employer_id',(int)@$employer_id);			
+				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+				$data=convertToArray($source);
+				$totalItems=count($data);
+				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+				$pageRange=$this->_pageRange;
+				if(!empty(@$request->filter_page)){
+					$currentPage=(int)@$request->filter_page;
+				}       
+				$arrPagination=array(
+					"totalItems"=>$totalItems,
+					"totalItemsPerPage"=>$totalItemsPerPage,
+					"pageRange"=>$pageRange,
+					"currentPage"=>$currentPage   
+				);           
+				$pagination=new PaginationModel($arrPagination);
+				$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+				$data=$query->select(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'recruitment.status_hot',
+					'salary.fullname as salary_name',
+					'employer.fullname as employer_fullname',
+					'employer.alias as employer_alias',
+					'employer.logo'
+				)                
+				->groupBy(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'recruitment.status_hot',
+					'salary.fullname',
+					'employer.fullname',
+					'employer.alias',
+					'employer.logo'
+				)
+				->orderBy('recruitment.id', 'desc')
+				->skip($position)
+				->take($totalItemsPerPage)
+				->get()
+				->toArray();        
+				$items=convertToArray($data);   
+			}			
+			break; 	
+			case 'recruitment-by-job':						
+			$view="frontend.source-recruitment";
+			if(count(@$source_job) > 0){
+				$data_job=convertToArray(@$source_job);
+				$job_id=@$data_job[0]['id'];
+				$title=@$data_job[0]['fullname'];
+				$meta_description=@$data_job[0]['fullname'];
+				$query=DB::table('recruitment')
+				->join('employer','recruitment.employer_id','=','employer.id')
+				->join('salary','recruitment.salary_id','=','salary.id')
+				->join('recruitment_job','recruitment.id','=','recruitment_job.recruitment_id');
+				$query->where('recruitment.status',1);
+				$query->where('recruitment.status_employer',1);
+				$query->where('recruitment_job.job_id',(int)@$job_id);						
+				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+				$data=convertToArray($source);
+				$totalItems=count($data);
+				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
+				$pageRange=$this->_pageRange;
+				if(!empty(@$request->filter_page)){
+					$currentPage=(int)@$request->filter_page;
+				}       
+				$arrPagination=array(
+					"totalItems"=>$totalItems,
+					"totalItemsPerPage"=>$totalItemsPerPage,
+					"pageRange"=>$pageRange,
+					"currentPage"=>$currentPage   
+				);           
+				$pagination=new PaginationModel($arrPagination);
+				$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+				$data=$query->select(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'recruitment.status_hot',
+					'salary.fullname as salary_name',
+					'employer.fullname as employer_fullname',
+					'employer.alias as employer_alias',
+					'employer.logo'
+				)                
+				->groupBy(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'recruitment.status_hot',
+					'salary.fullname',
+					'employer.fullname',
+					'employer.alias',
+					'employer.logo'
+				)
+				->orderBy('recruitment.id', 'desc')
+				->skip($position)
+				->take($totalItemsPerPage)
+				->get()
+				->toArray();        
+				$items=convertToArray($data);   
+			}			
+			break; 		 	
 		}  
 		if(count(@$source_menu) > 0){
 			$source_menu=convertToArray(@$source_menu);

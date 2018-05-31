@@ -33,8 +33,7 @@ $query=DB::table('profile')
 ->leftJoin('classification as w','profile.ms_word','=','w.id')
 ->leftJoin('classification as e','profile.ms_excel','=','e.id')
 ->leftJoin('classification as p','profile.ms_power_point','=','p.id')
-->leftJoin('classification as o','profile.ms_outlook','=','o.id')
-;
+->leftJoin('classification as o','profile.ms_outlook','=','o.id');
 $query->where('profile.id',@$id);
 $source_info=$query->select('profile.fullname'
 	,'literacy.fullname as literacy_fullname'

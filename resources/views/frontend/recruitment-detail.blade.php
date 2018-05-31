@@ -77,6 +77,16 @@
 							?>
 						</span>						
 					</div>
+					<div class="margin-top-10">
+						<div class="vihamus-3">
+							<a href="javascript:void(0);"   >
+								<div class="narit">
+									<div><i class="far fa-edit"></i></div>
+									<div class="margin-left-5">Nộp Hồ Sơ</div>
+								</div>
+							</a>
+						</div>
+					</div>
 				</div>
 				<?php
 			}

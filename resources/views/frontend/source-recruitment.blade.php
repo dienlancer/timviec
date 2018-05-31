@@ -18,7 +18,6 @@ if(!empty(@$meta_description)){
 <h1 style="display: none;"><?php echo @$seo_title; ?></h1>
 <h2 style="display: none;"><?php echo @$seo_meta_description; ?></h2>
 @include("frontend.content-top")
-
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">

@@ -1202,6 +1202,26 @@ div.opacity-absolute::before{
 .rido{
     margin-left: 35px;
 }
+.box-employer-logo{
+    border:1px solid #f1f1f1;
+    padding: 10px;
+}
+.recruitment-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.employer-title{
+    font-size: 15px;
+}
+.khaly{    
+    font-size: 14px;
+}
+.khaly a{
+    color: #333;
+}
+.fiob{
+    font-size: 14px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

@@ -153,6 +153,13 @@
 								</div>
 								<?php
 							}
+							if((int)@$item['commission_from'] > 0 && (int)@$item['commission_to']){
+								?>
+								<div class="margin-top-10">																					
+									<span class="lazasa"><b>Mức hoa hồng&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$item['commission_from'] ?>%&nbsp;-&nbsp;<?php echo @$item['commission_to']; ?>%</span>
+								</div>
+								<?php
+							}
 							$sex_name='';
 							$source_sex=App\SexModel::find((int)@$item['sex_id']);
 							if(count($source_sex) > 0){
@@ -164,6 +171,7 @@
 								</div>
 								<?php
 							}
+							
 							$work_name='';
 							$source_work=App\WorkModel::find((int)@$item['work_id']);
 							if(count($source_work) > 0){
@@ -192,20 +200,26 @@
 					<h3 class="intro-recruitment">
 						Mô tả công việc
 					</h3>
-					<div>
+					<div class="vidola">
 						<?php echo @$item['description']; ?>
 					</div>
 					<h3 class="intro-recruitment">
 						Yêu cầu
 					</h3>
-					<div>
+					<div class="vidola">
 						<?php echo @$item['requirement']; ?>
 					</div>
 					<h3 class="intro-recruitment">
 						Quyền lợi
 					</h3>
-					<div>
+					<div class="vidola">
 						<?php echo @$item['benefit']; ?>
+					</div>
+					<h3 class="intro-recruitment">
+						Yêu cầu / Hình thức nộp hồ sơ
+					</h3>
+					<div class="vidola">
+						<?php echo @$item['requirement_profile']; ?>
 					</div>
 				</div>				
 			</div>	

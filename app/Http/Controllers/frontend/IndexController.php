@@ -205,6 +205,7 @@ class IndexController extends Controller {
 		$source_province=ProvinceModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
 		$source_employer=EmployerModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
 		$source_job=JobModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
+		$source_recruitment=RecruitmentModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray(); 
 		if(count(@$source_category_article) > 0){
 			$component='category-article';
 		}
@@ -222,6 +223,9 @@ class IndexController extends Controller {
 		}
 		if(count(@$source_job) > 0){
 			$component='recruitment-by-job';
+		}
+		if(count(@$source_recruitment) > 0){
+			$component='recruitment-detail';
 		}
 		switch ($component) {
 			case 'category-article':      
@@ -732,7 +736,14 @@ class IndexController extends Controller {
 				->toArray();        
 				$items=convertToArray($data);   
 			}			
-			break; 		 	
+			break; 	
+			case 'recruitment-detail':
+			$view="frontend.recruitment-detail";
+			$row=RecruitmentModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();              
+			if(count($row) > 0){
+				$item=$row[0];
+			}            
+			break;	 	
 		}  
 		if(count(@$source_menu) > 0){
 			$source_menu=convertToArray(@$source_menu);
@@ -756,7 +767,6 @@ class IndexController extends Controller {
 				$meta_description=@$category['meta_description'];
 			}
 		}    
-
 		\Artisan::call('sitemap:auto');        
 		return view(@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
 	}

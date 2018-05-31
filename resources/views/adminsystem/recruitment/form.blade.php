@@ -40,6 +40,7 @@ $inputQuantity          =   '<input type="text" class="form-control" name="quant
 $ddlSex=cmsSelectboxCategory("sex_id","form-control",$source_sex,@$arrRowData['sex_id'],'','Chọn giới tính');  
 $inputDescription       =   '<textarea name="description" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['description'].'</textarea>'; 
 $inputRequirement       =   '<textarea name="requirement" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['requirement'].'</textarea>'; 
+$inputRequirementProfile       =   '<textarea name="requirement_profile" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['requirement_profile'].'</textarea>'; 
 $ddlWork=cmsSelectboxCategory("work_id","form-control",$source_work,@$arrRowData['work_id'],'','Chọn tính chất công việc');
 $ddlLiteracy=cmsSelectboxCategory("literacy_id","form-control",$source_literacy,@$arrRowData['literacy_id'],'','Chọn trình độ học vấn');
 $ddlExperience=cmsSelectboxCategory("experience_id","form-control",$source_experience,@$arrRowData['experience_id'],'','Chọn kinh nghiệm');
@@ -232,7 +233,16 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <span class="help-block"></span>
                         </div>
                     </div>                         
-                </div>    
+                </div>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Yêu cầu / Hình thức nộp hồ sơ</b></label>
+                        <div class="col-md-10">
+                            <?php echo $inputRequirementProfile; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                         
+                </div>   
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hết hạn</b></label>
@@ -331,6 +341,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
         var benefit = $('textarea[name="benefit"]').summernote('code');
         var job_id = $('select[name="job_id[]"]').val();
         var province_id = $('select[name="province_id[]"]').val();
+        var requirement_profile = $('textarea[name="requirement_profile"]').summernote('code');
         var duration = $('input[name="duration"]').val();        
 
         var status_new=$('select[name="status_new"]').val();   
@@ -362,6 +373,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             "benefit":benefit,
             "job_id":job_id,
             "province_id":province_id,
+            "requirement_profile":requirement_profile,
             "duration":duration,
 
             "status_new":status_new,

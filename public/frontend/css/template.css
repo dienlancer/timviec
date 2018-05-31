@@ -1244,6 +1244,9 @@ div.opacity-absolute::before{
 .lazasa{
     font-size: 13px;
 }
+.zinan{
+    font-size: 13px;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

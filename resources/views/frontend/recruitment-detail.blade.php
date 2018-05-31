@@ -200,27 +200,47 @@
 					<h3 class="intro-recruitment">
 						Mô tả công việc
 					</h3>
-					<div class="vidola">
+					<div class="vidola zinan">
 						<?php echo @$item['description']; ?>
 					</div>
 					<h3 class="intro-recruitment">
 						Yêu cầu
 					</h3>
-					<div class="vidola">
+					<div class="vidola zinan">
 						<?php echo @$item['requirement']; ?>
 					</div>
 					<h3 class="intro-recruitment">
 						Quyền lợi
 					</h3>
-					<div class="vidola">
+					<div class="vidola zinan">
 						<?php echo @$item['benefit']; ?>
 					</div>
 					<h3 class="intro-recruitment">
 						Yêu cầu / Hình thức nộp hồ sơ
 					</h3>
-					<div class="vidola">
+					<div class="vidola zinan">
 						<?php echo @$item['requirement_profile']; ?>
 					</div>
+					<?php 
+					$source_employer=App\EmployerModel::find((int)@$item['employer_id']);
+					if(count(@$source_employer) > 0){
+						$data_employer = @$source_employer->toArray();
+						?>
+						<h3 class="intro-recruitment">
+							Thông tin liên hệ
+						</h3>
+						<div class="margin-top-10 vidola zinan">																					
+									<span class="lazasa"><b>Người liên hệ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_employer['contacted_name']; ?></span>
+						</div>
+						<div class="margin-top-10 vidola zinan">																					
+									<span class="lazasa"><b>Địa chỉ công ty&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_employer['address']; ?></span>
+						</div>
+						<div class="margin-top-10 vidola zinan">																					
+									<span class="lazasa"><b>Điện thoại liên lạc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_employer['contacted_phone']; ?></span>
+						</div>
+						<?php						
+					}	
+					?>					
 				</div>				
 			</div>	
 		</div>

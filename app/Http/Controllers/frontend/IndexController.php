@@ -1773,6 +1773,7 @@ class IndexController extends Controller {
 			$benefit          =   trim(@$request->benefit);
 			$job_id           =   @$request->job_id;
 			$province_id      =   @$request->province_id;
+			$requirement_profile          =   trim(@$request->requirement_profile);
 			$duration         =   trim(@$request->duration);
 			$status_employer           =   trim(@$request->status_employer); 
 			$contacted_name   =   trim(@$request->contacted_name);
@@ -1946,6 +1947,7 @@ class IndexController extends Controller {
 				$item->working_form_id  = (int)@$working_form_id;
 				$item->probationary_id  = (int)@$probationary_id;
 				$item->benefit          = @$benefit;        
+				$item->requirement_profile = @$requirement_profile;
 				/* begin duration */
 				$arrDate                = date_parse_from_format('d/m/Y',@$duration) ;
 				$ts                     = mktime(@$arrDate["hour"],@$arrDate["minute"],@$arrDate["second"],@$arrDate['month'],@$arrDate['day'],@$arrDate['year']);

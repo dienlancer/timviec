@@ -168,6 +168,10 @@ switch ($task) {
 					</div>
 				</div>	
 				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><div>Yêu cầu / hình thức nộp hồ sơ</div></div></div>
+					<div class="col-lg-8"><textarea name="requirement_profile" placeholder="Nhập yêu cầu / hình thức nộp hồ sơ..." <?php echo $disabled_status; ?> class="vacca summer-editor" rows="10" ><?php echo @$data['requirement_profile']; ?></textarea></div>
+				</div>
+				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Hết hạn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 					<div class="col-lg-8"><input type="text" readonly="readonly" <?php echo $disabled_status; ?> name="duration" class="vacca"  value="<?php echo @$data['duration']; ?>" ></div>
 				</div>

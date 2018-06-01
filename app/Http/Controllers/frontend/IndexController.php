@@ -279,7 +279,7 @@ class IndexController extends Controller {
 			$row=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
-			}     
+			}     			
 			$view="frontend.page";     
 			break;
 			case 'viec-lam-moi':			

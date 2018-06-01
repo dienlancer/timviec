@@ -220,7 +220,7 @@ if(isset($alias)){
 		</div>
 		<div class="container padding-top-30 padding-bottom-30">
 			<div class="row">
-				<div class="col-lg-3"><a href="<?php echo url('/'); ?>"><img src="<?php echo asset('/upload/logo.png'); ?>"></a></div>
+				<div class="col-lg-3"><a href="<?php echo url('/'); ?>"><img src="<?php echo asset('upload/'.$seo['logo_frontend']);?>" alt='<?php echo @$seo["alt_logo"]; ?>' /></a></div>
 				<div class="col-lg-9">
 					<form action="<?php echo route('frontend.index.searchRecruitment'); ?>" method="POST" name="frm-search-job">
 						{{ csrf_field() }}

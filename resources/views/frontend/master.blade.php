@@ -212,7 +212,7 @@ if(isset($alias)){
 							<li><a href="<?php echo url('/'); ?>"><span><i class="fas fa-home"></i></span><span class="margin-left-5">Trang chủ</span> </a></li>
 							<li><a href="<?php echo url('/'); ?>"><span><i class="fas fa-user-circle"></i></span><span class="margin-left-5">Người tìm việc</span> </a></li>
 							<li><a href="javascript:void(0);"><span><i class="far fa-address-card"></i></span><span class="margin-left-5">Nhà tuyển dụng</span> </a></li>
-							<li><a href="javascript:void(0);"><span><i class="fas fa-users"></i></span><span class="margin-left-5">Góc nghề nghiệp</span> </a></li>
+							<li><a href="<?php echo route('frontend.index.index',['cam-nang-nghe-nghiep']); ?>"><span><i class="fas fa-users"></i></span><span class="margin-left-5">Cẩm nang nghề nghiệp</span> </a></li>
 						</ul>
 					</div>					
 				</div>

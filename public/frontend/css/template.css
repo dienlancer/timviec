@@ -1247,6 +1247,92 @@ div.opacity-absolute::before{
 .zinan{
     font-size: 13px;
 }
+.ribiru{
+    position: absolute;
+    width: 580px;
+    top: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 190px;
+}
+.box-readmore a {
+    display: inline-block;
+    border: 1px solid #d8d8d8;
+    background: linear-gradient(to bottom, #ffffff , #F5F5F5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #0c62ad;
+}
+.box-readmore a:hover{
+    background: linear-gradient(to bottom,#F5F5F5  , #ffffff);
+}
+.box-readmore a::before {
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f35a";
+    margin-right: 5px;
+    font-weight: bold;
+}
+.box-row {
+    border: 1px solid #dddddd;
+    padding: 5px;
+}
+.box-img {
+    border-right: 1px dotted #dddddd;
+    padding-right: 5px;
+}
+.box-title a {
+    color: #0c62ad;
+    font-size: 16px;
+    font-weight: bold;
+}
+.view-post-count, .view-member-count {
+    display: inline-block;
+}
+.box-intro {
+    text-align: justify;
+}
+.breadcrumb-title {
+    border: 1px solid #d8d8d8;
+    background: linear-gradient(to bottom, #ffffff , #F5F5F5);
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 10px 10px;
+    font-weight: bold;
+}
+.breadcrumb-title a {
+    color: #0c62ad;
+}
+.breadcrumb-title a::after {
+    font-family: 'Font Awesome 5 Free';
+    content: "\f105";
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.tieu-de-bai-viet {
+     font-size: 20px;
+    color: #0c62ad;
+    font-weight: bold;
+    padding-top: 15px;
+}
+.article-excerpt {
+    color: #000000;
+    font-size: 13px;
+}
+.duong-ngang {
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.box-article {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    background: #FFF;
+    border-bottom: 1px solid #0c62ad;
+    -webkit-box-shadow: 0 0 3px #CACACA;
+    -moz-box-shadow: 0 0 3px #cacaca;
+    box-shadow: 0 0 3px #CACACA;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

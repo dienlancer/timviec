@@ -264,20 +264,24 @@ class IndexController extends Controller {
 				->take($totalItemsPerPage)
 				->get()
 				->toArray();        
-				$items=convertToArray($data);                            
+				$items=convertToArray($data);    
+				$view="frontend.category-article";                        
 			}              
 			break;
 			case 'article':
 			$row=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
-			}            
+			}        
+			$view="frontend.article";        
 			break;        
 			case 'page':
 			$row=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
-			}      
+			}     
+			$view="frontend.page";     
+			break;
 			case 'viec-lam-moi':			
 			$title='Việc làm mới';
 			$meta_keyword='';

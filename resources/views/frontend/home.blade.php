@@ -63,7 +63,7 @@ $article_height=$setting['article_height']['field_value'];
 		?>
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="relative">
+				<div class="nibota">
 					<div class="nikatasuzuki margin-top-15">
 						<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 						<div class="tibolee">VIỆC LÀM MỚI</div>
@@ -157,7 +157,7 @@ $article_height=$setting['article_height']['field_value'];
 		?>
 		<div class="row">
 			<div class="col-lg-8">
-				<div class="relative">
+				<div class="nibota">
 					<div class="nikatasuzuki margin-top-15">
 						<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 						<div class="tibolee">VIỆC LÀM HẤP DẪN</div>
@@ -252,7 +252,7 @@ $article_height=$setting['article_height']['field_value'];
 				if(count($source_high_salary) > 0){
 					$data_high_salary=convertToArray($source_high_salary);
 					?>
-					<div class="relative">
+					<div class="nibota">
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee">VIỆC LÀM LƯƠNG CAO</div>
@@ -335,7 +335,7 @@ $article_height=$setting['article_height']['field_value'];
 				->toArray();
 				if(count($source_job_r) > 0){
 					?>
-					<div class="relative">
+					<div class="nibota">
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee">VIỆC LÀM THEO NGÀNH NGHỀ</div>
@@ -401,7 +401,7 @@ $article_height=$setting['article_height']['field_value'];
 				if(count($source_interested) > 0){
 					$data_interested=convertToArray($source_interested);				
 					?>
-					<div class="relative">
+					<div class="nibota">
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee">VIỆC LÀM ĐƯỢC QUAN TÂM NHIỀU NHẤT</div>
@@ -482,7 +482,7 @@ $article_height=$setting['article_height']['field_value'];
 	$data_featured_article=App\ArticleModel::whereRaw('status = 1')->select('id','fullname','alias','image','intro')->orderBy('id','desc')->take(8)->get()->toArray();	
 	if(count(@$data_featured_article) > 0){
 		?>
-		<div class="relative">
+		<div class="nibota">
 			<div class="nikatasuzuki margin-top-15">
 				<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 				<div class="tibolee">CẨM NANG NGHỀ NGHIỆP</div>

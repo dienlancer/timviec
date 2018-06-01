@@ -190,7 +190,7 @@ class IndexController extends Controller {
 		$totalItemsPerPage=0;
 		$pageRange=0;      
 		$currentPage=1;  
-		$pagination ;                                              
+		$pagination =null;                                              
 		$setting= getSettingSystem();    
 		$view="";       
 		/* end standard */          
@@ -219,7 +219,7 @@ class IndexController extends Controller {
 			$component='recruitment-by-province';
 		}
 		if(count(@$source_employer) > 0){
-			$component='recruitment-by-employer';
+			$component='employer-detail';
 		}
 		if(count(@$source_job) > 0){
 			$component='recruitment-by-job';
@@ -622,13 +622,12 @@ class IndexController extends Controller {
 				$items=convertToArray($data);   
 			}			
 			break; 		
-			case 'recruitment-by-employer':						
-			$view="frontend.source-recruitment";
+			case 'employer-detail':						
+			$view="frontend.employer-detail";
 			if(count(@$source_employer) > 0){
 				$data_employer=convertToArray(@$source_employer);
 				$employer_id=@$data_employer[0]['id'];
-				$title=@$data_employer[0]['fullname'];
-				$meta_description=@$data_employer[0]['fullname'];
+				$item=EmployerModel::find((int)@$employer_id)->toArray();				
 				$query=DB::table('recruitment')
 				->join('employer','recruitment.employer_id','=','employer.id')
 				->join('salary','recruitment.salary_id','=','salary.id');
@@ -753,13 +752,13 @@ class IndexController extends Controller {
 			$source_menu=convertToArray(@$source_menu);
 			$title=@$source_menu[0]['fullname'];
 		}       
-		if(count($item) > 0){
-			$title=$item['fullname'];                      
-			if(!empty($item['meta_keyword'])){
-				$meta_keyword=$item['meta_keyword'];
+		if(count(@$item) > 0){
+			$title=@$item['fullname'];                      
+			if(!empty(@$item['meta_keyword'])){
+				$meta_keyword=@$item['meta_keyword'];
 			}                
-			if(!empty($item['meta_description'])){
-				$meta_description=$item['meta_description'];
+			if(!empty(@$item['meta_description'])){
+				$meta_description=@$item['meta_description'];
 			}                
 		}         		
 		if(count(@$category) > 0){      

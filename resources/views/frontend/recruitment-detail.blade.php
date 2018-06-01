@@ -27,10 +27,11 @@
 					}
 					?>
 					<div class="col-lg-3">
-						<div class="box-employer-logo"><center><img src="<?php echo $logo; ?>"></center></div>
+						<div class=""></div>
+						<div class="box-employer-logo"><center><img src="<?php echo @$logo; ?>"></center></div>
 					</div>				
 					<div class="col-lg-9">
-						<h1 class="recruitment-title"><?php echo $fullname; ?></h1>
+						<h1 class="recruitment-title"><?php echo @$fullname; ?></h1>
 						<div class="employer-title margin-top-10"><span><i class="far fa-building"></i></span><span class="margin-left-10"><?php echo @$data_employer['fullname']; ?></span></div>						
 						
 						<div class="margin-top-10 fiob">
@@ -38,7 +39,7 @@
 							<span class="margin-left-10">							
 								<?php 
 								$duration=datetimeConverterVn($item['duration']);
-								echo $duration;
+								echo @$duration;
 								?>
 							</span>						
 						</div>
@@ -73,7 +74,7 @@
 									$experience_name=$data_experience['fullname'];
 								}
 								?>
-								<span class="lazasa"><b>Kinh nghiệm&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $experience_name; ?></span>
+								<span class="lazasa"><b>Kinh nghiệm&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$experience_name; ?></span>
 							</div>
 							<div class="margin-top-10">
 								<?php 				
@@ -84,7 +85,7 @@
 									$literacy_name=$data_literacy['fullname'];
 								}
 								?>
-								<span class="lazasa"><b>Trình độ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $literacy_name; ?></span>
+								<span class="lazasa"><b>Trình độ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$literacy_name; ?></span>
 							</div>
 							<?php 
 							$source_job=DB::table('job')
@@ -104,7 +105,7 @@
 								$job_name=mb_substr($job_text, 0,mb_strlen($job_text)-1);
 								?>
 								<div class="margin-top-10">																
-									<span class="lazasa"><b>Ngành nghề&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $job_name; ?></span>
+									<span class="lazasa"><b>Ngành nghề&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$job_name; ?></span>
 								</div>
 								<?php
 							}
@@ -131,7 +132,7 @@
 								$province_title=mb_substr($province_text, 0,mb_strlen($province_text)-1);
 								?>
 								<div class="margin-top-10">																
-									<span class="lazasa"><b>Tỉnh/thành phố&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $province_title; ?></span>
+									<span class="lazasa"><b>Tỉnh/thành phố&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$province_title; ?></span>
 								</div>
 								<?php
 							}																				
@@ -149,7 +150,7 @@
 								$salary_name=$data_salary['fullname'];
 								?>
 								<div class="margin-top-10">																					
-									<span class="lazasa"><b>Mức lương&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_salary['fullname']; ?></span>
+									<span class="lazasa"><b>Mức lương&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_salary['fullname']; ?></span>
 								</div>
 								<?php
 							}
@@ -167,7 +168,7 @@
 								$sex_name=$data_sex['fullname'];
 								?>
 								<div class="margin-top-10">																					
-									<span class="lazasa"><b>Giới tính&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_sex['fullname']; ?></span>
+									<span class="lazasa"><b>Giới tính&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_sex['fullname']; ?></span>
 								</div>
 								<?php
 							}
@@ -179,7 +180,7 @@
 								$work_name=$data_work['fullname'];
 								?>
 								<div class="margin-top-10">																					
-									<span class="lazasa"><b>Tính chất công việc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_work['fullname']; ?></span>
+									<span class="lazasa"><b>Tính chất công việc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_work['fullname']; ?></span>
 								</div>
 								<?php
 							}
@@ -190,7 +191,7 @@
 								$working_form_name=$data_working_form['fullname'];
 								?>
 								<div class="margin-top-10">																					
-									<span class="lazasa"><b>Hình thức làm việc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_working_form['fullname']; ?></span>
+									<span class="lazasa"><b>Hình thức làm việc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_working_form['fullname']; ?></span>
 								</div>
 								<?php
 							}
@@ -230,13 +231,13 @@
 							Thông tin liên hệ
 						</h3>
 						<div class="margin-top-10 vidola zinan">																					
-									<span class="lazasa"><b>Người liên hệ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_employer['contacted_name']; ?></span>
+									<span class="lazasa"><b>Người liên hệ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_employer['contacted_name']; ?></span>
 						</div>
 						<div class="margin-top-10 vidola zinan">																					
-									<span class="lazasa"><b>Địa chỉ công ty&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_employer['address']; ?></span>
+									<span class="lazasa"><b>Địa chỉ công ty&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_employer['address']; ?></span>
 						</div>
 						<div class="margin-top-10 vidola zinan">																					
-									<span class="lazasa"><b>Điện thoại liên lạc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo $data_employer['contacted_phone']; ?></span>
+									<span class="lazasa"><b>Điện thoại liên lạc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_employer['contacted_phone']; ?></span>
 						</div>
 						<?php						
 					}	
@@ -288,7 +289,7 @@
 					if(count($source_related_job) > 0){
 						$data_related_job=convertToArray($source_related_job);						
 						?>
-						<div class="relative">
+						<div class="nibota">
 							<div class="nikatasuzuki margin-top-15">
 								<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 								<div class="tibolee">VIỆC LÀM TƯƠNG TỰ</div>
@@ -335,12 +336,12 @@
 										?>
 										<tr>
 											<td>
-												<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $related_job_fullname; ?></a><?php echo $related_job_hot_gif; ?></div>
-												<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $related_job_employer; ?></a></div>
+												<div class="hot-job-name vivan-hd"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo @$related_job_fullname; ?></a><?php echo @$related_job_hot_gif; ?></div>
+												<div class="hot-job-employer vivan-hd"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$related_job_employer; ?></a></div>
 											</td>
-											<td><?php echo $related_job_province_text; ?></td>
-											<td><?php echo $value['salary_name']; ?></td>
-											<td><?php echo $related_job_duration; ?></td>
+											<td><?php echo @$related_job_province_text; ?></td>
+											<td><?php echo @$value['salary_name']; ?></td>
+											<td><?php echo @$related_job_duration; ?></td>
 										</tr>
 										<?php
 									}

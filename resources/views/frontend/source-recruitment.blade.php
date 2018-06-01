@@ -27,7 +27,7 @@ if(!empty(@$meta_description)){
 				<?php 
 				if(count(@$items) > 0){
 					?>
-					<div class="relative">
+					<div class="nibota">
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
 							<div class="tibolee rambada"><?php echo @$seo_title; ?></div>

@@ -2,6 +2,7 @@
 @section("content")
 <?php 
 $seo=getSeo();
+$setting= getSettingSystem();
 $seo_title="";
 if(!empty(@$title)){
 	$seo_title=@$title;
@@ -14,6 +15,8 @@ if(!empty(@$meta_description)){
 }else{
 	$seo_meta_description=@$seo["meta_description"];
 }
+$width=$setting['product_width']['field_value'];
+$height=$setting['product_height']['field_value'];  
 ?>
 <h1 style="display: none;"><?php echo @$seo_title; ?></h1>
 <h2 style="display: none;"><?php echo @$seo_meta_description; ?></h2>
@@ -25,15 +28,60 @@ if(!empty(@$meta_description)){
 				<input type="hidden" name="filter_page" value="1">        
 				{{ csrf_field() }}
 				<?php 
-				if(count(@$items) > 0){
+				if(count(@$item) > 0){
+					$logo='';
+					if(!empty($item['logo'])){
+						$logo=asset('upload/'.$width.'x'.$height.'-'.$item['logo']);
+					}else{
+						$logo=asset('upload/no-logo.png');
+					}
 					?>
-					<div class="relative">
+					<div class="nibota">
 						<div class="nikatasuzuki margin-top-15">
 							<div class="tibolee-icon"><i class="far fa-folder-open"></i></div>
-							<div class="tibolee rambada"><?php echo @$seo_title; ?></div>
+							<h1 class="tibolee rambada"><?php echo @$item['fullname']; ?></h1>
 						</div>						
-						<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['viec-lam-moi']); ?>">XEM TẤT CẢ</a></div>
-					</div>			
+						<div class="lonatraction xem-tat-ca"><a href="javascript:void(0);">XEM TẤT CẢ</a></div>
+					</div>	
+					<div class="row">
+						<div class="col-lg-3">							
+							<div class="box-employer-logo"><center><img src="<?php echo $logo; ?>"></center></div>
+							<div class="margin-top-40">
+								<?php 
+								if((int)@$item['status_authentication'] > 0){
+									?>
+									<center><img src="<?php echo asset('upload/ok.png'); ?>"></center>
+									<?php
+								}else{
+									?>
+									<center><img src="<?php echo asset('upload/no-ok.png'); ?>"></center>
+									<?php
+								}
+								?>
+							</div>
+						</div>
+						<div class="col-lg-9">
+							<div class="margin-top-10">
+								<span class="lazasa"><b>Địa chỉ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$item['address']; ?></span>
+							</div>
+							<?php 
+							if(!empty(@$item['website'])){
+								?>
+								<div class="margin-top-10">
+								<span class="lazasa"><b>Website&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$item['website']; ?></span>
+								</div>
+								<?php
+							}
+							?>	
+							<div class="margin-top-10 vidola">
+								<?php echo @$item['intro']; ?>
+							</div>						
+						</div>
+					</div>
+					<?php
+				}				
+				if(count(@$items) > 0){
+					?>						
 					<table width="100%"  class="cidu margin-top-15">
 						<tr>
 							<th><font color="#E30000">Vị trí tuyển dụng</font></th>

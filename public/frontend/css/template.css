@@ -129,10 +129,7 @@ h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:0;}
 .no-margin-left{
     margin-left: 0;
 }
-.relative{
-    position: relative;
-    
-}
+
 
 table td{padding-left:10px;padding-bottom:10px;}
 figure{overflow:hidden;position:relative;display:inline-block;vertical-align:top;}
@@ -1336,6 +1333,9 @@ div.opacity-absolute::before{
 }
 .mimi{
     font-size: 13px;
+}
+.nibota{
+    position: relative;
 }
 @media (max-width: 768px){    
     .mobilemenu{

@@ -1204,7 +1204,7 @@ div.opacity-absolute::before{
 }
 .box-employer-logo{
     border:1px solid #f1f1f1;
-    padding: 10px;
+    padding: 5px;
 }
 .recruitment-title{
     font-size: 18px;
@@ -1275,6 +1275,7 @@ div.opacity-absolute::before{
 .box-row {
     border: 1px solid #dddddd;
     padding: 5px;
+    margin-top:10px; 
 }
 .box-img {
     border-right: 1px dotted #dddddd;

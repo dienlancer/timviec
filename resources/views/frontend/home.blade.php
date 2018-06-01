@@ -342,7 +342,7 @@ $article_height=$setting['article_height']['field_value'];
 						</div>
 						<hr class="royal-bira">						
 					</div>	
-					<div>
+					<div class="row">
 						<?php 					
 						$data_job_r=convertToArray($source_job_r);
 						$k=1;
@@ -458,8 +458,8 @@ $article_height=$setting['article_height']['field_value'];
 								</div>
 								<hr>
 								<div class="lamarun"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $interested_fullname; ?></a><?php echo $interested_hot_gif; ?></div>	
-								<div class="margin-top-10">
-									<div class="col-lg-4 no-padding-left"><span class="sementec"><i class="far fa-money-bill-alt"></i>&nbsp;Mức lương :</span>&nbsp;<?php echo @$value['salary_name']; ?> </div>
+								<div class="margin-top-10 row">
+									<div class="col-lg-4"><span class="sementec"><i class="far fa-money-bill-alt"></i>&nbsp;Mức lương :</span>&nbsp;<?php echo @$value['salary_name']; ?> </div>
 									<div class="col-lg-4"><span class="sementec"><i class="fas fa-map-marker-alt"></i>&nbsp;Địa điểm :</span>&nbsp;<?php echo $interested_province_text; ?></div>
 									<div class="col-lg-4"><span class="sementec"><i class="far fa-clock"></i>&nbsp;Hạn nộp :</span>&nbsp;<?php echo $interested_duration; ?></div>
 									<div class="clr"></div>
@@ -488,9 +488,9 @@ $article_height=$setting['article_height']['field_value'];
 				<div class="tibolee">CẨM NANG NGHỀ NGHIỆP</div>
 			</div>
 			<hr class="subachuem">
-			<div class="lonatraction xem-tat-ca"><a href="javascript:void(0)">XEM TẤT CẢ</a></div>
+			<div class="lonatraction xem-tat-ca"><a href="<?php echo route('frontend.index.index',['cam-nang-nghe-nghiep']); ?>">XEM TẤT CẢ</a></div>
 		</div>	
-		<div>
+		<div class="row">
 			<?php 
 			$k=1;
 			foreach ($data_featured_article as $key => $value) {
@@ -503,8 +503,8 @@ $article_height=$setting['article_height']['field_value'];
 					$featured_article_img=asset('upload/no-logo.png');
 				}
 				?>
-				<div class="col-lg-6 no-padding-left">
-					<div class="margin-top-15">
+				<div class="col-lg-6">
+					<div class="margin-top-15 row">
 						<div class="col-lg-4">
 							<div class="box-featured-article">
 								<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><img src="<?php echo $featured_article_img; ?>"></a>

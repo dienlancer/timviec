@@ -151,7 +151,8 @@
 					<div class="nhathongminhquata">
 						<h3 class="menu-highlight">NHÀ TUYỂN DỤNG HÀNG ĐẦU</h3>
 						<div class="americaasia padding-bottom-5">
-							<?php 
+							<div class="row">
+								<?php 
 							$k=1;				
 							foreach ($data_employer_r as $key => $value) {
 								$employer_r_img='';
@@ -175,6 +176,7 @@
 								$k++;							
 							}							
 							?>
+							</div>							
 						</div>
 					</div>
 					<?php	

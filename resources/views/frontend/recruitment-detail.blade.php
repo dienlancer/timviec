@@ -313,7 +313,7 @@
 										if((int)@$value['status_hot'] == 1){
 											$related_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
 										}
-										$source_province=DB::table('province')
+										$related_job_source_province=DB::table('province')
 										->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 										->where('recruitment_place.recruitment_id',(int)@$value['id'])
 										->select(								
@@ -327,10 +327,10 @@
 										->orderBy('province.id', 'desc')						
 										->get()
 										->toArray();	
-										$data_province=convertToArray($source_province);					
-										$province_text='';
-										foreach ($data_province as $key_province => $value_province) {
-											$province_text.='<div class="padding-top-5 padding-bottom-5 madrid"><a href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></div>';
+										$related_job_data_province=convertToArray($related_job_source_province);					
+										$related_job_province_text='';
+										foreach ($related_job_data_province as $related_job_key_province => $related_job_value_province) {
+											$related_job_province_text.='<div class="padding-top-5 padding-bottom-5 madrid"><a href="'.route('frontend.index.index',[$related_job_value_province['alias']]).'">'.$related_job_value_province['fullname'].'</a></div>';
 										}
 										?>
 										<tr>
@@ -338,7 +338,7 @@
 												<div class="hot-job-name vivan-hd"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $related_job_fullname; ?></a><?php echo $related_job_hot_gif; ?></div>
 												<div class="hot-job-employer vivan-hd"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $related_job_employer; ?></a></div>
 											</td>
-											<td><?php echo $province_text; ?></td>
+											<td><?php echo $related_job_province_text; ?></td>
 											<td><?php echo $value['salary_name']; ?></td>
 											<td><?php echo $related_job_duration; ?></td>
 										</tr>

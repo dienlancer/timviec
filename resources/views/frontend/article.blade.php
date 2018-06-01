@@ -58,7 +58,7 @@
 					<h2 class="margin-top-10 article-excerpt vidola">
 						<?php echo $intro; ?>
 					</h2>		
-					<div class="margin-top-15 vidola">
+					<div class="margin-top-15 vidola mimi">
 						<?php echo $content; ?>
 					</div>	
 					<hr class="duong-ngang" />
@@ -71,7 +71,7 @@
 						->where('article.id','<>',(int)@$id)
 						->where('article.status','=',1)
 						->groupBy('article.id','article.alias','article.fullname')
-						->orderBy('article.created_at', 'desc')
+						->orderBy('article.id', 'desc')
 						->take(6)
 						->get()->toArray();
 						$data=convertToArray($data);            

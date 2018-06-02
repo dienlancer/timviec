@@ -35,12 +35,14 @@ $linkCancel             =   route('adminsystem.'.$controller.'.getList');
 $linkSave               =   route('adminsystem.'.$controller.'.save');
 $linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"  disabled     onblur="createAlias();"   value="'.@$arrRowData['fullname'].'">'; 
-$inputAlias             =   '<input type="text" class="form-control" name="alias"        disabled     value="'.@$arrRowData['alias'].'">';
+$inputAlias             =   '<input type="text" class="form-control" name="alias"         value="'.@$arrRowData['alias'].'">';
 $inputQuantity          =   '<input type="text" class="form-control" name="quantity"       value="'.@$arrRowData['quantity'].'">';
 $ddlSex=cmsSelectboxCategory("sex_id","form-control",$source_sex,@$arrRowData['sex_id'],'','Chọn giới tính');  
 $inputDescription       =   '<textarea name="description" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['description'].'</textarea>'; 
 $inputRequirement       =   '<textarea name="requirement" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['requirement'].'</textarea>'; 
 $inputRequirementProfile       =   '<textarea name="requirement_profile" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['requirement_profile'].'</textarea>'; 
+$inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
+$inputMetadescription             =   '<textarea name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
 $ddlWork=cmsSelectboxCategory("work_id","form-control",$source_work,@$arrRowData['work_id'],'','Chọn tính chất công việc');
 $ddlLiteracy=cmsSelectboxCategory("literacy_id","form-control",$source_literacy,@$arrRowData['literacy_id'],'','Chọn trình độ học vấn');
 $ddlExperience=cmsSelectboxCategory("experience_id","form-control",$source_experience,@$arrRowData['experience_id'],'','Chọn kinh nghiệm');
@@ -96,7 +98,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <span class="help-block"></span>
                         </div>
                     </div>                         
-                </div>   
+                </div>                   
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Alias</b></label>
@@ -106,6 +108,24 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                         </div>
                     </div>                         
                 </div> 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Meta keyword</b></label>
+                        <div class="col-md-10">
+                            <?php echo $inputMetakeyword; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                         
+                </div>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Meta description</b></label>
+                        <div class="col-md-10">
+                            <?php echo $inputMetadescription; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                         
+                </div>   
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Số lượng cần tuyển</b></label>
@@ -325,6 +345,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
     function save(){
         var id=$('input[name="id"]').val();        
         var fullname    = $('input[name="fullname"]').val();
+        var meta_keyword=$('textarea[name="meta_keyword"]').val();
+        var meta_description=$('textarea[name="meta_description"]').val();
         var alias       = $('input[name="alias"]').val();
         var quantity       = $('input[name="quantity"]').val();
         var sex_id      = $('select[name="sex_id"]').val();
@@ -361,6 +383,8 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
             "quantity":quantity,
             "sex_id":sex_id,
             "description":description,
+            "meta_keyword":meta_keyword,
+            "meta_description":meta_description,
             "requirement":requirement,
             "work_id":work_id,
             "literacy_id":literacy_id,

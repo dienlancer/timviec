@@ -284,8 +284,8 @@ class IndexController extends Controller {
 			break;
 			case 'viec-lam-moi':			
 			$title='Việc làm mới';
-			$meta_keyword='';
-			$meta_description='viec lam moi cho ứng viên';
+			$meta_keyword='metakeyword việc làm mới';
+			$meta_description='metadescription việc làm mới';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -340,8 +340,8 @@ class IndexController extends Controller {
 			break; 	
 			case 'viec-lam-hap-dan':
 			$title='Việc làm hấp dẫn';
-			$meta_keyword='';
-			$meta_description='viec hap dan cho ứng viên';
+			$meta_keyword='metakeyword việc làm hấp dẫn';
+			$meta_description='metadescription việc làm hấp dẫn';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -396,8 +396,8 @@ class IndexController extends Controller {
 			break; 		
 			case 'viec-lam-luong-cao':
 			$title='Việc làm lương cao';
-			$meta_keyword='';
-			$meta_description='viec lam luong cao cho ung vien';
+			$meta_keyword='metakeyword việc làm lương cao';
+			$meta_description='metadescription việc làm lương cao';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -452,8 +452,8 @@ class IndexController extends Controller {
 			break; 	
 			case 'viec-lam-duoc-quan-tam':
 			$title='Việc làm được quan tâm nhiều nhất';
-			$meta_keyword='';
-			$meta_description='viec duoc quan tam nhieu nhat cho ung vien';
+			$meta_keyword='metakeyword việc làm được quan tâm nhiều nhất';
+			$meta_description='metadescription việc làm được quan tâm nhiều nhất';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -508,8 +508,8 @@ class IndexController extends Controller {
 			break; 		
 			case 'viec-lam-tuyen-gap':
 			$title='Việc làm tuyển gấp';
-			$meta_keyword='';
-			$meta_description='viec lam tuyen gap cho ung vien';
+			$meta_keyword='metakeyword việc làm tuyển gấp';
+			$meta_description='metadescription việc làm tuyển gấp';
 			$view="frontend.source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
@@ -568,7 +568,8 @@ class IndexController extends Controller {
 				$data_province=convertToArray(@$source_province);
 				$province_id=@$data_province[0]['id'];
 				$title='Việc làm tại '. @$data_province[0]['fullname'];
-				$meta_description='Việc làm tại '. @$data_province[0]['fullname'];
+				$meta_keyword='metakeyword việc làm tại '. @$data_province[0]['fullname'];
+				$meta_description='metadescription việc làm tại '. @$data_province[0]['fullname'];
 				$query=DB::table('recruitment')
 				->join('employer','recruitment.employer_id','=','employer.id')
 				->join('salary','recruitment.salary_id','=','salary.id')
@@ -686,7 +687,8 @@ class IndexController extends Controller {
 				$data_job=convertToArray(@$source_job);
 				$job_id=@$data_job[0]['id'];
 				$title=@$data_job[0]['fullname'];
-				$meta_description=@$data_job[0]['fullname'];
+				$meta_keyword='metakeyword '.@$data_job[0]['fullname'];
+				$meta_description='metadescription '. @$data_job[0]['fullname'];
 				$query=DB::table('recruitment')
 				->join('employer','recruitment.employer_id','=','employer.id')
 				->join('salary','recruitment.salary_id','=','salary.id')

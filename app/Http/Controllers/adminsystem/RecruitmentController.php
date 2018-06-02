@@ -105,6 +105,8 @@ public function save(Request $request){
   $sex_id           =   trim(@$request->sex_id);  
   $description      =   trim(@$request->description);
   $requirement      =   trim(@$request->requirement);
+  $meta_keyword         =   trim($request->meta_keyword);
+      $meta_description     =   trim($request->meta_description);
   $work_id          =   trim(@$request->work_id);
   $literacy_id      =   trim(@$request->literacy_id);
   $experience_id    =   trim(@$request->experience_id);
@@ -226,6 +228,8 @@ public function save(Request $request){
     $item->quantity         = (int)@$quantity;
     $item->sex_id           = (int)@$sex_id;
     $item->description      = @$description;
+    $item->meta_keyword     = @$meta_keyword;
+    $item->meta_description = @$meta_description;           
     $item->requirement      = @$requirement;
     $item->work_id          = (int)@$work_id;
     $item->literacy_id      = (int)@$literacy_id;

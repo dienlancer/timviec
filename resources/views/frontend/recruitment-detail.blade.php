@@ -32,6 +32,7 @@
 					</div>				
 					<div class="col-lg-9">
 						<h1 class="recruitment-title"><?php echo @$fullname; ?></h1>
+						<h2 style="display: none;"><?php echo @$item['meta_description']; ?></h1>
 						<div class="employer-title margin-top-10"><span><i class="far fa-building"></i></span><span class="margin-left-10"><?php echo @$data_employer['fullname']; ?></span></div>						
 						
 						<div class="margin-top-10 fiob">

@@ -56,8 +56,8 @@ if(isset($alias)){
 	<meta name="keywords" content="<?php echo $seo_meta_keyword; ?>">
 	<meta name="description" content="<?php echo $seo_meta_description; ?>">	
 	<meta name="author" content="<?php echo $seo_author; ?>">
-	<meta name="copyright" content="<?php echo $seo_copyright; ?>">
-	<meta name="robots" content="index, archive, follow, noodp">
+	<meta name="copyright" content="<?php echo $seo_copyright; ?>">	
+	<meta name="robots" content="noindex, archive, nofollow, noodp">
 	<meta name="googlebot" content="index,archive,follow,noodp">
 	<meta name="msnbot" content="all,index,follow">
 	<meta name="generator" content="<?php echo $seo_generator; ?>">

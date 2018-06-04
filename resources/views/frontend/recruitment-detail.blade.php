@@ -359,47 +359,5 @@
 		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>
 </div>		
-<?php
-
-/*$query_related_job=DB::table('recruitment')
-->join('employer','recruitment.employer_id','=','employer.id')
-->join('salary','recruitment.salary_id','=','salary.id');
-$query_related_job->where('recruitment.status',1);
-$query_related_job->where('recruitment.status_employer',1);
-$query_related_job->where('recruitment.status_attractive',1);
-$source_related_job=$query_related_job->select(
-	'recruitment.id',
-	'recruitment.fullname',
-	'recruitment.alias',
-	'recruitment.duration',
-	'recruitment.status_hot',
-	'salary.fullname as salary_name',
-	'employer.fullname as employer_fullname',
-	'employer.alias as employer_alias',
-	'employer.logo'
-)
-->groupBy(
-	'recruitment.id',
-	'recruitment.fullname',
-	'recruitment.alias',
-	'recruitment.duration',
-	'recruitment.status_hot',
-	'salary.fullname',
-	'employer.fullname',
-	'employer.alias',
-	'employer.logo'
-)
-->orderBy('recruitment.id', 'desc')
-->take(10)
-->get()
-->toArray();		*/
-?>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			
-		</div>
-	</div>
-</div>
 @endsection()
 

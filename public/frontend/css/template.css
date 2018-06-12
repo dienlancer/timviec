@@ -732,18 +732,17 @@ div.opacity-absolute::before{
 .box-logo, .recommend{
     display: flex;    
 }
-.note.note-danger {
+.note-danger {
     background-color: #fef7f8;
     border-color: #f0868e;
     color: #210406;
 }
-.note.note-success {
+.note-success {
     background-color: #c0edf1;
     border-color: #58d0da;
     color: #000;
 }
-.note {
-    
+.note {   
     padding: 15px 30px 15px 15px;
     border-left: 5px solid #eee;
     border-radius: 0 4px 4px 0;

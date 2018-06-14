@@ -768,7 +768,7 @@ class IndexController extends Controller {
 			if(!empty(@$category['meta_keyword'])){
 				$meta_keyword=@$category['meta_keyword'];
 			}                
-			if(!empty($category['meta_description'])){
+			if(!empty(@$category['meta_description'])){
 				$meta_description=@$category['meta_description'];
 			}
 		}    

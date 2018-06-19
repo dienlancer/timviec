@@ -1358,6 +1358,7 @@ class IndexController extends Controller {
 		if($request->isMethod('post')){                    
 			$email              = trim(@$request->email);
 			$password           = @$request->password ;
+			$alias 				= trim(@$request->alias);
 			$source=CandidateModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
 			if(count($source) > 0){
 				$password_hashed=$source[0]['password'];
@@ -1365,7 +1366,7 @@ class IndexController extends Controller {
 					$arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
 					Session::forget($this->_ssNameUser);                                 
 					Session::put($this->_ssNameUser,$arrUser);  
-					$link=route('frontend.index.viewCandidateAccount'); 					
+					$link=route('frontend.index.index',@$alias); 					
 					$msg['success']="Đăng nhập thành công";
 				}else{
 					$msg['error']="Đăng nhập sai mật khẩu";
@@ -1379,7 +1380,7 @@ class IndexController extends Controller {
 		$info = array(
 			"checked"       => $checked,          
 			'msg'       => $msg,      
-			'link'=>$link
+			'link_edit'=>$link
 		);                        
 		return $info;                  
 	}    

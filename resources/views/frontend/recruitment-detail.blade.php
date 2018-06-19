@@ -388,7 +388,8 @@
 			</div>
 			<div class="modal-body">
 				<form enctype="multipart/form-data" name="frm_apply" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
-					{{ csrf_field() }}					
+					{{ csrf_field() }}		
+					<input type="hidden" name="alias" value="<?php echo @$alias; ?>">			
 					<div class="note margin-bottom-5" style="display: none;" ></div>      
 					<div>Email</div>
 					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
@@ -407,11 +408,13 @@
 	function loginApply(){
         var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
         var password=$('form[name="frm_apply"]').find('input[name="password"]').val();        
+        var alias=$('form[name="frm_apply"]').find('input[name="alias"]').val();    
         var token=$('form[name="frm_apply"]').find('input[name="_token"]').val();                
 
         var dataItem = new FormData();
         dataItem.append('email',email);
         dataItem.append('password',password);                
+        dataItem.append('alias',alias);
         dataItem.append('_token',token);
         $.ajax({
             url: '<?php echo route("frontend.index.loginApply"); ?>',

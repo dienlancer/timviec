@@ -1344,7 +1344,6 @@ div.opacity-absolute::before{
     margin-top: -150px;
     margin-left: -150px;
 }
-
 .modal-apply .modal-header > button.close {
     position: absolute;
     top: 0;
@@ -1356,6 +1355,13 @@ div.opacity-absolute::before{
 .dang-nhap{
     color: #E30000;
     font-size: 20px;
+}
+.nop-chon-viec{
+    font-size: 16px;
+    font-weight: bold;
+}
+.list-profile {
+    padding: 0px 30px;
 }
 @media (max-width: 768px){    
     .mobilemenu{

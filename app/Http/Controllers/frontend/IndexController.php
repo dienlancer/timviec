@@ -1357,7 +1357,8 @@ class IndexController extends Controller {
 		$link='';
 		if($request->isMethod('post')){                    
 			$email              = trim(@$request->email);
-			$password           = @$request->password ;			
+			$password           = @$request->password ;	
+			$recruitment_id 	= (int)@$request->recruitment_id;		
 			$source=CandidateModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
 			if(count($source) > 0){
 				$password_hashed=$source[0]['password'];
@@ -1366,7 +1367,7 @@ class IndexController extends Controller {
 					Session::forget($this->_ssNameUser);                                 
 					Session::put($this->_ssNameUser,$arrUser);  									
 					$msg['success']="Đăng nhập thành công";
-					$link=route("frontend.index.getFormApplied");
+					$link=route("frontend.index.getFormApplied",[@$recruitment_id]);
 				}else{
 					$msg['error']="Đăng nhập sai mật khẩu";
 					$checked=0;
@@ -1383,7 +1384,7 @@ class IndexController extends Controller {
 		);                        
 		return $info;                  
 	}   
-	public function getFormApplied(Request $request){
+	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;
 		$msg=array();        
 		$data=array();       
@@ -1399,7 +1400,7 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin");
 		}		
-		return view("frontend.applied-form",compact('data','msg','checked'));        
+		return view("frontend.applied-form",compact('data','msg','checked','recruitment_id'));        
 	} 
 	public function viewEmployerAccount(Request $request){
 		$checked=1;

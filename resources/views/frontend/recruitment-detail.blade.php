@@ -9,6 +9,7 @@
 				$setting= getSettingSystem();
 				$width=$setting['product_width']['field_value'];
 				$height=$setting['product_height']['field_value'];  
+				$id=0;
 				if(count(@$item) > 0){		
 					$id= (int)@$item["id"];
 					$fullname = @$item["fullname"];	
@@ -62,7 +63,7 @@
 									<?php
 								}else{
 									?>
-									<a href="<?php echo route("frontend.index.getFormApplied"); ?>"   >
+									<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
 										<div class="narit">
 											<div><i class="far fa-edit"></i></div>
 											<div class="margin-left-5">Nộp Hồ Sơ</div>
@@ -388,7 +389,8 @@
 			</div>
 			<div class="modal-body">
 				<form enctype="multipart/form-data" name="frm_apply" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
-					{{ csrf_field() }}										
+					{{ csrf_field() }}			
+					<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">							
 					<div class="note margin-bottom-5" style="display: none;" ></div>      
 					<div>Email</div>
 					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
@@ -407,11 +409,13 @@
 	function loginApply(){
         var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
         var password=$('form[name="frm_apply"]').find('input[name="password"]').val();                  
+        var recruitment_id=$('form[name="frm_apply"]').find('input[name="recruitment_id"]').val(); 
         var token=$('form[name="frm_apply"]').find('input[name="_token"]').val();                
 
         var dataItem = new FormData();
         dataItem.append('email',email);
         dataItem.append('password',password);                        
+        dataItem.append('recruitment_id',recruitment_id);
         dataItem.append('_token',token);
         $.ajax({
             url: '<?php echo route("frontend.index.loginApply"); ?>',

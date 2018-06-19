@@ -5,6 +5,12 @@
 $seo=getSeo();
 $disabled_status='';
 $register_status='onclick="document.forms[\'frm\'].submit();"';
+$arrUser=array();
+$id=0;
+if(Session::has("vmuser")){
+	$arrUser=Session::get("vmuser");
+	$id=@$arrUser['id'];
+}     
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -37,8 +43,23 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 						</ul>	
 					</div>      
 					<?php
-				}								
-				?>									
+				}						
+				$query=DB::table('profile')   ;     
+				$query->where('profile.candidate_id',(int)@$id);
+				$query->where('profile.status',1);    				
+				$source_profile=$query->select('profile.id','profile.fullname','profile.status')
+				->groupBy('profile.id','profile.fullname','profile.status') 
+				->get()->toArray();	
+				$data_profile=convertToArray($source_profile);
+				foreach ($data_profile as $key => $value) {
+					?>
+					<div class="row mia">
+						<div class="col-xs-2"><input type="radio" name="profile_id" value="<?php echo $value['id'] ?>"></div> 
+						<div class="col-xs-10"><?php echo $value['fullname']; ?></div>
+					</div>		
+					<?php
+				}
+				?>										
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >NỘP HỒ SƠ</a></div></div>

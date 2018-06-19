@@ -604,9 +604,9 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								</div>
 								<div class="row mia">
 									<div class="col-lg-4" ><div class="xika"><div>Ảnh bằng cấp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-									<div class="col-lg-8"><div class="xika2">
-										<img src="<?php echo asset('upload/'.@$profile_graduation_degree); ?>" />
-									</div> </div>
+									<div class="col-lg-8">
+										<div class="xika2"><a target="_blank" href="<?php echo asset('upload/'.@$profile_graduation_degree); ?>">Tải về</a>			</div>																	
+									</div>
 								</div>							
 								<div class="row mia">
 									<div class="col-lg-4"></div>

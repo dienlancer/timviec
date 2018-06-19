@@ -2409,8 +2409,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('profile.id','profile.fullname','profile.status_search','profile.created_at')
-		->groupBy('profile.id','profile.fullname','profile.status_search','profile.created_at')
+		$data=$query->select('profile.id','profile.fullname','profile.status_search','profile.status','profile.created_at')
+		->groupBy('profile.id','profile.fullname','profile.status_search','profile.status','profile.created_at')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)

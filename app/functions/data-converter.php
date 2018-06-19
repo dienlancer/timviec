@@ -1663,8 +1663,14 @@ function profile2Converter($data=array()){
             }
             else{
                 $kicked=1;
-            }
+            }            
             $status_search     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status_search"],$kicked).'</center>';            
+            $status='';
+            if((int)@$data[$i]['status'] == 1){
+                $status='<center><img src="'.asset("/public/adminsystem/images/active.png").'" /></center>';
+            }else{
+                $status='<center><img src="'.asset("/public/adminsystem/images/inactive.png").'" /></center>';
+            }
             $id=@$data[$i]["id"];   
             $fullname=@$data[$i]['fullname'];    
             $created_at='<center>'.datetimeConverterVn($data[$i]["created_at"]).'</center>';          
@@ -1672,6 +1678,7 @@ function profile2Converter($data=array()){
                 "id"                       =>   $id,
                 "fullname"                 =>   $fullname,                                         
                 "status_search"            =>   $status_search,
+                "status"                   =>   $status,
                 "created_at"               =>   $created_at,                                
                 "edited"                   =>   $edited,
                 "detail"                   =>   $profile_detail,

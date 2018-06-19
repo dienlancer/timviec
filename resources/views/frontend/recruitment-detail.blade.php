@@ -43,15 +43,34 @@
 								echo @$duration;
 								?>
 							</span>						
-						</div>
+						</div>						
 						<div class="margin-top-10">
 							<div class="vihamus-3">
-								<a href="javascript:void(0);"   >
-									<div class="narit">
-										<div><i class="far fa-edit"></i></div>
-										<div class="margin-left-5">Nộp Hồ Sơ</div>
-									</div>
-								</a>
+								<?php 
+								$arrUser=array();    
+								if(Session::has("vmuser")){
+									$arrUser=Session::get("vmuser");
+								}   
+								if(count(@$arrUser) == 0){
+									?>
+									<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-apply" >
+										<div class="narit">
+											<div><i class="far fa-edit"></i></div>
+											<div class="margin-left-5">Nộp Hồ Sơ</div>
+										</div>
+									</a>
+									<?php
+								}else{
+									?>
+									<a href="javascript:void(0);"   >
+										<div class="narit">
+											<div><i class="far fa-edit"></i></div>
+											<div class="margin-left-5">Nộp Hồ Sơ</div>
+										</div>
+									</a>
+									<?php
+								}
+								?>								
 							</div>
 						</div>
 					</div>
@@ -359,5 +378,19 @@
 		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>
 </div>		
+<!-- begin modal -->
+<div class="modal fade modal-apply" id="modal-alert-apply" tabindex="-1" role="dialog" aria-labelledby="my-modal-apply">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header relative">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+			</div>
+			<div class="modal-body">
+				Đăng nhập
+			</div>      
+		</div>
+	</div>
+</div>  
+<!-- end modal -->
 @endsection()
 

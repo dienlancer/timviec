@@ -1366,6 +1366,7 @@ class IndexController extends Controller {
 					Session::forget($this->_ssNameUser);                                 
 					Session::put($this->_ssNameUser,$arrUser);  
 					$link=route('frontend.index.viewCandidateAccount'); 					
+					$msg['success']="Đăng nhập thành công";
 				}else{
 					$msg['error']="Đăng nhập sai mật khẩu";
 					$checked=0;

@@ -389,7 +389,7 @@
 			<div class="modal-body">
 				<form enctype="multipart/form-data" name="frm_apply" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
 					{{ csrf_field() }}					
-					<div class="note" style="display: none;" ></div>      
+					<div class="note margin-bottom-5" style="display: none;" ></div>      
 					<div>Email</div>
 					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
 					<div class="margin-top-15">Mật khẩu</div>

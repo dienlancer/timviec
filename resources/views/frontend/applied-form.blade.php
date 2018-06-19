@@ -54,8 +54,8 @@ if(Session::has("vmuser")){
 				foreach ($data_profile as $key => $value) {
 					?>
 					<div class="row mia">
-						<div class="col-xs-2"><input type="radio" name="profile_id" value="<?php echo $value['id'] ?>"></div> 
-						<div class="col-xs-10"><?php echo $value['fullname']; ?></div>
+						<div class="col-xs-1"><input type="radio" name="profile_id" value="<?php echo $value['id'] ?>"></div> 
+						<div class="col-xs-11"><?php echo $value['fullname']; ?></div>
 					</div>		
 					<?php
 				}

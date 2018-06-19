@@ -1349,6 +1349,44 @@ class IndexController extends Controller {
 		}                       
 		return view("frontend.candidate-login",compact('msg',"data",'checked'));                       
 	}    
+	public function loginApply(Request $request){         
+		$msg=array();
+		$checked=1;
+		$data=array();       
+		$arrUser=array();
+		$source=array();
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}     
+		if(count($arrUser) > 0){
+			$email=@$arrUser['email'];   
+			$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+			if(count($source) > 0){
+				return redirect()->route('frontend.index.viewCandidateAccount');
+			}      
+		}
+		if($request->isMethod('post')){                    
+			$email              = trim(@$request->email);
+			$password           = @$request->password ;
+			$source=CandidateModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
+			if(count($source) > 0){
+				$password_hashed=$source[0]['password'];
+				if(Hash::check($password,$password_hashed)){
+					$arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
+					Session::forget($this->_ssNameUser);                                 
+					Session::put($this->_ssNameUser,$arrUser);  
+					return redirect()->route('frontend.index.viewCandidateAccount'); 
+				}else{
+					$msg['success']="Đăng nhập sai mật khẩu";
+					$checked=0;
+				}              
+			}else{
+				$msg['success']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
+				$checked=0;
+			}          
+		}                       
+		return view("frontend.candidate-login",compact('msg',"data",'checked'));                       
+	}    
 	public function viewEmployerAccount(Request $request){
 		$checked=1;
 		$msg=array();        

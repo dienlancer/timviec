@@ -62,7 +62,7 @@
 									<?php
 								}else{
 									?>
-									<a href="javascript:void(0);"   >
+									<a href="<?php echo route("frontend.index.getFormApplied"); ?>"   >
 										<div class="narit">
 											<div><i class="far fa-edit"></i></div>
 											<div class="margin-left-5">Nộp Hồ Sơ</div>
@@ -411,8 +411,7 @@
 
         var dataItem = new FormData();
         dataItem.append('email',email);
-        dataItem.append('password',password);                
-        dataItem.append('alias',alias);
+        dataItem.append('password',password);                        
         dataItem.append('_token',token);
         $.ajax({
             url: '<?php echo route("frontend.index.loginApply"); ?>',

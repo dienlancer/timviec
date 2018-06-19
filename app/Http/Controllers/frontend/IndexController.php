@@ -1366,6 +1366,7 @@ class IndexController extends Controller {
 					Session::forget($this->_ssNameUser);                                 
 					Session::put($this->_ssNameUser,$arrUser);  									
 					$msg['success']="Đăng nhập thành công";
+					$link=route("frontend.index.getFormApplied");
 				}else{
 					$msg['error']="Đăng nhập sai mật khẩu";
 					$checked=0;
@@ -1381,7 +1382,25 @@ class IndexController extends Controller {
 			'link_edit'=>$link
 		);                        
 		return $info;                  
-	}    
+	}   
+	public function getFormApplied(Request $request){
+		$checked=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}     
+		if(count(@$arrUser) == 0){
+			return redirect()->route("frontend.index.candidateLogin");
+		}    
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin");
+		}		
+		return view("frontend.applied-form",compact('data','msg','checked'));        
+	} 
 	public function viewEmployerAccount(Request $request){
 		$checked=1;
 		$msg=array();        
@@ -1740,8 +1759,7 @@ class IndexController extends Controller {
 			Session::forget($this->_ssNameUser);      
 		}    
 		return redirect()->route("frontend.index.candidateLogin");
-	}
-	
+	}	
 	public function getFormRecruitment(Request $request,$task,$id){
 		$checked=1;
 		$msg=array();        

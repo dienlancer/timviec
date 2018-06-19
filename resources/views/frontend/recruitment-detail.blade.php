@@ -383,10 +383,21 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header relative">
+				<div class="dang-nhap">ĐĂNG NHẬP</div>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
 			</div>
 			<div class="modal-body">
-				Đăng nhập
+				<form enctype="multipart/form-data" name="frm_apply" method="POST">
+					{{ csrf_field() }}					
+					<div>Email</div>
+					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
+					<div class="margin-top-15">Mật khẩu</div>
+					<div class="margin-top-5"><input type="password" name="password" class="vacca" placeholder="Mật khẩu" value=""></div>
+					<div class="margin-top-15">
+						<a href="javascript:void(0);" class="btn-login" onclick="document.forms['frm_apply'].submit();" >Đăng nhập</a>
+						<a href="<?php echo route('frontend.index.resetPassWrdEmployer'); ?>" class="btn-remember-password">Quên mật khẩu</a>
+					</div>
+				</form>				
 			</div>      
 		</div>
 	</div>

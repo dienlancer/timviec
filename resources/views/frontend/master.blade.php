@@ -126,9 +126,7 @@ if(isset($alias)){
 	<!-- begin pagination -->
 	<!--<link rel="stylesheet" href="{{ asset('public/frontend/css/pagination.css') }}" />-->
 	<!-- end pagination-->
-	<!-- begin product -->
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/product.css') }}" />
-	<!-- end product-->
+	
 	<!-- begin datatables -->	
 	<script src="{{ asset('public/frontend/js/jquery.dataTables.min.js') }}"></script>    
 	<link rel="stylesheet" href="{{ asset('public/frontend/css/jquery.dataTables.min.css') }}" />

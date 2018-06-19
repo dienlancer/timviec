@@ -1351,10 +1351,10 @@ class IndexController extends Controller {
 	}    
 	public function loginApply(Request $request){         
 		$msg=array();
-		$checked=1;
-		$data=array();       
-		$arrUser=array();
-		$source=array();		
+		$checked=1;		     		
+		$source=array();	
+		$info=array();	
+		$link='';
 		if($request->isMethod('post')){                    
 			$email              = trim(@$request->email);
 			$password           = @$request->password ;
@@ -1365,17 +1365,22 @@ class IndexController extends Controller {
 					$arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
 					Session::forget($this->_ssNameUser);                                 
 					Session::put($this->_ssNameUser,$arrUser);  
-					return redirect()->route('frontend.index.viewCandidateAccount'); 
+					$link=route('frontend.index.viewCandidateAccount'); 					
 				}else{
-					$msg['success']="Đăng nhập sai mật khẩu";
+					$msg['error']="Đăng nhập sai mật khẩu";
 					$checked=0;
 				}              
 			}else{
-				$msg['success']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
+				$msg['error']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
 				$checked=0;
 			}          
 		}                       
-		return view("frontend.candidate-login",compact('msg',"data",'checked'));                       
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,      
+			'link'=>$link
+		);                        
+		return $info;                  
 	}    
 	public function viewEmployerAccount(Request $request){
 		$checked=1;

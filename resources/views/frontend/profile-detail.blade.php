@@ -327,74 +327,76 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="experience_job_edit" style="<?php echo $status_experience_job_edit; ?>">
 					<div class="experience_job_txt">
 						<?php 
-						foreach ($source_profile_experience as $key => $value) {
-							$profile_experience_id=$value['id'];
-							$profile_experience_company_name=$value['company_name'];
-							$profile_experience_person_title=$value['person_title'];
-							$profile_experience_time_from=$value['month_from'] . '/' . $value['year_from'];
-							$profile_experience_time_to=$value['month_to'] . '/' .$value['year_to'];		
-							$profile_experience_salary=convertToTextPrice($value['salary']);
-							$currency='';
-							switch ($value['currency']) {
-								case 'vnd':			
-								$currency='VNĐ';	
-								break;
-								case 'usd':
-								$currency='USD';							
-								break;
-							}		
-							$profile_experience_salary=@$profile_experience_salary.' '.@$currency.'/tháng';
-							$profile_experience_job_description=@$value['job_description'];
-							$profile_experience_achievement=@$value['achievement'];
-							$profile_experience_profile_id=(int)@$value['profile_id'];
-							?>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_company_name; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Chức danh</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_person_title; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Thời gian làm việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8">
-									<div class="lunarnewyear">
-										<div>Từ</div>
-										<div class="margin-left-10"><?php echo @$profile_experience_time_from; ?></div>
-										<div class="margin-left-10">Đến</div>
-										<div class="margin-left-10"><?php echo @$profile_experience_time_to; ?></div>
-									</div> 
+						if(count(@$source_profile_experience) > 0){
+							foreach ($source_profile_experience as $key => $value) {
+								$profile_experience_id=$value['id'];
+								$profile_experience_company_name=$value['company_name'];
+								$profile_experience_person_title=$value['person_title'];
+								$profile_experience_time_from=$value['month_from'] . '/' . $value['year_from'];
+								$profile_experience_time_to=$value['month_to'] . '/' .$value['year_to'];		
+								$profile_experience_salary=convertToTextPrice($value['salary']);
+								$currency='';
+								switch ($value['currency']) {
+									case 'vnd':			
+									$currency='VNĐ';	
+									break;
+									case 'usd':
+									$currency='USD';							
+									break;
+								}		
+								$profile_experience_salary=@$profile_experience_salary.' '.@$currency.'/tháng';
+								$profile_experience_job_description=@$value['job_description'];
+								$profile_experience_achievement=@$value['achievement'];
+								$profile_experience_profile_id=(int)@$value['profile_id'];
+								?>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Công ty</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_company_name; ?></div> </div>
 								</div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Mức lương</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_salary; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_job_description; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_achievement; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4"></div>
-								<div class="col-lg-8">
-									<div class="vihamus-3">
-										<a href="javascript:void(0);" onclick="deleteProfileExperience(<?php echo $profile_experience_id ?>);" >
-											<div class="narit">
-												<div><i class="far fa-times-circle"></i></div>
-												<div class="margin-left-5">Xóa</div>
-											</div>								
-										</a>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Chức danh</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_person_title; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Thời gian làm việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8">
+										<div class="lunarnewyear">
+											<div>Từ</div>
+											<div class="margin-left-10"><?php echo @$profile_experience_time_from; ?></div>
+											<div class="margin-left-10">Đến</div>
+											<div class="margin-left-10"><?php echo @$profile_experience_time_to; ?></div>
+										</div> 
 									</div>
 								</div>
-							</div>
-							<hr>
-							<?php
-						}
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Mức lương</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_salary; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Mô tả công việc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_job_description; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Thành tích nổi bật</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_experience_achievement; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4"></div>
+									<div class="col-lg-8">
+										<div class="vihamus-3">
+											<a href="javascript:void(0);" onclick="deleteProfileExperience(<?php echo $profile_experience_id ?>);" >
+												<div class="narit">
+													<div><i class="far fa-times-circle"></i></div>
+													<div class="margin-left-5">Xóa</div>
+												</div>								
+											</a>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<?php
+							}
+						}						
 						?>
 					</div>
 					<div class="row mia">
@@ -562,65 +564,67 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="graduation_edit" style="<?php echo $status_graduation_edit; ?>">
 					<div class="graduation_txt">
 						<?php 
-						foreach ($source_profile_graduation as $key => $value) {
-							$profile_graduation_id=$value['id'];
-							$profile_graduation_literacy_name=$value['literacy_name'];
-							$profile_graduation_training_unit=$value['training_unit'];
-							$profile_graduation_year_from= $value['year_from'];
-							$profile_graduation_year_to=$value['year_to'];									
-							$profile_graduation_department=@$value['department'];
-							$profile_graduation_graduation_name=@$value['graduation_name'];			
-							$profile_graduation_degree=@$value['degree'];				
-							?>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Trình độ học vấn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_literacy_name; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Đơn vị đào tạo</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_training_unit; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Thời gian</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8">
-									<div class="lunarnewyear">
-										<div>Từ</div>
-										<div class="margin-left-10"><?php echo @$profile_graduation_year_from; ?></div>
-										<div class="margin-left-10">Đến</div>
-										<div class="margin-left-10"><?php echo @$profile_graduation_year_to; ?></div>
-									</div> 
+						if(count(@$source_profile_graduation) > 0){
+							foreach ($source_profile_graduation as $key => $value) {
+								$profile_graduation_id=$value['id'];
+								$profile_graduation_literacy_name=$value['literacy_name'];
+								$profile_graduation_training_unit=$value['training_unit'];
+								$profile_graduation_year_from= $value['year_from'];
+								$profile_graduation_year_to=$value['year_to'];									
+								$profile_graduation_department=@$value['department'];
+								$profile_graduation_graduation_name=@$value['graduation_name'];			
+								$profile_graduation_degree=@$value['degree'];				
+								?>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Trình độ học vấn</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_literacy_name; ?></div> </div>
 								</div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Chuyên ngành</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_department; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Tốt nghiệp loại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_graduation_name; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Ảnh bằng cấp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2">
-									<img src="<?php echo asset('upload/'.@$profile_graduation_degree); ?>" />
-								</div> </div>
-							</div>							
-							<div class="row mia">
-								<div class="col-lg-4"></div>
-								<div class="col-lg-8">
-									<div class="vihamus-3">
-										<a href="javascript:void(0);" onclick="deleteProfileGraduation(<?php echo $profile_graduation_id ?>);" >
-											<div class="narit">
-												<div><i class="far fa-times-circle"></i></div>
-												<div class="margin-left-5">Xóa</div>
-											</div>								
-										</a>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Đơn vị đào tạo</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_training_unit; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Thời gian</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8">
+										<div class="lunarnewyear">
+											<div>Từ</div>
+											<div class="margin-left-10"><?php echo @$profile_graduation_year_from; ?></div>
+											<div class="margin-left-10">Đến</div>
+											<div class="margin-left-10"><?php echo @$profile_graduation_year_to; ?></div>
+										</div> 
 									</div>
 								</div>
-							</div>
-							<hr>
-							<?php
-						}
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Chuyên ngành</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_department; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Tốt nghiệp loại</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_graduation_graduation_name; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Ảnh bằng cấp</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2">
+										<img src="<?php echo asset('upload/'.@$profile_graduation_degree); ?>" />
+									</div> </div>
+								</div>							
+								<div class="row mia">
+									<div class="col-lg-4"></div>
+									<div class="col-lg-8">
+										<div class="vihamus-3">
+											<a href="javascript:void(0);" onclick="deleteProfileGraduation(<?php echo $profile_graduation_id ?>);" >
+												<div class="narit">
+													<div><i class="far fa-times-circle"></i></div>
+													<div class="margin-left-5">Xóa</div>
+												</div>								
+											</a>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<?php
+							}
+						}						
 						?>
 					</div>
 					<div class="row mia">
@@ -745,55 +749,57 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="language_edit" style="<?php echo $status_language_edit; ?>">
 					<div class="language_txt">
 						<?php 
-						foreach ($source_profile_language as $key => $value) {
-							$profile_language_id=$value['id'];
-							$profile_language_name=$value['language_name'];
-							$profile_language_level_name=$value['language_level_name'];							
-							$profile_listening=$value['listening'];
-							$profile_speaking=$value['speaking'];
-							$profile_reading=$value['reading'];
-							$profile_writing=$value['writing'];
-							?>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Ngoại ngữ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_name; ?></div> </div>
-							</div>
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_level_name; ?></div> </div>
-							</div>		
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Nghe</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_listening; ?></div> </div>
-							</div>		
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Nói</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_speaking; ?></div> </div>
-							</div>		
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Đọc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_reading; ?></div> </div>
-							</div>		
-							<div class="row mia">
-								<div class="col-lg-4" ><div class="xika"><div>Viết</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-								<div class="col-lg-8"><div class="xika2"><?php echo @$profile_writing; ?></div> </div>
-							</div>										
-							<div class="row mia">
-								<div class="col-lg-4"></div>
-								<div class="col-lg-8">
-									<div class="vihamus-3">
-										<a href="javascript:void(0);" onclick="deleteProfileLanguage(<?php echo $profile_language_id ?>);" >
-											<div class="narit">
-												<div><i class="far fa-times-circle"></i></div>
-												<div class="margin-left-5">Xóa</div>
-											</div>								
-										</a>
+						if(count(@$source_profile_language) > 0){
+							foreach ($source_profile_language as $key => $value) {
+								$profile_language_id=$value['id'];
+								$profile_language_name=$value['language_name'];
+								$profile_language_level_name=$value['language_level_name'];							
+								$profile_listening=$value['listening'];
+								$profile_speaking=$value['speaking'];
+								$profile_reading=$value['reading'];
+								$profile_writing=$value['writing'];
+								?>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Ngoại ngữ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_name; ?></div> </div>
+								</div>
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Trình độ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_language_level_name; ?></div> </div>
+								</div>		
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Nghe</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_listening; ?></div> </div>
+								</div>		
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Nói</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_speaking; ?></div> </div>
+								</div>		
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Đọc</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_reading; ?></div> </div>
+								</div>		
+								<div class="row mia">
+									<div class="col-lg-4" ><div class="xika"><div>Viết</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
+									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_writing; ?></div> </div>
+								</div>										
+								<div class="row mia">
+									<div class="col-lg-4"></div>
+									<div class="col-lg-8">
+										<div class="vihamus-3">
+											<a href="javascript:void(0);" onclick="deleteProfileLanguage(<?php echo $profile_language_id ?>);" >
+												<div class="narit">
+													<div><i class="far fa-times-circle"></i></div>
+													<div class="margin-left-5">Xóa</div>
+												</div>								
+											</a>
+										</div>
 									</div>
 								</div>
-							</div>
-							<hr>
-							<?php
-						}
+								<hr>
+								<?php
+							}
+						}						
 						?>
 					</div>
 					<div class="row mia">
@@ -975,12 +981,14 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<tr>
 									<th class="suzuritake"></th>
 									<?php 
-									foreach ($source_classification as $key => $value) {										
-										$classification_name=$value['fullname'];
-										?>
-										<th class="suzuritake"><?php echo $classification_name; ?></th>
-										<?php
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {										
+											$classification_name=$value['fullname'];
+											?>
+											<th class="suzuritake"><?php echo $classification_name; ?></th>
+											<?php
+										}
+									}									
 									?>									
 								</tr>
 								<tr>

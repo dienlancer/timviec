@@ -389,12 +389,13 @@
 			<div class="modal-body">
 				<form enctype="multipart/form-data" name="frm_apply" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
 					{{ csrf_field() }}					
+					<div class="note margin-top-15 margin-bottom-15" style="display: none;" ></div>      
 					<div>Email</div>
 					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
 					<div class="margin-top-15">Mật khẩu</div>
 					<div class="margin-top-5"><input type="password" name="password" class="vacca" placeholder="Mật khẩu" value=""></div>
 					<div class="margin-top-15">
-						<a href="javascript:void(0);" class="btn-login" onclick="document.forms['frm_apply'].submit();" >Đăng nhập</a>
+						<a href="javascript:void(0);" class="btn-login" onclick="loginApply();" >Đăng nhập</a>
 						<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
 					</div>
 				</form>				
@@ -402,6 +403,42 @@
 		</div>
 	</div>
 </div>  
+<script type="text/javascript" language="javascript">
+	function loginApply(){
+        var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
+        var password=$('form[name="frm_apply"]').find('input[name="password"]').val();        
+        var token=$('form[name="frm_apply"]').find('input[name="_token"]').val();                
+
+        var dataItem = new FormData();
+        dataItem.append('email',email);
+        dataItem.append('password',password);                
+        dataItem.append('_token',token);
+        $.ajax({
+            url: '<?php echo route("frontend.index.loginApply"); ?>',
+            type: 'POST',
+            data: dataItem,
+            async: false,
+            success: function (data) {                
+               if(data.checked==1){    
+               		alert(data.msg.success);                      
+                    window.location.href = data.link_edit;                    
+                }else{
+                    showMsg('note',data);  
+                }
+                spinner.hide();
+            },
+            error : function (data){
+                spinner.hide();
+            },
+            beforeSend  : function(jqXHR,setting){
+                spinner.show();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+</script>
 <!-- end modal -->
 @endsection()
 

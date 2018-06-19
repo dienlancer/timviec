@@ -1354,17 +1354,7 @@ class IndexController extends Controller {
 		$checked=1;
 		$data=array();       
 		$arrUser=array();
-		$source=array();
-		if(Session::has($this->_ssNameUser)){
-			$arrUser=Session::get($this->_ssNameUser);
-		}     
-		if(count($arrUser) > 0){
-			$email=@$arrUser['email'];   
-			$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-			if(count($source) > 0){
-				return redirect()->route('frontend.index.viewCandidateAccount');
-			}      
-		}
+		$source=array();		
 		if($request->isMethod('post')){                    
 			$email              = trim(@$request->email);
 			$password           = @$request->password ;

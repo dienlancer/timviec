@@ -95,6 +95,7 @@ if($source_recruitment != null){
 			</div>	
 			<form name="frm-apply-method-2" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				<input type="hidden" name="recruitment_id" value="<?php echo @$recruitment_id; ?>">		
 				<div class="row margin-top-10">
 					<div class="col-xs-2"></div>
 					<div class="col-xs-10">
@@ -169,13 +170,14 @@ if($source_recruitment != null){
 			
 			/* begin xử lý image */
 			var image_file=null;
-			var image_ctrl=$('input[name="file_attached"]');         
+			var image_ctrl=$('form[name="frm-apply-method-2"]').find('input[name="file_attached"]');         
 			var image_files = $(image_ctrl).get(0).files;        
 			if(image_files.length > 0){            
 				image_file  = image_files[0];  
 			}        
 			/* end xử lý image */
-			var token = $('input[name="_token"]').val();       
+			var recruitment_id=$('form[name="frm-apply-method-2"]').find('input[name="recruitment_id"]').val(); 
+			var token=$('form[name="frm-apply-method-2"]').find('input[name="_token"]').val();   
 			var dataItem = new FormData();			
 			if(image_files.length > 0){
 				dataItem.append('file_attached',image_file);

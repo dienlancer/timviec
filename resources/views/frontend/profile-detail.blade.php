@@ -129,12 +129,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<?php echo $inputID; ?>
-	<div class="container">
-		<div class="row">			
-			<div class="col-lg-9">
+
+{{ csrf_field() }}
+<?php echo $inputID; ?>
+<div class="container">
+	<div class="row">			
+		<div class="col-lg-9">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Tạo Hồ Sơ Từng Bước</h1>				
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
@@ -999,11 +1000,11 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 										$classification_name=$value['fullname'];
 										if((int)@$profile_detail['ms_word'] == (int)@$classification_id){
 											?>
-												<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>" checked ></center></td>
 											<?php
 										}else{
 											?>
-												<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
+											<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
 											<?php
 										}										
 									}
@@ -1017,11 +1018,11 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 										$classification_name=$value['fullname'];
 										if((int)@$profile_detail['ms_excel'] == (int)@$classification_id){
 											?>
-												<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>" checked ></center></td>
 											<?php
 										}else{
 											?>
-												<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
+											<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
 											<?php
 										}										
 									}
@@ -1035,11 +1036,11 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 										$classification_name=$value['fullname'];
 										if((int)@$profile_detail['ms_power_point'] == (int)@$classification_id){
 											?>
-												<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>" checked ></center></td>
 											<?php
 										}else{
 											?>
-												<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
+											<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
 											<?php
 										}										
 									}
@@ -1053,11 +1054,11 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 										$classification_name=$value['fullname'];
 										if((int)@$profile_detail['ms_outlook'] == (int)@$classification_id){
 											?>
-												<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>" checked ></center></td>
+											<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>" checked ></center></td>
 											<?php
 										}else{
 											?>
-												<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
+											<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
 											<?php
 										}										
 									}
@@ -1117,13 +1118,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				}
 				$source_skill=App\SkillModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$data_profile_skill= DB::table('skill')
-								->join('profile_skill','skill.id','=','profile_skill.skill_id')
-								->where('profile_skill.profile_id',@$id)
-								->select('skill.id','skill.fullname')
-								->groupBy('skill.id','skill.fullname')
-								->orderBy('skill.id','asc')
-								->get()
-								->toArray();
+				->join('profile_skill','skill.id','=','profile_skill.skill_id')
+				->where('profile_skill.profile_id',@$id)
+				->select('skill.id','skill.fullname')
+				->groupBy('skill.id','skill.fullname')
+				->orderBy('skill.id','asc')
+				->get()
+				->toArray();
 				$data_profile_skill=convertToArray($data_profile_skill);				
 				?>
 				<div class="note note_skill margin-top-15"  style="display: none;"></div>
@@ -1176,29 +1177,29 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							if(count(@$source_skill) > 0){
 								?>
 								<div class="row mia">
-								<?php 
-								$k=1;
-								foreach (@$source_skill as $key => $value) {
-									$skill_id=$value['id'];
-									$skill_name=$value['fullname'];
-									$checked_status='';		
-									foreach ($data_profile_skill as $key2 => $value2) {
-										$skill_id2=$value2['id'];																	
-										if((int)@$skill_id == (int)@$skill_id2){
-											$checked_status='checked';						
-										}										
-									}									
-									?>
-									<div class="col-lg-4">
-										<input type="checkbox" name="skill_id[]" <?php echo $checked_status; ?> value="<?php echo $skill_id; ?>"><?php echo $skill_name; ?>
-									</div>
-									<?php
-									if($k%3 == 0){
-										?><div class="clr"></div><?php
+									<?php 
+									$k=1;
+									foreach (@$source_skill as $key => $value) {
+										$skill_id=$value['id'];
+										$skill_name=$value['fullname'];
+										$checked_status='';		
+										foreach ($data_profile_skill as $key2 => $value2) {
+											$skill_id2=$value2['id'];																	
+											if((int)@$skill_id == (int)@$skill_id2){
+												$checked_status='checked';						
+											}										
+										}									
+										?>
+										<div class="col-lg-4">
+											<input type="checkbox" name="skill_id[]" <?php echo $checked_status; ?> value="<?php echo $skill_id; ?>"><?php echo $skill_name; ?>
+										</div>
+										<?php
+										if($k%3 == 0){
+											?><div class="clr"></div><?php
+										}
+										$k++;
 									}
-									$k++;
-								}
-								?>
+									?>
 								</div>
 								<?php								
 							}							
@@ -1238,14 +1239,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							</div>
 						</div>
 					</div>			
-				</div>				
-			</div>							
-			<div class="col-lg-3">
-				@include("frontend.candidate-sidebar")				
-			</div>
+				</div>	
+			</form>			
+		</div>							
+		<div class="col-lg-3">
+			@include("frontend.candidate-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
+
 <script type="text/javascript" language="javascript">
 	function saveCareerGoal(){
 		var id = $("form[name='frm']").find("input[name='id']").val();
@@ -1338,178 +1340,178 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 			contentType: false,
 			processData: false
 		});
-}
-function noSaveExperienceJob(){
-	$('.experience_job_edit').show();
-	$('.experience_job_save').hide();		
-}
-function addExperienceJob(){
-	$('.experience_job_save').show();
-	$("form[name='frm']").find("input[name='company_name']").val('');
-	$("form[name='frm']").find("input[name='person_title']").val('');
-	$("form[name='frm']").find("select[name='month_from']").val(0);
-	$("form[name='frm']").find("select[name='year_from']").val(0);
-	$("form[name='frm']").find("select[name='month_to']").val(0);
-	$("form[name='frm']").find("select[name='year_to']").val(0);
-	$("form[name='frm']").find("select[name='currency']").val('');
-	$("form[name='frm']").find("input[name='salary']").val('');
-	$("form[name='frm']").find("textarea[name='job_description']").val('');
-	$("form[name='frm']").find("textarea[name='achievement']").val('');		
-}
-function loadDataProfileExperience(data_profile_experience){
-	$('.experience_job_txt').empty();					
-				$.each(data_profile_experience,function(index,value){
-					/* begin company_name */
-					var company_name_row_mia=document.createElement('div');					
-					var company_name_col_lg_4=document.createElement('div');
-					var company_name_col_lg_8=document.createElement('div');
-					var company_name_xika=document.createElement('div');
-					var company_name_xika2=document.createElement('div');
-					$(company_name_row_mia).addClass('row mia');
-					$(company_name_col_lg_4).addClass('col-lg-4');
-					$(company_name_col_lg_8).addClass('col-lg-8');
-					$(company_name_xika).addClass('xika');
-					$(company_name_xika2).addClass('xika2');
-					$('.experience_job_txt').append(company_name_row_mia);
-					$(company_name_row_mia).append(company_name_col_lg_4);
-					$(company_name_row_mia).append(company_name_col_lg_8);
-					$(company_name_col_lg_4).append(company_name_xika);
-					$(company_name_col_lg_8).append(company_name_xika2);
-					$(company_name_xika).text('Tên công ty');
-					$(company_name_xika2).text(value.company_name);						
-					/* end company_name */
-					/* begin person_title */
-					var person_title_row_mia=document.createElement('div');					
-					var person_title_col_lg_4=document.createElement('div');
-					var person_title_col_lg_8=document.createElement('div');
-					var person_title_xika=document.createElement('div');
-					var person_title_xika2=document.createElement('div');
-					$(person_title_row_mia).addClass('row mia');
-					$(person_title_col_lg_4).addClass('col-lg-4');
-					$(person_title_col_lg_8).addClass('col-lg-8');
-					$(person_title_xika).addClass('xika');
-					$(person_title_xika2).addClass('xika2');
-					$('.experience_job_txt').append(person_title_row_mia);
-					$(person_title_row_mia).append(person_title_col_lg_4);
-					$(person_title_row_mia).append(person_title_col_lg_8);
-					$(person_title_col_lg_4).append(person_title_xika);
-					$(person_title_col_lg_8).append(person_title_xika2);
-					$(person_title_xika).text('Chức danh');
-					$(person_title_xika2).text(value.person_title);						
-					/* end person_title */
-					/* begin business_time */
-					var business_time_row_mia=document.createElement('div');					
-					var business_time_col_lg_4=document.createElement('div');
-					var business_time_col_lg_8=document.createElement('div');
-					var business_time_xika=document.createElement('div');
-					var business_time_xika2=document.createElement('div');
-					var business_time_general=document.createElement('div');
-					var business_time_from=document.createElement('div');
-					var business_time_month_year_from=document.createElement('div');
-					var business_time_to=document.createElement('div');
-					var business_time_month_year_to=document.createElement('div');
-					$(business_time_row_mia).addClass('row mia');
-					$(business_time_col_lg_4).addClass('col-lg-4');
-					$(business_time_col_lg_8).addClass('col-lg-8');
-					$(business_time_xika).addClass('xika');
-					$(business_time_xika2).addClass('xika2');
-					$(business_time_general).addClass('lunarnewyear');
-					$(business_time_month_year_from).addClass('margin-left-10');						
-					$(business_time_to).addClass('margin-left-10');
-					$(business_time_month_year_to).addClass('margin-left-10');						
-					$('.experience_job_txt').append(business_time_row_mia);
-					$(business_time_row_mia).append(business_time_col_lg_4);
-					$(business_time_row_mia).append(business_time_col_lg_8);
-					$(business_time_col_lg_4).append(business_time_xika);
-					$(business_time_col_lg_8).append(business_time_xika2);
-					$(business_time_xika).text('Thời gian làm việc');						
-					$(business_time_xika2).append(business_time_general);
-					$(business_time_general).append(business_time_from);
-					$(business_time_general).append(business_time_month_year_from);						
-					$(business_time_general).append(business_time_to);
-					$(business_time_general).append(business_time_month_year_to);						
-					$(business_time_from).text('Từ');
-					$(business_time_month_year_from).text(value.time_from);									
-					$(business_time_to).text('Đến');
-					$(business_time_month_year_to).text(value.time_to);											
-					/* end business_time */
-					/* begin salary */
-					var salary_row_mia=document.createElement('div');					
-					var salary_col_lg_4=document.createElement('div');
-					var salary_col_lg_8=document.createElement('div');
-					var salary_xika=document.createElement('div');
-					var salary_xika2=document.createElement('div');						
-					var salary_money=document.createElement('div');						
-					$(salary_row_mia).addClass('row mia');
-					$(salary_col_lg_4).addClass('col-lg-4');
-					$(salary_col_lg_8).addClass('col-lg-8');
-					$(salary_xika).addClass('xika');
-					$(salary_xika2).addClass('xika2');											
-					$('.experience_job_txt').append(salary_row_mia);
-					$(salary_row_mia).append(salary_col_lg_4);
-					$(salary_row_mia).append(salary_col_lg_8);
-					$(salary_col_lg_4).append(salary_xika);
-					$(salary_col_lg_8).append(salary_xika2);
-					$(salary_xika).text('Mức lương');
-					$(salary_xika2).append(salary_money);						
-					$(salary_money).text(value.salary);						
-					/* end salary */
-					/* begin job_description */
-					var job_description_row_mia=document.createElement('div');					
-					var job_description_col_lg_4=document.createElement('div');
-					var job_description_col_lg_8=document.createElement('div');
-					var job_description_xika=document.createElement('div');
-					var job_description_xika2=document.createElement('div');
-					$(job_description_row_mia).addClass('row mia');
-					$(job_description_col_lg_4).addClass('col-lg-4');
-					$(job_description_col_lg_8).addClass('col-lg-8');
-					$(job_description_xika).addClass('xika');
-					$(job_description_xika2).addClass('xika2');
-					$('.experience_job_txt').append(job_description_row_mia);
-					$(job_description_row_mia).append(job_description_col_lg_4);
-					$(job_description_row_mia).append(job_description_col_lg_8);
-					$(job_description_col_lg_4).append(job_description_xika);
-					$(job_description_col_lg_8).append(job_description_xika2);
-					$(job_description_xika).text('Mô tả công việc');
-					$(job_description_xika2).append(value.job_description);						
-					/* end job_description */
-					/* begin achievement */
-					var achievement_row_mia=document.createElement('div');					
-					var achievement_col_lg_4=document.createElement('div');
-					var achievement_col_lg_8=document.createElement('div');
-					var achievement_xika=document.createElement('div');
-					var achievement_xika2=document.createElement('div');
-					$(achievement_row_mia).addClass('row mia');
-					$(achievement_col_lg_4).addClass('col-lg-4');
-					$(achievement_col_lg_8).addClass('col-lg-8');
-					$(achievement_xika).addClass('xika');
-					$(achievement_xika2).addClass('xika2');
-					$('.experience_job_txt').append(achievement_row_mia);
-					$(achievement_row_mia).append(achievement_col_lg_4);
-					$(achievement_row_mia).append(achievement_col_lg_8);
-					$(achievement_col_lg_4).append(achievement_xika);
-					$(achievement_col_lg_8).append(achievement_xika2);
-					$(achievement_xika).text('Thành tích đạt được');
-					$(achievement_xika2).append(value.achievement);	
-					/* end achievement */
-					/* begin delete */
-					var delete_row_mia=document.createElement('div');					
-					var delete_col_lg_4=document.createElement('div');
-					var delete_col_lg_8=document.createElement('div');							
-					$(delete_row_mia).addClass('row mia');
-					$(delete_col_lg_4).addClass('col-lg-4');
-					$(delete_col_lg_8).addClass('col-lg-8');								
-					$('.experience_job_txt').append(delete_row_mia);
-					$(delete_row_mia).append(delete_col_lg_4);
-					$(delete_row_mia).append(delete_col_lg_8);	
-					var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileExperience('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
-					$(delete_col_lg_8).append(delete_html);									
-					/* end delete */
-					/* begin hr */
-					var hr=document.createElement('hr');
-					$('.experience_job_txt').append(hr);				
-					/* end hr */
-				});										
+	}
+	function noSaveExperienceJob(){
+		$('.experience_job_edit').show();
+		$('.experience_job_save').hide();		
+	}
+	function addExperienceJob(){
+		$('.experience_job_save').show();
+		$("form[name='frm']").find("input[name='company_name']").val('');
+		$("form[name='frm']").find("input[name='person_title']").val('');
+		$("form[name='frm']").find("select[name='month_from']").val(0);
+		$("form[name='frm']").find("select[name='year_from']").val(0);
+		$("form[name='frm']").find("select[name='month_to']").val(0);
+		$("form[name='frm']").find("select[name='year_to']").val(0);
+		$("form[name='frm']").find("select[name='currency']").val('');
+		$("form[name='frm']").find("input[name='salary']").val('');
+		$("form[name='frm']").find("textarea[name='job_description']").val('');
+		$("form[name='frm']").find("textarea[name='achievement']").val('');		
+	}
+	function loadDataProfileExperience(data_profile_experience){
+		$('.experience_job_txt').empty();					
+		$.each(data_profile_experience,function(index,value){
+			/* begin company_name */
+			var company_name_row_mia=document.createElement('div');					
+			var company_name_col_lg_4=document.createElement('div');
+			var company_name_col_lg_8=document.createElement('div');
+			var company_name_xika=document.createElement('div');
+			var company_name_xika2=document.createElement('div');
+			$(company_name_row_mia).addClass('row mia');
+			$(company_name_col_lg_4).addClass('col-lg-4');
+			$(company_name_col_lg_8).addClass('col-lg-8');
+			$(company_name_xika).addClass('xika');
+			$(company_name_xika2).addClass('xika2');
+			$('.experience_job_txt').append(company_name_row_mia);
+			$(company_name_row_mia).append(company_name_col_lg_4);
+			$(company_name_row_mia).append(company_name_col_lg_8);
+			$(company_name_col_lg_4).append(company_name_xika);
+			$(company_name_col_lg_8).append(company_name_xika2);
+			$(company_name_xika).text('Tên công ty');
+			$(company_name_xika2).text(value.company_name);						
+			/* end company_name */
+			/* begin person_title */
+			var person_title_row_mia=document.createElement('div');					
+			var person_title_col_lg_4=document.createElement('div');
+			var person_title_col_lg_8=document.createElement('div');
+			var person_title_xika=document.createElement('div');
+			var person_title_xika2=document.createElement('div');
+			$(person_title_row_mia).addClass('row mia');
+			$(person_title_col_lg_4).addClass('col-lg-4');
+			$(person_title_col_lg_8).addClass('col-lg-8');
+			$(person_title_xika).addClass('xika');
+			$(person_title_xika2).addClass('xika2');
+			$('.experience_job_txt').append(person_title_row_mia);
+			$(person_title_row_mia).append(person_title_col_lg_4);
+			$(person_title_row_mia).append(person_title_col_lg_8);
+			$(person_title_col_lg_4).append(person_title_xika);
+			$(person_title_col_lg_8).append(person_title_xika2);
+			$(person_title_xika).text('Chức danh');
+			$(person_title_xika2).text(value.person_title);						
+			/* end person_title */
+			/* begin business_time */
+			var business_time_row_mia=document.createElement('div');					
+			var business_time_col_lg_4=document.createElement('div');
+			var business_time_col_lg_8=document.createElement('div');
+			var business_time_xika=document.createElement('div');
+			var business_time_xika2=document.createElement('div');
+			var business_time_general=document.createElement('div');
+			var business_time_from=document.createElement('div');
+			var business_time_month_year_from=document.createElement('div');
+			var business_time_to=document.createElement('div');
+			var business_time_month_year_to=document.createElement('div');
+			$(business_time_row_mia).addClass('row mia');
+			$(business_time_col_lg_4).addClass('col-lg-4');
+			$(business_time_col_lg_8).addClass('col-lg-8');
+			$(business_time_xika).addClass('xika');
+			$(business_time_xika2).addClass('xika2');
+			$(business_time_general).addClass('lunarnewyear');
+			$(business_time_month_year_from).addClass('margin-left-10');						
+			$(business_time_to).addClass('margin-left-10');
+			$(business_time_month_year_to).addClass('margin-left-10');						
+			$('.experience_job_txt').append(business_time_row_mia);
+			$(business_time_row_mia).append(business_time_col_lg_4);
+			$(business_time_row_mia).append(business_time_col_lg_8);
+			$(business_time_col_lg_4).append(business_time_xika);
+			$(business_time_col_lg_8).append(business_time_xika2);
+			$(business_time_xika).text('Thời gian làm việc');						
+			$(business_time_xika2).append(business_time_general);
+			$(business_time_general).append(business_time_from);
+			$(business_time_general).append(business_time_month_year_from);						
+			$(business_time_general).append(business_time_to);
+			$(business_time_general).append(business_time_month_year_to);						
+			$(business_time_from).text('Từ');
+			$(business_time_month_year_from).text(value.time_from);									
+			$(business_time_to).text('Đến');
+			$(business_time_month_year_to).text(value.time_to);											
+			/* end business_time */
+			/* begin salary */
+			var salary_row_mia=document.createElement('div');					
+			var salary_col_lg_4=document.createElement('div');
+			var salary_col_lg_8=document.createElement('div');
+			var salary_xika=document.createElement('div');
+			var salary_xika2=document.createElement('div');						
+			var salary_money=document.createElement('div');						
+			$(salary_row_mia).addClass('row mia');
+			$(salary_col_lg_4).addClass('col-lg-4');
+			$(salary_col_lg_8).addClass('col-lg-8');
+			$(salary_xika).addClass('xika');
+			$(salary_xika2).addClass('xika2');											
+			$('.experience_job_txt').append(salary_row_mia);
+			$(salary_row_mia).append(salary_col_lg_4);
+			$(salary_row_mia).append(salary_col_lg_8);
+			$(salary_col_lg_4).append(salary_xika);
+			$(salary_col_lg_8).append(salary_xika2);
+			$(salary_xika).text('Mức lương');
+			$(salary_xika2).append(salary_money);						
+			$(salary_money).text(value.salary);						
+			/* end salary */
+			/* begin job_description */
+			var job_description_row_mia=document.createElement('div');					
+			var job_description_col_lg_4=document.createElement('div');
+			var job_description_col_lg_8=document.createElement('div');
+			var job_description_xika=document.createElement('div');
+			var job_description_xika2=document.createElement('div');
+			$(job_description_row_mia).addClass('row mia');
+			$(job_description_col_lg_4).addClass('col-lg-4');
+			$(job_description_col_lg_8).addClass('col-lg-8');
+			$(job_description_xika).addClass('xika');
+			$(job_description_xika2).addClass('xika2');
+			$('.experience_job_txt').append(job_description_row_mia);
+			$(job_description_row_mia).append(job_description_col_lg_4);
+			$(job_description_row_mia).append(job_description_col_lg_8);
+			$(job_description_col_lg_4).append(job_description_xika);
+			$(job_description_col_lg_8).append(job_description_xika2);
+			$(job_description_xika).text('Mô tả công việc');
+			$(job_description_xika2).append(value.job_description);						
+			/* end job_description */
+			/* begin achievement */
+			var achievement_row_mia=document.createElement('div');					
+			var achievement_col_lg_4=document.createElement('div');
+			var achievement_col_lg_8=document.createElement('div');
+			var achievement_xika=document.createElement('div');
+			var achievement_xika2=document.createElement('div');
+			$(achievement_row_mia).addClass('row mia');
+			$(achievement_col_lg_4).addClass('col-lg-4');
+			$(achievement_col_lg_8).addClass('col-lg-8');
+			$(achievement_xika).addClass('xika');
+			$(achievement_xika2).addClass('xika2');
+			$('.experience_job_txt').append(achievement_row_mia);
+			$(achievement_row_mia).append(achievement_col_lg_4);
+			$(achievement_row_mia).append(achievement_col_lg_8);
+			$(achievement_col_lg_4).append(achievement_xika);
+			$(achievement_col_lg_8).append(achievement_xika2);
+			$(achievement_xika).text('Thành tích đạt được');
+			$(achievement_xika2).append(value.achievement);	
+			/* end achievement */
+			/* begin delete */
+			var delete_row_mia=document.createElement('div');					
+			var delete_col_lg_4=document.createElement('div');
+			var delete_col_lg_8=document.createElement('div');							
+			$(delete_row_mia).addClass('row mia');
+			$(delete_col_lg_4).addClass('col-lg-4');
+			$(delete_col_lg_8).addClass('col-lg-8');								
+			$('.experience_job_txt').append(delete_row_mia);
+			$(delete_row_mia).append(delete_col_lg_4);
+			$(delete_row_mia).append(delete_col_lg_8);	
+			var delete_html='<div class="vihamus-3"><a href="javascript:void(0);" onclick="deleteProfileExperience('+parseInt(value.id)+');"><div class="narit"><div><i class="far fa-times-circle"></i></div><div class="margin-left-5">Xóa</div></div></a></div>';		
+			$(delete_col_lg_8).append(delete_html);									
+			/* end delete */
+			/* begin hr */
+			var hr=document.createElement('hr');
+			$('.experience_job_txt').append(hr);				
+			/* end hr */
+		});										
 }
 function deleteProfileExperience(profile_experience_id){
 	var xac_nhan = 0;
@@ -2204,7 +2206,7 @@ function saveSkill(){
 	var id = $("form[name='frm']").find("input[name='id']").val();			
 	var skill_ctrl = $("form[name='frm']").find("input[name='skill_id[]']:checked");
 	var source_skill_id = $.map($(skill_ctrl), function(e,i) {
-    	return +e.value;
+		return +e.value;
 	});			
 	var hobby = $("form[name='frm']").find("input[name='hobby']").val();	
 	var talent = $("form[name='frm']").find("textarea[name='talent']").summernote('code');	

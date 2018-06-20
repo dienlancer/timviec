@@ -9,39 +9,40 @@ $arrUser=array();
 $ssNameUser='vmuser';
 $candidate=array();
 if(Session::has($ssNameUser)){
-    $arrUser=Session::get($ssNameUser);
-    $candidate=App\CandidateModel::find((int)@$arrUser['id'])->toArray();
-    $candidate['birthday']=datetimeConverterVn($candidate['birthday']);
+	$arrUser=Session::get($ssNameUser);
+	$candidate=App\CandidateModel::find((int)@$arrUser['id'])->toArray();
+	$candidate['birthday']=datetimeConverterVn($candidate['birthday']);
 } 
 $picture                =   "";
 $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$candidate)>0){
-    if(!empty(@$candidate["avatar"])){
-        $picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
-    }        
+	if(!empty(@$candidate["avatar"])){
+		$picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
+	}        
 }
 $disabled_status='';
 $register_status='onclick="document.forms[\'frm\'].submit();"';
 $dang_tin='';
 switch ($task) {
 	case 'add':
-		$dang_tin='Tạo hồ sơ';
-		break;
+	$dang_tin='Tạo hồ sơ';
+	break;
 	case 'edit':
-		$dang_tin='Cập nhật hồ sơ';
-		break;
+	$dang_tin='Cập nhật hồ sơ';
+	break;
 }  
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">			
-			<div class="col-lg-9">
+
+{{ csrf_field() }}
+<div class="container">
+	<div class="row">			
+		<div class="col-lg-9">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Tạo Hồ Sơ</h1>
-					
+				
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
 					<div class="col-lg-9">
@@ -179,11 +180,12 @@ switch ($task) {
 						</div>
 					</div>
 				</div>	
-			</div>
-			<div class="col-lg-3">
-				@include("frontend.candidate-sidebar")				
-			</div>
+			</form>
+		</div>
+		<div class="col-lg-3">
+			@include("frontend.candidate-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
+
 @endsection()

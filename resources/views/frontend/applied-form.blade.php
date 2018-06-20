@@ -4,7 +4,7 @@
 <?php 
 $seo=getSeo();
 $disabled_status='';
-$register_status='onclick="document.forms[\'frm\'].submit();"';
+$register_status='onclick="document.forms[\'frm-apply-logined\'].submit();"';
 $arrUser=array();
 $id=0;
 if(Session::has("vmuser")){
@@ -21,11 +21,12 @@ if($source_recruitment != null){
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-9">
+{{ csrf_field() }}
+<input type="hidden" name="recruitment_id" value="<?php echo @$recruitment_id; ?>">				
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9">
+			<form name="frm-apply-logined" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>		
 				<?php 
 				if(count(@$msg) > 0){
@@ -110,11 +111,49 @@ if($source_recruitment != null){
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >NỘP HỒ SƠ</a></div></div>
 				</div>
-			</div>
-			<div class="col-lg-3">
-					@include("frontend.candidate-sidebar")				
-			</div>
+			</form>
+		</div>			
+		<div class="col-lg-3">
+			@include("frontend.candidate-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
+<script type="text/javascript" language="javascript">
+	function loginApply(){
+        var profile_id=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]').val();        
+        var password=$('form[name="frm-apply-logined"]').find('input[name="password"]').val();                  
+        var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
+        var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();                
+
+        var dataItem = new FormData();
+        dataItem.append('email',email);
+        dataItem.append('password',password);                        
+        dataItem.append('recruitment_id',recruitment_id);
+        dataItem.append('_token',token);
+        $.ajax({
+            url: '<?php echo route("frontend.index.loginApply"); ?>',
+            type: 'POST',
+            data: dataItem,
+            async: false,
+            success: function (data) {                
+               if(data.checked==1){    
+               		alert(data.msg.success);                      
+                    window.location.href = data.link_edit;                    
+                }else{
+                    showMsg('note',data);  
+                }
+                spinner.hide();
+            },
+            error : function (data){
+                spinner.hide();
+            },
+            beforeSend  : function(jqXHR,setting){
+                spinner.show();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+</script>
 @endsection()

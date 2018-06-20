@@ -63,12 +63,12 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<?php echo $inputPictureHidden; ?>
-	<div class="container">
-		<div class="row">			
-			<div class="col-lg-9">
+{{ csrf_field() }}
+<?php echo $inputPictureHidden; ?>
+<div class="container">
+	<div class="row">			
+		<div class="col-lg-9">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Tài Khoản Ứng Viên</h1>
 				<?php 
 				if(count(@$msg) > 0){
@@ -127,7 +127,7 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 							<div><input type="file" name="image"  /></div>
 							<div><font color="#E30000"><b>Khuyến khích cập nhật avatar hình vuông</b></font></div>
 						</div>
-                        <div class="picture-area"><?php echo $picture; ?>                      </div>
+						<div class="picture-area"><?php echo $picture; ?>                      </div>
 					</div>
 				</div>
 				<div class="row mia">
@@ -159,14 +159,15 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật</a></div></div>
-				</div>	
-			</div>
-			<div class="col-lg-3">
-					@include("frontend.candidate-sidebar")				
-			</div>
+				</div>
+			</form>	
+		</div>
+		<div class="col-lg-3">
+			@include("frontend.candidate-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
+
 <script type="text/javascript" language="javascript">
 	function deleteImage(){
         var xac_nhan = 0;

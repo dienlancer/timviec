@@ -7,12 +7,13 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<input type="hidden" name="filter_page" value="1">         
-	<div class="container">
-		<div class="row">			
-			<div class="col-lg-9">
+
+{{ csrf_field() }}
+<input type="hidden" name="filter_page" value="1">         
+<div class="container">
+	<div class="row">			
+		<div class="col-lg-9">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Danh Sách Tin Tuyển Dụng</h1>
 				<div class="flamentco margin-top-15">
 					<div class="kaso"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo $q; ?>" placeholder="Nhập tiêu đề tin đăng..."></div>
@@ -85,14 +86,15 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 						echo $pagination->showPagination();
 					}  
 					?>
-				</div>			
-			</div>
-			<div class="col-lg-3">
-				@include("frontend.employer-sidebar")				
-			</div>
+				</div>	
+			</form>		
+		</div>
+		<div class="col-lg-3">
+			@include("frontend.employer-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
+
 <script type="text/javascript" language="javascript">
 	$(document).ready(function(){
 		$( 'input[name="duration"]' ).datepicker({

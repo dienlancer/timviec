@@ -8,7 +8,7 @@ $source_scale=App\ScaleModel::orderBy('id','asc')->select('id','fullname')->get(
 $arrUser=array();
 $ssNameUser='vmuser';
 if(Session::has($ssNameUser)){
-      $arrUser=Session::get($ssNameUser);
+	$arrUser=Session::get($ssNameUser);
 } 
 $picture                =   "";
 $strImage               =   "";
@@ -16,21 +16,22 @@ $setting = getSettingSystem();
 $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$data)>0){
-    if(!empty(@$data["logo"])){
-        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["logo"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
-        $strImage       =   @$data["logo"];
-    }        
+	if(!empty(@$data["logo"])){
+		$picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["logo"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
+		$strImage       =   @$data["logo"];
+	}        
 } 
 $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<?php echo $inputPictureHidden; ?>
-	<div class="container">
-		<div class="row">			
-			<div class="col-lg-9">
+
+{{ csrf_field() }}
+<?php echo $inputPictureHidden; ?>
+<div class="container">
+	<div class="row">			
+		<div class="col-lg-9">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Tài Khoản Nhà Tuyển Dụng</h1>
 				<?php 
 				if(count(@$msg) > 0){
@@ -109,7 +110,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 							<div><input type="file" name="image"  /></div>
 							<div><font color="#E30000"><b>Khuyến khích cập nhật logo hình vuông</b></font></div>
 						</div>
-                        <div class="picture-area"><?php echo $picture; ?>                      </div>
+						<div class="picture-area"><?php echo $picture; ?>                      </div>
 					</div>
 				</div>
 				<div class="row mia">
@@ -147,25 +148,25 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật</a></div></div>
 				</div>	
-			</div>
-			<div class="col-lg-3">
-					@include("frontend.employer-sidebar")				
-			</div>
+			</form>
+		</div>
+		<div class="col-lg-3">
+			@include("frontend.employer-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
 <script type="text/javascript" language="javascript">
 	function deleteImage(){
-        var xac_nhan = 0;
-        var msg="Bạn có muốn xóa ?";
-        if(window.confirm(msg)){ 
-            xac_nhan = 1;
-        }
-        if(xac_nhan  == 0){
-            return 0;
-        }
-        $(".picture-area").empty();
-        $("input[name='image_hidden']").val("");        
-    }
+		var xac_nhan = 0;
+		var msg="Bạn có muốn xóa ?";
+		if(window.confirm(msg)){ 
+			xac_nhan = 1;
+		}
+		if(xac_nhan  == 0){
+			return 0;
+		}
+		$(".picture-area").empty();
+		$("input[name='image_hidden']").val("");        
+	}
 </script>
 @endsection()

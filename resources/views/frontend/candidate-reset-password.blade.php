@@ -6,11 +6,11 @@ $seo=getSeo();
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8">
+{{ csrf_field() }}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<?php 
 				if(count(@$msg) > 0){
 					$type_msg='';					
@@ -47,9 +47,10 @@ $seo=getSeo();
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-4"></div>
+			</form>
 		</div>
+		<div class="col-lg-4"></div>
 	</div>
-</form>
+</div>
+
 @endsection()

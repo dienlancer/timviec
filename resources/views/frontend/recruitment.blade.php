@@ -23,20 +23,21 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 $dang_tin='';
 switch ($task) {
 	case 'add':
-		$dang_tin='Đăng tin';
-		break;
+	$dang_tin='Đăng tin';
+	break;
 	case 'edit':
-		$dang_tin='Cập nhật';
-		break;
+	$dang_tin='Cập nhật';
+	break;
 }
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">			
-			<div class="col-lg-9">
+
+{{ csrf_field() }}
+<div class="container">
+	<div class="row">			
+		<div class="col-lg-9">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Đăng Tin Tuyển Dụng</h1>
 				<?php 
 				if(count(@$msg) > 0){
@@ -202,22 +203,23 @@ switch ($task) {
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> ><?php echo $dang_tin; ?></a></div></div>
 				</div>
-			</div>
-			<div class="col-lg-3">
-				@include("frontend.employer-sidebar")				
-			</div>
+			</form>
+		</div>
+		<div class="col-lg-3">
+			@include("frontend.employer-sidebar")				
 		</div>
 	</div>
-</form>
+</div>
+
 <script type="text/javascript" language="javascript">
-		$(document).ready(function(){
-			$( 'input[name="duration"]' ).datepicker({
-		    	dateFormat: "dd/mm/yy",
-		    	defaultDate: "+3d",
-		    	changeYear: true,
-		    	changeMonth: true,
-		    	yearRange: "1975:3000"
-		    });
-		});		
-	  </script>
+	$(document).ready(function(){
+		$( 'input[name="duration"]' ).datepicker({
+			dateFormat: "dd/mm/yy",
+			defaultDate: "+3d",
+			changeYear: true,
+			changeMonth: true,
+			yearRange: "1975:3000"
+		});
+	});		
+</script>
 @endsection()

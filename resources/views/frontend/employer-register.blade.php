@@ -10,11 +10,12 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<form name="frm" method="POST" enctype="multipart/form-data">
-	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8">
+
+{{ csrf_field() }}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+			<form name="frm" method="POST" enctype="multipart/form-data">
 				<h1 class="dn-dk-h">Đăng Ký Nhà Tuyển Dụng</h1>		
 				<?php 
 				if(count(@$msg) > 0){
@@ -122,8 +123,10 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					<div class="col-lg-4" ></div>
 					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >Đăng ký</a></div></div>
 				</div>
-			</div>
+			</form>
 		</div>
+		<div class="col-lg-4"></div>
 	</div>
-</form>
+</div>
+
 @endsection()

@@ -97,7 +97,12 @@ if($source_recruitment != null){
 				{{ csrf_field() }}
 				<div class="row margin-top-10">
 					<div class="col-xs-2"></div>
-					<div class="col-xs-10"><div class="btn-dang-ky"><a href="javascript:void(0);"  >TẢI FILE TỪ MÁY TÍNH</a></div></div>
+					<div class="col-xs-10">
+						<div class="btn-dang-ky"><a href="javascript:void(0);" onclick="uploadFile();" >TẢI FILE TỪ MÁY TÍNH</a></div>
+						<div style="height: 0px; width: 0; overflow: hidden;">
+								<input type="file" name="file_attached"  />                                    
+						</div>
+					</div>
 				</div>		
 			</form>														
 		</div>			
@@ -155,6 +160,9 @@ if($source_recruitment != null){
             contentType: false,
             processData: false
         });
+	}
+	function uploadFile() {
+		$("input[name='file_attached']").click();
 	}
 </script>
 @endsection()

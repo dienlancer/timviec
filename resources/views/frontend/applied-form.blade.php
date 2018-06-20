@@ -120,14 +120,21 @@ if($source_recruitment != null){
 </div>
 <script type="text/javascript" language="javascript">
 	function apply(){		  
-        var profile_id=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]:checked').val();                
+		var profile_id=0;
+        var profile_id_selected=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]:checked');                
         var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
-        var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();                
+        var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();           
+        if(profile_id_selected.length > 0){
+        	profile_id=$(profile_id_selected).val();
+        }else{
+        	alert('Vui lòng chọn 1 hồ sơ để ứng tuyển');
+        	return false;
+        }     
         console.log(profile_id);
-        var dataItem = new FormData();
+        /*var dataItem = new FormData();
         dataItem.append('profile_id',profile_id);        
         dataItem.append('recruitment_id',recruitment_id);
-        dataItem.append('_token',token);
+        dataItem.append('_token',token);*/
         /*$.ajax({
             url: '<?php echo route("frontend.index.apply"); ?>',
             type: 'POST',

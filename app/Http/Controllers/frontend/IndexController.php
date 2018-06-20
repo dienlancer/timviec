@@ -1438,8 +1438,8 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$q='';
-		$query=DB::table('profile')   ;     
-		$query->where('profile.employer_id',(int)@$arrUser['id']);    
+		$query=DB::table('profile')   		
+		->join('candidate','recruitment_profile.candidate_id','=','candidate.id');     		
 		if(!empty(@$request->q)){
 			$q=@$request->q;
 			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
@@ -2729,7 +2729,7 @@ class IndexController extends Controller {
     			$item->file_attached=$attachment_name;                                                
     		}  
     		$item->save();  
-    		$msg['success']='Lưu file đính kèm thành công'; 
+    		$msg['success']='Ứng tuyển vị trí thành công'; 
 		}  
 		$info = array(
     		"checked"       => $checked,       		

@@ -128,14 +128,13 @@ if($source_recruitment != null){
 			return 0;
 		}             
 		var xac_nhan = 0;
-		var msg="Bạn có muốn ứng tuyển vào vị trí này không ?";
+		var msg="Bạn chắc chắn có muốn ứng tuyển vào vị trí này không ?";
 		if(window.confirm(msg)){ 
 			xac_nhan = 1;
 		}
 		if(xac_nhan  == 0){
 			return 0;
-		}
-		console.log(profile_id);
+		}		
 		var dataItem = new FormData();
 		dataItem.append('profile_id',profile_id);        
 		dataItem.append('recruitment_id',recruitment_id);
@@ -153,13 +152,11 @@ if($source_recruitment != null){
                 }else{
                 	showMsg('note',data);  
                 }
-                spinner.hide();
             },
             error : function (data){
-            	spinner.hide();
             },
             beforeSend  : function(jqXHR,setting){
-            	spinner.show();
+      
             },
             cache: false,
             contentType: false,
@@ -170,7 +167,15 @@ if($source_recruitment != null){
 		$('form[name="frm-apply-method-2"]').find("input[name='file_attached']").click();
 	}
 	function chooseFileInfo(){
-		$('form[name="frm-apply-method-2"]').find("input[name='file_attached']").change(function(){    					
+		$('form[name="frm-apply-method-2"]').find("input[name='file_attached']").change(function(){   
+			var xac_nhan = 0;
+			var msg="Bạn chắc chắn có muốn ứng tuyển vào vị trí này không ?";
+			if(window.confirm(msg)){ 
+				xac_nhan = 1;
+			}
+			if(xac_nhan  == 0){
+				return 0;
+			} 					
 			/* begin xử lý image */
 			var image_file=null;
 			var image_ctrl=$('form[name="frm-apply-method-2"]').find('input[name="file_attached"]');         
@@ -196,7 +201,7 @@ if($source_recruitment != null){
 				async: false,
 				success: function (data) {
 					if(data.checked==1){      
-						alert('Lưu file đính kèm thành công');              						
+						alert(data.msg.success);                   			
 					} else{
 						showMsg('note',data);    
 					}       			

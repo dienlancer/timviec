@@ -54,7 +54,7 @@ if($source_recruitment != null){
 					<div class="margin-top-15 nop-chon-viec">Cách 1 : Nộp hồ sơ trên hệ thống Chọn Việc</div>
 				</div>
 			</div>
-			<form name="frm-apply-logined" method="POST" enctype="multipart/form-data">
+			<form name="frm-apply-method-1" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" name="recruitment_id" value="<?php echo @$recruitment_id; ?>">		
 				<div class="list-profile">
@@ -103,9 +103,9 @@ if($source_recruitment != null){
 <script type="text/javascript" language="javascript">
 	function apply(){	
 		var profile_id=0;
-		var profile_id_selected=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]:checked');                
-		var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
-		var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();           
+		var profile_id_selected=$('form[name="frm-apply-method-1"]').find('input[name="profile_id"]:checked');                
+		var recruitment_id=$('form[name="frm-apply-method-1"]').find('input[name="recruitment_id"]').val(); 
+		var token=$('form[name="frm-apply-method-1"]').find('input[name="_token"]').val();           
 		if(profile_id_selected.length > 0){
 			profile_id=parseInt($(profile_id_selected).val()) ;
 		}else{

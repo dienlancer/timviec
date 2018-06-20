@@ -27,7 +27,7 @@ if($source_recruitment != null){
 	<div class="row">
 		<div class="col-lg-9">
 			<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>	
-			<div class="note margin-top-15" ></div>      	
+			<div class="note margin-top-15" style="display: none;" ></div>      	
 			<?php 				
 			$query=DB::table('profile')   ;     
 			$query->where('profile.candidate_id',(int)@$id);
@@ -128,7 +128,7 @@ if($source_recruitment != null){
 			return 0;
 		}             
 		var xac_nhan = 0;
-		var msg="Bạn có muốn ứng tuyển ?";
+		var msg="Bạn có muốn ứng tuyển vào vị trí này không ?";
 		if(window.confirm(msg)){ 
 			xac_nhan = 1;
 		}

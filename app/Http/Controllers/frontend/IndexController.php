@@ -1416,6 +1416,64 @@ class IndexController extends Controller {
 		);                        
 		return $info;    
 	}
+	public function viewAppliedProfile(Request $request){
+		$checked=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}
+		$totalItems=0;
+		$totalItemsPerPage=20;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ='';            
+		$q='';
+		$query=DB::table('profile')   ;     
+		$query->where('profile.employer_id',(int)@$arrUser['id']);    
+		if(!empty(@$request->q)){
+			$q=@$request->q;
+			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
+		}
+		$data=$query->select('profile.id')
+		->groupBy('profile.id')                
+		->get()->toArray();
+		$data=convertToArray($data);
+		$totalItems=count($data);    
+		$pageRange=$this->_pageRange;
+		if(isset($request->filter_page)){
+			if(!empty(@$request->filter_page)){
+				$currentPage=@$request->filter_page;
+			}
+		}          
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
+
+		$data=$query->select('profile.id','profile.fullname','profile.status_search','profile.status','profile.created_at')
+		->groupBy('profile.id','profile.fullname','profile.status_search','profile.status','profile.created_at')
+		->orderBy('profile.id', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()->toArray();   
+		$data=convertToArray($data);    
+		$data=profile2Converter($data);
+		return view('frontend.cabinet-profile',compact('data','msg','checked',"pagination",'q'));     
+	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;
 		$msg=array();        
@@ -2654,7 +2712,7 @@ class IndexController extends Controller {
     		}
     	}  
     	$source_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();
-    	if(count($source_recruitment_profile) > 0){
+    	if(count(@$source_recruitment_profile) > 0){
     		$msg['error']='Ứng viên đã ứng tuyển vị trí này';
     		$checked=0;	
     	}  	    

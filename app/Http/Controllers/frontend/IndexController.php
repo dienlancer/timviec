@@ -2624,6 +2624,45 @@ class IndexController extends Controller {
     	);                       
     	return $info;   		
 	}
+	public function saveFileApplied(Request $request){
+		$info                 	=   array();
+		$checked              	=   1;                           
+		$msg                	=   array();
+		$id 					=	trim(@$request->id); 
+		$source_file           	=   null;
+    	if(isset($_FILES["file_attached"])){
+    		$source_file         =   $_FILES["file_attached"];
+    	}        	         	 
+    	if($source_file == null){
+    		$checked=0;
+	    	$msg['notexistfileattached']='Vui lòng cập nhật file đính kèm';
+    	}else{
+    		$pattern = "#^([a-zA-Z0-9\s_\\.\-:])+(.doc|.docx|.pdf)$#"; 
+    		if(preg_match($pattern, $source_file['name'])==false){
+	    		$checked=0;
+	    		$msg['notfileattached']='Đính kèm file lỗi . File đính kèm phải ở dạng word , pdf';
+    		}
+    	}    	    
+		if ($checked == 1){
+			$attachment_name='';
+    		if($source_file != null){                                                
+    			$attachment_name=uploadAttachedFile($source_file['name'],$source_file['tmp_name']);
+    		}    		
+    		$item				=	ProfileModel::find((int)@$id);      		    		
+    		$item->file_attached=null;
+    		if(!empty($attachment_name))  {
+    			$item->file_attached=$attachment_name;                                                
+    		}  
+    		$item->save();  
+    		$msg['success']='Lưu file đính kèm thành công'; 
+		}  
+		$info = array(
+    		"checked"       => $checked,       		
+    		'msg'       	=> $msg,                
+    		"id"            => (int)@$id
+    	);                       
+    	return $info;   		
+	}
 	public function getProfileDetail(Request $request,$id){
 		$info                 =   array();
 		$checked=1;

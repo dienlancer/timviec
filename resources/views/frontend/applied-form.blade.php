@@ -98,7 +98,7 @@ if($source_recruitment != null){
 				<div class="row margin-top-10">
 					<div class="col-xs-2"></div>
 					<div class="col-xs-10">
-						<div class="btn-dang-ky"><a href="javascript:void(0);" onclick="uploadFile();" >TẢI FILE TỪ MÁY TÍNH</a></div>
+						<div class="btn-dang-ky"><a href="javascript:void(0);" onclick="uploadFile();" >CHỌN TỆP</a></div>
 						<div style="height: 0px; width: 0; overflow: hidden;">
 								<input type="file" name="file_attached"  />                                    
 						</div>
@@ -164,5 +164,47 @@ if($source_recruitment != null){
 	function uploadFile() {
 		$("input[name='file_attached']").click();
 	}
+	function chooseFileInfo(){
+		$("input[name='file_attached']").change(function(){    		
+			
+			/* begin xử lý image */
+			var image_file=null;
+			var image_ctrl=$('input[name="file_attached"]');         
+			var image_files = $(image_ctrl).get(0).files;        
+			if(image_files.length > 0){            
+				image_file  = image_files[0];  
+			}        
+			/* end xử lý image */
+			var token = $('input[name="_token"]').val();       
+			var dataItem = new FormData();			
+			if(image_files.length > 0){
+				dataItem.append('file_attached',image_file);
+			} 
+			dataItem.append('_token',token);
+			$.ajax({
+				url: '<?php echo route("frontend.index.saveFileApplied"); ?>',
+				type: 'POST',
+				data: dataItem,
+				async: false,
+				success: function (data) {
+					if(data.checked==1){      
+						alert('Lưu file đính kèm thành công');              						
+					} else{
+						showMsg('note',data);    
+					}       			
+				},
+				error : function (data){
+					
+				},
+				beforeSend  : function(jqXHR,setting){
+					
+				},
+				cache: false,
+				contentType: false,
+				processData: false
+			});
+		});
+	}
+	chooseFileInfo();
 </script>
 @endsection()

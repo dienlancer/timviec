@@ -1621,6 +1621,35 @@ function recruitmentConverter($data=array(),$controller){
     }
     return $result;
 }
+function recruitmentProfileConverter($data=array(),$controller){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){
+           
+            
+            $id=@$data[$i]["id"];   
+            $fullname=$data[$i]["fullname"];      
+            $employer_fullname=@$data[$i]['employer_fullname'];            
+            $user_fullname=@$data[$i]['user_fullname'];   
+            $created_at='<center>'.getDateTime($data[$i]["created_at"]).'</center>';               
+            $result[$i] = array(
+                'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
+                'is_checked'               =>   0,
+                "id"                       =>   $id,
+                "fullname"                 =>   $fullname,                         
+                'employer_fullname'        =>   $employer_fullname,
+                'user_fullname'            =>   $user_fullname,
+                "status_employer"          =>   $status_employer,
+                "status"                   =>   $status,
+                "created_at"               =>   $created_at,
+                "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),
+                "edited"                   =>   $edited,
+                "deleted"                  =>   $deleted
+            );
+        }
+    }
+    return $result;
+}
 function recruitment2Converter($data=array()){        
     $result = array();    
     if( count($data) > 0){

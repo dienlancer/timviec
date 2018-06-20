@@ -1437,15 +1437,22 @@ class IndexController extends Controller {
 		$pageRange=0;      
 		$currentPage=1;  
 		$pagination ='';            
-		$q='';
-		$query=DB::table('profile')   		
-		->join('candidate','recruitment_profile.candidate_id','=','candidate.id');     		
-		if(!empty(@$request->q)){
-			$q=@$request->q;
-			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
+		$recruitment_name='';
+		$candidate_name='';
+		$query=DB::table('recruitment')
+		->join('recruitment_profile','recruitment.id','=','recruitment_profile.recruitment_id')
+		->join('candidate','candidate.id','=','recruitment_profile.candidate_id');     		
+		if(!empty(@$request->recruitment_name)){
+			$recruitment_name=@$request->recruitment_name;
+			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
 		}
-		$data=$query->select('profile.id')
-		->groupBy('profile.id')                
+		if(!empty(@$request->candidate_name)){
+			$candidate_name=@$request->candidate_name;
+			$query->where('candidate.fullname','like', '%'.trim(@$candidate_name).'%');
+		}
+		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
+		$data=$query->select('recruitment.id')
+		->groupBy('recruitment.id')                
 		->get()->toArray();
 		$data=convertToArray($data);
 		$totalItems=count($data);    
@@ -1464,15 +1471,15 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('profile.id','profile.fullname','profile.status_search','profile.status','profile.created_at')
-		->groupBy('profile.id','profile.fullname','profile.status_search','profile.status','profile.created_at')
-		->orderBy('profile.id', 'desc')
+		$data=$query->select('recruitment.id','recruitment.fullname')
+		->groupBy('recruitment.id','recruitment.fullname')
+		->orderBy('recruitment.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
-		$data=profile2Converter($data);
-		return view('frontend.cabinet-profile',compact('data','msg','checked',"pagination",'q'));     
+		$data=recruitmentProfileConverter($data);
+		return view('frontend.cabinet-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

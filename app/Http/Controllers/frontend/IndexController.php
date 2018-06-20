@@ -2628,7 +2628,8 @@ class IndexController extends Controller {
 		$info                 	=   array();
 		$checked              	=   1;                           
 		$msg                	=   array();
-		$id 					=	trim(@$request->id); 
+		$recruitment_id 		=	trim(@$request->recruitment_id); 
+		$candidate_id 			=	trim(@$request->candidate_id); 
 		$source_file           	=   null;
     	if(isset($_FILES["file_attached"])){
     		$source_file         =   $_FILES["file_attached"];
@@ -2648,7 +2649,9 @@ class IndexController extends Controller {
     		if($source_file != null){                                                
     			$attachment_name=uploadAttachedFile($source_file['name'],$source_file['tmp_name']);
     		}    		
-    		$item				=	ProfileModel::find((int)@$id);      		    		
+    		$item				= new	RecruitmentProfileModel;
+    		$item->recruitment_id=(int)@$recruitment_id;
+    		$item->candidate_id=(int)@$candidate_id;    		
     		$item->file_attached=null;
     		if(!empty($attachment_name))  {
     			$item->file_attached=$attachment_name;                                                
@@ -2658,8 +2661,7 @@ class IndexController extends Controller {
 		}  
 		$info = array(
     		"checked"       => $checked,       		
-    		'msg'       	=> $msg,                
-    		"id"            => (int)@$id
+    		'msg'       	=> $msg
     	);                       
     	return $info;   		
 	}

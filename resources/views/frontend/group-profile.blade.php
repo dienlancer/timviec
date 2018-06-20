@@ -17,7 +17,7 @@ $linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
-			<form name="frm" method="POST" enctype="multipart/form-data">
+			<form name="frm-group-profile" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<?php echo $inputID; ?>
 				<input type="hidden" name="filter_page" value="1">      
@@ -47,58 +47,22 @@ $linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 	</div>
 </div>
 
-<script type="text/javascript" language="javascript">
-	$(document).ready(function(){
-		$( 'input[name="duration"]' ).datepicker({
-			dateFormat: "dd/mm/yy",
-			defaultDate: "+3d",
-			changeYear: true,
-			changeMonth: true,
-			yearRange: "1975:3000"
-		});
-	});	
-	function changeStatus(id,status){		
-		var token = $("form[name='frm']").find("input[name='_token']").val();   
-		var dataItem={   
-			'id':id,
-			'status':status,         
-			'_token': token
-		};
-		$.ajax({
-			url: '<?php echo $linkChangeProfileSearchStatus; ?>',
-			type: 'POST',     
-			data: dataItem,
-			success: function (data, status, jqXHR) {   				
-				var element     = 'a#status-' + data['id'];
-				var classRemove = 'publish';
-				var classAdd    = 'unpublish';
-				if(parseInt(data['status']) ==1){
-					classRemove = 'unpublish';
-					classAdd    = 'publish';
-				}
-				$(element).attr('onclick',data['link']);
-				$(element + ' span').removeClass(classRemove).addClass(classAdd);
-			},
-			beforeSend  : function(jqXHR,setting){
-				
-			},
-		});				
-	}	
+<script type="text/javascript" language="javascript">	
 	function uploadFile() {
-		$("input[name='file_attached']").click();
+		$("form[name='frm-group-profile']").find("input[name='file_attached']").click();
 	}
 	function chooseFileInfo(){
-		$("input[name='file_attached']").change(function(){    		
-			var id=$('input[name="id"]').val();        
+		$("form[name='frm-group-profile']").find("input[name='file_attached']").change(function(){    		
+			var id=$("form[name='frm-group-profile']").find('input[name="id"]').val();        
 			/* begin xử lý image */
 			var image_file=null;
-			var image_ctrl=$('input[name="file_attached"]');         
+			var image_ctrl=$("form[name='frm-group-profile']").find('input[name="file_attached"]');         
 			var image_files = $(image_ctrl).get(0).files;        
 			if(image_files.length > 0){            
 				image_file  = image_files[0];  
 			}        
 			/* end xử lý image */
-			var token = $('input[name="_token"]').val();       
+			var token =$("form[name='frm-group-profile']").find('input[name="_token"]').val();       
 			var dataItem = new FormData();
 			dataItem.append('id',id);
 			if(image_files.length > 0){

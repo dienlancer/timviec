@@ -11,11 +11,12 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 
-{{ csrf_field() }}
+
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
 			<form name="frm" method="POST" enctype="multipart/form-data">
+				{{ csrf_field() }}
 				<h1 class="dn-dk-h">Đăng Ký Nhà Tuyển Dụng</h1>		
 				<?php 
 				if(count(@$msg) > 0){

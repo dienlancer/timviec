@@ -21,12 +21,13 @@ if($source_recruitment != null){
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-{{ csrf_field() }}
+
 <input type="hidden" name="recruitment_id" value="<?php echo @$recruitment_id; ?>">				
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9">
 			<form name="frm-apply-logined" method="POST" enctype="multipart/form-data">
+				{{ csrf_field() }}
 				<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>	
 				<div class="note" ></div>      	
 				<?php 				

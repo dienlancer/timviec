@@ -26,12 +26,13 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 
-{{ csrf_field() }}
+
 <?php echo $inputPictureHidden; ?>
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
 			<form name="frm" method="POST" enctype="multipart/form-data">
+				{{ csrf_field() }}
 				<h1 class="dn-dk-h">Tài Khoản Nhà Tuyển Dụng</h1>
 				<?php 
 				if(count(@$msg) > 0){

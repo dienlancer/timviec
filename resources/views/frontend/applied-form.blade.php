@@ -4,7 +4,7 @@
 <?php 
 $seo=getSeo();
 $disabled_status='';
-$register_status='onclick="document.forms[\'frm-apply-logined\'].submit();"';
+$register_status='onclick="apply();"';
 $arrUser=array();
 $id=0;
 if(Session::has("vmuser")){
@@ -119,15 +119,13 @@ if($source_recruitment != null){
 	</div>
 </div>
 <script type="text/javascript" language="javascript">
-	function loginApply(){
-        var profile_id=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]').val();        
-        var password=$('form[name="frm-apply-logined"]').find('input[name="password"]').val();                  
+	function apply(){		  
+        var profile_id=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]').val();                
         var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
         var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();                
 
         var dataItem = new FormData();
-        dataItem.append('email',email);
-        dataItem.append('password',password);                        
+        dataItem.append('profile_id',profile_id);        
         dataItem.append('recruitment_id',recruitment_id);
         dataItem.append('_token',token);
         $.ajax({

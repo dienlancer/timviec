@@ -120,16 +120,16 @@ if($source_recruitment != null){
 </div>
 <script type="text/javascript" language="javascript">
 	function apply(){		  
-        var profile_id=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]').val();                
+        var profile_id=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]:checked').val();                
         var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
         var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();                
-
+        console.log(profile_id);
         var dataItem = new FormData();
         dataItem.append('profile_id',profile_id);        
         dataItem.append('recruitment_id',recruitment_id);
         dataItem.append('_token',token);
-        $.ajax({
-            url: '<?php echo route("frontend.index.loginApply"); ?>',
+        /*$.ajax({
+            url: '<?php echo route("frontend.index.apply"); ?>',
             type: 'POST',
             data: dataItem,
             async: false,
@@ -151,7 +151,7 @@ if($source_recruitment != null){
             cache: false,
             contentType: false,
             processData: false
-        });
+        });*/
     }
 </script>
 @endsection()

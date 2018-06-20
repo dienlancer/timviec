@@ -1384,6 +1384,24 @@ class IndexController extends Controller {
 		);                        
 		return $info;                  
 	}   
+	function apply(Request $request){
+		$msg=array();
+		$checked=1;		     		
+		$source=array();	
+		$info=array();	
+		
+		if($request->isMethod('post')){                    
+			$profile_id              = (int)@$request->profile_id;			
+			$recruitment_id 	= (int)@$request->recruitment_id;		
+			
+		}                       
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,      
+			
+		);                        
+		return $info;     
+	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;
 		$msg=array();        

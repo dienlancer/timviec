@@ -126,7 +126,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 				</div>
 			</form>
 		</div>
-		<div class="col-lg-4"></div>
+		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>
 </div>
 

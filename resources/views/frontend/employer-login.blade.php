@@ -60,7 +60,7 @@ $seo=getSeo();
 				</div>
 			</form>
 		</div>
-		<div class="col-lg-4"></div>
+		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>
 </div>
 @endsection()

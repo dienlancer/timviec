@@ -27,7 +27,7 @@ if($source_recruitment != null){
 	<div class="row">
 		<div class="col-lg-9">
 			<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>	
-			<div class="note" ></div>      	
+			<div class="note margin-top-15" ></div>      	
 			<?php 				
 			$query=DB::table('profile')   ;     
 			$query->where('profile.candidate_id',(int)@$id);

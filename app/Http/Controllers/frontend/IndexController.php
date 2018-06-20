@@ -1393,14 +1393,21 @@ class IndexController extends Controller {
 			$profile_id              = (int)@$request->profile_id;			
 			$recruitment_id 	= (int)@$request->recruitment_id;	
 			$candidate_id = (int)@$request->candidate_id;	
-			$item=new RecruitmentProfileModel;
-			$item->profile_id=(int)@$profile_id;
-			$item->recruitment_id=(int)@$recruitment_id;
-			$item->candidate_id=(int)@$candidate_id;
-			$item->created_at 	=	date("Y-m-d H:i:s",time());        
-			$item->updated_at 	=	date("Y-m-d H:i:s",time());        
-			$item->save();			
-			$msg['success']='Nộp hồ sơ hoàn tất';
+			$source_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();
+			if(count($source_recruitment_profile) > 0){
+				$msg['error']='Ứng viên đã ứng tuyển vị trí này';
+				$checked=0;	
+			}
+			if((int)@$checked==1){
+				$item=new RecruitmentProfileModel;
+				$item->profile_id=(int)@$profile_id;
+				$item->recruitment_id=(int)@$recruitment_id;
+				$item->candidate_id=(int)@$candidate_id;
+				$item->created_at 	=	date("Y-m-d H:i:s",time());        
+				$item->updated_at 	=	date("Y-m-d H:i:s",time());        
+				$item->save();			
+				$msg['success']='Nộp hồ sơ hoàn tất';
+			}			
 		}                       
 		$info = array(
 			"checked"       => $checked,          
@@ -2645,7 +2652,12 @@ class IndexController extends Controller {
 	    		$checked=0;
 	    		$msg['notfileattached']='Đính kèm file lỗi . File đính kèm phải ở dạng word , pdf';
     		}
-    	}    	    
+    	}  
+    	$source_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();
+    	if(count($source_recruitment_profile) > 0){
+    		$msg['error']='Ứng viên đã ứng tuyển vị trí này';
+    		$checked=0;	
+    	}  	    
 		if ($checked == 1){
 			$attachment_name='';
     		if($source_file != null){                                                

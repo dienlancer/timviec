@@ -1471,15 +1471,15 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('recruitment.id','recruitment.fullname')
-		->groupBy('recruitment.id','recruitment.fullname')
+		$data=$query->select('recruitment.id','recruitment.fullname','candidate.fullname as candidate_name')
+		->groupBy('recruitment.id','recruitment.fullname','candidate.fullname')
 		->orderBy('recruitment.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=recruitmentProfileConverter($data);
-		return view('frontend.cabinet-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
+		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

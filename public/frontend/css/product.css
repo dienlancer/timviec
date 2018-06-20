@@ -538,8 +538,6 @@ div.modal-add-cart div.modal-header > button.close{
         padding: 15px 30px 15px 15px;
         border-left: 5px solid #f0868e;
 }
-.jgrid span.publish                 { background-image: url(../images/active.png);background-repeat: no-repeat ;    padding: 0px 6px; }
-.jgrid span.unpublish               { background-image: url(../images/inactive.png);background-repeat: no-repeat ;    padding: 0px 6px; }
 @media (max-width: 1199px){
     .com_product32{
         width: 100%;

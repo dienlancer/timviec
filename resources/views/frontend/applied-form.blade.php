@@ -11,6 +11,13 @@ if(Session::has("vmuser")){
 	$arrUser=Session::get("vmuser");
 	$id=@$arrUser['id'];
 }     
+$source_recruitment=\App\RecruitmentModel::find((int)@$recruitment_id);
+$data_recruitment=array();
+$recruitment_name='';
+if($source_recruitment != null){
+	$data_recruitment=$source_recruitment->toArray();	
+	$recruitment_name=@$data_recruitment['fullname'];
+}
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -52,6 +59,16 @@ if(Session::has("vmuser")){
 				->get()->toArray();	
 				$data_profile=convertToArray($source_profile);		
 				?>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="margin-top-15"><div class="nop-chon-viec">Bạn muốn nộp hồ sơ vào vị trí <span class="recruitment-name">"<?php echo $recruitment_name; ?>"</span></div></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="margin-top-15">Vui lòng chọn 1 trong 2 cách dưới đây</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="margin-top-15 nop-chon-viec">Cách 1 : Nộp hồ sơ trên hệ thống Chọn Việc</div>

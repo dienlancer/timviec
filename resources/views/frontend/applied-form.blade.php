@@ -125,7 +125,7 @@ if($source_recruitment != null){
         var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
         var token=$('form[name="frm-apply-logined"]').find('input[name="_token"]').val();           
         if(profile_id_selected.length > 0){
-        	profile_id=$(profile_id_selected).val();
+        	profile_id=parseInt($(profile_id_selected).val()) ;
         }else{
         	alert('Vui lòng chọn 1 hồ sơ để ứng tuyển');
         	return false;

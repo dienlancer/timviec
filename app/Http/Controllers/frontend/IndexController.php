@@ -46,6 +46,7 @@ use App\ProfileGraduationModel;
 use App\ProfileLanguageModel;
 use App\ProfileSkillModel;
 use App\ProvinceModel;
+use App\RecruitmentProfileModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -1386,14 +1387,18 @@ class IndexController extends Controller {
 	}   
 	function apply(Request $request){
 		$msg=array();
-		$checked=1;		     		
-		$source=array();	
-		$info=array();	
-		
+		$checked=1;		     				
+		$info=array();			
 		if($request->isMethod('post')){                    
 			$profile_id              = (int)@$request->profile_id;			
 			$recruitment_id 	= (int)@$request->recruitment_id;		
-			
+			$item=new RecruitmentProfileModel;
+			$item->profile_id=(int)@$profile_id;
+			$item->recruitment_id=(int)@$recruitment_id;
+			$item->created_at 	=	date("Y-m-d H:i:s",time());        
+			$item->updated_at 	=	date("Y-m-d H:i:s",time());        
+			$item->save();
+			$msg['success']='Nộp hồ sơ hoàn tất';
 		}                       
 		$info = array(
 			"checked"       => $checked,          

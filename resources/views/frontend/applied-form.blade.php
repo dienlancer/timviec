@@ -27,31 +27,9 @@ if($source_recruitment != null){
 	<div class="row">
 		<div class="col-lg-9">
 			<form name="frm-apply-logined" method="POST" enctype="multipart/form-data">
-				<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>		
-				<?php 
-				if(count(@$msg) > 0){
-					$type_msg='';					
-					if((int)@$checked == 1){
-						$disabled_status='disabled';
-						$register_status='';
-						$type_msg='note-success';
-					}else{
-						$type_msg='note-danger';
-					}
-					?>
-					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
-						<ul>
-							<?php 
-							foreach (@$msg as $key => $value) {
-								?>
-								<li><?php echo $value; ?></li>
-								<?php
-							}
-							?>                              
-						</ul>	
-					</div>      
-					<?php
-				}						
+				<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>	
+				<div class="note" ></div>      	
+				<?php 				
 				$query=DB::table('profile')   ;     
 				$query->where('profile.candidate_id',(int)@$id);
 				$query->where('profile.status',1);    				
@@ -119,7 +97,7 @@ if($source_recruitment != null){
 	</div>
 </div>
 <script type="text/javascript" language="javascript">
-	function apply(){		  
+	function apply(){	
 		var profile_id=0;
         var profile_id_selected=$('form[name="frm-apply-logined"]').find('input[name="profile_id"]:checked');                
         var recruitment_id=$('form[name="frm-apply-logined"]').find('input[name="recruitment_id"]').val(); 
@@ -128,14 +106,22 @@ if($source_recruitment != null){
         	profile_id=parseInt($(profile_id_selected).val()) ;
         }else{
         	alert('Vui lòng chọn 1 hồ sơ để ứng tuyển');
-        	return false;
-        }     
-        console.log(profile_id);
-        /*var dataItem = new FormData();
+        	return 0;
+        }             
+        var xac_nhan = 0;
+		var msg="Bạn có muốn ứng tuyển ?";
+		if(window.confirm(msg)){ 
+			xac_nhan = 1;
+		}
+		if(xac_nhan  == 0){
+			return 0;
+		}
+		console.log(profile_id);
+        var dataItem = new FormData();
         dataItem.append('profile_id',profile_id);        
         dataItem.append('recruitment_id',recruitment_id);
-        dataItem.append('_token',token);*/
-        /*$.ajax({
+        dataItem.append('_token',token);
+        $.ajax({
             url: '<?php echo route("frontend.index.apply"); ?>',
             type: 'POST',
             data: dataItem,
@@ -143,7 +129,7 @@ if($source_recruitment != null){
             success: function (data) {                
                if(data.checked==1){    
                		alert(data.msg.success);                      
-                    window.location.href = data.link_edit;                    
+                    //window.location.href = data.link_edit;                    
                 }else{
                     showMsg('note',data);  
                 }
@@ -158,7 +144,7 @@ if($source_recruitment != null){
             cache: false,
             contentType: false,
             processData: false
-        });*/
+        });
     }
 </script>
 @endsection()

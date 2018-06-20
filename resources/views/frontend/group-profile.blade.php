@@ -20,7 +20,7 @@ $linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 			<form name="frm" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<?php echo $inputID; ?>
-<input type="hidden" name="filter_page" value="1">      
+				<input type="hidden" name="filter_page" value="1">      
 				<h1 class="dn-dk-h">BỘ HỒ SƠ</h1>
 				<div class="note margin-top-15"  style="display: none;"></div>
 				<div class="box-group-profile">					

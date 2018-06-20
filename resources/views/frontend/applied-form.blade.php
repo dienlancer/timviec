@@ -26,8 +26,6 @@ if($source_recruitment != null){
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			
-
 			<h1 class="dn-dk-h">NỘP HỒ SƠ TRỰC TUYẾN</h1>	
 			<div class="note" ></div>      	
 			<?php 				
@@ -35,6 +33,7 @@ if($source_recruitment != null){
 			$query->where('profile.candidate_id',(int)@$id);
 			$query->where('profile.status',1);    				
 			$source_profile=$query->select('profile.id','profile.fullname','profile.status')
+			->orderBy('profile.id','DESC')			
 			->groupBy('profile.id','profile.fullname','profile.status') 
 			->get()->toArray();	
 			$data_profile=convertToArray($source_profile);		
@@ -93,7 +92,14 @@ if($source_recruitment != null){
 				<div class="col-lg-12">
 					<div class="margin-top-15 nop-chon-viec">Cách 2 : Tải hồ sơ đính kèm từ máy tính</div>
 				</div>
-			</div>													
+			</div>	
+			<form name="frm-apply-method-2" method="POST" enctype="multipart/form-data">
+				{{ csrf_field() }}
+				<div class="row margin-top-10">
+					<div class="col-xs-2"></div>
+					<div class="col-xs-10"><div class="btn-dang-ky"><a href="javascript:void(0);"  >TẢI FILE TỪ MÁY TÍNH</a></div></div>
+				</div>		
+			</form>														
 		</div>			
 		<div class="col-lg-3">
 			@include("frontend.candidate-sidebar")				

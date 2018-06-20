@@ -101,16 +101,16 @@ if($source_recruitment != null){
 						<?php
 					}				
 					?>						
-				</div>		
+				</div>	
+				<div class="row margin-top-10">
+					<div class="col-xs-2"></div>
+					<div class="col-xs-10"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >NỘP HỒ SƠ</a></div></div>
+				</div>	
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="margin-top-15 nop-chon-viec">Cách 2 : Tải hồ sơ đính kèm từ máy tính</div>
 					</div>
-				</div>						
-				<div class="row mia">
-					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" <?php echo $register_status; ?> >NỘP HỒ SƠ</a></div></div>
-				</div>
+				</div>										
 			</form>
 		</div>			
 		<div class="col-lg-3">

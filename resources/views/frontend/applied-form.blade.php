@@ -103,7 +103,7 @@ if($source_recruitment != null){
 				</div>		
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="margin-top-15 nop-chon-viec">Cách 2 : Tải hồ sơ đình kèm từ máy tính</div>
+						<div class="margin-top-15 nop-chon-viec">Cách 2 : Tải hồ sơ đính kèm từ máy tính</div>
 					</div>
 				</div>						
 				<div class="row mia">

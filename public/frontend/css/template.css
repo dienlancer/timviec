@@ -405,7 +405,7 @@ div.opacity-absolute::before{
 }
 .tao-ho-so a .sloganthsmp{
     color: #333;
-
+    font-size: 12px;
     margin-top: 5px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
@@ -444,7 +444,7 @@ div.opacity-absolute::before{
 }
 .lam-dep-ho-so a .sloganthsmp{
     color: #333;
-
+    font-size: 12px;
     margin-top: 5px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    
@@ -502,7 +502,7 @@ div.opacity-absolute::before{
 }
 .dang-tin-mien-phi a .sloganthsmp{
     color: #333;
-
+font-size: 12px;
     margin-top: 5px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;    

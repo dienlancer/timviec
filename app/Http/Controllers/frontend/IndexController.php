@@ -1385,11 +1385,12 @@ class IndexController extends Controller {
 		);                        
 		return $info;                  
 	}   
-	function apply(Request $request){
+	public function apply(Request $request){
 		$msg=array();
 		$checked=1;		     				
-		$info=array();			
-		if($request->isMethod('post')){                    
+		$info=array();		
+		echo "<pre>".print_r(__METHOD__,true)."</pre>";	die();
+		/*if($request->isMethod('post')){                    
 			$profile_id              = (int)@$request->profile_id;			
 			$recruitment_id 	= (int)@$request->recruitment_id;		
 			$item=new RecruitmentProfileModel;
@@ -1398,6 +1399,7 @@ class IndexController extends Controller {
 			$item->created_at 	=	date("Y-m-d H:i:s",time());        
 			$item->updated_at 	=	date("Y-m-d H:i:s",time());        
 			$item->save();
+			echo "<pre>".print_r($item,true)."</pre>";die();
 			$msg['success']='Nộp hồ sơ hoàn tất';
 		}                       
 		$info = array(
@@ -1405,7 +1407,7 @@ class IndexController extends Controller {
 			'msg'       => $msg,      
 			
 		);                        
-		return $info;     
+		return $info;     */
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

@@ -55,7 +55,8 @@ if($source_recruitment != null){
 			</div>
 			<form name="frm-apply-method-1" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
-				<input type="hidden" name="recruitment_id" value="<?php echo @$recruitment_id; ?>">		
+				<input type="hidden" name="recruitment_id" value="<?php echo @$recruitment_id; ?>">	
+				<input type="hidden" name="candidate_id" value="<?php echo @$id; ?>">	
 				<div class="list-profile">
 					<?php		
 					if(count(@$data_profile) > 0){
@@ -118,6 +119,7 @@ if($source_recruitment != null){
 		var profile_id=0;
 		var profile_id_selected=$('form[name="frm-apply-method-1"]').find('input[name="profile_id"]:checked');                
 		var recruitment_id=$('form[name="frm-apply-method-1"]').find('input[name="recruitment_id"]').val(); 
+		var candidate_id=$('form[name="frm-apply-method-1"]').find('input[name="candidate_id"]').val(); 
 		var token=$('form[name="frm-apply-method-1"]').find('input[name="_token"]').val();           
 		if(profile_id_selected.length > 0){
 			profile_id=parseInt($(profile_id_selected).val()) ;
@@ -137,6 +139,7 @@ if($source_recruitment != null){
 		var dataItem = new FormData();
 		dataItem.append('profile_id',profile_id);        
 		dataItem.append('recruitment_id',recruitment_id);
+		dataItem.append('candidate_id',candidate_id);
 		dataItem.append('_token',token);
 		$.ajax({
 			url: '<?php echo route("frontend.index.apply"); ?>',
@@ -167,8 +170,7 @@ if($source_recruitment != null){
 		$('form[name="frm-apply-method-2"]').find("input[name='file_attached']").click();
 	}
 	function chooseFileInfo(){
-		$('form[name="frm-apply-method-2"]').find("input[name='file_attached']").change(function(){    		
-			
+		$('form[name="frm-apply-method-2"]').find("input[name='file_attached']").change(function(){    					
 			/* begin xử lý image */
 			var image_file=null;
 			var image_ctrl=$('form[name="frm-apply-method-2"]').find('input[name="file_attached"]');         

@@ -1391,10 +1391,12 @@ class IndexController extends Controller {
 		$info=array();				
 		if($request->isMethod('post')){                    
 			$profile_id              = (int)@$request->profile_id;			
-			$recruitment_id 	= (int)@$request->recruitment_id;		
+			$recruitment_id 	= (int)@$request->recruitment_id;	
+			$candidate_id = (int)@$request->candidate_id;	
 			$item=new RecruitmentProfileModel;
 			$item->profile_id=(int)@$profile_id;
 			$item->recruitment_id=(int)@$recruitment_id;
+			$item->candidate_id=(int)@$candidate_id;
 			$item->created_at 	=	date("Y-m-d H:i:s",time());        
 			$item->updated_at 	=	date("Y-m-d H:i:s",time());        
 			$item->save();			

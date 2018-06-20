@@ -13,13 +13,15 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
-			<form name="frm" method="POST" enctype="multipart/form-data">
+			<form name="frm-manage-recruitment" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" name="filter_page" value="1">     
 				<h1 class="dn-dk-h">Danh Sách Tin Tuyển Dụng</h1>
-				<div class="flamentco margin-top-15">
-					<div class="kaso"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo $q; ?>" placeholder="Nhập tiêu đề tin đăng..."></div>
-					<div class="btn-search-recruitment margin-left-15"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();">Lọc</a></div>
+				<div class="margin-top-15">
+					<div class="row">
+						<div class="col-lg-8"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo $q; ?>" placeholder="Nhập tiêu đề tin đăng..."></div>
+						<div class="col-lg-4"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-manage-recruitment'].submit();">Lọc</a></div></div>
+					</div>										
 				</div>
 				@if(Session::has("message"))	
 				<?php 
@@ -98,17 +100,8 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 </div>
 
 <script type="text/javascript" language="javascript">
-	$(document).ready(function(){
-		$( 'input[name="duration"]' ).datepicker({
-			dateFormat: "dd/mm/yy",
-			defaultDate: "+3d",
-			changeYear: true,
-			changeMonth: true,
-			yearRange: "1975:3000"
-		});
-	});	
 	function changeStatus(id,status){		
-		var token = $("form[name='frm']").find("input[name='_token']").val();   
+		var token = $("form[name='frm-manage-recruitment']").find("input[name='_token']").val();   
 		var dataItem={   
 			'id':id,
 			'status':status,         

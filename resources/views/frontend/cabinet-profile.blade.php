@@ -9,12 +9,13 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 
 
-<input type="hidden" name="filter_page" value="1">         
+     
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
 			<form name="frm" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				<input type="hidden" name="filter_page" value="1">    
 				<h1 class="dn-dk-h">TỦ HỒ SƠ</h1>
 				<div class="flamentco margin-top-15">
 					<div class="kaso"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo $q; ?>" placeholder="Nhập tiêu đề hồ sơ..."></div>

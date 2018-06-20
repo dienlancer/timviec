@@ -13,13 +13,14 @@ $linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 
 
-<?php echo $inputID; ?>
-<input type="hidden" name="filter_page" value="1">         
+   
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
 			<form name="frm" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				<?php echo $inputID; ?>
+<input type="hidden" name="filter_page" value="1">      
 				<h1 class="dn-dk-h">BỘ HỒ SƠ</h1>
 				<div class="note margin-top-15"  style="display: none;"></div>
 				<div class="box-group-profile">					

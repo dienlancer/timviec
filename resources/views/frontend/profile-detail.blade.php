@@ -131,12 +131,13 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
 
 
-<?php echo $inputID; ?>
+
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
 			<form name="frm" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				<?php echo $inputID; ?>
 				<h1 class="dn-dk-h">Tạo Hồ Sơ Từng Bước</h1>				
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>

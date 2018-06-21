@@ -1506,18 +1506,31 @@ class IndexController extends Controller {
 		$pagination ='';            
 		$q='';		
 		$query=DB::table('profile')		
-		->join('candidate','profile.candidate_id','=','candidate.id');     		
+		->join('candidate','profile.candidate_id','=','candidate.id')
+		->join('literacy','profile.literacy_id','=','literacy.id')
+		->join('experience','profile.experience_id','=','experience.id')
+		->join('profile_place','profile.id','=','profile_place.profile_id')
+		->join('province','profile_place.province_id','=','province.id');     		
 		if(!empty(@$request->q)){
 			$q=@$request->q;
 			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
 		}	
-		if((int)@$request->job_id > 0){
-			$query->join('profile_job','profile.id','=','profile_job.profile_id');
+		if((int)@$request->job_id > 0){		
+			$query->join('profile_job','profile.id','=','profile_job.profile_id')	
 			$query->where('profile_job.job_id',(int)@$request->job_id);
 		}			
-		if((int)@$request->province_id > 0){
-			$query->join('profile_place','profile.id','=','profile_place.profile_id');
+		if((int)@$request->province_id > 0){			
 			$query->where('profile_place.province_id',(int)@$request->province_id);
+		}
+		if(!empty(@$request->salary)){
+			$pattern_dot='#\.#';
+			$salary=preg_replace($pattern_dot, '', @$request->salary);   			
+			$salary_id=(int)@$request->salary_id;
+			if($salary_id == 1){
+				$query->where('profile.salary','>=',(int)@$salary);
+			}else{
+				$query->where('profile.salary','<',(int)@$salary);
+			}			
 		}
 		if((int)@$request->literacy_id > 0){
 			$query->where('profile.literacy_id',(int)@$request->literacy_id);
@@ -1529,9 +1542,8 @@ class IndexController extends Controller {
 		if((int)@$request->sex_id > 0){
 			$query->where('candidate.sex_id',(int)@$request->sex_id);
 		}
-		if((int)@$request->experience_id > 0){
-			$query->join('profile_experience','profile.id','=','profile_experience.profile_id');
-			$query->where('profile_experience.experience_id',(int)@$request->experience_id);
+		if((int)@$request->experience_id > 0){			
+			$query->where('profile.experience_id',(int)@$request->experience_id);
 		}	
 		$data=$query->select('profile.id')
 		->groupBy('profile.id')       

@@ -31,11 +31,19 @@ $setting = getSettingSystem();
 						?>		
 					</div>	
 					<div class="margin-top-10">
-						<?php 
-						$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-						$ddlSalary=cmsSelectboxCategory("salary_id","vacca",@$source_salary,0,'','Chọn mức lương');
-						echo $ddlSalary;
-						?>
+						<div class="row">
+							<div class="col-sm-3">
+								<div class="lunarnewyear">
+									<div>Lớn hơn</div>
+									<div class="margin-left-5"><input type="radio" name="salary_id" value="1" checked> </div>
+									<div class="margin-left-15">Nhỏ hơn</div>
+									<div class="margin-left-5"><input type="radio" name="salary_id" value="0"></div>
+								</div>								
+							</div>
+							<div class="col-sm-9">
+								<input type="text" name="salary" class="vacca" placeholder="Ghi rõ mức lương bằng số"  onkeyup="PhanCachSoTien(this);"   >
+							</div>
+						</div>
 					</div>	
 					<div class="margin-top-10">
 						<?php 

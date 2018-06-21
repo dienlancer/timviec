@@ -1439,20 +1439,20 @@ class IndexController extends Controller {
 		$pagination ='';            
 		$recruitment_name='';
 		$candidate_name='';
-		$query=DB::table('recruitment')
-		->join('recruitment_profile','recruitment.id','=','recruitment_profile.recruitment_id')
-		->join('candidate','candidate.id','=','recruitment_profile.candidate_id');     		
-		if(!empty(@$request->recruitment_name)){
-			$recruitment_name=@$request->recruitment_name;
-			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
-		}
+		$query=DB::table('candidate')		
+		->join('recruitment_profile','candidate.id','=','recruitment_profile.candidate_id')		
+		->join('recruitment','recruitment.id','=','recruitment_profile.recruitment_id');     		
 		if(!empty(@$request->candidate_name)){
 			$candidate_name=@$request->candidate_name;
 			$query->where('candidate.fullname','like', '%'.trim(@$candidate_name).'%');
 		}
+		if(!empty(@$request->recruitment_name)){
+			$recruitment_name=@$request->recruitment_name;
+			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
+		}		
 		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
-		$data=$query->select('recruitment.id')
-		->groupBy('recruitment.id')                
+		$data=$query->select('candidate.id')
+		->groupBy('candidate.id')                
 		->get()->toArray();
 		$data=convertToArray($data);
 		$totalItems=count($data);    
@@ -1471,8 +1471,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('recruitment.id','recruitment.fullname','candidate.fullname as candidate_name')
-		->groupBy('recruitment.id','recruitment.fullname','candidate.fullname')
+		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name')
+		->groupBy('candidate.id','candidate.fullname','recruitment.fullname')
 		->orderBy('recruitment.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
@@ -1480,6 +1480,9 @@ class IndexController extends Controller {
 		$data=convertToArray($data);    
 		$data=recruitmentProfileConverter($data);
 		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
+	}
+	public function getAppliedProfileDetail($candidate_id){
+		
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

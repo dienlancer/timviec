@@ -14,17 +14,18 @@ $seo=getSeo();
 				<input type="hidden" name="filter_page" value="1">     
 				<h1 class="dn-dk-h">DANH SÁCH ỨNG VIÊN NỘP HỒ SƠ</h1>
 				<div class="margin-top-15">
-					<div class="row">
-						<div class="col-lg-4"><input type="text" name="recruitment_name" class="kiem-cong-viec kiatisak" value="<?php echo @$recruitment_name; ?>" placeholder="Nhập tin tuyển dụng..."></div>
+					<div class="row">						
 						<div class="col-lg-4"><input type="text" name="candidate_name" class="kiem-cong-viec kiatisak" value="<?php echo @$candidate_name; ?>" placeholder="Nhập tên ứng viên..."></div>
+						<div class="col-lg-4"><input type="text" name="recruitment_name" class="kiem-cong-viec kiatisak" value="<?php echo @$recruitment_name; ?>" placeholder="Nhập tin tuyển dụng..."></div>
 						<div class="col-lg-4"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-cabinet-applied-profile'].submit();">Lọc</a></div></div>
 					</div>										
 				</div>				
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>
-							<th class="news-title">Tin tuyển dụng</th>	
-							<th class="news-title"><center>Ứng viên</center></th>														
+							<th class="news-title">Ứng viên</th>	
+							<th class="news-title"><center>Vị trí tuyển dụng</center></th>	
+							<th class="news-title"><center>Chi tiết hồ sơ</center></th>														
 						</tr>
 					</thead>
 					<tbody>
@@ -32,11 +33,13 @@ $seo=getSeo();
 						foreach ($data as $key => $value) {
 							$id=$value['id'];
 							$fullname=$value['fullname'];	
-							$candidate_name=$value['candidate_name'];							
+							$recruitment_name=$value['recruitment_name'];		
+							$entranced=$value['entranced'];					
 							?>
 							<tr>
 								<td><?php echo $fullname; ?></td>	
-								<td><?php echo $candidate_name; ?></td>								
+								<td><?php echo $recruitment_name; ?></td>								
+								<td><?php echo $entranced; ?></td>								
 							</tr>
 							<?php
 						}

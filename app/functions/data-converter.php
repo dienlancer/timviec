@@ -1627,12 +1627,14 @@ function recruitmentProfileConverter($data=array()){
         for($i = 0 ;$i < count($data);$i++){        
             $id=@$data[$i]["id"];   
             $fullname=$data[$i]["fullname"];      
-            $candidate_name=@$data[$i]['candidate_name'];            
-            
+            $recruitment_name=@$data[$i]['recruitment_name'];            
+            $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$id]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
             $result[$i] = array(                
                 "id"                       =>   $id,
                 "fullname"                 =>   $fullname,                         
-                'candidate_name'           =>   $candidate_name,                
+                'recruitment_name'           =>   $recruitment_name, 
+                'entranced'               =>$entranced,
+
             );
         }
     }

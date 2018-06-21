@@ -649,4 +649,5 @@ Route::match(["get","post"],"lay-mat-khau-ntd",["as"=>"frontend.index.resetPassW
 Route::match(["get","post"],"lay-mat-khau-ung-vien",["as"=>"frontend.index.resetPassWrdCandidate","uses"=>"frontend\IndexController@resetPassWrdCandidate"]);
 Route::match(["get","post"],"tim-viec",["as"=>"frontend.index.searchRecruitment","uses"=>"frontend\IndexController@searchRecruitment"]);
 Route::match(["get","post"],"ho-so-ung-tuyen",["as"=>"frontend.index.viewAppliedProfile","uses"=>"frontend\IndexController@viewAppliedProfile"]);
+Route::get("chi-tiet-ho-so-ung-vien/{id}",["as"=>"frontend.index.getAppliedProfileDetail","uses"=>"frontend\IndexController@getAppliedProfileDetail"]);
 ?>

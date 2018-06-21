@@ -486,6 +486,45 @@ $seo=getSeo();
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Thành tích nổi bật</b></div></div>
 					<div class="col-lg-8"><div class="xika2"><?php echo @$data_profile['medal']; ?></div> </div>
+				</div>	
+				<hr>
+				<div class="row">
+					<div class="col-lg-12"><div class="login-information"><font color="#E30000">KỸ NĂNG SỞ TRƯỜNG</font> </div></div>					
+				</div>	
+				<?php                 
+                $data_profile_skill= DB::table('skill')
+                                ->join('profile_skill','skill.id','=','profile_skill.skill_id')
+                                ->where('profile_skill.profile_id',@$data_profile['id'])
+                                ->select('skill.id','skill.fullname')
+                                ->groupBy('skill.id','skill.fullname')
+                                ->orderBy('skill.id','asc')
+                                ->get()
+                                ->toArray();
+                $data_profile_skill=convertToArray($data_profile_skill);                
+                ?>
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><b>Kỹ năng</b></div></div>
+					<div class="col-lg-8">
+						<?php 
+                                if(count(@$data_profile_skill) > 0){
+                                    foreach (@$data_profile_skill as $key => $value) {
+                                        $skill_id=$value['id'];
+                                        $skill_name=$value['fullname'];
+                                        ?>
+                                        <div class="margin-top-10"><?php echo $skill_name; ?></div>
+                                        <?php
+                                    }                           
+                                }                           
+                                ?>   
+					</div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><b>Sở thích</b></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$data_profile['hobby']; ?></div> </div>
+				</div>	
+				<div class="row mia">
+					<div class="col-lg-4" ><div class="xika"><b>Kỹ năng đặc biệt</b></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$data_profile['talent']; ?></div> </div>
 				</div>					
 				<?php         
 			}			

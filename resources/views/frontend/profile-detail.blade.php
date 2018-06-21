@@ -199,8 +199,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				}				
 				?>		
 				<div class="row mia">
-					<div class="col-lg-4"><h2 class="login-information">Thông tin chung</h2></div>
-					<div class="col-lg-8"></div>
+					<div class="col-lg-12"><h2 class="login-information">Thông tin chung</h2></div>					
 				</div>	
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><div>Tiêu đề hồ sơ</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>

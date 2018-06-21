@@ -51,7 +51,7 @@ $seo=getSeo();
 					</div>
 				</div>	
 				<hr  />		
-				<div class="row mia">
+				<div class="row">
 					<div class="col-lg-12"><div class="login-information"><font color="#E30000">THÔNG TIN CHUNG</font> </div></div>					
 				</div>
 				<div class="row mia">
@@ -183,8 +183,80 @@ $seo=getSeo();
 				<div class="row">
 					<div class="col-lg-4"><div class="login-information"><font color="#E30000">MỤC TIÊU NGHỀ NGHIỆP</font> </div></div>				
 					<div class="col-lg-8"><?php echo @$data_profile['career_goal']; ?></div>	
-				</div>				
-				<?php
+				</div>		
+				<hr  />		
+				<div class="row">
+					<div class="col-lg-12"><div class="login-information"><font color="#E30000">KINH NGHIỆM LÀM VIỆC</font> </div></div>					
+				</div>	
+				<?php 
+                $source_profile_experience=App\ProfileExperienceModel::whereRaw('profile_id = ?',[@$data_profile['id']])->select()->get()->toArray(); 
+                if(count($source_profile_experience) > 0){                    
+                    foreach ($source_profile_experience as $key => $value) {
+                        $profile_experience_id=$value['id'];
+                        $profile_experience_company_name=$value['company_name'];
+                        $profile_experience_person_title=$value['person_title'];
+                        $profile_experience_time_from=$value['month_from'] . '/' . $value['year_from'];
+                        $profile_experience_time_to=$value['month_to'] . '/' .$value['year_to'];        
+                        $profile_experience_salary=convertToTextPrice($value['salary']);
+                        $currency='';
+                        switch ($value['currency']) {
+                            case 'vnd':         
+                            $currency='VNĐ';    
+                            break;
+                            case 'usd':
+                            $currency='USD';                            
+                            break;
+                        }       
+                        $profile_experience_salary=@$profile_experience_salary.' '.@$currency.'/tháng';
+                        $profile_experience_job_description=@$value['job_description'];
+                        $profile_experience_achievement=@$value['achievement'];
+                        $profile_experience_profile_id=(int)@$value['profile_id'];
+                        ?>
+                        <div class="row">                            
+                                <label class="col-lg-3 control-label"><b>Công ty</b></label>
+                                <div class="col-lg-9">                                   
+                                    <label class="control-label"><?php echo @$profile_experience_company_name; ?></label>                                              
+                                </div>                            
+                        </div>  
+                        <div class="row">                           
+                                <label class="col-lg-3 control-label"><b>Chức danh</b></label>
+                                <div class="col-lg-9">                                   
+                                    <label class="control-label"><?php echo @$profile_experience_person_title; ?></label>                                              
+                                </div>                           
+                        </div> 
+                        <div class="row">                            
+                                <label class="col-lg-3 control-label"><b>Thời gian làm việc</b></label>
+                                <div class="col-lg-9">                                   
+                                    <div class="box-logo">
+                                        <div class="control-label">Từ</div>
+                                        <div class="margin-left-10 control-label"><?php echo @$profile_experience_time_from; ?></div>
+                                        <div class="margin-left-10 control-label">Đến</div>
+                                        <div class="margin-left-10 control-label"><?php echo @$profile_experience_time_to; ?></div>
+                                    </div> 
+                                </div>                            
+                        </div> 
+                        <div class="row">                            
+                                <label class="col-lg-3 control-label"><b>Mức lương</b></label>
+                                <div class="col-lg-9">                                   
+                                    <label class="control-label"><?php echo @$profile_experience_salary; ?></label>                                              
+                                </div>                            
+                        </div>  
+                        <div class="row">                         
+                                <label class="col-lg-3 control-label"><b>Mô tả công việc</b></label>
+                                <div class="col-lg-9">                                   
+                                    <div class="control-label ribisachi-hp"><?php echo @$profile_experience_job_description; ?></div>                                              
+                                </div>                            
+                        </div>  
+                        <div class="row">                            
+                                <label class="col-lg-3 control-label"><b>Thành tích nổi bật</b></label>
+                                <div class="col-lg-9">                                   
+                                    <div class="control-label ribisachi-hp"><?php echo @$profile_experience_achievement; ?></div>                                              
+                                </div>                            
+                        </div>  
+                        <hr>                          
+                        <?php                        
+                    }
+                }                
 			}			
 			?>
 		</div>

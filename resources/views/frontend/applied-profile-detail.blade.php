@@ -103,8 +103,8 @@ $seo=getSeo();
                 }
                 ?>
 				<div class="row mia">
-					<div class="col-lg-4" ><div class="xika"><b>Cấp bậc mong muốn/b></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$literacy_name; ?></div> </div>
+					<div class="col-lg-4" ><div class="xika"><b>Cấp bậc mong muốn</b></div></div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$rank_offered; ?></div> </div>
 				</div>	
 				<?php 
                 $source_profile_job=App\ProfileJobModel::whereRaw('profile_id = ?',[(int)@$data_profile['id']])->select('id','profile_id','job_id')->get()->toArray();
@@ -125,14 +125,14 @@ $seo=getSeo();
                 ?>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Ngành nghề mong muốn</b></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$literacy_name; ?></div> </div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$job_fullname; ?></div> </div>
 				</div>	
 				<?php                 
                 $salary=convertToTextPrice((int)@$data_profile['salary']) . ' VNĐ/tháng';
                 ?>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Mức lương mong muốn</b></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$literacy_name; ?></div> </div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$salary; ?></div> </div>
 				</div>	
 				<?php 
                 $source_profile_place=App\ProfilePlaceModel::whereRaw('profile_id = ?',[(int)@$data_profile['id']])->select('id','profile_id','province_id')->get()->toArray();
@@ -153,11 +153,11 @@ $seo=getSeo();
                 ?>
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Nơi làm việc mong muốn</b></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$literacy_name; ?></div> </div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$province_fullname; ?></div> </div>
 				</div>	
 				<?php 
                 $marriage_name='';
-                $source_marriage=App\MarriageModel::find((int)@$marriage_id);          
+                $source_marriage=App\MarriageModel::find((int)@$data_candidate['marriage_id']);          
                 if($source_marriage != null){
                     $data_marriage=$source_marriage->toArray();
                     $marriage_name=$data_marriage['fullname'];
@@ -165,7 +165,7 @@ $seo=getSeo();
                 ?>     
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Hôn nhân</b></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$literacy_name; ?></div> </div>
+					<div class="col-lg-8"><div class="xika2"><?php echo @$marriage_name; ?></div> </div>
 				</div>	
 				<?php 
                 $status_search='';
@@ -177,8 +177,13 @@ $seo=getSeo();
                 ?>   
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Hiện tại</b></div></div>
-					<div class="col-lg-8"><div class="xika2"><?php echo @$literacy_name; ?></div> </div>
-				</div>					
+					<div class="col-lg-8"><div class="xika2"><?php echo @$status_search; ?></div> </div>
+				</div>	
+				<hr  />		
+				<div class="row">
+					<div class="col-lg-4"><div class="login-information"><font color="#E30000">MỤC TIÊU NGHỀ NGHIỆP</font> </div></div>				
+					<div class="col-lg-8"><?php echo @$data_profile['career_goal']; ?></div>	
+				</div>				
 				<?php
 			}			
 			?>

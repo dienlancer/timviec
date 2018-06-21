@@ -10,7 +10,8 @@ $seo=getSeo();
 	<div class="row">			
 		<div class="col-lg-9">
 			<?php 
-			
+			$source_profile=App\ProfileModel::find((int)@$candidate_id)->toArray();
+			echo "<pre>".print_r($source_profile,true)."</pre>";			
 			?>
 		</div>
 		<div class="col-lg-3">

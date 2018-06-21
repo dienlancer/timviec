@@ -318,8 +318,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<?php 
 				$status_experience_job_edit='';
 				$status_experience_job_save='';
-				$source_profile_experience=App\ProfileExperienceModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
-				if(count(@$source_profile_experience) == 0){
+				$data_profile_experience=App\ProfileExperienceModel::whereRaw('profile_id = ?',[@$id])->select()->get()->toArray();		
+				if(count(@$data_profile_experience) == 0){
 					$status_experience_job_edit='display:none';
 					$status_experience_job_save='display:block';
 				}else{
@@ -330,8 +330,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="experience_job_edit" style="<?php echo $status_experience_job_edit; ?>">
 					<div class="experience_job_txt">
 						<?php 
-						if(count(@$source_profile_experience) > 0){
-							foreach ($source_profile_experience as $key => $value) {
+						if(count(@$data_profile_experience) > 0){
+							foreach ($data_profile_experience as $key => $value) {
 								$profile_experience_id=$value['id'];
 								$profile_experience_company_name=$value['company_name'];
 								$profile_experience_person_title=$value['person_title'];
@@ -549,8 +549,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				)
 				->orderBy('profile_graduation.id', 'asc')
 				->get()->toArray();		
-				$source_profile_graduation=convertToArray($source_profile_graduation);	
-				if(count(@$source_profile_graduation) == 0){
+				$data_profile_graduation=convertToArray($source_profile_graduation);	
+				if(count(@$data_profile_graduation) == 0){
 					$status_graduation_edit='display:none';
 					$status_graduation_save='display:block';
 				}else{
@@ -567,8 +567,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="graduation_edit" style="<?php echo $status_graduation_edit; ?>">
 					<div class="graduation_txt">
 						<?php 
-						if(count(@$source_profile_graduation) > 0){
-							foreach ($source_profile_graduation as $key => $value) {
+						if(count(@$data_profile_graduation) > 0){
+							foreach ($data_profile_graduation as $key => $value) {
 								$profile_graduation_id=$value['id'];
 								$profile_graduation_literacy_name=$value['literacy_name'];
 								$profile_graduation_training_unit=$value['training_unit'];
@@ -734,9 +734,9 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				)
 				->orderBy('profile_language.id', 'asc')
 				->get()->toArray();		
-				$source_profile_language=convertToArray($source_profile_language);
+				$data_profile_language=convertToArray($source_profile_language);
 
-				if(count(@$source_profile_language) == 0){
+				if(count(@$data_profile_language) == 0){
 					$status_language_edit='display:none';
 					$status_language_save='display:block';
 				}else{
@@ -752,8 +752,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="language_edit" style="<?php echo $status_language_edit; ?>">
 					<div class="language_txt">
 						<?php 
-						if(count(@$source_profile_language) > 0){
-							foreach ($source_profile_language as $key => $value) {
+						if(count(@$data_profile_language) > 0){
+							foreach ($data_profile_language as $key => $value) {
 								$profile_language_id=$value['id'];
 								$profile_language_name=$value['language_name'];
 								$profile_language_level_name=$value['language_level_name'];							

@@ -250,8 +250,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				</div>				
 				<hr  />		
 				<div class="row mia">
-					<div class="col-lg-4"><div class="rarakata"><h2 class="login-information">Mục tiêu nghề nghiệp</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>
-					<div class="col-lg-8"></div>
+					<div class="col-lg-12"><div class="rarakata"><h2 class="login-information">Mục tiêu nghề nghiệp</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>					
 				</div>
 				<div class="note note_career_goal margin-top-15"  style="display: none;"></div>
 				<div class="row mia">
@@ -306,8 +305,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				</div>	
 				<hr  />		
 				<div class="row mia">
-					<div class="col-lg-4"><div class="rarakata"><h2 class="login-information">Kinh nghiệm làm việc</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>
-					<div class="col-lg-8"></div>
+					<div class="col-lg-12"><div class="rarakata"><h2 class="login-information">Kinh nghiệm làm việc</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>					
 				</div>
 				<div class="row mia">					
 					<div class="col-lg-12">
@@ -511,8 +509,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				</div>			
 				<hr  />
 				<div class="row mia">
-					<div class="col-lg-4"><div class="rarakata"><h2 class="login-information">Trình độ bằng cấp</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>
-					<div class="col-lg-8"></div>
+					<div class="col-lg-12"><div class="rarakata"><h2 class="login-information">Trình độ bằng cấp</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>					
 				</div>		
 				<div class="row mia">					
 					<div class="col-lg-12">
@@ -700,7 +697,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						</div>
 					</div>				
 				</div>
-				<hr>
+				<hr  />		
+				<div class="row mia">
+					<div class="col-lg-12"><div class="rarakata"><h2 class="login-information">Trình độ ngoại ngữ</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>					
+				</div>
+				<div class="row mia">					
+					<div class="col-lg-12">
+						Hãy liệt kê các bằng cấp ngoại ngữ mà bạn đã có
+					</div>
+				</div>
 				<div class="note note_language margin-top-15"  style="display: none;"></div>
 				<?php 
 				$status_language_edit='';
@@ -835,60 +840,70 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<tr>
 									<th class="suzuritake"></th>
 									<?php 
-									foreach ($source_classification as $key => $value) {										
-										$classification_name=$value['fullname'];
-										?>
-										<th class="suzuritake"><?php echo $classification_name; ?></th>
-										<?php
-									}
+									if(count($source_classification) > 0){
+										foreach ($source_classification as $key => $value) {										
+											$classification_name=$value['fullname'];
+											?>
+											<th class="suzuritake"><?php echo $classification_name; ?></th>
+											<?php
+										}
+									}									
 									?>									
 								</tr>
 								<tr>
 									<td>Nghe</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="listening" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											?>
+											<td><center><input type="radio" name="listening" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}
+									}									
 									?>									
 								</tr>
 								<tr>
 									<td>Nói</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="speaking" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
-									}
+									if(count(@$source_classification) > 0 ){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											?>
+											<td><center><input type="radio" name="speaking" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}
+									}									
 									?>		
 								</tr>
 								<tr>
 									<td>Đọc</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="reading" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											?>
+											<td><center><input type="radio" name="reading" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}
+									}									
 									?>		
 								</tr>
 								<tr>
 									<td>Viết</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										?>
-										<td><center><input type="radio" name="writing" value="<?php echo $classification_id; ?>"></center></td>
-										<?php
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											?>
+											<td><center><input type="radio" name="writing" value="<?php echo $classification_id; ?>"></center></td>
+											<?php
+										}
+									}									
 									?>		
 								</tr>
 							</table>
@@ -918,7 +933,15 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						</div>
 					</div>				
 				</div>
-				<hr  />	
+				<hr  />		
+				<div class="row mia">
+					<div class="col-lg-12"><div class="rarakata"><h2 class="login-information">Tin học văn phòng</h2><div class="miakasaki margin-left-15">(Bắt buộc)</div></div></div>					
+				</div>
+				<div class="row mia">					
+					<div class="col-lg-12">
+						Hãy liệt kê các kỹ năng tin học văn phòng mà bạn có thể đảm nhiệm
+					</div>
+				</div>
 				<?php 
 				$status_office_edit='';
 				$status_office_save='';
@@ -997,73 +1020,81 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<tr>
 									<td>MS Word</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										if((int)@$profile_detail['ms_word'] == (int)@$classification_id){
-											?>
-											<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>" checked ></center></td>
-											<?php
-										}else{
-											?>
-											<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
-											<?php
-										}										
-									}
+									if (count(@$source_classification) > 0) {
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											if((int)@$profile_detail['ms_word'] == (int)@$classification_id){
+												?>
+												<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>" checked ></center></td>
+												<?php
+											}else{
+												?>
+												<td><center><input type="radio" name="ms_word" value="<?php echo $classification_id; ?>"></center></td>
+												<?php
+											}										
+										}
+									}									
 									?>									
 								</tr>
 								<tr>
 									<td>MS Excel</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										if((int)@$profile_detail['ms_excel'] == (int)@$classification_id){
-											?>
-											<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>" checked ></center></td>
-											<?php
-										}else{
-											?>
-											<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
-											<?php
-										}										
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											if((int)@$profile_detail['ms_excel'] == (int)@$classification_id){
+												?>
+												<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>" checked ></center></td>
+												<?php
+											}else{
+												?>
+												<td><center><input type="radio" name="ms_excel" value="<?php echo $classification_id; ?>"></center></td>
+												<?php
+											}										
+										}
+									}									
 									?>		
 								</tr>
 								<tr>
 									<td>MS Power Point</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										if((int)@$profile_detail['ms_power_point'] == (int)@$classification_id){
-											?>
-											<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>" checked ></center></td>
-											<?php
-										}else{
-											?>
-											<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
-											<?php
-										}										
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											if((int)@$profile_detail['ms_power_point'] == (int)@$classification_id){
+												?>
+												<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>" checked ></center></td>
+												<?php
+											}else{
+												?>
+												<td><center><input type="radio" name="ms_power_point" value="<?php echo $classification_id; ?>"></center></td>
+												<?php
+											}										
+										}
+									}									
 									?>		
 								</tr>
 								<tr>
 									<td>MS Outlook</td>
 									<?php 
-									foreach ($source_classification as $key => $value) {
-										$classification_id=$value['id'];
-										$classification_name=$value['fullname'];
-										if((int)@$profile_detail['ms_outlook'] == (int)@$classification_id){
-											?>
-											<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>" checked ></center></td>
-											<?php
-										}else{
-											?>
-											<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
-											<?php
-										}										
-									}
+									if(count(@$source_classification) > 0){
+										foreach ($source_classification as $key => $value) {
+											$classification_id=$value['id'];
+											$classification_name=$value['fullname'];
+											if((int)@$profile_detail['ms_outlook'] == (int)@$classification_id){
+												?>
+												<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>" checked ></center></td>
+												<?php
+											}else{
+												?>
+												<td><center><input type="radio" name="ms_outlook" value="<?php echo $classification_id; ?>"></center></td>
+												<?php
+											}										
+										}
+									}									
 									?>		
 								</tr>
 							</table>

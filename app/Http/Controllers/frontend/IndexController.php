@@ -1482,7 +1482,7 @@ class IndexController extends Controller {
 		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
 	public function getAppliedProfileDetail($candidate_id){
-		
+		return view('frontend.applied-profile-detail',compact('candidate_id'));  
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

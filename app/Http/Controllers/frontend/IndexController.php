@@ -1504,22 +1504,37 @@ class IndexController extends Controller {
 		$pageRange=0;      
 		$currentPage=1;  
 		$pagination ='';            
-		$recruitment_name='';
-		$candidate_name='';
+		$q='';		
 		$query=DB::table('profile')		
-		->join('recruitment_profile','candidate.id','=','recruitment_profile.candidate_id')		
-		->join('recruitment','recruitment.id','=','recruitment_profile.recruitment_id');     		
-		if(!empty(@$request->candidate_name)){
-			$candidate_name=@$request->candidate_name;
-			$query->where('candidate.fullname','like', '%'.trim(@$candidate_name).'%');
+		->join('candidate','profile.candidate_id','=','candidate.id');     		
+		if(!empty(@$request->q)){
+			$q=@$request->q;
+			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
+		}	
+		if((int)@$request->job_id > 0){
+			$query->join('profile_job','profile.id','=','profile_job.profile_id');
+			$query->where('profile_job.job_id',(int)@$request->job_id);
+		}			
+		if((int)@$request->province_id > 0){
+			$query->join('profile_place','profile.id','=','profile_place.profile_id');
+			$query->where('profile_place.province_id',(int)@$request->province_id);
 		}
-		if(!empty(@$request->recruitment_name)){
-			$recruitment_name=@$request->recruitment_name;
-			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
+		if((int)@$request->literacy_id > 0){
+			$query->where('profile.literacy_id',(int)@$request->literacy_id);
+		}
+		if((int)@$request->language_id > 0){
+			$query->join('profile_language','profile.id','=','profile_language.profile_id');
+			$query->where('profile_language.language_id',(int)@$request->language_id);
 		}		
-		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
-		$data=$query->select('candidate.id')
-		->groupBy('candidate.id')                
+		if((int)@$request->sex_id > 0){
+			$query->where('candidate.sex_id',(int)@$request->sex_id);
+		}
+		if((int)@$request->experience_id > 0){
+			$query->join('profile_experience','profile.id','=','profile_experience.profile_id');
+			$query->where('profile_experience.experience_id',(int)@$request->experience_id);
+		}	
+		$data=$query->select('profile.id')
+		->groupBy('profile.id')       
 		->get()->toArray();
 		$data=convertToArray($data);
 		$totalItems=count($data);    
@@ -1538,9 +1553,9 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','recruitment_profile.file_attached')
-		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','recruitment_profile.profile_id','recruitment_profile.file_attached')
-		->orderBy('recruitment.id', 'desc')
+		$data=$query->select('profile.id','profile.fullname as profile_name','candidate.fullname as candidate_name')
+		->groupBy('profile.id','profile.fullname','candidate.fullname')
+		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   

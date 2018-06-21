@@ -504,9 +504,7 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-label"><b>Ảnh bằng cấp</b></label>
                                 <div class="col-md-9">                                   
-                                    <div class="box-logo margin-top-15">
-                                        <img src="<?php echo asset('upload/'.@$profile_graduation_degree); ?>" />                                     
-                                    </div>                                    
+                                    <a target="_blank" href="<?php echo asset('upload/'.@$profile_graduation_degree); ?>">Tải về</a>                              
                                 </div>
                             </div>                         
                         </div>

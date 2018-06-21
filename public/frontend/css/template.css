@@ -660,8 +660,7 @@ font-size: 12px;
     padding: 5px 5px;
 
 }
-.xika{
-    padding: 4px 0px;
+.xika{   
     display: flex;    
     justify-content: flex-end;
 }
@@ -670,7 +669,7 @@ font-size: 12px;
     font-size: 6px;
 }
 .mia{
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .pappa{
     display: flex;
@@ -814,7 +813,7 @@ font-size: 12px;
     color: #ffffff;    
 }
 .xika2 {
-    padding: 4px 0px;
+    
     text-align: justify;
 }
 .titanius{

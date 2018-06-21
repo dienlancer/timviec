@@ -24,27 +24,27 @@ $seo=getSeo();
 				<div class="row margin-top-15">
 					<div class="col-lg-3"><img src="<?php echo asset('upload/'.@$data_candidate['avatar']); ?>"></div>
 					<div class="col-lg-9">
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Họ tên</b></div> </div>
 							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['fullname']; ?></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Giới tính</b></div></div>
 							<div class="col-lg-9"><div class="xika2"><?php echo @$sex['fullname']; ?></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Ngày sinh</b></div></div>
 							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['birthday']; ?></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Địa chỉ</b></div></div>
 							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['address']; ?></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Số điện thoại</b></div></div>
 							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['phone']; ?></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Email</b></div></div>
 							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['email']; ?></div></div>
 						</div>	
@@ -212,51 +212,139 @@ $seo=getSeo();
                         $profile_experience_achievement=@$value['achievement'];
                         $profile_experience_profile_id=(int)@$value['profile_id'];
                         ?>
-                        <div class="row">                            
-                                <label class="col-lg-3 control-label"><b>Công ty</b></label>
-                                <div class="col-lg-9">                                   
-                                    <label class="control-label"><?php echo @$profile_experience_company_name; ?></label>                                              
-                                </div>                            
+                        <div class="row mia">                            
+                        	<div class="col-lg-4"><div class="xika"><b>Công ty</b></div></div>
+                        	<div class="col-lg-8">                                   
+                        		<div class="xika2"><?php echo @$profile_experience_company_name; ?></div>                                              
+                        	</div>                            
                         </div>  
-                        <div class="row">                           
-                                <label class="col-lg-3 control-label"><b>Chức danh</b></label>
-                                <div class="col-lg-9">                                   
-                                    <label class="control-label"><?php echo @$profile_experience_person_title; ?></label>                                              
-                                </div>                           
+                        <div class="row mia">                           
+                        	<div class="col-lg-4"><div class="xika"><b>Chức danh</b></div></div>
+                        	<div class="col-lg-8">                                   
+                        		<div class="xika2"><?php echo @$profile_experience_person_title; ?></div>                                              
+                        	</div>                           
                         </div> 
-                        <div class="row">                            
-                                <label class="col-lg-3 control-label"><b>Thời gian làm việc</b></label>
-                                <div class="col-lg-9">                                   
-                                    <div class="box-logo">
-                                        <div class="control-label">Từ</div>
-                                        <div class="margin-left-10 control-label"><?php echo @$profile_experience_time_from; ?></div>
-                                        <div class="margin-left-10 control-label">Đến</div>
-                                        <div class="margin-left-10 control-label"><?php echo @$profile_experience_time_to; ?></div>
-                                    </div> 
-                                </div>                            
+                        <div class="row mia">                            
+                        	<div class="col-lg-4"><div class="xika"><b>Thời gian làm việc</b></div></div>
+                        	<div class="col-lg-8">                                   
+                        		<div class="box-logo">
+                        			<div class="control-label">Từ</div>
+                        			<div class="margin-left-10 control-label"><?php echo @$profile_experience_time_from; ?></div>
+                        			<div class="margin-left-10 control-label">Đến</div>
+                        			<div class="margin-left-10 control-label"><?php echo @$profile_experience_time_to; ?></div>
+                        		</div> 
+                        	</div>                            
                         </div> 
-                        <div class="row">                            
-                                <label class="col-lg-3 control-label"><b>Mức lương</b></label>
-                                <div class="col-lg-9">                                   
-                                    <label class="control-label"><?php echo @$profile_experience_salary; ?></label>                                              
-                                </div>                            
+                        <div class="row mia">                            
+                        	<div class="col-lg-4"><div class="xika"><b>Mức lương</b></div></div>
+                        	<div class="col-lg-8">                                   
+                        		<div class="xika2"><?php echo @$profile_experience_salary; ?></div>                                       
+                        	</div>                            
                         </div>  
-                        <div class="row">                         
-                                <label class="col-lg-3 control-label"><b>Mô tả công việc</b></label>
-                                <div class="col-lg-9">                                   
-                                    <div class="control-label ribisachi-hp"><?php echo @$profile_experience_job_description; ?></div>                                              
-                                </div>                            
+                        <div class="row mia">                         
+                        	<div class="col-lg-4"><div class="xika"><b>Mô tả công việc</b></div></div>
+                        	<div class="col-lg-8">                                   
+                        		<div class="control-label ribisachi-hp"><?php echo @$profile_experience_job_description; ?></div>                                              
+                        	</div>                            
                         </div>  
-                        <div class="row">                            
-                                <label class="col-lg-3 control-label"><b>Thành tích nổi bật</b></label>
-                                <div class="col-lg-9">                                   
-                                    <div class="control-label ribisachi-hp"><?php echo @$profile_experience_achievement; ?></div>                                              
-                                </div>                            
+                        <div class="row mia">                            
+                        	<div class="col-lg-4"><div class="xika"><b>Thành tích nổi bật</b></div></div>
+                        	<div class="col-lg-8">                                   
+                        		<div class="control-label ribisachi-hp"><?php echo @$profile_experience_achievement; ?></div>                                              
+                        	</div>                            
                         </div>  
                         <hr>                          
                         <?php                        
                     }
-                }                
+                }
+                ?>                
+				<div class="row">
+					<div class="col-lg-12"><div class="login-information"><font color="#E30000">TRÌNH ĐỘ BẰNG CẤP</font> </div></div>					
+				</div>	
+                <?php 
+                $source_profile_graduation=DB::table('profile_graduation')
+                ->join('literacy','profile_graduation.literacy_id','=','literacy.id')
+                ->join('graduation','profile_graduation.graduation_id','=','graduation.id')
+                ->where('profile_graduation.profile_id',(int)@$data_profile['id'])
+                ->select(
+                    'profile_graduation.id',
+                    'literacy.fullname as literacy_name',
+                    'profile_graduation.training_unit',
+                    'profile_graduation.year_from',
+                    'profile_graduation.year_to',
+                    'profile_graduation.department',
+                    'graduation.fullname as graduation_name',
+                    'profile_graduation.degree'
+                )
+                ->groupBy(
+                    'profile_graduation.id',
+                    'literacy.fullname',
+                    'profile_graduation.training_unit',
+                    'profile_graduation.year_from',
+                    'profile_graduation.year_to',
+                    'profile_graduation.department',
+                    'graduation.fullname',
+                    'profile_graduation.degree'
+                )
+                ->orderBy('profile_graduation.id', 'asc')
+                ->get()->toArray();     
+                $data_profile_graduation=convertToArray($source_profile_graduation);  
+                if(count($data_profile_graduation) > 0){                    
+                	foreach ($data_profile_graduation as $key => $value){
+                		$profile_graduation_id=$value['id'];
+                		$profile_graduation_literacy_name=$value['literacy_name'];
+                		$profile_graduation_training_unit=$value['training_unit'];
+                		$profile_graduation_year_from= $value['year_from'];
+                		$profile_graduation_year_to=$value['year_to'];                                  
+                		$profile_graduation_department=@$value['department'];
+                		$profile_graduation_graduation_name=@$value['graduation_name'];         
+                		$profile_graduation_degree=@$value['degree'];     
+                		?>
+                		<div class="row mia">
+                			<div class="col-lg-4"><div class="xika"><b>Trình độ học vấn</b></div></div>
+                			<div class="col-lg-8">                                   
+                				<div class="xika2"><?php echo @$profile_graduation_literacy_name; ?></div>                                              
+                			</div>                   
+                		</div>
+                		<div class="row mia">
+                			<div class="col-lg-4"><div class="xika"><b>Đơn vị đào tạo</b></div></div>
+                			<div class="col-lg-8">                                   
+                				<div class="xika2"><?php echo @$profile_graduation_training_unit; ?></div>                                              
+                			</div>                         
+                		</div>
+                		<div class="row mia">
+                			<div class="col-lg-4"><div class="xika"><b>Thời gian</b></div></div>
+                			<div class="col-lg-8">                                   
+                				<div class="box-logo">
+                					<div class="control-label">Từ</div>
+                					<div class="margin-left-10 control-label"><?php echo @$profile_graduation_year_from; ?></div>
+                					<div class="margin-left-10 control-label">Đến</div>
+                					<div class="margin-left-10 control-label"><?php echo @$profile_graduation_year_to; ?></div>
+                				</div>                                        
+                			</div>                       
+                		</div>
+                		<div class="row mia">
+                			<div class="col-lg-4"><div class="xika"><b>Chuyên ngành</b></div></div>
+                			<div class="col-lg-8">                                   
+                				<div class="xika2"><?php echo @$profile_graduation_department; ?></div>                                              
+                			</div>                     
+                		</div>
+                		<div class="row mia">
+                			<div class="col-lg-4"><div class="xika"><b>Tốt nghiệp loại</b></div></div>
+                			<div class="col-lg-8">                                   
+                				<div class="xika2"><?php echo @$profile_graduation_graduation_name; ?></div>                                              
+                			</div>                      
+                		</div>
+                		<div class="row mia">
+                			<div class="col-lg-4"><div class="xika"><b>Ảnh bằng cấp</b></div></div>
+                			<div class="col-lg-8">                                   
+                				<a target="_blank" href="<?php echo asset('upload/'.@$profile_graduation_degree); ?>">Tải về</a>                                  
+                			</div>                     
+                		</div>
+                		<hr>  
+                		<?php                          
+                	}
+                }               
 			}			
 			?>
 		</div>

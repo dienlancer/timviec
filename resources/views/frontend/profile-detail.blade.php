@@ -142,31 +142,31 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="row">
 					<div class="col-lg-3"><?php echo $picture; ?></div>
 					<div class="col-lg-9">
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Họ tên</div> </div>
 							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['fullname']; ?></b></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Giới tính</div></div>
 							<div class="col-lg-9"><div class="xika2"><b><?php echo @$sex['fullname']; ?></b></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Ngày sinh</div></div>
 							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['birthday']; ?></b></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Địa chỉ</div></div>
 							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['address']; ?></b></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Số điện thoại</div></div>
 							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['phone']; ?></b></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Email</div></div>
 							<div class="col-lg-9"><div class="xika2"><b><?php echo @$candidate['email']; ?></b></div></div>
 						</div>	
-						<div class="row margin-top-10">
+						<div class="row mia">
 							<div class="col-lg-3"></div>
 							<div class="col-lg-9">
 								<div class="fatanasa"><a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>">Chỉnh sửa</a></div>

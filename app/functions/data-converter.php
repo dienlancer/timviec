@@ -1628,10 +1628,11 @@ function recruitmentProfileConverter($data=array()){
             $id=@$data[$i]["id"];   
             $fullname=$data[$i]["fullname"];      
             $recruitment_name=@$data[$i]['recruitment_name']; 
+            $profile_id=@$data[$i]['profile_id'];
             $entranced='';
             $link_cv='';
             if(!empty(@$data[$i]['profile_id'])){
-                $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$id]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
+                $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$profile_id]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
             }
             if(!empty(@$data[$i]['file_attached'])){
                 $link_cv='<div class="download-cv"><center><a href="'.asset('upload/'.@$data[$i]['file_attached']).'" target="_blank"><i class="fas fa-download"></i></a></center></div>';   

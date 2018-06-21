@@ -148,7 +148,7 @@ if($source_recruitment != null){
 			success: function (data) {                
 				if(data.checked==1){    
 					alert(data.msg.success);                      
-                    //window.location.href = data.link_edit;                    
+                    window.location.href = data.link_edit;                    
                 }else{
                 	showMsg('note',data);  
                 }
@@ -201,7 +201,8 @@ if($source_recruitment != null){
 				async: false,
 				success: function (data) {
 					if(data.checked==1){      
-						alert(data.msg.success);                   			
+						alert(data.msg.success); 
+						window.location.href = data.link_edit;                                      			
 					} else{
 						showMsg('note',data);    
 					}       			

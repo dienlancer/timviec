@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2018 at 11:30 AM
+-- Generation Time: Jun 21, 2018 at 08:58 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -1853,7 +1853,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (959, 1, '5H9CcBP3Ju922gJqTRm21RvM8wJGfDHl', '2018-06-13 20:19:38', '2018-06-13 20:19:38'),
 (960, 1, 'yE1fVNWI9v2NIIkFRaEP58yS3nUDgNu8', '2018-06-19 01:10:35', '2018-06-19 01:10:35'),
 (961, 1, 'PIxajCeb9rU2sA3Ne8PdfAXB9s0BUJEH', '2018-06-20 03:23:42', '2018-06-20 03:23:42'),
-(962, 1, 'h51yQUdo34qj4NlfyKZ5e8KswZujpLFt', '2018-06-20 19:50:49', '2018-06-20 19:50:49');
+(962, 1, 'h51yQUdo34qj4NlfyKZ5e8KswZujpLFt', '2018-06-20 19:50:49', '2018-06-20 19:50:49'),
+(963, 1, 'LLNlyqWWlyoSG9iNpMcWpK0EBrgu4EmA', '2018-06-21 08:24:51', '2018-06-21 08:24:51');
 
 -- --------------------------------------------------------
 
@@ -2193,7 +2194,7 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `hobby`, `talent`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, '<p>Đến Bệnh viện 115 và Thống Nhất thăm các hiệp sĩ gặp nạn sáng nay, ông Nguyễn Thành Phong trò chuyện với ông Trần Văn Hoàng (Trưởng nhóm hiệp sĩ Tân Bình, vừa qua cơn nguy kịch). Ông Phong thay mặt người dân thành phố cảm ơn nghĩa cử cao đẹp của các hiệp sĩ không quản nguy hiểm, xả thân bảo vệ bình yên cho nhân dân.\r\n</p><p>\r\nChủ tịch thành phố nói rằng, ông rất trăn trở khi hiệp sĩ chưa được trang bị bất cứ phương tiện nào để bảo vệ mình, còn tội phạm trộm cướp luôn mang theo vũ khí nguy hiểm.<br></p>', 1, 2, 3, 4, 'MS Sharepoint  48', '<p>- Tốt nghiệp từ trung cấp trở lên;\r\n</p><p>- Khả năng giao tiếp tốt, linh hoạt;\r\n</p><p>- Đạo đức tốt, kỷ luật tốt;\r\n</p><p>- Hoạt bát, có tinh thần cầu tiến, nhiệt huyết và mong muốn phát triển thu nhập xứng đáng với năng lực làm việc;\r\n</p><p>- Có điện thoại, xe máy, laptop;\r\n- Có kinh nghiệm kinh doanh trong các lĩnh vực tài chính/ngân hàng/ FMCG...là một lợi thế.</p>', 'Bóng đá 12', '<p>UNFPA Việt Nam từng hợp tác với Phạm Anh Khoa trong chiến dịch phòng chống bạo lực giới năm 2013, 2014. Anh cũng tham gia sự kiện kỷ niệm 40 năm hợp tác giữa UNFPA và chính phủ Việt Nam hồi tháng 7 năm ngoái. </p><p>Nam ca sĩ đảm nhiệm vai trò đại sứ hình ảnh về phòng chống bạo lực với phụ nữ và trẻ em gái. Trong đó, chống quấy rối và bạo lực tình dục chính là trọng tâm của chương trình này. </p><p>Trước khi đưa ra tuyên bố chính thức, UNFPA đã gỡ bỏ toàn bộ hình ảnh của rocker trên website, facebook của tổ chức này.\r\n\r\nQuỹ Dân số Liên Hợp Quốc (UNFPA) là cơ quan trực thuộc Liên Hợp Quốc, bắt đầu hoạt động từ năm 1969. Quỹ hoạt động ở Việt Nam từ năm 1977. Hoa hậu Đỗ Mỹ Linh, diễn viên Chiều Xuân, MC Phan Anh là đại sứ thiện chí.</p>', 1, 1, '2018-04-16 05:05:40', '2018-06-19 08:35:28'),
-(2, 'Nhân Viên Thiết Kế Cơ Khí Cad', 'nhan-vien-thiet-ke-co-khi-cad', 3, 4, 5, 4, 8000000, 'thong-tin-ung-vienx-gf0pwz8kh34y.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-06-19 02:27:04', '2018-06-19 08:35:30');
+(2, 'Nhân Viên Thiết Kế Cơ Khí Cad', 'nhan-vien-thiet-ke-co-khi-cad', 2, 5, 1, 3, 8000000, 'thong-tin-ung-vienx-gf0pwz8kh34y.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2018-06-19 02:27:04', '2018-06-21 18:15:17');
 
 -- --------------------------------------------------------
 
@@ -2285,7 +2286,7 @@ INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_
 (53, 1, 51, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (54, 1, 53, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (55, 1, 55, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
-(56, 2, 50, '2018-06-19 02:27:04', '2018-06-19 02:27:04');
+(57, 2, 41, '2018-06-21 18:15:18', '2018-06-21 18:15:18');
 
 -- --------------------------------------------------------
 
@@ -2345,7 +2346,9 @@ INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `u
 (45, 1, 57, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (46, 1, 59, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
 (47, 1, 61, '2018-04-21 08:42:16', '2018-04-21 08:42:16'),
-(48, 2, 23, '2018-06-19 02:27:04', '2018-06-19 02:27:04');
+(49, 2, 11, '2018-06-21 18:15:18', '2018-06-21 18:15:18'),
+(50, 2, 15, '2018-06-21 18:15:18', '2018-06-21 18:15:18'),
+(51, 2, 19, '2018-06-21 18:15:18', '2018-06-21 18:15:18');
 
 -- --------------------------------------------------------
 
@@ -2663,7 +2666,7 @@ INSERT INTO `recruitment` (`id`, `fullname`, `meta_keyword`, `meta_description`,
 (50, 'Nhân Viên Kinh Doanh Lương Đến 10 Triệu + % Doanh Số + % Dự Án', NULL, NULL, 'nhan-vien-kinh-doanh-luong-den-10-trieu-doanh-so-du-an', 8, 1, '<p>- Phát triển thị trường kinh doanh cho nhóm thiết bị y tế trong lĩnh vực giáo dục và đào tạo chuyên ngành y tế, ví dụ: các trường cao đẳng y tế, đại học y tế, bệnh viện…</p><p>- Tìm kiếm khách hàng mới</p><p>- Thiết lập quan hệ và chăm sóc khách hàng về các mảng y tế - giáo dục</p><p>- Nghiên cứu khai thác thông tin về thị trường thiết y tế - giáo dục</p><p>- Trụ sở chính: LK20 Lô 17, KDT Mới Văn Khê, Phường La Khê, Hà đông, Hà Nội</p><p>- Địa chỉ làm việc: TP. Hồ Chí Minh, Hà Nội</p>', '<p>- Có sức khỏe tốt</p><p>- Tốt nghiệp các trường trung cấp, cao đẳng, đại học khối y tế, dược, kinh tế hoặc kỹ thuật</p><p>- Kinh nghiệm làm việc 1-2 năm&nbsp;</p><p>- Nghiêm túc, có trách nhiệm với công việc</p><p>- Có phương tiện đi lại&nbsp;</p><p>- Có khả năng giao tiếp và thuyết phục tốt</p><p>- Kiên trì bền bỉ với công việc</p><p>- Có khả năng làm việc độc lập</p><p>- Ưu tiên có kinh nghiệm về dịch vụ khách hàng, bán hàng, kinh nghiệm kinh doanh trang thiết bị y tế, giáo dục, điều dưỡng, y dược.</p>', 1, 8, 3, 4, 0, 0, 1, 2, '<p>- Lương cứng 7 - 10 triệu + % Doanh Số + % Dự Án thu nhập tùy vào năng lực từng người.</p><p>- Được đóng BHXH và BHYT khi ký hợp đồng lao động chính thức.</p><p>- Thời gian thử việc 01 tháng.</p><p>- Ngày làm việc 8h/ngày</p><p>- Các chế độ khác theo quy định của nhà nước.</p>', NULL, '2018-05-31 00:00:00', 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:05:32', '2018-06-20 17:13:46'),
 (51, 'Nhân Viên Kinh Doanh Sản Phẩm Nhôm Làm Việc Tại Hà Nội Và Tp.Hcm', NULL, NULL, 'nhan-vien-kinh-doanh-san-pham-nhom-lam-viec-tai-ha-noi-va-tphcm', 6, 3, '<p>- Thiết kế bản vẽ 2 D cho sản phẩm nhôm đúc. Thiết kế sản phẩm mới.Hỗ trợ kỹ thuật sản xuất và một số công việc khác khi có yêu cầu</p><p>- Tìm kiếm dự án mới, khách hàng mới.</p><p>- Xây dựng mối quan hệ lâu dài với khách hàng. Định kỳ lên lịch thăm viếng, chăm sóc khách hàng.</p><p>- Phối hợp với các bộ phận liên quan giải quyết các sự vụ phát sinh.</p><p>- Giao dịch trực tiếp với khách hàng để giới thiệu và bán sản phẩm.</p><p>- Thực hiện các công việc liên quan đến hợp đồng và thanh toán.</p><p>- Thu thập thông tin về khách hàng, thị trường để xây dựng cơ sở dữ liệu cho phòng Kinh doanh.</p><p>- Hoàn thành các chỉ tiêu được giao về doanh số, khách hàng, sản phẩm.</p><p>- Báo cáo bán hàng đầy đủ và đúng thời hạn.</p><p>Địa chỉ làm việc ở khu vực:</p><p>- Miền Bắc: 85 Nguyễn Du, quận Hai Bà Trưng, Hà Nội.</p><p>- Miền Nam: 20 đường Sông Thao, quận Tân Bình, Hồ Chí Minh.</p><p>- Chú ý: ghi cụ thể khu vực làm việc để tiện sắp xếp lịch phỏng vấn</p>', '<p>- Ưu tiên nhận sinh viên mới ra trường</p><p>- Tốt nghiệp Cao đẳng trở lên các ngành cơ khí chế tạo.</p><p>- Giao tiếp, thuyết trình, đàm phán, thương lượng tốt. Khả năng làm việc độc lập hoặc theo nhóm, làm việc dưới áp lực cao.</p><p>- Năng động, sáng tạo, nhiệt huyết và thích chinh phục những khó khăn trong công việc.</p>', 1, 8, 9, 4, 0, 0, 1, 2, '<p>- Lương từ 6,5 triệu đến 8 triệu</p><p>- Được tham gia bảo hiểm xã hội đầy đủ.</p><p>- Được tham gia bảo hiểm tai nạn 24h.</p><p>- Trong tháng được nghỉ thêm 2 ngày thứ 7, nếu 2 ngày này đi làm được tính tăng ca.</p><p>- Được tặng quà sinh nhật trong tháng; quà thiếu nhi; quà 8/3; quà tết; quà trung thu; tiền mừng sinh con; tiền mừng kết hôn; tiền tang chế; có quà cho các đối tượng có thâm niên làm việc từ 5 năm trở lên.</p><p>- Được cung cấp suất ăn trong ca làm việc.</p><p>- Được cấp phát bảo hộ lao động đầy đủ.</p><p>- Được trợ cấp tiền xăng; trợ cấp chuyên cần.</p>', NULL, '2018-05-29 00:00:00', 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:09:04', '2018-06-20 02:33:56'),
 (52, 'Chuyên Viên Tư Vấn Tài Chính Kênh Hợp Tác Ngân Hàng', NULL, NULL, 'chuyen-vien-tu-van-tai-chinh-kenh-hop-tac-ngan-hang', 6, 3, '<p>Kênh Ngân hàng là kênh phân phối bảo hiểm hoàn toàn mới, cùng với sự hợp tác giữa Công ty AIA và các Ngân hàng danh tiếng, hàng đầu tại Việt Nam (HSBC,Citibank, ANZ, Shinhan, ACB, DongA TPBank, VPBank…)</p><p>• Địa điểm làm việc: chi nhánh Ngân hàng.</p><p>• Thời gian làm việc: giờ hành chánh tại Ngân hàng</p><p>• Sử dụng nguồn khách hàng được Ngân hàng giới thiệu, tư vấn và giới thiệu với các khách hàng về kế hoạch tài chính, giải pháp và chương trình Bảo hiểm.</p><p>• Xây dựng, phát triển mối quan hệ với các nhân viên Ngân hàng tại chi nhánh Ngân hàng.</p><p>• Chăm sóc khách hàng hiện hữu và mới lịch sự, chu đáo, tận tâm.</p><p>• Báo cáo kết quả kinh doanh hàng ngày cho các quản lý cấp cao.</p><p>• Chi tiết rõ hơn về công việc sẽ được trao đổi trực tiếp tại buổi phỏng vấn.</p>', '<p>Tốt nghiệp hệ Cao Đẳng trở lên về các chuyên ngành kinh tế: Bảo hiểm, Tài chính, Ngân hàng, Kinh doanh,</p><p>• Không yêu cầu kinh nghiệm (sẽ được đào tạo)</p><p>• Ưu tiên ứng viên có kinh nghiệm về: Bảo hiểm, Tài chính, Ngân hàng, Kế toán, Bán hàng, …</p><p>• Tác phong thanh lịch, tự tin, tác phong chuyên nghiệp, kỹ năng giao tiếp và thuyết phục tốt là lợi thế.</p><p>• Chịu được áp lực công việc, kiên trì, chăm chỉ có trách nhiệm với công việc.</p><p>• Sử dụng thành thạo các phần mềm văn phòng Microsoft: Word, Excel, Powerpoint, …</p>', 1, 8, 9, 4, 0, 0, 1, 2, '<p>• LƯƠNG: CỐ ĐỊNH 6,000,000 (đối với IO) / 8.000,000 (đối với IS) + PHỤ CẤP (ĐIỆN THOẠI) + hoa hồng riêng HẤP DÂN (tùy theo năng lực) + các khoản thưởng (tháng, quý, năm) + thưởng năng lực hang tháng.</p><p>• Phụ cấp điện thoại hàng tháng 400.000đ</p><p>• Được hỗ trợ Bảo hiểm sức khỏe.</p><p>• Môi trường làm việc tại các Ngân hàng chuyên nghiệp và đầy tiềm năng tại Việt Nam: Citibank, ANZ, ACB, TPBank, VPbank …</p><p>• Được tham gia các hoạt động ngoại khóa và du lịch hàng năm của công ty.</p><p>• Trang bị các thiết bị công nghệ hiện đại phục vụ cho công việc: Máy Ipad, Máy POS, Máy vi tính, Máy in,</p><p>• Được đào tạo những kiến thức cơ bản và các kỹ năng phục vụ cho công việc kinh doanh.</p><p>• Có cơ hội thăng tiến lên các vị trí quản lý cấp cao.</p>', NULL, '2018-05-29 00:00:00', 10, 9, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:12:39', '2018-06-20 01:55:32'),
-(53, 'Nhân Viên Thị Trường - Khánh Hòa', NULL, NULL, 'nhan-vien-thi-truong-khanh-hoa', 10, 1, '<p>- Tìm kiếm khách hàng (Đăng tin, gọi điện thoại, công ty cung cấp)</p><p>- Chăm sóc khách hàng tiềm năng (mở rộng thị trường)</p><p>- Tư vấn sản phẩm cho khách hàng</p>', '<p>- Nam</p><p>- Có kinh nghiệm ít nhất 1 năm trở lên&nbsp;</p><p>- Siêng năng, thật thà</p><p>- Tuân thủ quy trình làm việc</p><p>- Ưu tiên người có kinh nghiệm kinh doanh vật liệu xây dựng.</p>', 1, 8, 3, 5, 5, 10, 1, 2, '<p>- Lương cơ bản : 5 triệu&nbsp;</p><p>- Sau thời gian thử việc thu nhập lương cơ bản + Chiết khấu doanh số&nbsp;</p><p>- Thưởng theo hiệu quả công việc.</p><p>- Tăng lương theo xét duyệt</p>', NULL, '2018-05-31 00:00:00', 9, 78, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:15:06', '2018-06-21 04:05:49'),
+(53, 'Nhân Viên Thị Trường - Khánh Hòa', NULL, NULL, 'nhan-vien-thi-truong-khanh-hoa', 10, 1, '<p>- Tìm kiếm khách hàng (Đăng tin, gọi điện thoại, công ty cung cấp)</p><p>- Chăm sóc khách hàng tiềm năng (mở rộng thị trường)</p><p>- Tư vấn sản phẩm cho khách hàng</p>', '<p>- Nam</p><p>- Có kinh nghiệm ít nhất 1 năm trở lên&nbsp;</p><p>- Siêng năng, thật thà</p><p>- Tuân thủ quy trình làm việc</p><p>- Ưu tiên người có kinh nghiệm kinh doanh vật liệu xây dựng.</p>', 1, 8, 3, 5, 5, 10, 1, 2, '<p>- Lương cơ bản : 5 triệu&nbsp;</p><p>- Sau thời gian thử việc thu nhập lương cơ bản + Chiết khấu doanh số&nbsp;</p><p>- Thưởng theo hiệu quả công việc.</p><p>- Tăng lương theo xét duyệt</p>', NULL, '2018-05-31 00:00:00', 9, 79, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:15:06', '2018-06-21 16:11:53'),
 (54, 'Giám Sát Bán Hàng Đức Hoà - Long An, Thủ Đức - Tphcm', NULL, NULL, 'giam-sat-ban-hang-duc-hoa-long-an-thu-duc-tphcm', 2, 1, '<p>- Quản lý và phát triển địa bàn phụ trách:Thiết lập tuyến bán hàng hợp lý, hiệu quả; phát triển các mục tiêu về doanh số, ngành hàng và kênh bán hàng tại địa bàn; tiếp nhận và xử lý các vấn đề của khách hàng tại địa bàn.</p><p>- Quản lý Nhân sự: Quản lý việc thực hiện công việc của nhân viên, tuyển dụng, huấn luyện nhân viên bán hàng, duy trì kỷ luật và phát triển nhân viên để đảm bảo được đội ngũ ổn định và đạt mục tiêu về doanh số.</p><p>- Giám Sát Nhà Phân Phối: Đảm bảo việc giao hàng, tồn kho đúng quy định, quản lý các chương trình khuyến mãi và ngân sách phát triển thị trường.</p><p>- Lên lịch đi thị trường hàng tuần và thực hiện việc đi thị trường theo lịch để giám sát, quản lý thị trường, khách hàng và huấn luyện nhân viên.</p>', '<p>- Nam, tuổi từ 25 - dưới 40;</p><p>- Trình độ: tốt nghiệp Cao đẳng trở lên các ngành có liên quan;</p><p>- Ít nhất 02 năm kinh nghiệm ở vị trí Giám sát bán hàng, ưu tiên các ngành hàng tiêu dùng (FMCG);</p><p>- Kỹ năng quản lý, lên kế hoạch, tổ chức và kiểm soát công việc;</p><p>- Có kỹ năng giao tiếp, đàm phán tốt;</p><p>- Sử dụng tốt các phần mềm văn phòng: MS. Word, Excel, Email,…;</p><p>- Có khả năng làm việc độc lập dưới áp lực cao.</p><p>- Lưu ý: Vui lòng gửi hồ sơ ghi rõ thông tin vị trí ứng tuyển ở khu vực nào cụ thể.</p>', 1, 2, 4, 5, 0, 0, 1, 3, '<p>- Mức lương cạnh tranh theo năng lực;</p><p>- Được làm việc trong môi trường chuyên nghiệp, được tham gia các chương trình huấn luyện đào tạo để phát triển nghề nghiệp;</p><p>- Có chế độ công tác phí khi đi công tác;</p><p>- Được hưởng các chế độ đầy đủ theo Luật Lao động (BHXH, BHYT, BHTN,…) và phúc lợi theo quy định của Công ty;</p><p>- Được khám sức khỏe định kỳ (hàng năm);</p><p>- Quà, Tiền thưởng Lễ - Tết (30/4 &amp;1/5, 2/9, 1/1).</p><p>- Chi tiết sẽ được trao đổi khi phỏng vấn</p>', NULL, '2018-05-29 00:00:00', 8, 2, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:17:56', '2018-06-20 02:43:21'),
 (55, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', NULL, NULL, 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc', 30, 1, '<p>• Là Nhân viên đại diện cho các Ngân hàng ủy quyền (có bảng tên, có giấy ủy quyền);</p><p>• Tiếp nhận hồ sơ từ ngân hàng chuyển qua cho Công ty;</p><p>• Nghiên cứu các thông tin về khoản tín dụng;</p><p>• Đánh giá hồ sơ, lập phương án và thực hiện thu hồi;</p><p>• Gọi ĐT, gặp trực tiếp tư vấn tính pháp lý, sự rủi ro của hồ sơ tín dụng quá hạn;</p><p>• Gợi ý các biện pháp hạn chế rủi ro biện pháp khắc phục;</p><p>• Quản lý hồ sơ, xử lý hồ sơ theo quy trình trong phạm vi công việc được giao.</p><p>Khách hàng hiện nay Công ty đang hỗ trợ thu hồi nợ:</p><p>1. Ngân hàng Việt Nam Thịnh Vượng (VPB)</p><p>2. Công ty tài chính HD Saison (HDSS)</p><p>3. Ngân hàng Standard Chartered (SCB)</p><p>4. Ngân hàng HSBC</p><p>ĐỊA CHỈ VĂN PHÒNG:</p><p>- VP ĐÀ NẴNG: F3-V5, Tầng 3, Tòa nhà Savico, 66 Võ Văn Tần, P. Chính Gián, Q. Thanh Khê, Đà Nẵng.</p><p>- VP ĐỒNG NAI: C50, Đường N2, Khu quy hoạch Bửu Long, Khu phố 1, P. Bửu Long, TP. Biên Hòa, Đồng Nai.</p><p>- VP NHA TRANG: Tầng 7, Tòa nhà VCN, đường A1, Khu đô thị Vĩnh Điềm Trung, X. Vĩnh Hiệp TP. Nha Trang, Khánh Hòa.</p><p>Thành.</p><p>- VP BÌNH DƯƠNG: Số 815 Đường Lê Hồng Phong, KP7, P. Phú Thọ, TP. Thủ Dầu Một, Bình Dương.</p>', '<p>• Giới tính Nam – Độ tuổi từ 20 đến 35.</p><p>• Tốt nghiệp THPT trờ lên. Ưu tiên ứng viên tốt nghiệp Trung cấp trở lên các ngành: Kinh tế, Luật, An ninh và Hành chánh.</p><p>• Biết sử dụng vi tính văn phòng (cơ bản);</p><p>• Có xe gắn máy;</p><p>• Trung thực, năng động, chịu khó có trách nhiệm và giao tiếp tốt;</p><p>• Không tiền án tiền sự.</p>', 1, 5, 2, 4, 0, 0, 1, 2, '<p>•<span style=\"white-space:pre\">	</span>Học việc có hưởng lương 4.500.000 đồng/tháng;</p><p>•<span style=\"white-space:pre\">	</span>Phụ cấp tiền xăng xe, điện thoại theo đúng mức thực tế;</p><p>• Được ký HĐLĐ sau thời gian học việc và thử việc (thời gian học việc 15 ngày và thử việc 30 ngày);</p><p>• Tham gia BHXH, BHYT, BHTN và BHTN 24/24 sau khi ký HĐLĐ;</p><p>• Đánh giá nâng lương định ký 2 lần/năm, kể từ ngày đầu tiên ký HĐLĐ;</p><p>• Hỗ trợ nuôi con đến đủ 18 tuổi;</p><p>• Được nhận lương trước làm việc sau (Tạm ứng lương trước) sau khi ký HĐLĐ;</p><p>• Phép năm hưởng theo tỉ lệ ngày làm việc thực tế và nghỉ không hết phép sẽ được chuyển thành tiền lương;</p><p>• Lương tháng 13-14 theo thời gian làm việc.</p>', NULL, '2018-05-28 00:00:00', 7, 21, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:22:20', '2018-06-20 01:26:00'),
 (56, 'Kỹ Sư Thiết Kế Bo Mạch Điện', NULL, NULL, 'ky-su-thiet-ke-bo-mach-dien', 1, 3, '<p>- Thiết kế bo mạch dẻo (Flexible Circuit Board Design)<br></p>', '<p>- Tốt nghiệp chuyên ngành điện tử.</p><p>- Ưu tiên ứng viên có trên 1 năm kinh nghiệp thiết kế bo mạch điện tử.</p><p>- Tiếng Anh hoặc tiếng Nhật giao tiếp tốt bao gồm cả 3 kĩ năng viết, đọc và nói. Có khả năng đối ứng khách hàng qua email, skype.</p><p>( Ứng viên không yêu cầu biết cả hai thứ tiếng)</p>', 1, 1, 3, 7, 0, 0, 1, 2, '<p>- Lương thoả thuận theo năng lực.</p><p>- Trợ cấp cơm trưa theo chế độ công ty.</p><p>- Tham gia đầy đủ BHXH, BHYT, BHTN</p><p>- Lương tháng 13, lương doanh thu và các thưởng lễ khác theo tình hình kinh doanh của công ty.</p><p>- Du lịch hàng năm.</p><p>- Xét tăng lương 1 lần /1 năm</p><p>- Được training trở thành leader nhóm sau 1 năm làm việc tại công ty.</p>', NULL, '2018-05-31 00:00:00', 6, 28, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:25:19', '2018-06-20 03:54:45'),
@@ -3830,7 +3833,9 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (571, 1, 'user', NULL, '2018-05-31 02:45:01', '2018-05-31 02:45:01'),
 (572, NULL, 'global', NULL, '2018-06-19 01:10:20', '2018-06-19 01:10:20'),
 (573, NULL, 'ip', '127.0.0.1', '2018-06-19 01:10:20', '2018-06-19 01:10:20'),
-(574, 1, 'user', NULL, '2018-06-19 01:10:20', '2018-06-19 01:10:20');
+(574, 1, 'user', NULL, '2018-06-19 01:10:20', '2018-06-19 01:10:20'),
+(575, NULL, 'global', NULL, '2018-06-21 08:24:45', '2018-06-21 08:24:45'),
+(576, NULL, 'ip', '127.0.0.1', '2018-06-21 08:24:45', '2018-06-21 08:24:45');
 
 -- --------------------------------------------------------
 
@@ -3861,7 +3866,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-06-20 19:50:49', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-06-20 19:50:49'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-06-21 08:24:51', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-06-21 08:24:51'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4611,7 +4616,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=963;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=964;
 
 --
 -- AUTO_INCREMENT for table `photo`
@@ -4665,7 +4670,7 @@ ALTER TABLE `profile_graduation`
 -- AUTO_INCREMENT for table `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `profile_language`
@@ -4677,7 +4682,7 @@ ALTER TABLE `profile_language`
 -- AUTO_INCREMENT for table `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `profile_skill`
@@ -4791,7 +4796,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT for table `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=575;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=577;
 
 --
 -- AUTO_INCREMENT for table `users`

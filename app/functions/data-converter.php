@@ -1652,7 +1652,7 @@ function searchingProfileConverter($data=array()){
     $result = array();    
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){        
-
+            $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
             $result[$i] = array(    
                 "id"                    =>  @$data[$i]['id']   ,         
                 "profile_name"          =>  @$data[$i]['profile_name'],
@@ -1660,6 +1660,7 @@ function searchingProfileConverter($data=array()){
                 'literacy_name'         =>  @$data[$i]['literacy_name'], 
                 'experience_name'       =>  @$data[$i]['experience_name'],
                 'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,
+                'entranced'             =>  @$entranced
             );
         }
     }

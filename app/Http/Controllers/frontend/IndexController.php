@@ -1483,8 +1483,8 @@ class IndexController extends Controller {
 		$data=recruitmentProfileConverter($data);
 		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
-	public function getAppliedProfileDetail($candidate_id){
-		return view('frontend.applied-profile-detail',compact('candidate_id'));  
+	public function getAppliedProfileDetail($profile_id){
+		return view('frontend.applied-profile-detail',compact('profile_id'));  
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

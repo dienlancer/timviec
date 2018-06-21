@@ -12,14 +12,7 @@ $seo=getSeo();
 			<form name="frm-cabinet-applied-profile" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" name="filter_page" value="1">     
-				<h1 class="dn-dk-h">KẾT QUẢ TÌM KIẾM HỒ SƠ ỨNG VIÊN</h1>
-				<div class="margin-top-15">
-					<div class="row">						
-						<div class="col-lg-4"><input type="text" name="candidate_name" class="kiem-cong-viec kiatisak" value="<?php echo @$candidate_name; ?>" placeholder="Nhập tên ứng viên..."></div>
-						<div class="col-lg-4"><input type="text" name="recruitment_name" class="kiem-cong-viec kiatisak" value="<?php echo @$recruitment_name; ?>" placeholder="Nhập vị trí tuyển dụng..."></div>
-						<div class="col-lg-4"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-cabinet-applied-profile'].submit();">Lọc</a></div></div>
-					</div>										
-				</div>				
+				<h1 class="dn-dk-h">KẾT QUẢ TÌM KIẾM HỒ SƠ ỨNG VIÊN</h1>				
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>

@@ -1388,7 +1388,8 @@ class IndexController extends Controller {
 	public function apply(Request $request){
 		$msg=array();
 		$checked=1;		     				
-		$info=array();				
+		$info=array();	
+		$link_edit='';			
 		if($request->isMethod('post')){                    
 			$profile_id              = (int)@$request->profile_id;			
 			$recruitment_id 	= (int)@$request->recruitment_id;	
@@ -1407,12 +1408,13 @@ class IndexController extends Controller {
 				$item->updated_at 	=	date("Y-m-d H:i:s",time());        
 				$item->save();			
 				$msg['success']='Nộp hồ sơ hoàn tất';
+				$link_edit=route('frontend.index.getHome');
 			}			
 		}                       
 		$info = array(
 			"checked"       => $checked,          
 			'msg'       => $msg,      
-			
+			'link_edit'=>$link_edit
 		);                        
 		return $info;    
 	}
@@ -2708,6 +2710,7 @@ class IndexController extends Controller {
 		$recruitment_id 		=	trim(@$request->recruitment_id); 
 		$candidate_id 			=	trim(@$request->candidate_id); 
 		$source_file           	=   null;
+		$link_edit		='';
     	if(isset($_FILES["file_attached"])){
     		$source_file         =   $_FILES["file_attached"];
     	}        	         	 
@@ -2740,10 +2743,12 @@ class IndexController extends Controller {
     		}  
     		$item->save();  
     		$msg['success']='Ứng tuyển vị trí thành công'; 
+    		$link_edit=route('frontend.index.getHome');
 		}  
 		$info = array(
     		"checked"       => $checked,       		
-    		'msg'       	=> $msg
+    		'msg'       	=> $msg,
+    		'link_edit'		=>	$link_edit
     	);                       
     	return $info;   		
 	}

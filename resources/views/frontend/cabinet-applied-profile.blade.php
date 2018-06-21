@@ -24,8 +24,9 @@ $seo=getSeo();
 					<thead>
 						<tr>
 							<th class="news-title"><center>Ứng viên</center></th>	
-							<th class="news-title"><center>Vị trí tuyển dụng</center></th>	
-							<th class="news-title"><center>Chi tiết hồ sơ</center></th>														
+							<th class="news-title"><center>Ứng tuyển vị trí</center></th>	
+							<th class="news-title"><center>Chi tiết hồ sơ</center></th>	
+							<th class="news-title"><center>File hồ sơ đính kèm</center></th>														
 						</tr>
 					</thead>
 					<tbody>
@@ -34,12 +35,14 @@ $seo=getSeo();
 							$id=$value['id'];
 							$fullname=$value['fullname'];	
 							$recruitment_name=$value['recruitment_name'];		
-							$entranced=$value['entranced'];					
+							$entranced=$value['entranced'];		
+							$link_cv=$value['link_cv'];			
 							?>
 							<tr>
 								<td><?php echo $fullname; ?></td>	
 								<td><?php echo $recruitment_name; ?></td>								
-								<td><?php echo $entranced; ?></td>								
+								<td><?php echo $entranced; ?></td>	
+								<td><?php echo $link_cv; ?></td>								
 							</tr>
 							<?php
 						}

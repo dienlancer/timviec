@@ -1368,6 +1368,9 @@ font-size: 12px;
 .recruitment-name{
     color: #ff0027;
 }
+.download-cv a{
+    color: #333;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

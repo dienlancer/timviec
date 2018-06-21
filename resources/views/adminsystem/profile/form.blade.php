@@ -621,6 +621,14 @@ $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'
                 }
                 ?> 
                 <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label lisa"><b>TIN HỌC VĂN PHÒNG</b></label>
+                        <div class="col-md-9">                                   
+                            
+                        </div>
+                    </div>                         
+                </div> 
+                <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-md-3 control-label"><b>MS Word</b></label>
                             <div class="col-md-9">                                   

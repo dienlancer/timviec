@@ -1532,11 +1532,11 @@ class IndexController extends Controller {
 			$province_id=		(int)@$request->province_id;
 			$query->where('profile_place.province_id',(int)@$request->province_id);
 		}
+		$salary_id=(int)@$request->salary_id;
 		if(!empty(@$request->salary)){
 			$pattern_dot='#\.#';
 			$salary_text=@$request->salary;
-			$salary=preg_replace($pattern_dot, '', @$request->salary);   			
-			$salary_id=(int)@$request->salary_id;
+			$salary=preg_replace($pattern_dot, '', @$request->salary);   						
 			if($salary_id == 1){
 				$query->where('profile.salary','>=',(int)@$salary);
 			}else{
@@ -1553,10 +1553,11 @@ class IndexController extends Controller {
 			$query->where('profile_language.language_id',(int)@$request->language_id);
 		}		
 		if((int)@$request->sex_id > 0){
+			$sex_id=		(int)@$request->sex_id;
 			$query->where('candidate.sex_id',(int)@$request->sex_id);
 		}
 		if((int)@$request->experience_id > 0){	
-			$sex_id=		(int)@$request->experience_id;
+			$experience_id=		(int)@$request->experience_id;
 			$query->where('profile.experience_id',(int)@$request->experience_id);
 		}	
 		$data=$query->select('profile.id')
@@ -1597,7 +1598,7 @@ class IndexController extends Controller {
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=searchingProfileConverter($data);
-		return view('frontend.searching-profile',compact('data','msg','checked',"pagination","q","job_id","province_id","salary_id","salary","literacy_id","language_id","sex_id","experience_id"));     
+		return view('frontend.searching-profile',compact('data','msg','checked',"pagination","q","job_id","province_id","salary_id","salary_text","literacy_id","language_id","sex_id","experience_id"));     
 	}
 	public function getAppliedProfileDetail($profile_id){				
 		$arrUser=array();    

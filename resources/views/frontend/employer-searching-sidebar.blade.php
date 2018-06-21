@@ -26,9 +26,9 @@ $setting = getSettingSystem();
 		<div class="margin-top-10">
 			<div class="lunarnewyear">
 				<div>Lớn hơn</div>
-				<div class="margin-left-5"><input type="radio" name="salary_id" value="1" checked> </div>
+				<div class="margin-left-5"><input type="radio" name="salary_id" value="1" <?php echo ((int)@$salary_id == 1) ? 'checked' : '' ?> > </div>
 				<div class="margin-left-15">Nhỏ hơn</div>
-				<div class="margin-left-5"><input type="radio" name="salary_id" value="0"></div>
+				<div class="margin-left-5"><input type="radio" name="salary_id" value="0" <?php echo ((int)@$salary_id == 0) ? 'checked' : '' ?>></div>
 			</div>		
 		</div>
 		<div class="margin-top-10">			

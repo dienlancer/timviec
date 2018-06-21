@@ -1565,15 +1565,27 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('profile.id','profile.fullname as profile_name','candidate.fullname as candidate_name')
-		->groupBy('profile.id','profile.fullname','candidate.fullname')
+		$data=$query->select('profile.id',
+				'profile.fullname as profile_name',
+				'candidate.fullname as candidate_name',
+				'literacy.fullname as literacy_name',
+				'experience.fullname as experience_name',
+				'salary',
+				'province.fullname as province_name')
+		->groupBy('profile.id',
+				'profile.fullname',
+				'candidate.fullname',
+				'literacy.fullname',
+				'experience.fullname',
+				'salary',
+				'province.fullname')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=recruitmentProfileConverter($data);
-		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
+		return view('frontend.list-profile-search',compact('data','msg','checked',"pagination"));     
 	}
 	public function getAppliedProfileDetail($profile_id){				
 		$arrUser=array();    

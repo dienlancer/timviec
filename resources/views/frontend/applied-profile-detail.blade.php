@@ -25,28 +25,28 @@ $seo=getSeo();
 					<div class="col-lg-3"><img src="<?php echo asset('upload/'.@$data_candidate['avatar']); ?>"></div>
 					<div class="col-lg-9">
 						<div class="row margin-top-10">
-							<div class="col-lg-3"><div class="xika">Họ tên</div> </div>
-							<div class="col-lg-9"><div class="xika2"><b><?php echo @$data_candidate['fullname']; ?></b></div></div>
+							<div class="col-lg-3"><div class="xika"><b>Họ tên</b></div> </div>
+							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['fullname']; ?></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3"><div class="xika">Giới tính</div></div>
-							<div class="col-lg-9"><div class="xika2"><b><?php echo @$sex['fullname']; ?></b></div></div>
+							<div class="col-lg-3"><div class="xika"><b>Giới tính</b></div></div>
+							<div class="col-lg-9"><div class="xika2"><?php echo @$sex['fullname']; ?></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3"><div class="xika">Ngày sinh</div></div>
-							<div class="col-lg-9"><div class="xika2"><b><?php echo @$data_candidate['birthday']; ?></b></div></div>
+							<div class="col-lg-3"><div class="xika"><b>Ngày sinh</b></div></div>
+							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['birthday']; ?></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3"><div class="xika">Địa chỉ</div></div>
-							<div class="col-lg-9"><div class="xika2"><b><?php echo @$data_candidate['address']; ?></b></div></div>
+							<div class="col-lg-3"><div class="xika"><b>Địa chỉ</b></div></div>
+							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['address']; ?></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3"><div class="xika">Số điện thoại</div></div>
-							<div class="col-lg-9"><div class="xika2"><b><?php echo @$data_candidate['phone']; ?></b></div></div>
+							<div class="col-lg-3"><div class="xika"><b>Số điện thoại</b></div></div>
+							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['phone']; ?></div></div>
 						</div>	
 						<div class="row margin-top-10">
-							<div class="col-lg-3"><div class="xika">Email</div></div>
-							<div class="col-lg-9"><div class="xika2"><b><?php echo @$data_candidate['email']; ?></b></div></div>
+							<div class="col-lg-3"><div class="xika"><b>Email</b></div></div>
+							<div class="col-lg-9"><div class="xika2"><?php echo @$data_candidate['email']; ?></div></div>
 						</div>	
 					</div>
 				</div>	

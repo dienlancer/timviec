@@ -1483,8 +1483,100 @@ class IndexController extends Controller {
 		$data=recruitmentProfileConverter($data);
 		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
-	public function getAppliedProfileDetail($profile_id){
+	public function getListProfile(Request $request){
+		$checked=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}
+		$totalItems=0;
+		$totalItemsPerPage=20;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ='';            
+		$recruitment_name='';
+		$candidate_name='';
+		$query=DB::table('profile')		
+		->join('recruitment_profile','candidate.id','=','recruitment_profile.candidate_id')		
+		->join('recruitment','recruitment.id','=','recruitment_profile.recruitment_id');     		
+		if(!empty(@$request->candidate_name)){
+			$candidate_name=@$request->candidate_name;
+			$query->where('candidate.fullname','like', '%'.trim(@$candidate_name).'%');
+		}
+		if(!empty(@$request->recruitment_name)){
+			$recruitment_name=@$request->recruitment_name;
+			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
+		}		
+		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
+		$data=$query->select('candidate.id')
+		->groupBy('candidate.id')                
+		->get()->toArray();
+		$data=convertToArray($data);
+		$totalItems=count($data);    
+		$pageRange=$this->_pageRange;
+		if(isset($request->filter_page)){
+			if(!empty(@$request->filter_page)){
+				$currentPage=@$request->filter_page;
+			}
+		}          
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
+
+		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','recruitment_profile.file_attached')
+		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','recruitment_profile.profile_id','recruitment_profile.file_attached')
+		->orderBy('recruitment.id', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()->toArray();   
+		$data=convertToArray($data);    
+		$data=recruitmentProfileConverter($data);
+		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
+	}
+	public function getAppliedProfileDetail($profile_id){				
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}
 		return view('frontend.applied-profile-detail',compact('profile_id'));  
+	}
+	public function getFormSearchProfile(){
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}
+		return view('frontend.form-search-profile');  
 	}
 	public function getFormApplied(Request $request,$recruitment_id){
 		$checked=1;

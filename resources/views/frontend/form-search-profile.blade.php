@@ -11,7 +11,7 @@ $setting = getSettingSystem();
 	<div class="row">			
 		<div class="col-lg-9">
 			<div class="box-lala">
-				<form name="frm-search-profile" method="POST" class="box-search-profile" action="<?php echo route('frontend.index.getListProfile'); ?>" enctype="multipart/form-data">
+				<form name="frm-search-profile" method="POST" class="box-search-profile" action="<?php echo route('frontend.index.searchingProfile'); ?>" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<div class="margin-top-10"><input type="text" name="q" class="vacca" placeholder="Nhập từ khóa" >		</div>	
 					<div class="margin-top-10">

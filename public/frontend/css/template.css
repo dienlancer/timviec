@@ -1399,6 +1399,16 @@ font-size: 12px;
     margin-top: 15px;
 
 }
+.box-search-profile-sidebar{
+    
+    border: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px; 
+    
+
+}
 .box-lala{
     padding:0px 30px;
 }

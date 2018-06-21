@@ -1483,7 +1483,7 @@ class IndexController extends Controller {
 		$data=recruitmentProfileConverter($data);
 		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
-	public function getListProfile(Request $request){
+	public function searchingProfile(Request $request){
 		$checked=1;
 		$msg=array();        
 		$data=array();       
@@ -1505,6 +1505,14 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$q='';		
+		$job_id=0;
+		$province_id=0;
+		$salary_id=0;		
+		$salary_text='';
+		$literacy_id=0;
+		$language_id=0;
+		$sex_id=0;
+		$experience_id=0;
 		$query=DB::table('profile')		
 		->join('candidate','profile.candidate_id','=','candidate.id')
 		->join('literacy','profile.literacy_id','=','literacy.id')
@@ -1516,14 +1524,17 @@ class IndexController extends Controller {
 			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
 		}	
 		if((int)@$request->job_id > 0){
+			$job_id=(int)@$request->job_id;
 			$query->join('profile_job','profile.id','=','profile_job.profile_id');
 			$query->where('profile_job.job_id',(int)@$request->job_id);
 		}	
-		if((int)@$request->province_id > 0){			
+		if((int)@$request->province_id > 0){	
+			$province_id=		(int)@$request->province_id;
 			$query->where('profile_place.province_id',(int)@$request->province_id);
 		}
 		if(!empty(@$request->salary)){
 			$pattern_dot='#\.#';
+			$salary_text=@$request->salary;
 			$salary=preg_replace($pattern_dot, '', @$request->salary);   			
 			$salary_id=(int)@$request->salary_id;
 			if($salary_id == 1){
@@ -1533,16 +1544,19 @@ class IndexController extends Controller {
 			}			
 		}
 		if((int)@$request->literacy_id > 0){
+			$literacy_id=(int)@$request->literacy_id;
 			$query->where('profile.literacy_id',(int)@$request->literacy_id);
 		}
 		if((int)@$request->language_id > 0){
+			$language_id=(int)@$request->language_id;
 			$query->join('profile_language','profile.id','=','profile_language.profile_id');
 			$query->where('profile_language.language_id',(int)@$request->language_id);
 		}		
 		if((int)@$request->sex_id > 0){
 			$query->where('candidate.sex_id',(int)@$request->sex_id);
 		}
-		if((int)@$request->experience_id > 0){			
+		if((int)@$request->experience_id > 0){	
+			$sex_id=		(int)@$request->experience_id;
 			$query->where('profile.experience_id',(int)@$request->experience_id);
 		}	
 		$data=$query->select('profile.id')
@@ -1583,7 +1597,7 @@ class IndexController extends Controller {
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=searchingProfileConverter($data);
-		return view('frontend.searching-profile',compact('data','msg','checked',"pagination"));     
+		return view('frontend.searching-profile',compact('data','msg','checked',"pagination","q","job_id","province_id","salary_id","salary","literacy_id","language_id","sex_id","experience_id"));     
 	}
 	public function getAppliedProfileDetail($profile_id){				
 		$arrUser=array();    

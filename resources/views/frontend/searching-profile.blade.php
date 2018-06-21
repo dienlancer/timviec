@@ -56,7 +56,8 @@ $seo=getSeo();
 			</form>		
 		</div>
 		<div class="col-lg-3">
-			@include("frontend.employer-searching-sidebar")				
+			@include("frontend.employer-searching-sidebar")	
+			@include("frontend.employer-sidebar")				
 		</div>
 	</div>
 </div>

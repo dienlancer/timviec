@@ -1648,6 +1648,23 @@ function recruitmentProfileConverter($data=array()){
     }
     return $result;
 }
+function searchingProfileConverter($data=array()){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){        
+
+            $result[$i] = array(    
+                "id"                    =>  @$data[$i]['id']   ,         
+                "profile_name"          =>  @$data[$i]['profile_name'],
+                "candidate_name"        =>  @$data[$i]['candidate_name'],                         
+                'literacy_name'         =>  @$data[$i]['literacy_name'], 
+                'experience_name'       =>  @$data[$i]['experience_name'],
+                'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,
+            );
+        }
+    }
+    return $result;
+}
 function recruitment2Converter($data=array()){        
     $result = array();    
     if( count($data) > 0){

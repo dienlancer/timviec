@@ -1570,22 +1570,20 @@ class IndexController extends Controller {
 				'candidate.fullname as candidate_name',
 				'literacy.fullname as literacy_name',
 				'experience.fullname as experience_name',
-				'salary',
-				'province.fullname as province_name')
+				'salary')
 		->groupBy('profile.id',
 				'profile.fullname',
 				'candidate.fullname',
 				'literacy.fullname',
 				'experience.fullname',
-				'salary',
-				'province.fullname')
+				'salary')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
-		$data=recruitmentProfileConverter($data);
-		return view('frontend.list-profile-search',compact('data','msg','checked',"pagination"));     
+		$data=searchingProfileConverter($data);
+		return view('frontend.searching-profile',compact('data','msg','checked',"pagination"));     
 	}
 	public function getAppliedProfileDetail($profile_id){				
 		$arrUser=array();    

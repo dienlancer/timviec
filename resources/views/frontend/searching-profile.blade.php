@@ -12,7 +12,7 @@ $seo=getSeo();
 			<form name="frm-cabinet-applied-profile" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" name="filter_page" value="1">     
-				<h1 class="dn-dk-h">DANH SÁCH ỨNG VIÊN NỘP HỒ SƠ</h1>
+				<h1 class="dn-dk-h">KẾT QUẢ TÌM KIẾM HỒ SƠ ỨNG VIÊN</h1>
 				<div class="margin-top-15">
 					<div class="row">						
 						<div class="col-lg-4"><input type="text" name="candidate_name" class="kiem-cong-viec kiatisak" value="<?php echo @$candidate_name; ?>" placeholder="Nhập tên ứng viên..."></div>
@@ -23,26 +23,23 @@ $seo=getSeo();
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>
+							<th class="news-title"><center>Tiêu đề hồ sơ</center></th>	
 							<th class="news-title"><center>Ứng viên</center></th>	
-							<th class="news-title"><center>Ứng tuyển vị trí</center></th>	
-							<th class="news-title"><center>Chi tiết hồ sơ</center></th>	
-							<th class="news-title"><center>File hồ sơ đính kèm</center></th>														
+							<th class="news-title"><center>Trình độ</center></th>	
+							<th class="news-title"><center>Kinh nghiệm</center></th>														
+							<th class="news-title"><center>Mức lương</center></th>														
 						</tr>
 					</thead>
 					<tbody>
 						<?php 
-						foreach ($data as $key => $value) {
-							$id=$value['id'];
-							$fullname=$value['fullname'];	
-							$recruitment_name=$value['recruitment_name'];		
-							$entranced=$value['entranced'];		
-							$link_cv=$value['link_cv'];			
+						foreach ($data as $key => $value) {							
 							?>
 							<tr>
-								<td><?php echo $fullname; ?></td>	
-								<td><?php echo $recruitment_name; ?></td>								
-								<td><?php echo $entranced; ?></td>	
-								<td><?php echo $link_cv; ?></td>								
+								<td><?php echo @$value['profile_name']; ?></td>	
+								<td><?php echo @$value['candidate_name']; ?></td>								
+								<td><?php echo @$value['literacy_name']; ?></td>				
+								<td><?php echo @$value['experience_name']; ?></td>				
+								<td><?php echo @$value['salary']; ?></td>				
 							</tr>
 							<?php
 						}
@@ -59,7 +56,7 @@ $seo=getSeo();
 			</form>		
 		</div>
 		<div class="col-lg-3">
-			@include("frontend.employer-sidebar")				
+			@include("frontend.employer-searching-sidebar")				
 		</div>
 	</div>
 </div>

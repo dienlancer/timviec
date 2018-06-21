@@ -22,8 +22,10 @@ $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$candidate)>0){
 	if(!empty(@$candidate["avatar"])){
-		$picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
-	}        
+		$picture        =   '<img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  />';                        
+	}else{
+		$picture='<img src="'.asset("/upload/avatar-default-icon.png").'" width="64" />';
+	}           
 }
 $query=DB::table('profile')
 ->leftJoin('literacy','profile.literacy_id','=','literacy.id')
@@ -140,7 +142,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<?php echo $inputID; ?>
 				<h1 class="dn-dk-h">Tạo Hồ Sơ Từng Bước</h1>				
 				<div class="row">
-					<div class="col-lg-3"><?php echo $picture; ?></div>
+					<div class="col-lg-3"><div class="picture-box"><?php echo $picture; ?></div></div>
 					<div class="col-lg-9">
 						<div class="row mia">
 							<div class="col-lg-3"><div class="xika">Họ tên</div> </div>

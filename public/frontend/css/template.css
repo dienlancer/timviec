@@ -1370,6 +1370,11 @@ font-size: 12px;
     color: #333;
     font-size:20px;
 }
+.picture-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 @media (max-width: 768px){    
     .mobilemenu{
         display: block;

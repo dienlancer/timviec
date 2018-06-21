@@ -68,7 +68,7 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
-			<form name="frm" method="POST" enctype="multipart/form-data">
+			<form name="frm-candidate-account" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<?php echo $inputPictureHidden; ?>
 				<h1 class="dn-dk-h">Tài Khoản Ứng Viên</h1>
@@ -160,7 +160,7 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",$source_marriage,@$data[
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Cập nhật</a></div></div>
+					<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm-candidate-account'].submit();" >Cập nhật</a></div></div>
 				</div>
 			</form>	
 		</div>

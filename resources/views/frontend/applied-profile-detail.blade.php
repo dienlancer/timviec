@@ -3,6 +3,7 @@
 @include("frontend.content-top")
 <?php 
 $seo=getSeo();
+$setting = getSettingSystem();
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -18,11 +19,19 @@ $seo=getSeo();
 				$data_candidate=App\CandidateModel::find((int)@$data_profile['candidate_id'])->toArray();			
 				$sex=App\SexModel::find((int)@$data_candidate['sex_id'])->toArray();    
 				$marriage=App\MarriageModel::find((int)@$data_candidate['marriage_id'])->toArray();
-				$data_candidate['birthday']=datetimeConverterVn($data_candidate['birthday']);    	
+				$data_candidate['birthday']=datetimeConverterVn($data_candidate['birthday']); 
+				$picture                =   "";
+				$product_width = $setting['product_width']['field_value'];
+				$product_height = $setting['product_height']['field_value'];  
+				if(!empty(@$data_candidate["avatar"])){
+					$picture        =   '<img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data_candidate["avatar"]).'"  />';                        
+				}else{
+					$picture='<img src="'.asset("/upload/avatar-default-icon.png").'"  />';
+				}        				
 				?>
 				<h1 class="dn-dk-h">THÔNG TIN ỨNG VIÊN</h1>			
 				<div class="row margin-top-15">
-					<div class="col-lg-3"><img src="<?php echo asset('upload/'.@$data_candidate['avatar']); ?>"></div>
+					<div class="col-lg-3"><div class="picture-box"><?php echo $picture; ?></div></div>
 					<div class="col-lg-9">
 						<div class="row mia">
 							<div class="col-lg-3"><div class="xika"><b>Họ tên</b></div> </div>

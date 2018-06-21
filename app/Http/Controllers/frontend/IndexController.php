@@ -1515,10 +1515,10 @@ class IndexController extends Controller {
 			$q=@$request->q;
 			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
 		}	
-		if((int)@$request->job_id > 0){		
-			$query->join('profile_job','profile.id','=','profile_job.profile_id')	
+		if((int)@$request->job_id > 0){
+			$query->join('profile_job','profile.id','=','profile_job.profile_id');
 			$query->where('profile_job.job_id',(int)@$request->job_id);
-		}			
+		}	
 		if((int)@$request->province_id > 0){			
 			$query->where('profile_place.province_id',(int)@$request->province_id);
 		}

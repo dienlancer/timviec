@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2018 at 07:14 AM
+-- Generation Time: Jun 21, 2018 at 11:30 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -208,7 +208,7 @@ INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthd
 (2, 'truongnt@dienkim.com', '$2y$10$jp2WuH8yQ3JhkPmL5zNBPeKK35V2W2.SU0vYLQKkJd8L/HSD441M2', 'Đặng Thị Thu Hằng', '0922111222', '1988-04-11 00:00:00', 1, 1, 2, '23 Lý Thường Kiệt', 'logo-2-xmydbuv95gtc.png', NULL, NULL, 1, '2018-04-03 07:14:21', '2018-04-11 08:31:05'),
 (3, 'vientg@dienkim.com', '$2y$10$e9812Kvxwy2C8z.q/tGRQOyPBZSEyQftMBmtiWhD7cJ65RfVtTH7y', 'Trần Gia Viên', '0988223244', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 04:41:02', '2018-05-02 03:17:27'),
 (4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 04:53:22', '2018-04-11 08:31:05'),
-(5, 'duydp@dienkim.com', '$2y$10$l.PmvBEd9gT/Dod3nJLTHe1i5Ko/uyEItXMYouG0d/od6pgNxZPlm', 'Phạm Đình Duy', '0988145622', '1989-05-06 00:00:00', 1, 1, 51, '62 Lê Thánh Tôn', '300x300-logo-2-3z6s1rfhjulc-1ihm483naoy5.png', NULL, NULL, 1, '2018-04-04 05:18:40', '2018-05-13 18:49:58'),
+(5, 'duydp@dienkim.com', '$2y$10$l.PmvBEd9gT/Dod3nJLTHe1i5Ko/uyEItXMYouG0d/od6pgNxZPlm', 'Phạm Đình Duy', '0988145622', '1989-05-06 00:00:00', 1, 1, 51, '62 Lê Thánh Tôn', NULL, NULL, NULL, 1, '2018-04-04 05:18:40', '2018-06-21 09:21:30'),
 (6, 'doricata@dienkim.com', '$2y$10$f5xkRP6uU9xCbwatX0o4XetN8cl6VgyElfUNKHOtWzug2YiQNHbRS', 'Nguyễn Văn Cường', '0988162289', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 05:31:42', '2018-04-04 10:14:02'),
 (9, 'dienit02@gmail.com', '$2y$10$.poX92LRY9iXsfOPQZLD.eITV1w98HCGcJhCC1S4zYMWf1RLBkb2m', 'Lê Phước Cường', '0922331459', NULL, NULL, NULL, NULL, NULL, NULL, 'iv3kny69a05l28r7wcp4zqj1ghbsdx', 1, 1, '2018-05-15 08:03:17', '2018-05-15 09:56:51');
 

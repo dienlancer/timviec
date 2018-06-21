@@ -23,7 +23,7 @@ $seo=getSeo();
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>
-							<th class="news-title">Ứng viên</th>	
+							<th class="news-title"><center>Ứng viên</center></th>	
 							<th class="news-title"><center>Vị trí tuyển dụng</center></th>	
 							<th class="news-title"><center>Chi tiết hồ sơ</center></th>														
 						</tr>

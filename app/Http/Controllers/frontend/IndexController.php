@@ -46,6 +46,7 @@ use App\ProfileGraduationModel;
 use App\ProfileLanguageModel;
 use App\ProfileSkillModel;
 use App\ProvinceModel;
+use App\EmployerProfileModel;
 use App\RecruitmentProfileModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -1483,6 +1484,78 @@ class IndexController extends Controller {
 		$data=recruitmentProfileConverter($data);
 		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
 	}
+
+	public function viewSavedProfile(Request $request){
+		$checked=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}
+		$totalItems=0;
+		$totalItemsPerPage=20;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ='';            
+		$q='';				
+		$query=DB::table('profile')		
+		->join('candidate','profile.candidate_id','=','candidate.id')
+		->join('literacy','profile.literacy_id','=','literacy.id')
+		->join('experience','profile.experience_id','=','experience.id');     		
+		if(!empty(@$request->q)){
+			$q=@$request->q;
+			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
+		}			
+		$data=$query->select('profile.id')
+		->groupBy('profile.id')       
+		->get()->toArray();
+		$data=convertToArray($data);
+		$totalItems=count($data);    
+		$pageRange=$this->_pageRange;
+		if(isset($request->filter_page)){
+			if(!empty(@$request->filter_page)){
+				$currentPage=@$request->filter_page;
+			}
+		}          
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
+
+		$data=$query->select('profile.id',
+				'profile.fullname as profile_name',
+				'candidate.fullname as candidate_name',
+				'literacy.fullname as literacy_name',
+				'experience.fullname as experience_name',
+				'salary')
+		->groupBy('profile.id',
+				'profile.fullname',
+				'candidate.fullname',
+				'literacy.fullname',
+				'experience.fullname',
+				'salary')
+		->orderBy('profile.id', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()->toArray();   
+		$data=convertToArray($data);    
+		$data=savedProfileConverter($data);
+		return view('frontend.saved-profile',compact('data','msg','checked',"pagination","q"));     
+	}
+
 	public function searchingProfile(Request $request){
 		$checked=1;
 		$msg=array();        
@@ -1600,7 +1673,9 @@ class IndexController extends Controller {
 		$data=searchingProfileConverter($data);
 		return view('frontend.searching-profile',compact('data','msg','checked',"pagination","q","job_id","province_id","salary_id","salary_text","literacy_id","language_id","sex_id","experience_id"));     
 	}
-	public function getAppliedProfileDetail($profile_id,$save_id){				
+	public function getAppliedProfileDetail(Request $request, $profile_id,$save_id){
+		$checked=1;
+		$msg=array();        		
 		$arrUser=array();    
 		if(Session::has($this->_ssNameUser)){
 			$arrUser=Session::get($this->_ssNameUser);
@@ -1613,7 +1688,24 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}
-		return view('frontend.applied-profile-detail',compact('profile_id','save_id'));  
+		if($request->isMethod('post')){
+			$employer_id=(int)@$request->employer_id;
+			$data_employer_profile=EmployerProfileModel::whereRaw('employer_id = ? and profile_id = ?',[(int)@$employer_id,(int)@$profile_id])->select('id')->get()->toArray();
+			if(count(@$data_employer_profile) > 0){
+				$msg['error']='Hồ sơ này đã được lưu';
+				$checked=0;
+			}
+			if((int)@$checked == 1){
+				$item=new EmployerProfileModel;
+				$item->employer_id=(int)@$employer_id;			
+				$item->profile_id=(int)@$profile_id;
+				$item->created_at=date("Y-m-d H:i:s",time());   
+				$item->updated_at=date("Y-m-d H:i:s",time());   
+				$item->save();   
+				$msg['success']='Lưu hồ sơ thành công';
+			}			
+		}
+		return view('frontend.applied-profile-detail',compact('msg','checked','profile_id','save_id'));  
 	}
 	public function getFormSearchProfile(){
 		$arrUser=array();    

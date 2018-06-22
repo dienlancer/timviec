@@ -4,6 +4,11 @@
 <?php 
 $seo=getSeo();
 $setting = getSettingSystem();
+$employer_id=0;
+if(Session::has("vmuser")){
+	$arrUser=Session::get("vmuser");
+	$employer_id=@$arrUser['id'];
+} 
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -29,7 +34,30 @@ $setting = getSettingSystem();
 					$picture='<img src="'.asset("/upload/avatar-default-icon.png").'"  />';
 				}        				
 				?>
-				<h1 class="dn-dk-h">THÔNG TIN ỨNG VIÊN</h1>			
+				<h1 class="dn-dk-h">THÔNG TIN ỨNG VIÊN</h1>		
+				<?php 
+				if(count(@$msg) > 0){
+					$type_msg='';					
+					if((int)@$checked == 1){						
+						$type_msg='note-success';
+					}else{
+						$type_msg='note-danger';
+					}
+					?>
+					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+						<ul>
+							<?php 
+							foreach (@$msg as $key => $value) {
+								?>
+								<li><?php echo $value; ?></li>
+								<?php
+							}
+							?>                              
+						</ul>	
+					</div>      
+					<?php
+				}			
+				?>	
 				<div class="row margin-top-15">
 					<div class="col-lg-3"><div class="picture-box"><?php echo $picture; ?></div></div>
 					<div class="col-lg-9">
@@ -538,20 +566,23 @@ $setting = getSettingSystem();
 				<?php 
 				if((int)@$save_id == 1){
 					?>
-					<div class="row mia">
-						<div class="col-lg-4"></div>
-						<div class="col-lg-8">
-
-							<div class="vihamus-search-profile">
-								<a href="javascript:void(0);" >
-									<div class="narit">
-										<div><i class="far fa-save"></i></div>
-										<div class="margin-left-5">Lưu hồ sơ</div>
-									</div>								
-								</a>
-							</div>
-						</div>						
-					</div>			
+					<form name="frm-save-profile" method="POST"  enctype="multipart/form-data">
+						{{ csrf_field() }}						
+						<input type="hidden" name="employer_id" value="<?php echo @$employer_id; ?>">	
+						<div class="row mia">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-8">
+								<div class="vihamus-search-profile">
+									<a href="javascript:void(0);" onclick="document.forms['frm-save-profile'].submit();">
+										<div class="narit">
+											<div><i class="far fa-save"></i></div>
+											<div class="margin-left-5">Lưu hồ sơ</div>
+										</div>								
+									</a>
+								</div>
+							</div>						
+						</div>			
+					</form>					
 					<?php
 				}				
 			}			

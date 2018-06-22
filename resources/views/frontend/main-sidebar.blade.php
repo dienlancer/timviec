@@ -12,8 +12,8 @@
 							$source_work=App\WorkModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
 							$source_working_form=App\WorkingFormModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
 							$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
-							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, @$job_id,'','Chọn ngành nghề');
-							$ddlProvince        =cmsSelectboxCategory("province_id", 'vacca', @$source_province, @$province_id,'','Chọn tỉnh thành');
+							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca selected2', @$source_job, @$job_id,'','Chọn ngành nghề');
+							$ddlProvince        =cmsSelectboxCategory("province_id", 'vacca selected2', @$source_province, @$province_id,'','Chọn tỉnh thành');
 							$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, @$salary_id,'','Chọn mức lương');
 							$ddlLiteracy        =cmsSelectboxCategory("literacy_id", 'vacca', @$source_literacy, @$literacy_id,'','Chọn trình độ học vấn');
 							$ddlSex        =cmsSelectboxCategory("sex_id", 'vacca', @$source_sex, @$sex_id,'','Chọn giới tính');

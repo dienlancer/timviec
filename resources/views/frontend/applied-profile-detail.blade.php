@@ -10,7 +10,7 @@ $setting = getSettingSystem();
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
-			<?php 
+			<?php 			
 			$source_profile=App\ProfileModel::find((int)@$profile_id);
 			$data_profile=array();
 			$data_candidate=array();
@@ -534,8 +534,26 @@ $setting = getSettingSystem();
 				<div class="row mia">
 					<div class="col-lg-4" ><div class="xika"><b>Kỹ năng đặc biệt</b></div></div>
 					<div class="col-lg-8"><div class="xika2"><?php echo @$data_profile['talent']; ?></div> </div>
-				</div>					
-				<?php         
+				</div>		
+				<?php 
+				if((int)@$save_id == 1){
+					?>
+					<div class="row mia">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-8">
+
+							<div class="vihamus-search-profile">
+								<a href="javascript:void(0);" >
+									<div class="narit">
+										<div><i class="far fa-save"></i></div>
+										<div class="margin-left-5">Lưu hồ sơ</div>
+									</div>								
+								</a>
+							</div>
+						</div>						
+					</div>			
+					<?php
+				}				
 			}			
 			?>
 		</div>

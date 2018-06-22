@@ -20,8 +20,7 @@ $seo=getSeo();
 							<th class="news-title"><center>Ứng viên</center></th>	
 							<th class="news-title"><center>Trình độ</center></th>	
 							<th class="news-title"><center>Kinh nghiệm</center></th>														
-							<th class="news-title"><center>Mức lương</center></th>	
-							<th class="news-title"><center>Chi tiết hồ sơ</center></th>														
+							<th class="news-title"><center>Mức lương</center></th>		
 						</tr>
 					</thead>
 					<tbody>
@@ -33,8 +32,7 @@ $seo=getSeo();
 								<td><?php echo @$value['candidate_name']; ?></td>								
 								<td><?php echo @$value['literacy_name']; ?></td>				
 								<td><?php echo @$value['experience_name']; ?></td>				
-								<td><?php echo @$value['salary']; ?></td>		
-								<td><?php echo @$value['entranced']; ?></td>				
+								<td><?php echo @$value['salary']; ?></td>												
 							</tr>
 							<?php
 						}

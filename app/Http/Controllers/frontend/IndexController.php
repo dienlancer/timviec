@@ -1600,7 +1600,7 @@ class IndexController extends Controller {
 		$data=searchingProfileConverter($data);
 		return view('frontend.searching-profile',compact('data','msg','checked',"pagination","q","job_id","province_id","salary_id","salary_text","literacy_id","language_id","sex_id","experience_id"));     
 	}
-	public function getAppliedProfileDetail($profile_id){				
+	public function getAppliedProfileDetail($profile_id,$save_id){				
 		$arrUser=array();    
 		if(Session::has($this->_ssNameUser)){
 			$arrUser=Session::get($this->_ssNameUser);
@@ -1613,7 +1613,7 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}
-		return view('frontend.applied-profile-detail',compact('profile_id'));  
+		return view('frontend.applied-profile-detail',compact('profile_id','save_id'));  
 	}
 	public function getFormSearchProfile(){
 		$arrUser=array();    

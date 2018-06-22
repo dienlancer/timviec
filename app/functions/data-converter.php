@@ -1632,7 +1632,7 @@ function recruitmentProfileConverter($data=array()){
             $entranced='';
             $link_cv='';
             if(!empty(@$data[$i]['profile_id'])){
-                $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$profile_id]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
+                $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$profile_id,0]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
             }
             if(!empty(@$data[$i]['file_attached'])){
                 $link_cv='<div class="download-cv"><center><a href="'.asset('upload/'.@$data[$i]['file_attached']).'" target="_blank"><i class="fas fa-download"></i></a></center></div>';   
@@ -1652,15 +1652,14 @@ function searchingProfileConverter($data=array()){
     $result = array();    
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){        
-            $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
+            $profile_name='<a href="'.route('frontend.index.getAppliedProfileDetail',[@$data[$i]['id'],1]).'">'.@$data[$i]['profile_name'].'</a>';
             $result[$i] = array(    
                 "id"                    =>  @$data[$i]['id']   ,         
-                "profile_name"          =>  @$data[$i]['profile_name'],
+                "profile_name"          =>  @$profile_name,
                 "candidate_name"        =>  @$data[$i]['candidate_name'],                         
                 'literacy_name'         =>  @$data[$i]['literacy_name'], 
                 'experience_name'       =>  @$data[$i]['experience_name'],
-                'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,
-                'entranced'             =>  @$entranced
+                'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,                
             );
         }
     }

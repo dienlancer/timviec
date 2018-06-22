@@ -18,7 +18,7 @@ $inputMetadescription             =   '<textarea name="meta_description" rows="2
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"  value="'.@$arrRowData['sort_order'].'">';
 
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,@$arrRowData['status'],"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 $ddlCategoryArticle        =cmsSelectboxCategoryArticleMultiple("category_id[]", 'form-control', @$arrCategoryArticleRecursive, @$arrArticleCategory,"",'Chọn danh mục');
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />'; 

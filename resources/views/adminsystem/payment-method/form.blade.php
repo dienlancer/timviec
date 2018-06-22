@@ -8,9 +8,9 @@ $linkSave               =   route('adminsystem.'.$controller.'.save');
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"      value="'.@$arrRowData['fullname'].'">';  
 $inputAlias             =   '<input type="text" class="form-control" name="alias"      value="'.@$arrRowData['alias'].'">';  
 $inputContent           =   '<textarea name="content" rows="5" cols="100" class="form-control" >'.@$arrRowData['content'].'</textarea>'; 
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"    value="'.@$arrRowData['sort_order'].'">';
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />'; 

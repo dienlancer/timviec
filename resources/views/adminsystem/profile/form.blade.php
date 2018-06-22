@@ -5,9 +5,9 @@ $setting= getSettingSystem();
 $linkCancel             =   route('adminsystem.'.$controller.'.getList',[@$candidate_id]);
 $linkSave               =   route('adminsystem.'.$controller.'.save');
 
-$status                 =   (count(@$arrRowData) > 0) ? (int)@$arrRowData['status'] : 1 ;
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Duyệt', 0 => 'Ngưng duyệt');  
-$ddlStatus              =   cmsSelectbox("status","form-control",@$arrStatus,@$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",@$arrStatus,(int)@$arrRowData['status'],"");
 $id                     =   (count(@$arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
 ?>

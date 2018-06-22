@@ -52,8 +52,8 @@ $inputCommissionTo          =   '<input type="text" class="form-control" name="c
 $ddlWorkingForm=cmsSelectboxCategory("working_form_id","form-control",$source_working_form,@$arrRowData['working_form_id'],'','Chọn hình thức làm việc');
 $ddlProbationary=cmsSelectboxCategory("probationary_id","form-control",$source_probationary,@$arrRowData['probationary_id'],'','Chọn thời gian thử việc');
 $inputBenefit       =   '<textarea name="benefit" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['benefit'].'</textarea>'; 
-$ddlJob        =cmsSelectboxMultiple("job_id", 'form-control', @$source_job, @$arrRowData['job_id'],'','Chọn ngành nghề');
-$ddlProvince        =cmsSelectboxMultiple("province_id", 'form-control', @$source_province, @$arrRowData['province_id'],'','Chọn nơi làm việc');
+$ddlJob        =cmsSelectboxMultiple("job_id", 'form-control selected2', @$source_job, @$arrRowData['job_id'],'','Chọn ngành nghề');
+$ddlProvince        =cmsSelectboxMultiple("province_id", 'form-control selected2', @$source_province, @$arrRowData['province_id'],'','Chọn nơi làm việc');
 $inputDuration='<input type="text" readonly="readonly"  name="duration" class="form-control"  value="'.@$arrRowData['duration'].'" >';
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");

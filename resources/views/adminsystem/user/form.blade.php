@@ -12,9 +12,9 @@ $inputUsername          =   '<input type="text" class="form-control" name="usern
 $inputEmail             =   '<input type="text" class="form-control" name="email"             value="'.@$arrRowData['email'].'">'; 
 $inputPassword          =   '<input type="password"   name="password" class="form-control" />';
 $inputConfirmPassword   =   '<input type="password"  name="confirm_password" class="form-control"  />';
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"       value="'.@$arrRowData['fullname'].'">'; 
 $inputPhone          =   '<input type="text" class="form-control" name="phone"       value="'.@$arrRowData['phone'].'">'; 
 $ddlGroupMember         =   cmsSelectboxGroupMemberMultiple("group_member_id[]", 'form-control', @$arrGroupMember, @$arrUserGroupMember,"",'Chọn danh mục');

@@ -25,13 +25,12 @@ $inputContactedName='<input type="text" class="form-control" name="contacted_nam
 
 $inputContactedPhone='<input type="text" class="form-control" name="contacted_phone"        value="'.@$arrRowData['contacted_phone'].'">'; 
 $ddlUser      =   cmsSelectboxCategory("user_id","form-control",$arrUser,@$arrRowData['user_id'],"",'Chọn danh mục');
-$status                 =   (count($arrRowData) > 0) ? (int)@$arrRowData['status'] : 1 ;
-$arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
 
-$status                 =   (count($arrRowData) > 0) ? (int)@$arrRowData['status_authentication'] : 1 ;
+$arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Xác nhận', 0 => 'Không xác nhận');  
-$ddlStatusAuthentication              =   cmsSelectbox("status_authentication","form-control",$arrStatus,$status,"");
+$ddlStatusAuthentication              =   cmsSelectbox("status_authentication","form-control",$arrStatus,(int)@$arrRowData['status_authentication'],"");
 
 /* begin logo */
 $picture                =   "";

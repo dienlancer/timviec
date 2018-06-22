@@ -17,9 +17,9 @@ $inputWebsite           =   '<input type="text" class="form-control" name="websi
 $inputIntro             =   '<textarea id="intro" name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputContent           =   '<textarea id="content" name="content" rows="2" cols="100" class="form-control" >'.@$arrRowData['content'].'</textarea>'; 
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"      value="'.@$arrRowData['sort_order'].'">';
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
 $picture                =   "";

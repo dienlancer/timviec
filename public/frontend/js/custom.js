@@ -87,5 +87,7 @@ $(document).ready(function(){
 	basicTable.init();		
 	setTimeout(hideMsg,60000,'note');	
 	loadSummerNote();
-	$('.selected2').select2();	
+	$('.selected2').select2({
+		theme: "classic"
+	});
 });

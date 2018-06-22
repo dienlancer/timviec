@@ -21,9 +21,9 @@ $ddlProvince      =   cmsSelectboxCategory("province_id","form-control",$arrProv
 $ddlDistrict      =   cmsSelectboxCategory("district_id","form-control",$arrDistrict,@$arrRowData['district_id'],"",'Chọn danh mục');
 $inputStreet          =   '<input type="text" class="form-control" name="street"   id="street"    value="'.@$arrRowData['street'].'">'; 
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order" id="sort_order"     value="'.@$arrRowData['sort_order'].'">';
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
 $inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />'; 
 $picture                =   "";

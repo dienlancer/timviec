@@ -12,9 +12,9 @@ $inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols=
 $inputMetadescription             =   '<textarea  name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
 $inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"       value="'.convertToTextPrice(@$arrRowData['price']).'">';
 $inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"       value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
-$status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
+
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 $inputIntro            =   '<textarea  name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputDetail            =   '<textarea name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
 $inputTechnicalDetail            =   '<textarea name="technical_detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['technical_detail'].'</textarea>'; 

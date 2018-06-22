@@ -37,9 +37,9 @@ for ($i=1953; $i <= (int)@$arrDate['year']; $i++) {
 $source_year[0]='Năm';
 krsort($source_year);
 $birthday    = date_parse_from_format('Y-m-d H:i:s', @$arrRowData['birthday']) ;
-$ddlDay=cmsSelectbox(   "day"   ,   "form-control" ,   $source_day     ,   @$birthday['day']   ,   ''  );
-$ddlMonth=cmsSelectbox( "month" ,   "form-control" ,   $source_month   ,   @$birthday['month'] ,   ''  );
-$ddlYear=cmsSelectbox(  "year"  ,   "form-control" ,   $source_year    ,   @$birthday['year']  ,   ''  );
+$ddlDay=cmsSelectbox(   "day"   ,   "form-control" ,   $source_day     ,   (int)@$birthday['day']   ,   ''  );
+$ddlMonth=cmsSelectbox( "month" ,   "form-control" ,   $source_month   ,   (int)@$birthday['month'] ,   ''  );
+$ddlYear=cmsSelectbox(  "year"  ,   "form-control" ,   $source_year    ,   (int)@$birthday['year']  ,   ''  );
 /* end ngày sinh */
 /* begin giới tính */
 $source_sex=App\SexModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
@@ -47,7 +47,7 @@ $ddlSex=cmsSelectboxCategory("sex_id","form-control",$source_sex,@$arrRowData['s
 /* end giới tính */
 /* begin province */
 $source_province=App\ProvinceModel::whereRaw('status = ?',[1])->orderBy('fullname','asc')->select('id','fullname')->get()->toArray();
-$ddlProvince=cmsSelectboxCategory("province_id","form-control",$source_province,@$arrRowData['province_id'],'','Chọn tỉnh thành');
+$ddlProvince=cmsSelectboxCategory("province_id","form-control selected2",$source_province,@$arrRowData['province_id'],'','Chọn tỉnh thành');
 /* end province */
 /* begin Hôn nhân */
 $source_marriage=App\MarriageModel::whereRaw('status = ?',[1])->orderBy('sort_order','asc')->select('id','fullname')->get()->toArray();
@@ -56,13 +56,9 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","form-control",$source_marriage,
 
 $inputAddress           =   '<input type="text" class="form-control" name="address"        value="'.@$arrRowData['address'].'">'; 
 
-/* begin tỉnh thành phố và quy mô công ty */
-$ddlProvince            = cmsSelectboxCategory("province_id","form-control",$arrProvince,@$arrRowData['province_id'],"",'Chọn tỉnh thành phố');
-/* end tỉnh thành phố và quy mô công ty */
 
-$status                 =   (count($arrRowData) > 0) ? (int)@$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Kích hoạt', 0 => 'Ngưng kích hoạt');  
-$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
+$ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");
 
 /* begin logo */
 $picture                =   "";

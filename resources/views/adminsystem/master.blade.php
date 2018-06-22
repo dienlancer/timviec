@@ -116,6 +116,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <script language="javascript" type="text/javascript" src="{{asset('public/adminsystem/js/jquery.fancybox.min.js')}}"                 ></script>
         <link href="{{asset('public/adminsystem/css/jquery.fancybox.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- end fancybox -->
+        <!-- begin select2  -->
+        <link href="{{asset('public/adminsystem/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript" src="{{asset('public/adminsystem/select2/select2.min.js')}}"                 ></script>
+        <!-- end select2 -->
         <!-- begin summernote -->
         <link href="{{asset('public/adminsystem/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
 

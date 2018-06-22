@@ -15,7 +15,7 @@ $inputMetadescription   =   '<textarea name="meta_description" rows="5" cols="10
 $inputAddress           =   '<input type="text" class="form-control" name="address"        value="'.@$arrRowData['address'].'">'; 
 $inputPhone             =   '<input type="text" class="form-control" name="phone"        value="'.@$arrRowData['phone'].'">'; 
 /* begin tỉnh thành phố và quy mô công ty */
-$ddlProvince            = cmsSelectboxCategory("province_id","form-control",$arrProvince,@$arrRowData['province_id'],"",'Chọn tỉnh thành phố');
+$ddlProvince            = cmsSelectboxCategory("province_id","form-control selected2",$arrProvince,@$arrRowData['province_id'],"",'Chọn tỉnh thành phố');
 $ddlScale               = cmsSelectboxCategory("scale_id","form-control",$arrScale,@$arrRowData['scale_id'],"",'Chọn quy mô công ty');
 /* end tỉnh thành phố và quy mô công ty */
 $inputIntro             =   '<textarea name="intro" rows="10" cols="100" class="form-control summer-editor" >'.@$arrRowData['intro'].'</textarea>'; 

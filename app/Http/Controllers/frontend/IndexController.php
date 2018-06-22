@@ -1600,7 +1600,7 @@ class IndexController extends Controller {
 		->join('profile_place','profile.id','=','profile_place.profile_id')
 		->join('province','profile_place.province_id','=','province.id');     
 		$query->where('profile.status',1)
-			->where('profile.status_search',1);		
+				->where('profile.status_search',1);		
 		if(!empty(@$request->q)){
 			$q=@$request->q;
 			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
@@ -2906,7 +2906,7 @@ class IndexController extends Controller {
 				}
 			}
 		}		
-		$data_recruitment_profile=RecruitmentProfileModel::whereRaw('profile_id = ? and candidate_id = ?',[(int)@$id,(int)@$arrUser['id']])->select()->get()->toArray();		
+		$data_recruitment_profile=RecruitmentProfileModel::whereRaw('profile_id = ?',[(int)@$id])->select()->get()->toArray();		
 		if(count(@$data_recruitment_profile) > 0){
 			$msg['error']='Hồ sơ đã được nộp không thể xóa';
 			$checked=0;

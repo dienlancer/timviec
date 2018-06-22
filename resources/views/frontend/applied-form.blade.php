@@ -128,7 +128,7 @@ if($source_recruitment != null){
 			return 0;
 		}             
 		var xac_nhan = 0;
-		var msg="Bạn chắc chắn có muốn ứng tuyển vào vị trí này không ?";
+		var msg="Hồ sơ sẽ không được chỉnh sửa sau khi nộp . Bạn có chắc chắn ?";
 		if(window.confirm(msg)){ 
 			xac_nhan = 1;
 		}

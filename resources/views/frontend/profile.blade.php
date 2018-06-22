@@ -172,17 +172,28 @@ switch ($task) {
 				</div>
 				<div class="row mia">
 					<div class="col-lg-4" ></div>
-					<div class="col-lg-8">
-						<div class="rianmus">
-							<a href="javascript:void(0);" <?php echo $register_status; ?> >
-								<div class="narit">
-									<div><i class="far fa-save"></i></div>
-									<div class="margin-left-5"><?php echo $dang_tin; ?></div>
-								</div>								
-							</a>
-						</div>
+					<div class="col-lg-8"> 
+						<?php 
+						$data_recruitment_profile=App\RecruitmentProfileModel::whereRaw('profile_id = ?',[(int)@$data['id']])->select()->get()->toArray();	
+						if(count(@$data_recruitment_profile) > 0){
+							?>
+							<b><font color="#E30000">Hồ sơ đã được nộp không được phép chỉnh sửa</font></b> 
+							<?php
+						}else{
+							?>
+							<div class="rianmus">
+								<a href="javascript:void(0);" <?php echo $register_status; ?> >
+									<div class="narit">
+										<div><i class="far fa-save"></i></div>
+										<div class="margin-left-5"><?php echo $dang_tin; ?></div>
+									</div>								
+								</a>
+							</div>
+							<?php
+						}
+						?>						
 					</div>
-				</div>	
+				</div>					
 			</form>
 		</div>
 		<div class="col-lg-3">

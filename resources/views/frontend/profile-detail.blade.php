@@ -88,6 +88,11 @@ $source_province_fullname=array();
 $job_fullname='';
 $province_fullname='';
 $status_search='';
+$enabled_do=1;
+$data_recruitment_profile=App\RecruitmentProfileModel::whereRaw('profile_id = ?',[(int)@$id])->select()->get()->toArray();
+if(count(@$data_recruitment_profile) > 0){
+	$enabled_do=0;
+}	
 if(count($source_info) > 0){
 	$source_info2=convertToArray($source_info);	
 	$profile_detail=$source_info2[0];	
@@ -246,7 +251,17 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				<div class="row margin-top-10">
 					<div class="col-lg-4"></div>
 					<div class="col-lg-8">
-						<div class="fatanasa"><a href="<?php echo route('frontend.index.getFormProfile',['edit',@$id]); ?>">Chỉnh sửa</a></div>
+						<?php 
+						if((int)@$enabled_do == 1){
+							?>
+							<div class="fatanasa"><a href="<?php echo route('frontend.index.getFormProfile',['edit',@$id]); ?>">Chỉnh sửa</a></div>
+							<?php
+						}else{
+							?>
+							<b><font color="#E30000">Hồ sơ đã được nộp không được phép chỉnh sửa</font></b> 
+							<?php
+						}
+						?>						
 					</div>
 				</div>				
 				<hr  />		
@@ -270,14 +285,24 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						?>
 						<div class="career_goal_edit" style="<?php echo $status_career_goal_edit; ?>">
 							<div class="career_goal_txt"><?php echo @$profile_detail['career_goal']; ?></div>
-							<div class="vihamus-3 margin-top-5">
-								<a href="javascript:void(0);" onclick="showCareerGoalSave();"  >
-									<div class="narit">
-										<div><i class="far fa-edit"></i></div>
-										<div class="margin-left-5">Chỉnh sửa</div>
-									</div>
-								</a>
-							</div>
+							<?php 
+							if((int)@$enabled_do == 1){
+								?>
+								<div class="vihamus-3 margin-top-5">
+									<a href="javascript:void(0);" onclick="showCareerGoalSave();"  >
+										<div class="narit">
+											<div><i class="far fa-edit"></i></div>
+											<div class="margin-left-5">Chỉnh sửa</div>
+										</div>
+									</a>
+								</div>
+								<?php
+							}else{
+								?>
+								<b><font color="#E30000">Hồ sơ đã được nộp không được phép chỉnh sửa</font></b> 
+								<?php
+							}
+							?>									
 						</div>
 						<div class="career_goal_save" style="<?php echo $status_career_goal_save; ?>">
 							<div><textarea name="career_goal" placeholder="Nhập mục tiêu nghề nghiệp..." class="vacca summer-editor" rows="10" ><?php echo @$profile_detail['career_goal']; ?></textarea></div>
@@ -385,14 +410,20 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<div class="row mia">
 									<div class="col-lg-4"></div>
 									<div class="col-lg-8">
-										<div class="vihamus-3">
-											<a href="javascript:void(0);" onclick="deleteProfileExperience(<?php echo $profile_experience_id ?>);" >
-												<div class="narit">
-													<div><i class="far fa-times-circle"></i></div>
-													<div class="margin-left-5">Xóa</div>
-												</div>								
-											</a>
-										</div>
+										<?php 
+										if((int)@$enabled_do == 1){
+											?>
+											<div class="vihamus-3">
+												<a href="javascript:void(0);" onclick="deleteProfileExperience(<?php echo $profile_experience_id ?>);" >
+													<div class="narit">
+														<div><i class="far fa-times-circle"></i></div>
+														<div class="margin-left-5">Xóa</div>
+													</div>								
+												</a>
+											</div>
+											<?php
+										}
+										?>												
 									</div>
 								</div>
 								<hr>
@@ -401,19 +432,25 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 						}						
 						?>
 					</div>
-					<div class="row mia">
-						<div class="col-lg-4"></div>
-						<div class="col-lg-8">
-							<div class="vihamus-4">
-								<a href="javascript:void(0);" onclick="addExperienceJob();" >
-									<div class="narit">
-										<div><i class="far fa-plus-square"></i></div>
-										<div class="margin-left-5">Thêm kinh nghiệm làm việc</div>
-									</div>								
-								</a>
+					<?php 
+					if((int)@$enabled_do == 1){
+						?>
+						<div class="row mia">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-8">
+								<div class="vihamus-4">
+									<a href="javascript:void(0);" onclick="addExperienceJob();" >
+										<div class="narit">
+											<div><i class="far fa-plus-square"></i></div>
+											<div class="margin-left-5">Thêm kinh nghiệm làm việc</div>
+										</div>								
+									</a>
+								</div>
 							</div>
-						</div>
-					</div>					
+						</div>			
+						<?php
+					}
+					?>						
 				</div>
 				<div class="experience_job_save" style="<?php echo $status_experience_job_save; ?>">
 					<div class="row mia">
@@ -608,39 +645,51 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 									<div class="col-lg-8">
 										<div class="xika2"><a target="_blank" href="<?php echo asset('upload/'.@$profile_graduation_degree); ?>">Tải về</a>			</div>																	
 									</div>
-								</div>							
-								<div class="row mia">
-									<div class="col-lg-4"></div>
-									<div class="col-lg-8">
-										<div class="vihamus-3">
-											<a href="javascript:void(0);" onclick="deleteProfileGraduation(<?php echo $profile_graduation_id ?>);" >
-												<div class="narit">
-													<div><i class="far fa-times-circle"></i></div>
-													<div class="margin-left-5">Xóa</div>
-												</div>								
-											</a>
+								</div>		
+								<?php 
+								if((int)@$enabled_do == 1){
+									?>
+									<div class="row mia">
+										<div class="col-lg-4"></div>
+										<div class="col-lg-8">
+											<div class="vihamus-3">
+												<a href="javascript:void(0);" onclick="deleteProfileGraduation(<?php echo $profile_graduation_id ?>);" >
+													<div class="narit">
+														<div><i class="far fa-times-circle"></i></div>
+														<div class="margin-left-5">Xóa</div>
+													</div>								
+												</a>
+											</div>
 										</div>
 									</div>
-								</div>
+									<?php
+								}
+								?>													
 								<hr>
 								<?php
 							}
 						}						
 						?>
 					</div>
-					<div class="row mia">
-						<div class="col-lg-4"></div>
-						<div class="col-lg-8">
-							<div class="vihamus-4">
-								<a href="javascript:void(0);" onclick="addGraduation();" >
-									<div class="narit">
-										<div><i class="far fa-plus-square"></i></div>
-										<div class="margin-left-5">Thêm trình độ bằng cấp</div>
-									</div>								
-								</a>
+					<?php 
+					if((int)@$enabled_do == 1){
+						?>
+						<div class="row mia">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-8">
+								<div class="vihamus-4">
+									<a href="javascript:void(0);" onclick="addGraduation();" >
+										<div class="narit">
+											<div><i class="far fa-plus-square"></i></div>
+											<div class="margin-left-5">Thêm trình độ bằng cấp</div>
+										</div>								
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
+						<?php
+					}
+					?>					
 				</div>
 				<div class="graduation_save" style="<?php echo $status_graduation_save; ?>">
 					<div class="row mia">
@@ -791,39 +840,51 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 								<div class="row mia">
 									<div class="col-lg-4" ><div class="xika"><div>Viết</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
 									<div class="col-lg-8"><div class="xika2"><?php echo @$profile_writing; ?></div> </div>
-								</div>										
-								<div class="row mia">
-									<div class="col-lg-4"></div>
-									<div class="col-lg-8">
-										<div class="vihamus-3">
-											<a href="javascript:void(0);" onclick="deleteProfileLanguage(<?php echo $profile_language_id ?>);" >
-												<div class="narit">
-													<div><i class="far fa-times-circle"></i></div>
-													<div class="margin-left-5">Xóa</div>
-												</div>								
-											</a>
+								</div>			
+								<?php 
+								if((int)@$enabled_do == 1){
+									?>
+									<div class="row mia">
+										<div class="col-lg-4"></div>
+										<div class="col-lg-8">
+											<div class="vihamus-3">
+												<a href="javascript:void(0);" onclick="deleteProfileLanguage(<?php echo $profile_language_id ?>);" >
+													<div class="narit">
+														<div><i class="far fa-times-circle"></i></div>
+														<div class="margin-left-5">Xóa</div>
+													</div>								
+												</a>
+											</div>
 										</div>
 									</div>
-								</div>
+									<?php
+								}
+								?>															
 								<hr>
 								<?php
 							}
 						}						
 						?>
 					</div>
-					<div class="row mia">
-						<div class="col-lg-4"></div>
-						<div class="col-lg-8">
-							<div class="vihamus-4">
-								<a href="javascript:void(0);" onclick="addLanguage();" >
-									<div class="narit">
-										<div><i class="far fa-plus-square"></i></div>
-										<div class="margin-left-5">Thêm trình độ ngoại ngữ</div>
-									</div>								
-								</a>
+					<?php 
+					if((int)@$enabled_do == 1){
+						?>
+						<div class="row mia">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-8">
+								<div class="vihamus-4">
+									<a href="javascript:void(0);" onclick="addLanguage();" >
+										<div class="narit">
+											<div><i class="far fa-plus-square"></i></div>
+											<div class="margin-left-5">Thêm trình độ ngoại ngữ</div>
+										</div>								
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
+						<?php
+					}
+					?>					
 				</div>
 				<div class="language_save" style="<?php echo $status_language_save; ?>">
 					<div class="row mia">
@@ -986,19 +1047,25 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['medal']; ?></div> </div>
 						</div>						
 					</div>
-					<div class="row mia">
-						<div class="col-lg-4"></div>
-						<div class="col-lg-8">
-							<div class="vihamus-3 margin-top-5">
-								<a href="javascript:void(0);" onclick="showOfficeSave();"  >
-									<div class="narit">
-										<div><i class="far fa-edit"></i></div>
-										<div class="margin-left-5">Chỉnh sửa</div>
-									</div>
-								</a>
+					<?php 
+					if((int)@$enabled_do == 1){
+						?>
+						<div class="row mia">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-8">
+								<div class="vihamus-3 margin-top-5">
+									<a href="javascript:void(0);" onclick="showOfficeSave();"  >
+										<div class="narit">
+											<div><i class="far fa-edit"></i></div>
+											<div class="margin-left-5">Chỉnh sửa</div>
+										</div>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
+						<?php
+					}
+					?>					
 				</div>
 				<div class="office_save" style="<?php echo $status_office_save; ?>">					
 					<div class="row mia">
@@ -1189,19 +1256,25 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 							<div class="col-lg-8"><div class="xika2"><?php echo @$profile_detail['talent']; ?></div> </div>
 						</div>						
 					</div>
-					<div class="row mia">
-						<div class="col-lg-4"></div>
-						<div class="col-lg-8">
-							<div class="vihamus-3 margin-top-5">
-								<a href="javascript:void(0);" onclick="showSkillSave();"  >
-									<div class="narit">
-										<div><i class="far fa-edit"></i></div>
-										<div class="margin-left-5">Chỉnh sửa</div>
-									</div>
-								</a>
+					<?php 
+					if((int)@$enabled_do == 1){
+						?>
+						<div class="row mia">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-8">
+								<div class="vihamus-3 margin-top-5">
+									<a href="javascript:void(0);" onclick="showSkillSave();"  >
+										<div class="narit">
+											<div><i class="far fa-edit"></i></div>
+											<div class="margin-left-5">Chỉnh sửa</div>
+										</div>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
+						<?php
+					}
+					?>					
 				</div>
 				<div class="skill_save" style="<?php echo $status_skill_save; ?>">	
 					<div class="row mia">

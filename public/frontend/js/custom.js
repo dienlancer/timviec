@@ -88,8 +88,5 @@ $(document).ready(function(){
 	setTimeout(hideMsg,60000,'note');	
 	loadSummerNote();
 	$('.selected2').select2();
-	$(".multi-selected2").select2({
-		tags: true,
-		tokenSeparators: [',', ' ']
-	});
+	$(".multi-selected2").select2();
 });

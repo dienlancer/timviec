@@ -656,4 +656,5 @@ Route::match(["get","post"],"ho-so-da-luu",["as"=>"frontend.index.viewSavedProfi
 
 Route::get("tim-kiem-ho-so",["as"=>"frontend.index.getFormSearchProfile","uses"=>"frontend\IndexController@getFormSearchProfile"]);
 Route::match(["get","post"],"ket-qua-tim-kiem",["as"=>"frontend.index.searchingProfile","uses"=>"frontend\IndexController@searchingProfile"]);
+Route::get("xoa-ho-so-da-luu/{id}",["as"=>"frontend.index.deleteSavedProfile","uses"=>"frontend\IndexController@deleteSavedProfile"]);
 ?>

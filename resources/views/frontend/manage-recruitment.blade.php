@@ -23,16 +23,21 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 						<div class="col-lg-4"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-manage-recruitment'].submit();">Lọc</a></div></div>
 					</div>										
 				</div>
+				@if(Session::has("message"))	
 				<?php 
-				if(count(@$msg) > 0){
-					$type_msg='';					
-					if((int)@$checked == 1){						
-						$type_msg='note-success';
-					}else{
-						$type_msg='note-danger';
-					}
-					?>
-					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+				$type_msg='';
+				$checked=Session::get('message')['checked'];
+				if((int)@$checked==1){
+					$type_msg='note-success';
+				}else{
+					$type_msg='note-danger';
+				}
+				?>		
+				<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+					<?php 				
+					$msg=Session::get("message")['msg'];				
+					if(count(@$msg) > 0){
+						?>					
 						<ul>
 							<?php 
 							foreach (@$msg as $key => $value) {
@@ -41,11 +46,12 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 								<?php
 							}
 							?>                              
-						</ul>	
-					</div>      
-					<?php
-				}			
-				?>
+						</ul>					
+						<?php
+					}				
+					?>
+				</div>                                                                            
+				@endif			
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>

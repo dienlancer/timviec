@@ -2736,7 +2736,8 @@ class IndexController extends Controller {
 						$item3->province_id         = (int)@$value;
 						$item3->save();
 					}
-				}  
+				} 
+				$msg['success']='Bước tạo thông tin sơ bộ thành công'; 
 				$info = array(
 					"checked"       => $checked,          
 					'msg'       => $msg,                    

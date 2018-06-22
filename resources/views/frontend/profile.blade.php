@@ -19,10 +19,12 @@ $product_height = $setting['product_height']['field_value'];
 if(count(@$candidate)>0){
 	if(!empty(@$candidate["avatar"])){
 		$picture        =   '<div class="margin-top-15"><img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  /></div>';                        
-	}        
+	}else{
+		$picture='<img src="'.asset("/upload/avatar-default-icon.png").'" width="64" />';
+	}         
 }
 $disabled_status='';
-$register_status='onclick="document.forms[\'frm\'].submit();"';
+$register_status='onclick="document.forms[\'frm-profile\'].submit();"';
 $dang_tin='';
 switch ($task) {
 	case 'add':
@@ -40,7 +42,7 @@ switch ($task) {
 <div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
-			<form name="frm" method="POST" enctype="multipart/form-data">
+			<form name="frm-profile" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<h1 class="dn-dk-h">Tạo Hồ Sơ</h1>
 				

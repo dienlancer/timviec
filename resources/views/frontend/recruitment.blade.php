@@ -73,8 +73,8 @@ switch ($task) {
 				$ddlSalary=cmsSelectboxCategory("salary_id","vacca",$source_salary,@$data['salary_id'],$disabled_status,'Chọn mức lương');
 				$ddlWorkingForm=cmsSelectboxCategory("working_form_id","vacca",$source_working_form,@$data['working_form_id'],$disabled_status,'Chọn hình thức làm việc');
 				$ddlProbationary=cmsSelectboxCategory("probationary_id","vacca",$source_probationary,@$data['probationary_id'],$disabled_status,'Chọn thời gian thử việc');
-				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca multi-selected2', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
-				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca multi-selected2', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');
+				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca selected2', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
+				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca selected2', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');
 				$status_employer                 =   (count(@$data["status_employer"]) > 0) ? @$data["status_employer"] : 1 ;
 				$arrStatus              =   array(-1 => '- Chọn trạng thái -', 1 => 'Hiển thị tin', 0 => 'Ẩn tin');  
 				$ddlStatusEmployer              =   cmsSelectbox("status_employer","vacca",$arrStatus,$status_employer,$disabled_status);

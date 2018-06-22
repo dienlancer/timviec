@@ -1400,6 +1400,11 @@ class IndexController extends Controller {
 				$msg['error']='Ứng viên đã ứng tuyển vị trí này';
 				$checked=0;	
 			}
+			$data_profile=ProfileModel::find((int)@$profile_id)->toArray();
+			if((int)@$data_profile['status'] == 0){
+				$msg['error']='Hồ sơ chưa được duyệt nên không thể nộp vào vị trí này';
+				$checked=0;		
+			}
 			if((int)@$checked==1){
 				$item=new RecruitmentProfileModel;
 				$item->profile_id=(int)@$profile_id;
@@ -1593,7 +1598,9 @@ class IndexController extends Controller {
 		->join('literacy','profile.literacy_id','=','literacy.id')
 		->join('experience','profile.experience_id','=','experience.id')
 		->join('profile_place','profile.id','=','profile_place.profile_id')
-		->join('province','profile_place.province_id','=','province.id');     		
+		->join('province','profile_place.province_id','=','province.id');     
+		$query->where('profile.status',1)
+			->where('profile.status_search',1);		
 		if(!empty(@$request->q)){
 			$q=@$request->q;
 			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
@@ -2899,9 +2906,13 @@ class IndexController extends Controller {
 				}
 			}
 		}		
-		if($checked == 1){
-			$item               =   ProfileModel::find((int)@$id);
-			$item->delete();          
+		$data_recruitment_profile=RecruitmentProfileModel::whereRaw('profile_id = ? and candidate_id = ?',[(int)@$id,(int)@$arrUser['id']])->select()->get()->toArray();		
+		if(count(@$data_recruitment_profile) > 0){
+			$msg['error']='Hồ sơ đã được nộp không thể xóa';
+			$checked=0;
+		}
+		if($checked == 1){			
+			ProfileModel::find((int)@$id)->delete();          
 			ProfileJobModel::whereRaw('profile_id = ?',[@$id])->delete();  
 			ProfilePlaceModel::whereRaw('profile_id = ?',[@$id])->delete();
 			$msg['success']='Xóa thành công';
@@ -2910,7 +2921,7 @@ class IndexController extends Controller {
 			"checked"       => $checked,          
 			'msg'       => $msg,                    
 		);      
-		return redirect()->route('frontend.index.viewProfileCabinet')->with(["message"=>$info]);                             
+		return redirect()->route('frontend.index.viewProfileCabinet')->with(["message"=>$info]);     
 	}
 	public function getGroupProfile($id){
 		$arrUser=array();    

@@ -23,30 +23,7 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 						
 						<div class="col-lg-4"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-cabinet-profile'].submit();">Lọc</a></div></div>
 					</div>										
-				</div>						
-				<?php 
-				if(count(@$msg) > 0){
-					$type_msg='';					
-					if((int)@$checked == 1){						
-						$type_msg='note-success';
-					}else{
-						$type_msg='note-danger';
-					}
-					?>
-					<div class="note margin-top-15 <?php echo $type_msg; ?>" >
-						<ul>
-							<?php 
-							foreach (@$msg as $key => $value) {
-								?>
-								<li><?php echo $value; ?></li>
-								<?php
-							}
-							?>                              
-						</ul>	
-					</div>      
-					<?php
-				}			
-				?>
+				</div>										
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>

@@ -108,8 +108,8 @@ switch ($task) {
 				$ddlExperience=cmsSelectboxCategory("experience_id","vacca",$source_experience,@$data['experience_id'],$disabled_status,'Chọn số năm kinh nghiệm');
 				$ddlRankPresent=cmsSelectboxCategory("rank_present_id","vacca",$source_rank,@$data['rank_present_id'],$disabled_status,'Chọn cấp bậc hiện tại');
 				$ddlRankOffered=cmsSelectboxCategory("rank_offered_id","vacca",$source_rank,@$data['rank_offered_id'],$disabled_status,'Chọn cấp bậc mong muốn');
-				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
-				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');								
+				$ddlJob        =cmsSelectboxMultiple("job_id", 'vacca multi-selected2', @$source_job, @$data['job_id'],$disabled_status,'Chọn ngành nghề');
+				$ddlProvince        =cmsSelectboxMultiple("province_id", 'vacca multi-selected2', @$source_province, @$data['province_id'],$disabled_status,'Chọn nơi làm việc');								
 				$status_search                 =  (isset($data['status_search'])) ? (int)@$data['status_search'] : 1 ;
 				$arrStatusSearch              =   array(-1 => '- Chọn trạng thái -', 1 => 'Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn', 0 => 'Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ này chỉ dùng để ứng tuyển');  
 				$ddlStatusSearch              =   cmsSelectbox("status_search","vacca",$arrStatusSearch,$status_search,$disabled_status);

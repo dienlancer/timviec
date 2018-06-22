@@ -54,7 +54,7 @@ $ddlSex=cmsSelectboxCategory("sex_id","vacca",$source_sex,@$data['sex_id'],'','C
 /* end giới tính */
 /* begin province */
 $source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
+$ddlProvince=cmsSelectboxCategory("province_id","vacca selected2",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
 /* end province */
 /* begin Hôn nhân */
 $source_marriage=App\MarriageModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();

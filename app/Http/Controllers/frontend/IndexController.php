@@ -2552,10 +2552,16 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}  
-		$data_employer_profile=EmployerProfileModel::whereRaw('employer_id = ? and profile_id = ?',[(int)@$arrUser['id'],(int)@$id])->select('id')->get()->toArray();		
-		if(count($data_employer_profile) == 0){
+		$source2=EmployerProfileModel::find((int)@$id);
+		if($source2 == null){
 			$checked=0;
 			$msg['errorid']='Không đúng id';
+		}else{
+			$data=$source2->toArray();
+			if((int)@$data['employer_id'] != (int)@$arrUser['id']){
+				$checked=0;
+				$msg['errorid']='Sai hồ sơ';
+			}
 		}
 		if($checked == 1){			
 			EmployerProfileModel::find((int)@$id)->delete();          			

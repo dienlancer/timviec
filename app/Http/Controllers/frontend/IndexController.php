@@ -1508,12 +1508,14 @@ class IndexController extends Controller {
 		$pagination ='';            
 		$q='';				
 		$query=DB::table('profile')		
+		->join('employer_profile','profile.id','=','employer_profile.profile_id')
 		->join('candidate','profile.candidate_id','=','candidate.id')
 		->join('literacy','profile.literacy_id','=','literacy.id')
-		->join('experience','profile.experience_id','=','experience.id');     		
+		->join('experience','profile.experience_id','=','experience.id'); 
+		$query->where('employer_profile.employer_id',(int)@$arrUser['id']);
 		if(!empty(@$request->q)){
 			$q=@$request->q;
-			$query->where('profile.fullname','like', '%'.trim(@$q).'%');
+			$query->where('candidate.fullname','like', '%'.trim(@$q).'%');
 		}			
 		$data=$query->select('profile.id')
 		->groupBy('profile.id')       
@@ -1540,13 +1542,13 @@ class IndexController extends Controller {
 				'candidate.fullname as candidate_name',
 				'literacy.fullname as literacy_name',
 				'experience.fullname as experience_name',
-				'salary')
+				'profile.salary')
 		->groupBy('profile.id',
 				'profile.fullname',
 				'candidate.fullname',
 				'literacy.fullname',
 				'experience.fullname',
-				'salary')
+				'profile.salary')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
@@ -1658,13 +1660,13 @@ class IndexController extends Controller {
 				'candidate.fullname as candidate_name',
 				'literacy.fullname as literacy_name',
 				'experience.fullname as experience_name',
-				'salary')
+				'profile.salary')
 		->groupBy('profile.id',
 				'profile.fullname',
 				'candidate.fullname',
 				'literacy.fullname',
 				'experience.fullname',
-				'salary')
+				'profile.salary')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)

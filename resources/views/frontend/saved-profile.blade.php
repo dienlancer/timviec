@@ -15,7 +15,7 @@ $seo=getSeo();
 				<h1 class="dn-dk-h">DANH SÁCH HỒ SƠ ĐÃ ĐƯỢC LƯU</h1>
 				<div class="margin-top-15">
 					<div class="row">						
-						<div class="col-lg-6"><input type="text" name="candidate_name" class="kiem-cong-viec kiatisak" value="<?php echo @$candidate_name; ?>" placeholder="Nhập tên ứng viên..."></div>						
+						<div class="col-lg-6"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo @$candidate_name; ?>" placeholder="Nhập tên ứng viên..."></div>						
 						<div class="col-lg-6"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-saved-profile'].submit();">Lọc</a></div></div>
 					</div>										
 				</div>				

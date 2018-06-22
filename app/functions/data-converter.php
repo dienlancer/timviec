@@ -1669,7 +1669,7 @@ function savedProfileConverter($data=array()){
     $result = array();    
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){        
-            $profile_name='<a href="'.route('frontend.index.getAppliedProfileDetail',[@$data[$i]['id'],1]).'">'.@$data[$i]['profile_name'].'</a>';
+            $profile_name='<a href="'.route('frontend.index.getAppliedProfileDetail',[@$data[$i]['id'],0]).'">'.@$data[$i]['profile_name'].'</a>';
             $result[$i] = array(    
                 "id"                    =>  @$data[$i]['id']   ,         
                 "profile_name"          =>  @$profile_name,

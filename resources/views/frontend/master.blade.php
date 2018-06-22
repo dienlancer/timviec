@@ -146,6 +146,10 @@ if(isset($alias)){
 	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/ui/jquery-ui.js')}}"                 ></script>
 	<link href="{{asset('public/frontend/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
 	<!-- end ui-->
+	<!-- begin select2  -->
+	<link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/select2/select2.min.js')}}"                 ></script>
+	<!-- end select2 -->
 	<!-- begin summernote -->
 	<link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
 
@@ -160,23 +164,7 @@ if(isset($alias)){
 	<script src="{{ asset('public/frontend/js/custom.js') }}"></script>    
 	<link rel="stylesheet" href="{{ asset('public/frontend/css/template.css') }}" />
 	<!-- end custom -->
-	<script type="text/javascript" language="javascript">
-		ddsmoothmenu.init({
-			mainmenuid: "smoothmainmenu", 
-			orientation: "h", 
-			classname: "ddsmoothmenu",
-			contentsource: "markup" 
-		});    
-		$(document).ready(function(){        
-			$(window).bind("scroll", function() {                        
-				if ($(window).scrollTop() > 90) {					
-					
-				}
-				else {					
-					
-				}
-			});			
-		});  
+	<script type="text/javascript" language="javascript">		
 		var spinner = new Spinner();  		
 	</script>	
 </head>

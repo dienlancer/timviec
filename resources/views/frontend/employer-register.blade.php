@@ -42,7 +42,7 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 					</div>      
 					<?php
 				}				
-				$ddlProvince=cmsSelectboxCategory("province_id","vacca select2-province",$source_province,@$data['province_id'],$disabled_status,'Chọn tỉnh thành');
+				$ddlProvince=cmsSelectboxCategory("province_id","vacca selected2",$source_province,@$data['province_id'],$disabled_status,'Chọn tỉnh thành');
 				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],$disabled_status,'Chọn quy mô công ty');
 				?>					
 				<div class="row mia">
@@ -129,9 +129,4 @@ $register_status='onclick="document.forms[\'frm\'].submit();"';
 		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>
 </div>
-<script type="text/javascript" language="javascript">
-	$(document).ready(function() {
-		$('.select2-province').select2();
-	});
-</script>
 @endsection()

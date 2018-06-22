@@ -17,7 +17,7 @@ $setting = getSettingSystem();
 					<div class="margin-top-10">
 						<?php 
 						$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-						$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, 0,'','Chọn ngành nghề');
+						$ddlJob        =cmsSelectboxCategory("job_id", 'vacca selected2', @$source_job, 0,'','Chọn ngành nghề');
 						echo $ddlJob;
 						?>		
 					</div>	
@@ -25,7 +25,7 @@ $setting = getSettingSystem();
 						<?php 
 						/* begin province */
 						$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-						$ddlProvince=cmsSelectboxCategory("province_id","vacca",@$source_province,0,'','Chọn tỉnh thành');
+						$ddlProvince=cmsSelectboxCategory("province_id","vacca selected2",@$source_province,0,'','Chọn tỉnh thành');
 						/* end province */
 						echo $ddlProvince;
 						?>		

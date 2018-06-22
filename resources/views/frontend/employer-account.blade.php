@@ -57,7 +57,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
 					</div>      
 					<?php
 				}		
-				$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
+				$ddlProvince=cmsSelectboxCategory("province_id","vacca selected2",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
 				$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],'','Chọn quy mô công ty');		
 				?>					
 				<div class="row mia">

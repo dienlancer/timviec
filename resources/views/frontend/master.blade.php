@@ -214,7 +214,7 @@ if(isset($alias)){
 						<div class="tim-cong-viec">
 							<?php 
 							$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca', @$source_job, @$job_id,'','Chọn ngành nghề');
+							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca selected2', @$source_job, @$job_id,'','Chọn ngành nghề');
 							echo $ddlJob;
 							?>							
 						</div>
@@ -222,7 +222,7 @@ if(isset($alias)){
 							<?php 
 							/* begin province */
 							$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-							$ddlProvince=cmsSelectboxCategory("province_id","vacca",$source_province,@$province_id,'','Chọn tỉnh thành');
+							$ddlProvince=cmsSelectboxCategory("province_id","vacca selected2",$source_province,@$province_id,'','Chọn tỉnh thành');
 							/* end province */
 							echo $ddlProvince;
 							?>							

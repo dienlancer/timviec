@@ -1507,8 +1507,8 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$q='';				
-		$query=DB::table('profile')		
-		->join('employer_profile','profile.id','=','employer_profile.profile_id')
+		$query=DB::table('employer_profile')
+		->join('profile','employer_profile.profile_id','=','profile.id')				
 		->join('candidate','profile.candidate_id','=','candidate.id')
 		->join('literacy','profile.literacy_id','=','literacy.id')
 		->join('experience','profile.experience_id','=','experience.id'); 
@@ -1537,13 +1537,13 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('profile.id',
+		$data=$query->select('employer_profile.id',
 				'profile.fullname as profile_name',
 				'candidate.fullname as candidate_name',
 				'literacy.fullname as literacy_name',
 				'experience.fullname as experience_name',
 				'profile.salary')
-		->groupBy('profile.id',
+		->groupBy('employer_profile.id',
 				'profile.fullname',
 				'candidate.fullname',
 				'literacy.fullname',
@@ -2535,6 +2535,37 @@ class IndexController extends Controller {
 			'msg'       => $msg,                    
 		);      
 		return redirect()->route('frontend.index.manageRecruitment')->with(["message"=>$info]);                             
+	}
+	public function deleteSavedProfile($id){   
+		$info                 =   array();
+		$checked              =   1;                           
+		$msg                =   array();
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}         
+		if(count($arrUser) == 0){
+			return redirect()->route("frontend.index.employerLogin");
+		}
+		$email=@$arrUser['email'];   
+		$source=EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.employerLogin"); 
+		}  
+		$data_employer_profile=EmployerProfileModel::whereRaw('employer_id = ? and profile_id = ?',[(int)@$arrUser['id'],(int)@$id])->select('id')->get()->toArray();		
+		if(count($data_employer_profile) == 0){
+			$checked=0;
+			$msg['errorid']='Không đúng id';
+		}
+		if($checked == 1){			
+			EmployerProfileModel::find((int)@$id)->delete();          			
+			$msg['success']='Xóa thành công';
+		}  
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,                    
+		);      
+		return redirect()->route('frontend.index.viewSavedProfile')->with(["message"=>$info]);                             
 	}
 	public function getFormProfile(Request $request,$task,$id){
 		$info                 =   array();

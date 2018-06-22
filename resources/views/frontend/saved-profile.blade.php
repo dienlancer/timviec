@@ -13,6 +13,35 @@ $seo=getSeo();
 				{{ csrf_field() }}
 				<input type="hidden" name="filter_page" value="1">     
 				<h1 class="dn-dk-h">DANH SÁCH HỒ SƠ ĐÃ ĐƯỢC LƯU</h1>
+				@if(Session::has("message"))	
+				<?php 
+				$type_msg='';
+				$checked=Session::get('message')['checked'];
+				if((int)@$checked==1){
+					$type_msg='note-success';
+				}else{
+					$type_msg='note-danger';
+				}
+				?>		
+				<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+					<?php 				
+					$msg=Session::get("message")['msg'];				
+					if(count(@$msg) > 0){
+						?>					
+						<ul>
+							<?php 
+							foreach (@$msg as $key => $value) {
+								?>
+								<li><?php echo $value; ?></li>
+								<?php
+							}
+							?>                              
+						</ul>					
+						<?php
+					}				
+					?>
+				</div>                                                                            
+				@endif		
 				<div class="margin-top-15">
 					<div class="row">						
 						<div class="col-lg-6"><input type="text" name="q" class="kiem-cong-viec kiatisak" value="<?php echo @$candidate_name; ?>" placeholder="Nhập tên ứng viên..."></div>						
@@ -26,7 +55,8 @@ $seo=getSeo();
 							<th class="news-title"><center>Ứng viên</center></th>	
 							<th class="news-title"><center>Trình độ</center></th>	
 							<th class="news-title"><center>Kinh nghiệm</center></th>														
-							<th class="news-title"><center>Mức lương</center></th>		
+							<th class="news-title"><center>Mức lương</center></th>	
+							<th class="news-title"><center>Xóa</center></th>		
 						</tr>
 					</thead>
 					<tbody>
@@ -38,7 +68,8 @@ $seo=getSeo();
 								<td><?php echo @$value['candidate_name']; ?></td>								
 								<td><?php echo @$value['literacy_name']; ?></td>				
 								<td><?php echo @$value['experience_name']; ?></td>				
-								<td><?php echo @$value['salary']; ?></td>												
+								<td><?php echo @$value['salary']; ?></td>		
+								<td><?php echo @$value['deleted']; ?></td>												
 							</tr>
 							<?php
 						}

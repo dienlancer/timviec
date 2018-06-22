@@ -1670,13 +1670,15 @@ function savedProfileConverter($data=array()){
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){        
             $profile_name='<a href="'.route('frontend.index.getAppliedProfileDetail',[@$data[$i]['id'],0]).'">'.@$data[$i]['profile_name'].'</a>';
+            $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteSavedProfile',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';        
             $result[$i] = array(    
                 "id"                    =>  @$data[$i]['id']   ,         
                 "profile_name"          =>  @$profile_name,
                 "candidate_name"        =>  @$data[$i]['candidate_name'],                         
                 'literacy_name'         =>  @$data[$i]['literacy_name'], 
                 'experience_name'       =>  @$data[$i]['experience_name'],
-                'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,                
+                'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,     
+                'deleted'               =>  @$deleted           
             );
         }
     }

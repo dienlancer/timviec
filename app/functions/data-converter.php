@@ -2220,8 +2220,7 @@ function candidateConverter($data=array(),$controller){
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){
             $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
-            $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
-            $entranced='<center><a href="'.route('adminsystem.profile.getList',[$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
+            $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';            
             $kicked=0;
             if((int)@$data[$i]["status"]==1){
                 $kicked=0;
@@ -2238,8 +2237,7 @@ function candidateConverter($data=array(),$controller){
                 'is_checked'               =>   0,
                 "id"                       =>   $id,
                 "fullname"                 =>   $fullname,
-                "email"                    =>   $email,                                           
-                "entranced"                   =>   $entranced,
+                "email"                    =>   $email,                                                           
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
                 "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),

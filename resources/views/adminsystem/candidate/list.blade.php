@@ -51,8 +51,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 					<tr>
 						<th width="1%"><input type="checkbox" onclick="checkAllAgent(this)"  name="checkall-toggle"></th>
 						<th>Tên ứng viên</th>													
-						<th>Email đăng nhập </th>																
-						<th width="5%">Hồ sơ</th>	
+						<th>Email đăng nhập </th>																						
 						<th width="5%">Đăng nhập</th>							
 						<th width="1%">Sửa</th>  
 						<th width="1%">Xóa</th>                    

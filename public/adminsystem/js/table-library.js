@@ -627,8 +627,7 @@ var basicTable = function () {
             columns: [                
                 { data: "checked"            },                
                 { data: "fullname"      },      
-                { data: "email"      },        
-                { data: "entranced"        },                                              
+                { data: "email"      },                                                                
                 { data: "status"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                

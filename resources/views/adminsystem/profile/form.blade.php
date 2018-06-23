@@ -2,10 +2,9 @@
 @section("content")
 <?php 
 $setting= getSettingSystem();
-$linkCancel             =   route('adminsystem.'.$controller.'.getList',[@$candidate_id]);
+$linkCancel             =   route('adminsystem.'.$controller.'.getList');
 $linkSave               =   route('adminsystem.'.$controller.'.save');
-
-
+$candidate_id=@$arrRowData['candidate_id'];
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Duyệt', 0 => 'Ngưng duyệt');  
 $ddlStatus              =   cmsSelectbox("status","form-control",@$arrStatus,(int)@$arrRowData['status'],"");
 $id                     =   (count(@$arrRowData) > 0) ? @$arrRowData['id'] : "" ;

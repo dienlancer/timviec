@@ -2,31 +2,22 @@
 @section("content")
 <?php 
 
-$linkCancel			=	route('adminsystem.'.$controller.'.getList',[@$candidate_id]);
+$linkCancel			=	route('adminsystem.'.$controller.'.getList');
 $linkLoadData		=	route('adminsystem.'.$controller.'.loadData');
 $linkChangeStatus	=	route('adminsystem.'.$controller.'.changeStatus');
 $linkDelete			=	route('adminsystem.'.$controller.'.deleteItem');
 $linkUpdateStatus	=	route('adminsystem.'.$controller.'.updateStatus');
 $linkTrash			=	route('adminsystem.'.$controller.'.trash');
 $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_search"          value="">';
-$inputCandidateID                =   '<input type="hidden" name="candidate_id" value="'.@$candidate_id.'" />'; 
-$candidate_name='';
-$candidate=App\CandidateModel::find((int)@$candidate_id);
-if($candidate != null){
-	$candidate_name=$candidate->fullname;
-}
+
 ?>
 <form class="form-horizontal" role="form" name="frm">	
-	{{ csrf_field() }}
-	<?php echo $inputCandidateID; ?>
+	{{ csrf_field() }}	
 	<input type="hidden" name="sort_json"  value="" />	
 	<div class="portlet light bordered">
 		<div class="portlet-title">
 			<div class="note"  style="display: none;"></div>
-			<div class="caption font-dark">
-				<i class="{{$icon}}"></i>
-				<span class="caption-subject bold uppercase">{{$title}} : <?php echo $candidate_name; ?></span>
-			</div>     
+			
 			<div class="actions">
 				<div class="table-toolbar">
 					<div class="row">
@@ -43,11 +34,21 @@ if($candidate != null){
 			</div>                                 
 		</div>
 		<div class="row">                     
-                <div class="col-md-6">
-                    <div><b>Hồ sơ ứng viên</b>  </div>
+                <div class="col-md-4">
+                    <div><b>Tiêu đề hồ sơ</b>  </div>
                     <div><?php echo $inputFilterSearch; ?></div>
+                </div>     
+                <div class="col-md-4">
+                    <div><b>Ứng viên</b>  </div>
+                    <div>
+                    	<?php 
+                    	$data_candidate=App\CandidateModel::orderBy('id','desc')->select('id','fullname')->get()->toArray();
+                    	$ddlCandidate        =cmsSelectboxCategory("candidate_id", 'form-control selected2', @$data_candidate, 0,'','Chọn ứng viên');
+						echo $ddlCandidate;
+                    	?>
+                    </div>
                 </div>            
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div>&nbsp;</div>
                     <div>
                         <button type="button" class="btn dark btn-outline sbold uppercase btn-product" onclick="getList();">Tìm kiếm</button>                                         
@@ -77,7 +78,7 @@ if($candidate != null){
 	function getList() {  	
 		var token = $('input[name="_token"]').val();         
         var filter_search=$('input[name="filter_search"]').val();
-        var candidate_id=$('input[name="candidate_id"]').val();
+        var candidate_id=$('select[name="candidate_id"]').val();
 		var dataItem={            
 			'candidate_id':candidate_id,
             '_token': token,

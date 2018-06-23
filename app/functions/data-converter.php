@@ -1986,7 +1986,7 @@ function profileConverter($data=array(),$controller){
     $result = array();    
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){
-            $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['candidate_id'],@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
+            $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
             $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
             $kicked=0;
             if((int)@$data[$i]["status"]==1){

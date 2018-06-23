@@ -26,7 +26,7 @@ class ProfileController extends Controller {
  var $_controller="profile";	
  var $_title="Hồ sơ ứng viên";
  var $_icon="icon-settings font-dark";    
- public function getList(Request $request, $candidate_id=0){		
+ public function getList(){		
   $controller=$this->_controller;	
   $task="list";
   $title=$this->_title;
@@ -34,7 +34,7 @@ class ProfileController extends Controller {
   $arrPrivilege=getArrPrivilege();
   $requestControllerAction=$this->_controller."-list";         
   if(in_array($requestControllerAction,$arrPrivilege)){
-    return view("adminsystem.".$this->_controller.".list",compact("candidate_id","controller","task","title","icon")); 
+    return view("adminsystem.".$this->_controller.".list",compact("controller","task","title","icon")); 
   }
   else{
     return view("adminsystem.no-access",compact('controller'));
@@ -49,8 +49,8 @@ public function loadData(Request $request){
   if((int)(@$request->candidate_id) > 0){
     $query->where('profile.candidate_id',(int)@$request->candidate_id);
   }
-  $data=$query->select('profile.id','profile.fullname','profile.candidate_id','profile.status','profile.created_at','profile.updated_at')
-  ->groupBy('profile.id','profile.fullname','profile.candidate_id','profile.status','profile.created_at','profile.updated_at')   
+  $data=$query->select('profile.id','profile.fullname','profile.status','profile.created_at','profile.updated_at')
+  ->groupBy('profile.id','profile.fullname','profile.status','profile.created_at','profile.updated_at')   
   ->orderBy('profile.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
@@ -58,7 +58,7 @@ public function loadData(Request $request){
   $data=profileConverter($data,$this->_controller);            
   return $data;
 } 
-public function getForm($task,$candidate_id=0,$id=0){     
+public function getForm($task,$id=0){     
   $controller=$this->_controller;     
   $title="";
   $icon=$this->_icon; 
@@ -75,7 +75,7 @@ public function getForm($task,$candidate_id=0,$id=0){
      $title=$this->_title . " : Add new";
      break;     
    }                  
-   return view("adminsystem.".$this->_controller.".form",compact("arrRowData",'candidate_id',"controller","task","title","icon"));
+   return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
  }else{
   return view("adminsystem.no-access",compact('controller'));
 }        
@@ -113,7 +113,7 @@ public function save(Request $request){
 $info = array(
         "checked"       => $checked,          
         'msg'       => $msg,      
-        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->candidate_id,@$item->id])
+        'link_edit'=>route('adminsystem.'.$this->_controller.'.getForm',['edit',@$item->id])
       );                       
 return $info;   
 }

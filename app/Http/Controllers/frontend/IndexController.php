@@ -1392,19 +1392,19 @@ class IndexController extends Controller {
 		$info=array();	
 		$link_edit='';			
 		if($request->isMethod('post')){                    
-			$profile_id              = (int)@$request->profile_id;			
 			$recruitment_id 	= (int)@$request->recruitment_id;	
-			$candidate_id = (int)@$request->candidate_id;	
-			$source_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();
-			if(count($source_recruitment_profile) > 0){
-				$msg['error']='Ứng viên đã ứng tuyển vị trí này';
-				$checked=0;	
-			}
+			$profile_id              = (int)@$request->profile_id;								
+			$candidate_id = (int)@$request->candidate_id;
 			$data_profile=ProfileModel::find((int)@$profile_id)->toArray();
 			if((int)@$data_profile['status'] == 0){
 				$msg['error']='Hồ sơ chưa được duyệt nên không thể nộp vào vị trí này';
 				$checked=0;		
 			}
+			$data_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();			
+			if(count($data_recruitment_profile) > 0){
+				$msg['error']='Ứng viên đã ứng tuyển vị trí này';
+				$checked=0;	
+			}			
 			if((int)@$checked==1){
 				$item=new RecruitmentProfileModel;
 				$item->profile_id=(int)@$profile_id;

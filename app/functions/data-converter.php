@@ -1996,15 +1996,14 @@ function recruitmentProfile2Converter($data=array(),$controller){
                 $kicked=1;
             }
             $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';
-            $sort_order = '<center><input name="sort_order"  id="sort-order-'.@$data[$i]["id"].'" sort_order_id="'.@$data[$i]["id"].'" onkeyup="setSortOrder(this)" value="'.$data[$i]["sort_order"].'" size="3" style="text-align:center" onkeypress="return isNumberKey(event);" /></center>';            
+             
             $id=@$data[$i]["id"];   
             $fullname=$data[$i]["fullname"];            
             $result[$i] = array(
                 'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
                 'is_checked'               =>   0,
                 "id"                       =>   $id,
-                "fullname"                 =>   $fullname,                         
-                "sort_order"               =>   $sort_order,
+                "fullname"                 =>   $fullname,                                         
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
                 "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),

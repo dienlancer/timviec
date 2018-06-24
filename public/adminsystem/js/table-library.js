@@ -497,6 +497,22 @@ var basicTable = function () {
             ]
         });        
     };
+    var initRecruitmentProfileTable = function () {
+        vRecruitmentProfileTable = $('#tbl-recruitment-profile').DataTable({
+            aLengthMenu: [
+                [10, -1],
+                [10, "All"]
+            ],
+            iDisplayLength: -1,
+            columns: [                
+                { data: "checked"            },                
+                { data: "fullname"      },                                    
+                { data: "status"        },                                
+                { data: "edited"    },         
+                { data: "deleted"    },                
+            ]
+        });        
+    };
     var initProfileTable = function () {
         vProfileTable = $('#tbl-profile').DataTable({
             aLengthMenu: [
@@ -1141,6 +1157,7 @@ var basicTable = function () {
             initClassificationTable();
             initSkillTable();
             initProfileTable();
+            initRecruitmentProfileTable();
         }
     };
 }();

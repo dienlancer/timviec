@@ -16,6 +16,7 @@ $li_page='';
 $li_candidate_management='';
 $li_candidate='';
 $li_profile='';
+$li_recruitment_profile='';
 
 $li_category_management='';
 $li_province='';
@@ -65,6 +66,9 @@ switch ($controller) {
     $li_category_banner='active open';
     break;  
     case 'page':    
+    $li_page='active open';
+    break;  
+    case 'recruitment-profile':    
     $li_page='active open';
     break;  
     case 'employer': 
@@ -284,7 +288,12 @@ if(count($source) > 0){
                 </li>                 
             </ul>
         </li>
-
+        <li class="nav-item  <?php echo $li_recruitment_profile; ?>">
+            <a href="{!! route('adminsystem.recruitment-profile.getList') !!}" class="nav-link nav-toggle">
+                <i class="icon-notebook"></i>
+                <span class="title">Hồ sơ ứng tuyển</span>                                            
+            </a>                                                                      
+        </li> 
         <li class="nav-item <?php echo $li_category_management; ?>">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-folder-open-o" ></i>

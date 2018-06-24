@@ -1407,8 +1407,8 @@ class IndexController extends Controller {
 			}			
 			if((int)@$checked==1){
 				$item=new RecruitmentProfileModel;
-				$item->profile_id=(int)@$profile_id;
 				$item->recruitment_id=(int)@$recruitment_id;
+				$item->profile_id=(int)@$profile_id;				
 				$item->candidate_id=(int)@$candidate_id;				
 				$item->created_at 	=	date("Y-m-d H:i:s",time());        
 				$item->updated_at 	=	date("Y-m-d H:i:s",time());        

@@ -342,6 +342,16 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.sex.trash","uses"=>"adminsystem\SexController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.sex.createAlias","uses"=>"adminsystem\SexController@createAlias"]);
 	});	
+	Route::group(["prefix"=>"recruitment-profile"],function(){		
+		Route::get("list",["as"=>"adminsystem.recruitment-profile.getList","uses"=>"adminsystem\RecruitmentProfileController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.recruitment-profile.loadData","uses"=>"adminsystem\RecruitmentProfileController@loadData"]);	
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.recruitment-profile.getForm","uses"=>"adminsystem\RecruitmentProfileController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.recruitment-profile.save","uses"=>"adminsystem\RecruitmentProfileController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.recruitment-profile.deleteItem","uses"=>"adminsystem\RecruitmentProfileController@deleteItem"]);
+		Route::post("update-status",["as"=>"adminsystem.recruitment-profile.updateStatus","uses"=>"adminsystem\RecruitmentProfileController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.recruitment-profile.changeStatus","uses"=>"adminsystem\RecruitmentProfileController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.recruitment-profile.trash","uses"=>"adminsystem\RecruitmentProfileController@trash"]);		
+	});	
 	Route::group(["prefix"=>"skill"],function(){		
 		Route::get("list",["as"=>"adminsystem.skill.getList","uses"=>"adminsystem\SkillController@getList"]);
 		Route::post("load-data",["as"=>"adminsystem.skill.loadData","uses"=>"adminsystem\SkillController@loadData"]);		

@@ -13,12 +13,12 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\SexModel;
+use App\RecruitmentProfileModel;
 use App\CandidateModel;
 use DB;
-class SexController extends Controller {
- var $_controller="sex";	
- var $_title="Giới tính";
+class RecruitmentProfileController extends Controller {
+ var $_controller="recruitment-profile";	
+ var $_title="Hồ sơ ứng tuyển chờ duyệt";
  var $_icon="icon-settings font-dark";    
  public function getList(){		
   $controller=$this->_controller;	
@@ -39,14 +39,17 @@ public function loadData(Request $request){
   if(!empty(@$request->filter_search)){      
     $filter_search=trim(@$request->filter_search) ;    
   }        
-  $data=DB::table('sex')                  
-  ->select('sex.id','sex.fullname','sex.sort_order','sex.status','sex.created_at','sex.updated_at')                
-  ->where('sex.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-  ->groupBy('sex.id','sex.fullname','sex.sort_order','sex.status','sex.created_at','sex.updated_at')   
-  ->orderBy('sex.id', 'asc')                
+  $data=DB::table('recruitment_profile') 
+  ->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id')                 
+  ->leftJoin('profile','recruitment_profile.profile_id','=','profile.id')
+  ->leftJoin('candidate','recruitment_profile.candidate_id','=','candidate.id')
+  ->select('recruitment_profile.id','recruitment.fullname','profile.fullname as profile_name','candidate.fullname as candidate_name','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')                
+  ->where('recruitment_profile.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
+  ->groupBy('recruitment_profile.id','recruitment.fullname','profile.fullname','candidate.fullname','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')                 
+  ->orderBy('recruitment_profile.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
-  $data=sexConverter($data,$this->_controller);            
+  $data=recruitmentProfile2Converter($data,$this->_controller);            
   return $data;
 } 
 public function getForm($task,$id=""){     
@@ -60,7 +63,7 @@ public function getForm($task,$id=""){
     switch ($task) {
      case 'edit':
      $title=$this->_title . " : Update";
-     $arrRowData=SexModel::find((int)@$id)->toArray();                     
+     $arrRowData=RecruitmentProfileModel::find((int)@$id)->toArray();                     
      break;
      case 'add':
      $title=$this->_title . " : Add new";
@@ -73,9 +76,7 @@ public function getForm($task,$id=""){
 }
 public function save(Request $request){
   $id 					        =		trim($request->id);        
-  $fullname 				    =		trim($request->fullname);    
-  $alias                =   trim($request->alias);                          
-  $sort_order           =   trim($request->sort_order);
+  
   $status               =   trim($request->status);          
   $data 		            =   array();
 
@@ -83,15 +84,7 @@ public function save(Request $request){
   $info                 =   array();
   $checked              =   1;                           
   $msg                =   array();
-  if(empty($fullname)){
-   $checked = 0;                 
-   $msg["fullname"] = "Thiếu tên";
- }                   
- if(empty($sort_order)){
-   $checked = 0;
-
-   $msg["sort_order"] 		= "Thiếu sắp xếp";
- }
+ 
  if((int)$status==-1){
    $checked = 0;
 
@@ -99,16 +92,13 @@ public function save(Request $request){
  }
  if ($checked == 1) {    
   if(empty($id)){
-    $item         =   new SexModel;       
+    $item         =   new RecruitmentProfileModel;       
     $item->created_at   = date("Y-m-d H:i:s",time());        
 
   } else{
-    $item       = SexModel::find((int)@$id);   
+    $item       = RecruitmentProfileModel::find((int)@$id);   
 
-  }  
-  $item->fullname 		    =	@$fullname;  
-  $item->alias            = @$alias;                                         
-  $item->sort_order 		  =	(int)@$sort_order;
+  }    
   $item->status 			    =	(int)@$status;    
   $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	                
   $item->save();                                  
@@ -127,7 +117,7 @@ public function changeStatus(Request $request){
   $checked              =   1;                           
   $msg                =   array();     
   $status         =       (int)@$request->status;
-  $item           =       SexModel::find((int)@$id);        
+  $item           =       RecruitmentProfileModel::find((int)@$id);        
   $item->status   =       $status;
   $item->save();
   $msg['success']='Cập nhật thành công';
@@ -145,14 +135,9 @@ public function deleteItem(Request $request){
   $info                 =   array();
   $checked              =   1;                           
   $msg                =   array();
-  $data                   =   CandidateModel::whereRaw("sex_id = ?",[(int)@$id])->get()->toArray();  
-  if(count($data) > 0){
-    $checked            =   0;
-    
-    $msg['cannotdelete']            =   "Phần tử có dữ liệu con . Vui lòng không xóa";
-  }                      
+               
   if($checked == 1){
-    $item = SexModel::find((int)@$id);
+    $item = RecruitmentProfileModel::find((int)@$id);
     $item->delete();    
     $msg['success']          =   'Xóa thành công';                                                     
   }        
@@ -180,7 +165,7 @@ public function updateStatus(Request $request){
   if($checked==1){
     foreach ($arrID as $key => $value) {
       if(!empty($value)){
-        $item=SexModel::find($value);
+        $item=RecruitmentProfileModel::find($value);
         $item->status=$status;
         $item->save();      
       }            
@@ -207,16 +192,9 @@ public function trash(Request $request){
     
     $msg['chooseone']            =   "Vui lòng chọn ít nhất một phần tử";
   }         
-  foreach ($arrID as $key => $value){
-    $data                   =   CandidateModel::whereRaw("sex_id = ?",[(int)@$value])->get()->toArray();  
-    if(count($data) > 0){
-      $checked            =   0;
-      
-      $msg['cannotdelete']            =   "Phần tử có dữ liệu con . Vui lòng không xóa";
-    }
-  }    
+     
   if($checked == 1){                                  
-    DB::table('sex')->whereIn('id',@$arrID)->delete();
+    DB::table('recruitment_profile')->whereIn('id',@$arrID)->delete();
     $msg['success']='Xóa thành công';                                      
   }
   $data                   =   $this->loadData($request);
@@ -227,72 +205,6 @@ public function trash(Request $request){
   );
   return $info;
 }
-public function sortOrder(Request $request){
-  $sort_json              =   $request->sort_json;           
-  $data_order             =   json_decode($sort_json);       
-  
-  $info                 =   array();
-  $checked              =   1;                           
-  $msg                =   array();
-  if(count($data_order) > 0){              
-    foreach($data_order as $key => $value){      
-      if(!empty($value)){
-        $item=SexModel::find((int)@$value->id);                
-        $item->sort_order=(int)$value->sort_order;                         
-        $item->save();                      
-      }                                                  
-    }           
-  }        
-  $data                   =   $this->loadData($request);
-  $msg['success']='Cập nhật thành công'; 
-  $info = array(
-    "checked"       => $checked,          
-    'msg'       => $msg,           
-    'data'              => $data
-  );
-  return $info;
-}     
-public function createAlias(Request $request){
-  $id                =  trim($request->id)  ; 
-  $fullname                =  trim($request->fullname)  ;        
-  $data                    =  array();
-  
-  $item                    =  null;
-  $info                 =   array();
-  $checked              =   1;                           
-  $msg                =   array();
-  $alias='';                     
-  if(empty($fullname)){
-   $checked = 0;
-   
-   $msg["fullname"] = "Thiếu tên bài viết";
- }else{          
-  $alias=str_slug($fullname,'-');          
-  $dataSex=array();
-  $checked_trung_alias=0;          
-  if (empty($id)) {              
-    $dataSex=SexModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();             
-  }else{
-    $dataSex=SexModel::whereRaw("trim(lower(alias)) = ? and id != ?",[trim(mb_strtolower($alias,'UTF-8')),(int)@$id])->get()->toArray();    
-  }  
-  
-  if (count($dataSex) > 0) {
-    $checked_trung_alias=1;
-  }
-  if((int)$checked_trung_alias == 1){
-    $code_alias=rand(1,999999);
-    $alias=$alias.'-'.$code_alias;
-  }
-}
-if ($checked == 1){
-  $msg['success']='Lưu thành công';     
-}   
-$info = array(
-  "checked"       => $checked,          
-  'msg'       => $msg,                      
-  "alias"            => $alias
-);      
-return $info;
-}  
+
 }
 ?>

@@ -1459,6 +1459,7 @@ class IndexController extends Controller {
 			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
 		}		
 		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
+		$query->where('recruitment_profile.status',1);
 		$data=$query->select('candidate.id')
 		->groupBy('candidate.id')                
 		->get()->toArray();

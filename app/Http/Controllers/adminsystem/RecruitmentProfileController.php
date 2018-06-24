@@ -43,9 +43,9 @@ public function loadData(Request $request){
   ->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id')                 
   ->leftJoin('profile','recruitment_profile.profile_id','=','profile.id')
   ->leftJoin('candidate','recruitment_profile.candidate_id','=','candidate.id')
-  ->select('recruitment_profile.id','recruitment.fullname','profile.fullname as profile_name','candidate.fullname as candidate_name','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')                
+  ->select('recruitment_profile.id','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','profile.fullname as profile_name','candidate.fullname as candidate_name','recruitment_profile.file_attached','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')                
   ->where('candidate.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-  ->groupBy('recruitment_profile.id','recruitment.fullname','profile.fullname','candidate.fullname','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')                 
+  ->groupBy('recruitment_profile.id','recruitment.fullname','recruitment_profile.profile_id','profile.fullname','candidate.fullname','recruitment_profile.file_attached','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')      
   ->orderBy('recruitment_profile.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    

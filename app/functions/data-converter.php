@@ -1986,7 +1986,14 @@ function recruitmentProfile2Converter($data=array(),$controller){
     $result = array();    
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){
-            $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
+            $edited='';
+            if((int)@$data[$i]['profile_id'] > 0){
+                $edited='<center><a href="'.route('adminsystem.'.$controller.'.getForm',['edit',@$data[$i]['id']]).'"><img src="'.asset("/public/adminsystem/images/edit-icon.png").'" /></a></center>';
+            }            
+            $file_attached='';
+            if(!empty(@$data[$i]['file_attached'])){
+                $file_attached='<center><a href="'.asset('upload/'.@$data[$i]['file_attached']).'" target="_blank"><img src="'.asset('upload/download-icon.png').'" /></a></center>';   
+            }            
             $deleted='<center><a href="javascript:void(0)" onclick="deleteItem('.@$data[$i]["id"].')"><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';
             $kicked=0;
             if((int)@$data[$i]["status"]==1){
@@ -1996,17 +2003,21 @@ function recruitmentProfile2Converter($data=array(),$controller){
                 $kicked=1;
             }
             $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status"],$kicked).'</center>';
-             
-            $id=@$data[$i]["id"];   
-            $fullname=$data[$i]["fullname"];            
+            $profile_name='';
+            if((int)@$data['profile_id'] > 0){
+                $profile_name=@$data['profile_name'];
+            }            
             $result[$i] = array(
                 'checked'                  =>   '<input type="checkbox" onclick="checkWithList(this)" name="cid"  />',
                 'is_checked'               =>   0,
-                "id"                       =>   $id,
-                "fullname"                 =>   $fullname,                                         
+                "id"                       =>   @$data[$i]["id"],
+                "candidate_name"           =>   @$data[$i]['candidate_name'],          
+                "profile_name"             =>   @$data[$i]['profile_name'],                  
+                "file_attached"            =>   $file_attached,                                             
+                "recruitment_name"         =>   @$data[$i]["recruitment_name"],                
                 "status"                   =>   $status,
                 "created_at"               =>   datetimeConverterVn($data[$i]["created_at"]),
-                "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),
+                "updated_at"               =>   datetimeConverterVn($data[$i]["updated_at"]),                
                 "edited"                   =>   $edited,
                 "deleted"                  =>   $deleted
             );

@@ -506,8 +506,12 @@ var basicTable = function () {
             iDisplayLength: -1,
             columns: [                
                 { data: "checked"            },                
-                { data: "fullname"      },                                    
-                { data: "status"        },                                
+                { data: "candidate_name"      },
+                { data: "profile_name"      },   
+                { data: "file_attached"        },    
+                { data: "recruitment_name"      },                                                                                
+                { data: "status"        },                                          
+                { data: "created_at"        },                                
                 { data: "edited"    },         
                 { data: "deleted"    },                
             ]

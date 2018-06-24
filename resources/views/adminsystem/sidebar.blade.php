@@ -69,7 +69,7 @@ switch ($controller) {
     $li_page='active open';
     break;  
     case 'recruitment-profile':    
-    $li_page='active open';
+    $li_recruitment_profile='active open';
     break;  
     case 'employer': 
     $li_employer='active open';       

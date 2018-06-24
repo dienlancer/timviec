@@ -23,8 +23,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 				<div class="table-toolbar">
 					<div class="row">
 						<div class="col-md-12">						
-							<a href="javascript:void(0)" onclick="updateStatus(1)" class="btn blue">Hiển thị <i class="fa fa-eye"></i></a> 
-							<a href="javascript:void(0)" onclick="updateStatus(0)" class="btn yellow">Ẩn <i class="fa fa-eye-slash"></i></a> 
+							<a href="javascript:void(0)" onclick="updateStatus(1)" class="btn blue">Duyệt <i class="fa fa-eye"></i></a> 
+							<a href="javascript:void(0)" onclick="updateStatus(0)" class="btn yellow">Ngưng duyệt <i class="fa fa-eye-slash"></i></a> 
 							<a href="javascript:void(0)" onclick="trash()" class="btn red">Xóa <i class="fa fa-trash"></i></a> 	
 							
 						</div>                                                
@@ -49,8 +49,12 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 				<thead>
 					<tr>
 						<th width="1%"><input type="checkbox" onclick="checkAllAgent(this)"  name="checkall-toggle"></th>
-						<th>Vị trí ứng tuyển</th>													
-						<th width="10%">Trạng thái</th>							
+						<th>Ứng viên</th>		
+						<th>Tiêu đề hồ sơ</th>		
+						<th>File đính kèm</th>  
+						<th>Nộp vào vị trí</th>																										
+						<th width="10%">Trạng thái duyệt</th>													
+						<th width="1%">Ngày nộp</th>  
 						<th width="1%">Sửa</th>  
 						<th width="1%">Xóa</th>                    
 					</tr>

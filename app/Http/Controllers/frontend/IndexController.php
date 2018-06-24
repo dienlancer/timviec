@@ -1480,8 +1480,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','recruitment_profile.file_attached')
-		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','recruitment_profile.profile_id','recruitment_profile.file_attached')
+		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','recruitment_profile.file_attached','recruitment_profile.created_at')
+		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','recruitment_profile.profile_id','recruitment_profile.file_attached','recruitment_profile.created_at')
 		->orderBy('recruitment.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)

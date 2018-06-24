@@ -1642,7 +1642,8 @@ function recruitmentProfileConverter($data=array()){
                 "fullname"                 =>   $fullname,                         
                 'recruitment_name'           =>   $recruitment_name, 
                 'entranced'               =>$entranced,
-                 'link_cv'               =>$link_cv,
+                'link_cv'               =>$link_cv,
+                'created_at'            => '<center>'.datetimeConverterVn(@$data[$i]['created_at']).'</center>' ,
             );
         }
     }

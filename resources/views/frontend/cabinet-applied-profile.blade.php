@@ -24,25 +24,22 @@ $seo=getSeo();
 					<thead>
 						<tr>
 							<th class="news-title"><center>Ứng viên</center></th>	
-							<th class="news-title"><center>Ứng tuyển vị trí</center></th>	
-							<th class="news-title"><center>Chi tiết hồ sơ</center></th>	
-							<th class="news-title"><center>File hồ sơ đính kèm</center></th>														
+							<th class="news-title"><center>Ứng tuyển vị trí</center></th>									
+							<th class="news-title"><center>File hồ sơ đính kèm</center></th>	
+							<th class="news-title"><center>Ngày nộp</center></th>			
+							<th class="news-title"><center>Chi tiết hồ sơ</center></th>											
 						</tr>
 					</thead>
 					<tbody>
 						<?php 
-						foreach ($data as $key => $value) {
-							$id=$value['id'];
-							$fullname=$value['fullname'];	
-							$recruitment_name=$value['recruitment_name'];		
-							$entranced=$value['entranced'];		
-							$link_cv=$value['link_cv'];			
+						foreach ($data as $key => $value) {							
 							?>
 							<tr>
-								<td><?php echo $fullname; ?></td>	
-								<td><?php echo $recruitment_name; ?></td>								
-								<td><?php echo $entranced; ?></td>	
-								<td><?php echo $link_cv; ?></td>								
+								<td><?php echo $value["fullname"]; ?></td>	
+								<td><?php echo $value["recruitment_name"]; ?></td>																
+								<td><?php echo $value["link_cv"]; ?></td>	
+								<td><?php echo $value['created_at'] ?></td>							
+								<td><?php echo $value["entranced"]; ?></td>	
 							</tr>
 							<?php
 						}

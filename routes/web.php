@@ -658,7 +658,7 @@ Route::get("xac-thuc-tai-khoan-ung-vien/{id}/{certification_code}",["as"=>"front
 Route::match(["get","post"],"lay-mat-khau-ntd",["as"=>"frontend.index.resetPassWrdEmployer","uses"=>"frontend\IndexController@resetPassWrdEmployer"]);
 Route::match(["get","post"],"lay-mat-khau-ung-vien",["as"=>"frontend.index.resetPassWrdCandidate","uses"=>"frontend\IndexController@resetPassWrdCandidate"]);
 Route::match(["get","post"],"tim-viec",["as"=>"frontend.index.searchRecruitment","uses"=>"frontend\IndexController@searchRecruitment"]);
-Route::match(["get","post"],"ho-so-ung-tuyen",["as"=>"frontend.index.viewAppliedProfile","uses"=>"frontend\IndexController@viewAppliedProfile"]);
+Route::match(["get","post"],"ho-so-da-ung-tuyen",["as"=>"frontend.index.viewAppliedProfile","uses"=>"frontend\IndexController@viewAppliedProfile"]);
 
 Route::match(["get","post"],"chi-tiet-ho-so-ung-vien/{id}/{save_id}",["as"=>"frontend.index.getAppliedProfileDetail","uses"=>"frontend\IndexController@getAppliedProfileDetail"]);
 

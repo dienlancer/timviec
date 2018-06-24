@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2018 at 04:59 AM
+-- Generation Time: Jun 24, 2018 at 08:16 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -205,7 +205,7 @@ CREATE TABLE `candidate` (
 
 INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthday`, `sex_id`, `marriage_id`, `province_id`, `address`, `avatar`, `certification_code`, `certificated_number`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'tranhuyvu@dienkim.com', '$2y$10$JDy8UjKIRPmnMgyIAe3ks.p5Fgpu6HdNl8NysIKtwUvAKrx9jzGfu', 'Trần Huy Vũ', '0988162739', NULL, NULL, NULL, NULL, NULL, 'logo-5-170043946.png', NULL, NULL, 1, '2018-04-03 02:32:59', '2018-04-05 02:00:14'),
-(2, 'truongnt@dienkim.com', '$2y$10$jp2WuH8yQ3JhkPmL5zNBPeKK35V2W2.SU0vYLQKkJd8L/HSD441M2', 'Đặng Thị Thu Hằng', '0922111222', '1988-04-11 00:00:00', 1, 1, 2, '23 Lý Thường Kiệt', 'logo-2-xmydbuv95gtc.png', NULL, NULL, 1, '2018-04-03 07:14:21', '2018-04-11 08:31:05'),
+(2, 'truongnt@dienkim.com', '$2y$10$onnIf8WJctx5WB3SqOXT0OyC4Ry0D83q6YbGFjFdjiNu0emTVR/EW', 'Đặng Thị Thu Hằng', '0922111222', '1988-04-11 00:00:00', 1, 1, 2, '23 Lý Thường Kiệt', 'logo-2-xmydbuv95gtc.png', NULL, NULL, 1, '2018-04-03 07:14:21', '2018-06-24 17:55:45'),
 (3, 'vientg@dienkim.com', '$2y$10$e9812Kvxwy2C8z.q/tGRQOyPBZSEyQftMBmtiWhD7cJ65RfVtTH7y', 'Trần Gia Viên', '0988223244', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 04:41:02', '2018-05-02 03:17:27'),
 (4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 04:53:22', '2018-04-11 08:31:05'),
 (5, 'duydp@dienkim.com', '$2y$10$l.PmvBEd9gT/Dod3nJLTHe1i5Ko/uyEItXMYouG0d/od6pgNxZPlm', 'Phạm Đình Duy', '0988145622', '1989-05-06 00:00:00', 1, 1, 55, '62 Lê Thánh Tôn', NULL, NULL, NULL, 1, '2018-04-04 05:18:40', '2018-06-22 06:53:22'),
@@ -658,7 +658,7 @@ CREATE TABLE `group_member` (
 --
 
 INSERT INTO `group_member` (`id`, `fullname`, `alias`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-05-02 03:37:23'),
+(1, 'Administrator', 'administrator', 1, '2016-12-17 05:05:18', '2018-06-24 16:13:28'),
 (2, 'Chăm sóc khách hàng', 'cham-soc-khach-hang', 2, '2018-04-06 07:51:51', '2018-04-14 02:26:52');
 
 -- --------------------------------------------------------
@@ -688,105 +688,107 @@ INSERT INTO `group_privilege` (`id`, `group_member_id`, `privilege_id`, `created
 (4809, 2, 161, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4810, 2, 176, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
 (4811, 2, 177, '2018-04-14 02:26:52', '2018-04-14 02:26:52'),
-(5364, 1, 1, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5365, 1, 2, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5366, 1, 4, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5367, 1, 5, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5368, 1, 18, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5369, 1, 19, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5370, 1, 24, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5371, 1, 25, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5372, 1, 43, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5373, 1, 44, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5374, 1, 49, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5375, 1, 50, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5376, 1, 55, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5377, 1, 56, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5378, 1, 61, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5379, 1, 62, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5380, 1, 67, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5381, 1, 68, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5382, 1, 79, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5383, 1, 80, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5384, 1, 85, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5385, 1, 86, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5386, 1, 103, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5387, 1, 104, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5388, 1, 105, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5389, 1, 106, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5390, 1, 107, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5391, 1, 108, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5392, 1, 109, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5393, 1, 110, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5394, 1, 115, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5395, 1, 116, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5396, 1, 121, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5397, 1, 122, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5398, 1, 123, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5399, 1, 124, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5400, 1, 125, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5401, 1, 126, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5402, 1, 127, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5403, 1, 128, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5404, 1, 129, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5405, 1, 130, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5406, 1, 131, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5407, 1, 132, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5408, 1, 133, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5409, 1, 134, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5410, 1, 135, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5411, 1, 136, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5412, 1, 137, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5413, 1, 138, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5414, 1, 139, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5415, 1, 140, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5416, 1, 141, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5417, 1, 142, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5418, 1, 143, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5419, 1, 144, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5420, 1, 145, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5421, 1, 146, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5422, 1, 151, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5423, 1, 152, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5424, 1, 153, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5425, 1, 154, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5426, 1, 155, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5427, 1, 156, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5428, 1, 157, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5429, 1, 158, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5430, 1, 159, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5431, 1, 160, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5432, 1, 161, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5433, 1, 162, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5434, 1, 163, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5435, 1, 164, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5436, 1, 165, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5437, 1, 166, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5438, 1, 167, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5439, 1, 168, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5440, 1, 169, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5441, 1, 170, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5442, 1, 171, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5443, 1, 172, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5444, 1, 173, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5445, 1, 174, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5446, 1, 175, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5447, 1, 176, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5448, 1, 177, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5449, 1, 178, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5450, 1, 179, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5451, 1, 180, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5452, 1, 181, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5453, 1, 182, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5454, 1, 183, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5455, 1, 184, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5456, 1, 185, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5457, 1, 186, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5458, 1, 187, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5459, 1, 188, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5460, 1, 189, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5461, 1, 190, '2018-05-02 03:37:23', '2018-05-02 03:37:23'),
-(5462, 1, 191, '2018-05-02 03:37:23', '2018-05-02 03:37:23');
+(5463, 1, 1, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5464, 1, 2, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5465, 1, 4, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5466, 1, 5, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5467, 1, 18, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5468, 1, 19, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5469, 1, 24, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5470, 1, 25, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5471, 1, 43, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5472, 1, 44, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5473, 1, 49, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5474, 1, 50, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5475, 1, 55, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5476, 1, 56, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5477, 1, 61, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5478, 1, 62, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5479, 1, 67, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5480, 1, 68, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5481, 1, 79, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5482, 1, 80, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5483, 1, 85, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5484, 1, 86, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5485, 1, 103, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5486, 1, 104, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5487, 1, 105, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5488, 1, 106, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5489, 1, 107, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5490, 1, 108, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5491, 1, 109, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5492, 1, 110, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5493, 1, 115, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5494, 1, 116, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5495, 1, 121, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5496, 1, 122, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5497, 1, 123, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5498, 1, 124, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5499, 1, 125, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5500, 1, 126, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5501, 1, 127, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5502, 1, 128, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5503, 1, 129, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5504, 1, 130, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5505, 1, 131, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5506, 1, 132, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5507, 1, 133, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5508, 1, 134, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5509, 1, 135, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5510, 1, 136, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5511, 1, 137, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5512, 1, 138, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5513, 1, 139, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5514, 1, 140, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5515, 1, 141, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5516, 1, 142, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5517, 1, 143, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5518, 1, 144, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5519, 1, 145, '2018-06-24 16:13:28', '2018-06-24 16:13:28'),
+(5520, 1, 146, '2018-06-24 16:13:28', '2018-06-24 16:13:29'),
+(5521, 1, 151, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5522, 1, 152, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5523, 1, 153, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5524, 1, 154, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5525, 1, 155, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5526, 1, 156, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5527, 1, 157, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5528, 1, 158, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5529, 1, 159, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5530, 1, 160, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5531, 1, 161, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5532, 1, 162, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5533, 1, 163, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5534, 1, 164, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5535, 1, 165, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5536, 1, 166, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5537, 1, 167, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5538, 1, 168, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5539, 1, 169, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5540, 1, 170, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5541, 1, 171, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5542, 1, 172, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5543, 1, 173, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5544, 1, 174, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5545, 1, 175, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5546, 1, 176, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5547, 1, 177, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5548, 1, 178, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5549, 1, 179, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5550, 1, 180, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5551, 1, 181, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5552, 1, 182, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5553, 1, 183, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5554, 1, 184, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5555, 1, 185, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5556, 1, 186, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5557, 1, 187, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5558, 1, 188, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5559, 1, 189, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5560, 1, 190, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5561, 1, 191, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5562, 1, 192, '2018-06-24 16:13:29', '2018-06-24 16:13:29'),
+(5563, 1, 193, '2018-06-24 16:13:29', '2018-06-24 16:13:29');
 
 -- --------------------------------------------------------
 
@@ -1875,7 +1877,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (965, 1, 'jg88himOtbq3IrJu2DFSlC7P2MclF3Xq', '2018-06-21 20:14:07', '2018-06-21 20:14:07'),
 (966, 1, 'ybS9aJzPuE9YhrotUxi3B0XO6rzGjaH1', '2018-06-22 01:26:26', '2018-06-22 01:26:26'),
 (967, 1, 'gQuflB8IiLa0nJguSjsu6GkUxQmddCtj', '2018-06-22 10:21:23', '2018-06-22 10:21:23'),
-(968, 1, 'UsirL9JIdsS33lRSgPTWoLu4PMBy7aoe', '2018-06-22 18:32:32', '2018-06-22 18:32:32');
+(968, 1, 'UsirL9JIdsS33lRSgPTWoLu4PMBy7aoe', '2018-06-22 18:32:32', '2018-06-22 18:32:32'),
+(969, 1, 'Rg4YdADMw5qZCW98TgmzujqxvNRib2hD', '2018-06-24 09:06:01', '2018-06-24 09:06:01');
 
 -- --------------------------------------------------------
 
@@ -2115,7 +2118,9 @@ INSERT INTO `privilege` (`id`, `fullname`, `controller`, `action`, `sort_order`,
 (188, 'skill-list', 'skill', 'list', 1, '2018-04-27 18:06:58', '2018-04-27 18:06:58'),
 (189, 'skill-form', 'skill', 'form', 1, '2018-04-27 18:07:06', '2018-04-27 18:07:06'),
 (190, 'profile-list', 'profile', 'list', 1, '2018-05-02 03:36:52', '2018-05-02 03:36:52'),
-(191, 'profile-form', 'profile', 'form', 1, '2018-05-02 03:37:03', '2018-05-02 03:37:03');
+(191, 'profile-form', 'profile', 'form', 1, '2018-05-02 03:37:03', '2018-05-02 03:37:03'),
+(192, 'recruitment-profile-list', 'recruitment-profile', 'list', 1, '2018-06-24 16:12:26', '2018-06-24 16:12:26'),
+(193, 'recruitment-profile-form', 'recruitment-profile', 'form', 1, '2018-06-24 16:12:59', '2018-06-24 16:12:59');
 
 -- --------------------------------------------------------
 
@@ -2680,7 +2685,7 @@ INSERT INTO `recruitment` (`id`, `fullname`, `meta_keyword`, `meta_description`,
 (50, 'Nhân Viên Kinh Doanh Lương Đến 10 Triệu + % Doanh Số + % Dự Án', NULL, NULL, 'nhan-vien-kinh-doanh-luong-den-10-trieu-doanh-so-du-an', 8, 1, '<p>- Phát triển thị trường kinh doanh cho nhóm thiết bị y tế trong lĩnh vực giáo dục và đào tạo chuyên ngành y tế, ví dụ: các trường cao đẳng y tế, đại học y tế, bệnh viện…</p><p>- Tìm kiếm khách hàng mới</p><p>- Thiết lập quan hệ và chăm sóc khách hàng về các mảng y tế - giáo dục</p><p>- Nghiên cứu khai thác thông tin về thị trường thiết y tế - giáo dục</p><p>- Trụ sở chính: LK20 Lô 17, KDT Mới Văn Khê, Phường La Khê, Hà đông, Hà Nội</p><p>- Địa chỉ làm việc: TP. Hồ Chí Minh, Hà Nội</p>', '<p>- Có sức khỏe tốt</p><p>- Tốt nghiệp các trường trung cấp, cao đẳng, đại học khối y tế, dược, kinh tế hoặc kỹ thuật</p><p>- Kinh nghiệm làm việc 1-2 năm&nbsp;</p><p>- Nghiêm túc, có trách nhiệm với công việc</p><p>- Có phương tiện đi lại&nbsp;</p><p>- Có khả năng giao tiếp và thuyết phục tốt</p><p>- Kiên trì bền bỉ với công việc</p><p>- Có khả năng làm việc độc lập</p><p>- Ưu tiên có kinh nghiệm về dịch vụ khách hàng, bán hàng, kinh nghiệm kinh doanh trang thiết bị y tế, giáo dục, điều dưỡng, y dược.</p>', 1, 8, 3, 4, 0, 0, 1, 2, '<p>- Lương cứng 7 - 10 triệu + % Doanh Số + % Dự Án thu nhập tùy vào năng lực từng người.</p><p>- Được đóng BHXH và BHYT khi ký hợp đồng lao động chính thức.</p><p>- Thời gian thử việc 01 tháng.</p><p>- Ngày làm việc 8h/ngày</p><p>- Các chế độ khác theo quy định của nhà nước.</p>', NULL, '2018-05-31 00:00:00', 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:05:32', '2018-06-20 17:13:46'),
 (51, 'Nhân Viên Kinh Doanh Sản Phẩm Nhôm Làm Việc Tại Hà Nội Và Tp.Hcm', NULL, NULL, 'nhan-vien-kinh-doanh-san-pham-nhom-lam-viec-tai-ha-noi-va-tphcm', 6, 3, '<p>- Thiết kế bản vẽ 2 D cho sản phẩm nhôm đúc. Thiết kế sản phẩm mới.Hỗ trợ kỹ thuật sản xuất và một số công việc khác khi có yêu cầu</p><p>- Tìm kiếm dự án mới, khách hàng mới.</p><p>- Xây dựng mối quan hệ lâu dài với khách hàng. Định kỳ lên lịch thăm viếng, chăm sóc khách hàng.</p><p>- Phối hợp với các bộ phận liên quan giải quyết các sự vụ phát sinh.</p><p>- Giao dịch trực tiếp với khách hàng để giới thiệu và bán sản phẩm.</p><p>- Thực hiện các công việc liên quan đến hợp đồng và thanh toán.</p><p>- Thu thập thông tin về khách hàng, thị trường để xây dựng cơ sở dữ liệu cho phòng Kinh doanh.</p><p>- Hoàn thành các chỉ tiêu được giao về doanh số, khách hàng, sản phẩm.</p><p>- Báo cáo bán hàng đầy đủ và đúng thời hạn.</p><p>Địa chỉ làm việc ở khu vực:</p><p>- Miền Bắc: 85 Nguyễn Du, quận Hai Bà Trưng, Hà Nội.</p><p>- Miền Nam: 20 đường Sông Thao, quận Tân Bình, Hồ Chí Minh.</p><p>- Chú ý: ghi cụ thể khu vực làm việc để tiện sắp xếp lịch phỏng vấn</p>', '<p>- Ưu tiên nhận sinh viên mới ra trường</p><p>- Tốt nghiệp Cao đẳng trở lên các ngành cơ khí chế tạo.</p><p>- Giao tiếp, thuyết trình, đàm phán, thương lượng tốt. Khả năng làm việc độc lập hoặc theo nhóm, làm việc dưới áp lực cao.</p><p>- Năng động, sáng tạo, nhiệt huyết và thích chinh phục những khó khăn trong công việc.</p>', 1, 8, 9, 4, 0, 0, 1, 2, '<p>- Lương từ 6,5 triệu đến 8 triệu</p><p>- Được tham gia bảo hiểm xã hội đầy đủ.</p><p>- Được tham gia bảo hiểm tai nạn 24h.</p><p>- Trong tháng được nghỉ thêm 2 ngày thứ 7, nếu 2 ngày này đi làm được tính tăng ca.</p><p>- Được tặng quà sinh nhật trong tháng; quà thiếu nhi; quà 8/3; quà tết; quà trung thu; tiền mừng sinh con; tiền mừng kết hôn; tiền tang chế; có quà cho các đối tượng có thâm niên làm việc từ 5 năm trở lên.</p><p>- Được cung cấp suất ăn trong ca làm việc.</p><p>- Được cấp phát bảo hộ lao động đầy đủ.</p><p>- Được trợ cấp tiền xăng; trợ cấp chuyên cần.</p>', NULL, '2018-05-29 00:00:00', 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:09:04', '2018-06-20 02:33:56'),
 (52, 'Chuyên Viên Tư Vấn Tài Chính Kênh Hợp Tác Ngân Hàng', NULL, NULL, 'chuyen-vien-tu-van-tai-chinh-kenh-hop-tac-ngan-hang', 6, 3, '<p>Kênh Ngân hàng là kênh phân phối bảo hiểm hoàn toàn mới, cùng với sự hợp tác giữa Công ty AIA và các Ngân hàng danh tiếng, hàng đầu tại Việt Nam (HSBC,Citibank, ANZ, Shinhan, ACB, DongA TPBank, VPBank…)</p><p>• Địa điểm làm việc: chi nhánh Ngân hàng.</p><p>• Thời gian làm việc: giờ hành chánh tại Ngân hàng</p><p>• Sử dụng nguồn khách hàng được Ngân hàng giới thiệu, tư vấn và giới thiệu với các khách hàng về kế hoạch tài chính, giải pháp và chương trình Bảo hiểm.</p><p>• Xây dựng, phát triển mối quan hệ với các nhân viên Ngân hàng tại chi nhánh Ngân hàng.</p><p>• Chăm sóc khách hàng hiện hữu và mới lịch sự, chu đáo, tận tâm.</p><p>• Báo cáo kết quả kinh doanh hàng ngày cho các quản lý cấp cao.</p><p>• Chi tiết rõ hơn về công việc sẽ được trao đổi trực tiếp tại buổi phỏng vấn.</p>', '<p>Tốt nghiệp hệ Cao Đẳng trở lên về các chuyên ngành kinh tế: Bảo hiểm, Tài chính, Ngân hàng, Kinh doanh,</p><p>• Không yêu cầu kinh nghiệm (sẽ được đào tạo)</p><p>• Ưu tiên ứng viên có kinh nghiệm về: Bảo hiểm, Tài chính, Ngân hàng, Kế toán, Bán hàng, …</p><p>• Tác phong thanh lịch, tự tin, tác phong chuyên nghiệp, kỹ năng giao tiếp và thuyết phục tốt là lợi thế.</p><p>• Chịu được áp lực công việc, kiên trì, chăm chỉ có trách nhiệm với công việc.</p><p>• Sử dụng thành thạo các phần mềm văn phòng Microsoft: Word, Excel, Powerpoint, …</p>', 1, 8, 9, 4, 0, 0, 1, 2, '<p>• LƯƠNG: CỐ ĐỊNH 6,000,000 (đối với IO) / 8.000,000 (đối với IS) + PHỤ CẤP (ĐIỆN THOẠI) + hoa hồng riêng HẤP DÂN (tùy theo năng lực) + các khoản thưởng (tháng, quý, năm) + thưởng năng lực hang tháng.</p><p>• Phụ cấp điện thoại hàng tháng 400.000đ</p><p>• Được hỗ trợ Bảo hiểm sức khỏe.</p><p>• Môi trường làm việc tại các Ngân hàng chuyên nghiệp và đầy tiềm năng tại Việt Nam: Citibank, ANZ, ACB, TPBank, VPbank …</p><p>• Được tham gia các hoạt động ngoại khóa và du lịch hàng năm của công ty.</p><p>• Trang bị các thiết bị công nghệ hiện đại phục vụ cho công việc: Máy Ipad, Máy POS, Máy vi tính, Máy in,</p><p>• Được đào tạo những kiến thức cơ bản và các kỹ năng phục vụ cho công việc kinh doanh.</p><p>• Có cơ hội thăng tiến lên các vị trí quản lý cấp cao.</p>', NULL, '2018-05-29 00:00:00', 10, 9, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:12:39', '2018-06-20 01:55:32'),
-(53, 'Nhân Viên Thị Trường - Khánh Hòa', NULL, NULL, 'nhan-vien-thi-truong-khanh-hoa', 10, 1, '<p>- Tìm kiếm khách hàng (Đăng tin, gọi điện thoại, công ty cung cấp)</p><p>- Chăm sóc khách hàng tiềm năng (mở rộng thị trường)</p><p>- Tư vấn sản phẩm cho khách hàng</p>', '<p>- Nam</p><p>- Có kinh nghiệm ít nhất 1 năm trở lên&nbsp;</p><p>- Siêng năng, thật thà</p><p>- Tuân thủ quy trình làm việc</p><p>- Ưu tiên người có kinh nghiệm kinh doanh vật liệu xây dựng.</p>', 1, 8, 3, 5, 5, 10, 1, 2, '<p>- Lương cơ bản : 5 triệu&nbsp;</p><p>- Sau thời gian thử việc thu nhập lương cơ bản + Chiết khấu doanh số&nbsp;</p><p>- Thưởng theo hiệu quả công việc.</p><p>- Tăng lương theo xét duyệt</p>', NULL, '2018-05-31 00:00:00', 9, 87, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:15:06', '2018-06-22 18:51:44'),
+(53, 'Nhân Viên Thị Trường - Khánh Hòa', NULL, NULL, 'nhan-vien-thi-truong-khanh-hoa', 10, 1, '<p>- Tìm kiếm khách hàng (Đăng tin, gọi điện thoại, công ty cung cấp)</p><p>- Chăm sóc khách hàng tiềm năng (mở rộng thị trường)</p><p>- Tư vấn sản phẩm cho khách hàng</p>', '<p>- Nam</p><p>- Có kinh nghiệm ít nhất 1 năm trở lên&nbsp;</p><p>- Siêng năng, thật thà</p><p>- Tuân thủ quy trình làm việc</p><p>- Ưu tiên người có kinh nghiệm kinh doanh vật liệu xây dựng.</p>', 1, 8, 3, 5, 5, 10, 1, 2, '<p>- Lương cơ bản : 5 triệu&nbsp;</p><p>- Sau thời gian thử việc thu nhập lương cơ bản + Chiết khấu doanh số&nbsp;</p><p>- Thưởng theo hiệu quả công việc.</p><p>- Tăng lương theo xét duyệt</p>', NULL, '2018-05-31 00:00:00', 9, 101, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:15:06', '2018-06-24 18:06:55'),
 (54, 'Giám Sát Bán Hàng Đức Hoà - Long An, Thủ Đức - Tphcm', NULL, NULL, 'giam-sat-ban-hang-duc-hoa-long-an-thu-duc-tphcm', 2, 1, '<p>- Quản lý và phát triển địa bàn phụ trách:Thiết lập tuyến bán hàng hợp lý, hiệu quả; phát triển các mục tiêu về doanh số, ngành hàng và kênh bán hàng tại địa bàn; tiếp nhận và xử lý các vấn đề của khách hàng tại địa bàn.</p><p>- Quản lý Nhân sự: Quản lý việc thực hiện công việc của nhân viên, tuyển dụng, huấn luyện nhân viên bán hàng, duy trì kỷ luật và phát triển nhân viên để đảm bảo được đội ngũ ổn định và đạt mục tiêu về doanh số.</p><p>- Giám Sát Nhà Phân Phối: Đảm bảo việc giao hàng, tồn kho đúng quy định, quản lý các chương trình khuyến mãi và ngân sách phát triển thị trường.</p><p>- Lên lịch đi thị trường hàng tuần và thực hiện việc đi thị trường theo lịch để giám sát, quản lý thị trường, khách hàng và huấn luyện nhân viên.</p>', '<p>- Nam, tuổi từ 25 - dưới 40;</p><p>- Trình độ: tốt nghiệp Cao đẳng trở lên các ngành có liên quan;</p><p>- Ít nhất 02 năm kinh nghiệm ở vị trí Giám sát bán hàng, ưu tiên các ngành hàng tiêu dùng (FMCG);</p><p>- Kỹ năng quản lý, lên kế hoạch, tổ chức và kiểm soát công việc;</p><p>- Có kỹ năng giao tiếp, đàm phán tốt;</p><p>- Sử dụng tốt các phần mềm văn phòng: MS. Word, Excel, Email,…;</p><p>- Có khả năng làm việc độc lập dưới áp lực cao.</p><p>- Lưu ý: Vui lòng gửi hồ sơ ghi rõ thông tin vị trí ứng tuyển ở khu vực nào cụ thể.</p>', 1, 2, 4, 5, 0, 0, 1, 3, '<p>- Mức lương cạnh tranh theo năng lực;</p><p>- Được làm việc trong môi trường chuyên nghiệp, được tham gia các chương trình huấn luyện đào tạo để phát triển nghề nghiệp;</p><p>- Có chế độ công tác phí khi đi công tác;</p><p>- Được hưởng các chế độ đầy đủ theo Luật Lao động (BHXH, BHYT, BHTN,…) và phúc lợi theo quy định của Công ty;</p><p>- Được khám sức khỏe định kỳ (hàng năm);</p><p>- Quà, Tiền thưởng Lễ - Tết (30/4 &amp;1/5, 2/9, 1/1).</p><p>- Chi tiết sẽ được trao đổi khi phỏng vấn</p>', NULL, '2018-05-29 00:00:00', 8, 2, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:17:56', '2018-06-20 02:43:21'),
 (55, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', NULL, NULL, 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc', 30, 1, '<p>• Là Nhân viên đại diện cho các Ngân hàng ủy quyền (có bảng tên, có giấy ủy quyền);</p><p>• Tiếp nhận hồ sơ từ ngân hàng chuyển qua cho Công ty;</p><p>• Nghiên cứu các thông tin về khoản tín dụng;</p><p>• Đánh giá hồ sơ, lập phương án và thực hiện thu hồi;</p><p>• Gọi ĐT, gặp trực tiếp tư vấn tính pháp lý, sự rủi ro của hồ sơ tín dụng quá hạn;</p><p>• Gợi ý các biện pháp hạn chế rủi ro biện pháp khắc phục;</p><p>• Quản lý hồ sơ, xử lý hồ sơ theo quy trình trong phạm vi công việc được giao.</p><p>Khách hàng hiện nay Công ty đang hỗ trợ thu hồi nợ:</p><p>1. Ngân hàng Việt Nam Thịnh Vượng (VPB)</p><p>2. Công ty tài chính HD Saison (HDSS)</p><p>3. Ngân hàng Standard Chartered (SCB)</p><p>4. Ngân hàng HSBC</p><p>ĐỊA CHỈ VĂN PHÒNG:</p><p>- VP ĐÀ NẴNG: F3-V5, Tầng 3, Tòa nhà Savico, 66 Võ Văn Tần, P. Chính Gián, Q. Thanh Khê, Đà Nẵng.</p><p>- VP ĐỒNG NAI: C50, Đường N2, Khu quy hoạch Bửu Long, Khu phố 1, P. Bửu Long, TP. Biên Hòa, Đồng Nai.</p><p>- VP NHA TRANG: Tầng 7, Tòa nhà VCN, đường A1, Khu đô thị Vĩnh Điềm Trung, X. Vĩnh Hiệp TP. Nha Trang, Khánh Hòa.</p><p>Thành.</p><p>- VP BÌNH DƯƠNG: Số 815 Đường Lê Hồng Phong, KP7, P. Phú Thọ, TP. Thủ Dầu Một, Bình Dương.</p>', '<p>• Giới tính Nam – Độ tuổi từ 20 đến 35.</p><p>• Tốt nghiệp THPT trờ lên. Ưu tiên ứng viên tốt nghiệp Trung cấp trở lên các ngành: Kinh tế, Luật, An ninh và Hành chánh.</p><p>• Biết sử dụng vi tính văn phòng (cơ bản);</p><p>• Có xe gắn máy;</p><p>• Trung thực, năng động, chịu khó có trách nhiệm và giao tiếp tốt;</p><p>• Không tiền án tiền sự.</p>', 1, 5, 2, 4, 0, 0, 1, 2, '<p>•<span style=\"white-space:pre\">	</span>Học việc có hưởng lương 4.500.000 đồng/tháng;</p><p>•<span style=\"white-space:pre\">	</span>Phụ cấp tiền xăng xe, điện thoại theo đúng mức thực tế;</p><p>• Được ký HĐLĐ sau thời gian học việc và thử việc (thời gian học việc 15 ngày và thử việc 30 ngày);</p><p>• Tham gia BHXH, BHYT, BHTN và BHTN 24/24 sau khi ký HĐLĐ;</p><p>• Đánh giá nâng lương định ký 2 lần/năm, kể từ ngày đầu tiên ký HĐLĐ;</p><p>• Hỗ trợ nuôi con đến đủ 18 tuổi;</p><p>• Được nhận lương trước làm việc sau (Tạm ứng lương trước) sau khi ký HĐLĐ;</p><p>• Phép năm hưởng theo tỉ lệ ngày làm việc thực tế và nghỉ không hết phép sẽ được chuyển thành tiền lương;</p><p>• Lương tháng 13-14 theo thời gian làm việc.</p>', NULL, '2018-05-28 00:00:00', 7, 21, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:22:20', '2018-06-20 01:26:00'),
 (56, 'Kỹ Sư Thiết Kế Bo Mạch Điện', NULL, NULL, 'ky-su-thiet-ke-bo-mach-dien', 1, 3, '<p>- Thiết kế bo mạch dẻo (Flexible Circuit Board Design)<br></p>', '<p>- Tốt nghiệp chuyên ngành điện tử.</p><p>- Ưu tiên ứng viên có trên 1 năm kinh nghiệp thiết kế bo mạch điện tử.</p><p>- Tiếng Anh hoặc tiếng Nhật giao tiếp tốt bao gồm cả 3 kĩ năng viết, đọc và nói. Có khả năng đối ứng khách hàng qua email, skype.</p><p>( Ứng viên không yêu cầu biết cả hai thứ tiếng)</p>', 1, 1, 3, 7, 0, 0, 1, 2, '<p>- Lương thoả thuận theo năng lực.</p><p>- Trợ cấp cơm trưa theo chế độ công ty.</p><p>- Tham gia đầy đủ BHXH, BHYT, BHTN</p><p>- Lương tháng 13, lương doanh thu và các thưởng lễ khác theo tình hình kinh doanh của công ty.</p><p>- Du lịch hàng năm.</p><p>- Xét tăng lương 1 lần /1 năm</p><p>- Được training trở thành leader nhóm sau 1 năm làm việc tại công ty.</p>', NULL, '2018-05-31 00:00:00', 6, 28, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:25:19', '2018-06-20 03:54:45'),
@@ -3028,7 +3033,7 @@ CREATE TABLE `recruitment_profile` (
 --
 
 INSERT INTO `recruitment_profile` (`id`, `recruitment_id`, `profile_id`, `candidate_id`, `file_attached`, `status`, `created_at`, `updated_at`) VALUES
-(1, 53, 1, 5, NULL, NULL, '2018-06-22 18:52:20', '2018-06-22 18:52:20');
+(1, 53, 1, 5, NULL, 1, '2018-06-24 18:03:08', '2018-06-24 18:10:06');
 
 -- --------------------------------------------------------
 
@@ -3898,7 +3903,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-06-22 18:32:32', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-06-22 18:32:32'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-06-24 09:06:01', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-06-24 09:06:01'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4552,7 +4557,7 @@ ALTER TABLE `employer`
 -- AUTO_INCREMENT for table `employer_profile`
 --
 ALTER TABLE `employer_profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `experience`
@@ -4576,7 +4581,7 @@ ALTER TABLE `group_member`
 -- AUTO_INCREMENT for table `group_privilege`
 --
 ALTER TABLE `group_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5463;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5564;
 
 --
 -- AUTO_INCREMENT for table `invoice`
@@ -4660,7 +4665,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=969;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=970;
 
 --
 -- AUTO_INCREMENT for table `photo`
@@ -4678,7 +4683,7 @@ ALTER TABLE `post_param`
 -- AUTO_INCREMENT for table `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT for table `probationary`

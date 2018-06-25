@@ -1386,6 +1386,45 @@ class IndexController extends Controller {
 		);                        
 		return $info;                  
 	}   
+
+
+	public function loginSavedApply(Request $request){         
+		$msg=array();
+		$checked=1;		     		
+		$source=array();	
+		$info=array();	
+		$link='';
+		if($request->isMethod('post')){                    
+			$email              = trim(@$request->email);
+			$password           = @$request->password ;	
+			$recruitment_id 	= (int)@$request->recruitment_id;		
+			$source=CandidateModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
+			if(count($source) > 0){
+				$password_hashed=$source[0]['password'];
+				if(Hash::check($password,$password_hashed)){
+					$arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
+					Session::forget($this->_ssNameUser);                                 
+					Session::put($this->_ssNameUser,$arrUser);  									
+					$msg['success']="Đăng nhập thành công";
+					$link=route("frontend.index.getFormApplied",[@$recruitment_id]);
+				}else{
+					$msg['error']="Đăng nhập sai mật khẩu";
+					$checked=0;
+				}              
+			}else{
+				$msg['error']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
+				$checked=0;
+			}          
+		}                       
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,      
+			'link_edit'=>$link
+		);                        
+		return $info;                  
+	}   
+
+
 	public function apply(Request $request){
 		$msg=array();
 		$checked=1;		     				

@@ -96,7 +96,7 @@
 										?>
 										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-save-profile" >
 											<div class="narit">
-												<div><i class="far fa-edit"></i></div>
+												<div><i class="far fa-save"></i></div>
 												<div class="margin-left-5">Lưu hồ sơ</div>
 											</div>
 										</a>
@@ -107,7 +107,7 @@
 											?>
 											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-save-profile" >
 												<div class="narit">
-													<div><i class="far fa-edit"></i></div>
+													<div><i class="far fa-save"></i></div>
 													<div class="margin-left-5">Lưu hồ sơ</div>
 												</div>
 											</a>
@@ -116,7 +116,7 @@
 											?>
 											<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
 												<div class="narit">
-													<div><i class="far fa-edit"></i></div>
+													<div><i class="far fa-save"></i></div>
 													<div class="margin-left-5">Lưu hồ sơ</div>
 												</div>
 											</a>
@@ -432,7 +432,7 @@
 		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>
 </div>		
-<!-- begin modal -->
+<!-- begin modal-alert-apply -->
 <div class="modal fade modal-apply" id="modal-alert-apply" tabindex="-1" role="dialog" aria-labelledby="my-modal-apply">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -458,6 +458,34 @@
 		</div>
 	</div>
 </div>  
+<!-- end modal-alert-apply -->
+<!-- begin modal-alert-save-profile -->
+<div class="modal fade modal-save-profile" id="modal-alert-save-profile" tabindex="-1" role="dialog" aria-labelledby="my-save-profile">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header relative">
+				<div class="dang-nhap">ĐĂNG NHẬP</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+			</div>
+			<div class="modal-body">
+				<form enctype="multipart/form-data" name="frm_saved_profile" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
+					{{ csrf_field() }}			
+					<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">							
+					<div class="note margin-bottom-5" style="display: none;" ></div>      
+					<div>Email</div>
+					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
+					<div class="margin-top-15">Mật khẩu</div>
+					<div class="margin-top-5"><input type="password" name="password" class="vacca" placeholder="Mật khẩu" value=""></div>
+					<div class="margin-top-15">
+						<a href="javascript:void(0);" class="btn-login" onclick="loginSavedProfile();" >Đăng nhập</a>
+						<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
+					</div>
+				</form>				
+			</div>      
+		</div>
+	</div>
+</div>  
+<!-- end modal-alert-save-profile -->
 <script type="text/javascript" language="javascript">
 	function loginApply(){
         var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
@@ -495,7 +523,42 @@
             processData: false
         });
     }
+    function loginSavedProfile(){
+        var email=$('form[name="frm_saved_profile"]').find('input[name="email"]').val();        
+        var password=$('form[name="frm_saved_profile"]').find('input[name="password"]').val();                  
+        var recruitment_id=$('form[name="frm_saved_profile"]').find('input[name="recruitment_id"]').val(); 
+        var token=$('form[name="frm_saved_profile"]').find('input[name="_token"]').val();                
+
+        var dataItem = new FormData();
+        dataItem.append('email',email);
+        dataItem.append('password',password);                        
+        dataItem.append('recruitment_id',recruitment_id);
+        dataItem.append('_token',token);
+        $.ajax({
+            url: '<?php echo route("frontend.index.loginSavedProfile"); ?>',
+            type: 'POST',
+            data: dataItem,
+            async: false,
+            success: function (data) {                
+               if(data.checked==1){    
+               		alert(data.msg.success);                      
+                    window.location.href = data.link_edit;                    
+                }else{
+                    showMsg('note',data);  
+                }
+                spinner.hide();
+            },
+            error : function (data){
+                spinner.hide();
+            },
+            beforeSend  : function(jqXHR,setting){
+                spinner.show();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
 </script>
-<!-- end modal -->
 @endsection()
 

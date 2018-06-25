@@ -1513,17 +1513,16 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$recruitment_name='';		
-		$query=DB::table('recruitment')		
-		->leftJoin('recruitment_profile','recruitment.id','=','recruitment_profile.recruitment_id');			
+		$query=DB::table('recruitment_profile')		
+		->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id');			
 		->leftJoin('profile','recruitment_profile.profile_id','=','profile.id');
 		if(!empty(@$request->recruitment_name)){
 			$recruitment_name=@$request->recruitment_name;
 			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
 		}		
-		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
-		$query->where('recruitment_profile.status',1);
-		$data=$query->select('candidate.id')
-		->groupBy('candidate.id')                
+		$query->where('recruitment_profile.candidate_id',(int)@$arrUser['id']);		
+		$data=$query->select('recruitment_profile.id')
+		->groupBy('recruitment_profile.id')                
 		->get()->toArray();
 		$data=convertToArray($data);
 		$totalItems=count($data);    
@@ -1542,15 +1541,15 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','recruitment_profile.file_attached','recruitment_profile.created_at')
-		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','recruitment_profile.profile_id','recruitment_profile.file_attached','recruitment_profile.created_at')
-		->orderBy('recruitment.id', 'desc')
+		$data=$query->select('recruitment_profile.id','recruitment.fullname as recruitment_name','profile.fullname as profile_name','recruitment_profile.file_attached','recruitment_profile.created_at')
+		->groupBy('recruitment_profile.id','recruitment.fullname','profile.fullname','recruitment_profile.file_attached','recruitment_profile.created_at')
+		->orderBy('recruitment_profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
 		$data=recruitmentProfileConverter($data);
-		return view('frontend.cabinet-applied-profile',compact('data','msg','checked',"pagination",'recruitment_name','candidate_name'));     
+		return view('frontend.cabinet-applied-recruitment',compact('data','msg','checked',"pagination",'recruitment_name'));     
 	}
 
 	public function viewSavedProfile(Request $request){

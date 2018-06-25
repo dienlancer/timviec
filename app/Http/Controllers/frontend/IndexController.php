@@ -48,6 +48,7 @@ use App\ProfileSkillModel;
 use App\ProvinceModel;
 use App\EmployerProfileModel;
 use App\RecruitmentProfileModel;
+use App\CandidateRecruitmentModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -1388,7 +1389,7 @@ class IndexController extends Controller {
 	}   
 
 
-	public function loginSavedApply(Request $request){         
+	public function loginSavedProfile(Request $request){         
 		$msg=array();
 		$checked=1;		     		
 		$source=array();	

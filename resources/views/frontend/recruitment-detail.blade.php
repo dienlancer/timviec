@@ -94,7 +94,7 @@
 									}   
 									if(count(@$arrUser) == 0){
 										?>
-										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-save-profile" >
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-profile" >
 											<div class="narit">
 												<div><i class="far fa-save"></i></div>
 												<div class="margin-left-5">Lưu hồ sơ</div>
@@ -105,7 +105,7 @@
 										$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
 										if(count($source_candidate)  == 0){
 											?>
-											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-save-profile" >
+											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-profile" >
 												<div class="narit">
 													<div><i class="far fa-save"></i></div>
 													<div class="margin-left-5">Lưu hồ sơ</div>
@@ -441,10 +441,10 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
 			</div>
 			<div class="modal-body">
-				<form enctype="multipart/form-data" name="frm_apply" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
+				<form enctype="multipart/form-data" name="frm_apply" method="POST" >
 					{{ csrf_field() }}			
 					<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">							
-					<div class="note margin-bottom-5" style="display: none;" ></div>      
+					<div class="note note-apply margin-bottom-5" style="display: none;" ></div>      
 					<div>Email</div>
 					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
 					<div class="margin-top-15">Mật khẩu</div>
@@ -459,8 +459,8 @@
 	</div>
 </div>  
 <!-- end modal-alert-apply -->
-<!-- begin modal-alert-save-profile -->
-<div class="modal fade modal-save-profile" id="modal-alert-save-profile" tabindex="-1" role="dialog" aria-labelledby="my-save-profile">
+<!-- begin modal-alert-saved-profile -->
+<div class="modal fade modal-saved-profile" id="modal-alert-saved-profile" tabindex="-1" role="dialog" aria-labelledby="my-saved-profile">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header relative">
@@ -468,10 +468,10 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
 			</div>
 			<div class="modal-body">
-				<form enctype="multipart/form-data" name="frm_saved_profile" method="POST" action="<?php route('frontend.index.loginApply'); ?>">
+				<form enctype="multipart/form-data" name="frm_saved_profile" method="POST">
 					{{ csrf_field() }}			
 					<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">							
-					<div class="note margin-bottom-5" style="display: none;" ></div>      
+					<div class="note note-saved-profile margin-bottom-5" style="display: none;" ></div>      
 					<div>Email</div>
 					<div class="margin-top-5"><input type="text" name="email" class="vacca" placeholder="Email" value=""></div>
 					<div class="margin-top-15">Mật khẩu</div>
@@ -485,7 +485,7 @@
 		</div>
 	</div>
 </div>  
-<!-- end modal-alert-save-profile -->
+<!-- end modal-alert-saved-profile -->
 <script type="text/javascript" language="javascript">
 	function loginApply(){
         var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
@@ -508,7 +508,7 @@
                		alert(data.msg.success);                      
                     window.location.href = data.link_edit;                    
                 }else{
-                    showMsg('note',data);  
+                    showMsg('note-apply',data);  
                 }
                 spinner.hide();
             },
@@ -544,7 +544,7 @@
                		alert(data.msg.success);                      
                     window.location.href = data.link_edit;                    
                 }else{
-                    showMsg('note',data);  
+                    showMsg('note-saved-profile',data);  
                 }
                 spinner.hide();
             },

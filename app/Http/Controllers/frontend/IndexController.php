@@ -2807,7 +2807,7 @@ class IndexController extends Controller {
 		if(Session::has($this->_ssNameUser)){
 			$arrUser=Session::get($this->_ssNameUser);
 		}         
-		if(count($arrUser) == 0){
+		if(count(@$arrUser) == 0){
 			return redirect()->route("frontend.index.candidateLogin");
 		}
 		$email=@$arrUser['email'];   

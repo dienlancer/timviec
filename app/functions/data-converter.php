@@ -1743,6 +1743,23 @@ function recruitment2Converter($data=array()){
     }
     return $result;
 }
+function savedRecruitmentConverter($data=array()){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){            
+            $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteSavedRecruitment',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';                                    
+            $recruitment_name='<a href="'.route("frontend.index.index",[@$data[$i]['alias']]).'">'.@$data[$i]['fullname'].'</a>' ;    
+            $created_at='<center>'.datetimeConverterVn(@$data[$i]["created_at"]).'</center>';          
+            $result[$i] = array(                
+                "id"                       =>   @$data[$i]["id"],
+                "recruitment_name"         =>   $recruitment_name,                                                         
+                "created_at"               =>   $created_at,                                                
+                "deleted"                  =>   $deleted
+            );
+        }
+    }
+    return $result;
+}
 function profile2Converter($data=array()){        
     $result = array();    
     if( count($data) > 0){

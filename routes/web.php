@@ -623,7 +623,6 @@ Route::match(["get","post"],"dang-nhap-ung-vien",["as"=>"frontend.index.candidat
 Route::post("login-apply",["as"=>"frontend.index.loginApply","uses"=>"frontend\IndexController@loginApply"]);
 Route::post("dang-nhap-luu-ho-so",["as"=>"frontend.index.loginSavedRecruitment","uses"=>"frontend\IndexController@loginSavedRecruitment"]);
 Route::post("nop-ho-so",["as"=>"frontend.index.apply","uses"=>"frontend\IndexController@apply"]);
-
 Route::match(["get","post"],"cach-thuc-nop-ho-so/{id}",["as"=>"frontend.index.getFormApplied","uses"=>"frontend\IndexController@getFormApplied"]);
 Route::match(["get","post"],"tk-ntd",["as"=>"frontend.index.viewEmployerAccount","uses"=>"frontend\IndexController@viewEmployerAccount"]);
 Route::match(["get","post"],"tk-ungvien",["as"=>"frontend.index.viewCandidateAccount","uses"=>"frontend\IndexController@viewCandidateAccount"]);
@@ -648,10 +647,8 @@ Route::post("cap-nhat-kn-lam-viec",["as"=>"frontend.index.saveExperienceJob","us
 Route::post("xoa-kn-lam-viec",["as"=>"frontend.index.deleteExperienceJob","uses"=>"frontend\IndexController@deleteExperienceJob"]);
 Route::post("cap-nhat-td-bang-cap",["as"=>"frontend.index.saveGraduation","uses"=>"frontend\IndexController@saveGraduation"]);
 Route::post("xoa-td-bang-cap",["as"=>"frontend.index.deleteGraduation","uses"=>"frontend\IndexController@deleteGraduation"]);
-
 Route::post("cap-nhat-td-ngoai-ngu",["as"=>"frontend.index.saveLanguage","uses"=>"frontend\IndexController@saveLanguage"]);
 Route::post("xoa-td-ngoai-ngu",["as"=>"frontend.index.deleteLanguage","uses"=>"frontend\IndexController@deleteLanguage"]);
-
 Route::post("cap-nhat-tin-hoc-vp",["as"=>"frontend.index.saveOffice","uses"=>"frontend\IndexController@saveOffice"]);
 Route::post("cap-nhat-ky-nang-so-truong",["as"=>"frontend.index.saveSkill","uses"=>"frontend\IndexController@saveSkill"]);
 Route::get("xac-thuc-tai-khoan-ntd/{id}/{certification_code}",["as"=>"frontend.index.certificateEmployer","uses"=>"frontend\IndexController@certificateEmployer"]);
@@ -660,14 +657,13 @@ Route::match(["get","post"],"lay-mat-khau-ntd",["as"=>"frontend.index.resetPassW
 Route::match(["get","post"],"lay-mat-khau-ung-vien",["as"=>"frontend.index.resetPassWrdCandidate","uses"=>"frontend\IndexController@resetPassWrdCandidate"]);
 Route::match(["get","post"],"tim-viec",["as"=>"frontend.index.searchRecruitment","uses"=>"frontend\IndexController@searchRecruitment"]);
 Route::match(["get","post"],"ho-so-ung-vien-nop-vao",["as"=>"frontend.index.viewAppliedProfile","uses"=>"frontend\IndexController@viewAppliedProfile"]);
-
+Route::match(["get","post"],"viec-lam-da-luu",["as"=>"frontend.index.viewSavedRecruitment","uses"=>"frontend\IndexController@viewSavedRecruitment"]);
 Route::match(["get","post"],"chi-tiet-ho-so-ung-vien/{id}/{save_id}",["as"=>"frontend.index.getAppliedProfileDetail","uses"=>"frontend\IndexController@getAppliedProfileDetail"]);
-
 Route::match(["get","post"],"ho-so-da-luu",["as"=>"frontend.index.viewSavedProfile","uses"=>"frontend\IndexController@viewSavedProfile"]);
 Route::match(["get","post"],"viec-lam-da-ung-tuyen",["as"=>"frontend.index.viewAppliedRecruitment","uses"=>"frontend\IndexController@viewAppliedRecruitment"]);
-
 Route::get("tim-kiem-ho-so",["as"=>"frontend.index.getFormSearchProfile","uses"=>"frontend\IndexController@getFormSearchProfile"]);
 Route::match(["get","post"],"ket-qua-tim-kiem",["as"=>"frontend.index.searchingProfile","uses"=>"frontend\IndexController@searchingProfile"]);
 Route::get("xoa-ho-so-da-luu/{id}",["as"=>"frontend.index.deleteSavedProfile","uses"=>"frontend\IndexController@deleteSavedProfile"]);
+Route::get("xoa-viec-lam-da-luu/{id}",["as"=>"frontend.index.deleteSavedRecruitment","uses"=>"frontend\IndexController@deleteSavedRecruitment"]);
 Route::post("luu-ho-so-truc-tiep",["as"=>"frontend.index.saveQuicklyRecruitment","uses"=>"frontend\IndexController@saveQuicklyRecruitment"]);
 ?>

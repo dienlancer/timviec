@@ -1648,7 +1648,65 @@ class IndexController extends Controller {
 		$data=appliedRecruitmentConverter($data);
 		return view('frontend.cabinet-applied-recruitment',compact('data','msg','checked',"pagination",'recruitment_name'));     
 	}
+	public function viewSavedRecruitment(Request $request){
+		$checked=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}
+		$totalItems=0;
+		$totalItemsPerPage=20;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ='';            
+		$recruitment_name='';		
+		$query=DB::table('candidate_recruitment')		
+		->join('recruitment','candidate_recruitment.recruitment_id','=','recruitment.id')		;
+		if(!empty(@$request->recruitment_name)){
+			$recruitment_name=@$request->recruitment_name;
+			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
+		}		
+		$query->where('candidate_recruitment.candidate_id',(int)@$arrUser['id']);		
+		$data=$query->select('candidate_recruitment.id')
+		->groupBy('candidate_recruitment.id')                
+		->get()->toArray();
+		$data=convertToArray($data);
+		$totalItems=count($data);    
+		$pageRange=$this->_pageRange;
+		if(isset($request->filter_page)){
+			if(!empty(@$request->filter_page)){
+				$currentPage=@$request->filter_page;
+			}
+		}          
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
+		$data=$query->select('candidate_recruitment.id','recruitment.fullname as recruitment_name','recruitment.alias','candidate_recruitment.created_at')
+		->groupBy('candidate_recruitment.id','recruitment.fullname','recruitment.alias','candidate_recruitment.created_at')
+		->orderBy('candidate_recruitment.id', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()->toArray();   
+		$data=convertToArray($data);    
+		$data=savedRecruitmentConverter($data);
+		return view('frontend.cabinet-saved-recruitment',compact('data','msg','checked',"pagination",'recruitment_name'));     
+	}
 	public function viewSavedProfile(Request $request){
 		$checked=1;
 		$msg=array();        

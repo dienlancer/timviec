@@ -18,12 +18,12 @@ $seo=getSeo();
 						<div class="col-lg-4"><input type="text" name="recruitment_name" class="kiem-cong-viec kiatisak" value="<?php echo @$recruitment_name; ?>" placeholder="Nhập vị trí tuyển dụng..."></div>
 						<div class="col-lg-4"><div class="btn-search-recruitment"><a href="javascript:void(0);" onclick="document.forms['frm-cabinet-saved-recruitment'].submit();">Lọc</a></div></div>
 					</div>										
-				</div>				
+				</div>							
 				<table class="table table-bordered margin-top-15">
 					<thead>
 						<tr>
-							<th class="news-title"><center>Vị trí ứng tuyển</center></th>		
-							<th class="news-title"><center>Ngày nộp</center></th>			
+							<th class="news-title"><center>Việc làm</center></th>		
+							<th class="news-title"><center>Ngày lưu</center></th>			
 							<th class="news-title"><center>Xóa</center></th>											
 						</tr>
 					</thead>

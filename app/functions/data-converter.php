@@ -1748,13 +1748,13 @@ function savedRecruitmentConverter($data=array()){
     if( count($data) > 0){
         for($i = 0 ;$i < count($data);$i++){            
             $deleted='<center><a onclick="return xacnhanxoa();" href="'.route('frontend.index.deleteSavedRecruitment',[(int)@$data[$i]["id"]]).'" ><img src="'.asset("/public/adminsystem/images/delete-icon.png").'" /></a></center>';                                    
-            $recruitment_name='<a href="'.route("frontend.index.index",[@$data[$i]['alias']]).'">'.@$data[$i]['fullname'].'</a>' ;    
+            $recruitment_name='<a href="'.route("frontend.index.index",[@$data[$i]['alias']]).'">'.@$data[$i]['recruitment_name'].'</a>' ;    
             $created_at='<center>'.datetimeConverterVn(@$data[$i]["created_at"]).'</center>';          
             $result[$i] = array(                
                 "id"                       =>   @$data[$i]["id"],
-                "recruitment_name"         =>   $recruitment_name,                                                         
-                "created_at"               =>   $created_at,                                                
-                "deleted"                  =>   $deleted
+                "recruitment_name"         =>   @$recruitment_name,                                                         
+                "created_at"               =>   @$created_at,                                                
+                "deleted"                  =>   @$deleted
             );
         }
     }

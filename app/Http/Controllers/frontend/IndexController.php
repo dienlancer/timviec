@@ -1703,7 +1703,7 @@ class IndexController extends Controller {
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
-		$data=convertToArray($data);    
+		$data=convertToArray($data);    		
 		$data=savedRecruitmentConverter($data);
 		return view('frontend.cabinet-saved-recruitment',compact('data','msg','checked',"pagination",'recruitment_name'));     
 	}
@@ -2791,6 +2791,43 @@ class IndexController extends Controller {
 		}
 		if($checked == 1){			
 			EmployerProfileModel::find((int)@$id)->delete();          			
+			$msg['success']='Xóa thành công';
+		}  
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,                    
+		);      
+		return redirect()->route('frontend.index.viewSavedProfile')->with(["message"=>$info]);                             
+	}
+	public function deleteSavedRecruitment($id){   
+		$info                 =   array();
+		$checked              =   1;                           
+		$msg                =   array();
+		$arrUser=array();    
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}         
+		if(count($arrUser) == 0){
+			return redirect()->route("frontend.index.candidateLogin");
+		}
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}  
+		$source2=CandidateRecruitmentModel::find((int)@$id);
+		if($source2 == null){
+			$checked=0;
+			$msg['errorid']='Không đúng id';
+		}else{
+			$data=$source2->toArray();
+			if((int)@$data['candidate_id'] != (int)@$arrUser['id']){
+				$checked=0;
+				$msg['errorid']='Sai hồ sơ';
+			}
+		}
+		if($checked == 1){			
+			CandidateRecruitmentModel::find((int)@$id)->delete();          			
 			$msg['success']='Xóa thành công';
 		}  
 		$info = array(

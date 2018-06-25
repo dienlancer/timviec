@@ -13,6 +13,35 @@ $seo=getSeo();
 				{{ csrf_field() }}
 				<input type="hidden" name="filter_page" value="1">     
 				<h1 class="dn-dk-h">VIỆC LÀM ĐÃ LƯU</h1>
+				@if(Session::has("message"))	
+				<?php 
+				$type_msg='';
+				$checked=Session::get('message')['checked'];
+				if((int)@$checked==1){
+					$type_msg='note-success';
+				}else{
+					$type_msg='note-danger';
+				}
+				?>		
+				<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+					<?php 				
+					$msg=Session::get("message")['msg'];				
+					if(count(@$msg) > 0){
+						?>					
+						<ul>
+							<?php 
+							foreach (@$msg as $key => $value) {
+								?>
+								<li><?php echo $value; ?></li>
+								<?php
+							}
+							?>                              
+						</ul>					
+						<?php
+					}				
+					?>
+				</div>                                                                            
+				@endif	
 				<div class="margin-top-15">
 					<div class="row">												
 						<div class="col-lg-4"><input type="text" name="recruitment_name" class="kiem-cong-viec kiatisak" value="<?php echo @$recruitment_name; ?>" placeholder="Nhập vị trí tuyển dụng..."></div>

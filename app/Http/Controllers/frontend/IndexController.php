@@ -1696,7 +1696,6 @@ class IndexController extends Controller {
 		);           
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
-
 		$data=$query->select('candidate_recruitment.id','recruitment.fullname as recruitment_name','recruitment.alias','candidate_recruitment.created_at')
 		->groupBy('candidate_recruitment.id','recruitment.fullname','recruitment.alias','candidate_recruitment.created_at')
 		->orderBy('candidate_recruitment.id', 'desc')
@@ -2823,7 +2822,7 @@ class IndexController extends Controller {
 			$data=$source2->toArray();
 			if((int)@$data['candidate_id'] != (int)@$arrUser['id']){
 				$checked=0;
-				$msg['errorid']='Sai hồ sơ';
+				$msg['errorid']='Sai tin tuyển dụng';
 			}
 		}
 		if($checked == 1){			
@@ -2834,7 +2833,7 @@ class IndexController extends Controller {
 			"checked"       => $checked,          
 			'msg'       => $msg,                    
 		);      
-		return redirect()->route('frontend.index.viewSavedProfile')->with(["message"=>$info]);                             
+		return redirect()->route('frontend.index.viewSavedRecruitment')->with(["message"=>$info]);                             
 	}
 	public function getFormProfile(Request $request,$task,$id){
 		$info                 =   array();

@@ -1649,6 +1649,38 @@ function recruitmentProfileConverter($data=array()){
     }
     return $result;
 }
+
+
+function appliedRecruitmentConverter($data=array()){        
+    $result = array();    
+    if( count($data) > 0){
+        for($i = 0 ;$i < count($data);$i++){        
+            $id=@$data[$i]["id"];   
+            $fullname=$data[$i]["fullname"];      
+            $recruitment_name=@$data[$i]['recruitment_name']; 
+            $profile_id=@$data[$i]['profile_id'];
+            $entranced='';
+            $link_cv='';
+            if(!empty(@$data[$i]['profile_id'])){
+                $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$profile_id,0]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
+            }
+            if(!empty(@$data[$i]['file_attached'])){
+                $link_cv='<div class="download-cv"><center><a href="'.asset('upload/'.@$data[$i]['file_attached']).'" target="_blank"><i class="fas fa-download"></i></a></center></div>';   
+            }                       
+            $result[$i] = array(                
+                "id"                       =>   $id,
+                "fullname"                 =>   $fullname,                         
+                'recruitment_name'           =>   $recruitment_name, 
+                'entranced'               =>$entranced,
+                'link_cv'               =>$link_cv,
+                'created_at'            => '<center>'.datetimeConverterVn(@$data[$i]['created_at']).'</center>' ,
+            );
+        }
+    }
+    return $result;
+}
+
+
 function searchingProfileConverter($data=array()){        
     $result = array();    
     if( count($data) > 0){

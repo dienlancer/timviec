@@ -56,6 +56,7 @@ $seo=getSeo();
 							<th class="news-title"><center>Trình độ</center></th>	
 							<th class="news-title"><center>Kinh nghiệm</center></th>														
 							<th class="news-title"><center>Mức lương</center></th>	
+							<th class="news-title"><center>Ngày lưu</center></th>	
 							<th class="news-title"><center>Xóa</center></th>		
 						</tr>
 					</thead>
@@ -68,7 +69,8 @@ $seo=getSeo();
 								<td><?php echo @$value['candidate_name']; ?></td>								
 								<td><?php echo @$value['literacy_name']; ?></td>				
 								<td><?php echo @$value['experience_name']; ?></td>				
-								<td><?php echo @$value['salary']; ?></td>		
+								<td><?php echo @$value['salary']; ?></td>	
+								<td><?php echo @$value['created_at']; ?></td>		
 								<td><?php echo @$value['deleted']; ?></td>												
 							</tr>
 							<?php

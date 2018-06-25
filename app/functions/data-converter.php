@@ -1679,7 +1679,8 @@ function savedProfileConverter($data=array()){
                 'literacy_name'         =>  @$data[$i]['literacy_name'], 
                 'experience_name'       =>  @$data[$i]['experience_name'],
                 'salary'                =>  convertToTextPrice(@$data[$i]['salary']) ,     
-                'deleted'               =>  @$deleted           
+                'deleted'               =>  @$deleted ,
+                'created_at'            =>  datetimeConverterVn(@$data[$i]['created_at'])          
             );
         }
     }

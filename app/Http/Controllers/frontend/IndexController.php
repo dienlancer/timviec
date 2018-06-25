@@ -1548,13 +1548,15 @@ class IndexController extends Controller {
 				'candidate.fullname as candidate_name',
 				'literacy.fullname as literacy_name',
 				'experience.fullname as experience_name',
-				'profile.salary')
+				'profile.salary',
+				'employer_profile.created_at')
 		->groupBy('employer_profile.id',
 				'profile.fullname',
 				'candidate.fullname',
 				'literacy.fullname',
 				'experience.fullname',
-				'profile.salary')
+				'profile.salary',
+				'employer_profile.created_at')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)

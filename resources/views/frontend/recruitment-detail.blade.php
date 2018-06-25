@@ -14,7 +14,7 @@
 				$type_msg='note-danger';
 			}
 			?>		
-			<div class="note margin-bottom-15 <?php echo $type_msg; ?>" >
+			<div class="note margin-top-15 <?php echo $type_msg; ?>" >
 				<?php 				
 				$msg=Session::get("message")['msg'];				
 				if(count(@$msg) > 0){
@@ -33,7 +33,7 @@
 				?>
 			</div>                                                                            
 			@endif	
-			<div class="row">
+			<div class="row margin-top-15">
 				<?php 
 				$setting= getSettingSystem();
 				$width=$setting['product_width']['field_value'];

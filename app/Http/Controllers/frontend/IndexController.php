@@ -1548,7 +1548,7 @@ class IndexController extends Controller {
 		->take($totalItemsPerPage)
 		->get()->toArray();   
 		$data=convertToArray($data);    
-		$data=recruitmentProfileConverter($data);
+		$data=appliedRecruitmentConverter($data);
 		return view('frontend.cabinet-applied-recruitment',compact('data','msg','checked',"pagination",'recruitment_name'));     
 	}
 

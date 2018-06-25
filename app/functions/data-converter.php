@@ -1654,25 +1654,21 @@ function recruitmentProfileConverter($data=array()){
 function appliedRecruitmentConverter($data=array()){        
     $result = array();    
     if( count($data) > 0){
-        for($i = 0 ;$i < count($data);$i++){        
-            $id=@$data[$i]["id"];   
-            $fullname=$data[$i]["fullname"];      
-            $recruitment_name=@$data[$i]['recruitment_name']; 
-            $profile_id=@$data[$i]['profile_id'];
+        for($i = 0 ;$i < count($data);$i++){                                
             $entranced='';
-            $link_cv='';
+            $file_attached='';
             if(!empty(@$data[$i]['profile_id'])){
-                $entranced='<center><a href="'.route('frontend.index.getAppliedProfileDetail',[@$profile_id,0]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
+                $entranced='<center><a href="'.route('frontend.index.getProfileDetail',[(int)@$data[$i]['profile_id']]).'"><img src="'.asset("/public/adminsystem/images/entrance.png").'" /></a></center>';
             }
             if(!empty(@$data[$i]['file_attached'])){
-                $link_cv='<div class="download-cv"><center><a href="'.asset('upload/'.@$data[$i]['file_attached']).'" target="_blank"><i class="fas fa-download"></i></a></center></div>';   
+                $file_attached='<div class="download-cv"><center><a href="'.asset('upload/'.@$data[$i]['file_attached']).'" target="_blank"><i class="fas fa-download"></i></a></center></div>';   
             }                       
             $result[$i] = array(                
-                "id"                       =>   $id,
-                "fullname"                 =>   $fullname,                         
-                'recruitment_name'           =>   $recruitment_name, 
-                'entranced'               =>$entranced,
-                'link_cv'               =>$link_cv,
+                "id"                    =>  @$data[$i]["id"],                                
+                'recruitment_name'      =>  @$data[$i]['recruitment_name'], 
+                'profile_name'          =>  @$data[$i]['profile_name'],                
+                'file_attached'         =>  @$file_attached,
+                'entranced'             =>  @$entranced,
                 'created_at'            => '<center>'.datetimeConverterVn(@$data[$i]['created_at']).'</center>' ,
             );
         }

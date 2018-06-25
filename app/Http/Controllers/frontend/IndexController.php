@@ -1514,7 +1514,7 @@ class IndexController extends Controller {
 		$pagination ='';            
 		$recruitment_name='';		
 		$query=DB::table('recruitment_profile')		
-		->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id');			
+		->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id')		
 		->leftJoin('profile','recruitment_profile.profile_id','=','profile.id');
 		if(!empty(@$request->recruitment_name)){
 			$recruitment_name=@$request->recruitment_name;
@@ -1541,8 +1541,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('recruitment_profile.id','recruitment.fullname as recruitment_name','profile.fullname as profile_name','recruitment_profile.file_attached','recruitment_profile.created_at')
-		->groupBy('recruitment_profile.id','recruitment.fullname','profile.fullname','recruitment_profile.file_attached','recruitment_profile.created_at')
+		$data=$query->select('recruitment_profile.id','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','profile.fullname as profile_name','recruitment_profile.file_attached','recruitment_profile.created_at')
+		->groupBy('recruitment_profile.id','recruitment.fullname','recruitment_profile.profile_id','profile.fullname','recruitment_profile.file_attached','recruitment_profile.created_at')
 		->orderBy('recruitment_profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)

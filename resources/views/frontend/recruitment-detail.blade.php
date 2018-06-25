@@ -46,24 +46,14 @@
 							</span>						
 						</div>						
 						<div class="margin-top-10">
-							<div class="vihamus-3">
-								<?php 
-								$arrUser=array();    
-								if(Session::has("vmuser")){
-									$arrUser=Session::get("vmuser");
-								}   
-								if(count(@$arrUser) == 0){
-									?>
-									<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-apply" >
-										<div class="narit">
-											<div><i class="far fa-edit"></i></div>
-											<div class="margin-left-5">Nộp Hồ Sơ</div>
-										</div>
-									</a>
-									<?php
-								}else{									
-									$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
-									if(count($source_candidate)  == 0){
+							<div class="ex-website">
+								<div class="vihamus-3">
+									<?php 
+									$arrUser=array();    
+									if(Session::has("vmuser")){
+										$arrUser=Session::get("vmuser");
+									}   
+									if(count(@$arrUser) == 0){
 										?>
 										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-apply" >
 											<div class="narit">
@@ -72,19 +62,70 @@
 											</div>
 										</a>
 										<?php
-									}else{
+									}else{									
+										$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
+										if(count($source_candidate)  == 0){
+											?>
+											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-apply" >
+												<div class="narit">
+													<div><i class="far fa-edit"></i></div>
+													<div class="margin-left-5">Nộp Hồ Sơ</div>
+												</div>
+											</a>
+											<?php
+										}else{
+											?>
+											<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
+												<div class="narit">
+													<div><i class="far fa-edit"></i></div>
+													<div class="margin-left-5">Nộp Hồ Sơ</div>
+												</div>
+											</a>
+											<?php
+										}									
+									}
+									?>								
+								</div>
+								<div class="vihamus-3 margin-left-5">
+									<?php 
+									$arrUser=array();    
+									if(Session::has("vmuser")){
+										$arrUser=Session::get("vmuser");
+									}   
+									if(count(@$arrUser) == 0){
 										?>
-										<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-save-profile" >
 											<div class="narit">
 												<div><i class="far fa-edit"></i></div>
-												<div class="margin-left-5">Nộp Hồ Sơ</div>
+												<div class="margin-left-5">Lưu hồ sơ</div>
 											</div>
 										</a>
 										<?php
-									}									
-								}
-								?>								
-							</div>
+									}else{									
+										$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
+										if(count($source_candidate)  == 0){
+											?>
+											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-save-profile" >
+												<div class="narit">
+													<div><i class="far fa-edit"></i></div>
+													<div class="margin-left-5">Lưu hồ sơ</div>
+												</div>
+											</a>
+											<?php
+										}else{
+											?>
+											<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
+												<div class="narit">
+													<div><i class="far fa-edit"></i></div>
+													<div class="margin-left-5">Lưu hồ sơ</div>
+												</div>
+											</a>
+											<?php
+										}									
+									}
+									?>								
+								</div>
+							</div>														
 						</div>
 					</div>
 					<?php

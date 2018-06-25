@@ -1352,6 +1352,7 @@ class IndexController extends Controller {
 		}                       
 		return view("frontend.candidate-login",compact('msg',"data",'checked'));                       
 	}    
+
 	public function loginApply(Request $request){         
 		$msg=array();
 		$checked=1;		     		
@@ -1439,6 +1440,48 @@ class IndexController extends Controller {
 		return $info;                  
 	}   
 
+	public function saveQuicklyRecruitment(Request $request){         
+		$checked=1;
+		$msg=array();        
+		$data=array();       
+		$arrUser=array();  		
+		$alias='';
+		if(Session::has($this->_ssNameUser)){
+			$arrUser=Session::get($this->_ssNameUser);
+		}   
+		if(count($arrUser)==0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}      
+		$email=@$arrUser['email'];   
+		$source=CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+		if(count($source) == 0){
+			return redirect()->route("frontend.index.candidateLogin"); 
+		}         
+		if($request->isMethod('post')){
+			$recruitment_id 	= (int)@$request->recruitment_id;
+			$recruitment=RecruitmentModel::find((int)@$recruitment_id)->toArray();			
+			$alias=@$recruitment['alias'];
+			$data_candidate_recruitment=CandidateRecruitmentModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
+			if(count(@$data_candidate_recruitment) > 0){
+				$msg['error']="Công việc đã được lưu";						
+				$checked=0;
+			}
+			if((int)@$checked == 1){
+				$item=new CandidateRecruitmentModel;
+				$item->candidate_id=(int)@$arrUser['id'];
+				$item->recruitment_id=(int)@$recruitment_id;
+				$item->created_at 	=	date("Y-m-d H:i:s",time());        
+				$item->updated_at 	=	date("Y-m-d H:i:s",time());        
+				$item->save();																				
+				$msg['success']="Lưu công việc thành công";									
+			}	  
+		}
+		$info = array(
+			"checked"       => $checked,          
+			'msg'       => $msg,                    
+		);    
+		return redirect()->route('frontend.index.index',[@$alias])->with(["message"=>$info]);        
+	}   
 
 	public function apply(Request $request){
 		$msg=array();

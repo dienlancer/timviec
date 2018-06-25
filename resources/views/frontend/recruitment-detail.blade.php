@@ -94,10 +94,10 @@
 									}   
 									if(count(@$arrUser) == 0){
 										?>
-										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-profile" >
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-recruitment" >
 											<div class="narit">
 												<div><i class="far fa-save"></i></div>
-												<div class="margin-left-5">Lưu hồ sơ</div>
+												<div class="margin-left-5">Lưu công việc</div>
 											</div>
 										</a>
 										<?php
@@ -105,21 +105,25 @@
 										$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
 										if(count($source_candidate)  == 0){
 											?>
-											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-profile" >
+											<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-recruitment" >
 												<div class="narit">
 													<div><i class="far fa-save"></i></div>
-													<div class="margin-left-5">Lưu hồ sơ</div>
+													<div class="margin-left-5">Lưu công việc</div>
 												</div>
 											</a>
 											<?php
 										}else{
 											?>
-											<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
-												<div class="narit">
-													<div><i class="far fa-save"></i></div>
-													<div class="margin-left-5">Lưu hồ sơ</div>
-												</div>
-											</a>
+											<form enctype="multipart/form-data" name="frm-quicked-saved-recruitment" method="POST" action="<?php echo route('frontend.index.saveQuicklyRecruitment'); ?>">
+												{{ csrf_field() }}			
+												<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">				
+												<a href="javascript:void(0);" onclick="document.forms['frm-quicked-saved-recruitment'].submit();"   >
+													<div class="narit">
+														<div><i class="far fa-save"></i></div>
+														<div class="margin-left-5">Lưu công việc</div>
+													</div>
+												</a>
+											</form>											
 											<?php
 										}									
 									}
@@ -459,8 +463,8 @@
 	</div>
 </div>  
 <!-- end modal-alert-apply -->
-<!-- begin modal-alert-saved-profile -->
-<div class="modal fade modal-saved-profile" id="modal-alert-saved-profile" tabindex="-1" role="dialog" aria-labelledby="my-saved-profile">
+<!-- begin modal-alert-saved-recruitment -->
+<div class="modal fade modal-apply" id="modal-alert-saved-recruitment" tabindex="-1" role="dialog" aria-labelledby="my-saved-recruitment">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header relative">
@@ -468,7 +472,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
 			</div>
 			<div class="modal-body">
-				<form enctype="multipart/form-data" name="frm_saved_profile" method="POST">
+				<form enctype="multipart/form-data" name="frm_saved_recruitment" method="POST">
 					{{ csrf_field() }}			
 					<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">							
 					<div class="note note-saved-profile margin-bottom-5" style="display: none;" ></div>      
@@ -477,7 +481,7 @@
 					<div class="margin-top-15">Mật khẩu</div>
 					<div class="margin-top-5"><input type="password" name="password" class="vacca" placeholder="Mật khẩu" value=""></div>
 					<div class="margin-top-15">
-						<a href="javascript:void(0);" class="btn-login" onclick="loginSavedProfile();" >Đăng nhập</a>
+						<a href="javascript:void(0);" class="btn-login" onclick="loginSavedRecruitment();" >Đăng nhập</a>
 						<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
 					</div>
 				</form>				
@@ -485,7 +489,7 @@
 		</div>
 	</div>
 </div>  
-<!-- end modal-alert-saved-profile -->
+<!-- end modal-alert-saved-recruitment -->
 <script type="text/javascript" language="javascript">
 	function loginApply(){
         var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
@@ -523,11 +527,11 @@
             processData: false
         });
     }
-    function loginSavedProfile(){
-        var email=$('form[name="frm_saved_profile"]').find('input[name="email"]').val();        
-        var password=$('form[name="frm_saved_profile"]').find('input[name="password"]').val();                  
-        var recruitment_id=$('form[name="frm_saved_profile"]').find('input[name="recruitment_id"]').val(); 
-        var token=$('form[name="frm_saved_profile"]').find('input[name="_token"]').val();                
+    function loginSavedRecruitment(){
+        var email=$('form[name="frm_saved_recruitment"]').find('input[name="email"]').val();        
+        var password=$('form[name="frm_saved_recruitment"]').find('input[name="password"]').val();                  
+        var recruitment_id=$('form[name="frm_saved_recruitment"]').find('input[name="recruitment_id"]').val(); 
+        var token=$('form[name="frm_saved_recruitment"]').find('input[name="_token"]').val();                
 
         var dataItem = new FormData();
         dataItem.append('email',email);
@@ -535,18 +539,17 @@
         dataItem.append('recruitment_id',recruitment_id);
         dataItem.append('_token',token);
         $.ajax({
-            url: '<?php echo route("frontend.index.loginSavedProfile"); ?>',
+            url: '<?php echo route("frontend.index.loginSavedRecruitment"); ?>',
             type: 'POST',
             data: dataItem,
             async: false,
-            success: function (data) {                
-               if(data.checked==1){    
-               		alert(data.msg.success);                      
-                    window.location.href = data.link_edit;                    
-                }else{
-                    showMsg('note-saved-profile',data);  
-                }
-                spinner.hide();
+            success: function (data) { 
+            	if(data.checked==1){
+            		alert(data.msg.success);                      
+            	}else{
+            		alert(data.msg.error);                      
+            	}
+               window.location.href = data.link_edit;    
             },
             error : function (data){
                 spinner.hide();

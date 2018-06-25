@@ -1389,7 +1389,7 @@ class IndexController extends Controller {
 	}   
 
 
-	public function loginSavedProfile(Request $request){         
+	public function loginSavedRecruitment(Request $request){         
 		$msg=array();
 		$checked=1;		     		
 		$source=array();	
@@ -1398,24 +1398,38 @@ class IndexController extends Controller {
 		if($request->isMethod('post')){                    
 			$email              = trim(@$request->email);
 			$password           = @$request->password ;	
-			$recruitment_id 	= (int)@$request->recruitment_id;		
+			$recruitment_id 	= (int)@$request->recruitment_id;
+			$recruitment=RecruitmentModel::find((int)@$recruitment_id)->toArray();			
 			$source=CandidateModel::whereRaw('trim(lower(email)) = ? and status = ?',[trim(mb_strtolower(@$email,'UTF-8')),1])->select('id','email','password')->get()->toArray();
-			if(count($source) > 0){
+			if(count($source) == 0){
+				$msg['error']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
+				$checked=0;
+			}else{
 				$password_hashed=$source[0]['password'];
 				if(Hash::check($password,$password_hashed)){
 					$arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
 					Session::forget($this->_ssNameUser);                                 
-					Session::put($this->_ssNameUser,$arrUser);  									
-					$msg['success']="Đăng nhập thành công";
-					$link=route("frontend.index.getFormApplied",[@$recruitment_id]);
+					Session::put($this->_ssNameUser,$arrUser);  
+					$data_candidate_recruitment=CandidateRecruitmentModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
+					if(count($data_candidate_recruitment) > 0){
+						$msg['error']="Công việc đã được lưu";						
+						$checked=0;
+					}				
 				}else{
 					$msg['error']="Đăng nhập sai mật khẩu";
 					$checked=0;
-				}              
-			}else{
-				$msg['error']="Đăng nhập sai email hoặc tài khoản chưa được kích hoạt";
-				$checked=0;
-			}          
+				}           
+			}
+			if((int)@$checked == 1){
+				$item=new CandidateRecruitmentModel;
+				$item->candidate_id=(int)@$arrUser['id'];
+				$item->recruitment_id=(int)@$recruitment_id;
+				$item->created_at 	=	date("Y-m-d H:i:s",time());        
+				$item->updated_at 	=	date("Y-m-d H:i:s",time());        
+				$item->save();																				
+				$msg['success']="Lưu công việc thành công";									
+			}	  
+			$link=route("frontend.index.index",[@$recruitment['alias']]);
 		}                       
 		$info = array(
 			"checked"       => $checked,          

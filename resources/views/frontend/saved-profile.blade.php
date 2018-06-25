@@ -80,7 +80,7 @@ $seo=getSeo();
 				</table>	
 				<div class="margin-top-15">
 					<?php 
-					if(count($data) > 0){
+					if(count(@$data) > 0){
 						echo $pagination->showPagination();
 					}  
 					?>

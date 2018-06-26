@@ -47,17 +47,19 @@ $height=$setting['product_height']['field_value'];
 						<div class="col-lg-3">							
 							<div class="box-employer-logo"><center><img src="<?php echo $logo; ?>"></center></div>
 							<div class="margin-top-40">
+								<center>
 								<?php 
 								if((int)@$item['status_authentication'] > 0){
 									?>
-									<center><img src="<?php echo asset('upload/ok.png'); ?>"></center>
+									<img src="<?php echo asset('upload/ok.png'); ?>">
 									<?php
 								}else{
 									?>
-									<center><img src="<?php echo asset('upload/no-ok.png'); ?>"></center>
+									<img src="<?php echo asset('upload/no-ok.png'); ?>">
 									<?php
 								}
 								?>
+								</center>
 							</div>
 						</div>
 						<div class="col-lg-9">

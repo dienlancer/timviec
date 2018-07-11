@@ -1413,7 +1413,7 @@ class IndexController extends Controller {
 					Session::put($this->_ssNameUser,$arrUser);  
 					$data_candidate_recruitment=CandidateRecruitmentModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
 					if(count($data_candidate_recruitment) > 0){
-						$msg['error']="Công việc đã được lưu";						
+						$msg['error']="Việc làm đã được lưu";						
 						$checked=0;
 					}				
 				}else{
@@ -1428,7 +1428,7 @@ class IndexController extends Controller {
 				$item->created_at 	=	date("Y-m-d H:i:s",time());        
 				$item->updated_at 	=	date("Y-m-d H:i:s",time());        
 				$item->save();																				
-				$msg['success']="Lưu công việc thành công";									
+				$msg['success']="Lưu việc làm thành công";									
 			}	  
 			$link=route("frontend.index.index",[@$recruitment['alias']]);
 		}                       
@@ -1463,7 +1463,7 @@ class IndexController extends Controller {
 			$alias=@$recruitment['alias'];
 			$data_candidate_recruitment=CandidateRecruitmentModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
 			if(count(@$data_candidate_recruitment) > 0){
-				$msg['error']="Công việc đã được lưu";						
+				$msg['error']="Việc làm đã được lưu";						
 				$checked=0;
 			}
 			if((int)@$checked == 1){
@@ -1473,7 +1473,7 @@ class IndexController extends Controller {
 				$item->created_at 	=	date("Y-m-d H:i:s",time());        
 				$item->updated_at 	=	date("Y-m-d H:i:s",time());        
 				$item->save();																				
-				$msg['success']="Lưu công việc thành công";									
+				$msg['success']="Lưu việc làm thành công";									
 			}	  
 		}
 		$info = array(

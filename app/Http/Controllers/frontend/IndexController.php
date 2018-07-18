@@ -965,12 +965,14 @@ class IndexController extends Controller {
 				if(Session::has($this->_ssNameUser)){					
 					Session::forget($this->_ssNameUser);      
 				}    				
-				$msg['success']='<span>Đăng ký tài khoản nhà tuyển dụng thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
-
+				return redirect()->route('frontend.index.finishedRegister');
 			}
 		}
 		return view("frontend.employer-register",compact('data','msg','checked'));         
 	}
+	public function finishedRegister(){      			      	
+        return view("finished-register");                  
+      }  
 	public function certificateEmployer($id,$certification_code)
 	{
 		$checked=1;

@@ -666,4 +666,5 @@ Route::match(["get","post"],"ket-qua-tim-kiem",["as"=>"frontend.index.searchingP
 Route::get("xoa-ho-so-da-luu/{id}",["as"=>"frontend.index.deleteSavedProfile","uses"=>"frontend\IndexController@deleteSavedProfile"]);
 Route::get("xoa-viec-lam-da-luu/{id}",["as"=>"frontend.index.deleteSavedRecruitment","uses"=>"frontend\IndexController@deleteSavedRecruitment"]);
 Route::post("luu-ho-so-truc-tiep",["as"=>"frontend.index.saveQuicklyRecruitment","uses"=>"frontend\IndexController@saveQuicklyRecruitment"]);
+Route::get("hoan-tat-dang-ky",["as"=>"frontend.index.finishedRegister","uses"=>"frontend\IndexController@finishedRegister"]);
 ?>

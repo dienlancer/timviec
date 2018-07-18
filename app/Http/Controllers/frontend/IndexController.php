@@ -971,7 +971,7 @@ class IndexController extends Controller {
 		return view("frontend.employer-register",compact('data','msg','checked'));         
 	}
 	public function finishedRegister(){      			      	
-        return view("finished-register");                  
+        return view("frontend.finished-register");                  
       }  
 	public function certificateEmployer($id,$certification_code)
 	{

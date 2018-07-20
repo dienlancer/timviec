@@ -83,8 +83,8 @@ if(isset($alias)){
 	<link rel="icon" href="<?php echo $seo_favicon; ?>" type="image/x-icon">
 	<script src="{{ asset('public/frontend/js/jquery-3.2.1.js') }}"></script>
 	<!--begin bootstrap-->
-	<script src="{{ asset('public/frontend/js/bootstrap.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/bootstrap.min.css') }}" />
+	<script src="{{ asset('public/frontend/bootstrap/bootstrap.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('public/frontend/bootstrap/bootstrap.min.css') }}" />
 	<!--end bootstrap-->
 	<!-- begin jquery-ui -->
 	<script src="{{ asset('public/frontend/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -94,9 +94,9 @@ if(isset($alias)){
 	<link rel="stylesheet" href="{{ asset('public/frontend/fontawesome/css/all.css') }}" />	
 	<!-- end font-awesome -->	
 	<!-- begin ddsmoothmenu -->
-	<script src="{{ asset('public/frontend/js/ddsmoothmenu.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/ddsmoothmenu.css') }}" />
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/ddsmoothmenu-v2.css') }}" />
+	<script src="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu.css') }}" />
+	<link rel="stylesheet" href="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu-v2.css') }}" />
 	<!-- end ddsmoothmenu -->
 	<!-- begin slick slider -->
 	<script src="{{ asset('public/frontend/slick/slick.min.js') }}"></script>
@@ -122,26 +122,21 @@ if(isset($alias)){
 	<!-- end elevatezoom -->
 	<!-- begin accounting -->
 	<script src="{{ asset('public/frontend/js/accounting.min.js') }}"></script>  
-	<!-- end accounting -->
-	<!-- begin pagination -->
-	<!--<link rel="stylesheet" href="{{ asset('public/frontend/css/pagination.css') }}" />-->
-	<!-- end pagination-->
-	
+	<!-- end accounting -->		
 	<!-- begin datatables -->	
-	<script src="{{ asset('public/frontend/js/jquery.dataTables.min.js') }}"></script>    
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/jquery.dataTables.min.css') }}" />
+	<script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>    
+	<link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
 	<script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
 	<!-- end datatables -->
 	<!-- begin youtube -->    
-	<script src="{{ asset('public/frontend/js/jquery-modal-video.min.js') }}"></script>
-	<script src="{{ asset('public/frontend/js/modal-video.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/modal-video.min.css') }}" />
-	<!-- end youtube -->
+  <script src="{{ asset('public/frontend/modal-video/jquery-modal-video.min.js') }}"></script>
+  <script src="{{ asset('public/frontend/modal-video/modal-video.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ asset('public/frontend/modal-video/modal-video.min.css') }}" />
+  <!-- end youtube -->
 	<!-- begin fancybox -->
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/js/jquery.fancybox.min.js')}}"                 ></script>
-	<link href="{{asset('public/frontend/css/jquery.fancybox.min.css')}}" rel="stylesheet" type="text/css" />
-	<!-- end fancybox -->
-	
+	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/fancybox/jquery.fancybox.min.js')}}"                 ></script>
+	<link href="{{asset('public/frontend/fancybox/jquery.fancybox.min.css')}}" rel="stylesheet" type="text/css" />
+	<!-- end fancybox -->	
 	<!-- begin ui-->
 	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/ui/jquery-ui.js')}}"                 ></script>
 	<link href="{{asset('public/frontend/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />

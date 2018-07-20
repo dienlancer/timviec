@@ -91,7 +91,7 @@ if(isset($alias)){
 	<link rel="stylesheet" href="{{ asset('public/frontend/jquery-ui/jquery-ui.css') }}" />
 	<!-- end jquery-ui -->
 	<!-- begin font-awesome -->
-	<link rel="stylesheet" href="{{ asset('public/frontend/fontawesome/css/all.css') }}" />	
+	<link rel="stylesheet" href="{{ asset('public/frontend/fontawesome/css/all.min.css') }}" />	
 	<!-- end font-awesome -->	
 	<!-- begin ddsmoothmenu -->
 	<script src="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu.js') }}"></script>

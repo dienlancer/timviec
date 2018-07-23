@@ -1112,7 +1112,7 @@ class IndexController extends Controller {
 				$mail->msgHTML($html_content);
 				$mail->Send();
 				/* end send mail certification */
-				$msg['success']='<span>Đăng ký tài khoản ứng viên thành công.</span><span class="margin-left-5">Vui lòng kích hoạt tài khoản trong email</span>';
+				return redirect()->route('frontend.index.finishedRegister');
 			}
 		}
 		return view("frontend.candidate-register",compact('data','msg','checked'));         

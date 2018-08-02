@@ -10,7 +10,7 @@ $seo=getSeo();
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
-				<form name="frm" method="POST" enctype="multipart/form-data">
+				<form name="frm-candidate" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<h1 class="dn-dk-h">Đăng Ký Ứng Viên</h1>
 					<?php 
@@ -67,7 +67,7 @@ $seo=getSeo();
 					</div>				
 					<div class="row mia">
 						<div class="col-lg-4" ></div>
-						<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm'].submit();" >Đăng ký</a></div></div>
+						<div class="col-lg-8"><div class="btn-dang-ky"><a href="javascript:void(0);" onclick="document.forms['frm-candidate'].submit();" >Đăng ký</a></div></div>
 					</div>
 				</form>
 			</div>

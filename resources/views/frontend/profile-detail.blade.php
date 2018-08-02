@@ -1020,7 +1020,7 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 				}
 				?>
 				<div class="note note_office margin-top-15"  style="display: none;"></div>
-				<div class="office_edit" style="<?php echo $status_office_edit; ?>">
+				<div class="office_edit" style="<?php echo @$status_office_edit; ?>">
 					<div class="office_txt">
 						<div class="row mia">
 							<div class="col-lg-4" ><div class="xika"><div>MS Word</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
@@ -1462,8 +1462,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		$("form[name='frm']").find("select[name='year_to']").val(0);
 		$("form[name='frm']").find("select[name='currency']").val('');
 		$("form[name='frm']").find("input[name='salary']").val('');
-		$("form[name='frm']").find("textarea[name='job_description']").val('');
-		$("form[name='frm']").find("textarea[name='achievement']").val('');		
+		$("form[name='frm']").find("textarea[name='job_description']").code("");
+		$("form[name='frm']").find("textarea[name='achievement']").code("");
 	}
 	function loadDataProfileExperience(data_profile_experience){
 		$('.experience_job_txt').empty();					

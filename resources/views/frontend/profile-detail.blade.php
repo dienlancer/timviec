@@ -1462,8 +1462,8 @@ $inputID     =   '<input type="hidden" name="id"  value="'.@$id.'" />';
 		$("form[name='frm']").find("select[name='year_to']").val(0);
 		$("form[name='frm']").find("select[name='currency']").val('');
 		$("form[name='frm']").find("input[name='salary']").val('');
-		$("form[name='frm']").find("textarea[name='job_description']").code("");
-		$("form[name='frm']").find("textarea[name='achievement']").code("");
+		$("form[name='frm']").find("textarea[name='job_description']").val("");
+		$("form[name='frm']").find("textarea[name='achievement']").val("");
 	}
 	function loadDataProfileExperience(data_profile_experience){
 		$('.experience_job_txt').empty();					

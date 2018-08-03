@@ -49,120 +49,30 @@ if(isset($alias)){
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">  
-	<title><?php echo $seo_title; ?></title>
-	<meta name="keywords" content="<?php echo $seo_meta_keyword; ?>">
-	<meta name="description" content="<?php echo $seo_meta_description; ?>">	
-	<meta name="author" content="<?php echo $seo_author; ?>">
-	<meta name="copyright" content="<?php echo $seo_copyright; ?>">	
-	<meta name="robots" content="noindex, archive, nofollow, noodp">
-	<meta name="googlebot" content="index,archive,follow,noodp">
-	<meta name="msnbot" content="all,index,follow">
-	<meta name="generator" content="<?php echo $seo_generator; ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="google-site-verification" content="<?php echo $seo_google_site_verification; ?>">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta property="og:title" content="<?php echo $seo_title; ?>">
-	<meta property="og:type" content="website">
-	<meta property="og:description" content="<?php echo $seo_meta_description; ?>">
-	<meta property="og:site_name" content="<?php echo $seo_title; ?>">
-	<meta property="og:url" content="<?php echo $seo_page_url; ?>">
-	<!-- begin google analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $seo_google_analytics; ?>"></script>
-	<script language="javascript" type="text/javascript">
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', '<?php echo $seo_google_analytics; ?>');
-	</script>
-	<!-- end google analytics -->
-	<link rel="shortcut icon" href="<?php echo $seo_favicon; ?>" type="image/x-icon">
-	<link rel="icon" href="<?php echo $seo_favicon; ?>" type="image/x-icon">
-	<script src="{{ asset('public/frontend/js/jquery-3.2.1.js') }}"></script>
-	<!--begin bootstrap-->
-	<script src="{{ asset('public/frontend/bootstrap/bootstrap.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/bootstrap/bootstrap.min.css') }}" />
-	<!--end bootstrap-->
-	<!-- begin jquery-ui -->
-	<script src="{{ asset('public/frontend/jquery-ui/jquery-ui.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/jquery-ui/jquery-ui.css') }}" />
-	<!-- end jquery-ui -->
-	<!-- begin font-awesome -->
-	<link rel="stylesheet" href="{{ asset('public/frontend/fontawesome/css/all.min.css') }}" />	
-	<!-- end font-awesome -->	
-	<!-- begin ddsmoothmenu -->
-	<script src="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu.css') }}" />
-	<link rel="stylesheet" href="{{ asset('public/frontend/ddsmoothmenu/ddsmoothmenu-v2.css') }}" />
-	<!-- end ddsmoothmenu -->
-	<!-- begin slick slider -->
-	<script src="{{ asset('public/frontend/slick/slick.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/slick/slick.css') }}" />
-	<link rel="stylesheet" href="{{ asset('public/frontend/slick/slick-theme.css') }}" />
-	<!-- end slick slider -->
-	<!-- begin tab -->
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/tab.css') }}" />
-	<!-- end tab-->
-	<!-- begin bxslider -->
-	<script src="{{ asset('public/frontend/bxslider/jquery.bxslider.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/bxslider/jquery.bxslider.min.css') }}" />  
-	<!-- end bxslider -->
-	<!-- begin owl_carousel -->
-	<script src="{{ asset('public/frontend/owl-carousel-2/owl.carousel.min.js') }}"></script>
-	<script src="{{ asset('public/frontend/owl-carousel-2/owl.carousel2.thumbs.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('public/frontend/owl-carousel-2/owl.carousel.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('public/frontend/owl-carousel-2/owl.theme.min.css') }}" /> 
-	<link rel="stylesheet" href="{{ asset('public/frontend/owl-carousel-2/themes.css') }}" />  
-	<!-- end owl_carousel -->
-	<!-- begin elevatezoom -->
-	<script src="{{ asset('public/frontend/js/jquery.elevatezoom-3.0.8.min.js') }}"></script>  
-	<!-- end elevatezoom -->
-	<!-- begin accounting -->
-	<script src="{{ asset('public/frontend/js/accounting.min.js') }}"></script>  
-	<!-- end accounting -->		
-	<!-- begin datatables -->	
-	<script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>    
-	<link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
-	<script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
-	<!-- end datatables -->
-	<!-- begin youtube -->    
-  <script src="{{ asset('public/frontend/modal-video/jquery-modal-video.min.js') }}"></script>
-  <script src="{{ asset('public/frontend/modal-video/modal-video.min.js') }}"></script>
-  <link rel="stylesheet" href="{{ asset('public/frontend/modal-video/modal-video.min.css') }}" />
-  <!-- end youtube -->
-	<!-- begin fancybox -->
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/fancybox/jquery.fancybox.min.js')}}"                 ></script>
-	<link href="{{asset('public/frontend/fancybox/jquery.fancybox.min.css')}}" rel="stylesheet" type="text/css" />
-	<!-- end fancybox -->	
-	<!-- begin ui-->
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/ui/jquery-ui.js')}}"                 ></script>
-	<link href="{{asset('public/frontend/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
-	<!-- end ui-->
-	<!-- begin select2  -->
-	<link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/select2/select2.min.js')}}"                 ></script>
-	<!-- end select2 -->
-	<!-- begin summernote -->
-	<link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
-
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote.js')}}"                 ></script>
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>
-	<!-- end summernote -->
-	<!-- begin custom -->
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/menu-horizontal-right.css') }}" />
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/menu-horizontal-right-dmsp.css') }}" />
-	<script language="javascript" type="text/javascript" src="{{asset('public/frontend/js/spinner.js')}}"                 ></script>
-	<script src="{{ asset('public/frontend/js/custom.js') }}"></script>    
-	<link rel="stylesheet" href="{{ asset('public/frontend/css/template.css') }}" />
-	<!-- end custom -->
-	<script type="text/javascript" language="javascript">		
-		var spinner = new Spinner();  		
-	</script>	
+    <meta charset="utf-8" />
+    <title>Job Pro Responsive HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Job Pro" />
+    <meta name="keywords" content="Job Pro" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--srart theme style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive.css')}}" />
+    <!-- favicon links -->
+    <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />
 </head>
+
 <body>	
 	<!-- begin fanpage -->
 	<div id="fb-root"></div>
@@ -232,6 +142,16 @@ if(isset($alias)){
 	</header>
 	@yield("content")
 	@include("frontend.footer")	
+	<!--main js file start-->
+    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/jquery.countTo.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/jquery.inview.min.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/owl.carousel.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/custom.js')}}"></script>
+    <!--main js file end-->
 </body>
 </html>
 

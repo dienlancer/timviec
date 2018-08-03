@@ -109,57 +109,10 @@ if(isset($alias)){
                                     </ul>
                                 </div>
                                 <ul class="float_left">
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Home&nbsp;<i class="fa fa-angle-down"></i></a>
-                                        <!-- mega menu start -->
-                                        <ul>
-                                            <li class="parent"><a href="index.html">Home1</a></li>
-                                            <li class="parent"><a href="index_II.html">Home2</a></li>
-                                            <li class="parent"><a href="index_map.html">Home3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Job&nbsp;<i class="fa fa-angle-down"></i></a>
-                                        <!-- mega menu start -->
-                                        <ul>
-                                            <li class="parent"><a href="listing_left.html">Listing-Left</a></li>
-                                            <li class="parent"><a href="listing_right.html">Listing-Right</a></li>
-                                            <li class="parent"><a href="listing_single.html">listing_single.html</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li class="parent gc_main_navigation"><a href="#" class="gc_main_navigation">candidates &nbsp;<i class="fa fa-angle-down"></i></a>
-                                        <!-- sub menu start -->
-                                        <ul>
-                                            <li class="parent"><a href="company_listing.html">Company-Listing</a></li>
-                                            <li class="parent"><a href="company_listing_single.html">Company-Single</a></li>
-                                            <li class="parent"><a href="candidate_listing.html">candidate-Listing</a></li>
-                                            <li class="parent"><a href="candidate_profile.html">candidate-Profile</a></li>
-                                               
-                                        </ul>
-                                        <!-- sub menu end -->
-                                    </li>
-									<li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Pages&nbsp;<i class="fa fa-angle-down"></i></a>
-                                        <!-- mega menu start -->
-                                        <ul>
-                                             <li class="parent"><a href="about.html">About-Us</a></li>
-                                            <li class="parent"><a href="404 error.html">404</a></li>
-                                            <li class="parent"><a href="add_postin.html">Add-Posting</a></li>
-											 <li class="parent"><a href="login.html">Login</a></li>
-                                            <li class="parent"><a href="register.html">Register</a></li>
-                                            <li class="parent"><a href="pricing.html">Pricing</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Blog&nbsp;<i class="fa fa-angle-down"></i></a>
-                                        <!-- mega menu start -->
-                                        <ul>
-                                            <li class="parent"><a href="blog_left.html">Blog-Left</a></li>
-                                            <li class="parent"><a href="blog_right.html">Blog-Right</a></li>
-                                            <li class="parent"><a href="blog_single_left.html">Blog-Single-Left</a></li>
-                                            <li class="parent"><a href="blog_single_right.html">Blog-Single-Right</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation">Contact</a></li>
+                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">Trang chủ</a></li>
+                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">Nhà tuyển dụng</a></li>
+                                    <li class="parent gc_main_navigation"><a href="#" class="gc_main_navigation">Ứng viên</a></li>									
+                                    <li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation">Liên hệ</a></li>
                                 </ul>
                             </div>
                             <!-- mainmenu end -->

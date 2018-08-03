@@ -68,6 +68,7 @@ if(isset($alias)){
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" />
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />
 </head>

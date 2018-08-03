@@ -66,8 +66,8 @@ if(isset($alias)){
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />
 </head>
@@ -80,14 +80,13 @@ if(isset($alias)){
     <!-- Top Scroll End -->
     <!-- Header Wrapper Start -->
     <div class="jp_top_header_img_wrapper">
-        <div class="jp_slide_img_overlay"></div>
         <div class="gc_main_menu_wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
                         <div class="gc_header_wrapper">
                             <div class="gc_logo">
-                                <a href="index.html"><img src="{{asset('public/frontend/job-light/images/header/logo.png')}}" alt="Logo" title="Job Pro" class="img-responsive"></a>
+                                <a href="index.html"><img src="{{asset('public/frontend/job-light/images/header/logo2.png')}}" alt="Logo" title="Job Pro" class="img-responsive"></a>
                             </div>
                         </div>
                     </div>
@@ -109,10 +108,10 @@ if(isset($alias)){
                                     </ul>
                                 </div>
                                 <ul class="float_left">
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">Trang chủ</a></li>
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">Nhà tuyển dụng</a></li>
-                                    <li class="parent gc_main_navigation"><a href="#" class="gc_main_navigation">Ứng viên</a></li>									
-                                    <li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation">Liên hệ</a></li>
+                                    <li class="has-mega gc_main_navigation"><a href="<?php echo route('frontend.index.getHome'); ?>" class="gc_main_navigation">Trang chủ</a></li>
+                                    <li class="has-mega gc_main_navigation"><a href="<?php echo route('frontend.index.viewEmployerAccount'); ?>" class="gc_main_navigation">Nhà tuyển dụng</a></li>
+                                    <li class="parent gc_main_navigation"><a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>" class="gc_main_navigation">Ứng viên</a></li>
+                                    <li class="gc_main_navigation parent"><a href="javascript:void(0);" class="gc_main_navigation">Góc nghề nghiệp</a></li>
                                 </ul>
                             </div>
                             <!-- mainmenu end -->
@@ -122,13 +121,13 @@ if(isset($alias)){
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6">
                                             <div class="gc_logo">
-                                                <a href="index.html"><img src="{{asset('public/frontend/job-light/images/header/logo.png')}}" alt="Logo" title="Grace Church"></a>
+                                                <a href="index.html"><img src="{{asset('public/frontend/job-light/images/header/logo2.png')}}" alt="Logo" title="Grace Church"></a>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6">
                                             <div class="cd-dropdown-wrapper">
                                                 <a class="house_toggle" href="#0">
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px"><g><g><path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#ffffff"/></g></g></svg>
+													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px"><g><g><path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#23c0e9"/></g><g><path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#23c0e9"/></g><g><path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#23c0e9"/></g><g><path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#23c0e9"/></g><g><path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#23c0e9"/></g></g></svg>
 													</a>
                                                 <nav class="cd-dropdown">
                                                     <h2><a href="#">Job<span>Pro</span></a></h2>
@@ -139,118 +138,17 @@ if(isset($alias)){
                                                                 <input type="search" placeholder="Search...">
                                                             </form>
                                                         </li>
-                                                        <li class="has-children">
-                                                            <a href="#">Home</a>
-
-                                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                                <li>
-                                                                    <a href="index.html">Home1</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                                <li>
-                                                                    <a href="index_II.html">Home2</a>
-                                                                </li>
-																<li>
-                                                                    <a href="index_map.html">Home3</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                            </ul>
-                                                            <!-- .cd-secondary-dropdown -->
-                                                        </li>
-                                                        <!-- .has-children -->
-
-
-                                                        <li class="has-children">
-                                                            <a href="#">Job</a>
-
-                                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                                <li>
-                                                                    <a href="listing_left.html">Listing-Left</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                                <li>
-                                                                    <a href="listing_right.html">Listing-Right</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                                <li>
-                                                                    <a href="listing_single.html">Listing-Single</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-
-                                                            </ul>
-                                                            <!-- .cd-secondary-dropdown -->
-                                                        </li>
-                                                        <!-- .has-children -->
-                                                        <li class="has-children">
-                                                            <a href="#">candidates</a>
-
-                                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                                <li class="go-back"><a href="#0">Menu</a></li>
-																<li><a href="company_listing.html">Company-Listing</a></li>
-																<li><a href="company_listing_single.html">Company-Single</a></li>
-																<li><a href="candidate_listing.html">candidate-Listing</a></li>
-																<li><a href="candidate_profile.html">candidate-Profile</a></li>
-                                                                <!-- .has-children -->
-
-                                                            </ul>
-                                                            <!-- .cd-secondary-dropdown -->
-                                                        </li>
-                                                        <!-- .has-children -->
-														<li class="has-children">
-                                                            <a href="#">Pages</a>
-
-                                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                                <li><a href="about.html">About-Us</a></li>
-																<li><a href="404 error.html">404</a></li>
-																<li><a href="add_postin.html">Add-Posting</a></li>
-																<li><a href="login.html">Login</a></li>
-																<li><a href="register.html">Register</a></li>
-																<li><a href="pricing.html">Pricing</a></li>
-                                                                <!-- .has-children -->
-
-                                                            </ul>
-                                                            <!-- .cd-secondary-dropdown -->
-                                                        </li>
-                                                        <li class="has-children">
-                                                            <a href="#">Blog</a>
-
-                                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                                <li>
-                                                                    <a href="blog_left.html">Blog-Left</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                                <li>
-                                                                    <a href="blog_right.html">Blog-Right</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                                <li>
-                                                                    <a href="blog_single_left.html">Blog-Single-Left</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                                <li>
-                                                                    <a href="blog_single_right.html">Blog-Single-Left</a>
-                                                                </li>
-                                                                <!-- .has-children -->
-
-                                                            </ul>
-                                                            <!-- .cd-secondary-dropdown -->
-                                                        </li>
-                                                        <!-- .has-children -->
-                                                        <!-- .has-children -->
+                                                        <li >
+                                                            <a href="<?php echo route('frontend.index.getHome'); ?>">Trang chủ</a>
+                                                        </li>                                                        
+                                                        <li >
+                                                            <a href="<?php echo route('frontend.index.viewEmployerAccount'); ?>">Nhà tuyển dụng</a>
+                                                        </li>                                                        
+                                                        <li >
+                                                            <a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>">Ứng viên</a>
+                                                        </li>                                                        														
                                                         <li>
-                                                            <a href="contact.html">Contact</a>
+                                                            <a href="javascript:void(0);">Liên hệ</a>
                                                         </li>
 
                                                     </ul>
@@ -273,121 +171,10 @@ if(isset($alias)){
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                         <div class="jp_navi_right_btn_wrapper">
                             <ul>
-                                <li><a href="register.html"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
+                                <li><a href="<?php echo route('frontend.index.registerLogin',['register']); ?>"><i class="fa fa-user"></i>&nbsp; ĐĂNG KÝ</a></li>
+                                <li><a href="<?php echo route('frontend.index.registerLogin',['login']); ?>"><i class="fa fa-sign-in"></i>&nbsp; ĐĂNG NHẬP</a></li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="jp_banner_heading_cont_wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_job_heading_wrapper">
-                            <div class="jp_job_heading">
-                                <h1><span>3,000+</span> Browse Jobs</h1>
-                                <p>Find Jobs, Employment & Career Opportunities</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_header_form_wrapper">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <input type="text" placeholder="Keyword e.g. (Job Title, Description, Tags)">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="jp_form_location_wrapper">
-                                    <i class="fa fa-dot-circle-o first_icon"></i><select>
-								<option>Select Location</option>
-								<option>Select Location</option>
-								<option>Select Location</option>
-								<option>Select Location</option>
-								<option>Select Location</option>
-							</select><i class="fa fa-angle-down second_icon"></i>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="jp_form_exper_wrapper">
-                                    <i class="fa fa-dot-circle-o first_icon"></i><select>
-								<option>Experience</option>
-								<option>Experience</option>
-								<option>Experience</option>
-								<option>Experience</option>
-								<option>Experience</option>
-							</select><i class="fa fa-angle-down second_icon"></i>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                <div class="jp_form_btn_wrapper">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-search"></i> Search</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_banner_main_jobs_wrapper">
-                            <div class="jp_banner_main_jobs">
-                                <ul>
-                                    <li><i class="fa fa-tags"></i> Trending Keywords :</li>
-                                    <li><a href="#">ui designer,</a></li>
-                                    <li><a href="#">developer,</a></li>
-                                    <li><a href="#">senior</a></li>
-                                    <li><a href="#">it company,</a></li>
-                                    <li><a href="#">design,</a></li>
-                                    <li><a href="#">call center</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="jp_banner_jobs_categories_wrapper">
-            <div class="container">
-                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border jp_job_cate_left_border_bottom">
-                    <div class="jp_top_jobs_category">
-                        <i class="fa fa-code"></i>
-                        <h3><a href="#">Developer</a></h3>
-                        <p>(240 jobs)</p>
-                    </div>
-                </div>
-                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
-                    <div class="jp_top_jobs_category">
-                        <i class="fa fa-laptop"></i>
-                        <h3><a href="#">Technology</a></h3>
-                        <p>(504 jobs)</p>
-                    </div>
-                </div>
-                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
-                    <div class="jp_top_jobs_category">
-                        <i class="fa fa-bar-chart"></i>
-                        <h3><a href="#">Accounting</a></h3>
-                        <p>(2250 jobs)</p>
-                    </div>
-                </div>
-                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
-                    <div class="jp_top_jobs_category">
-                        <i class="fa fa-medkit"></i>
-                        <h3><a href="#">Medical</a></h3>
-                        <p>(202 jobs)</p>
-                    </div>
-                </div>
-                <div class="jp_top_jobs_category_wrapper">
-                    <div class="jp_top_jobs_category">
-                        <i class="fa fa-university"></i>
-                        <h3><a href="#">Government</a></h3>
-                        <p>(1457 jobs)</p>
-                    </div>
-                </div>
-                <div class="jp_top_jobs_category_wrapper">
-                    <div class="jp_top_jobs_category">
-                        <i class="fa fa-th-large"></i>
-                        <h3><a href="#">All Jobs</a></h3>
-                        <p>(2000+ jobs)</p>
                     </div>
                 </div>
             </div>
@@ -395,8 +182,8 @@ if(isset($alias)){
     </div>
     <!-- Header Wrapper End -->
 	@yield("content")
-	@include("frontend.footer")	
-	<!--main js file start-->
+	@include("frontend.footer")		
+    <!--main js file start-->
     <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>
@@ -404,7 +191,155 @@ if(isset($alias)){
     <script src="{{asset('public/frontend/job-light/js/jquery.inview.min.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/owl.carousel.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>
-    <script src="{{asset('public/frontend/job-light/js/custom.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDOogBL2cC0dSezucKzQGWxMIMmclqWNts&sensor=false"></script>
+    <script type="text/javascript">
+    var infowindow = null;
+    $(document).ready(function() { initialize(); });
+
+    function initialize() {
+
+        var centerMap = new google.maps.LatLng(41.0793, -85.1394);
+
+        var myOptions = {
+            zoom: 6,
+            center: centerMap,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [
+                { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                {
+                    featureType: 'administrative.locality',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#263c3f' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#6b9a76' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#38414e' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#212a37' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#9ca5b3' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#746855' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#1f2835' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#f3d19c' }]
+                },
+                {
+                    featureType: 'transit',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#2f3948' }]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#17263c' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#515c6d' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{ color: '#17263c' }]
+                }
+            ]
+        }
+
+        var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+        setMarkers(map, sites);
+        infowindow = new google.maps.InfoWindow({
+            content: "loading..."
+        });
+
+        var bikeLayer = new google.maps.BicyclingLayer();
+        bikeLayer.setMap(map);
+
+
+    }
+
+    var sites = [
+        ['Warner Bros', 41.879, -87.624, 4, 'Warner Bros, 5400 N. Lakewood Avenue, Chicago'],
+        ['Irving Homestead', 42.5000, -96.4003, 2, 'This is the Irving Homestead.'],
+        ['Artis', 42.9634, -85.6681, 1, 'Artis, 101 Monroe Center St NW Grand Rapids'],
+        ['Kansao', 39.0997, -94.5786, 3, 'Kansao, 4039 Euclid Ave Kansas City'],
+
+        ['City Wyne', 41.0793, -85.1394, 8, 'City Wyne, 200 E. Berry St. Suite 470. Fort Wayne'],
+        ['Microsolution', 39.9612, -82.9988, 7, 'Microsolution, 3870 Gateway Blvd Columbus'],
+        ['Blue Berry', 38.6270, -90.1994, 5, 'Blue Berry, 12555 N Outer Forty Dr St. Louis'],
+        ['Red Hat', 38.0406, -84.5037, 6, 'Red Hat, 2609 Red Leaf Dr, Lexington'],
+
+        ['PlotHQ', 44.9778, -93.2650, 8, 'PlotHQ, 350 South 5th Street, Minneapolis'],
+        ['Ivan Sol', 40.4406, -79.9959, 7, 'Ivan Sol, 4200 Fifth Avenue Pittsburgh'],
+        ['Omni Soft', 41.2524, -95.9980, 5, 'Omni Soft, 19102 W St Omaha'],
+        ['Canadian Firm', 43.6532, -79.3832, 6, 'Canadian Firm. PwC Tower 18 York Street, Suite 2600. Toronto']
+    ];
+
+    function setMarkers(map, markers) {
+
+        for (var i = 0; i < markers.length; i++) {
+            var sites = markers[i];
+            var siteLatLng = new google.maps.LatLng(sites[1], sites[2]);
+            var marker = new google.maps.Marker({
+                position: siteLatLng,
+                map: map,
+                title: sites[0],
+                zIndex: sites[3],
+                html: sites[4]
+            });
+
+            var contentString = "Some content";
+
+            google.maps.event.addListener(marker, "click", function() {
+                infowindow.setContent(this.html);
+                infowindow.open(map, this);
+            });
+        }
+    }
+    </script>
+
     <!--main js file end-->
 </body>
 </html>

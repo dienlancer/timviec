@@ -116,14 +116,14 @@ if(count(@$source_new_job) > 0){
 						<?php 
 						$k=0;
 						foreach ($data_new_job as $key => $value) {												
-							$new_job_fullname=truncateString($value['fullname'],30) ;
-							$new_job_employer=truncateString($value['employer_fullname'],30);
-							$new_job_duration=datetimeConverterVn($value['duration']);
-							$new_job_img='';
+							$new_job_fullname=truncateString(@$value['fullname'],30) ;
+							$new_job_employer=truncateString(@$value['employer_fullname'],30);
+							$new_job_duration=datetimeConverterVn(@$value['duration']);
+							$new_job_logo='';
 							if(!empty(@$value['logo'])){
-								$new_job_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+								$new_job_logo=asset('upload/'.$width.'x'.$height.'-'.@$value['logo']);
 							}else{
-								$new_job_img=asset('upload/no-logo.png');
+								$new_job_logo=asset('upload/no-logo.png');
 							}
 							$new_job_hot_gif='';
 							if((int)@$value['status_hot'] == 1){
@@ -135,7 +135,7 @@ if(count(@$source_new_job) > 0){
 							?>
 							<div class="jp_tittle_slides_one">
 								<div class="jp_tittle_side_img_wrapper">
-									<img src="<?php echo @$new_job_img; ?>" alt="<?php echo @$value['employer_fullname']; ?>" />
+									<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$new_job_logo; ?>" alt="<?php echo @$new_job_employer; ?>" /></a>
 								</div>
 								<div class="jp_tittle_side_cont_wrapper">
 									<h4><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$new_job_fullname; ?></a></h4>
@@ -228,8 +228,283 @@ if(count(@$source_new_job) > 0){
 						<div class="cc_featured_product_main_wrapper">
 							<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper">
 								<h2>Recent Jobs</h2>
-							</div>							
-						</div>						
+							</div>
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#attractive" aria-controls="attractive" role="tab" data-toggle="tab">Việc làm hấp dẫn</a></li>
+								<li role="presentation"><a href="#high_salary" aria-controls="high_salary" role="tab" data-toggle="tab">Việc làm lương cao</a></li>
+							</ul>							
+						</div>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane fade in active" id="attractive">
+								<div class="ss_featured_products">
+									<?php 
+									$query_attractive_job=DB::table('recruitment')
+									->join('employer','recruitment.employer_id','=','employer.id')
+									->join('salary','recruitment.salary_id','=','salary.id');
+									$query_attractive_job->where('recruitment.status',1);
+									$query_attractive_job->where('recruitment.status_employer',1);
+									$query_attractive_job->where('recruitment.status_attractive',1);
+									$source_attractive_job=$query_attractive_job->select(
+										'recruitment.id',
+										'recruitment.fullname',
+										'recruitment.alias',
+										'recruitment.duration',
+										'recruitment.status_hot',
+										'salary.fullname as salary_name',
+										'employer.fullname as employer_fullname',
+										'employer.alias as employer_alias',
+										'employer.logo'
+									)
+									->groupBy(
+										'recruitment.id',
+										'recruitment.fullname',
+										'recruitment.alias',
+										'recruitment.duration',
+										'recruitment.status_hot',
+										'salary.fullname',
+										'employer.fullname',
+										'employer.alias',
+										'employer.logo'
+									)
+									->orderBy('recruitment.id', 'desc')
+									->take(10)
+									->get()
+									->toArray();
+									if(count(@$source_attractive_job) > 0){
+										echo "<pre>".print_r($source_attractive_job,true)."</pre>";
+										?>
+										<div class="owl-carousel owl-theme">
+											<?php 
+											$k=0;
+											$t=0;
+											$data_attractive_job=convertToArray(@$source_attractive_job);
+											foreach ($data_attractive_job as $key => $value) {
+												$hot_attractive_fullname=truncateString(@$value['fullname'],9999) ;
+												$hot_attractive_employer=truncateString(@$value['employer_fullname'],9999);
+												$hot_attractive_duration=datetimeConverterVn(@$value['duration']);
+												$hot_attractive_hot_gif='';
+												if((int)@$value['status_hot'] == 1){
+													$hot_attractive_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+												}
+												$hot_attractive_logo='';
+												if(!empty(@$value['logo'])){
+													$hot_attractive_logo=asset('upload/'.$width.'x'.$height.'-'.@$value['logo']);
+												}else{
+													$hot_attractive_logo=asset('upload/no-logo.png');
+												}
+												$source_province=DB::table('province')
+												->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+												->where('recruitment_place.recruitment_id',(int)@$value['id'])
+												->select(								
+													'province.fullname',
+													'province.alias'								
+												)
+												->groupBy(								
+													'province.fullname',
+													'province.alias'								
+												)
+												->orderBy('province.id', 'desc')						
+												->get()
+												->toArray();	
+												$data_province=convertToArray(@$source_province);					
+												$province_text='';
+												foreach ($data_province as $key_province => $value_province) {
+													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+												}
+												if($k%2 == 0){
+													$t++;
+													echo '<div class="item" data-hash="page'.(int)@$t.'">';
+												}
+												?>
+												<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
+													<div class="jp_job_post_main_wrapper">
+														<div class="row">
+															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+																<div class="jp_job_post_side_img">
+																	<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$hot_attractive_logo; ?>" alt="<?php echo @$hot_attractive_employer; ?>" /></a>
+																</div>
+																<div class="jp_job_post_right_cont">
+																	<h4><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_attractive_fullname; ?></a></h4>
+																	<p><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$hot_attractive_employer; ?></a></p>
+																	<ul>
+																		<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
+																		<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
+																	</ul>
+																</div>
+															</div>
+															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+																<div class="jp_job_post_right_btn_wrapper">
+																	<ul>
+																		<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+																		<li><a href="#">Part Time</a></li>
+																		<li><a href="#">Apply</a></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="jp_job_post_keyword_wrapper">
+														<ul>
+															<li><i class="fa fa-tags"></i>Keywords :</li>
+															<li><a href="#">ui designer,</a></li>
+															<li><a href="#">developer,</a></li>
+															<li><a href="#">senior</a></li>
+															<li><a href="#">it company,</a></li>
+															<li><a href="#">design,</a></li>
+															<li><a href="#">call center</a></li>
+														</ul>
+													</div>
+												</div>	
+												<?php
+												$k++;
+												if($k%2==0 || $k == count(@$data_attractive_job)){
+													echo '</div>';
+												} 	
+											}		
+											?>
+										</div>
+										<?php										 
+									}		
+									?>																										
+								</div>
+								<?php 
+								if(count(@$source_attractive_job) > 0){
+									$total_page=ceil(count(@$source_attractive_job)/2);
+									?>
+									<div class="video_nav_img_wrapper">
+										<div class="video_nav_img">
+											<ul>
+												<?php 
+												for ($i=1; $i <= $total_page; $i++) { 
+													?>
+													<li><a class="button secondary url owl_nav" href="#page<?php echo (int)@$i; ?>"><?php echo (int)@$i; ?></a></li>	
+													<?php
+												}
+												?>																						
+											</ul>
+										</div>
+									</div>	
+									<?php
+								}
+								?>								
+							</div>
+							<div role="tabpanel" class="tab-pane fade" id="high_salary">
+								<div class="ss_featured_products">
+									<?php 
+									$query_high_salary_job=DB::table('recruitment')
+									->join('employer','recruitment.employer_id','=','employer.id')
+									->join('salary','recruitment.salary_id','=','salary.id');
+									$query_high_salary_job->where('recruitment.status',1);
+									$query_high_salary_job->where('recruitment.status_employer',1);
+									$query_high_salary_job->where('recruitment.status_high_salary',1);
+									$source_high_salary_job=$query_high_salary_job->select(
+										'recruitment.id',
+										'recruitment.fullname',
+										'recruitment.alias',
+										'recruitment.duration',
+										'recruitment.status_hot',
+										'salary.fullname as salary_name',
+										'employer.fullname as employer_fullname',
+										'employer.alias as employer_alias',
+										'employer.logo'
+									)
+									->groupBy(
+										'recruitment.id',
+										'recruitment.fullname',
+										'recruitment.alias',
+										'recruitment.duration',
+										'recruitment.status_hot',
+										'salary.fullname',
+										'employer.fullname',
+										'employer.alias',
+										'employer.logo'
+									)
+									->orderBy('recruitment.id', 'desc')
+									->take(10)
+									->get()
+									->toArray();
+									if(count(@$source_high_salary_job) > 0){
+										$data_high_salary_job=convertToArray(@$source_high_salary_job);
+										foreach ($data_high_salary_job as $key => $value) {
+											$hot_high_salary_fullname=truncateString(@$value['fullname'],9999) ;
+											$hot_high_salary_employer=truncateString(@$value['employer_fullname'],9999);
+											$hot_high_salary_duration=datetimeConverterVn(@$value['duration']);
+											$hot_high_salary_hot_gif='';
+											if((int)@$value['status_hot'] == 1){
+												$hot_high_salary_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+											}
+											$hot_high_salary_logo='';
+											if(!empty(@$value['logo'])){
+												$hot_high_salary_logo=asset('upload/'.$width.'x'.$height.'-'.@$value['logo']);
+											}else{
+												$hot_high_salary_logo=asset('upload/no-logo.png');
+											}
+											$source_province=DB::table('province')
+											->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+											->where('recruitment_place.recruitment_id',(int)@$value['id'])
+											->select(								
+												'province.fullname',
+												'province.alias'								
+											)
+											->groupBy(								
+												'province.fullname',
+												'province.alias'								
+											)
+											->orderBy('province.id', 'desc')						
+											->get()
+											->toArray();	
+											$data_province=convertToArray(@$source_province);					
+											$province_text='';
+											foreach ($data_province as $key_province => $value_province) {
+												$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+											}
+											?>
+											<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
+												<div class="jp_job_post_main_wrapper">
+													<div class="row">
+														<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+															<div class="jp_job_post_side_img">
+																<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$hot_high_salary_logo; ?>" alt="<?php echo @$hot_high_salary_employer; ?>" /></a>
+															</div>
+															<div class="jp_job_post_right_cont">
+																<h4><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_high_salary_fullname; ?></a></h4>
+																<p><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$hot_high_salary_employer; ?></a></p>
+																<ul>
+																	<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
+																	<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
+																</ul>
+															</div>
+														</div>
+														<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<div class="jp_job_post_right_btn_wrapper">
+																<ul>
+																	<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+																	<li><a href="#">Part Time</a></li>
+																	<li><a href="#">Apply</a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="jp_job_post_keyword_wrapper">
+													<ul>
+														<li><i class="fa fa-tags"></i>Keywords :</li>
+														<li><a href="#">ui designer,</a></li>
+														<li><a href="#">developer,</a></li>
+														<li><a href="#">senior</a></li>
+														<li><a href="#">it company,</a></li>
+														<li><a href="#">design,</a></li>
+														<li><a href="#">call center</a></li>
+													</ul>
+												</div>
+											</div>	
+											<?php	
+										}		
+									}		
+									?>																										
+								</div>		
+							</div>
+						</div>														
 					</div>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="jp_register_section_main_wrapper">

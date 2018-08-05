@@ -867,25 +867,25 @@ $data_employer=App\EmployerModel::whereRaw('status=1')->select('id')->get()->toA
 		<div class="gc_counter_cont_wrapper">
 			<div class="count-description">
 				<span class="timer"><?php echo count(@$data_job); ?></span><i class="fa fa-plus"></i>
-				<h5 class="con1">Jobs Available</h5>
+				<h5 class="con1">Công việc</h5>
 			</div>
 		</div>
 		<div class="gc_counter_cont_wrapper2">
 			<div class="count-description">
 				<span class="timer"><?php echo count(@$data_candidate); ?></span><i class="fa fa-plus"></i>
-				<h5 class="con2">Members</h5>
+				<h5 class="con2">Ứng viên</h5>
 			</div>
 		</div>
 		<div class="gc_counter_cont_wrapper3">
 			<div class="count-description">
 				<span class="timer"><?php echo count(@$data_profile); ?></span><i class="fa fa-plus"></i>
-				<h5 class="con3">Resumes</h5>
+				<h5 class="con3">Đơn ứng tuyển</h5>
 			</div>
 		</div>
 		<div class="gc_counter_cont_wrapper4">
 			<div class="count-description">
 				<span class="timer"><?php echo count(@$data_employer); ?></span><i class="fa fa-plus"></i>
-				<h5 class="con4">Company</h5>
+				<h5 class="con4">Công ty</h5>
 			</div>
 		</div>
 	</div>

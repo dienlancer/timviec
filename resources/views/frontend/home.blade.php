@@ -227,11 +227,12 @@ if(count(@$source_new_job) > 0){
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="cc_featured_product_main_wrapper">
 							<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper">
-								<h2>Recent Jobs</h2>
+								<h2>Công việc hiện tại</h2>
 							</div>
 							<ul class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active"><a href="#attractive" aria-controls="attractive" role="tab" data-toggle="tab">Việc làm hấp dẫn</a></li>
 								<li role="presentation"><a href="#high_salary" aria-controls="high_salary" role="tab" data-toggle="tab">Việc làm lương cao</a></li>
+								<li role="presentation"><a href="#interested" aria-controls="interested" role="tab" data-toggle="tab">Việc làm được quan tâm</a></li>
 							</ul>							
 						</div>
 						<div class="tab-content">
@@ -267,7 +268,7 @@ if(count(@$source_new_job) > 0){
 										'employer.logo'
 									)
 									->orderBy('recruitment.id', 'desc')
-									->take(10)
+									->take(50)
 									->get()
 									->toArray();
 									if(count(@$source_attractive_job) > 0){										
@@ -310,7 +311,7 @@ if(count(@$source_new_job) > 0){
 												foreach ($data_province as $key_province => $value_province) {
 													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
-												if($k%2 == 0){
+												if($k%5 == 0){
 													$t++;
 													echo '<div class="item" data-hash="page'.(int)@$t.'">';
 												}
@@ -343,7 +344,7 @@ if(count(@$source_new_job) > 0){
 												</div>	
 												<?php
 												$k++;
-												if($k%2==0 || $k == count(@$data_attractive_job)){
+												if($k%5==0 || $k == count(@$data_attractive_job)){
 													echo '</div>';
 												} 	
 											}		
@@ -355,7 +356,7 @@ if(count(@$source_new_job) > 0){
 								</div>
 								<?php 
 								if(count(@$source_attractive_job) > 0){									
-									$total_page=ceil(count(@$source_attractive_job)/2);
+									$total_page=ceil(count(@$source_attractive_job)/5);
 									?>
 									<div class="video_nav_img_wrapper">
 										<div class="video_nav_img">
@@ -406,7 +407,7 @@ if(count(@$source_new_job) > 0){
 										'employer.logo'
 									)
 									->orderBy('recruitment.id', 'desc')
-									->take(10)
+									->take(50)
 									->get()
 									->toArray();
 									if(count(@$source_high_salary_job) > 0){										
@@ -449,7 +450,7 @@ if(count(@$source_new_job) > 0){
 												foreach ($data_province as $key_province => $value_province) {
 													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
-												if($k%2 == 0){
+												if($k%5 == 0){
 													$t++;
 													echo '<div class="item" data-hash="page'.(int)@$t.'">';
 												}
@@ -482,7 +483,7 @@ if(count(@$source_new_job) > 0){
 												</div>	
 												<?php
 												$k++;
-												if($k%2==0 || $k == count(@$data_high_salary_job)){
+												if($k%5==0 || $k == count(@$data_high_salary_job)){
 													echo '</div>';
 												} 	
 											}		
@@ -494,7 +495,7 @@ if(count(@$source_new_job) > 0){
 								</div>
 								<?php 
 								if(count(@$source_high_salary_job) > 0){									
-									$total_page=ceil(count(@$source_high_salary_job)/2);
+									$total_page=ceil(count(@$source_high_salary_job)/5);
 									?>
 									<div class="video_nav_img_wrapper">
 										<div class="video_nav_img">
@@ -513,6 +514,145 @@ if(count(@$source_new_job) > 0){
 								}
 								?>	
 							</div>
+							<div role="tabpanel" class="tab-pane fade" id="interested">
+								<div class="ss_featured_products">
+									<?php 
+									$query_interested_job=DB::table('recruitment')
+									->join('employer','recruitment.employer_id','=','employer.id')
+									->join('salary','recruitment.salary_id','=','salary.id');
+									$query_interested_job->where('recruitment.status',1);
+									$query_interested_job->where('recruitment.status_employer',1);
+									$query_interested_job->where('recruitment.status_interested',1);
+									$source_interested_job=$query_interested_job->select(
+										'recruitment.id',
+										'recruitment.fullname',
+										'recruitment.alias',
+										'recruitment.duration',
+										'recruitment.status_hot',
+										'salary.fullname as salary_name',
+										'employer.fullname as employer_fullname',
+										'employer.alias as employer_alias',
+										'employer.logo'
+									)
+									->groupBy(
+										'recruitment.id',
+										'recruitment.fullname',
+										'recruitment.alias',
+										'recruitment.duration',
+										'recruitment.status_hot',
+										'salary.fullname',
+										'employer.fullname',
+										'employer.alias',
+										'employer.logo'
+									)
+									->orderBy('recruitment.id', 'desc')
+									->take(50)
+									->get()
+									->toArray();
+									if(count(@$source_interested_job) > 0){										
+										?>
+										<div class="owl-carousel owl-theme">
+											<?php 
+											$k=0;
+											$t=0;
+											$data_interested_job=convertToArray(@$source_interested_job);
+											foreach ($data_interested_job as $key => $value) {
+												$hot_interested_fullname=truncateString(@$value['fullname'],9999) ;
+												$hot_interested_employer=truncateString(@$value['employer_fullname'],9999);
+												$hot_interested_duration=datetimeConverterVn(@$value['duration']);
+												$hot_interested_hot_gif='';
+												if((int)@$value['status_hot'] == 1){
+													$hot_interested_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+												}
+												$hot_interested_logo='';
+												if(!empty(@$value['logo'])){
+													$hot_interested_logo=asset('upload/'.$width.'x'.$height.'-'.@$value['logo']);
+												}else{
+													$hot_interested_logo=asset('upload/no-logo.png');
+												}
+												$source_province=DB::table('province')
+												->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+												->where('recruitment_place.recruitment_id',(int)@$value['id'])
+												->select(								
+													'province.fullname',
+													'province.alias'								
+												)
+												->groupBy(								
+													'province.fullname',
+													'province.alias'								
+												)
+												->orderBy('province.id', 'desc')						
+												->get()
+												->toArray();	
+												$data_province=convertToArray(@$source_province);					
+												$province_text='';
+												foreach ($data_province as $key_province => $value_province) {
+													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+												}
+												if($k%5 == 0){
+													$t++;
+													echo '<div class="item" data-hash="page'.(int)@$t.'">';
+												}
+												?>
+												<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
+													<div class="jp_job_post_main_wrapper">
+														<div class="row">
+															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+																<div class="jp_job_post_side_img">
+																	<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$hot_interested_logo; ?>" alt="<?php echo @$hot_interested_employer; ?>" /></a>
+																</div>
+																<div class="jp_job_post_right_cont">
+																	<h4 class="recent-job-title"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_interested_fullname; ?></a></h4>
+																	<p class="recent-job-employer-name"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$hot_interested_employer; ?></a></p> 
+																	<ul>
+																		<li><i class="fa fa-cc-paypal"></i><span class="margin-left-15"><?php echo @$value['salary_name']; ?></span></li>
+																		<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
+																	</ul>
+																</div>
+															</div>
+															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+																<div class="jp_job_post_right_btn_wrapper">
+																	<ul>																		
+																		<li><a href="javascript:void(0);">Ứng tuyển</a></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>													
+												</div>	
+												<?php
+												$k++;
+												if($k%5==0 || $k == count(@$data_interested_job)){
+													echo '</div>';
+												} 	
+											}		
+											?>
+										</div>
+										<?php										 
+									}		
+									?>																										
+								</div>
+								<?php 
+								if(count(@$source_interested_job) > 0){									
+									$total_page=ceil(count(@$source_interested_job)/5);
+									?>
+									<div class="video_nav_img_wrapper">
+										<div class="video_nav_img">
+											<ul>
+												<?php 
+												for ($i=1; $i <= $total_page; $i++) { 
+													?>
+													<li><a class="button secondary url owl_nav" href="#page<?php echo (int)@$i; ?>"><?php echo (int)@$i; ?></a></li>	
+													<?php
+												}
+												?>																						
+											</ul>
+										</div>
+									</div>	
+									<?php
+								}
+								?>								
+							</div>
 						</div>														
 					</div>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -520,10 +660,10 @@ if(count(@$source_new_job) > 0){
 							<div class="jp_regis_left_side_box_wrapper">
 								<div class="jp_regis_left_side_box">
 									<img src="{{asset('public/frontend/job-light/images/content/regis_icon.png')}}" alt="icon" />
-									<h4>I’m an EMPLOYER</h4>
+									<h4>Tôi là nhà tuyển dụng</h4>
 									<p>Signed in companies are able to post new<br> job offers, searching for candidate...</p>
 									<ul>
-										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;REGISTER AS COMPANY</a></li>
+										<li><a href="<?php echo route('frontend.index.employerRegister'); ?>"><i class="fa fa-plus-circle"></i> &nbsp;ĐĂNG KÝ NHÀ TUYỂN DỤNG</a></li>
 									</ul>
 								</div>
 							</div>
@@ -531,10 +671,10 @@ if(count(@$source_new_job) > 0){
 								<div class="jp_regis_right_img_overlay"></div>
 								<div class="jp_regis_right_side_box">
 									<img src="{{asset('public/frontend/job-light/images/content/regis_icon2.png')}}" alt="icon" />
-									<h4>I’m an candidate</h4>
+									<h4>Tôi là ứng viên</h4>
 									<p>Signed in companies are able to post new<br> job offers, searching for candidate...</p>
 									<ul>
-										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;REGISTER AS COMPANY</a></li>
+										<li><a href="<?php echo route('frontend.index.candidateRegister'); ?>"><i class="fa fa-plus-circle"></i> &nbsp;ĐĂNG KÝ ỨNG VIÊN</a></li>
 									</ul>
 								</div>
 								<div class="jp_regis_center_tag_wrapper">
@@ -715,4 +855,40 @@ if(count(@$source_new_job) > 0){
 	</div>
 </div>
 <!-- jp first sidebar Wrapper End -->
+<!-- jp counter Wrapper Start -->
+<?php 
+$data_job=App\RecruitmentModel::whereRaw('status=1')->select('id')->get()->toArray();
+$data_candidate=App\CandidateModel::whereRaw('status=1')->select('id')->get()->toArray(); 
+$data_profile=App\ProfileModel::whereRaw('status=1')->select('id')->get()->toArray();
+$data_employer=App\EmployerModel::whereRaw('status=1')->select('id')->get()->toArray();
+?>
+<div class="jp_counter_main_wrapper">
+	<div class="container">
+		<div class="gc_counter_cont_wrapper">
+			<div class="count-description">
+				<span class="timer"><?php echo count(@$data_job); ?></span><i class="fa fa-plus"></i>
+				<h5 class="con1">Jobs Available</h5>
+			</div>
+		</div>
+		<div class="gc_counter_cont_wrapper2">
+			<div class="count-description">
+				<span class="timer"><?php echo count(@$data_candidate); ?></span><i class="fa fa-plus"></i>
+				<h5 class="con2">Members</h5>
+			</div>
+		</div>
+		<div class="gc_counter_cont_wrapper3">
+			<div class="count-description">
+				<span class="timer"><?php echo count(@$data_profile); ?></span><i class="fa fa-plus"></i>
+				<h5 class="con3">Resumes</h5>
+			</div>
+		</div>
+		<div class="gc_counter_cont_wrapper4">
+			<div class="count-description">
+				<span class="timer"><?php echo count(@$data_employer); ?></span><i class="fa fa-plus"></i>
+				<h5 class="con4">Company</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- jp counter Wrapper End -->
 @endsection()               

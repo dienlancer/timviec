@@ -181,7 +181,7 @@ if(count(@$source_new_job) > 0){
 						'employer.logo'
 					)
 					->orderBy('employer.id', 'desc')
-					->take(63)
+					->take(100)
 					->get()
 					->toArray();
 					if(count(@$source_top_hiring) > 0){
@@ -270,8 +270,7 @@ if(count(@$source_new_job) > 0){
 									->take(10)
 									->get()
 									->toArray();
-									if(count(@$source_attractive_job) > 0){
-										echo "<pre>".print_r($source_attractive_job,true)."</pre>";
+									if(count(@$source_attractive_job) > 0){										
 										?>
 										<div class="owl-carousel owl-theme">
 											<?php 
@@ -324,10 +323,10 @@ if(count(@$source_new_job) > 0){
 																	<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$hot_attractive_logo; ?>" alt="<?php echo @$hot_attractive_employer; ?>" /></a>
 																</div>
 																<div class="jp_job_post_right_cont">
-																	<h4><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_attractive_fullname; ?></a></h4>
-																	<p><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$hot_attractive_employer; ?></a></p>
+																	<h4 class="recent-job-title"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_attractive_fullname; ?></a></h4>
+																	<p class="recent-job-employer-name"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$hot_attractive_employer; ?></a></p> 
 																	<ul>
-																		<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
+																		<li><i class="fa fa-cc-paypal"></i><span class="margin-left-15"><?php echo @$value['salary_name']; ?></span></li>
 																		<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
 																	</ul>
 																</div>

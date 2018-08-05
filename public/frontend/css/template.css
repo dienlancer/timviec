@@ -168,6 +168,12 @@ figure:hover img{-webkit-transform:scale3d(1.2, 1.2, 1);transform:scale3d(1.2, 1
 .jp_hiring_content_wrapper .opening a:hover{
     background:#f36969;
 } 
+.recent-job-title a{
+    color: #000;
+}
+.recent-job-employer-name a{
+    color: #23c0e9;
+}
 @media (max-width: 768px){    
       
 }

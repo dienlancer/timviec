@@ -333,10 +333,8 @@ if(count(@$source_new_job) > 0){
 															</div>
 															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 																<div class="jp_job_post_right_btn_wrapper">
-																	<ul>
-																		<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-																		<li><a href="#">Part Time</a></li>
-																		<li><a href="#">Apply</a></li>
+																	<ul>																		
+																		<li><a href="javascript:void(0);">Ứng tuyển</a></li>
 																	</ul>
 																</div>
 															</div>
@@ -367,7 +365,7 @@ if(count(@$source_new_job) > 0){
 									?>																										
 								</div>
 								<?php 
-								if(count(@$source_attractive_job) > 0){
+								if(count(@$source_attractive_job) > 0){									
 									$total_page=ceil(count(@$source_attractive_job)/2);
 									?>
 									<div class="video_nav_img_wrapper">

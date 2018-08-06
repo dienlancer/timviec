@@ -186,6 +186,18 @@ figure:hover img{-webkit-transform:scale3d(1.2, 1.2, 1);transform:scale3d(1.2, 1
 .jp_hiring_heading_wrapper h2{
     font-size: 18px;
 }
+.jp_spotlight_slider_cont_Wrapper h4 a{
+    color: #000;
+}
+.jp_spotlight_slider_cont_Wrapper p a{
+    color: #23c0e9;
+}
+.jp_rightside_job_categories_content li:last-child a{
+    font-size: 13px;
+    color: #797979;
+    font-weight: normal;
+    text-transform: inherit;
+}
 @media (max-width: 768px){    
       
 }

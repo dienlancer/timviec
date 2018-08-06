@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2018 at 01:25 PM
+-- Generation Time: Aug 06, 2018 at 12:49 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -171,7 +171,9 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `category_id`, `caption`, `alt`, `image`, `page_url`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hotline chọn việc', 'Hotline chọn việc', 'hotline-chon-viec-a8l6o4zhi9xm.png', 'http://chonviec.vn', 1, 1, '2018-05-22 10:05:26', '2018-05-22 10:05:26');
+(2, 1, '', '', 'banner-2-f4hu1x5jcndswme0io7a.png', '', 1, 1, '2018-08-06 09:27:04', '2018-08-06 09:27:04'),
+(3, 1, '', '', 'banner-8-b10gitam4uevdsjn9ck6.png', '', 2, 1, '2018-08-06 09:27:54', '2018-08-06 09:27:54'),
+(4, 1, '', '', 'banner-10-otqsfyx8w1r60jk73z4v.png', '', 3, 1, '2018-08-06 09:28:15', '2018-08-06 09:28:15');
 
 -- --------------------------------------------------------
 
@@ -210,7 +212,8 @@ INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthd
 (4, 'hanhltm@dienkim.com', '$2y$10$yzu2gHugpB2s5nhJcgKJjeO4WrwCHCt88ZM/ZRF.KoEttByKWKxQ2', 'Lâm Thị Mỹ Hạnh', '0933244156', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 04:53:22', '2018-04-11 08:31:05'),
 (5, 'duydp@dienkim.com', '$2y$10$l.PmvBEd9gT/Dod3nJLTHe1i5Ko/uyEItXMYouG0d/od6pgNxZPlm', 'Phạm Đình Duy', '0988145622', '1989-05-06 00:00:00', 1, 1, 55, '62 Lê Thánh Tôn', NULL, NULL, NULL, 1, '2018-04-04 05:18:40', '2018-06-22 06:53:22'),
 (6, 'doricata@dienkim.com', '$2y$10$f5xkRP6uU9xCbwatX0o4XetN8cl6VgyElfUNKHOtWzug2YiQNHbRS', 'Nguyễn Văn Cường', '0988162289', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 05:31:42', '2018-04-04 10:14:02'),
-(9, 'dienit02@gmail.com', '$2y$10$.poX92LRY9iXsfOPQZLD.eITV1w98HCGcJhCC1S4zYMWf1RLBkb2m', 'Lê Phước Cường', '0922331459', NULL, NULL, NULL, NULL, NULL, NULL, 'iv3kny69a05l28r7wcp4zqj1ghbsdx', 1, 1, '2018-05-15 08:03:17', '2018-05-15 09:56:51');
+(9, 'dienit02@gmail.com', '$2y$10$.poX92LRY9iXsfOPQZLD.eITV1w98HCGcJhCC1S4zYMWf1RLBkb2m', 'Lê Phước Cường', '0922331459', NULL, NULL, NULL, NULL, NULL, NULL, 'iv3kny69a05l28r7wcp4zqj1ghbsdx', 1, 1, '2018-05-15 08:03:17', '2018-05-15 09:56:51'),
+(10, 'linhlk@dienkim.com', '$2y$10$yWFnB7UsZOTYbAc.xbuvKO3CIQUgoRdh2jSXVeZzKeKX4ZA4jNXjy', 'Lý Khánh Linh', '0988752133', NULL, NULL, NULL, NULL, NULL, NULL, 'be2sjk710c8wuifhdpm3n4og956vya', 0, 0, '2018-08-02 03:43:57', '2018-08-02 03:43:57');
 
 -- --------------------------------------------------------
 
@@ -277,7 +280,7 @@ CREATE TABLE `category_banner` (
 --
 
 INSERT INTO `category_banner` (`id`, `fullname`, `theme_location`, `status`, `sort_order`, `created_at`, `updated_at`) VALUES
-(1, 'Hotline', 'hotline-right', 1, 1, '2018-05-22 10:04:36', '2018-05-22 10:04:36');
+(1, 'Banner register login', 're-log', 1, 1, '2018-05-22 10:04:36', '2018-08-06 09:24:02');
 
 -- --------------------------------------------------------
 
@@ -577,7 +580,11 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (58, 'khuongthinh@dienkim.com', '$2y$10$aNRzc8yvvvBDclsSTfjTYeECt93Qo27dvZ/a9d0sIavWZ3ndQzkpS', 'Công ty Cổ phần Đầu tư Khương Thịnh', 'cong-ty-co-phan-dau-tu-khuong-thinh', NULL, NULL, '54A Xô Viết Nghệ Tĩnh, P.19, Q.Bình Thạnh, Tp.HCM.', '0977051661', 23, 4, NULL, '<p>Công ty Cổ phần Đầu tư Khương Thịnh là một trong những doanh nghiệp tiên phong trong lĩnh vực đầu tư, kinh doanh bất động sản chuyên về phân khúc thị trường nhà đất hiện hữu, với phương châm “Chất lượng dịch vụ là giá trị cốt lõi của sản phẩm”. Giỏ sản phẩm chủ yếu là căn hộ cao - trung cấp.</p><p>Các dự án của công ty phân bố ở Tp. HCM và một vài tỉnh thành khác như Đà Nẵng, Phú Quốc, Phan Thiết cùng các văn phòng đại diện đặt tại đây.</p><p>Hiện nay, chúng tôi có đội ngũ nhân sự năng động, được đào tạo chuyên nghiệp với hơn 200 nhân sự trên toàn hệ thống công ty.</p><p>Các lý do gia nhập công ty chúng tôi:</p><p>- Hoa hồng cao nhất thị trường hiện nay</p><p>- Được tham gia các khóa đào tạo nâng cao năng lực cơ bản và chuyên sâu hoàn toàn miễn phí</p><p>- Có lộ trình thăng tiến cho từng vị trí công việc</p><p>- Giỏ sản phẩm đa dạng, thuộc phân khúc cao cấp và trung cấp.</p><p>Hệ thống Khương Thịnh:</p><p>- Văn phòng chính: 54A Xô Viết Nghệ Tĩnh, P.19, Q.Bình Thạnh, Tp.HCM.</p><p>- CN1:125/11 Nguyễn Cửu Vân, P. 17, Q. Bình Thạnh, Tp.HCM.</p><p>- CN2: 212 Tạ Quang Bửu, P.04, Quận 08, Tp.HCM.</p><p>- Văn phòng miền trung: 266 Nguyễn Tri Phương, P. Thạc Gián, Q.Thanh Khê, TP Đà Nẵng.</p><p>- Văn phòng Phú Quốc: 18A Mạc Thiên Tích, Khu Phố 5, TT Dương Đông, Huyện Phú Quốc, Tỉnh Kiên Giang.</p><p>Hãy gia nhập Khương Thịnh ngay hôm nay.</p>', '75834533', 'www.khuongthinh.com.vn', 'Lê Đạt Thịnh', '0988122111', NULL, 'mn9hwy3vlc5p2f6sb80erkdju1ox47', 0, 1, 1, '2018-05-16 10:30:47', '2018-05-17 01:47:05'),
 (59, 'toanthinhphat@dienkim.com', '$2y$10$kpdkJMmKk2fyFYa/mHQk8OnTULPkao4shtNkoCu7oWDg6Q7cppKfe', 'Công ty TNHH TMDV Kỹ Thuật Điện Toàn Thịnh Phát', 'cong-ty-tnhh-tmdv-ky-thuat-dien-toan-thinh-phat', NULL, NULL, '860/60S/15 Xô Viết Nghệ Tĩnh, P25, Q Bình Thạnh', '0988111222', 23, 4, NULL, '<p>Công ty TNHH TMDV Kỹ Thuật Điện Toàn Thịnh Phát là một trong những công ty hàng đầu trong lĩnh vực lắp ráp, sửa chữa và bảo trì Máy phát điện tại Việt Nam, với các loại máy có công suất từ 5 KVA – 2.000 KVA, ... (được ủy nhiệm làm OEM chính thức tại Việt Nam) như: Cummins, Iveco, John Deere, Deuzt, MTU, Mecc Alte, Marathon, Visa Energy, Mitsubishi, EuroPower ...</p><p>Phạm vi hoạt động: rộng khắp trong cả nước.</p><p>Với đội ngũ nhân viên trẻ, đầy sáng tạo và năng động, chịu khó và ham học hỏi. Cùng sự góp sức của các chuyên gia dày dặn kinh nghiệm về thiết kế, phát triển và thi công nhiều công trình Máy Phát Điện, chúng tôi tự hào khi mang đến cho khách hàng những giải pháp điện công nghiệp cao cấp với nhiều phong cách chuyên nghiệp khác nhau, để lại ấn tượng sâu sắc trong lòng người sử dụng, qua đó nâng cao khả năng cạnh tranh cho khách hàng trong lĩnh vực mà công ty chúng tôi đã và đang thực hiện.</p>', '2342878742', 'www.mayphatdienttp.com', 'Trương Quốc Hiệp', '0988777116', NULL, 'e01xckuodlyzihja95ng4sr6bqf27v', 0, 1, 1, '2018-05-16 10:33:08', '2018-05-17 01:53:42'),
 (60, 'vinahost@dienkim.com', '$2y$10$iC/ylC4job0pLuVPaWjqz.tPbMdJYT1Y3Zyv4hChOAFBCQtXeNloy', 'Công Ty TNHH MTV VinaHost', 'cong-ty-tnhh-mtv-vinahost', 'metakeyword Công Ty TNHH MTV VinaHost', 'metadescription Công Ty TNHH MTV VinaHost', '351/31 Nơ Trang Long, Phường 13, Q Bình Thạnh.', '0941990111', 23, 4, NULL, '<p>VinaHost là công ty cung cấp dịch vụ cho thuê máy chủ và lưu trữ website chuyên nghiệp với hơn 8 năm kinh nghiệm trên thị trường Việt Nam và Bắc Mỹ. </p><p>Chúng tôi cam kết cung cấp dịch vụ cho thuê máy chủ và lưu trữ website tốt nhất tại thị trường Việt Nam:</p><p>Hỗ trợ khách hàng 24/7, đảm bảo giải quyết các sự cố nhanh chóng.</p><p>Các data center hàng đầu của Việt Nam như VDC &amp; Viettel IDC.</p><p>Hệ thống máy chủ Supermicro chất lượng cao.</p><p>Đảm bảo thời gian truy cập 99.9%.</p><p>Giải pháp lưu trữ và ảo hóa tối ưu.</p><p>Sao lưu dữ liệu miễn phí cho khách hàng đối với các dịch vụ lưu trữ website.</p><p>Cam kết hoàn tiền 100% cho khách hàng trong vòng 30 ngày.</p><p>Với đội ngũ nhân viên hỗ trợ kinh nghiệm, nhiệt tình và luôn sẵn sàng, chúng tôi tìm ra và giải quyết vấn đề của quý khách trong thời gian sớm nhất. VinaHost tự tin cung cấp dịch vụ hỗ trợ khách hàng tốt nhất. Chúng tôi biết những gì cần làm để đạt hiệu quả tối ưu và để mang lại thành công cho trang web của khách hàng.</p>', '77234282234', 'www.vinahost.vn', 'Trương Thành Vinh', '0963889231', 0, 'f84qrpime1woc9b06nj3zavhu7xs5k', 0, 1, 1, '2018-05-16 10:36:28', '2018-06-02 02:12:05'),
-(61, 'salonzo@dienkim.com', '$2y$10$GcAErDnzjDV3vc3mDjVCu.4l6O4..97Z0HNHqH.Zg9GbL2RCyjIMy', 'Công Ty Cổ Phần Mỹ Phẩm Salonzo', 'cong-ty-co-phan-my-pham-salonzo', '', '', 'Số 15, tầng 3 , toà D2 Giảng Võ, Q.Ba Đình, Hà Nội/ Tầng 4, tòa OSC,161 Võ Văn Tần, P6, Q3, TPHCM', '028 3933 3113', 23, 4, NULL, '<p>Công ty Cổ phần Mỹ phẩm Salonzo được thành lập vào ngày 11/6/2007, là công ty dẫn đầu trong lĩnh vực nhập khẩu và phân phối mỹ phẩm cao cấp Việt Nam. Salonzo là đối tác độc quyền bốn thương hiệu mỹ phẩm tóc cao cấp: ALFAPARF Milano( Italy), OYSTER COSMETICS( Italy), ALONZO( Australia), LAKME ( Tây Ban Nha).</p><p>Trải qua 10 năm hình thành và phát triển Salonzo đã khẳng định vị thế vững mạnh của mình. Quy mô công ty gần 100 cán bộ nhân viên, văn phòng tại Hà Nội và chi nhánh công ty tại TP Hồ Chí Minh, với gần 1000 sản phẩm các loại của Salonzo đã được phân phối đến hàng nghìn salon chuyên nghiệp trên toàn quốc, có khả năng đáp ứng mọi nhu cầu về chăm sóc, tạo kiểu tóc chuyên nghiệp của salon.<br></p><p>Salonzo luôn lấy tiềm năng con người là mục tiêu phát triển thương hiệu. Tại Salonzo, chúng tôi tạo dưng nên một môi trường làm việc chuyên nghiệp, thoải mái, mọi người làm việc với tinh thần tự giác và ý thức trách nhiệm cao, thỏa sức sáng tạo, dám nghĩ dám làm. Quản lý nhân sự theo mục tiêu công việc và đánh giá nhân sự theo kết quả thực hiện. Văn hóa công ty dựa trên các giá trị cốt lõi “5T”: TRUNG – THÂN – TIẾN – TÔN - TÍN&nbsp;<br></p><p>Hiện nay do nhu cầu mở rộng mạng lưới kinh doanh chúng tôi cần tuyển các ứng viên có khả năng, phù hợp với mục tiêu phát triển của Công ty. Nếu bạn có cùng chí hướng với chúng tôi, hãy gia nhập Salonzo để cùng nhau biến ước mơ thành hiện thực.<br></p>', '78247372882', 'www.salonso.vn', 'Trương Thị Hoài Phương', '0933566244', 0, 'gy5nvcj4mp0arhk2bzt7l6ixsof8d9', 0, 0, 0, '2018-06-22 02:11:32', '2018-06-22 09:06:18');
+(61, 'salonzo@dienkim.com', '$2y$10$GcAErDnzjDV3vc3mDjVCu.4l6O4..97Z0HNHqH.Zg9GbL2RCyjIMy', 'Công Ty Cổ Phần Mỹ Phẩm Salonzo', 'cong-ty-co-phan-my-pham-salonzo', '', '', 'Số 15, tầng 3 , toà D2 Giảng Võ, Q.Ba Đình, Hà Nội/ Tầng 4, tòa OSC,161 Võ Văn Tần, P6, Q3, TPHCM', '028 3933 3113', 23, 4, NULL, '<p>Công ty Cổ phần Mỹ phẩm Salonzo được thành lập vào ngày 11/6/2007, là công ty dẫn đầu trong lĩnh vực nhập khẩu và phân phối mỹ phẩm cao cấp Việt Nam. Salonzo là đối tác độc quyền bốn thương hiệu mỹ phẩm tóc cao cấp: ALFAPARF Milano( Italy), OYSTER COSMETICS( Italy), ALONZO( Australia), LAKME ( Tây Ban Nha).</p><p>Trải qua 10 năm hình thành và phát triển Salonzo đã khẳng định vị thế vững mạnh của mình. Quy mô công ty gần 100 cán bộ nhân viên, văn phòng tại Hà Nội và chi nhánh công ty tại TP Hồ Chí Minh, với gần 1000 sản phẩm các loại của Salonzo đã được phân phối đến hàng nghìn salon chuyên nghiệp trên toàn quốc, có khả năng đáp ứng mọi nhu cầu về chăm sóc, tạo kiểu tóc chuyên nghiệp của salon.<br></p><p>Salonzo luôn lấy tiềm năng con người là mục tiêu phát triển thương hiệu. Tại Salonzo, chúng tôi tạo dưng nên một môi trường làm việc chuyên nghiệp, thoải mái, mọi người làm việc với tinh thần tự giác và ý thức trách nhiệm cao, thỏa sức sáng tạo, dám nghĩ dám làm. Quản lý nhân sự theo mục tiêu công việc và đánh giá nhân sự theo kết quả thực hiện. Văn hóa công ty dựa trên các giá trị cốt lõi “5T”: TRUNG – THÂN – TIẾN – TÔN - TÍN&nbsp;<br></p><p>Hiện nay do nhu cầu mở rộng mạng lưới kinh doanh chúng tôi cần tuyển các ứng viên có khả năng, phù hợp với mục tiêu phát triển của Công ty. Nếu bạn có cùng chí hướng với chúng tôi, hãy gia nhập Salonzo để cùng nhau biến ước mơ thành hiện thực.<br></p>', '78247372882', 'www.salonso.vn', 'Trương Thị Hoài Phương', '0933566244', 0, 'gy5nvcj4mp0arhk2bzt7l6ixsof8d9', 0, 0, 0, '2018-06-22 02:11:32', '2018-06-22 09:06:18'),
+(62, 'congnghehoangnguyen@dienkim.com', '$2y$10$WBIiR3yKAIgMdxgm/q5tJegPItBlccTB95bpUmRaZO2aGYn0xb7B2', 'Công Ty TNHH Công Nghệ Hoàng Nguyễn', 'cong-ty-tnhh-cong-nghe-hoang-nguyen', NULL, NULL, '66 Lưu Chí Hiếu, P. Tây Thạnh, Q. Tân Phú, TP. Hồ Chí Minh', '0978231886', 23, 3, NULL, '<p>Chúng tôi là đại diện phân phối chính thức cho các hãng camera KBVISION, QUESTEK. Qua 5 năm phát triền, chúng tôi đã khẳng định được vị thế của mình trong ngành cung cấp các thiết bị và giải pháp an nình tổng thể cho gia đình và doanh nghiệp.</p><p>Các sản phẩm chúng tôi cung cấp:</p><p>- Thiết bị an ninh giám sát nhà cửa, siêu thị, tòa nhà, dự án....</p><p>- Chuông cửa màn hình.</p><p>- Khóa thông minh.</p><p>- Báo cháy, báo trộm.</p><p>- Nhà thông minh smarthome.</p><p>- Định vị xe tải, ô tô, xe máy.</p><p>- Máy tính và linh kiện máy tính.</p>', '874781237175', 'www.congnghehoangnguyen.com', 'Dương Thành Thái', '0944223167', NULL, '8uhkiot14v56npyqebfmgacz9x2r37', 0, 0, NULL, '2018-07-18 10:02:26', '2018-07-18 10:02:26'),
+(63, 'menzaavietnam@dienkim.com', '$2y$10$BWqj39G2l3ax0sYWnLkN/.g0IL/2Tis/aG7.yeG7mNk6KfnCtl6/K', 'Công ty cổ phần MENZAA VIỆT NAM', 'cong-ty-co-phan-menzaa-viet-nam', NULL, NULL, '65/7/4 Trần Văn Dư, phường 13, Quận Tân Bình, Tp.HCM', '0921771838', 15, 4, NULL, '', '871757418774', 'www.menzaavn.com', 'Trần Văn Đại', '0977223111', NULL, 'cfmge04s26ut7ljxzrqohvab3wk5pi', 0, 0, NULL, '2018-07-18 10:47:42', '2018-07-18 10:47:42'),
+(64, 'banhgivral@dienkim.com', '$2y$10$emuDRvNPAoeBevnuXSz9veTeap9gAFH0Wt.tLHQDMoAhaPP1xYFsa', 'Công ty Cổ phần Bánh GIVRAL', 'cong-ty-co-phan-banh-givral', NULL, NULL, 'Lô II-1B Lê Trọng Tấn, KCN Tân Bình, P. Tây Thạnh, Q. Tân Phú', '0988151002', 2, 3, NULL, '<p>Givral Bakery là một thương hiệu bánh danh tiếng của Sài Gòn với bề dày lịch sử hơn 60 năm. Ra đời vào đầu những năm thập niên 50 bởi Alain Portier một ông chủ người Pháp sống lâu năm tại Việt Nam, Givral thực sự mang nét tao nhã, tinh tế của nền văn hóa ẩm thực Pháp, làm đắm say biết bao thế hệ những người tiêu dùng Việt.\r\n</p><p>\r\nBánh mì Givral có đủ hương vị: ngọt, béo, mặn. Từ chiếc bánh mì baguette dài đến chiếc bánh mì cóc, Givral mang đến cho bạn những chiếc bánh thơm giòn đẳng cấp nhờ tuyệt chiêu trộn bột.\r\nTừ bột mì, đường, sữa, muối, trứng gà..., những chuyên gia làm bánh đỉnh cao của Givral đã tạo ra một hỗn hợp mịn màng, thơm lừng trước khi đi vào công đoạn tạo hình, ủ và nướng bánh.</p>', '414534534534', 'www.givralbakery.com.vn', 'Trần Văn Hà', '0956223145', NULL, 'fk9iv8muc760hajrnq4zespx2wblt5', 0, 0, NULL, '2018-07-18 10:55:57', '2018-07-18 10:55:57'),
+(65, 'tinhocthanhnhan@dienkim.com', '$2y$10$LpgsCLN9/mN.huALMmsZSuCoD5yu38aSziGrSeN6EOJSxUjhsGJZW', 'Công ty TNHH Tin học Thành Nhân', 'cong-ty-tnhh-tin-hoc-thanh-nhan', NULL, NULL, '174-176-178 Bùi Thị Xuân, P. Phạm Ngũ Lão, Q. 1', '0977231446', 4, 4, NULL, 'Rɑ đời từ năm 1994, công ty ƬƝHH Ƭin Học Ƭhành Ɲhân là một trong những công ty hàng đầu tại Ƭp. HϹM trong lĩnh vực công nghệ thông tin. Ϲông ty chúng tôi hiện là đại lý củɑ các hãng nổi tiếng: Intel, Ɗell,Sony,Asus, HƤ, Acer…Ϲhúng tôi luôn duy trì được tốc độ tăng trưởng ở mức độ cɑo và vững chắc trên mọi mặt. Ƭhành Ɲhân luôn chiếm được sự tin tưởng củɑ khách hàng trong và ngoài tỉnh bởi các chính sách, cɑm kết, dịch vụ…mà rất nhiều công ty máy tính khác không làm được.', '785432788', 'www.tinhocthanhnhan.com', 'Nguyễn Thành Nhân', '0956123456', NULL, 'whqopx6rc4mgjf8z3vn5ubtes27i9a', 0, 0, NULL, '2018-07-18 11:00:19', '2018-07-18 11:00:19');
 
 -- --------------------------------------------------------
 
@@ -1902,7 +1909,11 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (968, 1, 'UsirL9JIdsS33lRSgPTWoLu4PMBy7aoe', '2018-06-22 18:32:32', '2018-06-22 18:32:32'),
 (969, 1, 'Rg4YdADMw5qZCW98TgmzujqxvNRib2hD', '2018-06-24 09:06:01', '2018-06-24 09:06:01'),
 (970, 1, '5b7pVPBS9ZFVPfraz25V91GGRgPNleeP', '2018-06-24 18:21:20', '2018-06-24 18:21:20'),
-(971, 1, 'doedvh3SrF7fMfPwOVUp1d0ent1wJkAK', '2018-06-24 21:04:17', '2018-06-24 21:04:17');
+(971, 1, 'doedvh3SrF7fMfPwOVUp1d0ent1wJkAK', '2018-06-24 21:04:17', '2018-06-24 21:04:17'),
+(972, 1, 'ddqnBEBCg9kt6rn2PJyXByqSKIfuHaFE', '2018-06-26 01:15:00', '2018-06-26 01:15:00'),
+(973, 1, 'lJmyl8Ah5tSQ2Co7Whwr9WHeUxckEEN3', '2018-08-02 01:18:05', '2018-08-02 01:18:05'),
+(974, 1, 'jB7JfRQl8AN4l1vHzJhQ7obuzwJfflr5', '2018-08-03 20:26:55', '2018-08-03 20:26:55'),
+(975, 1, 'MnV75dhj0G4qbD0tCtkuN6K2MirmiNYs', '2018-08-06 02:15:40', '2018-08-06 02:15:40');
 
 -- --------------------------------------------------------
 
@@ -2243,7 +2254,9 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `hobby`, `talent`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, '<p>Đến Bệnh viện 115 và Thống Nhất thăm các hiệp sĩ gặp nạn sáng nay, ông Nguyễn Thành Phong trò chuyện với ông Trần Văn Hoàng (Trưởng nhóm hiệp sĩ Tân Bình, vừa qua cơn nguy kịch). Ông Phong thay mặt người dân thành phố cảm ơn nghĩa cử cao đẹp của các hiệp sĩ không quản nguy hiểm, xả thân bảo vệ bình yên cho nhân dân.\r\n</p><p>\r\nChủ tịch thành phố nói rằng, ông rất trăn trở khi hiệp sĩ chưa được trang bị bất cứ phương tiện nào để bảo vệ mình, còn tội phạm trộm cướp luôn mang theo vũ khí nguy hiểm.<br></p>', 1, 2, 3, 4, 'MS Sharepoint  48', '<p>- Tốt nghiệp từ trung cấp trở lên;\r\n</p><p>- Khả năng giao tiếp tốt, linh hoạt;\r\n</p><p>- Đạo đức tốt, kỷ luật tốt;\r\n</p><p>- Hoạt bát, có tinh thần cầu tiến, nhiệt huyết và mong muốn phát triển thu nhập xứng đáng với năng lực làm việc;\r\n</p><p>- Có điện thoại, xe máy, laptop;\r\n- Có kinh nghiệm kinh doanh trong các lĩnh vực tài chính/ngân hàng/ FMCG...là một lợi thế.</p>', 'Bóng đá 12', '<p>UNFPA Việt Nam từng hợp tác với Phạm Anh Khoa trong chiến dịch phòng chống bạo lực giới năm 2013, 2014. Anh cũng tham gia sự kiện kỷ niệm 40 năm hợp tác giữa UNFPA và chính phủ Việt Nam hồi tháng 7 năm ngoái. </p><p>Nam ca sĩ đảm nhiệm vai trò đại sứ hình ảnh về phòng chống bạo lực với phụ nữ và trẻ em gái. Trong đó, chống quấy rối và bạo lực tình dục chính là trọng tâm của chương trình này. </p><p>Trước khi đưa ra tuyên bố chính thức, UNFPA đã gỡ bỏ toàn bộ hình ảnh của rocker trên website, facebook của tổ chức này.\r\n\r\nQuỹ Dân số Liên Hợp Quốc (UNFPA) là cơ quan trực thuộc Liên Hợp Quốc, bắt đầu hoạt động từ năm 1969. Quỹ hoạt động ở Việt Nam từ năm 1977. Hoa hậu Đỗ Mỹ Linh, diễn viên Chiều Xuân, MC Phan Anh là đại sứ thiện chí.</p>', 1, 1, '2018-04-16 05:05:40', '2018-06-23 02:06:43');
+(1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, '<p>Đến Bệnh viện 115 và Thống Nhất thăm các hiệp sĩ gặp nạn sáng nay, ông Nguyễn Thành Phong trò chuyện với ông Trần Văn Hoàng (Trưởng nhóm hiệp sĩ Tân Bình, vừa qua cơn nguy kịch). Ông Phong thay mặt người dân thành phố cảm ơn nghĩa cử cao đẹp của các hiệp sĩ không quản nguy hiểm, xả thân bảo vệ bình yên cho nhân dân.\r\n</p><p>\r\nChủ tịch thành phố nói rằng, ông rất trăn trở khi hiệp sĩ chưa được trang bị bất cứ phương tiện nào để bảo vệ mình, còn tội phạm trộm cướp luôn mang theo vũ khí nguy hiểm.<br></p>', 1, 2, 3, 4, 'MS Sharepoint  48', '<p>- Tốt nghiệp từ trung cấp trở lên;\r\n</p><p>- Khả năng giao tiếp tốt, linh hoạt;\r\n</p><p>- Đạo đức tốt, kỷ luật tốt;\r\n</p><p>- Hoạt bát, có tinh thần cầu tiến, nhiệt huyết và mong muốn phát triển thu nhập xứng đáng với năng lực làm việc;\r\n</p><p>- Có điện thoại, xe máy, laptop;\r\n- Có kinh nghiệm kinh doanh trong các lĩnh vực tài chính/ngân hàng/ FMCG...là một lợi thế.</p>', 'Bóng đá 12', '<p>UNFPA Việt Nam từng hợp tác với Phạm Anh Khoa trong chiến dịch phòng chống bạo lực giới năm 2013, 2014. Anh cũng tham gia sự kiện kỷ niệm 40 năm hợp tác giữa UNFPA và chính phủ Việt Nam hồi tháng 7 năm ngoái. </p><p>Nam ca sĩ đảm nhiệm vai trò đại sứ hình ảnh về phòng chống bạo lực với phụ nữ và trẻ em gái. Trong đó, chống quấy rối và bạo lực tình dục chính là trọng tâm của chương trình này. </p><p>Trước khi đưa ra tuyên bố chính thức, UNFPA đã gỡ bỏ toàn bộ hình ảnh của rocker trên website, facebook của tổ chức này.\r\n\r\nQuỹ Dân số Liên Hợp Quốc (UNFPA) là cơ quan trực thuộc Liên Hợp Quốc, bắt đầu hoạt động từ năm 1969. Quỹ hoạt động ở Việt Nam từ năm 1977. Hoa hậu Đỗ Mỹ Linh, diễn viên Chiều Xuân, MC Phan Anh là đại sứ thiện chí.</p>', 1, 1, '2018-04-16 05:05:40', '2018-06-23 02:06:43'),
+(2, 'Nhân viên SEO marketing', 'nhan-vien-seo-marketing', 3, 3, 2, 1, 8000000, NULL, 5, '<p>Theo bác sĩ Cấp, người bị chó dại cắn nếu được tiêm phòng đúng phác đồ thì tránh tử vong. Khi bệnh dại khởi phát, có nghĩa cơ hội sống của bệnh nhân đã khép lại vì không có thuốc chữa và tử vong rất nhanh. Điều bác sĩ có thể làm trong tình trạng này chỉ là giúp bệnh nhân giảm đau.</p><p>Bệnh dại xảy ra quanh năm, thường tăng vào mùa hè. Thời gian ủ bệnh kéo dài, sớm nhất là nửa tháng, đa số vài ba tháng, có người đến vài năm. Thời gian phát bệnh phụ thuộc vào vị trí bị chó cắn, càng gần thần kinh trung ương càng phát bệnh nhanh. Vì thế, những người bị chó cắn ở vùng đầu mặt cổ thì cần tiêm huyết thanh kháng dại càng sớm càng tốt trong vòng 12 giờ sau khi bị cắn. 2</p>', 4, 3, 2, 1, 'phần mềm khác 2', '<p>các thành thích nổi bật 2</p>', 'Sở thích 2', '<p>kỹ năng đặc biệt 2</p>', 0, 1, '2018-08-02 03:47:08', '2018-08-02 08:18:46'),
+(3, 'Chuyên viên phân tích từ khóa', 'chuyen-vien-phan-tich-tu-khoa', 2, 4, 4, 3, 17000000, NULL, 5, '<p>mục tiêu nghề nghiệp 1</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, '2018-08-02 07:07:51', '2018-08-02 08:18:48');
 
 -- --------------------------------------------------------
 
@@ -2274,7 +2287,10 @@ CREATE TABLE `profile_experience` (
 --
 
 INSERT INTO `profile_experience` (`id`, `company_name`, `person_title`, `month_from`, `year_from`, `month_to`, `year_to`, `currency`, `salary`, `job_description`, `achievement`, `profile_id`, `created_at`, `updated_at`) VALUES
-(10, 'Công ty Cổ phần DKRA Việt Nam', 'Chuyên Viên Tư Vấn Bất Động Sản', 2, 2002, 3, 2003, 'vnd', 7000000, '<p>Năm 2018, cùng với sự phát triển mạnh mẽ của thị trường bất động sản, để đáp ứng nhu cầu mở rộng kinh doanh, phân phối độc quyền nhiều dự án từ các chủ đầu tư uy tín, DKRA Việt Nam cần tuyển:\r\n</p><p>- Tìm kiếm và khai thác nguồn khách hàng tiềm năng có nhu cầu mua/ đầu tư bất động sản;\r\n</p><p>- Giới thiệu, hướng dẫn và tư vấn cho khách hàng các thông tin liên quan đến sản phẩm, dự án mà công ty phân phối;\r\n</p><p>- Chăm sóc khách hàng hiện tại và tiềm năng;\r\n- Phối hợp với đội nhóm để thực hiện chỉ tiêu chung;</p>', '<p>Bác sĩ Bùi Minh Trạng (Phó giám đốc Bệnh viện 115) cho biết, đêm qua bệnh viện tích cực cứu chữa cho các hiệp sĩ nhưng anh Nguyễn Hoàng Nam (29 tuổi) và Nguyễn Văn Thôi (42 tuổi) đã tử vong.\r\n</p><p>\r\nCòn ông Trần Văn Hoàng (50 tuổi) bị vết thương ngực trái dài 20 cm, đứt các sụn sườn, thủng phổi, rách màng ngoài tim, rách cơ hoành, dạ dày, ruột trồi ra ngoài, mất khoảng 1.500 ml máu. Sau khi tích cực cứu chữa, bệnh nhân tỉnh, tiếp xúc tốt, không thở máy.</p>', 1, '2018-05-14 14:14:00', '2018-05-14 14:14:00');
+(10, 'Công ty Cổ phần DKRA Việt Nam', 'Chuyên Viên Tư Vấn Bất Động Sản', 2, 2002, 3, 2003, 'vnd', 7000000, '<p>Năm 2018, cùng với sự phát triển mạnh mẽ của thị trường bất động sản, để đáp ứng nhu cầu mở rộng kinh doanh, phân phối độc quyền nhiều dự án từ các chủ đầu tư uy tín, DKRA Việt Nam cần tuyển:\r\n</p><p>- Tìm kiếm và khai thác nguồn khách hàng tiềm năng có nhu cầu mua/ đầu tư bất động sản;\r\n</p><p>- Giới thiệu, hướng dẫn và tư vấn cho khách hàng các thông tin liên quan đến sản phẩm, dự án mà công ty phân phối;\r\n</p><p>- Chăm sóc khách hàng hiện tại và tiềm năng;\r\n- Phối hợp với đội nhóm để thực hiện chỉ tiêu chung;</p>', '<p>Bác sĩ Bùi Minh Trạng (Phó giám đốc Bệnh viện 115) cho biết, đêm qua bệnh viện tích cực cứu chữa cho các hiệp sĩ nhưng anh Nguyễn Hoàng Nam (29 tuổi) và Nguyễn Văn Thôi (42 tuổi) đã tử vong.\r\n</p><p>\r\nCòn ông Trần Văn Hoàng (50 tuổi) bị vết thương ngực trái dài 20 cm, đứt các sụn sườn, thủng phổi, rách màng ngoài tim, rách cơ hoành, dạ dày, ruột trồi ra ngoài, mất khoảng 1.500 ml máu. Sau khi tích cực cứu chữa, bệnh nhân tỉnh, tiếp xúc tốt, không thở máy.</p>', 1, '2018-05-14 14:14:00', '2018-05-14 14:14:00'),
+(14, 'Công Ty Cổ Phần Vận Tải Đa Phương Thức Vietranstimex 1', 'Nhân viên 1', 1, 2011, 2, 2012, 'vnd', 7000000, '<p>mô tả công việc 1</p>', '<p>thành tích đạt được 1</p>', 2, '2018-08-02 05:07:12', '2018-08-02 05:07:12'),
+(15, 'Công Ty Cổ Phần Vận Tải Đa Phương Thức Vietranstimex 2', 'Nhân viên 2', 3, 2013, 4, 2014, 'vnd', 8000000, '<p>mô tả công việc 2</p>', '<p>thành tích đạt được 2</p>', 2, '2018-08-02 05:12:51', '2018-08-02 05:12:51'),
+(16, 'Công Ty Cổ Phần Vận Tải Đa Phương Thức Vietranstimex 3', 'Nhân viên 3', 5, 2015, 6, 2016, 'vnd', 9000000, '<p>mô tả công việc 3</p>', '<p>thành tích đạt được 3</p>', 2, '2018-08-02 05:16:06', '2018-08-02 05:16:06');
 
 -- --------------------------------------------------------
 
@@ -2304,7 +2320,8 @@ CREATE TABLE `profile_graduation` (
 INSERT INTO `profile_graduation` (`id`, `literacy_id`, `training_unit`, `year_from`, `year_to`, `department`, `graduation_id`, `degree`, `profile_id`, `created_at`, `updated_at`) VALUES
 (1, 6, 'Trung tâm tin học Nhất Nghệ', 2001, 2003, 'Kỹ thuật viên máy tính', 2, 'category-1-238ordk6vuqf.png', 1, '2018-04-28 04:20:34', '2018-04-28 04:20:34'),
 (2, 2, 'Đại học FPT', 2003, 2005, 'Công nghệ phần mềm', 3, 'category-2-695mavyhufjz.png', 1, '2018-04-28 04:21:22', '2018-04-28 04:21:22'),
-(3, 2, 'Đại học Công Nghệ Thông Tin', 1959, 1956, 'Công nghệ phần mềm', 2, 'category-3-jw5b8khcgsfi.png', 1, '2018-04-28 12:03:42', '2018-04-28 12:03:42');
+(3, 2, 'Đại học Công Nghệ Thông Tin', 1959, 1956, 'Công nghệ phần mềm', 2, 'category-3-jw5b8khcgsfi.png', 1, '2018-04-28 12:03:42', '2018-04-28 12:03:42'),
+(6, 4, 'Đơn vị đào tạo 3', 2005, 2006, 'Công nghệ phần mềm 3', 1, 'aquaman2018movie4k-r5pw1suv208z4ayib69q.jpg', 2, '2018-08-02 04:16:49', '2018-08-02 04:16:49');
 
 -- --------------------------------------------------------
 
@@ -2333,7 +2350,9 @@ INSERT INTO `profile_job` (`id`, `profile_id`, `job_id`, `created_at`, `updated_
 (48, 13, 4, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
 (49, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
 (65, 1, 18, '2018-06-22 07:20:37', '2018-06-22 07:20:37'),
-(66, 1, 42, '2018-06-22 07:20:37', '2018-06-22 07:20:37');
+(66, 1, 42, '2018-06-22 07:20:37', '2018-06-22 07:20:37'),
+(67, 2, 15, '2018-08-02 03:47:08', '2018-08-02 03:47:08'),
+(68, 3, 15, '2018-08-02 07:07:51', '2018-08-02 07:07:51');
 
 -- --------------------------------------------------------
 
@@ -2362,7 +2381,8 @@ CREATE TABLE `profile_language` (
 INSERT INTO `profile_language` (`id`, `language_id`, `language_level_id`, `listening`, `speaking`, `reading`, `writing`, `profile_id`, `created_at`, `updated_at`) VALUES
 (1, 3, 3, 1, 2, 3, 4, 1, '2018-04-28 04:21:39', '2018-04-28 04:21:39'),
 (2, 4, 3, 4, 3, 2, 1, 1, '2018-04-28 04:22:59', '2018-04-28 04:22:59'),
-(3, 5, 3, 1, 2, 3, 4, 1, '2018-04-28 04:46:49', '2018-04-28 04:46:49');
+(3, 5, 3, 1, 2, 3, 4, 1, '2018-04-28 04:46:49', '2018-04-28 04:46:49'),
+(6, 4, 3, 1, 1, 3, 4, 2, '2018-08-02 04:18:15', '2018-08-02 04:18:15');
 
 -- --------------------------------------------------------
 
@@ -2391,7 +2411,9 @@ INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `u
 (40, 13, 4, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
 (41, 13, 6, '2018-04-17 03:38:34', '2018-04-17 03:38:34'),
 (60, 1, 17, '2018-06-22 07:20:37', '2018-06-22 07:20:37'),
-(61, 1, 23, '2018-06-22 07:20:37', '2018-06-22 07:20:37');
+(61, 1, 23, '2018-06-22 07:20:37', '2018-06-22 07:20:37'),
+(62, 2, 23, '2018-08-02 03:47:08', '2018-08-02 03:47:08'),
+(63, 3, 23, '2018-08-02 07:07:51', '2018-08-02 07:07:51');
 
 -- --------------------------------------------------------
 
@@ -2415,7 +2437,13 @@ CREATE TABLE `profile_skill` (
 INSERT INTO `profile_skill` (`id`, `skill_id`, `profile_id`, `created_at`, `updated_at`) VALUES
 (7, 4, 1, '2018-04-30 16:02:30', '2018-04-30 16:02:30'),
 (8, 6, 1, '2018-04-30 16:02:30', '2018-04-30 16:02:30'),
-(9, 8, 1, '2018-04-30 16:02:30', '2018-04-30 16:02:30');
+(9, 8, 1, '2018-04-30 16:02:30', '2018-04-30 16:02:30'),
+(14, 2, 2, '2018-08-02 04:36:51', '2018-08-02 04:36:51'),
+(15, 4, 2, '2018-08-02 04:36:51', '2018-08-02 04:36:51'),
+(16, 6, 2, '2018-08-02 04:36:51', '2018-08-02 04:36:51'),
+(17, 8, 2, '2018-08-02 04:36:51', '2018-08-02 04:36:51'),
+(18, 10, 2, '2018-08-02 04:36:51', '2018-08-02 04:36:51'),
+(19, 12, 2, '2018-08-02 04:36:51', '2018-08-02 04:36:51');
 
 -- --------------------------------------------------------
 
@@ -2710,7 +2738,7 @@ INSERT INTO `recruitment` (`id`, `fullname`, `meta_keyword`, `meta_description`,
 (51, 'Nhân Viên Kinh Doanh Sản Phẩm Nhôm Làm Việc Tại Hà Nội Và Tp.Hcm', NULL, NULL, 'nhan-vien-kinh-doanh-san-pham-nhom-lam-viec-tai-ha-noi-va-tphcm', 6, 3, '<p>- Thiết kế bản vẽ 2 D cho sản phẩm nhôm đúc. Thiết kế sản phẩm mới.Hỗ trợ kỹ thuật sản xuất và một số công việc khác khi có yêu cầu</p><p>- Tìm kiếm dự án mới, khách hàng mới.</p><p>- Xây dựng mối quan hệ lâu dài với khách hàng. Định kỳ lên lịch thăm viếng, chăm sóc khách hàng.</p><p>- Phối hợp với các bộ phận liên quan giải quyết các sự vụ phát sinh.</p><p>- Giao dịch trực tiếp với khách hàng để giới thiệu và bán sản phẩm.</p><p>- Thực hiện các công việc liên quan đến hợp đồng và thanh toán.</p><p>- Thu thập thông tin về khách hàng, thị trường để xây dựng cơ sở dữ liệu cho phòng Kinh doanh.</p><p>- Hoàn thành các chỉ tiêu được giao về doanh số, khách hàng, sản phẩm.</p><p>- Báo cáo bán hàng đầy đủ và đúng thời hạn.</p><p>Địa chỉ làm việc ở khu vực:</p><p>- Miền Bắc: 85 Nguyễn Du, quận Hai Bà Trưng, Hà Nội.</p><p>- Miền Nam: 20 đường Sông Thao, quận Tân Bình, Hồ Chí Minh.</p><p>- Chú ý: ghi cụ thể khu vực làm việc để tiện sắp xếp lịch phỏng vấn</p>', '<p>- Ưu tiên nhận sinh viên mới ra trường</p><p>- Tốt nghiệp Cao đẳng trở lên các ngành cơ khí chế tạo.</p><p>- Giao tiếp, thuyết trình, đàm phán, thương lượng tốt. Khả năng làm việc độc lập hoặc theo nhóm, làm việc dưới áp lực cao.</p><p>- Năng động, sáng tạo, nhiệt huyết và thích chinh phục những khó khăn trong công việc.</p>', 1, 8, 9, 4, 0, 0, 1, 2, '<p>- Lương từ 6,5 triệu đến 8 triệu</p><p>- Được tham gia bảo hiểm xã hội đầy đủ.</p><p>- Được tham gia bảo hiểm tai nạn 24h.</p><p>- Trong tháng được nghỉ thêm 2 ngày thứ 7, nếu 2 ngày này đi làm được tính tăng ca.</p><p>- Được tặng quà sinh nhật trong tháng; quà thiếu nhi; quà 8/3; quà tết; quà trung thu; tiền mừng sinh con; tiền mừng kết hôn; tiền tang chế; có quà cho các đối tượng có thâm niên làm việc từ 5 năm trở lên.</p><p>- Được cung cấp suất ăn trong ca làm việc.</p><p>- Được cấp phát bảo hộ lao động đầy đủ.</p><p>- Được trợ cấp tiền xăng; trợ cấp chuyên cần.</p>', NULL, '2018-05-29 00:00:00', 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:09:04', '2018-06-20 02:33:56'),
 (52, 'Chuyên Viên Tư Vấn Tài Chính Kênh Hợp Tác Ngân Hàng', NULL, NULL, 'chuyen-vien-tu-van-tai-chinh-kenh-hop-tac-ngan-hang', 6, 3, '<p>Kênh Ngân hàng là kênh phân phối bảo hiểm hoàn toàn mới, cùng với sự hợp tác giữa Công ty AIA và các Ngân hàng danh tiếng, hàng đầu tại Việt Nam (HSBC,Citibank, ANZ, Shinhan, ACB, DongA TPBank, VPBank…)</p><p>• Địa điểm làm việc: chi nhánh Ngân hàng.</p><p>• Thời gian làm việc: giờ hành chánh tại Ngân hàng</p><p>• Sử dụng nguồn khách hàng được Ngân hàng giới thiệu, tư vấn và giới thiệu với các khách hàng về kế hoạch tài chính, giải pháp và chương trình Bảo hiểm.</p><p>• Xây dựng, phát triển mối quan hệ với các nhân viên Ngân hàng tại chi nhánh Ngân hàng.</p><p>• Chăm sóc khách hàng hiện hữu và mới lịch sự, chu đáo, tận tâm.</p><p>• Báo cáo kết quả kinh doanh hàng ngày cho các quản lý cấp cao.</p><p>• Chi tiết rõ hơn về công việc sẽ được trao đổi trực tiếp tại buổi phỏng vấn.</p>', '<p>Tốt nghiệp hệ Cao Đẳng trở lên về các chuyên ngành kinh tế: Bảo hiểm, Tài chính, Ngân hàng, Kinh doanh,</p><p>• Không yêu cầu kinh nghiệm (sẽ được đào tạo)</p><p>• Ưu tiên ứng viên có kinh nghiệm về: Bảo hiểm, Tài chính, Ngân hàng, Kế toán, Bán hàng, …</p><p>• Tác phong thanh lịch, tự tin, tác phong chuyên nghiệp, kỹ năng giao tiếp và thuyết phục tốt là lợi thế.</p><p>• Chịu được áp lực công việc, kiên trì, chăm chỉ có trách nhiệm với công việc.</p><p>• Sử dụng thành thạo các phần mềm văn phòng Microsoft: Word, Excel, Powerpoint, …</p>', 1, 8, 9, 4, 0, 0, 1, 2, '<p>• LƯƠNG: CỐ ĐỊNH 6,000,000 (đối với IO) / 8.000,000 (đối với IS) + PHỤ CẤP (ĐIỆN THOẠI) + hoa hồng riêng HẤP DÂN (tùy theo năng lực) + các khoản thưởng (tháng, quý, năm) + thưởng năng lực hang tháng.</p><p>• Phụ cấp điện thoại hàng tháng 400.000đ</p><p>• Được hỗ trợ Bảo hiểm sức khỏe.</p><p>• Môi trường làm việc tại các Ngân hàng chuyên nghiệp và đầy tiềm năng tại Việt Nam: Citibank, ANZ, ACB, TPBank, VPbank …</p><p>• Được tham gia các hoạt động ngoại khóa và du lịch hàng năm của công ty.</p><p>• Trang bị các thiết bị công nghệ hiện đại phục vụ cho công việc: Máy Ipad, Máy POS, Máy vi tính, Máy in,</p><p>• Được đào tạo những kiến thức cơ bản và các kỹ năng phục vụ cho công việc kinh doanh.</p><p>• Có cơ hội thăng tiến lên các vị trí quản lý cấp cao.</p>', NULL, '2018-05-29 00:00:00', 10, 9, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:12:39', '2018-06-20 01:55:32'),
 (53, 'Nhân Viên Thị Trường - Khánh Hòa', NULL, NULL, 'nhan-vien-thi-truong-khanh-hoa', 10, 1, '<p>- Tìm kiếm khách hàng (Đăng tin, gọi điện thoại, công ty cung cấp)</p><p>- Chăm sóc khách hàng tiềm năng (mở rộng thị trường)</p><p>- Tư vấn sản phẩm cho khách hàng</p>', '<p>- Nam</p><p>- Có kinh nghiệm ít nhất 1 năm trở lên&nbsp;</p><p>- Siêng năng, thật thà</p><p>- Tuân thủ quy trình làm việc</p><p>- Ưu tiên người có kinh nghiệm kinh doanh vật liệu xây dựng.</p>', 1, 8, 3, 5, 5, 10, 1, 2, '<p>- Lương cơ bản : 5 triệu&nbsp;</p><p>- Sau thời gian thử việc thu nhập lương cơ bản + Chiết khấu doanh số&nbsp;</p><p>- Thưởng theo hiệu quả công việc.</p><p>- Tăng lương theo xét duyệt</p>', NULL, '2018-05-31 00:00:00', 9, 126, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:15:06', '2018-06-25 11:02:07'),
-(54, 'Giám Sát Bán Hàng Đức Hoà - Long An, Thủ Đức - Tphcm', NULL, NULL, 'giam-sat-ban-hang-duc-hoa-long-an-thu-duc-tphcm', 2, 1, '<p>- Quản lý và phát triển địa bàn phụ trách:Thiết lập tuyến bán hàng hợp lý, hiệu quả; phát triển các mục tiêu về doanh số, ngành hàng và kênh bán hàng tại địa bàn; tiếp nhận và xử lý các vấn đề của khách hàng tại địa bàn.</p><p>- Quản lý Nhân sự: Quản lý việc thực hiện công việc của nhân viên, tuyển dụng, huấn luyện nhân viên bán hàng, duy trì kỷ luật và phát triển nhân viên để đảm bảo được đội ngũ ổn định và đạt mục tiêu về doanh số.</p><p>- Giám Sát Nhà Phân Phối: Đảm bảo việc giao hàng, tồn kho đúng quy định, quản lý các chương trình khuyến mãi và ngân sách phát triển thị trường.</p><p>- Lên lịch đi thị trường hàng tuần và thực hiện việc đi thị trường theo lịch để giám sát, quản lý thị trường, khách hàng và huấn luyện nhân viên.</p>', '<p>- Nam, tuổi từ 25 - dưới 40;</p><p>- Trình độ: tốt nghiệp Cao đẳng trở lên các ngành có liên quan;</p><p>- Ít nhất 02 năm kinh nghiệm ở vị trí Giám sát bán hàng, ưu tiên các ngành hàng tiêu dùng (FMCG);</p><p>- Kỹ năng quản lý, lên kế hoạch, tổ chức và kiểm soát công việc;</p><p>- Có kỹ năng giao tiếp, đàm phán tốt;</p><p>- Sử dụng tốt các phần mềm văn phòng: MS. Word, Excel, Email,…;</p><p>- Có khả năng làm việc độc lập dưới áp lực cao.</p><p>- Lưu ý: Vui lòng gửi hồ sơ ghi rõ thông tin vị trí ứng tuyển ở khu vực nào cụ thể.</p>', 1, 2, 4, 5, 0, 0, 1, 3, '<p>- Mức lương cạnh tranh theo năng lực;</p><p>- Được làm việc trong môi trường chuyên nghiệp, được tham gia các chương trình huấn luyện đào tạo để phát triển nghề nghiệp;</p><p>- Có chế độ công tác phí khi đi công tác;</p><p>- Được hưởng các chế độ đầy đủ theo Luật Lao động (BHXH, BHYT, BHTN,…) và phúc lợi theo quy định của Công ty;</p><p>- Được khám sức khỏe định kỳ (hàng năm);</p><p>- Quà, Tiền thưởng Lễ - Tết (30/4 &amp;1/5, 2/9, 1/1).</p><p>- Chi tiết sẽ được trao đổi khi phỏng vấn</p>', NULL, '2018-05-29 00:00:00', 8, 195, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:17:56', '2018-06-25 10:58:14'),
+(54, 'Giám Sát Bán Hàng Đức Hoà - Long An, Thủ Đức - Tphcm', NULL, NULL, 'giam-sat-ban-hang-duc-hoa-long-an-thu-duc-tphcm', 2, 1, '<p>- Quản lý và phát triển địa bàn phụ trách:Thiết lập tuyến bán hàng hợp lý, hiệu quả; phát triển các mục tiêu về doanh số, ngành hàng và kênh bán hàng tại địa bàn; tiếp nhận và xử lý các vấn đề của khách hàng tại địa bàn.</p><p>- Quản lý Nhân sự: Quản lý việc thực hiện công việc của nhân viên, tuyển dụng, huấn luyện nhân viên bán hàng, duy trì kỷ luật và phát triển nhân viên để đảm bảo được đội ngũ ổn định và đạt mục tiêu về doanh số.</p><p>- Giám Sát Nhà Phân Phối: Đảm bảo việc giao hàng, tồn kho đúng quy định, quản lý các chương trình khuyến mãi và ngân sách phát triển thị trường.</p><p>- Lên lịch đi thị trường hàng tuần và thực hiện việc đi thị trường theo lịch để giám sát, quản lý thị trường, khách hàng và huấn luyện nhân viên.</p>', '<p>- Nam, tuổi từ 25 - dưới 40;</p><p>- Trình độ: tốt nghiệp Cao đẳng trở lên các ngành có liên quan;</p><p>- Ít nhất 02 năm kinh nghiệm ở vị trí Giám sát bán hàng, ưu tiên các ngành hàng tiêu dùng (FMCG);</p><p>- Kỹ năng quản lý, lên kế hoạch, tổ chức và kiểm soát công việc;</p><p>- Có kỹ năng giao tiếp, đàm phán tốt;</p><p>- Sử dụng tốt các phần mềm văn phòng: MS. Word, Excel, Email,…;</p><p>- Có khả năng làm việc độc lập dưới áp lực cao.</p><p>- Lưu ý: Vui lòng gửi hồ sơ ghi rõ thông tin vị trí ứng tuyển ở khu vực nào cụ thể.</p>', 1, 2, 4, 5, 0, 0, 1, 3, '<p>- Mức lương cạnh tranh theo năng lực;</p><p>- Được làm việc trong môi trường chuyên nghiệp, được tham gia các chương trình huấn luyện đào tạo để phát triển nghề nghiệp;</p><p>- Có chế độ công tác phí khi đi công tác;</p><p>- Được hưởng các chế độ đầy đủ theo Luật Lao động (BHXH, BHYT, BHTN,…) và phúc lợi theo quy định của Công ty;</p><p>- Được khám sức khỏe định kỳ (hàng năm);</p><p>- Quà, Tiền thưởng Lễ - Tết (30/4 &amp;1/5, 2/9, 1/1).</p><p>- Chi tiết sẽ được trao đổi khi phỏng vấn</p>', NULL, '2018-05-29 00:00:00', 8, 196, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:17:56', '2018-08-02 08:16:23'),
 (55, 'Nhân Viên Thu Hồi Tín Dụng Cho Ngân Hàng - Toàn Quốc', NULL, NULL, 'nhan-vien-thu-hoi-tin-dung-cho-ngan-hang-toan-quoc', 30, 1, '<p>• Là Nhân viên đại diện cho các Ngân hàng ủy quyền (có bảng tên, có giấy ủy quyền);</p><p>• Tiếp nhận hồ sơ từ ngân hàng chuyển qua cho Công ty;</p><p>• Nghiên cứu các thông tin về khoản tín dụng;</p><p>• Đánh giá hồ sơ, lập phương án và thực hiện thu hồi;</p><p>• Gọi ĐT, gặp trực tiếp tư vấn tính pháp lý, sự rủi ro của hồ sơ tín dụng quá hạn;</p><p>• Gợi ý các biện pháp hạn chế rủi ro biện pháp khắc phục;</p><p>• Quản lý hồ sơ, xử lý hồ sơ theo quy trình trong phạm vi công việc được giao.</p><p>Khách hàng hiện nay Công ty đang hỗ trợ thu hồi nợ:</p><p>1. Ngân hàng Việt Nam Thịnh Vượng (VPB)</p><p>2. Công ty tài chính HD Saison (HDSS)</p><p>3. Ngân hàng Standard Chartered (SCB)</p><p>4. Ngân hàng HSBC</p><p>ĐỊA CHỈ VĂN PHÒNG:</p><p>- VP ĐÀ NẴNG: F3-V5, Tầng 3, Tòa nhà Savico, 66 Võ Văn Tần, P. Chính Gián, Q. Thanh Khê, Đà Nẵng.</p><p>- VP ĐỒNG NAI: C50, Đường N2, Khu quy hoạch Bửu Long, Khu phố 1, P. Bửu Long, TP. Biên Hòa, Đồng Nai.</p><p>- VP NHA TRANG: Tầng 7, Tòa nhà VCN, đường A1, Khu đô thị Vĩnh Điềm Trung, X. Vĩnh Hiệp TP. Nha Trang, Khánh Hòa.</p><p>Thành.</p><p>- VP BÌNH DƯƠNG: Số 815 Đường Lê Hồng Phong, KP7, P. Phú Thọ, TP. Thủ Dầu Một, Bình Dương.</p>', '<p>• Giới tính Nam – Độ tuổi từ 20 đến 35.</p><p>• Tốt nghiệp THPT trờ lên. Ưu tiên ứng viên tốt nghiệp Trung cấp trở lên các ngành: Kinh tế, Luật, An ninh và Hành chánh.</p><p>• Biết sử dụng vi tính văn phòng (cơ bản);</p><p>• Có xe gắn máy;</p><p>• Trung thực, năng động, chịu khó có trách nhiệm và giao tiếp tốt;</p><p>• Không tiền án tiền sự.</p>', 1, 5, 2, 4, 0, 0, 1, 2, '<p>•<span style=\"white-space:pre\">	</span>Học việc có hưởng lương 4.500.000 đồng/tháng;</p><p>•<span style=\"white-space:pre\">	</span>Phụ cấp tiền xăng xe, điện thoại theo đúng mức thực tế;</p><p>• Được ký HĐLĐ sau thời gian học việc và thử việc (thời gian học việc 15 ngày và thử việc 30 ngày);</p><p>• Tham gia BHXH, BHYT, BHTN và BHTN 24/24 sau khi ký HĐLĐ;</p><p>• Đánh giá nâng lương định ký 2 lần/năm, kể từ ngày đầu tiên ký HĐLĐ;</p><p>• Hỗ trợ nuôi con đến đủ 18 tuổi;</p><p>• Được nhận lương trước làm việc sau (Tạm ứng lương trước) sau khi ký HĐLĐ;</p><p>• Phép năm hưởng theo tỉ lệ ngày làm việc thực tế và nghỉ không hết phép sẽ được chuyển thành tiền lương;</p><p>• Lương tháng 13-14 theo thời gian làm việc.</p>', NULL, '2018-05-28 00:00:00', 7, 21, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:22:20', '2018-06-20 01:26:00'),
 (56, 'Kỹ Sư Thiết Kế Bo Mạch Điện', NULL, NULL, 'ky-su-thiet-ke-bo-mach-dien', 1, 3, '<p>- Thiết kế bo mạch dẻo (Flexible Circuit Board Design)<br></p>', '<p>- Tốt nghiệp chuyên ngành điện tử.</p><p>- Ưu tiên ứng viên có trên 1 năm kinh nghiệp thiết kế bo mạch điện tử.</p><p>- Tiếng Anh hoặc tiếng Nhật giao tiếp tốt bao gồm cả 3 kĩ năng viết, đọc và nói. Có khả năng đối ứng khách hàng qua email, skype.</p><p>( Ứng viên không yêu cầu biết cả hai thứ tiếng)</p>', 1, 1, 3, 7, 0, 0, 1, 2, '<p>- Lương thoả thuận theo năng lực.</p><p>- Trợ cấp cơm trưa theo chế độ công ty.</p><p>- Tham gia đầy đủ BHXH, BHYT, BHTN</p><p>- Lương tháng 13, lương doanh thu và các thưởng lễ khác theo tình hình kinh doanh của công ty.</p><p>- Du lịch hàng năm.</p><p>- Xét tăng lương 1 lần /1 năm</p><p>- Được training trở thành leader nhóm sau 1 năm làm việc tại công ty.</p>', NULL, '2018-05-31 00:00:00', 6, 30, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:25:19', '2018-06-25 11:01:47'),
 (57, 'Nhân Viên Lái Xe Taxi Tải Tại Tp. Hcm (Thu Nhập 10 - 12 Triệu Đồng) [Thành Hưng]', NULL, NULL, 'nhan-vien-lai-xe-taxi-tai-tai-tp-hcm-thu-nhap-10-12-trieu-dong-thanh-hung', 100, 1, '<p>- Lái xe taxi tải theo sự điều động của công ty&nbsp;</p><p>- Làm việc tại Quận 12 hoặc Quận 7 và Nhà Bè TP.HCM</p><p>- Chi tiết công việc sẽ trao đổi cụ thể khi phỏng vấn</p>', '<p>- Trung thực, chăm chỉ</p><p>- Thông thạo đường phố Hồ Chí Minh</p><p>- Số lượng tuyển 100 lái xe</p>', 1, 6, 3, 5, 0, 0, 1, 1, '<p>- Với nhiều chế độ ưu đãi. Không phải đóng thế chấp ban đầu.&nbsp;</p><p>- Được chia doanh thu cao đến 50%</p><p>- Bổ túc tay lái miễn phí.&nbsp;</p><p>- Được hỗ trợ lương cơ bản 02 tháng đầu</p><p>- Công việc nhiều, ổn định, thu nhập cao (thu nhập từ 10 - 12 triệu đồng/tháng).&nbsp;</p><p>- Được hỗ trợ nhà ở miễn phí cho hộ khẩu ngoại tỉnh.&nbsp;</p><p>- Được thưởng doanh thu cao hàng tháng, quý, năm.&nbsp;</p><p>- Được công ty hỗ trợ 5 triệu đồng khi hết hạn hợp đồng chuyển công việc khác.&nbsp;</p><p>- 100% được đóng BHXH, BHYT, BHTN theo Luật Lao động.</p>', NULL, '2018-05-31 00:00:00', 5, 56, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 08:28:14', '2018-06-25 07:06:07'),
@@ -2722,7 +2750,7 @@ INSERT INTO `recruitment` (`id`, `fullname`, `meta_keyword`, `meta_description`,
 (62, 'Nhân Viên Hỗ Trợ Kỹ Thuật Online (IT Support 24 / 7)', NULL, NULL, 'nhan-vien-ho-tro-ky-thuat-online-it-support-24-7', 2, 1, '<p>- Tư vấn lựa chọn cấu hình gói dịch vụ hoặc cấu hình máy chủ phù hợp với nhu cầu sử dụng thực tế của khách hàng.</p><p>- Hướng dẫn khách hàng cấu hình và sử dụng các phần mềm kết nối đến dịch vụ và các thao tác quản trị tên miền / quản lý sử dụng dịch vụ shared hosting.</p><p>- Cài đặt, cấu hình các dịch vụ máy chủ ảo và máy chủ riêng.</p><p>- Kiểm tra xác định nguyên nhân và hướng dẫn khách hàng khắc phục các sự cố thường gặp trong quá trình sử dụng dịch vụ.</p><p>- Thực hiện các công việc khác của phòng kỹ thuật tùy theo khả năng:</p><p>+ Phát triển các công cụ tự động hóa các thao tác của người quản trị.</p><p>+ Nghiên cứu, cài đặt, cấu hình và bảo trì nâng cấp các dịch vụ / giải pháp công nghệ trên hệ thống máy chủ Linux & Windows.</p><p>+ Xử lý các sự cố phức tạp về bảo mật và hệ thống.</p><p>+ Thiết kế xây dựng và quản trị hệ thống hạ tầng mạng tại các trung tâm dữ liệu.</p>', '<p>- Có nền tảng kiến thức vững chắc về Network, TCP/IP...</p><p>- Có khả năng lập trình tốt Bash Shell, biết lập trình Python là một lợi thế.</p><p>- Có hiểu biết về bảo mật network/ system/ website.</p><p>- Sử dụng thành thạo các hệ thống quản lý hosting cPanel / DirectAdmin / Plesk.</p><p>- Có khả năng đọc hiểu tốt tài liệu tiếng Anh chuyên ngành CNTT.</p><p>- Có tinh thần trách nhiệm cao, có khả năng giao tiếp, trình bày và truyền đạt tốt.</p><p>- Có sức khỏe tốt, sẵn sàng làm việc theo ca / ngoài giờ hành chính theo yêu cầu của công việc.</p><p>- Nắm vững kiến thức cơ bản về Linux hoặc trình độ tương đương chứng chỉ LPI 1.</p><p>- Nắm vững khái niệm và cơ chế hoạt động của các dịch vụ phổ biến trong lĩnh vực hosting như domain, web server, database, DNS..</p>', 1, 3, 2, 3, 0, 0, 1, 3, '<p>- Chế độ lương và đãi ngộ cạnh tranh.</p><p>- Được tham gia đầy đủ các chế độ BHXH theo Luật Lao động hiện hành và quy định của Công ty.</p><p>- Môi trường làm việc thân thiện, chuyên nghiệp.</p><p>- Du lịch xa ít nhất 1 năm/ lần, dã ngoại và team building 2 lần/năm.</p><p>- Được tham gia các hoạt động thể thao & các khóa học nâng cao trình độ.</p><p>- Có trợ cấp ăn trưa, đi lại, trực ngoài giờ.</p><p>- Được hướng dẫn và đào tạo bổ sung các kỹ năng cần thiết để trở thành các vị trí nhân sự chủ chốt của phòng kỹ thuật.</p>', NULL, '2018-05-19 00:00:00', 60, 64, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 09:53:41', '2018-06-25 11:02:47'),
 (63, 'Nhân Viên Kinh Doanh', NULL, NULL, 'nhan-vien-kinh-doanh', 5, 3, '<p>- Tìm kiếm và giới thiệu khách hàng về các dịch vụ và các giải pháp do VinaHost cung cấp cho khách hàng.</p><p>- Tư vấn cho khách hàng các gói dịch vụ phù hợp nhất giúp tiết kiệm chi phí và nâng cao hiệu quả.</p><p>- Chăm sóc khách hàng,mở rộng các mối quan hệ nhằm nâng cao hiệu quả công việc .</p>', '<p>- Có khả năng làm việc độc lập và phối hợp nhóm để thực hiện chiến dịch kinh doanh hiệu quả.</p><p>- Kỹ năng giao tiếp tốt, nhiệt tình, hòa đồng.</p><p>- Có tinh thần trách nhiệm, chịu áp lực công việc.</p><p>- Có khả năng đàm phán&nbsp;</p><p>- Sáng tạo và cầu tiến trong công việc.</p><p>- Ưu tiên ứng viên đã có kinh nghiệm kinh doanh cùng lĩnh vực thiết kế website, kinh doanh dịch vụ, marketing online, máy chủ, SEO.</p>', 1, 3, 1, 4, 0, 0, 1, 3, '<p>- Lương cố định 4,6 -&gt; 7 triệu + Phụ cấp + (10% - 30% hoa hồng.)</p><p>- Được cung cấp thiết bị cần thiết cho công việc.</p><p>- Được đào tạo sơ bộ, kiến thức chuyên môn và kỹ năng mềm.</p><p>- Hưởng nhiều chính sách đãi ngộ, đặc biệt như thưởng nóng (tiền mặt hoặc hiện vật) hàng tháng theo kết quả làm việc hoặc những kế hoạch đột phá; thưởng cuối năm theo doanh thu; phụ cấp ăn trưa, đi lại, tiếp khách.</p><p>- Khám sức khỏe định kỳ hàng năm.</p><p>- Du lịch nghỉ mát 01 lần/năm; team building từ 3 lần/năm, Gala cuối năm.</p><p>- Được làm việc trong môi trường trẻ trung, năng động, đánh giá và đãi ngộ dựa trên năng lực &amp; sự nhiệt tình sáng tạo của từng thành viên.</p>', NULL, '2018-05-31 00:00:00', 60, NULL, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-17 09:58:09', '2018-05-27 09:44:04'),
 (64, 'Nhân Viên Lập Trình Php, Wordpress', NULL, NULL, 'nhan-vien-lap-trinh-php-wordpress', 2, 3, '<p>VinaHost có nhu cầu tuyển dụng nhân sự chuyên thiết kế website dựa trên nền tảng WordPress với mô tả công việc gồm có:</p><p>- Thiết kế và triển khai các giao diện đồ họa trên hệ thống quản lý nội dung mã nguồn mở WordPress theo yêu cầu của khách hàng.</p><p>- Cấu hình các chức năng mở rộng (plugins / extensions) và thực hiện các thao tác quản trị cấu hình WordPress theo yêu cầu của khách hàng.</p><p>- Hỗ trợ hướng dẫn khách hàng cập nhật bài viết và quản lý nội dung website.</p><p>- Chuyển layout từ PSD sang HTML-CSS</p><p>- Lập trình chức năng cho website</p>', '<p>- Hiểu biết vững chắc và sử dụng thành thạo WordPress</p><p>- Có kinh nghiệm lập trình nhiều dự án web</p><p>- Có kỹ năng/kiến thức tốt về PHP</p><p>- Có kinh nghiệm làm việc với các CMS khác hoặc các PHP Framework (Zend Framework, Yii, Prado, CodeIgniter, Kohana, CakePHP…) là một lợi thế.</p><p>- Có kiến thức về các công nghệ cơ bản như HTML/CSS, AJAX, Javascript.Biết sử dụng Illustrator hoặc Corel là một lợi thế</p><p>- Có kiến thức về thiết kế và khả năng xử lý đồ họa. Có khiếu thẩm mỹ.</p>', 1, 3, 2, 4, 0, 0, 1, 3, '<p>- Lương + thưởng theo dự án.</p><p>- Thiết kế cho các thương hiệu, công ty lớn</p><p>- Được cung cấp thiết bị cần thiết cho công việc, tham gia các khóa đào tạo (đào tạo sơ bộ, kiến thức chuyên môn và kỹ năng mềm).</p><p>- Hưởng nhiều chính sách đãi ngộ, đặc biệt như thưởng nóng (tiền mặt hoặc hiện vật) hàng tháng theo kết quả làm việc hoặc những kế hoạch đột phá; thưởng cuối năm theo doanh thu; phụ cấp ăn trưa, đi lại, tiếp khách.</p><p>- Tham gia khám sức khỏe định kỳ hàng năm</p><p>- Du lịch nghỉ mát 01 lần/năm; team building từ 3 lần/năm, Gala cuối năm.</p><p>- Được làm việc trong môi trường trẻ trung, năng động, đánh giá và đãi ngộ dựa trên năng lực &amp; sự nhiệt tình sáng tạo của từng thành viên.</p>', NULL, '2018-05-31 00:00:00', 60, 44, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-18 07:21:44', '2018-06-19 07:42:39'),
-(65, 'Kế toán thuế làm việc tại TP. Hồ Chí Minh', 'metakeyword Kế toán thuế làm việc tại TP. Hồ Chí Minh', 'metadescription Kế toán thuế làm việc tại TP. Hồ Chí Minh', 'ke-toan-thue-lam-viec-tai-tp-ho-chi-minh', 1, 2, '<p>- Lập tờ khai thuế theo tháng,quý,năm gửi cho cơ quan thuế theo quy định</p><p>- Lưu giữ sổ sách kế toán, đóng chứng từ thuế</p><p>- Làm việc với cơ quan thuế khi có phát sinh</p><p>- Chịu trách nhiệm giải trình khi doanh nghiệp quyết toán thực tế</p><p>- Xây định biểu mẫu,quy trình,chính sách cần thiết để quản lý thông tin tài chính kế toán</p><p>- Liên tục cập nhật các thông tư nghị định mới về thuế</p><p>- Đảm nhiệm một số các công việc phát sinh khác theo sự phân công của kế toán trưởng</p>', '<p>- Tốt nghiệp đại học trở lên chuyên ngành Kế toán, tài chính</p><p>- Sử dụng thành thạo phân mềm kế toán (ưu tiên ứng viên biết sử dụng phần mềm MISA,Fast)&nbsp;</p><p>- Có ít nhất 2 năm kinh nghiệm ở vị trí tương đương ,có định hướng làm việc lâu dài, giao tiếp tốt, nhanh nhẹn ,có tinh thần trách nhiệm cao.</p>', 1, 1, 4, 4, 8, 10, 1, 3, '<p>- Lương thỏa thuận theo năng lực</p><p>- Môi trường làm việc năng động, thân thiện, cơ hội thăng tiến. Được đào tạo thêm để nâng cao nghiệp vụ chuyên môn.</p><p>- Các chế độ dành cho người lao động theo như quy định pháp luật hiện hành (BHXH, BHYT, BHTN…).</p><p>- Có lương tháng thứ 13 theo quy định công ty.</p>', '<p>- Đơn xin việc.</p><p>- Sơ yếu lý lịch.</p><p>- Hộ khẩu, chứng minh nhân dân và giấy khám sức khỏe.</p><p>- Các bằng cấp có liên quan.</p>', '2018-06-08 00:00:00', 60, 75, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-31 09:34:52', '2018-06-25 11:00:32'),
+(65, 'Kế toán thuế làm việc tại TP. Hồ Chí Minh', 'metakeyword Kế toán thuế làm việc tại TP. Hồ Chí Minh', 'metadescription Kế toán thuế làm việc tại TP. Hồ Chí Minh', 'ke-toan-thue-lam-viec-tai-tp-ho-chi-minh', 1, 2, '<p>- Lập tờ khai thuế theo tháng,quý,năm gửi cho cơ quan thuế theo quy định</p><p>- Lưu giữ sổ sách kế toán, đóng chứng từ thuế</p><p>- Làm việc với cơ quan thuế khi có phát sinh</p><p>- Chịu trách nhiệm giải trình khi doanh nghiệp quyết toán thực tế</p><p>- Xây định biểu mẫu,quy trình,chính sách cần thiết để quản lý thông tin tài chính kế toán</p><p>- Liên tục cập nhật các thông tư nghị định mới về thuế</p><p>- Đảm nhiệm một số các công việc phát sinh khác theo sự phân công của kế toán trưởng</p>', '<p>- Tốt nghiệp đại học trở lên chuyên ngành Kế toán, tài chính</p><p>- Sử dụng thành thạo phân mềm kế toán (ưu tiên ứng viên biết sử dụng phần mềm MISA,Fast)&nbsp;</p><p>- Có ít nhất 2 năm kinh nghiệm ở vị trí tương đương ,có định hướng làm việc lâu dài, giao tiếp tốt, nhanh nhẹn ,có tinh thần trách nhiệm cao.</p>', 1, 1, 4, 4, 8, 10, 1, 3, '<p>- Lương thỏa thuận theo năng lực</p><p>- Môi trường làm việc năng động, thân thiện, cơ hội thăng tiến. Được đào tạo thêm để nâng cao nghiệp vụ chuyên môn.</p><p>- Các chế độ dành cho người lao động theo như quy định pháp luật hiện hành (BHXH, BHYT, BHTN…).</p><p>- Có lương tháng thứ 13 theo quy định công ty.</p>', '<p>- Đơn xin việc.</p><p>- Sơ yếu lý lịch.</p><p>- Hộ khẩu, chứng minh nhân dân và giấy khám sức khỏe.</p><p>- Các bằng cấp có liên quan.</p>', '2018-06-08 00:00:00', 60, 75, 1, 1, 1, 1, 1, 1, 1, 1, '2018-05-31 09:34:52', '2018-08-04 03:28:56'),
 (66, 'Nhân viên tư vấn trực Hotline và Tổng đài', NULL, NULL, 'nhan-vien-tu-van-truc-hotline-va-tong-dai', 10, 3, '<p>-&nbsp; Giải đáp các thắc mắc về dịch vụ khám chữa bệnh của bệnh nhân và người nhà&nbsp;</p><p>- Tư vấn các dịch vụ khám chữa bệnh theo yêu cầu</p>', '<p>- Giọng nói dễ nghe, phát âm chuẩn, không nói ngọng, giọng địa phương nặng.</p><p>- Khả năng giao tiếp qua điện thoại tốt</p><p>- Nhanh nhẹn, tin học văn phòng thành thạo</p>', 1, 7, 9, 3, 0, 0, 2, 2, '<p>- Lương thỏa thuận theo năng lực</p><p>- Môi trường làm việc năng động, thân thiện, cơ hội thăng tiến. Được đào tạo thêm để nâng cao nghiệp vụ chuyên môn.</p><p>- Các chế độ dành cho người lao động theo như quy định pháp luật hiện hành (BHXH, BHYT, BHTN…).</p><p>- Có lương tháng thứ 13 theo quy định công ty.</p>', '<p>Thời gian nộp hồ sơ: Từ ngày ra thông báo đến hết ngày 06/06/2018.</p><p>VI. Hình thức nộp hồ sơ:</p><p>1. Nộp trực tiếp: Phòng Nhân sự -Tầng 1 Tòa Times Tower, số 35 Lê Văn Lưỡng, NhânChính, Thanh Xuân, TP Hà Nội. (Ngã 3 Lê Văn Lương và Lê Văn Thiêm)</p><p>2. Nộp online trực tuyến&nbsp;</p>', '2018-06-08 00:00:00', 60, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2018-05-31 09:43:26', '2018-05-31 09:46:13'),
 (67, 'Nhân Viên Kinh Doanh Bán Lẻ Tại Hồ Tùng Mậu - Mai Hoàng', NULL, NULL, 'nhan-vien-kinh-doanh-ban-le-tai-ho-tung-mau-mai-hoang', 3, 1, '<div>- Tư vấn nhiệt tình, chủ động bán và giới thiệu sản phẩm cty phân phối, chăm sóc khách hàng đại lý cũ và mới.</div><div>- Phát triển hệ thống kênh bán hàng của công ty.</div><div>- Thống nhất việc ký kết hợp đồng với Khách Hàng</div><div>- Thực hiện các công việc được giao theo sự chỉ đạo của ban Giám Đốc.</div><div>- Làm việc tại Hồ Tùng Mậu</div>', '<p>- Am hiểu về các sản phẩm IT</p><p>- Trong 3 tháng đầu không cần doanh số, chỉ cần làm quen với văn hóa và cách làm việc của công ty Mai Hoàng.&nbsp;</p><p>- Khuyến khích tinh thần học hỏi, tích lũy kinh nghiệm, có tham vọng, cầu tiến và mục tiêu nghề nghiệp.</p><p>- Trình độ học vấn: trung cấp trở lên</p><p>- Biết tin học văn phòng</p><p>- Ngoại hình ưa nhìn, gọn gàng, có tinh thần trách nhiệm cao, tác phong chuyên nghiệp.</p><p>- Yêu thích kinh doanh, chủ động trong công việc.</p>', 7, 5, 5, 5, 10, 20, 2, 4, '<p>- Lương cứng + thử việc 5 - 7 triệu + % hoa hồng, mức lương đạt được 10 - 20 triệu</p><p>- Được tham gia BHXH, BHYT và các chế độ phúc lợi khác của Công ty</p><p>- Được làm việc trong môi trường chuyên nghiệp và năng động</p><p>- Được thưởng các ngày lễ, tết theo quy định của Công ty. Có nhiều cơ hội thăng tiến.</p>', '<p>Bấm \"NỘP HỒ SƠ\" để ứng tuyển<br></p>', '2018-06-23 00:00:00', 9, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2018-06-22 02:43:57', '2018-06-22 03:15:10'),
 (68, 'Nhân Viên Cơ Điện Phát triển Phụ gia và Sản phẩm Dầu mỏ', NULL, NULL, 'nhan-vien-co-dien-phat-trien-phu-gia-va-san-pham-dau-mo', 7, 1, '<p>1 Sửa chữa, bảo trì, bảo dưỡng máy móc, hệ thống cơ điện của xưởng sản xuất</p><p>2 Làm các công việc phát sinh khi có yêu cầu từ Giám đốc Sản xuất</p><p>3 Chi tiết công việc cụ thể sẽ trao đổi khi phỏng vấn</p>', '<p>- Tốt nghiệp tại các trường trung cấp, cao đẳng trong cả nước có chuyên ngành</p><p>liên quan</p><p>- Ưu tiên ứng viên đã có kinh nghiệm ở vị trí tương đương</p><p>- Nhanh nhẹn, nhiệt tình, có tinh thần trách nhiệm cao trong công việc</p>', 1, 7, 5, 5, 0, 0, 1, 3, '<p>- Lương + thưởng hấp dẫn cạnh tranh, thưởng dịp Lễ, Tết, thưởng lương</p><p>tháng 13 (theo hiệu quả kinh doanh)</p><p>- Được đóng BHXH, BHYT, BHTN theo qui định của pháp luật</p><p>- Được hưởng các chính sách phúc lợi khác bao gồm: Đào tạo nghiệp vụ,</p><p>tham quan, nghỉ mát, đồng phục, ăn ca, điện thoại, khám sức khoẻ định kỳ,…</p><p>- Có xe đưa đón cán bộ, nhân viên từ Trung tâm Hà Nội sang Công ty làm</p><p>việc</p><p>- Thời giờ làm việc: 8 giờ/ ngày từ thứ Hai đến thứ Sáu.</p>', '', '2018-06-27 00:00:00', 9, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2018-06-22 03:06:41', '2018-06-22 08:18:16');
@@ -2921,12 +2949,13 @@ INSERT INTO `recruitment_job` (`id`, `recruitment_id`, `job_id`, `created_at`, `
 (182, 52, 5, '2018-05-18 07:42:18', '2018-05-18 07:42:18'),
 (183, 52, 39, '2018-05-18 07:42:18', '2018-05-18 07:42:18'),
 (185, 66, 3, '2018-05-31 09:43:26', '2018-05-31 09:43:26'),
-(187, 65, 5, '2018-05-31 10:19:04', '2018-05-31 10:19:04'),
 (188, 67, 1, '2018-06-22 02:43:57', '2018-06-22 02:43:57'),
 (189, 67, 15, '2018-06-22 02:43:57', '2018-06-22 02:43:57'),
 (190, 67, 39, '2018-06-22 02:43:57', '2018-06-22 02:43:57'),
 (206, 68, 1, '2018-06-22 08:18:16', '2018-06-22 08:18:16'),
-(207, 68, 12, '2018-06-22 08:18:16', '2018-06-22 08:18:16');
+(207, 68, 12, '2018-06-22 08:18:16', '2018-06-22 08:18:16'),
+(208, 65, 3, '2018-08-04 03:28:56', '2018-08-04 03:28:56'),
+(209, 65, 5, '2018-08-04 03:28:56', '2018-08-04 03:28:56');
 
 -- --------------------------------------------------------
 
@@ -3028,11 +3057,12 @@ INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created
 (83, 63, 23, '2018-05-17 09:58:09', '2018-05-17 09:58:09'),
 (84, 64, 23, '2018-05-18 07:21:44', '2018-05-18 07:21:44'),
 (86, 66, 23, '2018-05-31 09:43:26', '2018-05-31 09:43:26'),
-(88, 65, 23, '2018-05-31 10:19:04', '2018-05-31 10:19:04'),
 (89, 67, 27, '2018-06-22 02:43:57', '2018-06-22 02:43:57'),
 (90, 67, 34, '2018-06-22 02:43:57', '2018-06-22 02:43:57'),
 (110, 68, 12, '2018-06-22 08:18:16', '2018-06-22 08:18:16'),
-(111, 68, 22, '2018-06-22 08:18:16', '2018-06-22 08:18:16');
+(111, 68, 22, '2018-06-22 08:18:16', '2018-06-22 08:18:16'),
+(112, 65, 23, '2018-08-04 03:28:19', '2018-08-04 03:28:19'),
+(113, 65, 25, '2018-08-04 03:28:19', '2018-08-04 03:28:19');
 
 -- --------------------------------------------------------
 
@@ -3051,6 +3081,13 @@ CREATE TABLE `recruitment_profile` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `recruitment_profile`
+--
+
+INSERT INTO `recruitment_profile` (`id`, `recruitment_id`, `profile_id`, `candidate_id`, `file_attached`, `status`, `created_at`, `updated_at`) VALUES
+(1, 54, 3, 5, NULL, 1, '2018-08-02 08:19:09', '2018-08-02 08:22:42');
 
 -- --------------------------------------------------------
 
@@ -3889,7 +3926,25 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (579, 1, 'user', NULL, '2018-06-21 19:12:06', '2018-06-21 19:12:06'),
 (580, NULL, 'global', NULL, '2018-06-22 18:32:26', '2018-06-22 18:32:26'),
 (581, NULL, 'ip', '127.0.0.1', '2018-06-22 18:32:26', '2018-06-22 18:32:26'),
-(582, 1, 'user', NULL, '2018-06-22 18:32:26', '2018-06-22 18:32:26');
+(582, 1, 'user', NULL, '2018-06-22 18:32:26', '2018-06-22 18:32:26'),
+(583, NULL, 'global', NULL, '2018-08-02 01:16:53', '2018-08-02 01:16:53'),
+(584, NULL, 'ip', '127.0.0.1', '2018-08-02 01:16:53', '2018-08-02 01:16:53'),
+(585, 1, 'user', NULL, '2018-08-02 01:16:53', '2018-08-02 01:16:53'),
+(586, NULL, 'global', NULL, '2018-08-02 01:17:02', '2018-08-02 01:17:02'),
+(587, NULL, 'ip', '127.0.0.1', '2018-08-02 01:17:02', '2018-08-02 01:17:02'),
+(588, 1, 'user', NULL, '2018-08-02 01:17:02', '2018-08-02 01:17:02'),
+(589, NULL, 'global', NULL, '2018-08-02 01:17:12', '2018-08-02 01:17:12'),
+(590, NULL, 'ip', '127.0.0.1', '2018-08-02 01:17:12', '2018-08-02 01:17:12'),
+(591, 1, 'user', NULL, '2018-08-02 01:17:12', '2018-08-02 01:17:12'),
+(592, NULL, 'global', NULL, '2018-08-02 01:17:29', '2018-08-02 01:17:29'),
+(593, NULL, 'ip', '127.0.0.1', '2018-08-02 01:17:29', '2018-08-02 01:17:29'),
+(594, 1, 'user', NULL, '2018-08-02 01:17:29', '2018-08-02 01:17:29'),
+(595, NULL, 'global', NULL, '2018-08-02 01:17:44', '2018-08-02 01:17:44'),
+(596, NULL, 'ip', '127.0.0.1', '2018-08-02 01:17:44', '2018-08-02 01:17:44'),
+(597, 1, 'user', NULL, '2018-08-02 01:17:44', '2018-08-02 01:17:44'),
+(598, NULL, 'global', NULL, '2018-08-03 20:26:42', '2018-08-03 20:26:42'),
+(599, NULL, 'ip', '127.0.0.1', '2018-08-03 20:26:42', '2018-08-03 20:26:42'),
+(600, 1, 'user', NULL, '2018-08-03 20:26:42', '2018-08-03 20:26:42');
 
 -- --------------------------------------------------------
 
@@ -3920,7 +3975,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-06-24 21:04:17', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-06-24 21:04:17'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-08-06 02:15:40', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-08-06 02:15:40'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4520,13 +4575,13 @@ ALTER TABLE `article_category`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `candidate`
 --
 ALTER TABLE `candidate`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `candidate_recruitment`
@@ -4580,7 +4635,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `employer`
 --
 ALTER TABLE `employer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `employer_profile`
@@ -4694,7 +4749,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=972;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=976;
 
 --
 -- AUTO_INCREMENT for table `photo`
@@ -4730,43 +4785,43 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `profile_experience`
 --
 ALTER TABLE `profile_experience`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `profile_graduation`
 --
 ALTER TABLE `profile_graduation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `profile_job`
 --
 ALTER TABLE `profile_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `profile_language`
 --
 ALTER TABLE `profile_language`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `profile_place`
 --
 ALTER TABLE `profile_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `profile_skill`
 --
 ALTER TABLE `profile_skill`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `project`
@@ -4808,19 +4863,19 @@ ALTER TABLE `recruitment`
 -- AUTO_INCREMENT for table `recruitment_job`
 --
 ALTER TABLE `recruitment_job`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `recruitment_place`
 --
 ALTER TABLE `recruitment_place`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `recruitment_profile`
 --
 ALTER TABLE `recruitment_profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `reminders`
@@ -4874,7 +4929,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT for table `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=583;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=601;
 
 --
 -- AUTO_INCREMENT for table `users`

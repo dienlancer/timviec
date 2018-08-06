@@ -777,10 +777,7 @@ class IndexController extends Controller {
 		}    
 		\Artisan::call('sitemap:auto');        
 		return view(@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
-	}
-	public function registerLogin(Request $request,$status){             
-		return view("frontend.register-login",compact('status'));         
-	}
+	}	
 	public function register(){             
 		return view("frontend.register");         
 	}

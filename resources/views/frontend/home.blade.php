@@ -279,7 +279,7 @@ if(count(@$source_new_job) > 0){
 											$t=0;
 											$data_attractive_job=convertToArray(@$source_attractive_job);
 											foreach ($data_attractive_job as $key => $value) {
-												$hot_attractive_fullname=truncateString(@$value['fullname'],9999) ;
+												$hot_attractive_fullname=truncateString(@$value['fullname'],50) ;
 												$hot_attractive_employer=truncateString(@$value['employer_fullname'],9999);
 												$hot_attractive_duration=datetimeConverterVn(@$value['duration']);
 												$hot_attractive_hot_gif='';
@@ -418,7 +418,7 @@ if(count(@$source_new_job) > 0){
 											$t=0;
 											$data_high_salary_job=convertToArray(@$source_high_salary_job);
 											foreach ($data_high_salary_job as $key => $value) {
-												$hot_high_salary_fullname=truncateString(@$value['fullname'],9999) ;
+												$hot_high_salary_fullname=truncateString(@$value['fullname'],50) ;
 												$hot_high_salary_employer=truncateString(@$value['employer_fullname'],9999);
 												$hot_high_salary_duration=datetimeConverterVn(@$value['duration']);
 												$hot_high_salary_hot_gif='';
@@ -557,7 +557,7 @@ if(count(@$source_new_job) > 0){
 											$t=0;
 											$data_interested_job=convertToArray(@$source_interested_job);
 											foreach ($data_interested_job as $key => $value) {
-												$hot_interested_fullname=truncateString(@$value['fullname'],9999) ;
+												$hot_interested_fullname=truncateString(@$value['fullname'],50) ;
 												$hot_interested_employer=truncateString(@$value['employer_fullname'],9999);
 												$hot_interested_duration=datetimeConverterVn(@$value['duration']);
 												$hot_interested_hot_gif='';
@@ -701,77 +701,123 @@ if(count(@$source_new_job) > 0){
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="jp_spotlight_main_wrapper">
-								<div class="spotlight_header_wrapper">
-									<h4>Job Spotlight</h4>
-								</div>
-								<div class="jp_spotlight_slider_wrapper">
-									<div class="owl-carousel owl-theme">
-										<div class="item">
-											<div class="jp_spotlight_slider_img_Wrapper">
-												<img src="{{asset('public/frontend/job-light/images/content/spotlight_img.jpg')}}" alt="spotlight_img" />
-											</div>
-											<div class="jp_spotlight_slider_cont_Wrapper">
-												<h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-												<p>Webstrot Technology Ltd.</p>
-												<ul>
-													<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-													<li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-												</ul>
-											</div>
-											<div class="jp_spotlight_slider_btn_wrapper">
-												<div class="jp_spotlight_slider_btn">
-													<ul>
-														<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
-													</ul>
+						<?php 
+						$query_quicked_job=DB::table('recruitment')
+						->join('employer','recruitment.employer_id','=','employer.id')
+						->join('salary','recruitment.salary_id','=','salary.id')
+						->join('experience','recruitment.experience_id','=','experience.id');
+						$query_quicked_job->where('recruitment.status',1);
+						$query_quicked_job->where('recruitment.status_employer',1);
+						$query_quicked_job->where('recruitment.status_quick',1);
+						$source_quicked_job=$query_quicked_job->select(
+							'recruitment.id',
+							'recruitment.fullname',
+							'recruitment.alias',
+							'recruitment.duration',
+							'recruitment.status_hot',
+							'experience.fullname as experience_name',
+							'salary.fullname as salary_name',
+							'employer.fullname as employer_fullname',
+							'employer.alias as employer_alias',
+							'employer.logo'
+						)
+						->groupBy(
+							'recruitment.id',
+							'recruitment.fullname',
+							'recruitment.alias',
+							'recruitment.duration',
+							'recruitment.status_hot',
+							'experience.fullname',
+							'salary.fullname',
+							'employer.fullname',
+							'employer.alias',
+							'employer.logo'
+						)
+						->orderBy('recruitment.id', 'desc')
+						->take(12)
+						->get()
+						->toArray();
+						if(count(@$source_quicked_job) > 0){
+							$data_quicked_job=convertToArray(@$source_quicked_job);
+							?>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="jp_spotlight_main_wrapper">
+									<div class="spotlight_header_wrapper">
+										<h4>Job Spotlight</h4>
+									</div>
+									<div class="jp_spotlight_slider_wrapper">
+										<div class="owl-carousel owl-theme">
+											<?php 
+											foreach ($data_quicked_job as $key => $value) {
+												$quicked_job_fullname=truncateString($value['fullname'],40) ;
+												$quicked_job_employer=truncateString($value['employer_fullname'],40);
+												$quicked_job_duration=datetimeConverterVn($value['duration']);
+												$quicked_job_logo='';
+												if(!empty(@$value['logo'])){
+													$quicked_job_logo=asset('upload/'.$width.'x'.$height.'-'.@$value['logo']);
+												}else{
+													$quicked_job_logo=asset('upload/no-logo.png');
+												}
+												$quicked_job_hot_gif='';
+												if((int)@$value['status_hot'] == 1){
+													$quicked_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+												}
+												$source_province3=DB::table('province')
+												->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+												->where('recruitment_place.recruitment_id',(int)@$value['id'])
+												->select(								
+													'province.fullname',
+													'province.alias'								
+												)
+												->groupBy(								
+													'province.fullname',
+													'province.alias'								
+												)
+												->orderBy('province.id', 'desc')						
+												->get()
+												->toArray();	
+												$data_province3=convertToArray($source_province3);					
+												$province_text3='';
+												foreach ($data_province3 as $key_province3 => $value_province3) {
+													$province_text3.=$value_province3['fullname'].' ,';
+												}
+												$province_title3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
+												$province_text3=truncateString($province_title3,20);
+												$class_quicked_job='fackyou';
+												if((int)@$k == count($data_quicked_job)-1){
+													$class_quicked_job='';
+												}
+												?>
+												<div class="item">
+													<div class="jp_spotlight_slider_img_Wrapper">
+														<img src="{{asset('public/frontend/job-light/images/content/spotlight_img.jpg')}}" alt="spotlight_img" />
+													</div>
+													<div class="jp_spotlight_slider_cont_Wrapper">
+														<h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
+														<p>Webstrot Technology Ltd.</p>
+														<ul>
+															<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
+															<li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
+														</ul>
+													</div>
+													<div class="jp_spotlight_slider_btn_wrapper">
+														<div class="jp_spotlight_slider_btn">
+															<ul>
+																<li><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
+															</ul>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div class="jp_spotlight_slider_img_Wrapper">
-												<img src="{{asset('public/frontend/job-light/images/content/spotlight_img.jpg')}}" alt="spotlight_img" />
-											</div>
-											<div class="jp_spotlight_slider_cont_Wrapper">
-												<h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-												<p>Webstrot Technology Ltd.</p>
-												<ul>
-													<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-													<li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-												</ul>
-											</div>
-											<div class="jp_spotlight_slider_btn_wrapper">
-												<div class="jp_spotlight_slider_btn">
-													<ul>
-														<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div class="jp_spotlight_slider_img_Wrapper">
-												<img src="{{asset('public/frontend/job-light/images/content/spotlight_img.jpg')}}" alt="spotlight_img" />
-											</div>
-											<div class="jp_spotlight_slider_cont_Wrapper">
-												<h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-												<p>Webstrot Technology Ltd.</p>
-												<ul>
-													<li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-													<li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-												</ul>
-											</div>
-											<div class="jp_spotlight_slider_btn_wrapper">
-												<div class="jp_spotlight_slider_btn">
-													<ul>
-														<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
-													</ul>
-												</div>
-											</div>
+												<?php
+											}
+											?>																					
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+							<?php							
+						}
+						?>						
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="jp_rightside_job_categories_wrapper">
 								<div class="jp_rightside_job_categories_heading">

@@ -173,8 +173,8 @@ if(isset($alias)){
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                         <div class="jp_navi_right_btn_wrapper">
                             <ul>
-                                <li><a href="<?php echo route('frontend.index.registerLogin',['register']); ?>"><i class="fa fa-user"></i>&nbsp; ĐĂNG KÝ</a></li>
-                                <li><a href="<?php echo route('frontend.index.registerLogin',['login']); ?>"><i class="fa fa-sign-in"></i>&nbsp; ĐĂNG NHẬP</a></li>
+                                <li><a href="<?php echo route('frontend.index.register'); ?>"><i class="fa fa-user"></i>&nbsp; ĐĂNG KÝ</a></li>
+                                <li><a href="<?php echo route('frontend.index.loginFe'); ?>"><i class="fa fa-sign-in"></i>&nbsp; ĐĂNG NHẬP</a></li>
                             </ul>
                         </div>
                     </div>

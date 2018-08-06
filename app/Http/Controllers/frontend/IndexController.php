@@ -781,6 +781,12 @@ class IndexController extends Controller {
 	public function registerLogin(Request $request,$status){             
 		return view("frontend.register-login",compact('status'));         
 	}
+	public function register(){             
+		return view("frontend.register");         
+	}
+	public function loginFe(){             
+		return view("frontend.login");         
+	}
 	public function registerEmployer(Request $request){        
 		$checked=1;
 		$msg=array();        

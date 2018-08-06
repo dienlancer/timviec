@@ -615,7 +615,6 @@ Route::match(["get","post"],"adminsystem/login",["as"=>"adminsystem.login","uses
 Route::post("adminsystem/logout",["as"=>"adminsystem.logout","uses"=>"adminsystem\LoginController@logout"]);
 Route::match(["get","post"],"/",["as"=>"frontend.index.getHome","uses"=>"frontend\IndexController@getHome"]);
 Route::match(["get","post"],"{alias}.html",["as"=>"frontend.index.index","uses"=>"frontend\IndexController@index"]);
-Route::match(["get","post"],"dk-dn/{status}",["as"=>"frontend.index.registerLogin","uses"=>"frontend\IndexController@registerLogin"]);
 Route::match(["get","post"],"dang-ky-ntd",["as"=>"frontend.index.employerRegister","uses"=>"frontend\IndexController@registerEmployer"]);
 Route::match(["get","post"],"dang-ky-ung-vien",["as"=>"frontend.index.candidateRegister","uses"=>"frontend\IndexController@registerCandidate"]);
 Route::match(["get","post"],"dang-nhap-ntd",["as"=>"frontend.index.employerLogin","uses"=>"frontend\IndexController@loginEmployer"]);

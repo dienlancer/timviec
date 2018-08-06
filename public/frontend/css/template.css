@@ -198,6 +198,68 @@ figure:hover img{-webkit-transform:scale3d(1.2, 1.2, 1);transform:scale3d(1.2, 1
     font-weight: normal;
     text-transform: inherit;
 }
+.jp_rightside_career_wrapper .jp_rightside_career_img_cont{
+    padding-left:5px;
+    padding-right: 5px; 
+}
+.jp_rightside_career_wrapper .jp_spotlight_slider_wrapper{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.jp_rightside_career_wrapper .jp_spotlight_slider_wrapper .owl-theme .owl-nav .owl-prev{
+        top: 10px;
+    right: 30px;
+}
+.jp_rightside_career_wrapper .jp_spotlight_slider_wrapper .owl-theme .owl-nav .owl-next{
+    top: 10px;
+    right: 0px;
+}
+.box-meal{
+    position: relative;
+    margin-top: 116px;
+}
+.single-cat-title{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;   
+    color: #ffffff;
+    
+    
+    top: 0;
+    left: 0;
+    z-index: 2;
+    
+    background: #00000042;  
+}
+.box-meal .owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled{
+    display: none;
+}
+.box-meal .owl-dots{
+    display: none;
+}
+.banner-main{
+    margin-top: 10px;
+}
+.banner-main li{
+        float: left;
+    margin-left: 10px;
+}
+.banner-main li:first-child{
+    margin-left: 0;
+}
+.banner-main li a{
+color: #ffffff;
+}
+.banner-main i{
+    margin-left: 10px;
+}
+.banner-title{
+    font-size: 25px;
+}
 @media (max-width: 768px){    
       
 }

@@ -1,100 +1,88 @@
-<div class="nhathongminhquata">
-					<h3 class="menu-highlight">TÌM KIẾM VIỆC LÀM</h3>
-					<div class="america">
-						<form action="<?php echo route('frontend.index.searchRecruitment'); ?>" method="POST" name="frm-search-job-detail">
-							{{ csrf_field() }}
-							<?php 
-							$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-							$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-							$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-							$source_literacy=App\LiteracyModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();			
-							$source_sex=App\SexModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
-							$source_work=App\WorkModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
-							$source_working_form=App\WorkingFormModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
-							$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();		
-							$ddlJob        =cmsSelectboxCategory("job_id", 'vacca selected2', @$source_job, @$job_id,'','Chọn ngành nghề');
-							$ddlProvince        =cmsSelectboxCategory("province_id", 'vacca selected2', @$source_province, @$province_id,'','Chọn tỉnh thành');
-							$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, @$salary_id,'','Chọn mức lương');
-							$ddlLiteracy        =cmsSelectboxCategory("literacy_id", 'vacca', @$source_literacy, @$literacy_id,'','Chọn trình độ học vấn');
-							$ddlSex        =cmsSelectboxCategory("sex_id", 'vacca', @$source_sex, @$sex_id,'','Chọn giới tính');
-							$ddlWork        =cmsSelectboxCategory("work_id", 'vacca', @$source_work, @$work_id,'','Chọn công việc');
-							$ddlWorkingForm        =cmsSelectboxCategory("working_form_id", 'vacca', @$source_working_form, @$working_form_id,'','Chọn loại hình công việc');
-							$ddlExperience        =cmsSelectboxCategory("experience_id", 'vacca', @$source_experience,@$experience_id ,'','Chọn kinh nghiệm');
-							?>
-							<div class="ritacruista"><input type="text" name="q" value="<?php echo @$q; ?>" class="vacca" placeholder="Nhập từ khóa"></div>					
-							<div class="ritacruista"><?php echo $ddlJob; ?></div>
-							<div class="ritacruista"><?php echo $ddlProvince; ?></div>						
-							<div class="ritacruista"><?php echo $ddlSalary; ?></div>
-							<div class="ritacruista"><?php echo $ddlLiteracy; ?></div>						
-							<div class="ritacruista"><?php echo $ddlSex; ?></div>	
-							<div class="ritacruista"><?php echo $ddlWork; ?></div>	
-							<div class="ritacruista"><?php echo $ddlWorkingForm; ?></div>				
-							<div class="ritacruista"><?php echo $ddlExperience; ?></div>	
-							<div class="ritacruista margin-bottom-5">	
-								<div class="vihamus-3">
-									<a href="javascript:void(0);" onclick="document.forms['frm-search-job-detail'].submit();">
-										<div class="narit">
-											<div><i class="fas fa-search"></i></div>
-											<div class="margin-left-5">Tìm kiếm</div>
-										</div>								
-									</a>
-								</div>
-							</div>				
-						</form>							
-					</div>
+<?php 
+$seo=getSeo();
+$setting= getSettingSystem();
+$width=$setting['product_width']['field_value'];
+$height=$setting['product_height']['field_value'];  
+$article_width=$setting['article_width']['field_value'];
+$article_height=$setting['article_height']['field_value'];  
+?>
+<div class="jp_first_right_sidebar_main_wrapper">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="jp_add_resume_wrapper">
+				<div class="jp_add_resume_img_overlay"></div>
+				<div class="jp_add_resume_cont">
+					<img src="{{asset('public/frontend/job-light/images/content/resume_logo.png')}}" alt="logo" />
+					<h4>Get Best Matched Jobs On your Email. Add Resume NOW!</h4>
+					<ul>
+						<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
+					</ul>
 				</div>
-				<?php 
-				$query_quick_job=DB::table('recruitment')
-				->join('employer','recruitment.employer_id','=','employer.id')
-				->join('salary','recruitment.salary_id','=','salary.id')
-				->join('experience','recruitment.experience_id','=','experience.id');
-				$query_quick_job->where('recruitment.status',1);
-				$query_quick_job->where('recruitment.status_employer',1);
-				$query_quick_job->where('recruitment.status_quick',1);
-				$source_quick_job=$query_quick_job->select(
-					'recruitment.id',
-					'recruitment.fullname',
-					'recruitment.alias',
-					'recruitment.duration',
-					'recruitment.status_hot',
-					'experience.fullname as experience_name',
-					'salary.fullname as salary_name',
-					'employer.fullname as employer_fullname',
-					'employer.alias as employer_alias'
-				)
-				->groupBy(
-					'recruitment.id',
-					'recruitment.fullname',
-					'recruitment.alias',
-					'recruitment.duration',
-					'recruitment.status_hot',
-					'experience.fullname',
-					'salary.fullname',
-					'employer.fullname',
-					'employer.alias'
-				)
-				->orderBy('recruitment.id', 'desc')
-				->take(12)
-				->get()
-				->toArray();
-				if(count($source_quick_job) > 0){
-					$data_quick_job=convertToArray($source_quick_job);
-					?>
-					<div class="nhathongminhquata">
-						<h3 class="menu-highlight">VIỆC LÀM TUYỂN GẤP</h3>
-						<div class="ramadan">
+			</div>
+		</div>
+		<?php 
+		$query_quicked_job=DB::table('recruitment')
+		->join('employer','recruitment.employer_id','=','employer.id')
+		->join('salary','recruitment.salary_id','=','salary.id')
+		->join('experience','recruitment.experience_id','=','experience.id');
+		$query_quicked_job->where('recruitment.status',1);
+		$query_quicked_job->where('recruitment.status_employer',1);
+		$query_quicked_job->where('recruitment.status_quick',1);
+		$source_quicked_job=$query_quicked_job->select(
+			'recruitment.id',
+			'recruitment.fullname',
+			'recruitment.alias',
+			'recruitment.duration',
+			'recruitment.status_hot',
+			'experience.fullname as experience_name',
+			'salary.fullname as salary_name',
+			'employer.fullname as employer_fullname',
+			'employer.alias as employer_alias',
+			'employer.logo'
+		)
+		->groupBy(
+			'recruitment.id',
+			'recruitment.fullname',
+			'recruitment.alias',
+			'recruitment.duration',
+			'recruitment.status_hot',
+			'experience.fullname',
+			'salary.fullname',
+			'employer.fullname',
+			'employer.alias',
+			'employer.logo'
+		)
+		->orderBy('recruitment.id', 'desc')
+		->take(12)
+		->get()
+		->toArray();
+		if(count(@$source_quicked_job) > 0){
+			$data_quicked_job=convertToArray(@$source_quicked_job);
+			?>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="jp_spotlight_main_wrapper">
+					<div class="spotlight_header_wrapper">
+						<h4>Việc làm tuyển gấp</h4>
+					</div>
+					<div class="jp_spotlight_slider_wrapper">
+						<div class="owl-carousel owl-theme">
 							<?php 
-							$k=0;
-							foreach ($data_quick_job as $key => $value){
-								$quick_job_fullname=truncateString($value['fullname'],40) ;
-								$quick_job_employer=truncateString($value['employer_fullname'],40);
-								$quick_job_duration=datetimeConverterVn($value['duration']);
-								$quick_job_hot_gif='';
-								if((int)@$value['status_hot'] == 1){
-									$quick_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+							foreach ($data_quicked_job as $key => $value) {
+								$quicked_job_fullname=truncateString($value['fullname'],40) ;
+								$quicked_job_employer=truncateString($value['employer_fullname'],40);
+								$quicked_job_duration=datetimeConverterVn($value['duration']);
+								$quicked_job_logo='';
+								if(!empty(@$value['logo'])){
+									$quicked_job_logo=asset('upload/'.$width.'x'.$height.'-'.@$value['logo']);
+								}else{
+									$quicked_job_logo=asset('upload/no-logo.png');
 								}
-								$source_province3=DB::table('province')
-								->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+								$quicked_job_hot_gif='';
+								if((int)@$value['status_hot'] == 1){
+									$quicked_job_hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
+								}
+								$source_province=DB::table('province')
+								->join('recruitment_place','province.id','=','recruitment_place.province_id')
 								->where('recruitment_place.recruitment_id',(int)@$value['id'])
 								->select(								
 									'province.fullname',
@@ -107,124 +95,97 @@
 								->orderBy('province.id', 'desc')						
 								->get()
 								->toArray();	
-								$data_province3=convertToArray($source_province3);					
-								$province_text3='';
-								foreach ($data_province3 as $key_province3 => $value_province3) {
-									$province_text3.=$value_province3['fullname'].' ,';
-								}
-								$province_title3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
-								$province_text3=truncateString($province_title3,20);
-								$class_quick_job='fackyou';
-								if((int)$k == count($data_quick_job)-1){
-									$class_quick_job='';
-								}
+								$data_province=convertToArray(@$source_province);					
+								$province_text='';
+								foreach ($data_province as $key_province => $value_province) {
+									$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+								}								
 								?>
-								<div class="<?php echo $class_quick_job; ?> margin-top-10 padding-bottom-10">
-									<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $quick_job_fullname; ?></a><?php echo $quick_job_hot_gif; ?></div>
-									<div class="hot-job-employer  margin-top-5"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $quick_job_employer; ?></a></div>
-									<div class="margin-top-10">
-										<div class="xibatuba">
-											<div title="<?php echo $province_title3; ?>"><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text3; ?></div>
-											<div class="margin-top-5"><i class="fas fa-dollar-sign"></i>&nbsp;<?php echo $value['salary_name']; ?></div>											
+								<div class="item">
+									<div class="jp_spotlight_slider_img_Wrapper">
+										<a href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>" title="<?php echo @$value['employer_fullname']; ?>"><img src="<?php echo @$quicked_job_logo; ?>" alt="<?php echo @$value['employer_fullname']; ?>" /></a>
+									</div> 
+									<div class="jp_spotlight_slider_cont_Wrapper">
+										<h4><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>" title="<?php echo @$value['fullname']; ?>"><?php echo @$quicked_job_fullname; ?></a></h4>
+										<p><a href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>" title="<?php echo @$value['employer_fullname']; ?>"><?php echo @$quicked_job_employer; ?></a></p>
+										<ul>
+											<li><i class="fa fa-cc-paypal"></i>&nbsp; <?php echo @$value['salary_name']; ?></li>
+											<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
+										</ul>
+									</div>
+									<div class="jp_spotlight_slider_btn_wrapper">
+										<div class="jp_spotlight_slider_btn">
+											<ul>
+												<li><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
+											</ul>
 										</div>
-										<div class="miranbaros">
-											<div><i class="far fa-chart-bar"></i>&nbsp;<?php echo $value['experience_name']; ?></div>
-											<div><i class="far fa-clock"></i>&nbsp;<?php echo $quick_job_duration; ?></div>
-										</div>
-										<div class="clr"></div>
 									</div>
 								</div>
-									<?php
-									$k++;
-								}
-								?>
-								<div class="xem-tat-ca">
-									<a href="<?php echo route('frontend.index.index',['viec-lam-tuyen-gap']); ?>">XEM TẤT CẢ</a>
-								</div>
-						</div>
-					</div>
-					<?php
-				}				
-				$data_employer_r=App\EmployerModel::whereRaw('status = 1')->select('id','fullname','alias','logo')->orderBy('id','desc')->take(9)->get()->toArray();
-				if(count($data_employer_r) > 0){			
-					?>
-					<div class="nhathongminhquata">
-						<h3 class="menu-highlight">NHÀ TUYỂN DỤNG HÀNG ĐẦU</h3>
-						<div class="americaasia padding-bottom-5">
-							<div class="row">
-								<?php 
-							$k=1;				
-							foreach ($data_employer_r as $key => $value) {
-								$employer_r_img='';
-								if(!empty($value['logo'])){
-									$employer_r_img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
-								}else{
-									$employer_r_img=asset('upload/no-logo.png');
-								}
-								?>
-								<div class="col-lg-4">
-									<div class="employer-box margin-top-5">
-										<a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><img src="<?php echo $employer_r_img; ?>"></a>
-									</div>
-								</div>
-								<?php 
-								if($k%3 == 0 || $k==count($data_employer_r)){
-									?>
-									<div class="clr"></div>
-									<?php
-								}	
-								$k++;							
-							}							
-							?>
-							</div>							
-						</div>
-					</div>
-					<?php	
-				}
-				$data_province_r=App\ProvinceModel::whereIn('alias',['ho-chi-minh','ha-noi','dong-nai','da-nang','binh-duong'])->select('id','fullname','alias')->orderBy('id','desc')->get()->toArray();
-				if(count($data_province_r) > 0){
-					?>
-					<div class="nhathongminhquata">
-						<h3 class="menu-highlight">VIỆC LÀM TẠI THÀNH PHỐ LỚN</h3>
-						<ul class="lafata">
-							<?php 
-							foreach ($data_province_r as $key => $value) {								
-								?>
-								<li>
-									<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>">
-										<div class="hihu">
-											<div><img src="<?php echo asset('upload/square-menu.jpg'); ?>"></div>
-											<div class="margin-left-10">Việc làm tại <?php echo @$value['fullname']; ?></div>
-										</div>																					
-									</a>
-								</li>
 								<?php
 							}
-							?>							
-						</ul>
-					</div>							
-					<?php
-				}				
-				?>					
-				<div class="nhathongminhquata">
-					<?php 
-					$fanpage=getPage("right");							
-					if(count($fanpage) > 0){								
-						$intro=$fanpage["intro"];					
-						echo $intro;		
-					}
-					?>		
+							?>																					
+						</div>
+					</div>
 				</div>
-				<div class="nhathongminhquata">
-					<?php 
-					$source_hotline_r=getBanner('hotline-right');
-					if(count($source_hotline_r) > 0){
-						$items_hotline_r=$source_hotline_r['items'];
-						foreach ($items_hotline_r as $key_hotline_r => $value_hotline_r) {
-							?>
-							<center><img src="<?php echo asset('upload/'.$value_hotline_r['image']) ; ?>"></center>
-							<?php
-						}
-					}
-					?>
-				</div>	
+			</div>
+			<?php							
+		}
+		$source_job_r=DB::table('job')
+		->join('recruitment_job','job.id','=','recruitment_job.job_id')
+		->join('recruitment','recruitment.id','=','recruitment_job.recruitment_id')
+		->where('recruitment.status',1)
+		->where('recruitment.status_employer',1)
+		->select('job.id','job.fullname','job.alias',DB::raw('count(recruitment.id) as recruitment_quantity'))
+		->groupBy('job.id','job.fullname','job.alias')
+		->orderBy('job.id','asc')					
+		->get()
+		->toArray();
+		if(count(@$source_job_r) > 0){
+			$data_job_r=convertToArray($source_job_r);
+			?>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="jp_rightside_job_categories_wrapper">
+					<div class="jp_rightside_job_categories_heading">
+						<h4>Việc làm theo ngành nghề</h4>
+					</div>
+					<div class="jp_rightside_job_categories_content">
+						<ul>
+							<?php 
+							foreach ($data_job_r as $key => $value){
+								?>
+								<li><i class="fa fa-caret-right"></i> <a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?> <span>(<?php echo @$value['recruitment_quantity']; ?>)</span></a></li>
+								<?php
+							}
+							?>																						
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+		$data_province_r=App\ProvinceModel::whereIn('alias',['ho-chi-minh','ha-noi','dong-nai','da-nang','binh-duong'])->select('id','fullname','alias')->orderBy('id','desc')->get()->toArray();
+		if(count($data_province_r) > 0){
+			?>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="jp_rightside_job_categories_wrapper">
+					<div class="jp_rightside_job_categories_heading">
+						<h4>Việc làm tại thành phố lớn</h4>
+					</div>
+					<div class="jp_rightside_job_categories_content">
+						<ul>
+							<?php 
+							foreach ($data_province_r as $key => $value){
+								?>
+								<li><i class="fa fa-caret-right"></i> <a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?></a></li>
+								<?php
+							}
+							?>																						
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+		?>																								
+	</div>
+</div>

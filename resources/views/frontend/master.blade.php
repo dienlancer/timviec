@@ -56,7 +56,8 @@ if(isset($alias)){
     <meta name="description" content="Job Pro" />
     <meta name="keywords" content="Job Pro" />
     <meta name="author" content="" />
-    <meta name="MobileOptimized" content="320" />
+    <meta name="MobileOptimized" content="320" />  
+    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>  
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />
@@ -70,7 +71,7 @@ if(isset($alias)){
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" />
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />    
 </head>
 <body>		
 	<!-- preloader Start -->
@@ -185,7 +186,7 @@ if(isset($alias)){
 	@yield("content")
 	@include("frontend.footer")		
     <!--main js file start-->
-    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>
+    
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.countTo.js')}}"></script>
@@ -194,7 +195,7 @@ if(isset($alias)){
     <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDOogBL2cC0dSezucKzQGWxMIMmclqWNts&sensor=false"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" language="javascript">
     var infowindow = null;
     $(document).ready(function() { initialize(); });
 

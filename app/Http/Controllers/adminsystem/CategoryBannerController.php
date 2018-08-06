@@ -31,7 +31,7 @@ public function loadData(Request $request){
   }             
   $data=$query->select('category_banner.id','category_banner.fullname','category_banner.theme_location','category_banner.sort_order','category_banner.status','category_banner.created_at','category_banner.updated_at')
   ->groupBy('category_banner.id','category_banner.fullname','category_banner.theme_location','category_banner.sort_order','category_banner.status','category_banner.created_at','category_banner.updated_at')
-  ->orderBy('category_banner.sort_order', 'asc')
+  ->orderBy('category_banner.sort_order', 'desc')
   ->get()
   ->toArray();      
   $data=convertToArray($data);    

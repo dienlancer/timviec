@@ -48,7 +48,7 @@ class ArticleController extends Controller {
       }   
       $data=$query->select('article.id','article.fullname','article.image','article.sort_order','article.status','article.created_at','article.updated_at')
                   ->groupBy('article.id','article.fullname','article.image','article.sort_order','article.status','article.created_at','article.updated_at')
-                  ->orderBy('article.sort_order', 'asc')
+                  ->orderBy('article.sort_order', 'desc')
                   ->get()
                   ->toArray();      
       $data=convertToArray($data);    

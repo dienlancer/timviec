@@ -31,7 +31,7 @@ public function loadData(Request $request){
   }   
   $data=$query->select('banner.id','banner.caption','banner.alt','category_banner.fullname as category_name','banner.category_id','banner.image','banner.sort_order','banner.status','banner.created_at','banner.updated_at')
   ->groupBy('banner.id','banner.caption','banner.alt','category_banner.fullname','banner.category_id','banner.image','banner.sort_order','banner.status','banner.created_at','banner.updated_at')
-  ->orderBy('banner.sort_order', 'asc')
+  ->orderBy('banner.sort_order', 'desc')
   ->get()->toArray();      
   $data=convertToArray($data);    
   $data=bannerConverter($data,$this->_controller);            

@@ -9,7 +9,17 @@ $linkSave               =   route('adminsystem.'.$controller.'.save');
 $inputCaption           =   '<textarea name="caption" rows="2" cols="100" class="form-control" >'.@$arrRowData['caption'].'</textarea>'; 
 $inputAlt               =   '<textarea name="alt" rows="2" cols="100" class="form-control" >'.@$arrRowData['alt'].'</textarea>'; 
 $inputPageurl           =   '<input type="text" class="form-control" name="page_url"     value="'.@$arrRowData['page_url'].'">'; 
-$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"   value="'.@$arrRowData['sort_order'].'">';
+
+$sort_order=1;
+if(@$arrRowData == null){
+    $source_sort_order=App\BannerModel::select('id','sort_order')->orderBy('sort_order','desc')->get()->toArray();
+    if(count($source_sort_order) > 0){
+        $sort_order=(int)@$source_sort_order[0]['sort_order']+1;
+    }
+}else{
+    $sort_order=@$arrRowData['sort_order'];
+}
+$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"  value="'.@$sort_order.'">';
 
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,(int)@$arrRowData['status'],"");

@@ -55,7 +55,7 @@ class CategoryArticleController extends Controller {
         }
         $data=$query->select('n.id','n.fullname','n.alias','n.parent_id','a.fullname as parent_fullname','n.image','n.sort_order','n.status','n.created_at','n.updated_at')                           
         ->groupBy('n.id','n.fullname','n.alias','n.parent_id','a.fullname','n.image','n.sort_order','n.status','n.created_at','n.updated_at')
-        ->orderBy('n.sort_order', 'asc')
+        ->orderBy('n.sort_order', 'desc')
         ->skip($position)
         ->take($totalItemsPerPage)
         ->get()

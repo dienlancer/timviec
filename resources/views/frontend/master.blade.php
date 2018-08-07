@@ -58,17 +58,17 @@ if(isset($alias)){
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />  
     <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>  
+    <link rel="stylesheet" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" />
     <!-- favicon links -->
@@ -80,7 +80,7 @@ if(isset($alias)){
         <div id="status"><img src="{{asset('public/frontend/job-light/images/header/loadinganimation.gif')}}" id="preloader_image" alt="loader">
         </div>
     </div>
-    <!-- Top Scroll End -->
+    <!-- Top Scroll End -->    
     <!-- Header Wrapper Start -->
     <div class="jp_top_header_img_wrapper">
         <div class="gc_main_menu_wrapper">
@@ -187,7 +187,6 @@ if(isset($alias)){
 	@yield("content")
 	@include("frontend.footer")		
     <!--main js file start-->
-    
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.countTo.js')}}"></script>

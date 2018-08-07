@@ -1,28 +1,49 @@
-<?php 
-$arrUser=array();
-$source_employer=array();
-$source_candidate=array();
-$ssNameUser='vmuser';
-if(Session::has($ssNameUser)){
-	$arrUser=Session::get($ssNameUser);
-}         
-if(count($arrUser) > 0){
-	$email=@$arrUser['email'];   
-	$source_employer=App\EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-	$source_candidate=App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
-	if(count($source_employer) > 0){
-		?>
-		@include("frontend.employer-content-top")
-		<?php
-	}
-	if(count($source_candidate) > 0){
-		?>
-		@include("frontend.candidate-content-top")
-		<?php
-	}      
-}else{
-	?>
-	@include("frontend.content-top-register")
-	<?php
-}
-?>
+<div class="job-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<form name="frm-searching-job" method="POST" enctype="multipart/form-data" action="<?php echo route('frontend.index.searchRecruitment'); ?>" >
+					{{ csrf_field() }}
+					<div class="job-box-searching">
+						<div>
+							<div class="job-box-kk">
+								<div class="job-box-m"><i class="far fa-address-book"></i></div>
+								<input type="text" name="q" class="job-box-in" placeholder="Tiêu đề công việc" >
+							</div>							
+						</div>
+						<div>
+							<div class="job-box-kk">
+								<div class="job-box-m"><i class="far fa-address-book"></i></div>
+								<?php 
+								$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+								$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Ngành nghề');
+								echo $ddlJob;
+								?>	
+							</div>							
+						</div>		
+						<div>
+							<div class="job-box-kk">
+								<div class="job-box-m"><i class="far fa-address-book"></i></div>
+								<?php                             	
+								$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
+								$ddlProvince=cmsSelectboxCategory("province_id","selected2",@$source_province,@$province_id,'','Tỉnh thành');
+								echo $ddlProvince;
+								?>	
+							</div>							
+						</div>
+						<div>
+							<div class="job-box-searching-btn">
+								<a href="javascript:void(0);" onclick="document.forms['frm-searching-job'].submit();">
+									<div class="caramba">
+										<div><i class="fas fa-search"></i></div>
+										<div class="margin-left-5">Tìm kiếm</div>
+									</div>
+								</a>
+							</div>							
+						</div>						
+					</div>
+				</form>				
+			</div>
+		</div>
+	</div>
+</div>

@@ -105,7 +105,7 @@ if(count(@$data_banner) > 0){
 								</div>								
 							</li>
 						</ul>
-						<div class="register-pipi"><a href="javascript:void(0);">ĐĂNG KÝ ỨNG VIÊN</a></div>
+						<div class="register-pipi"><a href="<?php echo route('frontend.index.candidateRegister'); ?>">ĐĂNG KÝ ỨNG VIÊN</a></div>
 					</div>
 				</div>				
 			</div>
@@ -144,7 +144,7 @@ if(count(@$data_banner) > 0){
 								</div>								
 							</li>
 						</ul>
-						<div class="register-lata"><a href="javascript:void(0);">ĐĂNG KÝ NHÀ TUYỂN DỤNG</a></div>
+						<div class="register-lata"><a href="<?php echo route('frontend.index.employerRegister'); ?>">ĐĂNG KÝ NHÀ TUYỂN DỤNG</a></div>
 					</div>
 				</div>				
 			</div>

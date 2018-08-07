@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-2 dk-dn">
-			<a  href="<?php echo route('frontend.index.registerLogin',['login']); ?>">
+			<a  href="<?php echo route('frontend.index.loginFe'); ?>">
 				<div><center><i class="fas fa-sign-in-alt"></i></center></div>
 				<div><center>ĐĂNG NHẬP</center> </div>
 			</a>
 		</div>
 		<div class="col-lg-2 dk-dn">
-			<a  href="<?php echo route('frontend.index.registerLogin',['register']); ?>">
+			<a  href="<?php echo route('frontend.index.register'); ?>">
 				<div><center><i class="fas fa-user-plus"></i></center></div>
 				<div><center>ĐĂNG KÝ</center> </div>
 			</a>

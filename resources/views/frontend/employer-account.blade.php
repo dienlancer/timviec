@@ -1,6 +1,6 @@
 @extends("frontend.master")
 @section("content")
-@include("frontend.main-search")
+@include("frontend.content-top")
 <?php 
 $seo=getSeo();
 $source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();

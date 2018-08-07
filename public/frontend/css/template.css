@@ -762,7 +762,7 @@ font-size: 12px;
     font-weight: bold;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
-    border: 1px solid #ce0000;
+    border: 1px solid #15aed6;
 }
 .vihamus-search-profile a:hover{
     background:#337ab7;

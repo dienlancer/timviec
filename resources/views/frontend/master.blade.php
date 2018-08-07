@@ -57,28 +57,9 @@ if(isset($alias)){
     <meta name="keywords" content="Job Pro" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />  
-    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>  
-    <!-- begin standard -->
-    <link rel="stylesheet" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
-    <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
-    <link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
-    <!-- end standard -->    
-    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>       
-    <!--srart theme style -->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" />
-    <!--end theme style -->    
+    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>      
     <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />    
+    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>       
 </head>
 <body>		
 	<!-- preloader Start -->
@@ -192,6 +173,25 @@ if(isset($alias)){
     <!-- Header Wrapper End -->
 	@yield("content")
 	@include("frontend.footer")		
+    <!-- begin standard -->
+    <link rel="stylesheet" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
+    <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
+    <link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
+    <!-- end standard -->    
+    <!--srart theme style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" />
+    <!--end theme style -->    
     <!--main js file start-->
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>

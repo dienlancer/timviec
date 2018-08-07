@@ -85,6 +85,29 @@ if(count(@$data_banner) > 0){
 									</li>								
 								</ul>
 								<div class="tab-content">
+									<?php 
+									if(count(@$msg) > 0){
+										$type_msg='';					
+										if((int)@$checked == 1){
+											$type_msg='note-success';
+										}else{
+											$type_msg='note-danger';
+										}
+										?>
+										<div class="note margin-top-15 <?php echo $type_msg; ?>" >
+											<ul>
+												<?php 
+												foreach (@$msg as $key => $value) {
+													?>
+													<li><?php echo $value; ?></li>
+													<?php
+												}
+												?>                              
+											</ul>	
+										</div>      
+										<?php
+									}			
+									?>
 									<div class="tab-pane fade in active register_left_form" id="contentOne-1">
 										<div class="jp_regiter_top_heading">
 											<p>Fields with * are mandetory </p>
@@ -155,7 +178,7 @@ if(count(@$data_banner) > 0){
 											</div>
 										</div>
 										<div class="login_btn_wrapper register_btn_wrapper login_wrapper ">
-											<a href="#" class="btn btn-primary login_btn"> register </a>
+											<a href="javascript:void(0);" onclick="document.forms['frm-register-employer'].submit();" class="btn btn-primary login_btn">Đăng ký</a>
 										</div>
 										<div class="login_message">
 											<p>Already a member? <a href="#"> Login Here </a> </p>

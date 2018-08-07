@@ -1,67 +1,141 @@
 @extends("frontend.master")
 @section("content")
-@include("frontend.content-top")
 <?php 
 $seo=getSeo();
-?>
-<h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
-<h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8">
-				<form name="frm" method="POST" enctype="multipart/form-data">
-					{{ csrf_field() }}
-					<?php 
-					if(count(@$msg) > 0){
-						$type_msg='';					
-						if((int)@$checked == 1){						
-							$type_msg='note-success';
-						}else{
-							$type_msg='note-danger';
-						}
-						?>
-						<div class="note margin-top-15 <?php echo $type_msg; ?>" >
-							<ul>
-								<?php 
-								foreach (@$msg as $key => $value) {
-									?>
-									<li><?php echo $value; ?></li>
-									<?php
+$data_banner=getBanner('re-log');
+if(count(@$data_banner) > 0){
+	$items_banner=$data_banner['items'];
+	if(count(@$items_banner) > 0){		
+		?>
+		<div class="box-meal">
+			<div>    
+				<script type="text/javascript" language="javascript">
+					$(document).ready(function(){
+						$(".banner").owlCarousel({
+							autoplay:true,                    
+							loop:true,
+							margin:0,                        
+							nav:false,            
+							mouseDrag: false,
+							touchDrag: false,                                
+							responsiveClass:true,
+							responsive:{
+								0:{
+									items:1
+								},
+								600:{
+									items:1
+								},
+								1000:{
+									items:1
 								}
-								?>                              
-							</ul>	
-						</div>      
-						<?php
-					}		
-					?>
-					<h1 class="dn-dk-h">Đăng Nhập Ứng Viên</h1>			
-					<div class="row mia">
-						<div class="col-lg-4"><h2 class="login-information">Thông tin đăng nhập</h2></div>
-						<div class="col-lg-8"></div>
-					</div>			
-					<div class="row mia">
-						<div class="col-lg-4" ><div class="xika"><div>Email</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-						<div class="col-lg-8"><input type="text"  name="email" class="vacca" placeholder="Email" value="<?php echo @$data['email']; ?>"></div>
-					</div>
-					<div class="row mia">
-						<div class="col-lg-4" ><div class="xika"><div>Mật khẩu</div><div class="pappa margin-left-5"><i class="fas fa-asterisk"></i></div></div></div>
-						<div class="col-lg-8"><input type="password"  name="password" class="vacca" placeholder="Mật khẩu" value="<?php echo @$data['password']; ?>" ></div>
-					</div>					
-					<div class="row mia">
-						<div class="col-lg-4" ></div>
-						<div class="col-lg-8">
-							<div >
-								<a href="javascript:void(0);" class="btn-login" onclick="document.forms['frm'].submit();" >Đăng nhập</a>
-								<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
+							}
+						});
+
+					});                
+				</script>        
+				<div class="owl-carousel banner owl-theme"> 
+					<?php 
+					foreach ($items_banner as $key => $value) {
+						?>
+						<div><img src="<?php echo asset('upload/'.@$value['image']); ?>"></div>
+						<?php	
+					}
+					?>					
+				</div>
+			</div>  
+			<div class="single-cat-title">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="banner-title">ĐĂNG KÝ</div>
+							<div>
+								<ul class="banner-main">
+									<li><a href="javascript:void(0);">Trang chủ</a> <i class="fa fa-angle-right"></i></li>
+									
+									<li>Đăng ký</li>
+								</ul>
 							</div>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
-			<div class="col-lg-4">@include("frontend.main-sidebar")</div>
+		</div>
+		<?php
+	}
+}
+?>
+<h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
+<h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
+<div class="wrapper-register">
+	<!-- jp register wrapper start -->
+	<div class="register_section">
+		<!-- register_form_wrapper -->
+		<div class="register_tab_wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<form name="frm-candidate-login" method="POST" enctype="multipart/form-data">
+							{{ csrf_field() }} 
+							<div role="tabpanel">							
+								<ul id="tabOne" class="nav register-tabs">
+									<li class="active"><a href="#contentOne-1" data-toggle="tab">Đăng nhập ứng viên</a>
+									</li>								
+								</ul>
+								<div class="tab-content">
+									<?php 
+									if(count(@$msg) > 0){
+										$type_msg='';					
+										if((int)@$checked == 1){
+											$type_msg='note-success';
+										}else{
+											$type_msg='note-danger';
+										}
+										?>
+										<div class="note margin-top-15 margin-bottom-15 <?php echo $type_msg; ?>" >
+											<ul>
+												<?php 
+												foreach (@$msg as $key => $value) {
+													?>
+													<li><?php echo $value; ?></li>
+													<?php
+												}
+												?>                              
+											</ul>	
+										</div>      
+										<?php
+									}			
+									?>
+									<div class="tab-pane fade in active register_left_form" id="contentOne-1">										
+										<div class="row">
+											<!--Form Group-->
+											<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<input type="text" name="email" value="<?php echo @$data['email']; ?>" placeholder="Email">
+											</div>
+											
+											<!--Form Group-->
+											<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<input type="password" name="password" value="<?php echo @$data['password']; ?>" placeholder="Mật khẩu">
+											</div>																													
+										</div>
+										<div class="login_btn_wrapper register_btn_wrapper login_wrapper ">
+											<div class="zidan">
+												<div><a href="javascript:void(0);" onclick="document.forms['frm-candidate-login'].submit();" class="btn btn-primary login_btn">Đăng nhập</a></div>
+												<div class="margin-left-5"><a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn btn-primary login_btn">Quên mật khẩu</a></div>
+											</div>											
+										</div>										
+									</div>							
+								</div>								
+							</div>
+						</form>						
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	<!-- jp register wrapper end -->
+	<div class="clr"></div>
+</div>
+
 
 @endsection()

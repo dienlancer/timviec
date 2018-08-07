@@ -55,9 +55,9 @@ if(count(@$data_banner) > 0){
 							<div class="banner-title">ĐĂNG NHẬP</div>
 							<div>
 								<ul class="banner-main">
-									<li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
-									<li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
-									<li>Register</li>
+									<li><a href="javascript:void(0);">Trang chủ</a> <i class="fa fa-angle-right"></i></li>
+									
+									<li>Đăng nhập</li>
 								</ul>
 							</div>
 						</div>
@@ -105,7 +105,7 @@ if(count(@$data_banner) > 0){
 								</div>								
 							</li>
 						</ul>
-						<div class="register-pipi"><a href="javascript:void(0);">ĐĂNG NHẬP ỨNG VIÊN</a></div>
+						<div class="register-pipi"><a href="<?php echo route('frontend.index.candidateLogin'); ?>">ĐĂNG NHẬP ỨNG VIÊN</a></div>
 					</div>
 				</div>				
 			</div>
@@ -144,7 +144,7 @@ if(count(@$data_banner) > 0){
 								</div>								
 							</li>
 						</ul>
-						<div class="register-lata"><a href="javascript:void(0);">ĐĂNG NHẬP NHÀ TUYỂN DỤNG</a></div>
+						<div class="register-lata"><a href="<?php echo route('frontend.index.employerLogin'); ?>">ĐĂNG NHẬP NHÀ TUYỂN DỤNG</a></div>
 					</div>
 				</div>				
 			</div>

@@ -1916,6 +1916,9 @@ color: #ffffff;
 .slct{
     font-size:20px;
 }
+form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-login'] .register-tabs>li>a{
+    width: 400px;
+}
 @media (max-width: 768px){    
       
 }

@@ -53,9 +53,9 @@ if(count(@$data_banner) > 0){
 							<div class="banner-title">ĐĂNG KÝ</div>
 							<div>
 								<ul class="banner-main">
-									<li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
-									<li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
-									<li>Register</li>
+									<li><a href="javascript:void(0);">Trang chủ</a> <i class="fa fa-angle-right"></i></li>
+									
+									<li>Đăng ký</li>
 								</ul>
 							</div>
 						</div>
@@ -172,11 +172,10 @@ if(count(@$data_banner) > 0){
 											<a href="javascript:void(0);" onclick="document.forms['frm-register-employer'].submit();" class="btn btn-primary login_btn">Đăng ký</a>
 										</div>
 										<div class="login_message">
-											<p>Bạn đã là thành viên chưa? <a href="javascript:void(0);"> Đăng nhập tại đây </a> </p>
+											<p>Bạn đã là thành viên chưa? <a href="<?php echo route('frontend.index.employerLogin'); ?>"> Đăng nhập tại đây </a> </p>
 										</div>
 									</div>							
-								</div>
-								<p class="btm_txt_register_form">In case you are using a public/shared computer we recommend that you logout to prevent any un-authorized access to your account</p>
+								</div>								
 							</div>
 						</form>						
 					</div>

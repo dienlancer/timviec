@@ -55,9 +55,9 @@ if(count(@$data_banner) > 0){
 							<div class="banner-title">ĐĂNG KÝ</div>
 							<div>
 								<ul class="banner-main">
-									<li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
-									<li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
-									<li>Register</li>
+									<li><a href="javascript:void(0);">Trang chủ</a> <i class="fa fa-angle-right"></i></li>
+									
+									<li>Đăng ký</li>
 								</ul>
 							</div>
 						</div>

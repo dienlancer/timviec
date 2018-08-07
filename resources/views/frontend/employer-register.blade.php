@@ -123,12 +123,14 @@ if(count(@$data_banner) > 0){
 											</div>
 											<div class="form-group col-md-6 col-sm-6 col-xs-12">
 												<?php 
-												$ddlScale=cmsSelectboxCategory("scale_id","vacca",$source_scale,@$data['scale_id'],'','Chọn quy mô công ty');
+												$ddlScale=cmsSelectboxCategory("scale_id","",$source_scale,@$data['scale_id'],'','Chọn quy mô công ty');
 												echo $ddlScale;
 												?>
 											</div>
-											<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<input type="text" name="field-name" value="" placeholder="Sơ lược công ty">
+											<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">												<div class="slct"><p>Sơ lược công ty</p></div>
+													<div>
+														<textarea name="intro" placeholder="Nhập sơ lược công ty..."  class="summer-editor" rows="10" ><?php echo @$data['intro']; ?></textarea>
+													</div>												
 											</div>
 											<div class="form-group col-md-6 col-sm-6 col-xs-12">
 												<input type="text" name="fax" value="" placeholder="Fax">

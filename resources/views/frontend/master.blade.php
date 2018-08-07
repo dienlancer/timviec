@@ -58,7 +58,13 @@ if(isset($alias)){
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />  
     <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>  
+    <!-- begin standard -->
     <link rel="stylesheet" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
+    <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
+    <link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />
+    <!-- end standard -->    
+    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>       
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
@@ -71,7 +77,7 @@ if(isset($alias)){
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" />
-    <!-- favicon links -->
+    <!--end theme style -->    
     <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />    
 </head>
 <body>		
@@ -193,8 +199,9 @@ if(isset($alias)){
     <script src="{{asset('public/frontend/job-light/js/jquery.inview.min.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/owl.carousel.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>
-    <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>
+    <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>    
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDOogBL2cC0dSezucKzQGWxMIMmclqWNts&sensor=false"></script>
+
     <script type="text/javascript" language="javascript">
     var infowindow = null;
     $(document).ready(function() { initialize(); });
@@ -343,6 +350,14 @@ if(isset($alias)){
     </script>
 
     <!--main js file end-->
+    <!-- begin standard -->
+    <script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>   
+    <script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/select2/select2.min.js')}}"                 ></script>
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote.js')}}"                 ></script>
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>
+    <!-- end standard -->
 </body>
 </html>
 

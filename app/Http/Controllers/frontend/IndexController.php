@@ -2753,9 +2753,8 @@ class IndexController extends Controller {
 				$msg['errorid']='Sai tin tuyển dụng';
 			}
 		}
-		if($checked == 1){
-			$item               =   RecruitmentModel::find((int)@$id);
-			$item->delete();          
+		if($checked == 1){			
+			RecruitmentModel::find((int)@$id)->delete();          
 			RecruitmentJobModel::whereRaw('recruitment_id = ?',[@$id])->delete();  
 			RecruitmentPlaceModel::whereRaw('recruitment_id = ?',[@$id])->delete();
 			$msg['success']='Xóa thành công';

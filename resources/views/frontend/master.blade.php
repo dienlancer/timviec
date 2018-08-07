@@ -160,10 +160,39 @@ if(isset($alias)){
                     <!-- mobile menu area end -->
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                         <div class="jp_navi_right_btn_wrapper">
-                            <ul>
-                                <li><a href="<?php echo route('frontend.index.register'); ?>"><i class="fa fa-user"></i>&nbsp; ĐĂNG KÝ</a></li>
-                                <li><a href="<?php echo route('frontend.index.loginFe'); ?>"><i class="fa fa-sign-in"></i>&nbsp; ĐĂNG NHẬP</a></li>
-                            </ul>
+                            <?php 
+                            $arrUser=array();
+                            $source_employer=array();
+                            $source_candidate=array();
+                            $ssNameUser='vmuser';
+                            $permalink_login='';
+                            if(Session::has($ssNameUser)){
+                                $arrUser=Session::get($ssNameUser);
+                            }
+                            if(count(@$arrUser) > 0){
+                                $email=@$arrUser['email'];                                 
+                                $source_employer=App\EmployerModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+                                $source_candidate=App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$email,'UTF-8'))])->select('id','email')->get()->toArray();
+                                if(count($source_employer) > 0){
+                                    $permalink_login=route('frontend.index.viewEmployerAccount');
+                                }
+                                if(count($source_candidate) > 0){
+                                    $permalink_login=route('frontend.index.viewCandidateAccount');
+                                }      
+                                ?>
+                                <ul>
+                                    <li><a href="<?php echo $permalink_login; ?>"><i class="fa fa-user"></i>&nbsp; TÀI KHOẢN</a></li>                                    
+                                </ul>
+                                <?php
+                            }else{
+                                ?>
+                                <ul>
+                                    <li><a href="<?php echo route('frontend.index.register'); ?>"><i class="fa fa-user"></i>&nbsp; ĐĂNG KÝ</a></li>
+                                    <li><a href="<?php echo route('frontend.index.loginFe'); ?>"><i class="fa fa-sign-in"></i>&nbsp; ĐĂNG NHẬP</a></li>
+                                </ul>
+                                <?php
+                            }
+                            ?>                            
                         </div>
                     </div>
                 </div>

@@ -262,7 +262,7 @@ class IndexController extends Controller {
 				$position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
 				$data=$query->select('article.id','article.alias','article.fullname','article.image','article.intro','article.count_view')                
 				->groupBy('article.id','article.alias','article.fullname','article.image','article.intro','article.count_view')
-				->orderBy('article.created_at', 'desc')
+				->orderBy('article.sort_order', 'desc')
 				->skip($position)
 				->take($totalItemsPerPage)
 				->get()

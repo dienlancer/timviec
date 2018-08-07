@@ -5,9 +5,10 @@
 $seo=getSeo();
 $setting = getSettingSystem();
 ?>
-<h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
-<h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
-<div class="container">
+<h1 style="display: none;"><?php echo @$seo["title"]; ?></h1>
+<h2 style="display: none;"><?php echo @$seo["meta_description"]; ?></h2>
+<div class="wrapper-register">
+	<div class="container">
 	<div class="row">			
 		<div class="col-lg-9">
 			<div class="box-lala">
@@ -90,5 +91,6 @@ $setting = getSettingSystem();
 			@include("frontend.employer-sidebar")				
 		</div>
 	</div>
+</div>
 </div>
 @endsection()

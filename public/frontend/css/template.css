@@ -2042,11 +2042,57 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .source-recruitment-box {
     background: #ffffff;
     margin-top: 15px;  
-    margin-bottom: 15px;  
-    padding: 0px 0px 15px 0px;
+    margin-bottom: 15px;      
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    height: 500px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);    
+}
+.ul-breadcrumb {
+    list-style: none;
+}
+.ul-breadcrumb li {
+    display: inline-block;
+    margin-left: 0;
+}
+.ul-breadcrumb a {
+    color: #0c62ad;
+}
+.ul-breadcrumb a::after {
+    font-family: 'FontAwesome';
+    content: "\f105";
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.source-recruitment-title{
+    border-bottom: 1px solid rgb(238, 238, 238);
+    color: #4a4a4a;
+    padding:10px 15px;
+    font-size: 16px;
+}
+.box-source-recruitment{
+    border: 1px solid #ededed;
+    margin-top: 15px;
+}
+.source-recruitment-main{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.box-source-recruitment{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.ribi a{
+    color: #000;
+}
+.khaly a{
+    color: #23c0e9;
+}
+.source-recruitment-bill{
+    color: #F36969
+}
+.source-recruitment-img{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 @media (max-width: 768px){    
       

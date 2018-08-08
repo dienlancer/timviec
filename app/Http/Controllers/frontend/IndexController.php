@@ -268,7 +268,7 @@ class IndexController extends Controller {
 				->get()
 				->toArray();        
 				$items=convertToArray($data);    
-				$view="frontend.category-article";                        
+				$view="category-article";                        
 			}              
 			break;
 			case 'article':
@@ -276,14 +276,14 @@ class IndexController extends Controller {
 			if(count($row) > 0){
 				$item=$row[0];
 			}        
-			$view="frontend.article";        
+			$view="article";        
 			break;        
 			case 'page':
 			$row=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
 			}     			
-			$view="frontend.page";     
+			$view="page";     
 			break;
 			case 'viec-lam-moi':			
 			$title='Việc làm mới';
@@ -627,7 +627,7 @@ class IndexController extends Controller {
 			}			
 			break; 		
 			case 'employer-detail':						
-			$view="frontend.employer-detail";
+			$view="employer-detail";
 			if(count(@$source_employer) > 0){
 				$data_employer=convertToArray(@$source_employer);
 				$employer_id=@$data_employer[0]['id'];
@@ -746,7 +746,7 @@ class IndexController extends Controller {
 			}			
 			break; 	
 			case 'recruitment-detail':
-			$view="frontend.recruitment-detail";
+			$view="recruitment-detail";
 			$row=RecruitmentModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();              
 			if(count($row) > 0){
 				$item=$row[0];
@@ -776,7 +776,7 @@ class IndexController extends Controller {
 			}
 		}    
 		\Artisan::call('sitemap:auto');        
-		return view("frontend.".@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
+		return view("frontend.".@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category","component"));   		
 	}	
 	public function register(){             
 		return view("frontend.register");         

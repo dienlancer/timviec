@@ -55,6 +55,7 @@ var vItemTable     =   null;
 var vArticleComponentTable = null;
 var vProductComponentTable = null;
 var vPageComponentTable = null;
+var vProfileAppliedTable=null;
 var basicTable = function () {
     var initCategoryArticleTable = function () {
         vCategoryArticleTable = $('#tbl-category-article').DataTable({
@@ -497,8 +498,8 @@ var basicTable = function () {
             ]
         });        
     };
-    var initRecruitmentProfileTable = function () {
-        vRecruitmentProfileTable = $('#tbl-recruitment-profile').DataTable({
+    var initProfileAppliedTable = function () {
+        vProfileAppliedTable = $('#tbl-recruitment-profile').DataTable({
             aLengthMenu: [
                 [10, -1],
                 [10, "All"]
@@ -1161,7 +1162,7 @@ var basicTable = function () {
             initClassificationTable();
             initSkillTable();
             initProfileTable();
-            initRecruitmentProfileTable();
+            initProfileAppliedTable();
         }
     };
 }();

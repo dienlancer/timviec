@@ -342,15 +342,15 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::post("trash",["as"=>"adminsystem.sex.trash","uses"=>"adminsystem\SexController@trash"]);
 		Route::post("create-alias",["as"=>"adminsystem.sex.createAlias","uses"=>"adminsystem\SexController@createAlias"]);
 	});	
-	Route::group(["prefix"=>"recruitment-profile"],function(){		
-		Route::get("list",["as"=>"adminsystem.recruitment-profile.getList","uses"=>"adminsystem\RecruitmentProfileController@getList"]);
-		Route::post("load-data",["as"=>"adminsystem.recruitment-profile.loadData","uses"=>"adminsystem\RecruitmentProfileController@loadData"]);	
-		Route::get("form/{task}/{id?}",["as"=>"adminsystem.recruitment-profile.getForm","uses"=>"adminsystem\RecruitmentProfileController@getForm"]);
-		Route::post("save",["as"=>"adminsystem.recruitment-profile.save","uses"=>"adminsystem\RecruitmentProfileController@save"]);
-		Route::post("delete-item",["as"=>"adminsystem.recruitment-profile.deleteItem","uses"=>"adminsystem\RecruitmentProfileController@deleteItem"]);
-		Route::post("update-status",["as"=>"adminsystem.recruitment-profile.updateStatus","uses"=>"adminsystem\RecruitmentProfileController@updateStatus"]);
-		Route::post("change-status",["as"=>"adminsystem.recruitment-profile.changeStatus","uses"=>"adminsystem\RecruitmentProfileController@changeStatus"]);
-		Route::post("trash",["as"=>"adminsystem.recruitment-profile.trash","uses"=>"adminsystem\RecruitmentProfileController@trash"]);		
+	Route::group(["prefix"=>"profile-applied"],function(){		
+		Route::get("list",["as"=>"adminsystem.profile-applied.getList","uses"=>"adminsystem\ProfileAppliedController@getList"]);
+		Route::post("load-data",["as"=>"adminsystem.profile-applied.loadData","uses"=>"adminsystem\ProfileAppliedController@loadData"]);	
+		Route::get("form/{task}/{id?}",["as"=>"adminsystem.profile-applied.getForm","uses"=>"adminsystem\ProfileAppliedController@getForm"]);
+		Route::post("save",["as"=>"adminsystem.profile-applied.save","uses"=>"adminsystem\ProfileAppliedController@save"]);
+		Route::post("delete-item",["as"=>"adminsystem.profile-applied.deleteItem","uses"=>"adminsystem\ProfileAppliedController@deleteItem"]);
+		Route::post("update-status",["as"=>"adminsystem.profile-applied.updateStatus","uses"=>"adminsystem\ProfileAppliedController@updateStatus"]);
+		Route::post("change-status",["as"=>"adminsystem.profile-applied.changeStatus","uses"=>"adminsystem\ProfileAppliedController@changeStatus"]);
+		Route::post("trash",["as"=>"adminsystem.profile-applied.trash","uses"=>"adminsystem\ProfileAppliedController@trash"]);		
 	});	
 	Route::group(["prefix"=>"skill"],function(){		
 		Route::get("list",["as"=>"adminsystem.skill.getList","uses"=>"adminsystem\SkillController@getList"]);

@@ -79,8 +79,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			type: 'POST', 
 			data: dataItem,
 			success: function (data, status, jqXHR) {  								
-				vRecruitmentProfileTable.clear().draw();
-				vRecruitmentProfileTable.rows.add(data).draw();
+				vProfileAppliedTable.clear().draw();
+				vProfileAppliedTable.rows.add(data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -89,7 +89,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 		});
 	}	
 	function checkWithList(this_checkbox){
-		var dr = vRecruitmentProfileTable.row( $(this_checkbox).closest('tr') ).data();       		
+		var dr = vProfileAppliedTable.row( $(this_checkbox).closest('tr') ).data();       		
 		if(parseInt(dr['is_checked']) == 0){
 			dr['checked'] ='<input type="checkbox" checked onclick="checkWithList(this)" name="cid" />';
 			dr['is_checked'] = 1;
@@ -97,7 +97,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			dr['checked'] ='<input type="checkbox" onclick="checkWithList(this)" name="cid" />';
 			dr['is_checked'] = 0;
 		}
-		vRecruitmentProfileTable.row( $(this_checkbox).closest('tr') ).data(dr);
+		vProfileAppliedTable.row( $(this_checkbox).closest('tr') ).data(dr);
 	}	
 	function changeStatus(id,status){		
 		var token = $('input[name="_token"]').val();   		
@@ -112,8 +112,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			data: dataItem,
 			success: function (data, status, jqXHR) {   							                              				
 				showMsg('note',data);               		
-				vRecruitmentProfileTable.clear().draw();
-				vRecruitmentProfileTable.rows.add(data.data).draw();
+				vProfileAppliedTable.clear().draw();
+				vProfileAppliedTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -143,8 +143,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			data: dataItem,
 			success: function (data, status, jqXHR) {  				
 				showMsg('note',data);               		
-				vRecruitmentProfileTable.clear().draw();
-				vRecruitmentProfileTable.rows.add(data.data).draw();
+				vProfileAppliedTable.clear().draw();
+				vProfileAppliedTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -155,7 +155,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 	}
 	function updateStatus(status){				
 		var token 	= 	$('input[name="_token"]').val();   		
-		var dt 		= 	vRecruitmentProfileTable.data();		
+		var dt 		= 	vProfileAppliedTable.data();		
 		var str_id	=	"";		
 		for(var i=0;i<dt.length;i++){
 			var dr=dt[i];
@@ -175,8 +175,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			data: dataItem,
 			success: function (data, status, jqXHR) {   							                              				
 				showMsg('note',data);               		
-				vRecruitmentProfileTable.clear().draw();
-				vRecruitmentProfileTable.rows.add(data.data).draw();
+				vProfileAppliedTable.clear().draw();
+				vProfileAppliedTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){
@@ -195,7 +195,7 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			return 0;
 		}
 		var token 	= 	$('input[name="_token"]').val();   		
-		var dt 		= 	vRecruitmentProfileTable.data();
+		var dt 		= 	vProfileAppliedTable.data();
 		var str_id	=	"";		
 		for(var i=0;i<dt.length;i++){
 			var dr=dt[i];
@@ -215,8 +215,8 @@ $inputFilterSearch 		=	'<input type="text" class="form-control" name="filter_sea
 			data: dataItem,
 			success: function (data, status, jqXHR) {
 				showMsg('note',data);  
-				vRecruitmentProfileTable.clear().draw();
-				vRecruitmentProfileTable.rows.add(data.data).draw();
+				vProfileAppliedTable.clear().draw();
+				vProfileAppliedTable.rows.add(data.data).draw();
 				spinner.hide();
 			},
 			beforeSend  : function(jqXHR,setting){

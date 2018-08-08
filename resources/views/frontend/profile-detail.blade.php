@@ -89,8 +89,8 @@ $job_fullname='';
 $province_fullname='';
 $status_search='';
 $enabled_do=1;
-$data_recruitment_profile=App\RecruitmentProfileModel::whereRaw('profile_id = ?',[(int)@$id])->select()->get()->toArray();
-if(count(@$data_recruitment_profile) > 0){
+$data_profile_applied=App\ProfileAppliedModel::whereRaw('profile_id = ?',[(int)@$id])->select()->get()->toArray();
+if(count(@$data_profile_applied) > 0){
 	$enabled_do=0;
 }	
 if(count($source_info) > 0){

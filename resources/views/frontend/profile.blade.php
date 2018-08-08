@@ -173,8 +173,8 @@ switch ($task) {
 						<div class="col-lg-4" ></div>
 						<div class="col-lg-8"> 
 							<?php 
-							$data_recruitment_profile=App\RecruitmentProfileModel::whereRaw('profile_id = ?',[(int)@$data['id']])->select()->get()->toArray();	
-							if(count(@$data_recruitment_profile) > 0){
+							$data_profile_applied=App\ProfileAppliedModel::whereRaw('profile_id = ?',[(int)@$data['id']])->select()->get()->toArray();	
+							if(count(@$data_profile_applied) > 0){
 								?>
 								<b><font color="#E30000">Hồ sơ đã được nộp không được phép chỉnh sửa</font></b> 
 								<?php

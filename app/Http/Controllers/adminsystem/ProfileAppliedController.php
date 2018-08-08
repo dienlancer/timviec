@@ -13,11 +13,11 @@ use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use App\PaymentMethodModel;
 use App\SupporterModel;
-use App\RecruitmentProfileModel;
+use App\ProfileAppliedModel;
 use App\CandidateModel;
 use DB;
-class RecruitmentProfileController extends Controller {
- var $_controller="recruitment-profile";	
+class ProfileAppliedController extends Controller {
+ var $_controller="profile-applied";	
  var $_title="Hồ sơ ứng tuyển chờ duyệt";
  var $_icon="icon-settings font-dark";    
  public function getList(){		
@@ -39,14 +39,14 @@ public function loadData(Request $request){
   if(!empty(@$request->filter_search)){      
     $filter_search=trim(@$request->filter_search) ;    
   }        
-  $data=DB::table('recruitment_profile') 
-  ->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id')                 
-  ->leftJoin('profile','recruitment_profile.profile_id','=','profile.id')
-  ->leftJoin('candidate','recruitment_profile.candidate_id','=','candidate.id')
-  ->select('recruitment_profile.id','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','profile.fullname as profile_name','candidate.fullname as candidate_name','recruitment_profile.file_attached','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')                
+  $data=DB::table('profile_applied') 
+  ->leftJoin('recruitment','profile_applied.recruitment_id','=','recruitment.id')                 
+  ->leftJoin('profile','profile_applied.profile_id','=','profile.id')
+  ->leftJoin('candidate','profile_applied.candidate_id','=','candidate.id')
+  ->select('profile_applied.id','recruitment.fullname as recruitment_name','profile_applied.profile_id','profile.fullname as profile_name','candidate.fullname as candidate_name','profile_applied.file_attached','profile_applied.status','profile_applied.created_at','profile_applied.updated_at')                
   ->where('candidate.fullname','like','%'.trim(mb_strtolower($filter_search,'UTF-8')).'%')                     
-  ->groupBy('recruitment_profile.id','recruitment.fullname','recruitment_profile.profile_id','profile.fullname','candidate.fullname','recruitment_profile.file_attached','recruitment_profile.status','recruitment_profile.created_at','recruitment_profile.updated_at')      
-  ->orderBy('recruitment_profile.id', 'desc')                
+  ->groupBy('profile_applied.id','recruitment.fullname','profile_applied.profile_id','profile.fullname','candidate.fullname','profile_applied.file_attached','profile_applied.status','profile_applied.created_at','profile_applied.updated_at')      
+  ->orderBy('profile_applied.id', 'desc')                
   ->get()->toArray();              
   $data=convertToArray($data);    
   $data=recruitmentProfile2Converter($data,$this->_controller);            
@@ -63,7 +63,7 @@ public function getForm($task,$id=""){
     switch ($task) {
      case 'edit':
      $title=$this->_title . " : Update";
-     $arrRowData=RecruitmentProfileModel::find((int)@$id)->toArray();                     
+     $arrRowData=ProfileAppliedModel::find((int)@$id)->toArray();                     
      break;
      case 'add':
      $title=$this->_title . " : Add new";
@@ -92,11 +92,11 @@ public function save(Request $request){
  }
  if ($checked == 1) {    
   if(empty($id)){
-    $item         =   new RecruitmentProfileModel;       
+    $item         =   new ProfileAppliedModel;       
     $item->created_at   = date("Y-m-d H:i:s",time());        
 
   } else{
-    $item       = RecruitmentProfileModel::find((int)@$id);   
+    $item       = ProfileAppliedModel::find((int)@$id);   
 
   }    
   $item->status 			    =	(int)@$status;    
@@ -117,7 +117,7 @@ public function changeStatus(Request $request){
   $checked              =   1;                           
   $msg                =   array();     
   $status         =       (int)@$request->status;
-  $item           =       RecruitmentProfileModel::find((int)@$id);        
+  $item           =       ProfileAppliedModel::find((int)@$id);        
   $item->status   =       $status;
   $item->save();
   $msg['success']='Cập nhật thành công';
@@ -137,7 +137,7 @@ public function deleteItem(Request $request){
   $msg                =   array();
                
   if($checked == 1){
-    $item = RecruitmentProfileModel::find((int)@$id);
+    $item = ProfileAppliedModel::find((int)@$id);
     $item->delete();    
     $msg['success']          =   'Xóa thành công';                                                     
   }        
@@ -165,7 +165,7 @@ public function updateStatus(Request $request){
   if($checked==1){
     foreach ($arrID as $key => $value) {
       if(!empty($value)){
-        $item=RecruitmentProfileModel::find($value);
+        $item=ProfileAppliedModel::find($value);
         $item->status=$status;
         $item->save();      
       }            
@@ -194,7 +194,7 @@ public function trash(Request $request){
   }         
      
   if($checked == 1){                                  
-    DB::table('recruitment_profile')->whereIn('id',@$arrID)->delete();
+    DB::table('profile_applied')->whereIn('id',@$arrID)->delete();
     $msg['success']='Xóa thành công';                                      
   }
   $data                   =   $this->loadData($request);

@@ -46,9 +46,9 @@ use App\ProfileGraduationModel;
 use App\ProfileLanguageModel;
 use App\ProfileSkillModel;
 use App\ProvinceModel;
-use App\EmployerProfileModel;
-use App\RecruitmentProfileModel;
-use App\CandidateRecruitmentModel;
+use App\ProfileSavedModel;
+use App\ProfileAppliedModel;
+use App\RecruitmentSavedModel;
 use App\NL_CheckOutV3;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -1416,8 +1416,8 @@ class IndexController extends Controller {
 					$arrUser=array("id"=>$source[0]["id"],"email" => $source[0]["email"]);         
 					Session::forget($this->_ssNameUser);                                 
 					Session::put($this->_ssNameUser,$arrUser);  
-					$data_candidate_recruitment=CandidateRecruitmentModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
-					if(count($data_candidate_recruitment) > 0){
+					$data_recruitment_saved=RecruitmentSavedModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
+					if(count($data_recruitment_saved) > 0){
 						$msg['error']="Việc làm đã được lưu";						
 						$checked=0;
 					}				
@@ -1427,7 +1427,7 @@ class IndexController extends Controller {
 				}           
 			}
 			if((int)@$checked == 1){
-				$item=new CandidateRecruitmentModel;
+				$item=new RecruitmentSavedModel;
 				$item->candidate_id=(int)@$arrUser['id'];
 				$item->recruitment_id=(int)@$recruitment_id;
 				$item->created_at 	=	date("Y-m-d H:i:s",time());        
@@ -1466,13 +1466,13 @@ class IndexController extends Controller {
 			$recruitment_id 	= (int)@$request->recruitment_id;
 			$recruitment=RecruitmentModel::find((int)@$recruitment_id)->toArray();			
 			$alias=@$recruitment['alias'];
-			$data_candidate_recruitment=CandidateRecruitmentModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
-			if(count(@$data_candidate_recruitment) > 0){
+			$data_recruitment_saved=RecruitmentSavedModel::whereRaw('candidate_id = ? and recruitment_id = ?',[(int)@$arrUser['id'],(int)@$recruitment_id])->select('id')->get()->toArray();
+			if(count(@$data_recruitment_saved) > 0){
 				$msg['error']="Việc làm đã được lưu";						
 				$checked=0;
 			}
 			if((int)@$checked == 1){
-				$item=new CandidateRecruitmentModel;
+				$item=new RecruitmentSavedModel;
 				$item->candidate_id=(int)@$arrUser['id'];
 				$item->recruitment_id=(int)@$recruitment_id;
 				$item->created_at 	=	date("Y-m-d H:i:s",time());        
@@ -1502,13 +1502,13 @@ class IndexController extends Controller {
 				$msg['error']='Hồ sơ chưa được duyệt nên không thể nộp vào vị trí này';
 				$checked=0;		
 			}
-			$data_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();			
-			if(count($data_recruitment_profile) > 0){
+			$data_profile_applied=ProfileAppliedModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();			
+			if(count($data_profile_applied) > 0){
 				$msg['error']='Ứng viên đã ứng tuyển vị trí này';
 				$checked=0;	
 			}			
 			if((int)@$checked==1){
-				$item=new RecruitmentProfileModel;
+				$item=new ProfileAppliedModel;
 				$item->recruitment_id=(int)@$recruitment_id;
 				$item->profile_id=(int)@$profile_id;				
 				$item->candidate_id=(int)@$candidate_id;				
@@ -1550,8 +1550,8 @@ class IndexController extends Controller {
 		$recruitment_name='';
 		$candidate_name='';
 		$query=DB::table('candidate')		
-		->join('recruitment_profile','candidate.id','=','recruitment_profile.candidate_id')		
-		->join('recruitment','recruitment.id','=','recruitment_profile.recruitment_id');     		
+		->join('profile_applied','candidate.id','=','profile_applied.candidate_id')		
+		->join('recruitment','recruitment.id','=','profile_applied.recruitment_id');     		
 		if(!empty(@$request->candidate_name)){
 			$candidate_name=@$request->candidate_name;
 			$query->where('candidate.fullname','like', '%'.trim(@$candidate_name).'%');
@@ -1561,7 +1561,7 @@ class IndexController extends Controller {
 			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
 		}		
 		$query->where('recruitment.employer_id',(int)@$arrUser['id']);
-		$query->where('recruitment_profile.status',1);
+		$query->where('profile_applied.status',1);
 		$data=$query->select('candidate.id')
 		->groupBy('candidate.id')                
 		->get()->toArray();
@@ -1582,8 +1582,8 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','recruitment_profile.file_attached','recruitment_profile.created_at')
-		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','recruitment_profile.profile_id','recruitment_profile.file_attached','recruitment_profile.created_at')
+		$data=$query->select('candidate.id','candidate.fullname','recruitment.fullname as recruitment_name','profile_applied.profile_id','profile_applied.file_attached','profile_applied.created_at')
+		->groupBy('candidate.id','candidate.fullname','recruitment.fullname','profile_applied.profile_id','profile_applied.file_attached','profile_applied.created_at')
 		->orderBy('recruitment.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
@@ -1615,16 +1615,16 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$recruitment_name='';		
-		$query=DB::table('recruitment_profile')		
-		->leftJoin('recruitment','recruitment_profile.recruitment_id','=','recruitment.id')		
-		->leftJoin('profile','recruitment_profile.profile_id','=','profile.id');
+		$query=DB::table('profile_applied')		
+		->leftJoin('recruitment','profile_applied.recruitment_id','=','recruitment.id')		
+		->leftJoin('profile','profile_applied.profile_id','=','profile.id');
 		if(!empty(@$request->recruitment_name)){
 			$recruitment_name=@$request->recruitment_name;
 			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
 		}		
-		$query->where('recruitment_profile.candidate_id',(int)@$arrUser['id']);		
-		$data=$query->select('recruitment_profile.id')
-		->groupBy('recruitment_profile.id')                
+		$query->where('profile_applied.candidate_id',(int)@$arrUser['id']);		
+		$data=$query->select('profile_applied.id')
+		->groupBy('profile_applied.id')                
 		->get()->toArray();
 		$data=convertToArray($data);
 		$totalItems=count($data);    
@@ -1643,9 +1643,9 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('recruitment_profile.id','recruitment.fullname as recruitment_name','recruitment_profile.profile_id','profile.fullname as profile_name','recruitment_profile.file_attached','recruitment_profile.created_at')
-		->groupBy('recruitment_profile.id','recruitment.fullname','recruitment_profile.profile_id','profile.fullname','recruitment_profile.file_attached','recruitment_profile.created_at')
-		->orderBy('recruitment_profile.id', 'desc')
+		$data=$query->select('profile_applied.id','recruitment.fullname as recruitment_name','profile_applied.profile_id','profile.fullname as profile_name','profile_applied.file_attached','profile_applied.created_at')
+		->groupBy('profile_applied.id','recruitment.fullname','profile_applied.profile_id','profile.fullname','profile_applied.file_attached','profile_applied.created_at')
+		->orderBy('profile_applied.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
@@ -1675,15 +1675,15 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$recruitment_name='';		
-		$query=DB::table('candidate_recruitment')		
-		->join('recruitment','candidate_recruitment.recruitment_id','=','recruitment.id')		;
+		$query=DB::table('recruitment_saved')		
+		->join('recruitment','recruitment_saved.recruitment_id','=','recruitment.id')		;
 		if(!empty(@$request->recruitment_name)){
 			$recruitment_name=@$request->recruitment_name;
 			$query->where('recruitment.fullname','like', '%'.trim(@$recruitment_name).'%');
 		}		
-		$query->where('candidate_recruitment.candidate_id',(int)@$arrUser['id']);		
-		$data=$query->select('candidate_recruitment.id')
-		->groupBy('candidate_recruitment.id')                
+		$query->where('recruitment_saved.candidate_id',(int)@$arrUser['id']);		
+		$data=$query->select('recruitment_saved.id')
+		->groupBy('recruitment_saved.id')                
 		->get()->toArray();
 		$data=convertToArray($data);
 		$totalItems=count($data);    
@@ -1701,9 +1701,9 @@ class IndexController extends Controller {
 		);           
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
-		$data=$query->select('candidate_recruitment.id','recruitment.fullname as recruitment_name','recruitment.alias','candidate_recruitment.created_at')
-		->groupBy('candidate_recruitment.id','recruitment.fullname','recruitment.alias','candidate_recruitment.created_at')
-		->orderBy('candidate_recruitment.id', 'desc')
+		$data=$query->select('recruitment_saved.id','recruitment.fullname as recruitment_name','recruitment.alias','recruitment_saved.created_at')
+		->groupBy('recruitment_saved.id','recruitment.fullname','recruitment.alias','recruitment_saved.created_at')
+		->orderBy('recruitment_saved.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
 		->get()->toArray();   
@@ -1733,12 +1733,12 @@ class IndexController extends Controller {
 		$currentPage=1;  
 		$pagination ='';            
 		$q='';				
-		$query=DB::table('employer_profile')
-		->join('profile','employer_profile.profile_id','=','profile.id')				
+		$query=DB::table('profile_saved')
+		->join('profile','profile_saved.profile_id','=','profile.id')				
 		->join('candidate','profile.candidate_id','=','candidate.id')
 		->join('literacy','profile.literacy_id','=','literacy.id')
 		->join('experience','profile.experience_id','=','experience.id'); 
-		$query->where('employer_profile.employer_id',(int)@$arrUser['id']);
+		$query->where('profile_saved.employer_id',(int)@$arrUser['id']);
 		if(!empty(@$request->q)){
 			$q=@$request->q;
 			$query->where('candidate.fullname','like', '%'.trim(@$q).'%');
@@ -1763,20 +1763,20 @@ class IndexController extends Controller {
 		$pagination=new PaginationModel($arrPagination);
 		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;     
 
-		$data=$query->select('employer_profile.id',
+		$data=$query->select('profile_saved.id',
 				'profile.fullname as profile_name',
 				'candidate.fullname as candidate_name',
 				'literacy.fullname as literacy_name',
 				'experience.fullname as experience_name',
 				'profile.salary',
-				'employer_profile.created_at')
-		->groupBy('employer_profile.id',
+				'profile_saved.created_at')
+		->groupBy('profile_saved.id',
 				'profile.fullname',
 				'candidate.fullname',
 				'literacy.fullname',
 				'experience.fullname',
 				'profile.salary',
-				'employer_profile.created_at')
+				'profile_saved.created_at')
 		->orderBy('profile.id', 'desc')
 		->skip($position)
 		->take($totalItemsPerPage)
@@ -1922,13 +1922,13 @@ class IndexController extends Controller {
 		}
 		if($request->isMethod('post')){
 			$employer_id=(int)@$request->employer_id;
-			$data_employer_profile=EmployerProfileModel::whereRaw('employer_id = ? and profile_id = ?',[(int)@$employer_id,(int)@$profile_id])->select('id')->get()->toArray();
-			if(count(@$data_employer_profile) > 0){
+			$data_profile_saved=ProfileSavedModel::whereRaw('employer_id = ? and profile_id = ?',[(int)@$employer_id,(int)@$profile_id])->select('id')->get()->toArray();
+			if(count(@$data_profile_saved) > 0){
 				$msg['error']='Hồ sơ này đã được lưu';
 				$checked=0;
 			}
 			if((int)@$checked == 1){
-				$item=new EmployerProfileModel;
+				$item=new ProfileSavedModel;
 				$item->employer_id=(int)@$employer_id;			
 				$item->profile_id=(int)@$profile_id;
 				$item->created_at=date("Y-m-d H:i:s",time());   
@@ -2781,7 +2781,7 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.employerLogin"); 
 		}  
-		$source2=EmployerProfileModel::find((int)@$id);
+		$source2=ProfileSavedModel::find((int)@$id);
 		if($source2 == null){
 			$checked=0;
 			$msg['errorid']='Không đúng id';
@@ -2793,7 +2793,7 @@ class IndexController extends Controller {
 			}
 		}
 		if($checked == 1){			
-			EmployerProfileModel::find((int)@$id)->delete();          			
+			ProfileSavedModel::find((int)@$id)->delete();          			
 			$msg['success']='Xóa thành công';
 		}  
 		$info = array(
@@ -2818,7 +2818,7 @@ class IndexController extends Controller {
 		if(count($source) == 0){
 			return redirect()->route("frontend.index.candidateLogin"); 
 		}  
-		$source2=CandidateRecruitmentModel::find((int)@$id);
+		$source2=RecruitmentSavedModel::find((int)@$id);
 		if($source2 == null){
 			$checked=0;
 			$msg['errorid']='Không đúng id';
@@ -2830,7 +2830,7 @@ class IndexController extends Controller {
 			}
 		}
 		if($checked == 1){			
-			CandidateRecruitmentModel::find((int)@$id)->delete();          			
+			RecruitmentSavedModel::find((int)@$id)->delete();          			
 			$msg['success']='Xóa thành công';
 		}  
 		$info = array(
@@ -3165,8 +3165,8 @@ class IndexController extends Controller {
 				}
 			}
 		}		
-		$data_recruitment_profile=RecruitmentProfileModel::whereRaw('profile_id = ?',[(int)@$id])->select()->get()->toArray();		
-		if(count(@$data_recruitment_profile) > 0){
+		$data_profile_applied=ProfileAppliedModel::whereRaw('profile_id = ?',[(int)@$id])->select()->get()->toArray();		
+		if(count(@$data_profile_applied) > 0){
 			$msg['error']='Hồ sơ đã được nộp không thể xóa';
 			$checked=0;
 		}
@@ -3270,8 +3270,8 @@ class IndexController extends Controller {
 	    		$msg['notfileattached']='Đính kèm file lỗi . File đính kèm phải ở dạng word , pdf';
     		}
     	}  
-    	$source_recruitment_profile=RecruitmentProfileModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();
-    	if(count(@$source_recruitment_profile) > 0){
+    	$source_profile_applied=ProfileAppliedModel::whereRaw('recruitment_id = ? and candidate_id = ?',[(int)@$recruitment_id,(int)@$candidate_id])->select('id')->get()->toArray();
+    	if(count(@$source_profile_applied) > 0){
     		$msg['error']='Ứng viên đã ứng tuyển vị trí này';
     		$checked=0;	
     	}  	    
@@ -3280,7 +3280,7 @@ class IndexController extends Controller {
     		if($source_file != null){                                                
     			$attachment_name=uploadAttachedFile($source_file['name'],$source_file['tmp_name']);
     		}    		
-    		$item				= new	RecruitmentProfileModel;
+    		$item				= new	ProfileAppliedModel;
     		$item->recruitment_id=(int)@$recruitment_id;
     		$item->candidate_id=(int)@$candidate_id;    		
     		$item->file_attached=null;

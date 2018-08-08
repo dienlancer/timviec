@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2018 at 12:49 PM
+-- Generation Time: Aug 08, 2018 at 07:12 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -213,22 +213,8 @@ INSERT INTO `candidate` (`id`, `email`, `password`, `fullname`, `phone`, `birthd
 (5, 'duydp@dienkim.com', '$2y$10$l.PmvBEd9gT/Dod3nJLTHe1i5Ko/uyEItXMYouG0d/od6pgNxZPlm', 'Phạm Đình Duy', '0988145622', '1989-05-06 00:00:00', 1, 1, 55, '62 Lê Thánh Tôn', NULL, NULL, NULL, 1, '2018-04-04 05:18:40', '2018-06-22 06:53:22'),
 (6, 'doricata@dienkim.com', '$2y$10$f5xkRP6uU9xCbwatX0o4XetN8cl6VgyElfUNKHOtWzug2YiQNHbRS', 'Nguyễn Văn Cường', '0988162289', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '2018-04-04 05:31:42', '2018-04-04 10:14:02'),
 (9, 'dienit02@gmail.com', '$2y$10$.poX92LRY9iXsfOPQZLD.eITV1w98HCGcJhCC1S4zYMWf1RLBkb2m', 'Lê Phước Cường', '0922331459', NULL, NULL, NULL, NULL, NULL, NULL, 'iv3kny69a05l28r7wcp4zqj1ghbsdx', 1, 1, '2018-05-15 08:03:17', '2018-05-15 09:56:51'),
-(10, 'linhlk@dienkim.com', '$2y$10$yWFnB7UsZOTYbAc.xbuvKO3CIQUgoRdh2jSXVeZzKeKX4ZA4jNXjy', 'Lý Khánh Linh', '0988752133', NULL, NULL, NULL, NULL, NULL, NULL, 'be2sjk710c8wuifhdpm3n4og956vya', 0, 0, '2018-08-02 03:43:57', '2018-08-02 03:43:57');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `candidate_recruitment`
---
-
-DROP TABLE IF EXISTS `candidate_recruitment`;
-CREATE TABLE `candidate_recruitment` (
-  `id` bigint(20) NOT NULL,
-  `candidate_id` int(11) DEFAULT NULL,
-  `recruitment_id` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(10, 'linhlk@dienkim.com', '$2y$10$yWFnB7UsZOTYbAc.xbuvKO3CIQUgoRdh2jSXVeZzKeKX4ZA4jNXjy', 'Lý Khánh Linh', '0988752133', NULL, NULL, NULL, NULL, NULL, NULL, 'be2sjk710c8wuifhdpm3n4og956vya', 0, 0, '2018-08-02 03:43:57', '2018-08-02 03:43:57'),
+(11, 'hieulv@dienkim.com', '$2y$10$anI6sOj1i0WOH7C1mVzTW.uCA.5zq.xNyT1K3ZnXUh5YZdu9gu0Xa', 'Lê Văn Hiếu', '0921771931', NULL, NULL, NULL, NULL, NULL, NULL, 'q8oib9kv1ax3js4fmep7gc260nurwd', 0, 0, '2018-08-07 07:59:36', '2018-08-07 07:59:36');
 
 -- --------------------------------------------------------
 
@@ -584,29 +570,10 @@ INSERT INTO `employer` (`id`, `email`, `password`, `fullname`, `alias`, `meta_ke
 (62, 'congnghehoangnguyen@dienkim.com', '$2y$10$WBIiR3yKAIgMdxgm/q5tJegPItBlccTB95bpUmRaZO2aGYn0xb7B2', 'Công Ty TNHH Công Nghệ Hoàng Nguyễn', 'cong-ty-tnhh-cong-nghe-hoang-nguyen', NULL, NULL, '66 Lưu Chí Hiếu, P. Tây Thạnh, Q. Tân Phú, TP. Hồ Chí Minh', '0978231886', 23, 3, NULL, '<p>Chúng tôi là đại diện phân phối chính thức cho các hãng camera KBVISION, QUESTEK. Qua 5 năm phát triền, chúng tôi đã khẳng định được vị thế của mình trong ngành cung cấp các thiết bị và giải pháp an nình tổng thể cho gia đình và doanh nghiệp.</p><p>Các sản phẩm chúng tôi cung cấp:</p><p>- Thiết bị an ninh giám sát nhà cửa, siêu thị, tòa nhà, dự án....</p><p>- Chuông cửa màn hình.</p><p>- Khóa thông minh.</p><p>- Báo cháy, báo trộm.</p><p>- Nhà thông minh smarthome.</p><p>- Định vị xe tải, ô tô, xe máy.</p><p>- Máy tính và linh kiện máy tính.</p>', '874781237175', 'www.congnghehoangnguyen.com', 'Dương Thành Thái', '0944223167', NULL, '8uhkiot14v56npyqebfmgacz9x2r37', 0, 0, NULL, '2018-07-18 10:02:26', '2018-07-18 10:02:26'),
 (63, 'menzaavietnam@dienkim.com', '$2y$10$BWqj39G2l3ax0sYWnLkN/.g0IL/2Tis/aG7.yeG7mNk6KfnCtl6/K', 'Công ty cổ phần MENZAA VIỆT NAM', 'cong-ty-co-phan-menzaa-viet-nam', NULL, NULL, '65/7/4 Trần Văn Dư, phường 13, Quận Tân Bình, Tp.HCM', '0921771838', 15, 4, NULL, '', '871757418774', 'www.menzaavn.com', 'Trần Văn Đại', '0977223111', NULL, 'cfmge04s26ut7ljxzrqohvab3wk5pi', 0, 0, NULL, '2018-07-18 10:47:42', '2018-07-18 10:47:42'),
 (64, 'banhgivral@dienkim.com', '$2y$10$emuDRvNPAoeBevnuXSz9veTeap9gAFH0Wt.tLHQDMoAhaPP1xYFsa', 'Công ty Cổ phần Bánh GIVRAL', 'cong-ty-co-phan-banh-givral', NULL, NULL, 'Lô II-1B Lê Trọng Tấn, KCN Tân Bình, P. Tây Thạnh, Q. Tân Phú', '0988151002', 2, 3, NULL, '<p>Givral Bakery là một thương hiệu bánh danh tiếng của Sài Gòn với bề dày lịch sử hơn 60 năm. Ra đời vào đầu những năm thập niên 50 bởi Alain Portier một ông chủ người Pháp sống lâu năm tại Việt Nam, Givral thực sự mang nét tao nhã, tinh tế của nền văn hóa ẩm thực Pháp, làm đắm say biết bao thế hệ những người tiêu dùng Việt.\r\n</p><p>\r\nBánh mì Givral có đủ hương vị: ngọt, béo, mặn. Từ chiếc bánh mì baguette dài đến chiếc bánh mì cóc, Givral mang đến cho bạn những chiếc bánh thơm giòn đẳng cấp nhờ tuyệt chiêu trộn bột.\r\nTừ bột mì, đường, sữa, muối, trứng gà..., những chuyên gia làm bánh đỉnh cao của Givral đã tạo ra một hỗn hợp mịn màng, thơm lừng trước khi đi vào công đoạn tạo hình, ủ và nướng bánh.</p>', '414534534534', 'www.givralbakery.com.vn', 'Trần Văn Hà', '0956223145', NULL, 'fk9iv8muc760hajrnq4zespx2wblt5', 0, 0, NULL, '2018-07-18 10:55:57', '2018-07-18 10:55:57'),
-(65, 'tinhocthanhnhan@dienkim.com', '$2y$10$LpgsCLN9/mN.huALMmsZSuCoD5yu38aSziGrSeN6EOJSxUjhsGJZW', 'Công ty TNHH Tin học Thành Nhân', 'cong-ty-tnhh-tin-hoc-thanh-nhan', NULL, NULL, '174-176-178 Bùi Thị Xuân, P. Phạm Ngũ Lão, Q. 1', '0977231446', 4, 4, NULL, 'Rɑ đời từ năm 1994, công ty ƬƝHH Ƭin Học Ƭhành Ɲhân là một trong những công ty hàng đầu tại Ƭp. HϹM trong lĩnh vực công nghệ thông tin. Ϲông ty chúng tôi hiện là đại lý củɑ các hãng nổi tiếng: Intel, Ɗell,Sony,Asus, HƤ, Acer…Ϲhúng tôi luôn duy trì được tốc độ tăng trưởng ở mức độ cɑo và vững chắc trên mọi mặt. Ƭhành Ɲhân luôn chiếm được sự tin tưởng củɑ khách hàng trong và ngoài tỉnh bởi các chính sách, cɑm kết, dịch vụ…mà rất nhiều công ty máy tính khác không làm được.', '785432788', 'www.tinhocthanhnhan.com', 'Nguyễn Thành Nhân', '0956123456', NULL, 'whqopx6rc4mgjf8z3vn5ubtes27i9a', 0, 0, NULL, '2018-07-18 11:00:19', '2018-07-18 11:00:19');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employer_profile`
---
-
-DROP TABLE IF EXISTS `employer_profile`;
-CREATE TABLE `employer_profile` (
-  `id` bigint(20) NOT NULL,
-  `employer_id` int(11) DEFAULT NULL,
-  `profile_id` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `employer_profile`
---
-
-INSERT INTO `employer_profile` (`id`, `employer_id`, `profile_id`, `created_at`, `updated_at`) VALUES
-(1, 9, 1, '2018-06-25 01:21:47', '2018-06-25 01:21:47');
+(65, 'tinhocthanhnhan@dienkim.com', '$2y$10$LpgsCLN9/mN.huALMmsZSuCoD5yu38aSziGrSeN6EOJSxUjhsGJZW', 'Công ty TNHH Tin học Thành Nhân', 'cong-ty-tnhh-tin-hoc-thanh-nhan', NULL, NULL, '174-176-178 Bùi Thị Xuân, P. Phạm Ngũ Lão, Q. 1', '0977231446', 4, 4, NULL, 'Rɑ đời từ năm 1994, công ty ƬƝHH Ƭin Học Ƭhành Ɲhân là một trong những công ty hàng đầu tại Ƭp. HϹM trong lĩnh vực công nghệ thông tin. Ϲông ty chúng tôi hiện là đại lý củɑ các hãng nổi tiếng: Intel, Ɗell,Sony,Asus, HƤ, Acer…Ϲhúng tôi luôn duy trì được tốc độ tăng trưởng ở mức độ cɑo và vững chắc trên mọi mặt. Ƭhành Ɲhân luôn chiếm được sự tin tưởng củɑ khách hàng trong và ngoài tỉnh bởi các chính sách, cɑm kết, dịch vụ…mà rất nhiều công ty máy tính khác không làm được.', '785432788', 'www.tinhocthanhnhan.com', 'Nguyễn Thành Nhân', '0956123456', NULL, 'whqopx6rc4mgjf8z3vn5ubtes27i9a', 0, 0, NULL, '2018-07-18 11:00:19', '2018-07-18 11:00:19'),
+(66, 'eurogold@dienkim.com', '$2y$10$YfvjR4Q5UlilhKpkaPETS.jEtrexpo7hSd60KLA7IkRglX/rXh/sy', 'CÔNG TY CỔ PHẦN PHỤ KIỆN NỘI THẤT EUROGOLD SÀI GÒN', 'cong-ty-co-phan-phu-kien-noi-that-eurogold-sai-gon', NULL, NULL, 'SỐ 23 ĐƯỜNG 49, KHU DÂN CƯ NAM LONG, P. PHƯỚC LONG B, QUẬN 9', '0921771836', 23, 4, NULL, '<p><br></p>', '4231534537', 'www.eurogold.com.vn', 'Trần Văn Mạnh', '0987111227', NULL, 'u4jgh80lybsfp9eok3mtdx27vrqc5z', 0, 0, NULL, '2018-08-07 07:12:09', '2018-08-07 07:12:09'),
+(67, 'kyvycomvn@dienkim.com', '$2y$10$ZypRY.GSLHbGEcUxORZ93OEb8tqISka55tQdS/e9sh3hpGQ10rpLW', 'Công ty Cổ phần Ky Vy', 'cong-ty-co-phan-ky-vy', NULL, NULL, 'Lô II-7 Nhóm Công nghiệp II, Khu Công nghiệp Tân Bình, Phường Tây Thạnh, Quận Tân Phú', '0922331457', 23, 3, NULL, '<p>Công ty Cổ Phần KyVy là công ty tiên phong sản xuất tã giấy cho trẻ em và người lớn tại Việt Nam.Xuất phát từ ý tưởng giúp các bà mẹ Việt Nam có thêm thời gian chăm sóc gia đình<br></p>', '324567123', 'www.kyvy.com.vn', 'Trần Văn Phương', '0987111228', NULL, 'wyh7zpb5eumcfxqsr3ltivkdn40g6j', 0, 0, NULL, '2018-08-07 07:20:14', '2018-08-07 07:20:14'),
+(68, 'newled@dienkim.com', '$2y$10$EdsMsFzrYJLGl4KPFzDhB.Rm2GhRSt.wJ3uRW7yAIL9gM72raIlvq', 'Công ty TNHH Thế Giới Phát Sáng Mới', 'cong-ty-tnhh-the-gioi-phat-sang-moi', NULL, NULL, '28 Ngô Bệ, P13, Q.Tân Bình', '0921771931', 23, 3, NULL, '<p>Công ty TNHH Thế Giới Phát Sáng Mới (New Led) đại diện cho nhà máy sản xuất đèn Led lớn từ Hàn Quốc phân phối các loại đèn Led Hàn Quốc Samsung, LG trong chiếu sáng quảng cáo bảng hiệu trong nhà ngoài trời, nội ngoại thất, chiếu sáng công nghiệp. Được thành lập từ năm 2009, sau 9 năm đi vào hoạt động chúng tôi đã có được sự tín nhiệm từ nhiều thương hiệu lớn như: Ngân hàng ACB, Ngân hàng PVB, Ngân hàng Sacombank, Nha Trang center, Khách sạn Rex, Lush Bar...</p>', '64212397894', 'www.newled.com.vn', 'Lê Văn Sanh', '0934555621', NULL, 'p3fbdjr2ctz054y9xhesg78q1lwuia', 0, 0, NULL, '2018-08-07 07:29:47', '2018-08-07 07:29:47');
 
 -- --------------------------------------------------------
 
@@ -1913,7 +1880,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (972, 1, 'ddqnBEBCg9kt6rn2PJyXByqSKIfuHaFE', '2018-06-26 01:15:00', '2018-06-26 01:15:00'),
 (973, 1, 'lJmyl8Ah5tSQ2Co7Whwr9WHeUxckEEN3', '2018-08-02 01:18:05', '2018-08-02 01:18:05'),
 (974, 1, 'jB7JfRQl8AN4l1vHzJhQ7obuzwJfflr5', '2018-08-03 20:26:55', '2018-08-03 20:26:55'),
-(975, 1, 'MnV75dhj0G4qbD0tCtkuN6K2MirmiNYs', '2018-08-06 02:15:40', '2018-08-06 02:15:40');
+(975, 1, 'MnV75dhj0G4qbD0tCtkuN6K2MirmiNYs', '2018-08-06 02:15:40', '2018-08-06 02:15:40'),
+(976, 1, 'QTYJJGTAvZnyZAvsikjFBWDXkujXpmyH', '2018-08-07 21:08:39', '2018-08-07 21:08:39');
 
 -- --------------------------------------------------------
 
@@ -2154,8 +2122,8 @@ INSERT INTO `privilege` (`id`, `fullname`, `controller`, `action`, `sort_order`,
 (189, 'skill-form', 'skill', 'form', 1, '2018-04-27 18:07:06', '2018-04-27 18:07:06'),
 (190, 'profile-list', 'profile', 'list', 1, '2018-05-02 03:36:52', '2018-05-02 03:36:52'),
 (191, 'profile-form', 'profile', 'form', 1, '2018-05-02 03:37:03', '2018-05-02 03:37:03'),
-(192, 'recruitment-profile-list', 'recruitment-profile', 'list', 1, '2018-06-24 16:12:26', '2018-06-24 16:12:26'),
-(193, 'recruitment-profile-form', 'recruitment-profile', 'form', 1, '2018-06-24 16:12:59', '2018-06-24 16:12:59');
+(192, 'profile-applied-list', 'profile-applied', 'list', 1, '2018-06-24 16:12:26', '2018-08-08 04:10:17'),
+(193, 'profile-applied-form', 'profile-applied', 'form', 1, '2018-06-24 16:12:59', '2018-08-08 04:09:51');
 
 -- --------------------------------------------------------
 
@@ -2255,8 +2223,26 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`id`, `fullname`, `alias`, `literacy_id`, `experience_id`, `rank_present_id`, `rank_offered_id`, `salary`, `file_attached`, `candidate_id`, `career_goal`, `ms_word`, `ms_excel`, `ms_power_point`, `ms_outlook`, `other_software`, `medal`, `hobby`, `talent`, `status_search`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Nhân viên kinh doanh website , tên miền , hosting', 'nhan-vien-kinh-doanh-website-ten-mien-hosting', 5, 4, 3, 4, 17000000, 'ke-hoach-tmdtx-4bu8ydesm103.docx', 5, '<p>Đến Bệnh viện 115 và Thống Nhất thăm các hiệp sĩ gặp nạn sáng nay, ông Nguyễn Thành Phong trò chuyện với ông Trần Văn Hoàng (Trưởng nhóm hiệp sĩ Tân Bình, vừa qua cơn nguy kịch). Ông Phong thay mặt người dân thành phố cảm ơn nghĩa cử cao đẹp của các hiệp sĩ không quản nguy hiểm, xả thân bảo vệ bình yên cho nhân dân.\r\n</p><p>\r\nChủ tịch thành phố nói rằng, ông rất trăn trở khi hiệp sĩ chưa được trang bị bất cứ phương tiện nào để bảo vệ mình, còn tội phạm trộm cướp luôn mang theo vũ khí nguy hiểm.<br></p>', 1, 2, 3, 4, 'MS Sharepoint  48', '<p>- Tốt nghiệp từ trung cấp trở lên;\r\n</p><p>- Khả năng giao tiếp tốt, linh hoạt;\r\n</p><p>- Đạo đức tốt, kỷ luật tốt;\r\n</p><p>- Hoạt bát, có tinh thần cầu tiến, nhiệt huyết và mong muốn phát triển thu nhập xứng đáng với năng lực làm việc;\r\n</p><p>- Có điện thoại, xe máy, laptop;\r\n- Có kinh nghiệm kinh doanh trong các lĩnh vực tài chính/ngân hàng/ FMCG...là một lợi thế.</p>', 'Bóng đá 12', '<p>UNFPA Việt Nam từng hợp tác với Phạm Anh Khoa trong chiến dịch phòng chống bạo lực giới năm 2013, 2014. Anh cũng tham gia sự kiện kỷ niệm 40 năm hợp tác giữa UNFPA và chính phủ Việt Nam hồi tháng 7 năm ngoái. </p><p>Nam ca sĩ đảm nhiệm vai trò đại sứ hình ảnh về phòng chống bạo lực với phụ nữ và trẻ em gái. Trong đó, chống quấy rối và bạo lực tình dục chính là trọng tâm của chương trình này. </p><p>Trước khi đưa ra tuyên bố chính thức, UNFPA đã gỡ bỏ toàn bộ hình ảnh của rocker trên website, facebook của tổ chức này.\r\n\r\nQuỹ Dân số Liên Hợp Quốc (UNFPA) là cơ quan trực thuộc Liên Hợp Quốc, bắt đầu hoạt động từ năm 1969. Quỹ hoạt động ở Việt Nam từ năm 1977. Hoa hậu Đỗ Mỹ Linh, diễn viên Chiều Xuân, MC Phan Anh là đại sứ thiện chí.</p>', 1, 1, '2018-04-16 05:05:40', '2018-06-23 02:06:43'),
-(2, 'Nhân viên SEO marketing', 'nhan-vien-seo-marketing', 3, 3, 2, 1, 8000000, NULL, 5, '<p>Theo bác sĩ Cấp, người bị chó dại cắn nếu được tiêm phòng đúng phác đồ thì tránh tử vong. Khi bệnh dại khởi phát, có nghĩa cơ hội sống của bệnh nhân đã khép lại vì không có thuốc chữa và tử vong rất nhanh. Điều bác sĩ có thể làm trong tình trạng này chỉ là giúp bệnh nhân giảm đau.</p><p>Bệnh dại xảy ra quanh năm, thường tăng vào mùa hè. Thời gian ủ bệnh kéo dài, sớm nhất là nửa tháng, đa số vài ba tháng, có người đến vài năm. Thời gian phát bệnh phụ thuộc vào vị trí bị chó cắn, càng gần thần kinh trung ương càng phát bệnh nhanh. Vì thế, những người bị chó cắn ở vùng đầu mặt cổ thì cần tiêm huyết thanh kháng dại càng sớm càng tốt trong vòng 12 giờ sau khi bị cắn. 2</p>', 4, 3, 2, 1, 'phần mềm khác 2', '<p>các thành thích nổi bật 2</p>', 'Sở thích 2', '<p>kỹ năng đặc biệt 2</p>', 0, 1, '2018-08-02 03:47:08', '2018-08-02 08:18:46'),
-(3, 'Chuyên viên phân tích từ khóa', 'chuyen-vien-phan-tich-tu-khoa', 2, 4, 4, 3, 17000000, NULL, 5, '<p>mục tiêu nghề nghiệp 1</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, '2018-08-02 07:07:51', '2018-08-02 08:18:48');
+(2, 'Nhân viên SEO marketing', 'nhan-vien-seo-marketing', 3, 3, 2, 1, 8000000, NULL, 5, '<p>Theo bác sĩ Cấp, người bị chó dại cắn nếu được tiêm phòng đúng phác đồ thì tránh tử vong. Khi bệnh dại khởi phát, có nghĩa cơ hội sống của bệnh nhân đã khép lại vì không có thuốc chữa và tử vong rất nhanh. Điều bác sĩ có thể làm trong tình trạng này chỉ là giúp bệnh nhân giảm đau.</p><p>Bệnh dại xảy ra quanh năm, thường tăng vào mùa hè. Thời gian ủ bệnh kéo dài, sớm nhất là nửa tháng, đa số vài ba tháng, có người đến vài năm. Thời gian phát bệnh phụ thuộc vào vị trí bị chó cắn, càng gần thần kinh trung ương càng phát bệnh nhanh. Vì thế, những người bị chó cắn ở vùng đầu mặt cổ thì cần tiêm huyết thanh kháng dại càng sớm càng tốt trong vòng 12 giờ sau khi bị cắn. 2</p>', 4, 3, 2, 1, 'phần mềm khác 2', '<p>các thành thích nổi bật 2</p>', 'Sở thích 2', '<p>kỹ năng đặc biệt 2</p>', 0, 1, '2018-08-02 03:47:08', '2018-08-07 21:20:21'),
+(3, 'Chuyên viên phân tích từ khóa', 'chuyen-vien-phan-tich-tu-khoa', 2, 4, 4, 3, 17000000, NULL, 5, '<p>mục tiêu nghề nghiệp 1</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2018-08-02 07:07:51', '2018-08-07 21:18:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_applied`
+--
+
+DROP TABLE IF EXISTS `profile_applied`;
+CREATE TABLE `profile_applied` (
+  `id` bigint(20) NOT NULL,
+  `recruitment_id` int(11) DEFAULT NULL,
+  `profile_id` int(11) DEFAULT NULL,
+  `candidate_id` int(11) DEFAULT NULL,
+  `file_attached` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2414,6 +2400,21 @@ INSERT INTO `profile_place` (`id`, `profile_id`, `province_id`, `created_at`, `u
 (61, 1, 23, '2018-06-22 07:20:37', '2018-06-22 07:20:37'),
 (62, 2, 23, '2018-08-02 03:47:08', '2018-08-02 03:47:08'),
 (63, 3, 23, '2018-08-02 07:07:51', '2018-08-02 07:07:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_saved`
+--
+
+DROP TABLE IF EXISTS `profile_saved`;
+CREATE TABLE `profile_saved` (
+  `id` bigint(20) NOT NULL,
+  `employer_id` int(11) DEFAULT NULL,
+  `profile_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -3067,27 +3068,17 @@ INSERT INTO `recruitment_place` (`id`, `recruitment_id`, `province_id`, `created
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recruitment_profile`
+-- Table structure for table `recruitment_saved`
 --
 
-DROP TABLE IF EXISTS `recruitment_profile`;
-CREATE TABLE `recruitment_profile` (
+DROP TABLE IF EXISTS `recruitment_saved`;
+CREATE TABLE `recruitment_saved` (
   `id` bigint(20) NOT NULL,
-  `recruitment_id` int(11) DEFAULT NULL,
-  `profile_id` int(11) DEFAULT NULL,
   `candidate_id` int(11) DEFAULT NULL,
-  `file_attached` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` int(1) DEFAULT NULL,
+  `recruitment_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `recruitment_profile`
---
-
-INSERT INTO `recruitment_profile` (`id`, `recruitment_id`, `profile_id`, `candidate_id`, `file_attached`, `status`, `created_at`, `updated_at`) VALUES
-(1, 54, 3, 5, NULL, 1, '2018-08-02 08:19:09', '2018-08-02 08:22:42');
 
 -- --------------------------------------------------------
 
@@ -3944,7 +3935,10 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (597, 1, 'user', NULL, '2018-08-02 01:17:44', '2018-08-02 01:17:44'),
 (598, NULL, 'global', NULL, '2018-08-03 20:26:42', '2018-08-03 20:26:42'),
 (599, NULL, 'ip', '127.0.0.1', '2018-08-03 20:26:42', '2018-08-03 20:26:42'),
-(600, 1, 'user', NULL, '2018-08-03 20:26:42', '2018-08-03 20:26:42');
+(600, 1, 'user', NULL, '2018-08-03 20:26:42', '2018-08-03 20:26:42'),
+(601, NULL, 'global', NULL, '2018-08-07 21:08:25', '2018-08-07 21:08:25'),
+(602, NULL, 'ip', '127.0.0.1', '2018-08-07 21:08:25', '2018-08-07 21:08:25'),
+(603, 1, 'user', NULL, '2018-08-07 21:08:25', '2018-08-07 21:08:25');
 
 -- --------------------------------------------------------
 
@@ -3975,7 +3969,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permissions`, `last_login`, `fullname`, `address`, `phone`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-08-06 02:15:40', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-08-06 02:15:40'),
+(1, 'admin', 'diennk@dienkim.com', '$2y$10$2ZW7E3B9iNTtqePgyf55K.Xms1eEhYRrx7Je5EllgwX6q8iElLDUi', NULL, '2018-08-07 21:08:39', 'Nguyễn Kim Điền', NULL, '0988162753', 'nguyen-kim-dien-292.png', 1, 1, '2017-11-12 07:23:56', '2018-08-07 21:08:39'),
 (2, 'phucbtm', 'phucbtm@dienkim.com', '$2y$10$LN.mcmWoyQY1.AvMrEu.CeqYB0OrFPfTg.FAQ7qSdU/Sc13w/iy.K', NULL, '2018-04-15 08:29:28', 'Bùi Thị Mỹ Phúc', NULL, '0988162777', 'logo-3-6pnb19a7qygv.png', 2, 1, '2018-04-06 00:52:58', '2018-04-15 08:29:53'),
 (3, 'dungnth', 'dungnth@dienkim.com', '$2y$10$06WqHjx5FB.AknXj2MPRceFHgn.WbKeeHLPzmlCfGJwIrIzuPKupG', NULL, '2018-04-15 08:27:23', 'Nguyễn Thị Hoàng Dung', NULL, '0988162781', 'logo-1-ju67i1ylo2f8.png', 3, 1, '2018-04-06 00:54:14', '2018-04-15 08:31:04'),
 (4, 'thuyptt', 'thuyptt@dienkim.com', '$2y$10$IExbuIwqMRNyvA4ppYjVtOpobGtABTssSrEChbXURmludJyQTbQ3W', NULL, '2018-04-06 08:36:44', 'Phạm Thị Thanh Thủy', NULL, '0982778123', 'logo-2-ge30clh856td.png', 4, 1, '2018-04-06 00:55:07', '2018-04-06 08:36:44'),
@@ -4149,12 +4143,6 @@ ALTER TABLE `candidate`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `candidate_recruitment`
---
-ALTER TABLE `candidate_recruitment`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `category_article`
 --
 ALTER TABLE `category_article`
@@ -4200,12 +4188,6 @@ ALTER TABLE `district`
 -- Indexes for table `employer`
 --
 ALTER TABLE `employer`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `employer_profile`
---
-ALTER TABLE `employer_profile`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4360,6 +4342,12 @@ ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `profile_applied`
+--
+ALTER TABLE `profile_applied`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profile_experience`
 --
 ALTER TABLE `profile_experience`
@@ -4387,6 +4375,12 @@ ALTER TABLE `profile_language`
 -- Indexes for table `profile_place`
 --
 ALTER TABLE `profile_place`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile_saved`
+--
+ALTER TABLE `profile_saved`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4444,9 +4438,9 @@ ALTER TABLE `recruitment_place`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `recruitment_profile`
+-- Indexes for table `recruitment_saved`
 --
-ALTER TABLE `recruitment_profile`
+ALTER TABLE `recruitment_saved`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4581,13 +4575,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `candidate`
 --
 ALTER TABLE `candidate`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `candidate_recruitment`
---
-ALTER TABLE `candidate_recruitment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `category_article`
@@ -4635,13 +4623,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `employer`
 --
 ALTER TABLE `employer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
-
---
--- AUTO_INCREMENT for table `employer_profile`
---
-ALTER TABLE `employer_profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `experience`
@@ -4749,7 +4731,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=976;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=977;
 
 --
 -- AUTO_INCREMENT for table `photo`
@@ -4788,6 +4770,12 @@ ALTER TABLE `profile`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `profile_applied`
+--
+ALTER TABLE `profile_applied`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `profile_experience`
 --
 ALTER TABLE `profile_experience`
@@ -4816,6 +4804,12 @@ ALTER TABLE `profile_language`
 --
 ALTER TABLE `profile_place`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `profile_saved`
+--
+ALTER TABLE `profile_saved`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profile_skill`
@@ -4872,10 +4866,10 @@ ALTER TABLE `recruitment_place`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
--- AUTO_INCREMENT for table `recruitment_profile`
+-- AUTO_INCREMENT for table `recruitment_saved`
 --
-ALTER TABLE `recruitment_profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `recruitment_saved`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reminders`
@@ -4929,7 +4923,7 @@ ALTER TABLE `supporter`
 -- AUTO_INCREMENT for table `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=601;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=604;
 
 --
 -- AUTO_INCREMENT for table `users`

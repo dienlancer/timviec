@@ -1943,6 +1943,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     align-items: center;
     height: 100%;
     padding-left: 10px;
+    z-index: 1;
 }
 .job-box-in {
         line-height: 24px;
@@ -1985,20 +1986,17 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .job-box-searching > div:nth-child(3){
     width: 250px;
 }
+/* begin .job-box-searching */
 .job-box-searching .select2-container .select2-selection--single{
-    background: #fff;
     height: 38px;
-    border: 0;
-    border-radius: 0;
 }
 .job-box-searching .select2-container--classic .select2-selection--single .select2-selection__arrow{
     height: 36px;
-    background: #ffffff;
-    border:0;
-    border-radius: 0px;
 }
-.job-box-searching .select2-container .select2-selection--single .select2-selection__rendered{
-    padding-left: 40px;
+.job-box-searching .select2-container--classic .select2-selection--single{
+    background: #ffffff;
+    border: 0;
+    border-radius: 0px;
 }
 .job-box-searching .select2-container--classic .select2-selection--single .select2-selection__rendered{
     line-height: 38px;
@@ -2006,6 +2004,15 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .job-box-searching .select2-container{
     width: 100% !important;
 }
+.job-box-searching .select2-container .select2-selection--single .select2-selection__rendered{
+    padding-left: 40px;
+}
+.job-box-searching .select2-container--classic .select2-selection--single .select2-selection__arrow{
+    background: #ffffff;
+    border-left: 0;
+}
+/* end .job-box-searching */
+/* begin .jp_slider_form_location_wrapper */
 .jp_slider_form_location_wrapper .select2-container .select2-selection--single{
     height: 52px;
 }
@@ -2031,6 +2038,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .jp_slider_form_location_wrapper .select2-container .select2-selection--single .select2-selection__rendered{
     padding-left: 45px;
 }
+/* end .jp_slider_form_location_wrapper */
 @media (max-width: 768px){    
       
 }

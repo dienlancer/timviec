@@ -13,7 +13,7 @@ $article_height=$setting['article_height']['field_value'];
 	<div id="map"></div>
 	<div class="jp_slider_form_main_wrapper">
 		<div class="jp_main_slider_heading_wrapper">
-			<h2>Find Your Job!</h2>
+			<h2>Tìm kiếm công việc!</h2>
 		</div>
 		<form action="<?php echo route('frontend.index.searchRecruitment'); ?>" method="POST" name="frm-search-job">
 			{{ csrf_field() }}
@@ -33,7 +33,7 @@ $article_height=$setting['article_height']['field_value'];
 				<i class="fa fa-th-large first_icon"></i>
 				<?php 
 				$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-				$ddlJob        =cmsSelectboxCategory("job_id", '', @$source_job, @$job_id,'','Ngành nghề');
+				$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Ngành nghề');
 				echo $ddlJob;
 				?>	
 				<i class="fa fa-angle-down second_icon"></i>

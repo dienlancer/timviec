@@ -20,6 +20,14 @@ if(!empty(@$meta_description)){
 @include("frontend.content-top")
 <div class="container">
 	<div class="row">
+		<div class="col-lg-12">
+			<div></div>
+			<div class="source-recruitment-box"></div>
+		</div>
+	</div>
+</div>
+<!--<div class="container">
+	<div class="row">
 		<div class="col-lg-8">
 			<form name="frm" method="POST" enctype="multipart/form-data" class="margin-top-15">
 				<input type="hidden" name="filter_page" value="1">        
@@ -93,6 +101,6 @@ if(!empty(@$meta_description)){
 		</div>
 		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
 	</div>		
-</div>
+</div>-->
 @endsection()               
 

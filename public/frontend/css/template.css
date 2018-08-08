@@ -2019,26 +2019,35 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .jp_slider_form_location_wrapper .select2-container--classic .select2-selection--single .select2-selection__arrow{
     height: 36px;
 }
+.jp_slider_form_location_wrapper .select2-container--classic .select2-selection--single{
+    background: #ffffff;
+    border:0;
+    border-radius: 15px;
+}
 .jp_slider_form_location_wrapper .select2-container--classic .select2-selection--single .select2-selection__rendered{
     line-height: 53px;
 }
 .jp_slider_form_location_wrapper .select2-container{
     width: 100% !important;
 }
-.jp_slider_form_location_wrapper .select2-container--classic .select2-selection--single{
-    background: #ffffff;
-    border:0;
-    border-radius: 15px;
+.jp_slider_form_location_wrapper .select2-container .select2-selection--single .select2-selection__rendered{
+    padding-left: 45px;
 }
 .jp_slider_form_location_wrapper .select2-container--classic .select2-selection--single .select2-selection__arrow{
     background: #ffffff;
     border-left:0;
     display: none; 
 }
-.jp_slider_form_location_wrapper .select2-container .select2-selection--single .select2-selection__rendered{
-    padding-left: 45px;
-}
 /* end .jp_slider_form_location_wrapper */
+.source-recruitment-box {
+    background: #ffffff;
+    margin-top: 15px;  
+    margin-bottom: 15px;  
+    padding: 0px 0px 15px 0px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    height: 500px;
+}
 @media (max-width: 768px){    
       
 }

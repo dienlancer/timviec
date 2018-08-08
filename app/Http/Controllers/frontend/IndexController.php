@@ -77,7 +77,7 @@ class IndexController extends Controller {
 		$pagination ;                                              
 		$setting= getSettingSystem();   
 		$seo=getSeo(); 
-		$view="frontend.source-recruitment";       
+		$view="source-recruitment";       
 		/* end standard */   
 		$q='';  		
 		$job_id=0;
@@ -181,7 +181,7 @@ class IndexController extends Controller {
 		->get()
 		->toArray();        
 		$items=convertToArray($data);   
-		return view(@$view,compact("alias","title","meta_keyword","meta_description","items","q","job_id","province_id","salary_id","literacy_id","sex_id","work_id","working_form_id","experience_id","pagination"));   	
+		return view("frontend.".@$view,compact("alias","title","meta_keyword","meta_description","items","q","job_id","province_id","salary_id","literacy_id","sex_id","work_id","working_form_id","experience_id","pagination"));   	
 	}
 	public function index(Request $request,$alias)
 	{                     
@@ -289,7 +289,7 @@ class IndexController extends Controller {
 			$title='Việc làm mới';
 			$meta_keyword='metakeyword việc làm mới';
 			$meta_description='metadescription việc làm mới';
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -345,7 +345,7 @@ class IndexController extends Controller {
 			$title='Việc làm hấp dẫn';
 			$meta_keyword='metakeyword việc làm hấp dẫn';
 			$meta_description='metadescription việc làm hấp dẫn';
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -401,7 +401,7 @@ class IndexController extends Controller {
 			$title='Việc làm lương cao';
 			$meta_keyword='metakeyword việc làm lương cao';
 			$meta_description='metadescription việc làm lương cao';
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -457,7 +457,7 @@ class IndexController extends Controller {
 			$title='Việc làm được quan tâm nhiều nhất';
 			$meta_keyword='metakeyword việc làm được quan tâm nhiều nhất';
 			$meta_description='metadescription việc làm được quan tâm nhiều nhất';
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -513,7 +513,7 @@ class IndexController extends Controller {
 			$title='Việc làm tuyển gấp';
 			$meta_keyword='metakeyword việc làm tuyển gấp';
 			$meta_description='metadescription việc làm tuyển gấp';
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			$query=DB::table('recruitment')
 			->join('employer','recruitment.employer_id','=','employer.id')
 			->join('salary','recruitment.salary_id','=','salary.id');
@@ -566,7 +566,7 @@ class IndexController extends Controller {
 			$items=convertToArray($data);   
 			break; 			
 			case 'recruitment-by-province':						
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			if(count(@$source_province) > 0){
 				$data_province=convertToArray(@$source_province);
 				$province_id=@$data_province[0]['id'];
@@ -685,7 +685,7 @@ class IndexController extends Controller {
 			}			
 			break; 	
 			case 'recruitment-by-job':						
-			$view="frontend.source-recruitment";
+			$view="source-recruitment";
 			if(count(@$source_job) > 0){
 				$data_job=convertToArray(@$source_job);
 				$job_id=@$data_job[0]['id'];
@@ -776,7 +776,7 @@ class IndexController extends Controller {
 			}
 		}    
 		\Artisan::call('sitemap:auto');        
-		return view(@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
+		return view("frontend.".@$view,compact("alias","title","meta_keyword","meta_description","item","items","pagination","category"));   		
 	}	
 	public function register(){             
 		return view("frontend.register");         

@@ -1986,16 +1986,16 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .job-box-searching > div:nth-child(3){
     width: 250px;
 }
-.job-box-kk .select2-container .select2-selection--single{
+.job-box-searching .select2-container .select2-selection--single{
     height: 38px;
 }
-.job-box-kk .select2-container--classic .select2-selection--single .select2-selection__arrow{
+.job-box-searching .select2-container--classic .select2-selection--single .select2-selection__arrow{
     height: 36px;
 }
-.job-box-kk .select2-container--classic .select2-selection--single .select2-selection__rendered{
+.job-box-searching .select2-container--classic .select2-selection--single .select2-selection__rendered{
     line-height: 38px;
 }
-.job-box-kk .select2-container{
+.job-box-searching .select2-container{
     width: 100% !important;
 }
 @media (max-width: 768px){    

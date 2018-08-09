@@ -55,8 +55,8 @@ $article_height=$setting['article_height']['field_value'];
 		->orderBy('recruitment.id', 'desc')
 		->take(12)
 		->get()
-		->toArray();
-		if(count(@$source_quicked_job) > 0){
+		->toArray();		
+		if(count(@$source_quicked_job) > 0){			
 			$data_quicked_job=convertToArray(@$source_quicked_job);
 			?>
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -6,7 +6,7 @@ $setting= getSettingSystem();
 $width=$setting['product_width']['field_value'];
 $height=$setting['product_height']['field_value'];  
 $article_width=$setting['article_width']['field_value'];
-$article_height=$setting['article_height']['field_value'];  
+$article_height=$setting['article_height']['field_value'];
 ?>
 <!-- map Wrapper Start -->
 <div class="jp_map_indx_wrapper">

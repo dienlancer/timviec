@@ -30,12 +30,19 @@ if(!empty(@$meta_description)){
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
 							<span itemprop="name">Trang chủ</span>
 						</a>
-						<meta itemprop="position" content="1"></li>
+						<meta itemprop="position" content="1">
+					</li>
+					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
+							<span itemprop="name">Tuyển dụng</span>
+						</a>
+      					<meta itemprop="position" content="2">
+      				</li>
 					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
 							<span itemprop="name"><?php echo @$title; ?></span>
 						</a>
-      					<meta itemprop="position" content="2">
+      					<meta itemprop="position" content="3">
       				</li>      				
       			</ul>
 			</div>

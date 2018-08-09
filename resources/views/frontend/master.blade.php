@@ -11,7 +11,6 @@ $instagram_url=$setting['instagram_url']['field_value'];
 $pinterest_url=$setting['pinterest_url']['field_value'];   
 $company=$setting['contacted_person']['field_value'];
 $opened_time=$setting['opened_time']['field_value'];
-
 $seo_title="";
 if(!empty(@$title)){
 	$seo_title=$title;

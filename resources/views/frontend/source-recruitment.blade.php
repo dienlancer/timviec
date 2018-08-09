@@ -30,12 +30,19 @@ if(!empty(@$meta_description)){
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
 							<span itemprop="name">Trang chủ</span>
 						</a>
-						<meta itemprop="position" content="1"></li>
+						<meta itemprop="position" content="1">
+					</li>
+					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
+							<span itemprop="name">Tuyển dụng</span>
+						</a>
+      					<meta itemprop="position" content="2">
+      				</li>
 					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
 							<span itemprop="name"><?php echo @$title; ?></span>
 						</a>
-      					<meta itemprop="position" content="2">
+      					<meta itemprop="position" content="3">
       				</li>      				
       			</ul>
 			</div>
@@ -47,7 +54,7 @@ if(!empty(@$meta_description)){
 				<?php 
 				if(count(@$items) > 0){					
 					?>
-					<form name="frm" method="POST" enctype="multipart/form-data" class="source-recruitment-main">
+					<form name="frm" method="POST" enctype="multipart/form-data" class="source-recruitment-main padding-bottom-10">
 						<input type="hidden" name="filter_page" value="1">        
 						{{ csrf_field() }}
 						<?php 

@@ -11,7 +11,9 @@
 				$breadcrumb= getBreadCrumbCategoryArticle($category);	
 				?>
 				<div class="breadcrumb-title">
-					<?php echo $breadcrumb; ?>
+					<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="ul-breadcrumb" >
+						<?php echo $breadcrumb; ?>
+					</ul>		
 				</div>
 				<h1 style="display: none;"><?php echo @$title; ?></h1>
 				<h2 style="display: none;"><?php echo @$meta_description; ?></h2>				
@@ -60,7 +62,7 @@
 				?>
 			</form>		
 		</div>
-		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
+		<div class="col-lg-4"></div>
 	</div>
 </div>
 @endsection()             

@@ -205,11 +205,12 @@ function getRecursiveCategoryProduct($parent_id,&$arrCategory){
   }  
 }
 function getBreadCrumbCategoryProduct($dataCategory){
+  $i=1;
   $data=array();
-  $breadcrumb='<a href="'.url('/').'">Trang chủ</a>';
-  getRecursiveCategoryProduct((int)@$dataCategory['parent_id'],$data);
-  $data[]=$dataCategory;
-  
+  $breadcrumb='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.url('/').'"><span itemprop="name">Trang chủ</span></a><meta itemprop="position" content="'.(int)@$i.'" /></li>';  
+  getRecursiveCategoryProduct((int)@$dataCategory['parent_id'],$data);  
+  $data[]=$dataCategory;    
+  $i++;
   if(count($data) > 0){
     foreach ($data as $key => $value) {
       $id=$value['id'];
@@ -217,7 +218,10 @@ function getBreadCrumbCategoryProduct($dataCategory){
       $alias=$value['alias'];
       $parent_id=$value['parent_id'];      
       $permalink=route('frontend.index.index',[$alias]);      
-      $breadcrumb .='<a href="'.$permalink.'">'.$fullname.'</a>';
+      $breadcrumb .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.$permalink.'"><span itemprop="name">'.$fullname.'</span></a>
+      <meta itemprop="position" content="'.(int)@$i.'" />
+      </li>';
+      $i++;
     }
   }
   return $breadcrumb;
@@ -231,11 +235,13 @@ function getRecursiveCategoryArticle($parent_id,&$arrCategory){
   }  
 }
 function getBreadCrumbCategoryArticle($dataCategory){
+
+  $i=1;
   $data=array();
-  $breadcrumb='<a href="'.url('/').'">Trang chủ</a>';
+  $breadcrumb='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.url('/').'"><span itemprop="name">Trang chủ</span></a><meta itemprop="position" content="'.(int)@$i.'" /></li>';
   getRecursiveCategoryArticle((int)@$dataCategory['parent_id'],$data);
-  $data[]=$dataCategory;
-  
+  $data[]=$dataCategory;    
+  $i++;
   if(count($data) > 0){
     foreach ($data as $key => $value) {
       $id=$value['id'];
@@ -243,7 +249,10 @@ function getBreadCrumbCategoryArticle($dataCategory){
       $alias=$value['alias'];
       $parent_id=$value['parent_id'];      
       $permalink=route('frontend.index.index',[$alias]);      
-      $breadcrumb .='<a href="'.$permalink.'">'.$fullname.'</a>';
+      $breadcrumb .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.$permalink.'"><span itemprop="name">'.$fullname.'</span></a>
+      <meta itemprop="position" content="'.(int)@$i.'" />
+      </li>';
+      $i++;
     }
   }
   return $breadcrumb;

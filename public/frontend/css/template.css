@@ -1208,14 +1208,19 @@ font-size: 12px;
     padding: 10px 10px;
     font-weight: bold;
 }
-.breadcrumb-title a {
+.ul-breadcrumb a {
     color: #0c62ad;
 }
-.breadcrumb-title a::after {
+/*.breadcrumb-title a::after {
     font-family: 'Font Awesome 5 Free';
     content: "\f105";
     margin-left: 10px;
     margin-right: 10px;
+}*/
+.soech{
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #0c62ad
 }
 .tieu-de-bai-viet {
      font-size: 20px;
@@ -2058,16 +2063,14 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     display: inline-block;
     margin-left: 0;
 }
-.ul-breadcrumb a {
-    color: #0c62ad;
-}
-.ul-breadcrumb a::after {
+
+/*.ul-breadcrumb a::after {
     font-family: 'FontAwesome';
     content: "\f105";
     margin-left: 10px;
     margin-right: 10px;
 
-}
+}*/
 .source-recruitment-title{
     border-bottom: 1px solid rgb(238, 238, 238);
     color: #4a4a4a;

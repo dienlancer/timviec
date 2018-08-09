@@ -238,7 +238,7 @@ function getBreadCrumbCategoryArticle($dataCategory){
 
   $i=1;
   $data=array();
-  $breadcrumb='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.url('/').'"><span itemprop="name">Trang chủ</span></a><meta itemprop="position" content="'.(int)@$i.'" /></li>';
+  $breadcrumb='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.url('/').'"><span itemprop="name">Trang chủ</span></a><span class="soech">/</span><meta itemprop="position" content="'.(int)@$i.'" /></li>';
   getRecursiveCategoryArticle((int)@$dataCategory['parent_id'],$data);
   $data[]=$dataCategory;    
   $i++;

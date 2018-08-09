@@ -54,7 +54,7 @@ if(count(@$item) > 0){
 					$logo=asset('upload/no-logo.png');
 				}
 				?>
-				<div class="source-recruitment-box padding-bottom-15">
+				<div class="source-recruitment-box padding-bottom-15 padding-left-15 padding-right-15">
 					<div class="row">
 						<div class="col-lg-3">							
 							<div class="box-employer-logo"><center><img src="<?php echo @$logo; ?>"></center></div>
@@ -163,7 +163,145 @@ if(count(@$item) > 0){
 								<!--end-->
 							</div>
 						</div>
-					</div>					
+						<div class="recruitment-heading">
+							<div>THÔNG TIN TUYỂN DỤNG</div>
+						</div>
+						<div class="row margin-top-15">
+						<div class="col-lg-6">
+							<div class="margin-top-10">
+								<?php 				
+								$experience_name='';
+								$source_experience=App\ExperienceModel::find((int)@$item['experience_id']);
+								if(count($source_experience) > 0){
+									$data_experience=$source_experience->toArray();
+									$experience_name=$data_experience['fullname'];
+								}
+								?>
+								<span><b>Kinh nghiệm&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$experience_name; ?></span>
+							</div>
+							<div class="margin-top-10">
+								<?php 				
+								$literacy_name='';
+								$source_literacy=App\LiteracyModel::find((int)@$item['literacy_id']);
+								if(count($source_literacy) > 0){
+									$data_literacy=$source_literacy->toArray();
+									$literacy_name=$data_literacy['fullname'];
+								}
+								?>
+								<span><b>Trình độ&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$literacy_name; ?></span>
+							</div>
+							<?php 
+							$source_job=DB::table('job')
+							->join('recruitment_job','job.id','=','recruitment_job.job_id')
+							->where('recruitment_job.recruitment_id',(int)@$id)
+							->select('job.fullname','job.alias')
+							->groupBy('job.fullname','job.alias')
+							->orderBy('job.id','asc')
+							->get()
+							->toArray();
+							if(count($source_job) > 0){
+								$data_job=convertToArray($source_job);
+								$job_text='';
+								foreach ($data_job as $key => $value) {
+									$job_text.='<a href="'.route('frontend.index.index',[@$value['alias']]).'">'.@$value['fullname'].'</a>' .' ,';
+								}
+								$job_name=mb_substr($job_text, 0,mb_strlen($job_text)-1);
+								?>
+								<div class="margin-top-10">																
+									<span><b>Ngành nghề&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$job_name; ?></span>
+								</div>
+								<?php
+							}
+							$source_province=DB::table('province')
+							->join('recruitment_place','province.id','=','recruitment_place.province_id')							
+							->where('recruitment_place.recruitment_id',(int)@$id)
+							->select(								
+								'province.fullname',
+								'province.alias'								
+							)
+							->groupBy(								
+								'province.fullname',
+								'province.alias'								
+							)
+							->orderBy('province.id', 'desc')						
+							->get()
+							->toArray();
+							if(count(@$source_province) > 0){
+								$data_province=convertToArray($source_province);					
+								$province_text='';
+								foreach ($data_province as $key => $value) {
+									$province_text.='<a href="'.route('frontend.index.index',[@$value['alias']]).'">'.@$value['fullname'].'</a>' .' ,';
+								}
+								$province_title=mb_substr($province_text, 0,mb_strlen($province_text)-1);
+								?>
+								<div class="margin-top-10">																
+									<span><b>Tỉnh/thành phố&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$province_title; ?></span>
+								</div>
+								<?php
+							}																				
+							?>	
+							<div class="margin-top-10">																
+								<span><b>Số lượng tuyển&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$item['quantity']; ?></span>
+							</div>						
+						</div>
+						<div class="col-lg-6">							
+							<?php 				
+							$salary_name='';
+							$source_salary=App\SalaryModel::find((int)@$item['salary_id']);
+							if(count($source_salary) > 0){
+								$data_salary=$source_salary->toArray();
+								$salary_name=$data_salary['fullname'];
+								?>
+								<div class="margin-top-10">																					
+									<span class="lazasa"><b>Mức lương&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_salary['fullname']; ?></span>
+								</div>
+								<?php
+							}
+							if((int)@$item['commission_from'] > 0 && (int)@$item['commission_to']){
+								?>
+								<div class="margin-top-10">																					
+									<span class="lazasa"><b>Mức hoa hồng&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$item['commission_from'] ?>%&nbsp;-&nbsp;<?php echo @$item['commission_to']; ?>%</span>
+								</div>
+								<?php
+							}
+							$sex_name='';
+							$source_sex=App\SexModel::find((int)@$item['sex_id']);
+							if(count($source_sex) > 0){
+								$data_sex=$source_sex->toArray();
+								$sex_name=$data_sex['fullname'];
+								?>
+								<div class="margin-top-10">																					
+									<span class="lazasa"><b>Giới tính&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_sex['fullname']; ?></span>
+								</div>
+								<?php
+							}
+							
+							$work_name='';
+							$source_work=App\WorkModel::find((int)@$item['work_id']);
+							if(count($source_work) > 0){
+								$data_work=$source_work->toArray();
+								$work_name=$data_work['fullname'];
+								?>
+								<div class="margin-top-10">																					
+									<span class="lazasa"><b>Tính chất công việc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_work['fullname']; ?></span>
+								</div>
+								<?php
+							}
+							$working_form_name='';
+							$source_working_form=App\WorkingFormModel::find((int)@$item['working_form_id']);
+							if(count($source_working_form) > 0){
+								$data_working_form=$source_working_form->toArray();
+								$working_form_name=$data_working_form['fullname'];
+								?>
+								<div class="margin-top-10">																					
+									<span class="lazasa"><b>Hình thức làm việc&nbsp;:&nbsp;</b></span><span class="lazasa"><?php echo @$data_working_form['fullname']; ?></span>
+								</div>
+								<?php
+							}
+							?>									
+						</div>
+					</div>
+					</div>									
 				</div>
 				<div class="col-lg-4">
 					<div class="source-recruitment-box padding-left-15 padding-right-15 padding-bottom-15">

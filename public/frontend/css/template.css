@@ -1107,7 +1107,7 @@ font-size: 12px;
 .box-employer-logo{
         border: 1px solid #f1f1f1;
     padding: 5px;
-    margin: 15px auto 0px auto;
+    margin: 15px 0 0px 0;
     width: 120px;
 }
 .recruitment-title{
@@ -1151,9 +1151,7 @@ font-size: 12px;
     content: "";
     border-radius: 12px;
 }
-.lazasa{
-    font-size: 13px;
-}
+
 .zinan{
     font-size: 13px;
 }
@@ -2113,6 +2111,35 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     font-size: 18px;
     margin-top: 20px;
     font-weight: bold;
+}
+.recruitment-heading{
+    margin-top: 15px;
+}
+.recruitment-heading div {
+    font-size: 20px;
+    color: #000000;
+    
+    position: relative;
+    font-family: 'robotocondensed'
+}
+.recruitment-heading div:before {
+    content: '';
+    border: 1px solid #23c0e9;
+    width: 8px;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+}
+.recruitment-heading div:after {
+    content: '';
+    border: 1px solid #23c0e9;
+    width: 60px;
+    position: absolute;
+    bottom: -15px;
+    left: 11px;
+}
+.lazasa a{
+    color: #337ab7
 }
 @media (max-width: 768px){    
       

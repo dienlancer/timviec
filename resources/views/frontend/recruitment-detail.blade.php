@@ -3,7 +3,7 @@
 @include("frontend.content-top")
 <div class="container margin-top-15">		
 	<div class="row">
-		<div class="col-lg-8">
+		<div class="col-lg-12">
 			@if(Session::has("message"))	
 			<?php 
 			$type_msg='';
@@ -461,8 +461,7 @@
 				}				
 			}
 			?>			
-		</div>
-		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
+		</div>		
 	</div>
 </div>		
 <!-- begin modal-alert-apply -->

@@ -1,9 +1,9 @@
 @extends("adminsystem.master")
 @section("content")
 <?php 
+$linkNew                =   route('adminsystem.'.$controller.'.getForm',['add']);
 $linkCancel             =   route('adminsystem.'.$controller.'.getList');
 $linkSave               =   route('adminsystem.'.$controller.'.save');
-
 $linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"    onblur="createAlias()"     value="'.@$arrRowData['fullname'].'">'; 
 $inputAlias             =   '<input type="text" class="form-control" name="alias"        disabled     value="'.@$arrRowData['alias'].'">';
@@ -50,8 +50,9 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
         <div class="actions">
            <div class="table-toolbar">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12">                    
                     <button onclick="save()" class="btn purple">Lưu <i class="fa fa-floppy-o"></i></button> 
+                    <a href="<?php echo $linkNew; ?>" class="btn yellow">Thêm mới <i class="fa fa-plus"></i></a> 
                     <a href="<?php echo $linkCancel; ?>" class="btn green">Thoát <i class="fa fa-ban"></i></a>                    </div>                                                
                 </div>
             </div>    

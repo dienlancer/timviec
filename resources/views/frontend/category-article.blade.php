@@ -1,22 +1,22 @@
 @extends("frontend.master")
 @section("content")
 @include("frontend.content-top")
+<h1 style="display: none;"><?php echo @$title; ?></h1>
+<h2 style="display: none;"><?php echo @$meta_description; ?></h2>				
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<form method="post" class="frm margin-top-15" name="frm">
+			<?php 			
+			$breadcrumb= getBreadCrumbCategoryArticle($category);	
+			?>
+			<div class="margin-top-15">
+				<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="ul-breadcrumb" >
+					<?php echo $breadcrumb; ?>
+				</ul>		
+			</div>			
+			<form method="post" class="category-box" name="frm">
 				<input type="hidden" name="filter_page" value="1">         
-				{{ csrf_field() }}		
-				<?php 			
-				$breadcrumb= getBreadCrumbCategoryArticle($category);	
-				?>
-				<div class="breadcrumb-title">
-					<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="ul-breadcrumb" >
-						<?php echo $breadcrumb; ?>
-					</ul>		
-				</div>
-				<h1 style="display: none;"><?php echo @$title; ?></h1>
-				<h2 style="display: none;"><?php echo @$meta_description; ?></h2>				
+				{{ csrf_field() }}												
 				<?php 	
 				if(count($items) > 0){
 					$k=1;			
@@ -26,7 +26,7 @@
 						$fullname=$value['fullname'];
 						$permalink=route('frontend.index.index',[$alias]) ;
 						$image=get_article_thumbnail($value['image']) ;
-						$intro= truncateString($value['intro'],999);
+						$intro= truncateString($value['intro'],200);
 						$count_view=(int)@$value['count_view'];
 						$count_view_text=number_format($count_view,0,",",".");				
 						?>
@@ -60,7 +60,7 @@
 					<?php					
 				}  
 				?>
-			</form>		
+			</form>						
 		</div>
 		<div class="col-lg-4"></div>
 	</div>

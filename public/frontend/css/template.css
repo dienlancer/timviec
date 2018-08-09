@@ -1181,9 +1181,9 @@ font-size: 12px;
     font-weight: bold;
 }
 .box-row {
-    border: 1px solid #dddddd;
-    padding: 5px;
-    margin-top:10px; 
+       padding: 10px 0;
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
 }
 .box-img {
     border-right: 1px dotted #dddddd;
@@ -1211,12 +1211,13 @@ font-size: 12px;
 .ul-breadcrumb a {
     color: #0c62ad;
 }
-/*.breadcrumb-title a::after {
-    font-family: 'Font Awesome 5 Free';
-    content: "\f105";
-    margin-left: 10px;
-    margin-right: 10px;
-}*/
+.category-box {
+    background: #ffffff;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    padding: 0px 10px;
+}
+
 .soech{
     margin-left: 5px;
     margin-right: 5px;
@@ -2143,6 +2144,9 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 }
 .lazasa a{
     color: #337ab7
+}
+.box-readmore{
+    text-align: right;
 }
 @media (max-width: 768px){    
       

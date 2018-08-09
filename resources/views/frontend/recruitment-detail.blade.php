@@ -1,7 +1,7 @@
 @extends("frontend.master")
 @section("content")
 @include("frontend.content-top")
-<div class="container margin-top-15">		
+<!--<div class="container margin-top-15">		
 	<div class="row">
 		<div class="col-lg-12">
 			@if(Session::has("message"))	
@@ -463,7 +463,7 @@
 			?>			
 		</div>		
 	</div>
-</div>		
+</div>-->		
 <!-- begin modal-alert-apply -->
 <div class="modal fade modal-apply" id="modal-alert-apply" tabindex="-1" role="dialog" aria-labelledby="my-modal-apply">
 	<div class="modal-dialog" role="document">

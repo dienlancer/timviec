@@ -32,7 +32,7 @@ if(!empty(@$meta_description)){
 						</a>
 						<meta itemprop="position" content="1"></li>
 					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$component]) ?>">
+						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
 							<span itemprop="name"><?php echo @$title; ?></span>
 						</a>
       					<meta itemprop="position" content="2">

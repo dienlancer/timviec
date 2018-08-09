@@ -13,7 +13,7 @@
 body{
     
     font-size:13px;
-    
+        color: #333;
 }
 a:hover,a:focus{
     text-decoration: none;
@@ -1105,8 +1105,10 @@ font-size: 12px;
     margin-left: 35px;
 }
 .box-employer-logo{
-    border:1px solid #f1f1f1;
+        border: 1px solid #f1f1f1;
     padding: 5px;
+    margin: 15px auto 0px auto;
+    width: 120px;
 }
 .recruitment-title{
     font-size: 18px;
@@ -2093,6 +2095,14 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .source-recruitment-img{
     padding-left: 10px;
     padding-right: 10px;
+}
+.employer-title{
+    border-left: 4px solid #23c0e9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 18px;
 }
 @media (max-width: 768px){    
       

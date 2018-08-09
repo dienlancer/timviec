@@ -689,7 +689,7 @@ class IndexController extends Controller {
 			if(count(@$source_job) > 0){
 				$data_job=convertToArray(@$source_job);
 				$job_id=@$data_job[0]['id'];
-				$title=@$data_job[0]['fullname'];
+				$title="Việc làm ngành " .@$data_job[0]['fullname'];
 				$meta_keyword='metakeyword '.@$data_job[0]['fullname'];
 				$meta_description='metadescription '. @$data_job[0]['fullname'];
 				$query=DB::table('recruitment')

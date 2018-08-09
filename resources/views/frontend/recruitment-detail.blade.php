@@ -1,6 +1,206 @@
 @extends("frontend.master")
 @section("content")
 @include("frontend.content-top")
+<?php 
+$setting= getSettingSystem();
+$width=$setting['product_width']['field_value'];
+$height=$setting['product_height']['field_value'];  
+$id=0;
+if(count(@$item) > 0){
+	?>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="margin-top-15">
+					<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" class="ul-breadcrumb">
+						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
+								<span itemprop="name">Trang chủ</span>
+							</a>
+							<meta itemprop="position" content="1">
+						</li>
+						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
+								<span itemprop="name">Tuyển dụng</span>
+							</a>
+							<meta itemprop="position" content="2">
+						</li>
+						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
+								<span itemprop="name"><?php echo @$title; ?></span>
+							</a>
+							<meta itemprop="position" content="3">
+						</li>      				
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8">
+				<?php 
+				$id= (int)@$item["id"];
+				$fullname = @$item["fullname"];	
+				$count_view=(int)@$item['count_view'];
+				$count_view++;
+				$row				= App\RecruitmentModel::find((int)@$id); 
+				$row->count_view=(int)@$count_view;
+				$row->save();
+				$count_view_text=number_format((int)@$count_view,0,",",".");		
+				$data_employer=App\EmployerModel::find((int)@$item['employer_id'])->toArray();
+				$logo='';
+				if(!empty($data_employer['logo'])){
+					$logo=asset('upload/'.$width.'x'.$height.'-'.$data_employer['logo']);
+				}else{
+					$logo=asset('upload/no-logo.png');
+				}
+				?>
+				<div class="source-recruitment-box padding-bottom-15">
+					<div class="row">
+						<div class="col-lg-3">							
+							<div class="box-employer-logo"><center><img src="<?php echo @$logo; ?>"></center></div>
+						</div>
+						<div class="col-lg-9">
+							<!--begin-->
+							<h1 class="recruitment-title"><?php echo @$fullname; ?></h1>
+							<h2 style="display: none;"><?php echo @$item['meta_description']; ?></h1>
+								<div class="recruitment-detail-employer-title"><span><i class="far fa-building"></i></span><span class="margin-left-10"><?php echo @$data_employer['fullname']; ?></span></div>						
+
+								<div class="margin-top-10 fiob">
+									<span><b>Hạn nộp hồ sơ&nbsp;:</b></span>
+									<span class="margin-left-10">							
+										<?php 
+										$duration=datetimeConverterVn($item['duration']);
+										echo @$duration;
+										?>
+									</span>						
+								</div>						
+								<div class="margin-top-10">
+									<div class="ex-website">
+										<div class="vihamus-3">
+											<?php 
+											$arrUser=array();    
+											if(Session::has("vmuser")){
+												$arrUser=Session::get("vmuser");
+											}   
+											if(count(@$arrUser) == 0){
+												?>
+												<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-apply" >
+													<div class="narit">
+														<div><i class="far fa-edit"></i></div>
+														<div class="margin-left-5">Nộp Hồ Sơ</div>
+													</div>
+												</a>
+												<?php
+											}else{									
+												$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
+												if(count($source_candidate)  == 0){
+													?>
+													<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-apply" >
+														<div class="narit">
+															<div><i class="far fa-edit"></i></div>
+															<div class="margin-left-5">Nộp Hồ Sơ</div>
+														</div>
+													</a>
+													<?php
+												}else{
+													?>
+													<a href="<?php echo route("frontend.index.getFormApplied",[@$id]); ?>"   >
+														<div class="narit">
+															<div><i class="far fa-edit"></i></div>
+															<div class="margin-left-5">Nộp Hồ Sơ</div>
+														</div>
+													</a>
+													<?php
+												}									
+											}
+											?>								
+										</div>
+										<div class="vihamus-3 margin-left-5">
+											<?php 
+											$arrUser=array();    
+											if(Session::has("vmuser")){
+												$arrUser=Session::get("vmuser");
+											}   
+											if(count(@$arrUser) == 0){
+												?>
+												<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-recruitment" >
+													<div class="narit">
+														<div><i class="far fa-save"></i></div>
+														<div class="margin-left-5">Lưu công việc</div>
+													</div>
+												</a>
+												<?php
+											}else{									
+												$source_candidate=\App\CandidateModel::whereRaw('trim(lower(email)) = ?',[trim(mb_strtolower(@$arrUser['email'],'UTF-8'))])->select('id','email')->get()->toArray();
+												if(count($source_candidate)  == 0){
+													?>
+													<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-saved-recruitment" >
+														<div class="narit">
+															<div><i class="far fa-save"></i></div>
+															<div class="margin-left-5">Lưu công việc</div>
+														</div>
+													</a>
+													<?php
+												}else{
+													?>
+													<form enctype="multipart/form-data" name="frm-quicked-saved-recruitment" method="POST" action="<?php echo route('frontend.index.saveQuicklyRecruitment'); ?>">
+														{{ csrf_field() }}			
+														<input type="hidden" name="recruitment_id" value="<?php echo @$id; ?>">				
+														<a href="javascript:void(0);" onclick="document.forms['frm-quicked-saved-recruitment'].submit();"   >
+															<div class="narit">
+																<div><i class="far fa-save"></i></div>
+																<div class="margin-left-5">Lưu công việc</div>
+															</div>
+														</a>
+													</form>											
+													<?php
+												}									
+											}
+											?>								
+										</div>
+									</div>														
+								</div>
+								<!--end-->
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="col-lg-4">
+					<div class="source-recruitment-box padding-left-15 padding-right-15 padding-bottom-15">
+						<div class="padding-top-15"><center><img src="<?php echo @$logo; ?>"></center></div>
+						<div class="box-wrapper-employer-name"><center><?php echo @$data_employer['fullname']; ?></center></div>
+						<div class="margin-top-15"><b>Địa chỉ&nbsp;:&nbsp;</b><?php echo @$data_employer['address']; ?></div>
+						<?php 
+						if(!empty(@$data_employer['website'])){
+							?>
+							<div class="margin-top-5"><b>Website&nbsp;:&nbsp;</b><?php echo @$data_employer['website']; ?></div>
+							<?php
+						}
+						?>	
+						<div class="margin-top-5"><b>Người liên hệ&nbsp;:&nbsp;</b><?php echo @$data_employer['contacted_name']; ?></div>
+						<div class="margin-top-5"><b>Số điện thoại&nbsp;:&nbsp;</b><?php echo @$data_employer['contacted_phone']; ?></div>
+						<div class="margin-top-15">
+							<center>
+								<?php 
+								if((int)@$data_employer['status_authentication'] > 0){
+									?>
+									<img src="<?php echo asset('upload/ok.png'); ?>" width="150">
+									<?php
+								}else{
+									?>
+									<img src="<?php echo asset('upload/no-ok.png'); ?>" width="150">
+									<?php
+								}
+								?>
+							</center>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+?>
 <!--<div class="container margin-top-15">		
 	<div class="row">
 		<div class="col-lg-12">

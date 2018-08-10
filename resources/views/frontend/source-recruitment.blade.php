@@ -144,6 +144,7 @@ if(!empty(@$meta_description)){
 			@include("frontend.recruitment-content-right")
 			@include("frontend.recruitment-search-advance")
 			@include("frontend.recruitment-province")
+			@include("frontend.recruitment-top-employer")			
 		</div>
 	</div>
 </div>

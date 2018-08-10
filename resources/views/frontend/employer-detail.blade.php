@@ -184,6 +184,19 @@ if(!empty(@$meta_description)){
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-lg-8">
+			@include("frontend.recruitment-content-left")
+			@include("frontend.recruitment-content-left-2")
+			@include("frontend.recruitment-content-left-3")
+		</div>
+		<div class="col-lg-4">
+			@include("frontend.recruitment-content-right")
+			@include("frontend.recruitment-search-advance")
+			@include("frontend.recruitment-province")
+			@include("frontend.recruitment-top-employer")			
+		</div>
+	</div>
 </div>
 @endsection()               
 

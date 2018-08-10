@@ -17,18 +17,20 @@ if(count(@$item) > 0){
 							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
 								<span itemprop="name">Trang chủ</span>
 							</a>
+							<span class="soech">/</span>
 							<meta itemprop="position" content="1">
 						</li>
 						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
 								<span itemprop="name">Tuyển dụng</span>
 							</a>
+							<span class="soech">/</span>
 							<meta itemprop="position" content="2">
 						</li>
 						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
 								<span itemprop="name"><?php echo @$title; ?></span>
-							</a>
+							</a>							
 							<meta itemprop="position" content="3">
 						</li>      				
 					</ul>

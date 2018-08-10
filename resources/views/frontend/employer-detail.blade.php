@@ -43,8 +43,7 @@ if(!empty(@$meta_description)){
 					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
 							<span itemprop="name"><?php echo @$title; ?></span>
-						</a>
-						<span class="soech">/</span>
+						</a>						
       					<meta itemprop="position" content="3">
       				</li>      				
       			</ul>

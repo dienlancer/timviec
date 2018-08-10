@@ -1,7 +1,7 @@
 @extends("frontend.master")
 @section("content")
 @include("frontend.content-top")
-<div class="container margin-bottom-15">
+<div class="container">
 	<div class="row">
 		<div class="col-lg-8">
 			<?php 

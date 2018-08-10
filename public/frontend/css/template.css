@@ -2147,6 +2147,9 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .box-readmore{
     text-align: right;
 }
+.jp_main_footer_img_wrapper{
+    margin-top: 15px;
+}
 @media (max-width: 768px){    
       
 }

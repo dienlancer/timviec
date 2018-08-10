@@ -137,8 +137,11 @@ if(!empty(@$meta_description)){
 	<div class="row">
 		<div class="col-lg-8">
 			@include("frontend.recruitment-content-left")
+			@include("frontend.recruitment-content-left-2")
 		</div>
-		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			@include("frontend.recruitment-content-right")
+		</div>
 	</div>
 </div>
 @endsection()               

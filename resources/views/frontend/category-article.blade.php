@@ -14,7 +14,7 @@
 					<?php echo $breadcrumb; ?>
 				</ul>		
 			</div>			
-			<form method="post" class="category-box" name="frm">
+			<form method="post" class="source-recruitment-box margin-top-15 padding-left-10 padding-right-10" name="frm">
 				<input type="hidden" name="filter_page" value="1">         
 				{{ csrf_field() }}												
 				<?php 	

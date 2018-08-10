@@ -53,7 +53,7 @@
 				}else{
 					$img=asset('upload/no-logo.png');
 				}
-				$source_province2=DB::table('province')
+				$source_province=DB::table('province')
 				->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 				->where('recruitment_place.recruitment_id',(int)@$value['id'])
 				->select(								
@@ -67,12 +67,12 @@
 				->orderBy('province.id', 'desc')						
 				->get()
 				->toArray();	
-				$data_province2=convertToArray($source_province2);					
-				$province_text2='';
-				foreach ($data_province2 as $key_province2 => $value_province2) {
-					$province_text2.=$value_province2['fullname'].' ,';
+				$data_province=convertToArray($source_province);					
+				$province_text='';
+				foreach ($data_province as $key_province => $value_province) {
+					$province_text.='<span class="kara-province"><a title='.@$value_province["fullname"].' href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></span>&nbsp;,';
 				}
-				$province_text2=mb_substr($province_text2, 0,mb_strlen($province_text2)-1);
+				$province_text=mb_substr($province_text, 0,mb_strlen($province_text)-1);
 				?>
 				<div class="hot-job-box">
 					<div class="nysaki">
@@ -81,15 +81,15 @@
 						</div>
 						<div class="hot-job-right">
 							<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $fullname; ?></a><?php echo $hot_gif; ?></div>
-							<div class="hot-job-employer margin-top-10"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $employer; ?></a></div>										
+							<div class="khaly margin-top-10"><a title="<?php echo $value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo $employer; ?></a></div>										
 						</div>		
 						<div class="clr"></div>		
 					</div>
 					<div class="batay">
 						<div><i class="far fa-money-bill-alt"></i>&nbsp;<?php echo $value['salary_name']; ?></div>
 						<div class="margin-top-10">
-							<i class="far fa-clock"></i>&nbsp;<?php echo $duration; ?>&nbsp;
-							<i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text2; ?>
+							<div><i class="far fa-clock"></i>&nbsp;<?php echo $duration; ?></div>
+							<div><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text; ?></div>
 						</div>
 					</div>
 					<div class="clr"></div>

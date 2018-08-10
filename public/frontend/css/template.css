@@ -2157,6 +2157,9 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     margin: 15px auto 0px auto;
     width: 120px;
 }
+.kara-province a{
+    color: #333;
+}
 @media (max-width: 768px){    
       
 }

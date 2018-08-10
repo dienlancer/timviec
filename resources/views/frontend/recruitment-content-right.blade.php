@@ -49,7 +49,7 @@
 				if((int)@$value['status_hot'] == 1){
 					$hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
 				}
-				$source_province3=DB::table('province')
+				$source_province=DB::table('province')
 				->join('recruitment_place','province.id','=','recruitment_place.province_id')							
 				->where('recruitment_place.recruitment_id',(int)@$value['id'])
 				->select(								
@@ -63,13 +63,12 @@
 				->orderBy('province.id', 'desc')						
 				->get()
 				->toArray();	
-				$data_province3=convertToArray($source_province3);					
-				$province_text3='';
-				foreach ($data_province3 as $key_province3 => $value_province3) {
-					$province_text3.=$value_province3['fullname'].' ,';
+				$data_province=convertToArray($source_province);					
+				$province_text='';
+				foreach ($data_province as $key_province => $value_province) {
+					$province_text.='<span class="kara-province"><a title='.@$value_province["fullname"].' href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></span>&nbsp;,';
 				}
-				$province_title3=mb_substr($province_text3, 0,mb_strlen($province_text3)-1);
-				$province_text3=truncateString($province_title3,20);
+				$province_text=mb_substr($province_text, 0,mb_strlen($province_text)-1);
 				$class='fackyou';
 				if((int)$k == count($data)-1){
 					$class='';
@@ -77,10 +76,10 @@
 				?>
 				<div class="<?php echo $class; ?> margin-top-10 padding-bottom-10">
 					<div class="hot-job-name"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo $fullname; ?></a><?php echo $hot_gif; ?></div>
-					<div class="hot-job-employer  margin-top-5"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $employer; ?></a></div>
+					<div class="khaly margin-top-5"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo $employer; ?></a></div>
 					<div class="margin-top-10">
 						<div class="xibatuba">
-							<div title="<?php echo $province_title3; ?>"><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text3; ?></div>
+							<div><i class="fas fa-map-marker-alt"></i>&nbsp;<?php echo $province_text; ?></div>
 							<div class="margin-top-5"><i class="fas fa-dollar-sign"></i>&nbsp;<?php echo $value['salary_name']; ?></div>											
 						</div>
 						<div class="miranbaros">

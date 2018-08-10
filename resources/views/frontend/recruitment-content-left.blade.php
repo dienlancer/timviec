@@ -73,13 +73,13 @@
 					$data_province=convertToArray($source_province);					
 					$province_text='';
 					foreach ($data_province as $key_province => $value_province) {
-						$province_text.='<div class="padding-top-5 padding-bottom-5 madrid"><a href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></div>';
+						$province_text.='<div class="padding-top-5 padding-bottom-5 madrid"><a title="'.$value_province['fullname'].'" href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></div>';
 					}
 					?>
 					<tr>
 						<td>
 							<div class="hot-job-name vivan-hd"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo @$fullname; ?></a><?php echo @$hot_gif; ?></div>
-							<div class="hot-job-employer vivan-hd"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$employer; ?></a></div>
+							<div class="khaly vivan-hd"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['employer_alias']]); ?>"><?php echo @$employer; ?></a></div>
 						</td>
 						<td><?php echo @$province_text; ?></td>
 						<td><?php echo @$value['salary_name']; ?></td>

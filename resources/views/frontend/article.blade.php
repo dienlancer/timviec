@@ -1,7 +1,7 @@
 @extends("frontend.master")
 @section("content")
 @include("frontend.content-top")
-<div class="container margin-top-15">
+<div class="container margin-bottom-15">
 	<div class="row">
 		<div class="col-lg-8">
 			<?php 
@@ -110,7 +110,7 @@
 			}
 			?>	
 		</div>
-		<div class="col-lg-4">@include("frontend.main-sidebar")</div>
+		<div class="col-lg-4"></div>
 	</div>
 </div>
 @endsection()      

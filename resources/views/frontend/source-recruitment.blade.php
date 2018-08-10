@@ -48,7 +48,7 @@ if(!empty(@$meta_description)){
       				</li>      				
       			</ul>
 			</div>
-			<div class="source-recruitment-box">
+			<div class="source-recruitment-box margin-top-15">
 				<div class="source-recruitment-title">
 					<i class="fas fa-suitcase"></i>
 					<span class="margin-left-5"><?php echo @$title; ?></span>

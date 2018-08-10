@@ -49,7 +49,7 @@ if(!empty(@$meta_description)){
       				</li>      				
       			</ul>
 			</div>
-			<div class="source-recruitment-box">
+			<div class="source-recruitment-box margin-top-15">
 				<div class="employer-title">Việc làm tại <?php echo @$title; ?></div>
 			</div>
 			<?php 
@@ -61,7 +61,7 @@ if(!empty(@$meta_description)){
 					$logo=asset('upload/no-logo.png');
 				}
 				?>
-				<div class="source-recruitment-box source-recruitment-main">
+				<div class="source-recruitment-box source-recruitment-main margin-top-15">
 					<div class="row">
 						<div class="col-lg-3">							
 							<div class="box-employer-logo"><center><img src="<?php echo $logo; ?>"></center></div>
@@ -103,7 +103,7 @@ if(!empty(@$meta_description)){
 				<?php
 			}
 			?>			
-			<div class="source-recruitment-box">				
+			<div class="source-recruitment-box margin-top-15">				
 				<?php 
 				if(count(@$items) > 0){					
 					?>

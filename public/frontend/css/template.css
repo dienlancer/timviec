@@ -2052,8 +2052,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 }
 /* end .jp_slider_form_location_wrapper */
 .source-recruitment-box {
-    background: #ffffff;
-    margin-top: 15px;  
+    background: #ffffff;    
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);    
 }

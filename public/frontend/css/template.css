@@ -1009,9 +1009,7 @@ font-size: 12px;
 .lafata a{
     display: block;
     padding:10px 10px ;
-    border-bottom:1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    
     color: #333;    
     font-size: 13px;
 
@@ -2160,6 +2158,16 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .kara-province a{
     color: #333;
 }
+.ritacruista .select2-container--classic .select2-selection--single{
+    background: #ffffff;
+    border-radius: 0;
+    border: 1px solid #ccc; 
+}
+.ritacruista .select2-container--classic .select2-selection--single .select2-selection__arrow{
+    background: #ffffff;
+    border-left: 1px solid #ccc
+}
+
 @media (max-width: 768px){    
       
 }

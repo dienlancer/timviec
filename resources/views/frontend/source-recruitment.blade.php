@@ -103,7 +103,7 @@ if(!empty(@$meta_description)){
 								<div class="box-source-recruitment">
 									<div class="row">
 										<div class="col-xs-4">
-											<div class="padding-left-10"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img alt="<?php echo @$value['employer_fullname']; ?>" src="<?php echo @$logo; ?>"></a></div>
+											<div class="padding-left-10"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img title="<?php echo @$value['employer_fullname']; ?>" alt="<?php echo @$value['employer_fullname']; ?>" src="<?php echo @$logo; ?>"></a></div>
 										</div>
 										<div class="col-xs-8">
 											<div class="ribi"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$fullname; ?></a></div>
@@ -138,9 +138,12 @@ if(!empty(@$meta_description)){
 		<div class="col-lg-8">
 			@include("frontend.recruitment-content-left")
 			@include("frontend.recruitment-content-left-2")
+			@include("frontend.recruitment-content-left-3")
 		</div>
 		<div class="col-lg-4">
 			@include("frontend.recruitment-content-right")
+			@include("frontend.recruitment-search-advance")
+			@include("frontend.recruitment-province")
 		</div>
 	</div>
 </div>

@@ -66,7 +66,7 @@
 				$data_province=convertToArray($source_province);					
 				$province_text='';
 				foreach ($data_province as $key_province => $value_province) {
-					$province_text.='<span class="kara-province"><a title='.@$value_province["fullname"].' href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></span>&nbsp;,';
+					$province_text.='<span class="kara-province"><a title="'.@$value_province["fullname"].'" href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></span>&nbsp;,';
 				}
 				$province_text=mb_substr($province_text, 0,mb_strlen($province_text)-1);
 				$class='fackyou';

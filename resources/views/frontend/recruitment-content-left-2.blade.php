@@ -47,11 +47,11 @@
 				if((int)@$value['status_hot'] == 1){
 					$hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
 				}
-				$img='';
+				$logo='';
 				if(!empty($value['logo'])){
-					$img=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
+					$logo=asset('upload/'.$width.'x'.$height.'-'.$value['logo']);
 				}else{
-					$img=asset('upload/no-logo.png');
+					$logo=asset('upload/no-logo.png');
 				}
 				$source_province=DB::table('province')
 				->join('recruitment_place','province.id','=','recruitment_place.province_id')							
@@ -70,14 +70,14 @@
 				$data_province=convertToArray($source_province);					
 				$province_text='';
 				foreach ($data_province as $key_province => $value_province) {
-					$province_text.='<span class="kara-province"><a title='.@$value_province["fullname"].' href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></span>&nbsp;,';
+					$province_text.='<span class="kara-province"><a title="'.@$value_province["fullname"].'" href="'.route('frontend.index.index',[$value_province['alias']]).'">'.$value_province['fullname'].'</a></span>&nbsp;,';
 				}
 				$province_text=mb_substr($province_text, 0,mb_strlen($province_text)-1);
 				?>
 				<div class="hot-job-box">
 					<div class="nysaki">
 						<div class="hot-job-img">
-							<img src="<?php echo $img; ?>" width="64">
+							<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img title="<?php echo @$value['employer_fullname']; ?>" alt="<?php echo @$value['employer_fullname']; ?>" src="<?php echo @$logo; ?>"></a>
 						</div>
 						<div class="hot-job-right">
 							<div class="hot-job-name"><a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[$value['alias']]); ?>"><?php echo $fullname; ?></a><?php echo $hot_gif; ?></div>

@@ -49,7 +49,7 @@ if(!empty(@$meta_description)){
       			</ul>
 			</div>
 			<div class="source-recruitment-box margin-top-15">
-				<div class="employer-title">Việc làm tại <?php echo @$title; ?></div>
+				<div class="employer-title"><?php echo @$title; ?></div>
 			</div>
 			<?php 
 			if(count(@$item) > 0){
@@ -63,7 +63,7 @@ if(!empty(@$meta_description)){
 				<div class="source-recruitment-box source-recruitment-main margin-top-15">
 					<div class="row">
 						<div class="col-lg-3">							
-							<div class="box-employer-logo"><center><img src="<?php echo $logo; ?>"></center></div>
+							<div class="box-employer-detail-logo"><center><img src="<?php echo $logo; ?>"></center></div>
 							<div class="margin-top-40 margin-bottom-15">
 								<center>
 								<?php 

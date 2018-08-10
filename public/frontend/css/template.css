@@ -11,7 +11,7 @@
 @font-face{font-family:"OpenSans";src:url("../fonts/OpenSans.ttf") format('truetype');}
 @font-face{font-family:"OpenSans-Bold";src:url("../fonts/OpenSans-Bold.ttf") format('truetype');}
 body{
-    
+    font-family: "arial";
     font-size:13px;
         color: #333;
 }
@@ -1175,10 +1175,10 @@ font-size: 12px;
     background: linear-gradient(to bottom,#F5F5F5  , #ffffff);
 }
 .box-readmore a::before {
-    font-family: "Font Awesome\ 5 Free";
-    content: "\f35a";
+    font-family: "FontAwesome";
+    content: "\f105";
     margin-right: 5px;
-    font-weight: bold;
+    
 }
 .box-row {
        padding: 10px 0;
@@ -2076,6 +2076,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     color: #4a4a4a;
     padding:10px 15px;
     font-size: 16px;
+    font-family: 'robotocondensed'
 }
 .box-source-recruitment{
     border: 1px solid #ededed;
@@ -2149,6 +2150,12 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 }
 .jp_main_footer_img_wrapper{
     margin-top: 15px;
+}
+.box-employer-detail-logo{
+        border: 1px solid #f1f1f1;
+    padding: 5px;
+    margin: 15px auto 0px auto;
+    width: 120px;
 }
 @media (max-width: 768px){    
       

@@ -2411,6 +2411,12 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     top: -45px;
     right: -40px;
 }
+.jp_job_post_right_overview_btn li{
+    margin-left: 0;
+}
+.jp_rightside_career_main_content{
+    padding-bottom: 0;
+}
 @media (max-width: 768px){    
       
 }

@@ -165,7 +165,7 @@ if(count(@$item) > 0){
 
 						</ul>
 					</div>
-					<div class="jp_job_res">
+					<!--<div class="jp_job_res">
 						<div class="company-heading">
 							<div>NHIỆM VỤ CÔNG TY</div>
 						</div>
@@ -178,8 +178,8 @@ if(count(@$item) > 0){
 						</div>
 						<div class="margin-top-30">Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id
 						dui posuere blandit.</div>				
-					</div>
-				</div>
+					</div>-->
+				</div>				
 			</div>
 			<div class="col-lg-4">
 				<div class="jp_rightside_career_wrapper">
@@ -190,20 +190,23 @@ if(count(@$item) > 0){
 						<div class="margin-top-15">
 							<center>
 								<div class="jp_jop_overview_img">
-									<img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>">
+									<center><img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>"></center>
 								</div>
 							</center>
 						</div>	
-						<div class="jp_job_listing_single_post_right_cont">
+						<!--<div class="jp_job_listing_single_post_right_cont">
 							<div class="jp_job_listing_single_post_right_cont_wrapper">
 								<h4>Webstrot Technology</h4>
 								<p>MARKETING JOB</p>
-							</div>
-						</div>	
-						<div class="jp_job_post_right_overview_btn">
+							</div> 
+						</div>-->	
+						<?php 
+						$data_job=App\RecruitmentModel::whereRaw('employer_id=?',[(int)@$item['id']])->select('id')->get()->toArray();						
+						?>
+						<div class="jp_job_post_right_overview_btn margin-top-15">
 							<center>
 								<ul>
-									<li><a href="#">141 Jobs</a></li>
+									<li><a href="javascript:void(0);"><?php echo count(@$data_job); ?> công việc</a></li>
 								</ul>
 							</center>
 						</div>	
@@ -215,32 +218,44 @@ if(count(@$item) > 0){
 								</div>
 								<div class="jp_listing_list_icon_cont_wrapper">
 									<ul>
-										<li>Location:</li>
-										<li>Los Angeles Califonia PO, 455001</li>
+										<li>Địa chỉ:</li>
+										<li><?php echo @$item['address']; ?></li>
 									</ul>
 								</div>
 								<div class="clr"></div>
-							</div>
+							</div>	
 							<div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
 								<div class="jp_listing_list_icon">
-									<i class="fa fa-info-circle"></i>
+									<i class="far fa-user"></i>
 								</div>
 								<div class="jp_listing_list_icon_cont_wrapper">
 									<ul>
-										<li>Job Open:</li>
-										<li>141 Jobs</li>
+										<li>Người liên hệ:</li>
+										<li><?php echo @$item['contacted_name']; ?></li>
 									</ul>
 								</div>
 								<div class="clr"></div>
-							</div>
+							</div>	
 							<div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
 								<div class="jp_listing_list_icon">
-									<i class="fa fa-th-large"></i>
+									<i class="fas fa-phone"></i>
 								</div>
 								<div class="jp_listing_list_icon_cont_wrapper">
 									<ul>
-										<li>Category:</li>
-										<li>Developer</li>
+										<li>Điện thoại liên lạc:</li>
+										<li><?php echo @$item['contacted_phone']; ?></li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+							</div>						
+							<div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+								<div class="jp_listing_list_icon">
+									<i class="fa fa-envelope"></i>
+								</div>
+								<div class="jp_listing_list_icon_cont_wrapper">
+									<ul>
+										<li>Email:</li>
+										<li><?php echo @$item['email']; ?></li>
 									</ul>
 								</div>
 								<div class="clr"></div>
@@ -251,7 +266,7 @@ if(count(@$item) > 0){
 								</div>
 								<div class="jp_listing_list_icon_cont_wrapper">
 									<ul>
-										<li>Experience:</li>
+										<li>Kinh nghiệm:</li>
 										<li>4+ Years Experience</li>
 									</ul>
 								</div>
@@ -260,8 +275,8 @@ if(count(@$item) > 0){
 							<div class="jp_listing_right_bar_btn_wrapper">
 								<div class="jp_listing_right_bar_btn">
 									<ul>
-										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Follow Facebook</a></li>
-										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Follow NOw!</a></li>
+										<li><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> &nbsp;FACEBOOK</a></li>
+										<li><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> &nbsp;CHIA SẼ</a></li>
 									</ul>
 								</div>
 							</div>

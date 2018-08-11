@@ -309,7 +309,7 @@ if(count(@$source_new_job) > 0){
 												$data_province=convertToArray(@$source_province);					
 												$province_text='';
 												foreach ($data_province as $key_province => $value_province) {
-													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+													$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
 												if($k%5 == 0){
 													$t++;
@@ -448,7 +448,7 @@ if(count(@$source_new_job) > 0){
 												$data_province=convertToArray(@$source_province);					
 												$province_text='';
 												foreach ($data_province as $key_province => $value_province) {
-													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+													$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
 												if($k%5 == 0){
 													$t++;
@@ -587,7 +587,7 @@ if(count(@$source_new_job) > 0){
 												$data_province=convertToArray(@$source_province);					
 												$province_text='';
 												foreach ($data_province as $key_province => $value_province) {
-													$province_text.='<span class="margin-left-15"><a href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
+													$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
 												if($k%5 == 0){
 													$t++;

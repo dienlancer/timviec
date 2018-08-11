@@ -2165,7 +2165,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 }
 .ritacruista .select2-container--classic .select2-selection--single .select2-selection__arrow{
     background: #ffffff;
-    border-left: 1px solid #ccc
+    border-left:0
 }
 .jp_tittle_heading h2 {
     font-size: 25px;

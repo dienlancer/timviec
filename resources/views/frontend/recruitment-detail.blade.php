@@ -347,7 +347,10 @@ if(count(@$item) > 0){
 							<?php						
 						}	
 						?>	
-					</div>									
+					</div>
+					@include("frontend.recruitment-content-left")
+			@include("frontend.recruitment-content-left-2")
+			@include("frontend.recruitment-content-left-3")									
 				</div>
 				<div class="col-lg-4">
 					<div class="source-recruitment-box margin-top-15 padding-left-15 padding-right-15 padding-bottom-15">
@@ -379,6 +382,10 @@ if(count(@$item) > 0){
 							</center>
 						</div>					
 					</div>
+					@include("frontend.recruitment-content-right")
+					@include("frontend.recruitment-search-advance")
+					@include("frontend.recruitment-province")
+					@include("frontend.recruitment-top-employer")		
 				</div>
 			</div>
 		</div>

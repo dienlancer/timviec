@@ -164,21 +164,7 @@ if(count(@$item) > 0){
 							<li><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp; <a target="_blank" href="javascript:void(0);">Download tài liệu</a></li>
 
 						</ul>
-					</div>
-					<!--<div class="jp_job_res">
-						<div class="company-heading">
-							<div>NHIỆM VỤ CÔNG TY</div>
-						</div>
-						<div class="margin-top-30">Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id
-						dui posuere blandit.</div>						
-					</div>
-					<div class="jp_job_res jp_job_qua">
-						<div class="company-heading">
-							<div>QUẢN LÝ CHẤT LƯỢNG</div>
-						</div>
-						<div class="margin-top-30">Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id
-						dui posuere blandit.</div>				
-					</div>-->
+					</div>					
 				</div>
 				<div class="jp_listing_related_heading_wrapper">
 					<div class="company-heading">
@@ -294,6 +280,9 @@ if(count(@$item) > 0){
 						?>
 					</div>
 				</div>				
+				@include("frontend.recruitment-content-left")
+				@include("frontend.recruitment-content-left-2")
+				@include("frontend.recruitment-content-left-3")				
 			</div>
 			<div class="col-lg-4">
 				<div class="jp_rightside_career_wrapper">
@@ -379,6 +368,11 @@ if(count(@$item) > 0){
 						</div>
 					</div>
 				</div>
+				<div class="clr"></div>
+				@include("frontend.recruitment-content-right")
+				@include("frontend.recruitment-search-advance")
+				@include("frontend.recruitment-province")
+				@include("frontend.recruitment-top-employer")		
 			</div>
 		</div>
 	</div>

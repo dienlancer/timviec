@@ -20,8 +20,123 @@ if(!empty(@$meta_description)){
 ?>
 <h1 style="display: none;"><?php echo @$seo_title; ?></h1>
 <h2 style="display: none;"><?php echo @$seo_meta_description; ?></h2>
-@include("frontend.content-top")
-<div class="container">
+<?php 
+$data_banner=getBanner('re-log');
+$items=$data_banner['items'];
+if(count(@$items) > 0){
+	?>
+	<div class="box-meal">
+        <div>
+            <script type="text/javascript" language="javascript">
+                jQuery(document).ready(function(){
+                    jQuery(".banner").owlCarousel({
+                        autoplay:true,                    
+                        loop:true,
+                        margin:0,                        
+                        nav:false,            
+                        mouseDrag: true,
+                        touchDrag: true,                                
+                        responsiveClass:true,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:1
+                            },
+                            1000:{
+                                items:1
+                            }
+                        }
+                    });
+
+                });                
+            </script>
+            <div class="owl-carousel banner owl-theme">
+                <?php   
+                foreach ($items as $key => $value) {
+                	$featured_img=asset('upload/'.$value['image']);
+                	?>
+                	<div><img src="<?php echo $featured_img; ?>"></div>
+                	<?php   	
+                }                   
+                ?>
+            </div>
+        </div>  
+        <div class="single-cat-title">
+        	<div class="company-real-man">
+        		<div class="container">
+        			<div class="col-lg-12">        			
+        				<div class="jp_tittle_heading_wrapper">
+        					<div class="jp_tittle_heading">
+        						<h2>Webstrot Technology</h2>
+        					</div>
+        					<div class="jp_tittle_breadcrumb_main_wrapper">
+        						<div class="jp_tittle_breadcrumb_wrapper">
+        							<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        								<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        									<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
+        										<span itemprop="name">Trang chủ</span>
+        									</a>   
+        									<i class="fa fa-angle-right"></i>                         			
+        									<meta itemprop="position" content="1">
+        								</li>
+        								<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        									<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
+        										<span itemprop="name">Tuyển dụng</span>
+        									</a>     
+        									<i class="fa fa-angle-right"></i>                       			
+        									<meta itemprop="position" content="2">
+        								</li>
+        								<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        									<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
+        										<span itemprop="name"><?php echo @$title; ?></span>
+        									</a>	
+        									<i class="fa fa-angle-right"></i>					
+        									<meta itemprop="position" content="3">
+        								</li>      				
+        							</ul>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>        	
+        </div>
+    </div>
+	<?php
+}
+if(count(@$item) > 0){
+	$logo='';
+	if(!empty($item['logo'])){
+		$logo=asset('upload/'.$width.'x'.$height.'-'.$item['logo']);
+	}else{
+		$logo=asset('upload/no-logo.png');
+	}
+	?>
+	<div class="box-company">				
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="jp_cs_com_info_wrapper">
+						<div class="jp_cs_com_info_img">
+							<img src="<?php echo $logo; ?>" alt="job_img">
+						</div>
+						<div class="jp_cs_com_info_img_cont">
+							<h2 class="company-title">User Interface Project Manager With Comera At Mumbai Location</h2>
+							<p>Technology Management Consulting</p>
+							<h3 class="company-address"><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Los Angeles Califonia PO, 455001</h3>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>				
+			</div>			
+		</div>
+	</div>
+	<?php
+}
+?>
+<!--<div class="container">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="margin-top-15">
@@ -197,6 +312,6 @@ if(!empty(@$meta_description)){
 			@include("frontend.recruitment-top-employer")			
 		</div>
 	</div>
-</div>
+</div>-->
 @endsection()               
 

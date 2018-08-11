@@ -9,8 +9,8 @@
 			<?php 			
 			$breadcrumb= getBreadCrumbCategoryArticle($category);	
 			?>
-			<div class="margin-top-15">
-				<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="ul-breadcrumb" >
+			<div class="mybreadcrumb margin-top-15">
+				<ul itemscope itemtype="http://schema.org/BreadcrumbList" >
 					<?php echo $breadcrumb; ?>
 				</ul>		
 			</div>			

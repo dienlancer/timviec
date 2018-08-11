@@ -1409,7 +1409,7 @@ font-size: 12px;
     position: absolute;
     width: 100%;
     display: flex;
-    align-items: center;
+    
     height: 100%;   
     color: #ffffff;
     
@@ -1418,7 +1418,7 @@ font-size: 12px;
     left: 0;
     z-index: 2;
     
-    background: #00000042;  
+    background: #000000bf;  
 }
 .box-meal .owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled{
     display: none;
@@ -2167,7 +2167,85 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     background: #ffffff;
     border-left: 1px solid #ccc
 }
-
+.jp_tittle_heading h2 {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.jp_tittle_breadcrumb_wrapper li:first-child {
+    margin-left: 0;
+}
+.jp_tittle_breadcrumb_wrapper li a {
+    color: #ffffffa6;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_tittle_breadcrumb_wrapper li i {
+    color: #23c0e9;
+    position: relative;
+    left: 10px;
+}
+.jp_tittle_breadcrumb_wrapper ul li{
+    display: inline-block;
+}
+.jp_tittle_breadcrumb_main_wrapper {        
+    padding-top: 25px;
+}
+.jp_cs_com_info_wrapper {
+    background: #f9f9f9;
+    padding: 20px;    
+}
+.jp_cs_com_info_img {
+    float: left;
+    width: 155px;
+}
+.jp_cs_com_info_img_cont {
+    float: left;
+    width: calc(100% - 155px);
+    padding-top: 40px;
+}
+.company-title {
+    font-size: 18px;
+    color: #344154;
+}
+.company-address {    
+    font-size: 16px;
+    color: #797979;
+}
+.box-company{
+    margin-top:-168px;
+    z-index: 9;
+    position: relative;
+}
+.company-real-man{
+        margin-top: 50px;
+    width: 100%;
+}
+.labana{
+    background: #f9f9f9
+}
+.mybreadcrumb li:first-child {
+    margin-left: 0;
+}
+.mybreadcrumb li a {
+    color: #23c0e9;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.mybreadcrumb li i {
+    color: #23c0e9;
+    position: relative;
+    left: 10px;
+}
+.mybreadcrumb ul li{
+    display: inline-block;
+}
 @media (max-width: 768px){    
       
 }

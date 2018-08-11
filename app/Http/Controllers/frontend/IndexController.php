@@ -681,7 +681,7 @@ class IndexController extends Controller {
 				->take($totalItemsPerPage)
 				->get()
 				->toArray();        
-				$items=convertToArray($data);   
+				$items=convertToArray($data);   				
 			}			
 			break; 	
 			case 'recruitment-by-job':						

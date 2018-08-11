@@ -2246,6 +2246,82 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .mybreadcrumb ul li{
     display: inline-block;
 }
+.jp_listing_left_sidebar_wrapper {
+    background: #ffffff;
+    border: 1px solid #e9e9e9;
+    padding: 60px;
+    margin-top: 60px;
+}
+.jp_job_des ul {
+    margin-top: 20px;
+}
+.jp_job_des li:first-child {
+    margin-left: 0;
+}
+.jp_job_des li{
+    display: inline-block;
+}
+.jp_job_res{
+    margin-top: 60px; 
+}
+.company-heading div {
+    font-size:30px;
+    color: #000000;
+    
+    position: relative;
+    font-family: 'robotocondensed'
+}
+.company-heading div:before {
+    content: '';
+    border: 1px solid #23c0e9;
+    width: 8px;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+}
+.company-heading div:after {
+    content: '';
+    border: 1px solid #23c0e9;
+    width: 60px;
+    position: absolute;
+    bottom: -15px;
+    left: 11px;
+}
+.jp_job_listing_single_post_right_cont {
+    
+    text-align: center;
+}
+.jp_job_listing_single_post_right_cont_wrapper {
+    display: inline-block;
+}
+.jp_job_listing_single_post_right_cont_wrapper h4 {
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+    padding-top: 40px;
+}
+.jp_job_listing_single_post_right_cont_wrapper p {
+    font-size: 16px;
+    color: #23c0e9;
+    padding-top: 10px;
+}
+.jp_rightside_career_wrapper{
+    margin-top: 60px;
+}
+.jp_job_post_right_overview_btn li:last-child a {
+    float: left;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #37d09c;
+    color: #ffffff;
+    font-size: 12px;
+    text-transform: uppercase;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
 @media (max-width: 768px){    
       
 }

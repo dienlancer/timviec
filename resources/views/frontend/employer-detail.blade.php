@@ -26,84 +26,84 @@ $items=$data_banner['items'];
 if(count(@$items) > 0){
 	?>
 	<div class="box-meal">
-        <div>
-            <script type="text/javascript" language="javascript">
-                jQuery(document).ready(function(){
-                    jQuery(".banner").owlCarousel({
-                        autoplay:true,                    
-                        loop:true,
-                        margin:0,                        
-                        nav:false,            
-                        mouseDrag: true,
-                        touchDrag: true,                                
-                        responsiveClass:true,
-                        responsive:{
-                            0:{
-                                items:1
-                            },
-                            600:{
-                                items:1
-                            },
-                            1000:{
-                                items:1
-                            }
-                        }
-                    });
+		<div>
+			<script type="text/javascript" language="javascript">
+				jQuery(document).ready(function(){
+					jQuery(".banner").owlCarousel({
+						autoplay:true,                    
+						loop:true,
+						margin:0,                        
+						nav:false,            
+						mouseDrag: true,
+						touchDrag: true,                                
+						responsiveClass:true,
+						responsive:{
+							0:{
+								items:1
+							},
+							600:{
+								items:1
+							},
+							1000:{
+								items:1
+							}
+						}
+					});
 
-                });                
-            </script>
-            <div class="owl-carousel banner owl-theme">
-                <?php   
-                foreach ($items as $key => $value) {
-                	$featured_img=asset('upload/'.$value['image']);
-                	?>
-                	<div><img src="<?php echo $featured_img; ?>"></div>
-                	<?php   	
-                }                   
-                ?>
-            </div>
-        </div>  
-        <div class="single-cat-title">
-        	<div class="company-real-man">
-        		<div class="container">
-        			<div class="col-lg-12">        			
-        				<div class="jp_tittle_heading_wrapper">
-        					<div class="jp_tittle_heading">
-        						<h2><?php echo @$item['fullname']; ?></h2>
-        					</div>
-        					<div class="jp_tittle_breadcrumb_main_wrapper">
-        						<div class="jp_tittle_breadcrumb_wrapper">
-        							<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        								<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-        									<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
-        										<span itemprop="name">Trang chủ</span>
-        									</a>   
-        									<i class="fa fa-angle-right"></i>                         			
-        									<meta itemprop="position" content="1">
-        								</li>
-        								<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-        									<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
-        										<span itemprop="name">Tuyển dụng</span>
-        									</a>     
-        									<i class="fa fa-angle-right"></i>                       			
-        									<meta itemprop="position" content="2">
-        								</li>
-        								<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-        									<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
-        										<span itemprop="name"><?php echo @$title; ?></span>
-        									</a>	
-        									<i class="fa fa-angle-right"></i>					
-        									<meta itemprop="position" content="3">
-        								</li>      				
-        							</ul>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>        	
-        </div>
-    </div>
+				});                
+			</script>
+			<div class="owl-carousel banner owl-theme">
+				<?php   
+				foreach ($items as $key => $value) {
+					$featured_img=asset('upload/'.$value['image']);
+					?>
+					<div><img src="<?php echo $featured_img; ?>"></div>
+					<?php   	
+				}                   
+				?>
+			</div>
+		</div>  
+		<div class="single-cat-title">
+			<div class="company-real-man">
+				<div class="container">
+					<div class="col-lg-12">        			
+						<div class="jp_tittle_heading_wrapper">
+							<div class="jp_tittle_heading">
+								<h2><?php echo @$item['fullname']; ?></h2>
+							</div>
+							<div class="jp_tittle_breadcrumb_main_wrapper">
+								<div class="jp_tittle_breadcrumb_wrapper">
+									<ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+										<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+											<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
+												<span itemprop="name">Trang chủ</span>
+											</a>   
+											<i class="fa fa-angle-right"></i>                         			
+											<meta itemprop="position" content="1">
+										</li>
+										<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+											<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
+												<span itemprop="name">Tuyển dụng</span>
+											</a>     
+											<i class="fa fa-angle-right"></i>                       			
+											<meta itemprop="position" content="2">
+										</li>
+										<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+											<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
+												<span itemprop="name"><?php echo @$title; ?></span>
+											</a>	
+											<i class="fa fa-angle-right"></i>					
+											<meta itemprop="position" content="3">
+										</li>      				
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>        	
+		</div>
+	</div>
 	<?php
 }
 if(count(@$item) > 0){
@@ -120,17 +120,87 @@ if(count(@$item) > 0){
 				<div class="col-lg-12">
 					<div class="jp_cs_com_info_wrapper">
 						<div class="jp_cs_com_info_img">
-							<img src="<?php echo $logo; ?>" alt="job_img">
+							<img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>">
 						</div>
 						<div class="jp_cs_com_info_img_cont">
-							<h2 class="company-title">User Interface Project Manager With Comera At Mumbai Location</h2>
-							<p>Technology Management Consulting</p>
-							<h3 class="company-address"><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Los Angeles Califonia PO, 455001</h3>
+							<h2 class="company-title"><?php echo @$item['fullname']; ?></h2>
+							<p>Người liên hệ : <b><?php echo @$item['contacted_name'] ?></b> - Điện thoại liên lạc : <b><?php echo @$item['contacted_phone'] ?></b></p>
+							<h3 class="company-address"><i class="fa fa-map-marker"></i> &nbsp;&nbsp;<?php echo @$item['address']; ?></h3>
 						</div>
 						<div class="clr"></div>
 					</div>
 				</div>				
 			</div>			
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="jp_listing_left_sidebar_wrapper">
+					<div class="jp_job_des">
+						<div class="company-heading">
+							<div>SƠ LƯỢC CÔNG TY</div>
+						</div>
+						<div class="margin-top-30">Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users.
+							At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and rely new platforms for developers around the world. From AdWords to Chrome,
+						Android to Ye, Social to Local, Google engineers are changing the world.</div>
+						<ul>
+							<li><i class="fa fa-globe"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>
+							<li><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>
+
+						</ul>
+					</div>
+					<div class="jp_job_res">
+						<div class="company-heading">
+							<div>NHIỆM VỤ CÔNG TY</div>
+						</div>
+						<div class="margin-top-30">Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id
+						dui posuere blandit.</div>						
+					</div>
+					<div class="jp_job_res jp_job_qua">
+						<div class="company-heading">
+							<div>QUẢN LÝ CHẤT LƯỢNG</div>
+						</div>
+						<div class="margin-top-30">
+							<ul>
+								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; BA/BS degree in a technical field or equivalent practical experience.</li>
+								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 2 years of relevant work experience in software development.</li>
+								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Programming experience in C, C++ or Java.</li>
+								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Experience with AJAX, HTML and CSS.</li>
+							</ul>
+						</div>						
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="jp_rightside_career_wrapper">
+					<div class="jp_rightside_career_heading">
+						<h4>TỔNG QUAN</h4>
+					</div>
+					<div class="jp_rightside_career_main_content">
+						<div class="margin-top-15">
+							<center>
+								<div class="jp_jop_overview_img">
+									<img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>">
+								</div>
+							</center>
+						</div>	
+						<div class="jp_job_listing_single_post_right_cont">
+							<div class="jp_job_listing_single_post_right_cont_wrapper">
+								<h4>Webstrot Technology</h4>
+								<p>MARKETING JOB</p>
+							</div>
+						</div>	
+						<div class="jp_job_post_right_overview_btn">
+							<center>
+								<ul>
+									<li><a href="#">141 Jobs</a></li>
+								</ul>
+							</center>
+						</div>				
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<?php

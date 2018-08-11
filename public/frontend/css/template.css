@@ -2197,6 +2197,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .jp_cs_com_info_wrapper {
     background: #f9f9f9;
     padding: 20px;    
+    position: relative;
 }
 .jp_cs_com_info_img {
     float: left;
@@ -2321,6 +2322,94 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+}
+.jp_job_post_right_overview_btn ul{
+    display: inline-block;
+}
+.jp_listing_overview_list_outside_main_wrapper {
+    padding: 50px;    
+}
+.jp_listing_list_icon {
+    float: left;
+    width: 20px;
+}
+.jp_listing_list_icon_cont_wrapper {
+    float: left;
+    width: calc(100% - 20px);
+    padding-left: 10px;
+}
+.jp_listing_list_icon_cont_wrapper li:first-child {
+    font-weight: bold;
+    color: #000000;
+}
+.jp_listing_overview_list_main_wrapper2 {
+    padding-top: 40px;
+}
+.jp_listing_right_bar_btn_wrapper {
+    text-align: center;
+}
+.jp_listing_right_bar_btn ul {
+    display: inline-block;
+    margin-top: 40px;
+}
+.jp_listing_right_bar_btn li:first-child a {
+    float: left;
+    width: 230px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #23c0e9;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_listing_right_bar_btn li:first-child a:hover{
+    background: #ff5353;
+}
+.jp_listing_right_bar_btn li:last-child a {
+    float: left;
+    width: 230px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #ff5353;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_listing_right_bar_btn li:last-child a:hover{
+    background: #23c0e9;
+}
+.jp_listing_right_bar_btn li:last-child {
+    margin-top: 70px;
+}
+.jp_listing_list_icon i {
+    color: #ff5353;
+}
+.jp_listing_list_icon_cont_wrapper li:first-child {
+    font-weight: bold;
+    color: #000000;
+}
+.company-authentication{
+        position: absolute;
+    top: -45px;
+    right: -40px;
 }
 @media (max-width: 768px){    
       

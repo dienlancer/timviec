@@ -124,10 +124,25 @@ if(count(@$item) > 0){
 						</div>
 						<div class="jp_cs_com_info_img_cont">
 							<h2 class="company-title"><?php echo @$item['fullname']; ?></h2>
-							<p>Người liên hệ : <b><?php echo @$item['contacted_name'] ?></b> - Điện thoại liên lạc : <b><?php echo @$item['contacted_phone'] ?></b></p>
+							<p><b>Người liên hệ</b> : <?php echo @$item['contacted_name'] ?> - <b>Điện thoại liên lạc</b> : <?php echo @$item['contacted_phone'] ?></p>
 							<h3 class="company-address"><i class="fa fa-map-marker"></i> &nbsp;&nbsp;<?php echo @$item['address']; ?></h3>
 						</div>
 						<div class="clr"></div>
+						<div class="company-authentication">
+							<center>
+								<?php 
+								if((int)@$item['status_authentication'] > 0){
+									?>
+									<img src="<?php echo asset('upload/ok.png'); ?>" width="150">
+									<?php
+								}else{
+									?>
+									<img src="<?php echo asset('upload/no-ok.png'); ?>" width="150">
+									<?php
+								}
+								?>
+							</center>
+						</div>
 					</div>
 				</div>				
 			</div>			
@@ -141,12 +156,12 @@ if(count(@$item) > 0){
 						<div class="company-heading">
 							<div>SƠ LƯỢC CÔNG TY</div>
 						</div>
-						<div class="margin-top-30">Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users.
-							At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and rely new platforms for developers around the world. From AdWords to Chrome,
-						Android to Ye, Social to Local, Google engineers are changing the world.</div>
+						<div class="margin-top-30">
+							<?php echo @$item['intro']; ?>
+						</div>
 						<ul>
-							<li><i class="fa fa-globe"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>
-							<li><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>
+							<li><i class="fa fa-globe"></i>&nbsp;&nbsp; <a target="_blank" href="<?php echo 'https://'.@$item['website']; ?>"><?php echo @$item['website']; ?></a></li>
+							<li><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp; <a target="_blank" href="javascript:void(0);">Download tài liệu</a></li>
 
 						</ul>
 					</div>
@@ -161,14 +176,8 @@ if(count(@$item) > 0){
 						<div class="company-heading">
 							<div>QUẢN LÝ CHẤT LƯỢNG</div>
 						</div>
-						<div class="margin-top-30">
-							<ul>
-								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; BA/BS degree in a technical field or equivalent practical experience.</li>
-								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; 2 years of relevant work experience in software development.</li>
-								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Programming experience in C, C++ or Java.</li>
-								<li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; Experience with AJAX, HTML and CSS.</li>
-							</ul>
-						</div>						
+						<div class="margin-top-30">Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id
+						dui posuere blandit.</div>				
 					</div>
 				</div>
 			</div>
@@ -197,7 +206,66 @@ if(count(@$item) > 0){
 									<li><a href="#">141 Jobs</a></li>
 								</ul>
 							</center>
-						</div>				
+						</div>	
+						<hr/>
+						<div class="jp_listing_overview_list_outside_main_wrapper">
+							<div class="jp_listing_overview_list_main_wrapper">
+								<div class="jp_listing_list_icon">
+									<i class="fa fa-map-marker"></i>
+								</div>
+								<div class="jp_listing_list_icon_cont_wrapper">
+									<ul>
+										<li>Location:</li>
+										<li>Los Angeles Califonia PO, 455001</li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+								<div class="jp_listing_list_icon">
+									<i class="fa fa-info-circle"></i>
+								</div>
+								<div class="jp_listing_list_icon_cont_wrapper">
+									<ul>
+										<li>Job Open:</li>
+										<li>141 Jobs</li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+								<div class="jp_listing_list_icon">
+									<i class="fa fa-th-large"></i>
+								</div>
+								<div class="jp_listing_list_icon_cont_wrapper">
+									<ul>
+										<li>Category:</li>
+										<li>Developer</li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+								<div class="jp_listing_list_icon">
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="jp_listing_list_icon_cont_wrapper">
+									<ul>
+										<li>Experience:</li>
+										<li>4+ Years Experience</li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<div class="jp_listing_right_bar_btn_wrapper">
+								<div class="jp_listing_right_bar_btn">
+									<ul>
+										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Follow Facebook</a></li>
+										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Follow NOw!</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

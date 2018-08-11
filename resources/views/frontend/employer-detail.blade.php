@@ -69,7 +69,7 @@ if(count(@$items) > 0){
         			<div class="col-lg-12">        			
         				<div class="jp_tittle_heading_wrapper">
         					<div class="jp_tittle_heading">
-        						<h2>Webstrot Technology</h2>
+        						<h2><?php echo @$item['fullname']; ?></h2>
         					</div>
         					<div class="jp_tittle_breadcrumb_main_wrapper">
         						<div class="jp_tittle_breadcrumb_wrapper">

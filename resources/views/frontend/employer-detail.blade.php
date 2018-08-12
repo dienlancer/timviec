@@ -166,6 +166,7 @@ if(count(@$item) > 0){
 						</ul>
 					</div>					
 				</div>
+				<div class="clr"></div>
 				<?php 
 				if(count(@$items) > 0){
 					?>
@@ -280,7 +281,8 @@ if(count(@$item) > 0){
 					</div>		
 					<?php
 				}
-				?>						
+				?>
+				<div class="clr"></div>						
 				@include("frontend.recruitment-content-left")
 				@include("frontend.recruitment-content-left-2")
 				@include("frontend.recruitment-content-left-3")				

@@ -166,43 +166,45 @@ if(count(@$item) > 0){
 						</ul>
 					</div>					
 				</div>
-				<div class="jp_listing_related_heading_wrapper">
-					<div class="company-heading">
-						<div>NGÀNH NGHỀ LIÊN QUAN</div>
-					</div>
-					<div class="company_slider_wrapper">
-						<?php 
-						if(count(@$items) > 0){
-							?>
+				<?php 
+				if(count(@$items) > 0){
+					?>
+					<div class="jp_listing_related_heading_wrapper">
+						<div class="company-heading">
+							<div>NGÀNH NGHỀ LIÊN QUAN</div>
+						</div>
+						<div class="company_slider_wrapper">
 							<script type="text/javascript" language="javascript">
-								jQuery(document).ready(function(){
-									jQuery(".company-box-slider").owlCarousel({
-										autoplay:true,                    
-										loop:true,
-										margin:0,                       
-										nav:false,            
-										mouseDrag: true,
-										touchDrag: true,                                
-										responsiveClass:true,
-										responsive:{
-											0:{
-												items:1
+								$(document).ready(function(){									
+									$('.company-box-slider').owlCarousel({
+										loop: true,
+										margin: 10,
+										autoplay:true,
+										responsiveClass: true,
+										smartSpeed: 1200,
+										navText : ['Trước','Sau'],
+										responsive: {
+											0: {
+												items: 1,
+												nav: true
 											},
-											600:{
-												items:1
+											600: {
+												items: 1,
+												nav: true
 											},
-											1000:{
-												items:1
+											1000: {
+												items: 1,
+												nav: true,
+												loop: true,
+												margin: 20
 											}
 										}
 									});
-
 								});                
 							</script>
 							<div class="owl-carousel company-box-slider owl-theme">
 								<?php 
-								$k=0;
-								$t=0;								
+								$k=0;											
 								foreach ($items as $key => $value) {
 									$hot_attractive_fullname=truncateString(@$value['fullname'],50) ;
 									$hot_attractive_employer=truncateString(@$value['employer_fullname'],9999);
@@ -236,8 +238,7 @@ if(count(@$item) > 0){
 									foreach ($data_province as $key_province => $value_province) {
 										$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 									}
-									if($k%4 == 0){
-										$t++;
+									if($k%4 == 0){										
 										echo '<div class="item">';
 									}
 									?>
@@ -275,11 +276,11 @@ if(count(@$item) > 0){
 								}		
 								?>
 							</div>
-							<?php
-						}
-						?>
-					</div>
-				</div>				
+						</div>
+					</div>		
+					<?php
+				}
+				?>						
 				@include("frontend.recruitment-content-left")
 				@include("frontend.recruitment-content-left-2")
 				@include("frontend.recruitment-content-left-3")				

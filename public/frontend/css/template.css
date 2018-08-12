@@ -1755,6 +1755,19 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
     background: #23C0E9;
+    border: 1px solid #23C0E9;
+}
+.pager_wrapper{
+    margin-top: 20px;
+}
+.pagination > li:first-child > a,.pagination > li > a,.pagination > li:last-child > a{
+    width: 100%;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.pagination > li{
+    display: inline-block;    
 }
 @media (max-width: 768px){    
       

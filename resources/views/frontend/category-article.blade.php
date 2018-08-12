@@ -83,7 +83,12 @@
 			}
 			?>													
 		</div>
-		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			@include("frontend.recruitment-content-right")
+			@include("frontend.recruitment-search-advance")
+			@include("frontend.recruitment-province")
+			@include("frontend.recruitment-top-employer")
+		</div>
 	</div>
 </div>
 @endsection()             

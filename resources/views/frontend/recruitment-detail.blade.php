@@ -11,20 +11,20 @@ if(count(@$item) > 0){
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="margin-top-15">
-					<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" class="ul-breadcrumb">
+				<div class="mybreadcrumb margin-top-15">
+					<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" >
 						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
 								<span itemprop="name">Trang chủ</span>
 							</a>
-							<span class="soech">/</span>
+							<i class="fa fa-angle-right"></i>
 							<meta itemprop="position" content="1">
 						</li>
 						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
 								<span itemprop="name">Tuyển dụng</span>
 							</a>
-							<span class="soech">/</span>
+							<i class="fa fa-angle-right"></i>
 							<meta itemprop="position" content="2">
 						</li>
 						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">

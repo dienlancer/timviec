@@ -23,15 +23,15 @@ class PaginationModel extends Model{
 	public function showPagination(){		
 		$paginationHTML = '';
 		if($this->totalPage > 1){
-			$start 	= '<li ><span>Bắt đầu</span></li>';
-			$prev 	= '<li ><span>Lùi</span></li>';
+			$start 	= '<li ><a href="javascript:void(0);">Bắt đầu</a></li>';
+			$prev 	= '<li ><a href="javascript:void(0);">Lùi</a></li>';
 			if($this->currentPage > 1){
 				$start 	= '<li ><a onclick="javascript:changePage(1,this)" href="javascript:void(0);">Bắt đầu</a></li>';
 				$prev 	= '<li ><a onclick="javascript:changePage('.($this->currentPage-1).',this)" href="javascript:void(0);">Lùi</a></li>';
 			}
 		
-			$next 	= '<li ><span>Tiếp theo</span></li>';
-			$end 	= '<li ><span>Cuối</span></li>';
+			$next 	= '<li ><a href="javascript:void(0);">Tiếp theo</a></li>';
+			$end 	= '<li ><a href="javascript:void(0);">Cuối</a></li>';
 			if($this->currentPage < $this->totalPage){
 				$next 	= '<li ><a onclick="javascript:changePage('.($this->currentPage+1).',this)" href="javascript:void(0);">Tiếp theo</a></li>';
 				$end 	= '<li ><a href="javascript:void(0);" onclick="javascript:changePage('.$this->totalPage.',this)">Cuối</a></li>';
@@ -66,7 +66,7 @@ class PaginationModel extends Model{
 			$listPages = '';
 			for($i = $startPage; $i <= $endPage; $i++){
 				if($i == $this->currentPage) {
-					$listPages .= '<li class="active"><span>'.$i.'</span></li>';
+					$listPages .= '<li class="active"><a href="javascript:void(0);">'.$i.'</a></li>';
 				}else{
 					$listPages .= '<li><a href="javascript:void(0);" onclick="javascript:changePage('.$i.',this)">'.$i.'</a></li>';
 				}
@@ -74,6 +74,7 @@ class PaginationModel extends Model{
 			$listPages .= '';
 			$endPagination	= '<li >Page '.$this->currentPage.' of '.$this->totalPage.'</li>';
 			$paginationHTML = '<ul class="pagination">' . $start . $prev . $listPages . $next . $end  . '</ul>';
+			$paginationHTML = '<div class="pager_wrapper gc_blog_pagination">'.@$paginationHTML.'</div>';
 		}
 		return $paginationHTML;
 	}

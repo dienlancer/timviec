@@ -1753,6 +1753,9 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .jp_job_post_right_btn_wrapper li:last-child a{
     width: 100%;
 }
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background: #23C0E9;
+}
 @media (max-width: 768px){    
       
 }

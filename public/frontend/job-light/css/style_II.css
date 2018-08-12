@@ -30,69 +30,7 @@ Purchase:
 */
 
 /*--------- Body Strat -------*/
-body, html {
-	font-family: 'Lato', sans-serif;
-	font-size: 16px;
-	line-height: 23px;
-	color: #797979;
-	overflow-x:hidden;
-}
-/*---------- Custom Css Start -------*/
-/*-- Preloader css start --*/
-#preloader {
-	background-color: #1a87c5;
-	bottom: 0;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 2147483647;
-	width: 100%;
-	height: 100%;
-}
-#status {
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: auto;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -o-transform: translate(-50%,-50%);
-}
-#status img {
-}
-a {
-	color: #797979;
-	text-decoration: none;
-}
-a:hover, a:focus {
-	color: #707070;
-	text-decoration: none;
-	outline: none;
-}
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: 'Montserrat', sans-serif;
-	line-height: 1.1;
-	color: #222222;
-	margin:0;
-	padding:0;
-}
-input, select, button, textarea {
-	outline: none;
-}
-input:focus, select:focus, button:focus, textarea:focus {
-	outline: none;
-	box-shadow:none;
-}
-ul{
-	list-style:none;
-	margin:0;
-	padding:0;
-}
+
 /*-- Top Header Wrapper Start --*/	
 .jp_top_header_main_wrapper{
 	float:left;

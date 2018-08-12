@@ -1771,6 +1771,18 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 }
 .jp_blog_single_bottom_post_cont{
     padding-bottom: 0;    
+    padding-top: 15px;
+}
+.jp_blog_single_bottom_post_cont ul{
+    margin-top: 0 ;
+}
+
+.related-news-right{margin-left:95px;}
+.related-articles{list-style:square;}
+.related-articles li a{color:#333}
+.jp_blog_single_bottom_post_cont li{
+    float: none;
+    margin-left: 0;
 }
 @media (max-width: 768px){    
       

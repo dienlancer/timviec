@@ -21,6 +21,8 @@
 					<input type="hidden" name="filter_page" value="1">         
 					{{ csrf_field() }}	
 					<?php 
+					$i=0;
+					$main_wrapper='';
 					foreach (@$items as $key => $value) {
 						$id=$value['id'];						
 						$permalink=route('frontend.index.index',[$value['alias']]) ;
@@ -29,10 +31,15 @@
 						$count_view=(int)@$value['count_view'];
 						$count_view_text=number_format($count_view,0,",",".");	
 						$created_at=datetimeConverterVn(@$value['created_at']);		
+						if((int)@$i==0){
+							$main_wrapper="jp_blog_cate_left_main_wrapper margin-top-15";
+						}else{
+							$main_wrapper="jp_blog_cate_left_main_wrapper jp_blog_cate_left_main_wrapper2";
+						}
 						?>
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="jp_blog_cate_left_main_wrapper jp_blog_cate_left_main_wrapper2">
+								<div class="<?php echo @$main_wrapper; ?>">
 									<div class="jp_first_blog_post_main_wrapper">
 										<div class="jp_first_blog_post_img">
 											<a href="<?php echo @$permalink; ?>" title="<?php echo @$value['alt_image']; ?>"><img src="<?php echo asset('upload/'.@$value['image']); ?>" class="img-responsive" alt="<?php echo @$value['alt_image']; ?>" title="<?php echo @$value['alt_image']; ?>" /></a>
@@ -54,7 +61,7 @@
 											<div class="jp_blog_bottom_right_cont">
 												<p class="hidden-xs"><a href="javascript:void(0);" class="hidden-xs"><i class="fa fa-comments"></i></a></p>
 												<ul>
-													<li>SHARE :</li>
+													<li>CHIA SẺ :</li>
 													<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
 													<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
 													<li><a href="javascript:void(0);"><i class="fa fa-pinterest-p"></i></a></li>
@@ -69,6 +76,7 @@
 							</div>
 						</div>
 						<?php
+						$i++;
 					}					
 					?>
 					<div class="row">
@@ -84,6 +92,16 @@
 			?>													
 		</div>
 		<div class="col-lg-4">
+			<div class="jp_rightside_job_categories_wrapper jp_blog_right_box_search">
+				<div class="jp_rightside_job_categories_heading">
+					<h4>Tìm kiếm</h4>
+				</div>
+				<form class="jp_blog_right_search_wrapper" method="POST" >
+					<input type="text" placeholder="Tìm kiếm" name="q">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>				
+			</div>
+			<div class="clr"></div>
 			@include("frontend.recruitment-content-right")
 			@include("frontend.recruitment-search-advance")
 			@include("frontend.recruitment-province")

@@ -14,7 +14,46 @@
 					<?php echo $breadcrumb; ?>
 				</ul>		
 			</div>			
-			<form method="post" class="source-recruitment-box margin-top-15 padding-left-10 padding-right-10" name="frm">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="jp_blog_cate_left_main_wrapper">
+						<div class="jp_first_blog_post_main_wrapper">
+							<div class="jp_first_blog_post_img">
+								<img src="{{asset('public/frontend/job-light/images/content/blog_img1.jpg')}}" class="img-responsive" alt="blog_img" />
+							</div>
+							<div class="jp_first_blog_post_cont_wrapper">
+								<ul>
+									<li><a href="#"><i class="fa fa-calendar"></i> &nbsp;&nbsp;20 OCT, 2017</a></li>
+									<li><a href="#"><i class="fa fa-clone"></i> &nbsp;&nbsp;IT jobs</a></li>
+								</ul>
+								<h3><a href="#">Hey Seeker, It’s Time to job Now!</a></h3>
+								<p>Nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
+								vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent..</p>
+							</div>
+							<div class="jp_first_blog_bottom_cont_wrapper">
+								<div class="jp_blog_bottom_left_cont">
+									<ul>
+										<li><img src="{{asset('public/frontend/job-light/images/content/blog_small_img.jpg')}}" alt="small_img" class="img-circle" />&nbsp;&nbsp; Jhon Doe</li>
+									</ul>
+								</div>
+								<div class="jp_blog_bottom_right_cont">
+									<p class="hidden-xs"><a href="#" class="hidden-xs"><i class="fa fa-comments"></i></a></p>
+									<ul>
+										<li>SHARE :</li>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li class="hidden-xs"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+										<li class="hidden-xs"><a href="#"><i class="fa fa-vimeo"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<form method="post" class="source-recruitment-box margin-top-15 padding-left-10 padding-right-10" name="frm">
 				<input type="hidden" name="filter_page" value="1">         
 				{{ csrf_field() }}												
 				<?php 	
@@ -60,7 +99,7 @@
 					<?php					
 				}  
 				?>
-			</form>						
+			</form>	-->					
 		</div>
 		<div class="col-lg-4"></div>
 	</div>

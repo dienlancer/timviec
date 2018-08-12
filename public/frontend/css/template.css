@@ -1769,6 +1769,9 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .pagination > li{
     display: inline-block;    
 }
+.jp_blog_single_bottom_post_cont{
+    padding-bottom: 0;    
+}
 @media (max-width: 768px){    
       
 }

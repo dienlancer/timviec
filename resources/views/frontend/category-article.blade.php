@@ -71,8 +71,8 @@
 						if(count($source_article_category) > 0){		
 							$data_article_category=convertToArray($source_article_category);
 							foreach ($data_article_category as $key => $value_article_category) {								
-								$permalink=route('frontend.index.index',[$value_article_category['alias']]);
-								$arr_category_name[]='<span><a href="'.$permalink.'">'.$value_article_category["fullname"].'</a></span>' ;						
+								$permalink_category=route('frontend.index.index',[$value_article_category['alias']]);
+								$arr_category_name[]='<span><a href="'.$permalink_category.'">'.$value_article_category["fullname"].'</a></span>' ;						
 							}		
 							$category_name=implode(' / ', $arr_category_name);		
 						}		
@@ -133,16 +133,7 @@
 			?>													
 		</div>
 		<div class="col-lg-4">
-			<div class="jp_rightside_job_categories_wrapper jp_blog_right_box_search">
-				<div class="jp_rightside_job_categories_heading">
-					<h4>Tìm kiếm</h4>
-				</div>
-				<form class="jp_blog_right_search_wrapper" method="POST" action="<?php echo route('frontend.index.search'); ?>">
-					{{ csrf_field() }}	
-					<input type="text" placeholder="Tìm kiếm" name="q">
-					<button type="submit"><i class="fa fa-search"></i></button>
-				</form>				
-			</div>
+			@include("frontend.search-article")
 			<div class="clr"></div>
 			@include("frontend.recruitment-content-right")
 			@include("frontend.recruitment-search-advance")

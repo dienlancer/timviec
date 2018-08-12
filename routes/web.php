@@ -668,4 +668,5 @@ Route::post("luu-ho-so-truc-tiep",["as"=>"frontend.index.saveQuicklyRecruitment"
 Route::get("hoan-tat-dang-ky",["as"=>"frontend.index.finishedRegister","uses"=>"frontend\IndexController@finishedRegister"]);
 Route::get("dang-ky",["as"=>"frontend.index.register","uses"=>"frontend\IndexController@register"]);
 Route::get("dang-nhap",["as"=>"frontend.index.loginFe","uses"=>"frontend\IndexController@loginFe"]);
+Route::match(["get","post"],"tim-kiem",["as"=>"frontend.index.search","uses"=>"frontend\IndexController@search"]);
 ?>

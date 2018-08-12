@@ -64,7 +64,7 @@ class IndexController extends Controller {
 	public function getHome(Request $request){       
 		\Artisan::call('sitemap:auto');   
 		return view("frontend.home");        
-	} 
+	} 	
 	public function searchRecruitment(Request $request){
 		/* begin standard */
 		$title="";
@@ -182,6 +182,57 @@ class IndexController extends Controller {
 		->toArray();        
 		$items=convertToArray($data);   
 		return view("frontend.".@$view,compact("alias","title","meta_keyword","meta_description","items","q","job_id","province_id","salary_id","literacy_id","sex_id","work_id","working_form_id","experience_id","pagination"));   	
+	}
+	public function search(Request $request){		
+		/* begin standard */
+		$title="";
+		$meta_keyword="";
+		$meta_description="";                                                                
+		$totalItems=0;
+		$totalItemsPerPage=0;
+		$pageRange=0;      
+		$currentPage=1;  
+		$pagination ;                                              
+		$setting= getSettingSystem();   
+		$seo=getSeo(); 
+		$view="category-article";                        
+		/* end standard */   
+		$q='';  					
+		$title=@$seo["title"];
+		$meta_description=@$seo["meta_description"];
+		$query=DB::table('article')
+				->join('article_category','article.id','=','article_category.article_id')
+				->join('category_article','category_article.id','=','article_category.category_id')				
+				->where('article.status',1);						
+		if(!empty(@$request->q)){
+			$query->where('article.fullname','like','%'.trim(@$request->q).'%');
+			$q=trim(@$request->q);
+		}			
+		$source= $query->select('article.id')->groupBy('article.id')->get()->toArray();
+		$data=convertToArray($source);
+		$totalItems=count($data);
+		$totalItemsPerPage=(int)@$setting['article_perpage']['field_value']; 
+		$pageRange=$this->_pageRange;
+		if(!empty(@$request->filter_page)){
+			$currentPage=(int)@$request->filter_page;
+		}       
+		$arrPagination=array(
+			"totalItems"=>$totalItems,
+			"totalItemsPerPage"=>$totalItemsPerPage,
+			"pageRange"=>$pageRange,
+			"currentPage"=>$currentPage   
+		);           
+		$pagination=new PaginationModel($arrPagination);
+		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
+		$data=$query->select('article.id','article.alias','article.fullname','article.image','article.alt_image','article.intro','article.count_view','article.created_at')                
+		->groupBy('article.id','article.alias','article.fullname','article.image','article.alt_image','article.intro','article.count_view','article.created_at')
+		->orderBy('article.sort_order', 'desc')
+		->skip($position)
+		->take($totalItemsPerPage)
+		->get()
+		->toArray(); 
+		$items=convertToArray($data);   
+		return view("frontend.".@$view,compact("title","meta_keyword","meta_description","items","q","pagination"));   	
 	}
 	public function index(Request $request,$alias)
 	{                     

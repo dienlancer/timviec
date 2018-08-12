@@ -218,7 +218,7 @@ function getBreadCrumbCategoryProduct($dataCategory){
       $alias=$value['alias'];
       $parent_id=$value['parent_id'];      
       $permalink=route('frontend.index.index',[$alias]);      
-      $breadcrumb .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.$permalink.'"><span itemprop="name">'.$fullname.'</span></a>
+      $breadcrumb .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.$permalink.'"><span itemprop="name">'.$fullname.'</span></a><i class="fa fa-angle-right"></i>
       <meta itemprop="position" content="'.(int)@$i.'" />
       </li>';
       $i++;
@@ -239,8 +239,10 @@ function getBreadCrumbCategoryArticle($dataCategory){
   $i=1;
   $data=array();
   $breadcrumb='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.url('/').'"><span itemprop="name">Trang chủ</span></a><i class="fa fa-angle-right"></i><meta itemprop="position" content="'.(int)@$i.'" /></li>';
-  getRecursiveCategoryArticle((int)@$dataCategory['parent_id'],$data);
-  $data[]=$dataCategory;    
+  getRecursiveCategoryArticle((int)@$dataCategory['parent_id'],$data);  
+  $data=get_field_data_array($data,'id');
+  ksort($data);    
+  $data[]=$dataCategory;      
   $i++;
   if(count($data) > 0){
     foreach ($data as $key => $value) {
@@ -249,7 +251,7 @@ function getBreadCrumbCategoryArticle($dataCategory){
       $alias=$value['alias'];
       $parent_id=$value['parent_id'];      
       $permalink=route('frontend.index.index',[$alias]);      
-      $breadcrumb .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.$permalink.'"><span itemprop="name">'.$fullname.'</span></a>
+      $breadcrumb .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" ><a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="'.$permalink.'"><span itemprop="name">'.$fullname.'</span></a><i class="fa fa-angle-right"></i>
       <meta itemprop="position" content="'.(int)@$i.'" />
       </li>';
       $i++;

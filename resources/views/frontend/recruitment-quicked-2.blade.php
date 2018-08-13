@@ -2,6 +2,7 @@
 	<div class="spotlight_header_wrapper">
 		<h4>Việc làm tuyển gấp</h4>
 	</div>
+	<div class="clr"></div>
 	<div class="jp_spotlight_slider_wrapper">
 		<div class="owl-carousel owl-theme">
 			<?php 		

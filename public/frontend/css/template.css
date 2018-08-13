@@ -1816,6 +1816,12 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .jp_spotlight_slider_img_Wrapper a img{
     width: auto !important;
 }
+.windy{
+    background: #ffffff
+}
+form[name='frm-search-job-detail'] {
+    padding-top: 55px;
+}
 @media (max-width: 768px){    
       
 }

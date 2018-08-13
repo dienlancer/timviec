@@ -1,9 +1,8 @@
-<div class="source-recruitment-box margin-top-15">
-	<div class="source-recruitment-title">
-		<i class="fas fa-suitcase"></i>
-		<span class="margin-left-5">TÌM KIẾM NÂNG CAO</span>
+<div class="jp_spotlight_main_wrapper">
+	<div class="spotlight_header_wrapper">
+		<h4>Tìm kiếm nâng cao</h4>
 	</div>
-	<div class="margin-top-15 padding-left-15 padding-right-15 padding-bottom-15">
+	<div class="windy padding-bottom-15 padding-left-15 padding-right-15">
 		<form action="<?php echo route('frontend.index.searchRecruitment'); ?>" method="POST" name="frm-search-job-detail">
 			{{ csrf_field() }}
 			<?php 

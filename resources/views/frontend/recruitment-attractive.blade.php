@@ -37,9 +37,9 @@
 										<script type="text/javascript" language="javascript">											
 											$(document).ready(function() {
 												$('.attractive-recruitment').owlCarousel({
-													loop: true,
+													loop:true,
 													margin: 10,
-													autoplay:true,
+													autoplay:false,
 													responsiveClass: true,
 													smartSpeed: 1200,
 													navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],

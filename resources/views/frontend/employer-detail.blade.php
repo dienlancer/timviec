@@ -230,9 +230,23 @@ if(count(@$item) > 0){
 				}
 				?>
 				<div class="clr"></div>						
-				@include("frontend.recruitment-attractive")
-				@include("frontend.recruitment-content-left-2")
-				@include("frontend.recruitment-content-left-3")				
+				<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2>Công việc hiện tại</h2>
+			</div>
+			<div class="clr"></div>					
+			@include("frontend.recruitment-attractive")								
+			<div class="clr"></div>
+			<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2>Công việc lương cao</h2>
+			</div>
+			<div class="clr"></div>		
+			@include("frontend.recruitment-high-salary")
+			<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2>Việc làm theo ngành nghề</h2>
+			</div>
+			<div class="clr"></div>			
+			@include("frontend.recruitment-by-job-2")
+			<div class="clr"></div>
 			</div>
 			<div class="col-lg-4">
 				<div class="jp_rightside_career_wrapper">
@@ -320,9 +334,9 @@ if(count(@$item) > 0){
 				</div>
 				<div class="clr"></div>
 				@include("frontend.recruitment-content-right")
-				@include("frontend.recruitment-search-advance")
-				@include("frontend.recruitment-province")
-				@include("frontend.recruitment-top-employer")		
+			@include("frontend.recruitment-search-advance")
+			@include("frontend.recruitment-province")
+			@include("frontend.recruitment-top-employer")			
 			</div>
 		</div>
 	</div>

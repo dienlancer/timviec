@@ -1,9 +1,9 @@
-<div class="source-recruitment-box margin-top-15">
-	<div class="source-recruitment-title">
-		<i class="fas fa-suitcase"></i>
-		<span class="margin-left-5">NHÀ TUYỂN DỤNG HÀNG ĐẦU</span>
+<div class="jp_spotlight_main_wrapper">
+	<div class="spotlight_header_wrapper">
+		<h4>Nhà tuyển dụng hàng đầu</h4>
 	</div>
-	<div class="margin-top-10 padding-left-15 padding-right-15 padding-bottom-15">
+	<div class="clr"></div>
+	<div class="padding-left-15 padding-right-15 padding-bottom-15 province-big">
 		<?php 
 		$data_employer_r=App\EmployerModel::whereRaw('status = 1')->select('id','fullname','alias','logo')->orderBy('id','desc')->take(9)->get()->toArray();
 		if(count($data_employer_r) > 0){

@@ -3,7 +3,7 @@
 		<h4>Việc làm tại các thành phố lớn</h4>
 	</div>
 	<div class="clr"></div>
-	<div class="padding-left-15 padding-right-15 padding-bottom-15 windy">
+	<div class="padding-left-15 padding-right-15 padding-bottom-15 province-big">
 		<?php 
 		$data_province_r=App\ProvinceModel::whereIn('alias',['ho-chi-minh','ha-noi','dong-nai','da-nang','binh-duong'])->select('id','fullname','alias')->orderBy('id','desc')->get()->toArray();
 		if(count($data_province_r) > 0){

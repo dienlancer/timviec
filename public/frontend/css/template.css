@@ -1819,6 +1819,10 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .windy{
     background: #ffffff
 }
+.province-big{
+    background: #ffffff;
+    padding-top:20px; 
+}
 form[name='frm-search-job-detail'] {
     padding-top: 55px;
 }

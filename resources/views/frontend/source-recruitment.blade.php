@@ -38,15 +38,15 @@ if(!empty(@$meta_description)){
 							<span itemprop="name">Tuyển dụng</span>
 						</a>
 						<i class="fa fa-angle-right"></i>
-      					<meta itemprop="position" content="2">
-      				</li>
+						<meta itemprop="position" content="2">
+					</li>
 					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
 							<span itemprop="name"><?php echo @$title; ?></span>
 						</a>						
-      					<meta itemprop="position" content="3">
-      				</li>      				
-      			</ul>
+						<meta itemprop="position" content="3">
+					</li>      				
+				</ul>
 			</div>
 			<div class="source-recruitment-box margin-top-15">
 				<div class="source-recruitment-title">
@@ -136,7 +136,7 @@ if(!empty(@$meta_description)){
 	</div>
 	<div class="row">
 		<div class="col-lg-8">
-			@include("frontend.recruitment-content-left")
+			@include("frontend.recruitment-attractive")
 			@include("frontend.recruitment-content-left-2")
 			@include("frontend.recruitment-content-left-3")
 		</div>

@@ -283,7 +283,7 @@ if(count(@$item) > 0){
 				}
 				?>
 				<div class="clr"></div>						
-				@include("frontend.recruitment-content-left")
+				@include("frontend.recruitment-attractive")
 				@include("frontend.recruitment-content-left-2")
 				@include("frontend.recruitment-content-left-3")				
 			</div>

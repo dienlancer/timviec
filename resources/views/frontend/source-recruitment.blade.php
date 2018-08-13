@@ -18,7 +18,7 @@ if(!empty(@$meta_description)){
 	$seo_meta_description=@$seo["meta_description"];
 }
 ?>
-<!--@include("frontend.content-top")-->
+@include("frontend.content-top")
 <h1 style="display: none;"><?php echo @$seo_title; ?></h1>
 <h2 style="display: none;"><?php echo @$seo_meta_description; ?></h2>
 <div class="container">
@@ -156,7 +156,7 @@ if(!empty(@$meta_description)){
 		</div>
 		<div class="col-lg-4">
 			@include("frontend.recruitment-content-right")
-			<!--@include("frontend.recruitment-search-advance")-->
+			@include("frontend.recruitment-search-advance")
 			@include("frontend.recruitment-province")
 			@include("frontend.recruitment-top-employer")			
 		</div>

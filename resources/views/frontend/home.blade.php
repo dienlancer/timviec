@@ -180,7 +180,7 @@ if(count(@$source_new_job) > 0){
 						</div>
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active" id="attractive">
-								<div class="ss_featured_products">
+								<div class="ss_featured_recruitment">
 									<?php 
 									$query_attractive_job=DB::table('recruitment')
 									->join('employer','recruitment.employer_id','=','employer.id')
@@ -216,14 +216,41 @@ if(count(@$source_new_job) > 0){
 									->toArray();
 									if(count(@$source_attractive_job) > 0){										
 										?>
-										<div class="owl-carousel owl-theme">
+										<script type="text/javascript" language="javascript">
+											$(document).ready(function(){									
+												$('.attractive-recruitment').owlCarousel({
+													loop: true,
+													margin: 10,
+													autoplay:true,
+													responsiveClass: true,
+													smartSpeed: 1200,
+													navText : ['Trước','Sau'],
+													responsive: {
+														0: {
+															items: 1,
+															nav: true
+														},
+														600: {
+															items: 1,
+															nav: true
+														},
+														1000: {
+															items: 1,
+															nav: true,
+															loop: true,
+															margin: 20
+														}
+													}
+												});
+											});                
+										</script>
+										<div class="owl-carousel attractive-recruitment owl-theme">
 											<?php 
-											$k=0;
-											$t=0;
+											$k=0;											
 											$data_attractive_job=convertToArray(@$source_attractive_job);
 											foreach ($data_attractive_job as $key => $value) {
-												$hot_attractive_fullname=truncateString(@$value['fullname'],50) ;
-												$hot_attractive_employer=truncateString(@$value['employer_fullname'],9999);
+												$hot_attractive_fullname=truncateString(@$value['fullname'],999999999) ;
+												$hot_attractive_employer=truncateString(@$value['employer_fullname'],999999999);
 												$hot_attractive_duration=datetimeConverterVn(@$value['duration']);
 												$hot_attractive_hot_gif='';
 												if((int)@$value['status_hot'] == 1){
@@ -254,9 +281,8 @@ if(count(@$source_new_job) > 0){
 												foreach ($data_province as $key_province => $value_province) {
 													$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
-												if($k%5 == 0){
-													$t++;
-													echo '<div class="item" data-hash="page'.(int)@$t.'">';
+												if($k%5 == 0){													
+													echo '<div class="item">';
 												}
 												?>
 												<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
@@ -296,30 +322,10 @@ if(count(@$source_new_job) > 0){
 										<?php										 
 									}		
 									?>																										
-								</div>
-								<?php 
-								if(count(@$source_attractive_job) > 0){									
-									$total_page=ceil(count(@$source_attractive_job)/5);
-									?>
-									<div class="video_nav_img_wrapper">
-										<div class="video_nav_img">
-											<ul>
-												<?php 
-												for ($i=1; $i <= $total_page; $i++) { 
-													?>
-													<li><a class="button secondary url owl_nav" href="#page<?php echo (int)@$i; ?>"><?php echo (int)@$i; ?></a></li>	
-													<?php
-												}
-												?>																						
-											</ul>
-										</div>
-									</div>	
-									<?php
-								}
-								?>								
+								</div>											
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="high_salary">
-								<div class="ss_featured_products">
+								<div class="ss_featured_recruitment">
 									<?php 
 									$query_high_salary_job=DB::table('recruitment')
 									->join('employer','recruitment.employer_id','=','employer.id')
@@ -355,10 +361,38 @@ if(count(@$source_new_job) > 0){
 									->toArray();
 									if(count(@$source_high_salary_job) > 0){										
 										?>
-										<div class="owl-carousel owl-theme">
+										<script type="text/javascript" language="javascript">
+											$(document).ready(function(){									
+												$('.high-salary-recruitment').owlCarousel({
+													loop: true,
+													margin: 10,
+													autoplay:true,
+													responsiveClass: true,
+													smartSpeed: 1200,
+													navText : ['Trước','Sau'],
+													responsive: {
+														0: {
+															items: 1,
+															nav: true
+														},
+														600: {
+															items: 1,
+															nav: true
+														},
+														1000: {
+															items: 1,
+															nav: true,
+															loop: true,
+															margin: 20
+														}
+													}
+												});
+											});                
+										</script>
+										<div class="owl-carousel high-salary-recruitment owl-theme">
 											<?php 
 											$k=0;
-											$t=0;
+											
 											$data_high_salary_job=convertToArray(@$source_high_salary_job);
 											foreach ($data_high_salary_job as $key => $value) {
 												$hot_high_salary_fullname=truncateString(@$value['fullname'],50) ;
@@ -394,8 +428,8 @@ if(count(@$source_new_job) > 0){
 													$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
 												if($k%5 == 0){
-													$t++;
-													echo '<div class="item" data-hash="page'.(int)@$t.'">';
+													
+													echo '<div class="item" >';
 												}
 												?>
 												<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
@@ -435,30 +469,10 @@ if(count(@$source_new_job) > 0){
 										<?php										 
 									}		
 									?>																										
-								</div>
-								<?php 
-								if(count(@$source_high_salary_job) > 0){									
-									$total_page=ceil(count(@$source_high_salary_job)/5);
-									?>
-									<div class="video_nav_img_wrapper">
-										<div class="video_nav_img">
-											<ul>
-												<?php 
-												for ($i=1; $i <= $total_page; $i++) { 
-													?>
-													<li><a class="button secondary url owl_nav" href="#page<?php echo (int)@$i; ?>"><?php echo (int)@$i; ?></a></li>	
-													<?php
-												}
-												?>																						
-											</ul>
-										</div>
-									</div>	
-									<?php
-								}
-								?>	
+								</div>									
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="interested">
-								<div class="ss_featured_products">
+								<div class="ss_featured_recruitment">
 									<?php 
 									$query_interested_job=DB::table('recruitment')
 									->join('employer','recruitment.employer_id','=','employer.id')
@@ -494,10 +508,38 @@ if(count(@$source_new_job) > 0){
 									->toArray();
 									if(count(@$source_interested_job) > 0){										
 										?>
-										<div class="owl-carousel owl-theme">
+										<script type="text/javascript" language="javascript">
+											$(document).ready(function(){									
+												$('.interested-recruitment').owlCarousel({
+													loop: true,
+													margin: 10,
+													autoplay:true,
+													responsiveClass: true,
+													smartSpeed: 1200,
+													navText : ['Trước','Sau'],
+													responsive: {
+														0: {
+															items: 1,
+															nav: true
+														},
+														600: {
+															items: 1,
+															nav: true
+														},
+														1000: {
+															items: 1,
+															nav: true,
+															loop: true,
+															margin: 20
+														}
+													}
+												});
+											});                
+										</script>
+										<div class="owl-carousel interested-recruitment owl-theme">
 											<?php 
 											$k=0;
-											$t=0;
+											
 											$data_interested_job=convertToArray(@$source_interested_job);
 											foreach ($data_interested_job as $key => $value) {
 												$hot_interested_fullname=truncateString(@$value['fullname'],50) ;
@@ -533,8 +575,8 @@ if(count(@$source_new_job) > 0){
 													$province_text.='<span class="margin-left-15"><a title="'.@$value_province['fullname'].'" href="'.route('frontend.index.index',[@$value_province['alias']]).'">'.@$value_province['fullname'].'</a></span>';
 												}
 												if($k%5 == 0){
-													$t++;
-													echo '<div class="item" data-hash="page'.(int)@$t.'">';
+													
+													echo '<div class="item" >';
 												}
 												?>
 												<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
@@ -574,27 +616,7 @@ if(count(@$source_new_job) > 0){
 										<?php										 
 									}		
 									?>																										
-								</div>
-								<?php 
-								if(count(@$source_interested_job) > 0){									
-									$total_page=ceil(count(@$source_interested_job)/5);
-									?>
-									<div class="video_nav_img_wrapper">
-										<div class="video_nav_img">
-											<ul>
-												<?php 
-												for ($i=1; $i <= $total_page; $i++) { 
-													?>
-													<li><a class="button secondary url owl_nav" href="#page<?php echo (int)@$i; ?>"><?php echo (int)@$i; ?></a></li>	
-													<?php
-												}
-												?>																						
-											</ul>
-										</div>
-									</div>	
-									<?php
-								}
-								?>								
+								</div>												
 							</div>
 						</div>														
 					</div>
@@ -630,7 +652,28 @@ if(count(@$source_new_job) > 0){
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				@include("frontend.main-sidebar")
+				<div class="jp_first_right_sidebar_main_wrapper">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="jp_add_resume_wrapper">
+								<div class="jp_add_resume_img_overlay"></div>
+								<div class="jp_add_resume_cont">
+									<img src="{{asset('public/frontend/job-light/images/content/resume_logo.png')}}" alt="logo" />
+									<h4>Get Best Matched Jobs On your Email. Add Resume NOW!</h4>
+									<ul>
+										<li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							@include("frontend.recruitment-quicked")		
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							@include("frontend.recruitment-by-job")		
+						</div>
+					</div>
+				</div>				
 			</div>
 		</div>
 	</div>

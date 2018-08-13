@@ -97,7 +97,7 @@ $('#return-to-top').on('click', function() {
               })
             })
 			// Featured Products Js
-				$('.ss_featured_products .owl-carousel').owlCarousel({
+				/*$('.ss_featured_products .owl-carousel').owlCarousel({
 					loop:true,
 					margin:0,
 					nav:true,
@@ -116,7 +116,7 @@ $('#return-to-top').on('click', function() {
 							items:1
 						}
 					}
-				});
+				});*/
 				
 				
 				$(document).ready(function() {

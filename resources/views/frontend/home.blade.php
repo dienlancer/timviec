@@ -116,8 +116,8 @@ if(count(@$source_new_job) > 0){
 						<?php 
 						$k=0;
 						foreach ($data_new_job as $key => $value) {												
-							$new_job_fullname=truncateString(@$value['fullname'],30) ;
-							$new_job_employer=truncateString(@$value['employer_fullname'],30);
+							$new_job_fullname=truncateString(@$value['fullname'],999999999) ;
+							$new_job_employer=truncateString(@$value['employer_fullname'],999999999);
 							$new_job_duration=datetimeConverterVn(@$value['duration']);
 							$new_job_logo='';
 							if(!empty(@$value['logo'])){
@@ -209,7 +209,7 @@ if(count(@$source_new_job) > 0){
 													<div class="jp_hiring_content_wrapper">
 														<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>" title="<?php echo @$value['fullname']; ?>"><img src="<?php echo @$employer_logo; ?>" alt="<?php echo @$value['fullname']; ?>" /></a>
 														<h4><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$employer_fullname; ?></a></h4>
-														<p>(NewYork)</p>
+														
 														<div class="opening"><center><a href="javascript:void(0);">4 Opening</a></center></div>															
 													</div>
 												</div>

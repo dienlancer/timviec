@@ -216,15 +216,15 @@ if(count(@$source_new_job) > 0){
 									->toArray();
 									if(count(@$source_attractive_job) > 0){										
 										?>
-										<script type="text/javascript" language="javascript">
-											$(document).ready(function(){									
+										<script type="text/javascript" language="javascript">											
+											$(document).ready(function() {
 												$('.attractive-recruitment').owlCarousel({
 													loop: true,
 													margin: 10,
 													autoplay:true,
 													responsiveClass: true,
 													smartSpeed: 1200,
-													navText : ['Trước','Sau'],
+													navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
 													responsive: {
 														0: {
 															items: 1,
@@ -242,7 +242,7 @@ if(count(@$source_new_job) > 0){
 														}
 													}
 												});
-											});                
+											});               
 										</script>
 										<div class="owl-carousel attractive-recruitment owl-theme">
 											<?php 
@@ -369,7 +369,7 @@ if(count(@$source_new_job) > 0){
 													autoplay:true,
 													responsiveClass: true,
 													smartSpeed: 1200,
-													navText : ['Trước','Sau'],
+													navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
 													responsive: {
 														0: {
 															items: 1,
@@ -516,7 +516,7 @@ if(count(@$source_new_job) > 0){
 													autoplay:true,
 													responsiveClass: true,
 													smartSpeed: 1200,
-													navText : ['Trước','Sau'],
+													navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
 													responsive: {
 														0: {
 															items: 1,

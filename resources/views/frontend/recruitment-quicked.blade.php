@@ -80,7 +80,7 @@ if(count(@$source_quicked_job) > 0){
 					?>
 					<div class="item">
 						<div class="jp_spotlight_slider_img_Wrapper">
-							<a href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>" title="<?php echo @$value['employer_fullname']; ?>"><img src="<?php echo @$quicked_job_logo; ?>" alt="<?php echo @$value['employer_fullname']; ?>" /></a>
+							<a href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>" title="<?php echo @$value['employer_fullname']; ?>"><center><img src="<?php echo @$quicked_job_logo; ?>" alt="<?php echo @$value['employer_fullname']; ?>" /></center></a>
 						</div> 
 						<div class="jp_spotlight_slider_cont_Wrapper">
 							<h4><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>" title="<?php echo @$value['fullname']; ?>"><?php echo @$value['fullname']; ?></a></h4>

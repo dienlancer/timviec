@@ -155,10 +155,14 @@ if(!empty(@$meta_description)){
 			<div class="clr"></div>
 		</div>
 		<div class="col-lg-4">
-			@include("frontend.recruitment-content-right")
+			@include("frontend.recruitment-quicked-2")
+			<div class="clr"></div>
 			@include("frontend.recruitment-search-advance")
+			<div class="clr"></div>
 			@include("frontend.recruitment-province")
+			<div class="clr"></div>
 			@include("frontend.recruitment-top-employer")			
+			<div class="clr"></div>
 		</div>
 	</div>
 </div>

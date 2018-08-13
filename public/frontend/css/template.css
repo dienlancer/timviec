@@ -1805,6 +1805,17 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 .job-box-mod{
     border-bottom: 1px solid #e9e9e9
 }
+.hot-job-name img{
+    display: inline-block !important;
+    width: 40px !important;
+}
+.jp_spotlight_slider_wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.jp_spotlight_slider_img_Wrapper a img{
+    width: auto !important;
+}
 @media (max-width: 768px){    
       
 }

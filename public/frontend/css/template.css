@@ -1795,6 +1795,16 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     font-weight: inherit;
     color: inherit;
 }
+.jp_job_post_main_wrapper_cont2{
+    margin-top: 0;
+}
+.job-general{
+    margin-top: 45px;
+    
+}
+.job-box-mod{
+    border-bottom: 1px solid #e9e9e9
+}
 @media (max-width: 768px){    
       
 }

@@ -136,9 +136,16 @@ if(!empty(@$meta_description)){
 	</div>
 	<div class="row">
 		<div class="col-lg-8">
-			@include("frontend.recruitment-attractive")
+			<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2>Công việc hiện tại</h2>
+			</div>
+			<div class="clr"></div>					
+			@include("frontend.recruitment-attractive")								
+			<div class="clr"></div>
 			@include("frontend.recruitment-content-left-2")
+			<div class="clr"></div>
 			@include("frontend.recruitment-content-left-3")
+			<div class="clr"></div>
 		</div>
 		<div class="col-lg-4">
 			@include("frontend.recruitment-content-right")

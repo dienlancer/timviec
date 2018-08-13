@@ -26,32 +26,7 @@ $source_banner=$data_banner['items'];
 if(count(@$items) > 0){
 	?>
 	<div class="box-meal">
-		<div>
-			<script type="text/javascript" language="javascript">
-				jQuery(document).ready(function(){
-					jQuery(".banner").owlCarousel({
-						autoplay:true,                    
-						loop:true,
-						margin:0,                        
-						nav:false,            
-						mouseDrag: true,
-						touchDrag: true,                                
-						responsiveClass:true,
-						responsive:{
-							0:{
-								items:1
-							},
-							600:{
-								items:1
-							},
-							1000:{
-								items:1
-							}
-						}
-					});
-
-				});                
-			</script>
+		<div>			
 			<div class="owl-carousel banner owl-theme">
 				<?php   
 				foreach ($source_banner as $key => $value) {
@@ -174,35 +149,7 @@ if(count(@$item) > 0){
 						<div class="company-heading">
 							<div>NGÀNH NGHỀ LIÊN QUAN</div>
 						</div>
-						<div class="company_slider_wrapper">
-							<script type="text/javascript" language="javascript">
-								$(document).ready(function(){									
-									$('.company-box-slider').owlCarousel({
-										loop: true,
-										margin: 10,
-										autoplay:true,
-										responsiveClass: true,
-										smartSpeed: 1200,
-										navText : ['Trước','Sau'],
-										responsive: {
-											0: {
-												items: 1,
-												nav: true
-											},
-											600: {
-												items: 1,
-												nav: true
-											},
-											1000: {
-												items: 1,
-												nav: true,
-												loop: true,
-												margin: 20
-											}
-										}
-									});
-								});                
-							</script>
+						<div class="company_slider_wrapper">							
 							<div class="owl-carousel company-box-slider owl-theme">
 								<?php 
 								$k=0;											

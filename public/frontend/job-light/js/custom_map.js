@@ -38,7 +38,55 @@ $('#return-to-top').on('click', function() {
     }, 500);
 });
    
-   //------------------------ OWL JS Start --------------------//   
+   //------------------------ OWL JS Start --------------------//  
+   $(document).ready(function(){                  
+    $('.company-box-slider').owlCarousel({
+      loop: true,
+      margin: 10,
+      autoplay:true,
+      responsiveClass: true,
+      smartSpeed: 1200,
+      navText : ['Trước','Sau'],
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 1,
+          nav: true
+        },
+        1000: {
+          items: 1,
+          nav: true,
+          loop: true,
+          margin: 20
+        }
+      }
+    })
+  })            
+   $(document).ready(function(){
+    $(".banner").owlCarousel({
+      autoplay:true,                    
+      loop:true,
+      margin:0,                        
+      nav:false,            
+      mouseDrag: true,
+      touchDrag: true,                                
+      responsiveClass:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:1
+        },
+        1000:{
+          items:1
+        }
+      }
+    })
+  })            
    $(document).ready(function() {
     $('.attractive-recruitment').owlCarousel({
       loop:true,

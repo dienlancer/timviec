@@ -1,8 +1,4 @@
 <div class="source-recruitment-box margin-top-15">
-	<div class="source-recruitment-title">
-		<i class="fas fa-suitcase"></i>
-		<span class="margin-left-5">VIỆC LÀM THEO NGÀNH NGHỀ</span>
-	</div>
 	<div class="padding-left-15 padding-right-15 padding-bottom-15">
 		<?php 
 		$source_job_r=DB::table('job')

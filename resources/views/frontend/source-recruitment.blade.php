@@ -49,10 +49,10 @@ if(!empty(@$meta_description)){
 				</ul>
 			</div>
 			<div class="source-recruitment-box margin-top-15">
-				<div class="source-recruitment-title">
-					<i class="fas fa-suitcase"></i>
-					<span class="margin-left-5"><?php echo @$title; ?></span>
+				<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+					<h2><?php echo @$title; ?></h2>
 				</div>
+				<div class="clr"></div>						
 				<?php 
 				if(count(@$items) > 0){					
 					?>
@@ -142,9 +142,16 @@ if(!empty(@$meta_description)){
 			<div class="clr"></div>					
 			@include("frontend.recruitment-attractive")								
 			<div class="clr"></div>
-			@include("frontend.recruitment-content-left-2")
-			<div class="clr"></div>
-			@include("frontend.recruitment-content-left-3")
+			<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2>Công việc lương cao</h2>
+			</div>
+			<div class="clr"></div>		
+			@include("frontend.recruitment-high-salary")
+			<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2>Việc làm theo ngành nghề</h2>
+			</div>
+			<div class="clr"></div>			
+			@include("frontend.recruitment-by-job-2")
 			<div class="clr"></div>
 		</div>
 		<div class="col-lg-4">

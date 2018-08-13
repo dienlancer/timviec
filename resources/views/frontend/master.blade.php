@@ -44,7 +44,6 @@ $seo_alias="";
 if(isset($alias)){
 	$seo_alias=$alias;
 }
-
 ?>
 <!DOCTYPE html>
 <html>

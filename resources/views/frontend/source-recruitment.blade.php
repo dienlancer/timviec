@@ -48,11 +48,11 @@ if(!empty(@$meta_description)){
 					</li>      				
 				</ul>
 			</div>
-			<div class="source-recruitment-box margin-top-15">
-				<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
-					<h2><?php echo @$title; ?></h2>
-				</div>
-				<div class="clr"></div>						
+			<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+				<h2><?php echo @$title; ?></h2>
+			</div>
+			<div class="clr"></div>
+			<div class="source-recruitment-box margin-top-15">									
 				<?php 
 				if(count(@$items) > 0){					
 					?>

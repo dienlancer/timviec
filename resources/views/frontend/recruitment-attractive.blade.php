@@ -33,35 +33,7 @@
 	->get()
 	->toArray();
 	if(count(@$source_attractive_job) > 0){										
-		?>
-		<script type="text/javascript" language="javascript">											
-			$(document).ready(function() {
-				$('.attractive-recruitment').owlCarousel({
-					loop:true,
-					margin: 10,
-					autoplay:false,
-					responsiveClass: true,
-					smartSpeed: 1200,
-					navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
-					responsive: {
-						0: {
-							items: 1,
-							nav: true
-						},
-						600: {
-							items: 1,
-							nav: true
-						},
-						1000: {
-							items: 1,
-							nav: true,
-							loop: true,
-							margin: 20
-						}
-					}
-				});
-			});               
-		</script>
+		?>		
 		<div class="owl-carousel attractive-recruitment owl-theme">
 			<?php 
 			$k=0;											

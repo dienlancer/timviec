@@ -38,9 +38,85 @@ $('#return-to-top').on('click', function() {
     }, 500);
 });
    
-   //------------------------ OWL JS Start --------------------//
-   
-   
+   //------------------------ OWL JS Start --------------------//   
+   $(document).ready(function() {
+    $('.attractive-recruitment').owlCarousel({
+      loop:true,
+      margin: 10,
+      autoplay:false,
+      responsiveClass: true,
+      smartSpeed: 1200,
+      navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 1,
+          nav: true
+        },
+        1000: {
+          items: 1,
+          nav: true,
+          loop: true,
+          margin: 20
+        }
+      }
+    })
+  })              
+   $(document).ready(function(){                  
+    $('.high-salary-recruitment').owlCarousel({
+      loop: true,
+      margin: 10,
+      autoplay:true,
+      responsiveClass: true,
+      smartSpeed: 1200,
+      navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 1,
+          nav: true
+        },
+        1000: {
+          items: 1,
+          nav: true,
+          loop: true,
+          margin: 20
+        }
+      }
+    })
+  })   
+   $(document).ready(function(){                 
+    $('.interested-recruitment').owlCarousel({
+      loop: true,
+      margin: 10,
+      autoplay:true,
+      responsiveClass: true,
+      smartSpeed: 1200,
+      navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 1,
+          nav: true
+        },
+        1000: {
+          items: 1,
+          nav: true,
+          loop: true,
+          margin: 20
+        }
+      }
+    })
+  })                
    $(document).ready(function() {
               $('.jp_tittle_slider_content_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -69,6 +145,7 @@ $('#return-to-top').on('click', function() {
               })
             })
 			
+      
 			
 			$(document).ready(function() {
               $('.jp_hiring_slider_wrapper .owl-carousel').owlCarousel({

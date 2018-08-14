@@ -24,7 +24,7 @@ $article_height=$setting['article_height']['field_value'];
 				<i class="fas fa-map-marker-alt"></i>
 				<?php                             	
 				$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-				$ddlProvince=cmsSelectboxCategory("province_id","selected2",$source_province,@$province_id,'','Tỉnh thành');
+				$ddlProvince=cmsSelectboxCategory("province_id","selected2",$source_province,@$province_id,'','Tất cả tỉnh thành');
 				echo $ddlProvince;
 				?>				
 			</div>
@@ -32,7 +32,7 @@ $article_height=$setting['article_height']['field_value'];
 				<i class="fa fa-th-large first_icon"></i>
 				<?php 
 				$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-				$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Ngành nghề');
+				$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Tất cả ngành nghề');
 				echo $ddlJob;
 				?>					
 			</div>
@@ -48,7 +48,7 @@ $article_height=$setting['article_height']['field_value'];
 				<i class="far fa-money-bill-alt"></i>
 				<?php 
 				$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-				$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, @$salary_id,'','Chọn mức lương');
+				$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, @$salary_id,'','Tất cả mức lương');
 				echo $ddlSalary;
 				?>                				
 			</div>

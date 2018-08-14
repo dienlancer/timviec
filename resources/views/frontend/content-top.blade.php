@@ -8,7 +8,7 @@
 						<div>
 							<div class="job-box-kk">
 								<div class="job-box-m"><i class="fa fa-address-book"></i></div>
-								<input type="text" name="q" class="job-box-in" placeholder="Tiêu đề công việc" >
+								<input type="text" name="q" class="job-box-in" value="<?php echo @$q; ?>" placeholder="Tiêu đề công việc" >
 							</div>							
 						</div>
 						<div>
@@ -16,7 +16,7 @@
 								<div class="job-box-m"><i class="fa fa-file"></i></div>
 								<?php 
 								$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-								$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Ngành nghề');
+								$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Tất cả các ngành nghề');
 								echo $ddlJob;
 								?>	
 							</div>							
@@ -26,7 +26,7 @@
 								<div class="job-box-m"><i class="fa fa-map-marker-alt"></i></div>
 								<?php                             	
 								$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
-								$ddlProvince=cmsSelectboxCategory("province_id","selected2",@$source_province,@$province_id,'','Tỉnh thành');
+								$ddlProvince=cmsSelectboxCategory("province_id","selected2",@$source_province,@$province_id,'','Tất cả tỉnh thành');
 								echo $ddlProvince;
 								?>	
 							</div>							

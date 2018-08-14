@@ -67,7 +67,7 @@ class IndexController extends Controller {
 	} 	
 	public function searchRecruitment(Request $request){
 		/* begin standard */
-		$title="";
+		$title="Tìm kiếm công việc";
 		$meta_keyword="";
 		$meta_description="";                                                                
 		$totalItems=0;

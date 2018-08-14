@@ -18,7 +18,7 @@ $article_height=$setting['article_height']['field_value'];
 		<form action="<?php echo route('frontend.index.searchRecruitment'); ?>" method="POST" name="frm-search-job">
 			{{ csrf_field() }}
 			<div class="jp_slider_form_input">
-				<input type="text" placeholder="Nhập tên công việc , vị trí">
+				<input type="text" placeholder="Nhập tên công việc , vị trí" name="q">
 			</div>
 			<div class="jp_slider_form_location_wrapper">
 				<i class="fa fa-dot-circle-o first_icon"></i>

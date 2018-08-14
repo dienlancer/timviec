@@ -52,25 +52,10 @@ if(!empty(@$meta_description)){
 				<h2><?php echo @$title; ?></h2>
 			</div>
 			<div class="clr"></div>
-			<div class="source-recruitment-box margin-top-15">									
-				<?php 
-				if(count(@$items) > 0){					
-					?>
-					<form name="frm" method="POST" enctype="multipart/form-data" class="source-recruitment-main padding-bottom-10">
-						<input type="hidden" name="filter_page" value="1">
-
-						<input type="hidden" name="q" value="<?php echo @$q; ?>">
-						<input type="hidden" name="job_id" value="<?php echo @$job_id; ?>">
-						<input type="hidden" name="province_id" value="<?php echo @$province_id; ?>">
-						<input type="hidden" name="salary_id" value="<?php echo @$salary_id; ?>">
-						<input type="hidden" name="literacy_id" value="<?php echo @$literacy_id; ?>">
-						<input type="hidden" name="sex_id" value="<?php echo @$sex_id; ?>">
-						<input type="hidden" name="work_id" value="<?php echo @$work_id; ?>">
-						<input type="hidden" name="working_form_id" value="<?php echo @$working_form_id; ?>">        
-						<input type="hidden" name="experience_id" value="<?php echo @$experience_id; ?>">        
-						{{ csrf_field() }}
-						<?php 
-						$k=0;
+			<div class="source-recruitment-box margin-top-15">	
+				<div class="owl-carousel main-recruitment owl-theme">
+					<?php 
+					if(count(@$items) > 0){					
 						foreach ($items as $key => $value) {
 							$fullname= truncateString(@$value['fullname'],70);
 							$duration=datetimeConverterVn(@$value['duration']);
@@ -106,7 +91,7 @@ if(!empty(@$meta_description)){
 								$hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
 							}
 							if($k%3 == 0){								
-								echo '<div class="row">';
+								echo '<div class="item">';
 							}
 							?>
 							<div class="col-lg-4">
@@ -135,12 +120,9 @@ if(!empty(@$meta_description)){
 								echo '</div>';
 							} 
 						}
-						?>
-						<div class="row"><div class="col-lg-12"><?php echo @$pagination->showPagination(); ?></div></div>
-					</form>				
-					<?php
-				}
-				?>				
+					}
+					?>				
+				</div>				
 			</div>
 		</div>
 	</div>

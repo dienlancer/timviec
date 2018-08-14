@@ -140,7 +140,7 @@ $('#return-to-top').on('click', function() {
     })
   })        
   $(document).ready(function() {
-    $('.attractive-recruitment').owlCarousel({
+    $('.main-recruitment').owlCarousel({
       loop:true,
       margin: 10,
       autoplay:false,

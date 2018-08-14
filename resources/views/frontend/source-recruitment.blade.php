@@ -52,10 +52,12 @@ if(!empty(@$meta_description)){
 				<h2><?php echo @$title; ?></h2>
 			</div>
 			<div class="clr"></div>
-			<div class="source-recruitment-box margin-top-15">	
+			<div class="source-recruitment-box margin-top-15 padding-left-15 padding-right-15">	
 				<div class="owl-carousel main-recruitment owl-theme">
 					<?php 
 					if(count(@$items) > 0){					
+						$k=0;
+						$t=0;
 						foreach ($items as $key => $value) {
 							$fullname= truncateString(@$value['fullname'],70);
 							$duration=datetimeConverterVn(@$value['duration']);
@@ -90,8 +92,11 @@ if(!empty(@$meta_description)){
 							if((int)@$value['status_hot'] == 1){
 								$hot_gif= '&nbsp;<img src="'.asset('upload/hot.gif').'" width="40" />';
 							}
-							if($k%3 == 0){								
+							if($k%9 == 0){								
 								echo '<div class="item">';
+							}
+							if($t%3==0){
+								echo '<div class="row">';
 							}
 							?>
 							<div class="col-lg-4">
@@ -116,7 +121,11 @@ if(!empty(@$meta_description)){
 							</div>
 							<?php
 							$k++;
-							if($k%3==0 || $k == count(@$items)){
+							$t++;
+							if($t%3==0 || $t == count(@$items)){
+								echo '</div>';
+							}
+							if($k%9==0 || $k == count(@$items)){
 								echo '</div>';
 							} 
 						}

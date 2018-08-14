@@ -347,7 +347,33 @@ class IndexController extends Controller {
 			$query->where('recruitment.status',1);
 			$query->where('recruitment.status_employer',1);
 			$query->where('recruitment.status_new',1);
-			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+			$data=$query->select(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'recruitment.status_hot',
+				'salary.fullname as salary_name',
+				'employer.fullname as employer_fullname',
+				'employer.alias as employer_alias',
+				'employer.logo'
+			)                
+			->groupBy(
+				'recruitment.id',
+				'recruitment.fullname',
+				'recruitment.alias',
+				'recruitment.duration',
+				'recruitment.status_hot',
+				'salary.fullname',
+				'employer.fullname',
+				'employer.alias',
+				'employer.logo'
+			)
+			->orderBy('recruitment.id', 'desc')				
+			->get()
+			->toArray(); 	
+			$items=convertToArray($data);	
+			/*$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
 			$data=convertToArray($source);
 			$totalItems=count($data);
 			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
@@ -390,7 +416,7 @@ class IndexController extends Controller {
 			->take($totalItemsPerPage)
 			->get()
 			->toArray();        
-			$items=convertToArray($data);   
+			$items=convertToArray($data);   */
 			break; 	
 			case 'viec-lam-hap-dan':
 			$title='Việc làm hấp dẫn';

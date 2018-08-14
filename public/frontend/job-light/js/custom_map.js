@@ -349,6 +349,8 @@ $('#return-to-top').on('click', function() {
               })
             })
 			
+      
+
 			$(document).ready(function() {
               $('.jp_best_deal_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,

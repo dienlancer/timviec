@@ -107,14 +107,14 @@
 							<div class="jp_blog_bottom_right_cont">
 								<p class="hidden-xs"><a href="#" class="hidden-xs"><i class="fa fa-comments"></i></a></p>
 								<ul>
-									<li>CHIA SẺ :</li>
-									<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="javascript:void(0);"><i class="fa fa-pinterest-p"></i></a></li>
-									<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-									<li class="hidden-xs"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-									<li class="hidden-xs"><a href="javascript:void(0);"><i class="fa fa-vimeo"></i></a></li>
-								</ul>
+													<li>CHIA SẺ :</li>
+													<li><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
+													<li><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
+													<li><a href="javascript:void(0);"><i class="fab fa-pinterest"></i></a></li>
+													<li><a href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a></li>
+													<li class="hidden-xs"><a href="javascript:void(0);"><i class="fab fa-google-plus-g"></i></a></li>
+													<li class="hidden-xs"><a href="javascript:void(0);"><i class="fab fa-vimeo-v"></i></a></li>
+												</ul>
 							</div>
 						</div>
 						<div class="clr"></div>

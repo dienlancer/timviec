@@ -86,7 +86,7 @@ if(count(@$source_quicked_job) > 0){
 							<h4><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>" title="<?php echo @$value['fullname']; ?>"><?php echo @$value['fullname']; ?></a></h4>
 							<p><a href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>" title="<?php echo @$value['employer_fullname']; ?>"><?php echo @$value['employer_fullname']; ?></a></p>
 							<ul>
-								<li><i class="fa fa-cc-paypal"></i>&nbsp; <?php echo @$value['salary_name']; ?></li>
+								<li><i class="fab fa-cc-paypal"></i>&nbsp; <?php echo @$value['salary_name']; ?></li>
 								<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
 							</ul>
 						</div>

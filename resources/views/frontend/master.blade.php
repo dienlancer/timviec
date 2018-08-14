@@ -363,11 +363,11 @@ if(isset($alias)){
         <?php
     }  
     ?>    
-    <!--<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />-->
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />
+    <!--<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />

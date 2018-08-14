@@ -45,7 +45,7 @@
 				<div class="jp_blog_cate_left_main_wrapper margin-top-30">
 					<div class="jp_first_blog_post_main_wrapper">
 						<div class="jp_first_blog_post_img">
-							<img src="<?php echo asset('upload/'.@$item['image']); ?>" class="img-responsive" alt="<?php echo @$item['alt_image']; ?>" />
+							<img src="<?php echo asset('upload/'.@$item['image']); ?>" class="img-responsive" alt="<?php echo @$item['alt_image']; ?>" title="<?php echo @$item['alt_image']; ?>" />
 						</div>
 						<div class="jp_first_blog_post_cont_wrapper">
 							<ul>

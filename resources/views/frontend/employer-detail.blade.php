@@ -32,7 +32,7 @@ if(count(@$items) > 0){
 				foreach ($source_banner as $key => $value) {
 					$featured_img=asset('upload/'.$value['image']);
 					?>
-					<div><img src="<?php echo $featured_img; ?>"></div>
+					<div><img src="<?php echo $featured_img; ?>" alt="<?php echo @$value['alt']; ?>" title="<?php echo @$value['alt']; ?>"></div>
 					<?php   	
 				}                   
 				?>
@@ -95,7 +95,7 @@ if(count(@$item) > 0){
 				<div class="col-lg-12">
 					<div class="jp_cs_com_info_wrapper">
 						<div class="jp_cs_com_info_img">
-							<img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>">
+							<img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>" title="<?php echo @$item['fullname']; ?>">
 						</div>
 						<div class="jp_cs_com_info_img_cont">
 							<h2 class="company-title"><?php echo @$item['fullname']; ?></h2>
@@ -258,7 +258,7 @@ if(count(@$item) > 0){
 						<div class="margin-top-15">
 							<center>
 								<div class="jp_jop_overview_img">
-									<center><img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>"></center>
+									<center><img src="<?php echo $logo; ?>" alt="<?php echo @$item['fullname']; ?>" title="<?php echo @$item['fullname']; ?>"></center>
 								</div>
 							</center>
 						</div>							

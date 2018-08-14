@@ -15,7 +15,7 @@ $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$data)>0){
     if(!empty(@$data["avatar"])){
-        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["avatar"]).'" style="width:100%" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
+        $picture        =   '<div class="box-logo"><div><center>&nbsp;<img src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data["avatar"]).'" style="width:100%" title="'.@$data['fullname'].'" alt="'.@$data['fullname'].'" />&nbsp;</center></div><div><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div></div>';                        
         $strImage       =   @$data["avatar"];
     }        
 } 

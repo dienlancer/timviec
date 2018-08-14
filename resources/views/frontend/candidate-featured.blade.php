@@ -45,7 +45,7 @@
 					?>
 					<div>
 						<div class="jp_rightside_career_img">                                	
-							<img src="<?php echo @$resume_avatar; ?>" alt="<?php echo @$value['candidate_name']; ?>" />
+							<img src="<?php echo @$resume_avatar; ?>" alt="<?php echo @$value['candidate_name']; ?>" title="<?php echo @$value['candidate_name']; ?>" />
 						</div>
 						<div class="jp_rightside_career_img_cont">
 							<h4><a href="javascript:void(0);" title="<?php echo @$value['candidate_name']; ?>"><?php echo @$value['candidate_name']; ?></a></h4>

@@ -29,9 +29,9 @@ if(Session::has("vmuser")){
 				$product_width = $setting['product_width']['field_value'];
 				$product_height = $setting['product_height']['field_value'];  
 				if(!empty(@$data_candidate["avatar"])){
-					$picture        =   '<img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data_candidate["avatar"]).'"  />';                        
+					$picture        =   '<img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$data_candidate["avatar"]).'" alt="'.@$data_candidate['fullname'].'" title="'.@$data_candidate['fullname'].'" />';                        
 				}else{
-					$picture='<img src="'.asset("/upload/avatar-default-icon.png").'"  />';
+					$picture='<img src="'.asset("/upload/avatar-default-icon.png").'" alt="'.@$data_candidate['fullname'].'" title="'.@$data_candidate['fullname'].'"  />';
 				}        				
 				?>
 				<h1 class="dn-dk-h">THÔNG TIN ỨNG VIÊN</h1>		

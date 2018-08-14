@@ -59,7 +59,7 @@ if(count(@$item) > 0){
 				<div class="source-recruitment-box margin-top-15 padding-bottom-15 padding-left-15 padding-right-15">
 					<div class="row">
 						<div class="col-lg-3">							
-							<div class="box-employer-logo"><center><img src="<?php echo @$logo; ?>"></center></div>
+							<div class="box-employer-logo"><center><img src="<?php echo @$logo; ?>" alt="<?php echo @$item["fullname"]; ?>" title="<?php echo @$item["fullname"]; ?>"></center></div>
 						</div>
 						<div class="col-lg-9">
 							<!--begin-->
@@ -368,7 +368,7 @@ if(count(@$item) > 0){
 				</div>
 				<div class="col-lg-4">
 					<div class="source-recruitment-box margin-top-15 padding-left-15 padding-right-15 padding-bottom-15">
-						<div class="padding-top-15"><center><img src="<?php echo @$logo; ?>"></center></div>
+						<div class="padding-top-15"><center><img src="<?php echo @$logo; ?>" alt="<?php echo @$item["fullname"]; ?>" title="<?php echo @$item["fullname"]; ?>"></center></div>
 						<div class="box-wrapper-employer-name"><center><?php echo @$data_employer['fullname']; ?></center></div>
 						<div class="margin-top-15"><b>Địa chỉ&nbsp;:&nbsp;</b><?php echo @$data_employer['address']; ?></div>
 						<?php 

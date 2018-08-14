@@ -42,7 +42,7 @@ if(count(@$source_top_hiring) > 0){
 					<div class="item">
 						<div class="jp_hiring_content_main_wrapper">
 							<div class="jp_hiring_content_wrapper">
-								<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>" title="<?php echo @$value['fullname']; ?>"><img src="<?php echo @$employer_logo; ?>" alt="<?php echo @$value['fullname']; ?>" /></a>
+								<a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>" title="<?php echo @$value['fullname']; ?>"><img src="<?php echo @$employer_logo; ?>" alt="<?php echo @$value['fullname']; ?>" title="<?php echo @$value['fullname']; ?>" /></a>
 								<h4><a href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$employer_fullname; ?></a></h4>
 								
 								<div class="opening"><center><a href="javascript:void(0);"><?php echo @$value['total']; ?> Opening</a></center></div>															

@@ -74,7 +74,7 @@ if(isset($alias)){
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
                         <div class="gc_header_wrapper">
                             <div class="gc_logo">
-                                <a href="<?php echo route('frontend.index.getHome'); ?>"><img src="{{asset('public/frontend/job-light/images/header/logo2.png')}}" alt="Logo" title="Job Pro" class="img-responsive"></a>
+                                <a href="<?php echo route('frontend.index.getHome'); ?>"><img src="<?php echo $seo_logo_frontend;?>" alt="<?php echo @$seo["alt_logo"]; ?>" title="<?php echo @$seo["alt_logo"]; ?>" class="img-responsive"></a>
                             </div>
                         </div>
                     </div>

@@ -82,7 +82,7 @@
 														<div class="row">
 															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 																<div class="jp_job_post_side_img">
-																	<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$hot_interested_logo; ?>" alt="<?php echo @$hot_interested_employer; ?>" /></a>
+																	<a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><img src="<?php echo @$hot_interested_logo; ?>" alt="<?php echo @$value['employer_fullname']; ?>" title="<?php echo @$value['employer_fullname']; ?>" /></a>
 																</div>
 																<div class="jp_job_post_right_cont">
 																	<h4 class="recent-job-title"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_interested_fullname; ?></a></h4>

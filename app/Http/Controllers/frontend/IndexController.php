@@ -137,22 +137,6 @@ class IndexController extends Controller {
 		}
 		$query->where('recruitment.status',1);
 		$query->where('recruitment.status_employer',1);	
-		$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-		$data=convertToArray($source);
-		$totalItems=count($data);
-		$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-		$pageRange=$this->_pageRange;
-		if(!empty(@$request->filter_page)){
-			$currentPage=(int)@$request->filter_page;
-		}       
-		$arrPagination=array(
-			"totalItems"=>$totalItems,
-			"totalItemsPerPage"=>$totalItemsPerPage,
-			"pageRange"=>$pageRange,
-			"currentPage"=>$currentPage   
-		);           
-		$pagination=new PaginationModel($arrPagination);
-		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 		$data=$query->select(
 			'recruitment.id',
 			'recruitment.fullname',
@@ -175,12 +159,10 @@ class IndexController extends Controller {
 			'employer.alias',
 			'employer.logo'
 		)
-		->orderBy('recruitment.id', 'desc')
-		->skip($position)
-		->take($totalItemsPerPage)
+		->orderBy('recruitment.id', 'desc')				
 		->get()
 		->toArray();        
-		$items=convertToArray($data);   
+		$items=convertToArray($data); 
 		return view("frontend.".@$view,compact("alias","title","meta_keyword","meta_description","items","q","job_id","province_id","salary_id","literacy_id","sex_id","work_id","working_form_id","experience_id","pagination"));   	
 	}
 	public function search(Request $request){		
@@ -208,27 +190,9 @@ class IndexController extends Controller {
 			$query->where('article.fullname','like','%'.trim(@$request->q).'%');
 			$q=trim(@$request->q);
 		}			
-		$source= $query->select('article.id')->groupBy('article.id')->get()->toArray();
-		$data=convertToArray($source);
-		$totalItems=count($data);
-		$totalItemsPerPage=(int)@$setting['article_perpage']['field_value']; 
-		$pageRange=$this->_pageRange;
-		if(!empty(@$request->filter_page)){
-			$currentPage=(int)@$request->filter_page;
-		}       
-		$arrPagination=array(
-			"totalItems"=>$totalItems,
-			"totalItemsPerPage"=>$totalItemsPerPage,
-			"pageRange"=>$pageRange,
-			"currentPage"=>$currentPage   
-		);           
-		$pagination=new PaginationModel($arrPagination);
-		$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 		$data=$query->select('article.id','article.alias','article.fullname','article.image','article.alt_image','article.intro','article.count_view','article.created_at')                
 		->groupBy('article.id','article.alias','article.fullname','article.image','article.alt_image','article.intro','article.count_view','article.created_at')
-		->orderBy('article.sort_order', 'desc')
-		->skip($position)
-		->take($totalItemsPerPage)
+		->orderBy('article.sort_order', 'desc')		
 		->get()
 		->toArray(); 
 		$items=convertToArray($data);   
@@ -295,30 +259,12 @@ class IndexController extends Controller {
 				->join('category_article','category_article.id','=','article_category.category_id')
 				->whereIn('article_category.category_id', $arr_category_id)
 				->where('article.status',1);
-				$data=$query->select('article.id')->groupBy('article.id')->get()->toArray();
-				$data=convertToArray($data);
-				$totalItems=count($data);
-				$totalItemsPerPage=(int)@$setting['article_perpage']['field_value']; 
-				$pageRange=$this->_pageRange;
-				if(!empty(@$request->filter_page)){
-					$currentPage=@$request->filter_page;
-				}       
-				$arrPagination=array(
-					"totalItems"=>$totalItems,
-					"totalItemsPerPage"=>$totalItemsPerPage,
-					"pageRange"=>$pageRange,
-					"currentPage"=>$currentPage   
-				);           
-				$pagination=new PaginationModel($arrPagination);
-				$position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
 				$data=$query->select('article.id','article.alias','article.fullname','article.image','article.alt_image','article.intro','article.count_view','article.created_at')                
 				->groupBy('article.id','article.alias','article.fullname','article.image','article.alt_image','article.intro','article.count_view','article.created_at')
-				->orderBy('article.sort_order', 'desc')
-				->skip($position)
-				->take($totalItemsPerPage)
+				->orderBy('article.sort_order', 'desc')								
 				->get()
 				->toArray();        
-				$items=convertToArray($data);    
+				$items=convertToArray($data); 
 				$view="category-article";                        
 			}              
 			break;
@@ -372,51 +318,7 @@ class IndexController extends Controller {
 			->orderBy('recruitment.id', 'desc')				
 			->get()
 			->toArray(); 	
-			$items=convertToArray($data);	
-			/*$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-			$data=convertToArray($source);
-			$totalItems=count($data);
-			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-			$pageRange=$this->_pageRange;
-			if(!empty(@$request->filter_page)){
-				$currentPage=(int)@$request->filter_page;
-			}       
-			$arrPagination=array(
-				"totalItems"=>$totalItems,
-				"totalItemsPerPage"=>$totalItemsPerPage,
-				"pageRange"=>$pageRange,
-				"currentPage"=>$currentPage   
-			);           
-			$pagination=new PaginationModel($arrPagination);
-			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
-			$data=$query->select(
-				'recruitment.id',
-				'recruitment.fullname',
-				'recruitment.alias',
-				'recruitment.duration',
-				'recruitment.status_hot',
-				'salary.fullname as salary_name',
-				'employer.fullname as employer_fullname',
-				'employer.alias as employer_alias',
-				'employer.logo'
-			)                
-			->groupBy(
-				'recruitment.id',
-				'recruitment.fullname',
-				'recruitment.alias',
-				'recruitment.duration',
-				'recruitment.status_hot',
-				'salary.fullname',
-				'employer.fullname',
-				'employer.alias',
-				'employer.logo'
-			)
-			->orderBy('recruitment.id', 'desc')
-			->skip($position)
-			->take($totalItemsPerPage)
-			->get()
-			->toArray();        
-			$items=convertToArray($data);   */
+			$items=convertToArray($data);				
 			break; 	
 			case 'viec-lam-hap-dan':
 			$title='Việc làm hấp dẫn';
@@ -429,22 +331,6 @@ class IndexController extends Controller {
 			$query->where('recruitment.status',1);
 			$query->where('recruitment.status_employer',1);
 			$query->where('recruitment.status_attractive',1);
-			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-			$data=convertToArray($source);
-			$totalItems=count($data);
-			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-			$pageRange=$this->_pageRange;
-			if(!empty(@$request->filter_page)){
-				$currentPage=(int)@$request->filter_page;
-			}       
-			$arrPagination=array(
-				"totalItems"=>$totalItems,
-				"totalItemsPerPage"=>$totalItemsPerPage,
-				"pageRange"=>$pageRange,
-				"currentPage"=>$currentPage   
-			);           
-			$pagination=new PaginationModel($arrPagination);
-			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 			$data=$query->select(
 				'recruitment.id',
 				'recruitment.fullname',
@@ -467,9 +353,7 @@ class IndexController extends Controller {
 				'employer.alias',
 				'employer.logo'
 			)
-			->orderBy('recruitment.id', 'desc')
-			->skip($position)
-			->take($totalItemsPerPage)
+			->orderBy('recruitment.id', 'desc')			
 			->get()
 			->toArray();        
 			$items=convertToArray($data);   
@@ -485,22 +369,6 @@ class IndexController extends Controller {
 			$query->where('recruitment.status',1);
 			$query->where('recruitment.status_employer',1);
 			$query->where('recruitment.status_high_salary',1);
-			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-			$data=convertToArray($source);
-			$totalItems=count($data);
-			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-			$pageRange=$this->_pageRange;
-			if(!empty(@$request->filter_page)){
-				$currentPage=(int)@$request->filter_page;
-			}       
-			$arrPagination=array(
-				"totalItems"=>$totalItems,
-				"totalItemsPerPage"=>$totalItemsPerPage,
-				"pageRange"=>$pageRange,
-				"currentPage"=>$currentPage   
-			);           
-			$pagination=new PaginationModel($arrPagination);
-			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 			$data=$query->select(
 				'recruitment.id',
 				'recruitment.fullname',
@@ -524,11 +392,9 @@ class IndexController extends Controller {
 				'employer.logo'
 			)
 			->orderBy('recruitment.id', 'desc')
-			->skip($position)
-			->take($totalItemsPerPage)
 			->get()
 			->toArray();        
-			$items=convertToArray($data);   
+			$items=convertToArray($data);   			
 			break; 	
 			case 'viec-lam-duoc-quan-tam':
 			$title='Việc làm được quan tâm nhiều nhất';
@@ -541,22 +407,6 @@ class IndexController extends Controller {
 			$query->where('recruitment.status',1);
 			$query->where('recruitment.status_employer',1);
 			$query->where('recruitment.status_interested',1);
-			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-			$data=convertToArray($source);
-			$totalItems=count($data);
-			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-			$pageRange=$this->_pageRange;
-			if(!empty(@$request->filter_page)){
-				$currentPage=(int)@$request->filter_page;
-			}       
-			$arrPagination=array(
-				"totalItems"=>$totalItems,
-				"totalItemsPerPage"=>$totalItemsPerPage,
-				"pageRange"=>$pageRange,
-				"currentPage"=>$currentPage   
-			);           
-			$pagination=new PaginationModel($arrPagination);
-			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 			$data=$query->select(
 				'recruitment.id',
 				'recruitment.fullname',
@@ -579,9 +429,7 @@ class IndexController extends Controller {
 				'employer.alias',
 				'employer.logo'
 			)
-			->orderBy('recruitment.id', 'desc')
-			->skip($position)
-			->take($totalItemsPerPage)
+			->orderBy('recruitment.id', 'desc')			
 			->get()
 			->toArray();        
 			$items=convertToArray($data);   
@@ -597,22 +445,6 @@ class IndexController extends Controller {
 			$query->where('recruitment.status',1);
 			$query->where('recruitment.status_employer',1);
 			$query->where('recruitment.status_quick',1);
-			$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-			$data=convertToArray($source);
-			$totalItems=count($data);
-			$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-			$pageRange=$this->_pageRange;
-			if(!empty(@$request->filter_page)){
-				$currentPage=(int)@$request->filter_page;
-			}       
-			$arrPagination=array(
-				"totalItems"=>$totalItems,
-				"totalItemsPerPage"=>$totalItemsPerPage,
-				"pageRange"=>$pageRange,
-				"currentPage"=>$currentPage   
-			);           
-			$pagination=new PaginationModel($arrPagination);
-			$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 			$data=$query->select(
 				'recruitment.id',
 				'recruitment.fullname',
@@ -635,9 +467,7 @@ class IndexController extends Controller {
 				'employer.alias',
 				'employer.logo'
 			)
-			->orderBy('recruitment.id', 'desc')
-			->skip($position)
-			->take($totalItemsPerPage)
+			->orderBy('recruitment.id', 'desc')						
 			->get()
 			->toArray();        
 			$items=convertToArray($data);   
@@ -657,22 +487,6 @@ class IndexController extends Controller {
 				$query->where('recruitment.status',1);
 				$query->where('recruitment.status_employer',1);
 				$query->where('recruitment_place.province_id',(int)@$province_id);			
-				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-				$data=convertToArray($source);
-				$totalItems=count($data);
-				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-				$pageRange=$this->_pageRange;
-				if(!empty(@$request->filter_page)){
-					$currentPage=(int)@$request->filter_page;
-				}       
-				$arrPagination=array(
-					"totalItems"=>$totalItems,
-					"totalItemsPerPage"=>$totalItemsPerPage,
-					"pageRange"=>$pageRange,
-					"currentPage"=>$currentPage   
-				);           
-				$pagination=new PaginationModel($arrPagination);
-				$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 				$data=$query->select(
 					'recruitment.id',
 					'recruitment.fullname',
@@ -695,12 +509,10 @@ class IndexController extends Controller {
 					'employer.alias',
 					'employer.logo'
 				)
-				->orderBy('recruitment.id', 'desc')
-				->skip($position)
-				->take($totalItemsPerPage)
+				->orderBy('recruitment.id', 'desc')				
 				->get()
 				->toArray();        
-				$items=convertToArray($data);   
+				$items=convertToArray($data); 
 			}			
 			break; 		
 			case 'employer-detail':						
@@ -715,22 +527,6 @@ class IndexController extends Controller {
 				$query->where('recruitment.status',1);
 				$query->where('recruitment.status_employer',1);
 				$query->where('recruitment.employer_id',(int)@$employer_id);			
-				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-				$data=convertToArray($source);
-				$totalItems=count($data);
-				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-				$pageRange=$this->_pageRange;
-				if(!empty(@$request->filter_page)){
-					$currentPage=(int)@$request->filter_page;
-				}       
-				$arrPagination=array(
-					"totalItems"=>$totalItems,
-					"totalItemsPerPage"=>$totalItemsPerPage,
-					"pageRange"=>$pageRange,
-					"currentPage"=>$currentPage   
-				);           
-				$pagination=new PaginationModel($arrPagination);
-				$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
 				$data=$query->select(
 					'recruitment.id',
 					'recruitment.fullname',
@@ -753,12 +549,10 @@ class IndexController extends Controller {
 					'employer.alias',
 					'employer.logo'
 				)
-				->orderBy('recruitment.id', 'desc')
-				->skip($position)
-				->take($totalItemsPerPage)
+				->orderBy('recruitment.id', 'desc')				
 				->get()
 				->toArray();        
-				$items=convertToArray($data);   				
+				$items=convertToArray($data); 				
 			}			
 			break; 	
 			case 'recruitment-by-job':						
@@ -801,51 +595,7 @@ class IndexController extends Controller {
 				->orderBy('recruitment.id', 'desc')				
 				->get()
 				->toArray(); 	
-				$items=convertToArray($data);				
-				/*$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
-				$data=convertToArray($source);
-				$totalItems=count($data);
-				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
-				$pageRange=$this->_pageRange;
-				if(!empty(@$request->filter_page)){
-					$currentPage=(int)@$request->filter_page;
-				}       
-				$arrPagination=array(
-					"totalItems"=>$totalItems,
-					"totalItemsPerPage"=>$totalItemsPerPage,
-					"pageRange"=>$pageRange,
-					"currentPage"=>$currentPage   
-				);           
-				$pagination=new PaginationModel($arrPagination);
-				$position   = ((int)@$currentPage-1)*$totalItemsPerPage;   
-				$data=$query->select(
-					'recruitment.id',
-					'recruitment.fullname',
-					'recruitment.alias',
-					'recruitment.duration',
-					'recruitment.status_hot',
-					'salary.fullname as salary_name',
-					'employer.fullname as employer_fullname',
-					'employer.alias as employer_alias',
-					'employer.logo'
-				)                
-				->groupBy(
-					'recruitment.id',
-					'recruitment.fullname',
-					'recruitment.alias',
-					'recruitment.duration',
-					'recruitment.status_hot',
-					'salary.fullname',
-					'employer.fullname',
-					'employer.alias',
-					'employer.logo'
-				)
-				->orderBy('recruitment.id', 'desc')
-				->skip($position)
-				->take($totalItemsPerPage)
-				->get()
-				->toArray();   
-				$items=convertToArray($data);  */      
+				$items=convertToArray($data);								     
 			}			
 			break; 	
 			case 'recruitment-detail':

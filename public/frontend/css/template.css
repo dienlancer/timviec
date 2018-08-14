@@ -1837,7 +1837,10 @@ form[name='frm-search-job-detail'] {
 }
 .employer-hr-box a{
     display: block;
-    padding: 10px 0px;
+    padding: 10px 10px;    
+}
+.employer-hr-box a:hover{
+    background: #ddd;
 }
 .employer-top-box{
     background: #ffffff;

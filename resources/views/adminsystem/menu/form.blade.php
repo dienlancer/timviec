@@ -1,6 +1,7 @@
 @extends("adminsystem.master")
 @section("content")
 <?php 
+$linkNew                =   route('adminsystem.'.$controller.'.getComponentForm',[@$menu_type_id]);
 $linkCancel             =   route('adminsystem.'.$controller.'.getList',[@$menu_type_id]);
 $linkSave               =   route('adminsystem.'.$controller.'.save');
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"       value="'.@$fullname.'">'; 
@@ -43,6 +44,7 @@ $inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />
             <div class="row">
                 <div class="col-md-12">
                     <button onclick="save()" class="btn purple">Lưu <i class="fa fa-floppy-o"></i></button> 
+                    <a href="<?php echo $linkNew; ?>" class="btn yellow">Thêm mới <i class="fa fa-plus"></i></a> 
                     <a href="<?php echo $linkCancel; ?>" class="btn green">Thoát <i class="fa fa-ban"></i></a>                    </div>                                                
                 </div>
             </div>    

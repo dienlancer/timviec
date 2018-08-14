@@ -396,10 +396,15 @@ if(count(@$item) > 0){
 							</center>
 						</div>					
 					</div>
-					@include("frontend.recruitment-content-right")
-			@include("frontend.recruitment-search-advance")
-			@include("frontend.recruitment-province")
-			@include("frontend.recruitment-top-employer")			
+					<div class="clr"></div>		
+					@include("frontend.recruitment-quicked-2")
+					<div class="clr"></div>
+					@include("frontend.recruitment-search-advance")
+					<div class="clr"></div>
+					@include("frontend.recruitment-province")
+					<div class="clr"></div>
+					@include("frontend.recruitment-top-employer")			
+					<div class="clr"></div>	
 				</div>
 			</div>
 		</div>

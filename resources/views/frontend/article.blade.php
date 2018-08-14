@@ -127,10 +127,14 @@
 		<div class="col-lg-4">
 			@include("frontend.search-article")
 			<div class="clr"></div>
-			@include("frontend.recruitment-content-right")
+			@include("frontend.recruitment-quicked-2")
+			<div class="clr"></div>
 			@include("frontend.recruitment-search-advance")
+			<div class="clr"></div>
 			@include("frontend.recruitment-province")
-			@include("frontend.recruitment-top-employer")
+			<div class="clr"></div>
+			@include("frontend.recruitment-top-employer")			
+			<div class="clr"></div>
 		</div>
 	</div>
 </div>

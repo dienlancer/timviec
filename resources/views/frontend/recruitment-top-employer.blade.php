@@ -3,11 +3,12 @@
 		<h4>Nhà tuyển dụng hàng đầu</h4>
 	</div>
 	<div class="clr"></div>
-	<div class="padding-left-15 padding-right-15 padding-bottom-15 province-big">
-		<?php 
-		$data_employer_r=App\EmployerModel::whereRaw('status = 1')->select('id','fullname','alias','logo')->orderBy('id','desc')->take(9)->get()->toArray();
+	<div class="jp_spotlight_slider_wrapper">
+		<div class="owl-carousel owl-theme">
+			<?php 
+		$data_employer_r=App\EmployerModel::whereRaw('status = 1')->select('id','fullname','alias','logo')->orderBy('id','desc')->get()->toArray();
 		if(count($data_employer_r) > 0){
-			$k=0;				
+			$k=0;							
 			foreach ($data_employer_r as $key => $value) {
 				$employer_r_img='';
 				if(!empty($value['logo'])){
@@ -15,8 +16,8 @@
 				}else{
 					$employer_r_img=asset('upload/no-logo.png');
 				}
-				if((int)@$k%3==0){
-					echo '<div class="row">';
+				if((int)@$k%9==0){
+					echo '<div class="item">';
 				}
 				?>
 				<div class="col-lg-4">
@@ -26,11 +27,12 @@
 				</div>
 				<?php
 				$k++;					 
-				if($k%3 == 0 || $k==count($data_employer_r)){
+				if($k%9 == 0 || $k==count($data_employer_r)){
 					echo '</div>';
 				}								
 			}				
 		}
 		?>
+		</div>		
 	</div>
 </div>

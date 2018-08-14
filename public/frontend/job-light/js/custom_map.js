@@ -95,7 +95,7 @@ $('#return-to-top').on('click', function() {
       autoplay:false,
       responsiveClass: true,
       smartSpeed: 1200,
-      navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
       responsive: {
         0: {
           items: 1,
@@ -121,7 +121,7 @@ $('#return-to-top').on('click', function() {
       autoplay:true,
       responsiveClass: true,
       smartSpeed: 1200,
-      navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
       responsive: {
         0: {
           items: 1,
@@ -147,7 +147,7 @@ $('#return-to-top').on('click', function() {
       autoplay:true,
       responsiveClass: true,
       smartSpeed: 1200,
-      navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
       responsive: {
         0: {
           items: 1,
@@ -203,7 +203,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,
@@ -252,7 +252,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,
@@ -279,7 +279,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,
@@ -306,7 +306,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,

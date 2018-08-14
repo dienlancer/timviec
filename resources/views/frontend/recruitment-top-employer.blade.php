@@ -1,3 +1,11 @@
+<?php 
+$seo=getSeo();
+$setting= getSettingSystem();
+$width=$setting['product_width']['field_value'];
+$height=$setting['product_height']['field_value'];  
+$article_width=$setting['article_width']['field_value'];
+$article_height=$setting['article_height']['field_value'];
+?>
 <div class="jp_spotlight_main_wrapper">
 	<div class="spotlight_header_wrapper">
 		<h4>Nhà tuyển dụng hàng đầu</h4>

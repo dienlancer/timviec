@@ -12,7 +12,7 @@
 				?>
 				<div class="mybreadcrumb margin-top-15">
 					<ul itemscope itemtype="http://schema.org/BreadcrumbList" >
-						<?php echo $breadcrumb; ?>
+						<?php echo @$breadcrumb; ?>
 					</ul>		
 				</div>		
 				<?php
@@ -39,13 +39,12 @@
 				<?php
 			}							
 			if(count(@$items) > 0){
+				$i=0;
+				$k=0;				
+				$main_wrapper='';
 				?>
-				<form method="post" name="frm">
-					<input type="hidden" name="filter_page" value="1">         
-					{{ csrf_field() }}	
+				<div class="owl-carousel main-category-article owl-theme">
 					<?php 
-					$i=0;
-					$main_wrapper='';
 					foreach (@$items as $key => $value) {
 						$id=@$value['id'];						
 						$permalink=route('frontend.index.index',[@$value['alias']]) ;
@@ -75,7 +74,10 @@
 								$arr_category_name[]='<span><a href="'.$permalink_category.'">'.$value_article_category["fullname"].'</a></span>' ;						
 							}		
 							$category_name=implode(' / ', $arr_category_name);		
-						}		
+						}	
+						if($k%5 == 0){								
+							echo '<div class="item">';
+						}	
 						?>
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -86,8 +88,7 @@
 										</div>
 										<div class="jp_first_blog_post_cont_wrapper">
 											<ul>
-												<li><a href="javascript:void(0);"><i class="fa fa-calendar"></i> &nbsp;&nbsp;<?php echo @$created_at; ?></a></li>
-												<!--<li><a href="javascript:void(0);"><i class="fa fa-clone"></i> &nbsp;&nbsp;IT jobs</a></li>-->
+												<li><a href="javascript:void(0);"><i class="fa fa-calendar"></i> &nbsp;&nbsp;<?php echo @$created_at; ?></a></li>											
 												<li><a href="javascript:void(0);"><i class="fa fa-clone"></i></a>&nbsp;&nbsp;<?php echo @$category_name; ?></li>
 											</ul>
 											<h3><a href="<?php echo @$permalink; ?>" title="<?php echo @$value['fullname']; ?>"><?php echo @$value['fullname']; ?></a></h3>
@@ -116,17 +117,15 @@
 								</div>
 							</div>
 						</div>
-						<?php
-						$i++;
+						<?php	
+						$k++;					
+						if($k%5==0 || $k == count(@$items)){
+							echo '</div>';
+						} 
 					}					
 					?>
-					<div class="row">
-						<div class="col-lg-12">
-							<?php echo $pagination->showPagination(); ?>
-						</div>
-					</div>							
-				</form>
-				<?php
+				</div>
+				<?php				
 			}else{
 				echo '<center>Đang cập nhật...</center>';
 			}

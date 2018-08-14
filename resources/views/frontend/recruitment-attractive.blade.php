@@ -87,7 +87,7 @@
 									<h4 class="recent-job-title"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?></a></h4>
 									<p class="recent-job-employer-name"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$value['employer_fullname']; ?></a></p> 
 									<ul>
-										<li><i class="fa fa-cc-paypal"></i><span class="margin-left-15"><?php echo @$value['salary_name']; ?></span></li>
+										<li><i class="fab fa-cc-paypal"></i><span class="margin-left-15"><?php echo @$value['salary_name']; ?></span></li>
 										<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
 									</ul>
 								</div>

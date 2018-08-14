@@ -7,13 +7,13 @@
 					<div class="job-box-searching">
 						<div>
 							<div class="job-box-kk">
-								<div class="job-box-m"><i class="far fa-address-book"></i></div>
+								<div class="job-box-m"><i class="fa fa-address-book"></i></div>
 								<input type="text" name="q" class="job-box-in" placeholder="Tiêu đề công việc" >
 							</div>							
 						</div>
 						<div>
 							<div class="job-box-kk">								
-								<div class="job-box-m"><i class="far fa-file"></i></div>
+								<div class="job-box-m"><i class="fa fa-file"></i></div>
 								<?php 
 								$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 								$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Ngành nghề');
@@ -23,7 +23,7 @@
 						</div>		
 						<div>
 							<div class="job-box-kk">
-								<div class="job-box-m"><i class="fas fa-map-marker-alt"></i></div>
+								<div class="job-box-m"><i class="fa fa-map-marker-alt"></i></div>
 								<?php                             	
 								$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 								$ddlProvince=cmsSelectboxCategory("province_id","selected2",@$source_province,@$province_id,'','Tỉnh thành');
@@ -35,7 +35,7 @@
 							<div class="job-box-searching-btn">
 								<a href="javascript:void(0);" onclick="document.forms['frm-searching-job'].submit();">
 									<div class="caramba">
-										<div><i class="fas fa-search"></i></div>
+										<div><i class="fa fa-search"></i></div>
 										<div class="margin-left-5">Tìm kiếm</div>
 									</div>
 								</a>

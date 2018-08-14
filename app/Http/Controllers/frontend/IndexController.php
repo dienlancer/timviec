@@ -749,8 +749,34 @@ class IndexController extends Controller {
 				->join('recruitment_job','recruitment.id','=','recruitment_job.recruitment_id');
 				$query->where('recruitment.status',1);
 				$query->where('recruitment.status_employer',1);
-				$query->where('recruitment_job.job_id',(int)@$job_id);						
-				$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
+				$query->where('recruitment_job.job_id',(int)@$job_id);	
+				$data=$query->select(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'recruitment.status_hot',
+					'salary.fullname as salary_name',
+					'employer.fullname as employer_fullname',
+					'employer.alias as employer_alias',
+					'employer.logo'
+				)                
+				->groupBy(
+					'recruitment.id',
+					'recruitment.fullname',
+					'recruitment.alias',
+					'recruitment.duration',
+					'recruitment.status_hot',
+					'salary.fullname',
+					'employer.fullname',
+					'employer.alias',
+					'employer.logo'
+				)
+				->orderBy('recruitment.id', 'desc')				
+				->get()
+				->toArray(); 	
+				$items=convertToArray($data);				
+				/*$source= $query->select('recruitment.id')->groupBy('recruitment.id')->get()->toArray();
 				$data=convertToArray($source);
 				$totalItems=count($data);
 				$totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
@@ -792,8 +818,8 @@ class IndexController extends Controller {
 				->skip($position)
 				->take($totalItemsPerPage)
 				->get()
-				->toArray();        
-				$items=convertToArray($data);   
+				->toArray();   
+				$items=convertToArray($data);  */      
 			}			
 			break; 	
 			case 'recruitment-detail':

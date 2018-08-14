@@ -1826,9 +1826,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
 form[name='frm-search-job-detail'] {
     padding-top: 55px;
 }
-.employer-box{
-    z-index: 999
-}
+
 @media (max-width: 768px){    
       
 }

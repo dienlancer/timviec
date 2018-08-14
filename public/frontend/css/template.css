@@ -1829,6 +1829,9 @@ form[name='frm-search-job-detail'] {
 .jp_slider_form_location_wrapper .second_icon, .jp_form_exper_wrapper .second_icon{
     right: 10px;
 }
+.jp_cs_com_info_wrapper{
+    margin-top: 0;
+}
 @media (max-width: 768px){    
       
 }

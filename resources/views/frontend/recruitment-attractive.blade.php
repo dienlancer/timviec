@@ -33,8 +33,7 @@
 	->get()
 	->toArray();
 	if(count(@$source_attractive_job) > 0){										
-		?>		
-		
+		?>				
 		<div class="owl-carousel attractive-recruitment owl-theme">
 			<?php 
 			$k=0;											

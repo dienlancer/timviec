@@ -145,12 +145,13 @@ if(count(@$item) > 0){
 				<?php 
 				if(count(@$items) > 0){
 					?>
-					<div class="jp_listing_related_heading_wrapper">
-						<div class="company-heading">
-							<div>NGÀNH NGHỀ LIÊN QUAN</div>
+					<div class="lipo">
+						<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
+							<h2>Ngành nghề liên quan</h2>
 						</div>
-						<div class="company_slider_wrapper">							
-							<div class="owl-carousel company-box-slider owl-theme">
+						<div class="clr"></div>		
+						<div class="ss_featured_recruitment">							
+							<div class="owl-carousel recruitment-related owl-theme">
 								<?php 
 								$k=0;											
 								foreach ($items as $key => $value) {
@@ -201,7 +202,7 @@ if(count(@$item) > 0){
 														<h4 class="recent-job-title"><a title="<?php echo @$value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$hot_attractive_fullname; ?></a></h4>
 														<p class="recent-job-employer-name"><a title="<?php echo @$value['employer_fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['employer_alias']]); ?>"><?php echo @$hot_attractive_employer; ?></a></p> 
 														<ul>
-															<li><i class="fa fa-cc-paypal"></i><span class="margin-left-15"><?php echo @$value['salary_name']; ?></span></li>
+															<li><i class="fab fa-cc-paypal"></i><span class="margin-left-15"><?php echo @$value['salary_name']; ?></span></li>
 															<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo @$province_text; ?></li>
 														</ul>
 													</div>
@@ -229,7 +230,7 @@ if(count(@$item) > 0){
 					<?php
 				}
 				?>
-				<div class="clr"></div>						
+				<div class="clr"></div>
 				<div class="jp_hiring_heading_wrapper jp_job_post_heading_wrapper job-general ">
 					<h2>Công việc hiện tại</h2>
 				</div>
@@ -340,7 +341,7 @@ if(count(@$item) > 0){
 				@include("frontend.recruitment-province")
 				<div class="clr"></div>
 				@include("frontend.recruitment-top-employer")			
-				<div class="clr"></div>		
+				<div class="clr"></div>
 			</div>
 		</div>
 	</div>

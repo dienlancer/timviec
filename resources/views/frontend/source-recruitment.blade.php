@@ -57,7 +57,17 @@ if(!empty(@$meta_description)){
 				if(count(@$items) > 0){					
 					?>
 					<form name="frm" method="POST" enctype="multipart/form-data" class="source-recruitment-main padding-bottom-10">
-						<input type="hidden" name="filter_page" value="1">        
+						<input type="hidden" name="filter_page" value="1">
+
+						<input type="hidden" name="q" value="<?php echo @$q; ?>">
+						<input type="hidden" name="job_id" value="<?php echo @$job_id; ?>">
+						<input type="hidden" name="province_id" value="<?php echo @$province_id; ?>">
+						<input type="hidden" name="salary_id" value="<?php echo @$salary_id; ?>">
+						<input type="hidden" name="literacy_id" value="<?php echo @$literacy_id; ?>">
+						<input type="hidden" name="sex_id" value="<?php echo @$sex_id; ?>">
+						<input type="hidden" name="work_id" value="<?php echo @$work_id; ?>">
+						<input type="hidden" name="working_form_id" value="<?php echo @$working_form_id; ?>">        
+						<input type="hidden" name="experience_id" value="<?php echo @$experience_id; ?>">        
 						{{ csrf_field() }}
 						<?php 
 						$k=0;

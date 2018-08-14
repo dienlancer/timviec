@@ -1832,6 +1832,9 @@ form[name='frm-search-job-detail'] {
 .jp_cs_com_info_wrapper{
     margin-top: 0;
 }
+.jp_listing_left_sidebar_wrapper{
+    margin-top: 25px;
+}
 @media (max-width: 768px){    
       
 }

@@ -11,7 +11,7 @@ $article_height=$setting['article_height']['field_value'];
 		<h4>Việc làm tại các thành phố lớn</h4>
 	</div>
 	<div class="clr"></div>
-	<div class="jp_spotlight_slider_wrapper">
+	<div class="employer-top-box">
 		<div class="owl-carousel owl-theme">
 			<?php 
 			$data=App\ProvinceModel::select('id','fullname','alias')->orderBy('id','desc')->get()->toArray();
@@ -24,7 +24,9 @@ $article_height=$setting['article_height']['field_value'];
 					?>
 					<div class="row">
 						<div class="col-lg-12">
-							<a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?></a>
+							<div class="employer-hr-box">
+								<a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><?php echo @$value['fullname']; ?></a>
+							</div>							
 						</div>
 					</div>					
 					<?php

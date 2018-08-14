@@ -26,8 +26,7 @@ $article_height=$setting['article_height']['field_value'];
 				$source_province=App\ProvinceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$ddlProvince=cmsSelectboxCategory("province_id","selected2",$source_province,@$province_id,'','Tỉnh thành');
 				echo $ddlProvince;
-				?>	
-				<i class="fa fa-angle-down second_icon"></i>
+				?>				
 			</div>
 			<div class="jp_slider_form_location_wrapper">
 				<i class="fa fa-th-large first_icon"></i>
@@ -35,8 +34,7 @@ $article_height=$setting['article_height']['field_value'];
 				$source_job=App\JobModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$ddlJob        =cmsSelectboxCategory("job_id", 'selected2', @$source_job, @$job_id,'','Ngành nghề');
 				echo $ddlJob;
-				?>	
-				<i class="fa fa-angle-down second_icon"></i>
+				?>					
 			</div>
 			<div class="jp_slider_form_location_wrapper">
 				<i class="fas fa-chart-line"></i>
@@ -44,8 +42,7 @@ $article_height=$setting['article_height']['field_value'];
 				$source_experience=App\ExperienceModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$ddlExperience=cmsSelectboxCategory("experience_id","",$source_experience,@$experience_id,'','Kinh nghiệm làm việc');
 				echo $ddlExperience;
-				?>	
-				<i class="fa fa-angle-down second_icon"></i>
+				?>					
 			</div>
 			<div class="jp_slider_form_location_wrapper">
 				<i class="far fa-money-bill-alt"></i>
@@ -53,8 +50,7 @@ $article_height=$setting['article_height']['field_value'];
 				$source_salary=App\SalaryModel::orderBy('id','asc')->select('id','fullname')->get()->toArray();
 				$ddlSalary        =cmsSelectboxCategory("salary_id", 'vacca', @$source_salary, @$salary_id,'','Chọn mức lương');
 				echo $ddlSalary;
-				?>                
-				<i class="fa fa-angle-down second_icon"></i>
+				?>                				
 			</div>
 			<div class="jp_slider_form_btn_wrapper">
 				<ul>

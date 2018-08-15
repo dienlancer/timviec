@@ -98,14 +98,8 @@ if(isset($alias)){
                                     'menu_item_has_children'=> '',
                                     'alias'                 => ''
                                 );                 
-                                wp_nav_menu_2($args);                          
-                                ?>      
-                                <!--<ul class="float_left">
-                                    <li class="has-mega gc_main_navigation"><a href="<?php echo route('frontend.index.getHome'); ?>" class="gc_main_navigation">Trang chủ</a></li>
-                                    <li class="has-mega gc_main_navigation"><a href="<?php echo route('frontend.index.viewEmployerAccount'); ?>" class="gc_main_navigation">Nhà tuyển dụng</a></li>
-                                    <li class="parent gc_main_navigation"><a href="<?php echo route('frontend.index.viewCandidateAccount'); ?>" class="gc_main_navigation">Ứng viên</a></li>
-                                    <li class="gc_main_navigation parent"><a href="<?php echo route('frontend.index.index',['cam-nang-nghe-nghiep']); ?>" class="gc_main_navigation">Cẩm nang nghề nghiệp</a></li>
-                                </ul>-->
+                                wp_nav_menu_top($args);                          
+                                ?>                                      
                             </div>
                             <!-- mainmenu end -->
                             <!-- mobile menu area start -->

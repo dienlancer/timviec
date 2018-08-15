@@ -339,7 +339,7 @@ function getBreadCrumb($alias){
   }
   return $strBreadcrumb;
 }
-function wp_nav_menu_2($args){
+function wp_nav_menu_top($args){
   $theme_location=$args['theme_location'];
   $data_menu_type=MenuTypeModel::whereRaw("trim(lower(theme_location)) = ? and status = 1",[trim(mb_strtolower($theme_location))])->select('id','fullname')->get()->toArray();
   $arr_menu=array();  
@@ -386,7 +386,7 @@ function wp_nav_menu_2($args){
         }
         $arr_menu[]=$menu;
       }
-      mooMenuRecursive_2($arr_menu,0,$menu_str,$lanDau,$args['alias'],$args['menu_class'],$args['menu_li_actived'],$args['menu_item_has_children'],$args['link_before'],$args['link_after']);
+      mooMenuRecursive_menu_top($arr_menu,0,$menu_str,$lanDau,$args['alias'],$args['menu_class'],$args['menu_li_actived'],$args['menu_item_has_children'],$args['link_before'],$args['link_after']);
       $menu_str = str_replace('<ul></ul>', '', $menu_str);    
       if(!empty($args['before_wrapper'])){
         if(!empty($args['before_title'])){
@@ -402,7 +402,7 @@ function wp_nav_menu_2($args){
   }  
   echo $wrapper;
 }
-function mooMenuRecursive_2($source,$parent,&$menu_str,&$lanDau,$alias,$menu_class,$menu_li_actived,$menu_item_has_children,$link_before,$link_after){
+function mooMenuRecursive_menu_top($source,$parent,&$menu_str,&$lanDau,$alias,$menu_class,$menu_li_actived,$menu_item_has_children,$link_before,$link_after){
   if(count($source) > 0){          
     $menu_str .='<ul>';
     if($lanDau == 0){
@@ -442,7 +442,7 @@ function mooMenuRecursive_2($source,$parent,&$menu_str,&$lanDau,$alias,$menu_cla
         unset($source[$key]);
         $newParent=$value["id"];
         $lanDau =$lanDau+1;
-        mooMenuRecursive_2($source,$newParent,$menu_str,$lanDau,$alias,$menu_class,$menu_li_actived,$menu_item_has_children,$link_before,$link_after);
+        mooMenuRecursive_menu_top($source,$newParent,$menu_str,$lanDau,$alias,$menu_class,$menu_li_actived,$menu_item_has_children,$link_before,$link_after);
         $menu_str .='</li>';
       }
     }

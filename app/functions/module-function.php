@@ -355,17 +355,12 @@ function wp_nav_menu_top($args){
         $menu=$data_menu[$i];
         $site_link='';
         if(!empty( trim($data_menu[$i]["alias"]) )){
-          switch ($data_menu[$i]["alias"]) {
-            case 'gio-hang':
-            case 'dang-ky':
-            case 'tai-khoan':
-            case 'dang-nhap':
-            case 'bao-mat':
-            case 'lien-he':
-            case 'xac-nhan-thanh-toan':
-            case 'dang-nhap-thanh-toan':
-            case 'hoa-don':                       
-            $site_link=url('/'.$data_menu[$i]["alias"]) ;
+          switch ($data_menu[$i]["alias"]) {            
+            case 'tk-ntd':                       
+            $site_link=route('frontend.index.viewEmployerAccount') ;
+            break;      
+            case 'tk-ungvien':                       
+            $site_link=route('frontend.index.viewCandidateAccount') ;
             break;                               
             case 'trang-chu':
             $site_link=url('/');
@@ -413,17 +408,7 @@ function mooMenuRecursive_menu_top($source,$parent,&$menu_str,&$lanDau,$alias,$m
       if((int)@$value["parent_id"]==(int)$parent)
       {
         $link=@$value["site_link"];
-        /*$class_activated=0;          
-        if( strcmp(trim(mb_strtolower(@$value["alias"])),trim(mb_strtolower($alias)))   ==  0 ){
-          $class_activated=1;                              
-        }                                        
-        $class_li='';                            
-        if((int)@$class_activated==1){
-          $class_li .=$menu_li_actived.' ';
-        }                        
-        if((int)@$value["havechild"]==1){
-          $class_li .=$menu_item_has_children;
-        }*/           
+       
         if((int)@$value['level'] == 0){
           if((int)@$value["havechild"]==1){
             $a='<a href="'.$link.'" class="gc_main_navigation">'.@$value['fullname'] . '&nbsp;' . @$link_after.'</a>';

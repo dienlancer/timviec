@@ -57,7 +57,26 @@ if(isset($alias)){
     <meta name="MobileOptimized" content="320" />  
          
     <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />    
-     
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
+    <!--srart theme style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
+    <!--<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />-->
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_II.css')}}" />    
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />    
+    <!--end theme style -->       
+    <!-- begin css standard -->        
+    <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
+    <link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />    
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" /> 
+    <!-- end css standard -->    
 </head>
 <body>		
 	<!-- preloader Start -->
@@ -374,26 +393,7 @@ if(isset($alias)){
         <?php
     }  
     ?>    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
-    <!--srart theme style -->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
-    <!--<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/font-awesome.css')}}" />-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_II.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />    
-    <!--end theme style -->       
-    <!-- begin css standard -->        
-    <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
-    <link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/template.css')}}" /> 
-    <!-- end css standard -->    
+    
 </body>
 </html>
 

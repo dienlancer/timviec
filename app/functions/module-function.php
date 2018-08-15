@@ -410,11 +410,11 @@ function mooMenuRecursive_2($source,$parent,&$menu_str,&$lanDau,$alias,$menu_cla
     }                          
     foreach ($source as $key => $value) 
     {                  
-      if((int)$value["parent_id"]==(int)$parent)
+      if((int)@$value["parent_id"]==(int)$parent)
       {
         $link=@$value["site_link"];
-        $class_activated=0;          
-        if( strcmp(trim(mb_strtolower($value["alias"])),trim(mb_strtolower($alias)))   ==  0 ){
+        /*$class_activated=0;          
+        if( strcmp(trim(mb_strtolower(@$value["alias"])),trim(mb_strtolower($alias)))   ==  0 ){
           $class_activated=1;                              
         }                                        
         $class_li='';                            
@@ -423,14 +423,21 @@ function mooMenuRecursive_2($source,$parent,&$menu_str,&$lanDau,$alias,$menu_cla
         }                        
         if((int)@$value["havechild"]==1){
           $class_li .=$menu_item_has_children;
-        }
-        $fullname=$link_before . $value['fullname'] . $link_after;           
-        $a='<a href="'.$link.'">'.$fullname.'</a>';
-        if(!empty($class_li)){
-          $li='<li class="'.$class_li.'"  >'.$a;                                        
+        }*/           
+        if((int)@$value['level'] == 0){
+          if((int)@$value["havechild"]==1){
+            $a='<a href="'.$link.'" class="gc_main_navigation">'.@$value['fullname'] . '&nbsp;' . @$link_after.'</a>';
+          }else{
+            $a='<a href="'.$link.'" class="gc_main_navigation">'.@$value['fullname'] .'</a>';
+          }          
         }else{
-          $li='<li>'.$a;                                        
-        }      
+          $a='<a href="'.$link.'" >'.@$value['fullname'].'</a>';
+        }             
+        if((int)@$value['level'] == 0){           
+          $li='<li class="has-mega gc_main_navigation"  >'.$a;                                        
+        }else{
+          $li='<li class="parent"  >'.$a;                                        
+        }       
         $menu_str .=$li;  
         unset($source[$key]);
         $newParent=$value["id"];

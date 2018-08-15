@@ -92,13 +92,13 @@ if(isset($alias)){
                                     'after_wrapper_ul'      =>  '',
                                     'after_wrapper'         => ''     ,
                                     'link_before'           => '', 
-                                    'link_after'            => '',                                                                    
+                                    'link_after'            => '<i class="fa fa-angle-down"></i>',                                                                    
                                     'theme_location'        => 'menu-header' ,
                                     'menu_li_actived'       => '',
                                     'menu_item_has_children'=> '',
                                     'alias'                 => ''
                                 );                 
-                                wp_nav_menu($args);                          
+                                wp_nav_menu_2($args);                          
                                 ?>      
                                 <!--<ul class="float_left">
                                     <li class="has-mega gc_main_navigation"><a href="<?php echo route('frontend.index.getHome'); ?>" class="gc_main_navigation">Trang chủ</a></li>

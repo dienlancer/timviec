@@ -1845,6 +1845,12 @@ form[name='frm-search-job-detail'] {
 .employer-top-box{
     background: #ffffff;
 }
+.mainmenu ul ul, .mainmenu ul li .mega-menu{
+    width: 400px;
+}
+.float_left ul li{
+    margin-left: 0;
+}
 @media (max-width: 768px){    
       
 }

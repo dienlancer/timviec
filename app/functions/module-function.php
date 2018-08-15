@@ -339,5 +339,107 @@ function getBreadCrumb($alias){
   }
   return $strBreadcrumb;
 }
-
+function wp_nav_menu_2($args){
+  $theme_location=$args['theme_location'];
+  $data_menu_type=MenuTypeModel::whereRaw("trim(lower(theme_location)) = ? and status = 1",[trim(mb_strtolower($theme_location))])->select('id','fullname')->get()->toArray();
+  $arr_menu=array();  
+  $menu_str              =  "";      
+  $lanDau                =  0;  
+  $wrapper='';  
+  if(count($data_menu_type) > 0){
+    $data_menu_type=@$data_menu_type[0];
+    $data_menu=MenuModel::whereRaw('menu_type_id = ? and status = 1',[(int)@$data_menu_type['id']])->orderBy('sort_order','asc')->get()->toArray();        
+    if(count($data_menu) > 0){
+      for ($i=0;$i<count($data_menu);$i++) {
+        $menu=array();
+        $menu=$data_menu[$i];
+        $site_link='';
+        if(!empty( trim($data_menu[$i]["alias"]) )){
+          switch ($data_menu[$i]["alias"]) {
+            case 'gio-hang':
+            case 'dang-ky':
+            case 'tai-khoan':
+            case 'dang-nhap':
+            case 'bao-mat':
+            case 'lien-he':
+            case 'xac-nhan-thanh-toan':
+            case 'dang-nhap-thanh-toan':
+            case 'hoa-don':                       
+            $site_link=url('/'.$data_menu[$i]["alias"]) ;
+            break;                               
+            case 'trang-chu':
+            $site_link=url('/');
+            break;
+            default:     
+            $site_link=url('/'.$data_menu[$i]["alias"].".html") ;       
+            break;
+          }        
+        }else{
+          $site_link='javascript:void(0);';
+        }        
+        $menu["site_link"] =$site_link;            
+        $data_child=MenuModel::whereRaw('parent_id = ?',[(int)$data_menu[$i]["id"]])->select('id')->get()->toArray();
+        if(count($data_child) > 0){
+          $menu["havechild"]=1;
+        }else{
+          $menu["havechild"]=0;
+        }
+        $arr_menu[]=$menu;
+      }
+      mooMenuRecursive_2($arr_menu,0,$menu_str,$lanDau,$args['alias'],$args['menu_class'],$args['menu_li_actived'],$args['menu_item_has_children'],$args['link_before'],$args['link_after']);
+      $menu_str = str_replace('<ul></ul>', '', $menu_str);    
+      if(!empty($args['before_wrapper'])){
+        if(!empty($args['before_title'])){
+          $wrapper=$args['before_wrapper'].$args['before_title'].$data_menu_type['fullname'].$args['after_title'].$args['before_wrapper_ul'].$menu_str.$args['after_wrapper_ul'].$args['after_wrapper'];
+        }else{
+          $wrapper=$args['before_wrapper'].$args['before_wrapper_ul'].$menu_str.$args['after_wrapper_ul'].$args['after_wrapper'];
+        }
+      }    
+      else{
+        $wrapper=$menu_str;
+      }
+    }    
+  }  
+  echo $wrapper;
+}
+function mooMenuRecursive_2($source,$parent,&$menu_str,&$lanDau,$alias,$menu_class,$menu_li_actived,$menu_item_has_children,$link_before,$link_after){
+  if(count($source) > 0){          
+    $menu_str .='<ul>';
+    if($lanDau == 0){
+      $menu_str ='<ul class="'.$menu_class.'"  >';
+    }                          
+    foreach ($source as $key => $value) 
+    {                  
+      if((int)$value["parent_id"]==(int)$parent)
+      {
+        $link=@$value["site_link"];
+        $class_activated=0;          
+        if( strcmp(trim(mb_strtolower($value["alias"])),trim(mb_strtolower($alias)))   ==  0 ){
+          $class_activated=1;                              
+        }                                        
+        $class_li='';                            
+        if((int)@$class_activated==1){
+          $class_li .=$menu_li_actived.' ';
+        }                        
+        if((int)@$value["havechild"]==1){
+          $class_li .=$menu_item_has_children;
+        }
+        $fullname=$link_before . $value['fullname'] . $link_after;           
+        $a='<a href="'.$link.'">'.$fullname.'</a>';
+        if(!empty($class_li)){
+          $li='<li class="'.$class_li.'"  >'.$a;                                        
+        }else{
+          $li='<li>'.$a;                                        
+        }      
+        $menu_str .=$li;  
+        unset($source[$key]);
+        $newParent=$value["id"];
+        $lanDau =$lanDau+1;
+        mooMenuRecursive_2($source,$newParent,$menu_str,$lanDau,$alias,$menu_class,$menu_li_actived,$menu_item_has_children,$link_before,$link_after);
+        $menu_str .='</li>';
+      }
+    }
+    $menu_str .='</ul>'; 
+  }
+}
 ?>

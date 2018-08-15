@@ -54,10 +54,8 @@ if(isset($alias)){
     <meta name="description" content="Job Pro" />
     <meta name="keywords" content="Job Pro" />
     <meta name="author" content="" />
-    <meta name="MobileOptimized" content="320" />  
-         
-    <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
+    <meta name="MobileOptimized" content="320" />           
+    <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />        
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />        
@@ -71,6 +69,7 @@ if(isset($alias)){
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />    
     <!--end theme style -->       
     <!-- begin css standard -->        
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
     <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
     <link href="{{asset('public/frontend/summernote/summernote.css')}}" rel="stylesheet" type="text/css" />    

@@ -34,7 +34,7 @@ $article_height=$setting['article_height']['field_value'];
 					?>
 					<div class="col-lg-4">
 						<div class="employer-box margin-top-5">
-							<a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><img title="<?php echo $value['fullname']; ?>" alt="<?php echo $value['fullname']; ?>"  src="<?php echo $employer_r_img; ?>"></a>
+							<a title="<?php echo $value['fullname']; ?>" href="<?php echo route('frontend.index.index',[@$value['alias']]); ?>"><img alt="<?php echo @$value['fullname']; ?>" title="<?php echo @$value['fullname']; ?>"   src="<?php echo $employer_r_img; ?>"></a>
 						</div>
 					</div>
 					<?php

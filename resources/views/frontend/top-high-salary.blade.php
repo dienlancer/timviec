@@ -37,7 +37,7 @@ if(count(@$source_top_hiring) > 0){
 					}else{
 						$employer_logo=asset('upload/no-logo.png');
 					}
-					$employer_fullname=truncateString($value['fullname'],9999) ;
+					$employer_fullname=truncateString(@$value['fullname'],9999) ;
 					?>
 					<div class="item">
 						<div class="jp_hiring_content_main_wrapper">

@@ -22,9 +22,9 @@ $product_width = $setting['product_width']['field_value'];
 $product_height = $setting['product_height']['field_value'];  
 if(count(@$candidate)>0){
 	if(!empty(@$candidate["avatar"])){
-		$picture        =   '<img width="150" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  />';                        
+		$picture        =   '<img width="150" alt="'.@$candidate['fullname'].'" title="'.@$candidate['fullname'].'" height="150" src="'.asset("/upload/" . $product_width . "x" . $product_height . "-".@$candidate["avatar"]).'"  />';                        
 	}else{
-		$picture='<img src="'.asset("/upload/avatar-default-icon.png").'" width="64" />';
+		$picture='<img src="'.asset("/upload/avatar-default-icon.png").'" width="64" alt="'.@$candidate['fullname'].'" title="'.@$candidate['fullname'].'" />';
 	}           
 }
 $query=DB::table('profile')

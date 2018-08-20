@@ -6,6 +6,13 @@ function cmsStatus($id,$statusValue,$kicked){
   </a>';
   return $xhtml;
 }
+function cmsStatusLink($id,$statusValue,$kicked,$link){
+  $strStatus = ($statusValue == 0) ? 'unpublish' : 'publish';
+  $xhtml    = '<a class="jgrid" id="status-'.$id.'" href="javascript:void(0)" onclick="changeStatusLink('.$id.','.$kicked.','.$link.',this);">
+  <span class="state '.$strStatus.'">&nbsp;</span>
+  </a>';
+  return $xhtml;
+}
 function cmsSelectbox($name = "",$class="",$arrValue=array(), $keySelect = "",$disabled){
   $xhtml = '<select  name="'.$name.'" class="'.$class.'" '.$disabled.' >';  
   foreach($arrValue as $key => $value){

@@ -1774,7 +1774,7 @@ function profile2Converter($data=array()){
             else{
                 $kicked=1;
             }            
-            $status_search     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status_search"],$kicked).'</center>';            
+            $status_search     = '<center>'.cmsStatusLink((int)@$data[$i]["id"],(int)@$data[$i]["status_search"],$kicked,route('frontend.index.changeProfileSearchStatus')).'</center>';            
             $status='';
             if((int)@$data[$i]['status'] == 1){
                 $status='<center><img src="'.asset("/public/adminsystem/images/active.png").'" /></center>';

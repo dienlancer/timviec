@@ -3,7 +3,6 @@
 @include("frontend.content-top")
 <?php 
 $seo=getSeo();
-$linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus');
 ?>
 <h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <h2 style="display: none;"><?php echo $seo["meta_description"]; ?></h2>
@@ -104,33 +103,4 @@ $linkChangeProfileSearchStatus	=	route('frontend.index.changeProfileSearchStatus
 		</div>
 	</div>
 </div>     
-<script type="text/javascript" language="javascript">
-	function changeStatus(id,status){		
-		var token = $("form[name='frm-cabinet-profile']").find("input[name='_token']").val();   
-		var dataItem={   
-			'id':id,
-			'status':status,         
-			'_token': token
-		};
-		$.ajax({
-			url: '<?php echo $linkChangeProfileSearchStatus; ?>',
-			type: 'POST',     
-			data: dataItem,
-			success: function (data, status, jqXHR) {   				
-				var element     = 'a#status-' + data['id'];
-				var classRemove = 'publish';
-				var classAdd    = 'unpublish';
-				if(parseInt(data['status']) ==1){
-					classRemove = 'unpublish';
-					classAdd    = 'publish';
-				}
-				$(element).attr('onclick',data['link']);
-				$(element + ' span').removeClass(classRemove).addClass(classAdd);
-			},
-			beforeSend  : function(jqXHR,setting){
-				
-			},
-		});				
-	}	
-</script>
 @endsection()

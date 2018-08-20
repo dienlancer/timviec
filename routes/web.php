@@ -611,6 +611,10 @@ Route::group(["prefix"=>"adminsystem","middleware"=>"TestLogin"],function(){
 		Route::get("form",["as"=>"adminsystem.dashboard.getForm","uses"=>"adminsystem\DashboardController@getForm"]);		
 	});	
 });
+Route::get('clear-cache', function() {
+    $command = Artisan::call('config:cache');
+	return 'Success';
+});
 Route::match(["get","post"],"adminsystem/login",["as"=>"adminsystem.login","uses"=>"adminsystem\LoginController@login"]);
 Route::post("adminsystem/logout",["as"=>"adminsystem.logout","uses"=>"adminsystem\LoginController@logout"]);
 Route::match(["get","post"],"/",["as"=>"frontend.index.getHome","uses"=>"frontend\IndexController@getHome"]);
@@ -669,4 +673,5 @@ Route::get("hoan-tat-dang-ky",["as"=>"frontend.index.finishedRegister","uses"=>"
 Route::get("dang-ky",["as"=>"frontend.index.register","uses"=>"frontend\IndexController@register"]);
 Route::get("dang-nhap",["as"=>"frontend.index.loginFe","uses"=>"frontend\IndexController@loginFe"]);
 Route::match(["get","post"],"tim-kiem",["as"=>"frontend.index.search","uses"=>"frontend\IndexController@search"]);
+
 ?>

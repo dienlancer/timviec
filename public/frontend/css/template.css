@@ -1851,6 +1851,27 @@ form[name='frm-search-job-detail'] {
 .float_left ul li{
     margin-left: 0;
 }
+.page-title{
+    padding-bottom: 0 !important;
+}
+.article-title a{    
+    font-size: 20px;
+    color: #000000;
+    font-weight: bold;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.article-title a:hover{
+    color: #f36969;
+}
+.article-intro{
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 23px;
+}
 @media (max-width: 768px){    
       
 }

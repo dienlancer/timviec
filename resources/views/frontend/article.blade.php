@@ -1,17 +1,18 @@
 @extends("frontend.master")
 @section("content")
-@include("frontend.content-top")
+@include("frontend.content-top") 
+<?php 
+use App\ArticleCategoryModel;
+use App\ArticleModel;
+use Illuminate\Support\Facades\DB;
+?>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<?php 
-			use App\ArticleCategoryModel;
-			use App\ArticleModel;
-			use Illuminate\Support\Facades\DB;
+			<?php 			
 			if(count($item) > 0){		
 				$id=$item["id"];
-				$fullname = $item["fullname"];
-				$intro=$item["intro"];
+				$fullname = $item["fullname"];				
 				$content=$item['content'];	
 				/* begin cập nhật count view */
 				$count_view=(int)@$item['count_view'];
@@ -53,8 +54,8 @@
 								<li><a href="javascript:void(0);"><i class="fa fa-clone"></i></a>&nbsp;&nbsp;<?php echo @$category_name; ?></li>
 							</ul>
 							<div class="clr"></div>
-							<h3><a href="javascript:void(0);"><?php echo @$fullname; ?></a></h3>
-							<div><?php echo @$item['intro']; ?></div>
+							<h1 class="article-title"><a href="javascript:void(0);"><?php echo @$fullname; ?></a></h1>
+							<h2 class="article-intro"><?php echo @$item['intro']; ?></h2>
 						</div>
 						<div class="clr"></div>
 						<div class="jp_blog_single_bottom_post_cont">

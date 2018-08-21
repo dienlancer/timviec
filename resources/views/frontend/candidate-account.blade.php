@@ -169,18 +169,4 @@ $ddlMarriage=cmsSelectboxCategory("marriage_id","vacca",@$source_marriage,@$data
 		</div>
 	</div>
 </div>
-<script type="text/javascript" language="javascript">
-	function deleteImage(){
-        var xac_nhan = 0;
-        var msg="Bạn có muốn xóa ?";
-        if(window.confirm(msg)){ 
-            xac_nhan = 1;
-        }
-        if(xac_nhan  == 0){
-            return 0;
-        }
-        $(".picture-area").empty();
-        $("input[name='image_hidden']").val("");        
-    }
-</script>
 @endsection()

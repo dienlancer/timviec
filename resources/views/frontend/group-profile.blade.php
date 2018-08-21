@@ -59,7 +59,7 @@ $linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 					<div class="rawon margin-left-15">
 						<div><center><i class="fas fa-upload"></i></center></div>
 						<div class="mimi">							
-							<a href="javascript:void(0);" onclick="uploadFile();">Upload hồ sơ</a>
+							<a href="javascript:void(0);" onclick="uploadFile(this);">Upload hồ sơ</a>
 							<div style="height: 0px; width: 0; overflow: hidden;">
 								<input type="file" name="file_attached"  />                                    
 							</div>
@@ -75,53 +75,7 @@ $linkCreateProfileStepByStep=route('frontend.index.getProfileDetail',[@$id]);
 	</div>
 </div>
 
-<script type="text/javascript" language="javascript">	
-	function uploadFile() {
-		$("form[name='frm-group-profile']").find("input[name='file_attached']").click();
-	}
-	function chooseFileInfo(){
-		$("form[name='frm-group-profile']").find("input[name='file_attached']").change(function(){    		
-			var id=$("form[name='frm-group-profile']").find('input[name="id"]').val();        
-			/* begin xử lý image */
-			var image_file=null;
-			var image_ctrl=$("form[name='frm-group-profile']").find('input[name="file_attached"]');         
-			var image_files = $(image_ctrl).get(0).files;        
-			if(image_files.length > 0){            
-				image_file  = image_files[0];  
-			}        
-			/* end xử lý image */
-			var token =$("form[name='frm-group-profile']").find('input[name="_token"]').val();       
-			var dataItem = new FormData();
-			dataItem.append('id',id);
-			if(image_files.length > 0){
-				dataItem.append('file_attached',image_file);
-			} 
-			dataItem.append('_token',token);
-			$.ajax({
-				url: '<?php echo $linkSave; ?>',
-				type: 'POST',
-				data: dataItem,
-				async: false,
-				success: function (data) {
-					if(data.checked==1){      
-						alert('Lưu file đính kèm thành công');              
-						window.location.href = "<?php echo $linkCancel; ?>";                    
-					} else{
-						showMsg('note',data);    
-					}       			
-				},
-				error : function (data){
-					
-				},
-				beforeSend  : function(jqXHR,setting){
-					
-				},
-				cache: false,
-				contentType: false,
-				processData: false
-			});
-		});
-	}
-	chooseFileInfo();
+<script type="text/javascript" language="javascript">		
+	chooseFileInfoGroupProfile("<?php echo $linkSave; ?>");
 </script>
 @endsection()

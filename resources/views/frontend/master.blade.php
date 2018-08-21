@@ -226,6 +226,7 @@ if(isset($alias)){
     <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
     <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>        
     <script src="{{ asset('public/frontend/js/chonviec.js') }}"></script> 
+    <script src="{{ asset('public/frontend/js/owl-carousel.js') }}"></script> 
     <!-- end js standard -->   
     <!--main js file start-->    
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>

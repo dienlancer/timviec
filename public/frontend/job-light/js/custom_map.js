@@ -38,211 +38,9 @@ $('#return-to-top').on('click', function() {
     }, 500);
 });
    
-   //------------------------ OWL JS Start --------------------//  
-   $(document).ready(function(){                  
-    $('.company-box-slider').owlCarousel({
-      loop: true,
-      margin: 10,
-      autoplay:true,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['Trước','Sau'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })            
-   $(document).ready(function(){
-    $(".banner").owlCarousel({
-      autoplay:true,                    
-      loop:true,
-      margin:0,                        
-      nav:false,            
-      mouseDrag: true,
-      touchDrag: true,                                
-      responsiveClass:true,
-      responsive:{
-        0:{
-          items:1
-        },
-        600:{
-          items:1
-        },
-        1000:{
-          items:1
-        }
-      }
-    })
-  })            
-    $(document).ready(function() {
-    $('.recruitment-related').owlCarousel({
-      loop:true,
-      margin: 10,
-      autoplay:false,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })             
-   $(document).ready(function() {
-    $('.attractive-recruitment').owlCarousel({
-      loop:true,
-      margin: 10,
-      autoplay:false,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })        
-  $(document).ready(function() {
-    $('.main-recruitment').owlCarousel({
-      loop:true,
-      margin: 10,
-      autoplay:false,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })          
-  $(document).ready(function() {
-    $('.main-category-article').owlCarousel({
-      loop:true,
-      margin: 10,
-      autoplay:false,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })          
-   $(document).ready(function(){                  
-    $('.high-salary-recruitment').owlCarousel({
-      loop: true,
-      margin: 10,
-      autoplay:true,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })   
-   $(document).ready(function(){                 
-    $('.interested-recruitment').owlCarousel({
-      loop: true,
-      margin: 10,
-      autoplay:true,
-      responsiveClass: true,
-      smartSpeed: 1200,
-      navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 1,
-          nav: true
-        },
-        1000: {
-          items: 1,
-          nav: true,
-          loop: true,
-          margin: 20
-        }
-      }
-    })
-  })                
+   //------------------------ OWL JS Start --------------------//
+   
+   
    $(document).ready(function() {
               $('.jp_tittle_slider_content_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -271,7 +69,6 @@ $('#return-to-top').on('click', function() {
               })
             })
 			
-      
 			
 			$(document).ready(function() {
               $('.jp_hiring_slider_wrapper .owl-carousel').owlCarousel({
@@ -280,7 +77,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,
@@ -300,7 +97,7 @@ $('#return-to-top').on('click', function() {
               })
             })
 			// Featured Products Js
-				/*$('.ss_featured_products .owl-carousel').owlCarousel({
+				$('.ss_featured_products .owl-carousel').owlCarousel({
 					loop:true,
 					margin:0,
 					nav:true,
@@ -319,7 +116,7 @@ $('#return-to-top').on('click', function() {
 							items:1
 						}
 					}
-				});*/
+				});
 				
 				
 				$(document).ready(function() {
@@ -329,7 +126,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,
@@ -349,33 +146,6 @@ $('#return-to-top').on('click', function() {
               })
             })
 			
-      $(document).ready(function() {
-              $('.employer-top-box .owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-        autoplay:true,
-                responsiveClass: true,
-        smartSpeed: 1200,
-        navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
-                responsive: {
-                  0: {
-                    items: 1,
-                    nav: true
-                  },
-                  600: {
-                    items: 1,
-                    nav: true
-                  },
-                  1000: {
-                    items: 1,
-                    nav: true,
-                    loop: true,
-                    margin: 20
-                  }
-                }
-              })
-            })
-
 			$(document).ready(function() {
               $('.jp_best_deal_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -383,7 +153,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,
@@ -410,7 +180,7 @@ $('#return-to-top').on('click', function() {
 				autoplay:true,
                 responsiveClass: true,
 				smartSpeed: 1200,
-				navText : ['<i class="fas fa-arrow-circle-left" aria-hidden="true"></i>','<i class="fas fa-arrow-circle-right" aria-hidden="true"></i>'],
+				navText : ['<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>','<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>'],
                 responsive: {
                   0: {
                     items: 1,

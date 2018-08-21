@@ -4,7 +4,7 @@
 <?php 
 $seo=getSeo();
 $disabled_status='';
-$register_status='onclick="apply(\''.route("frontend.index.apply").'\');"';
+$register_status='onclick="applyAppliedForm(\''.route("frontend.index.apply").'\');"';
 $arrUser=array();
 $id=0;
 if(Session::has("vmuser")){
@@ -101,7 +101,7 @@ if($source_recruitment != null){
 				<div class="row margin-top-10">
 					<div class="col-xs-2"></div>
 					<div class="col-xs-10">
-						<div class="btn-dang-ky"><a href="javascript:void(0);" onclick="uploadFile();" >CHỌN TỆP</a></div>
+						<div class="btn-dang-ky"><a href="javascript:void(0);" onclick="uploadFile(this);" >CHỌN TỆP</a></div>
 						<div style="height: 0px; width: 0; overflow: hidden;">
 								<input type="file" name="file_attached"  />                                    
 						</div>
@@ -115,6 +115,6 @@ if($source_recruitment != null){
 	</div>
 </div>
 <script type="text/javascript" language="javascript">
-	chooseFileInfo("<?php echo route("frontend.index.saveFileApplied"); ?>");
+	chooseFileInfoAppliedForm("<?php echo route("frontend.index.saveFileApplied"); ?>");
 </script>
 @endsection()

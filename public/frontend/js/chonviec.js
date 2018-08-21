@@ -1210,7 +1210,7 @@ function noSaveSkill(){
 }
 /* end profile-detail */
 /* begin recruitment-detail */
-function loginApply(logined_link){
+function loginApply(logined_applied_link){
 	var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
 	var password=$('form[name="frm_apply"]').find('input[name="password"]').val();                  
 	var recruitment_id=$('form[name="frm_apply"]').find('input[name="recruitment_id"]').val(); 
@@ -1222,7 +1222,7 @@ function loginApply(logined_link){
 	dataItem.append('recruitment_id',recruitment_id);
 	dataItem.append('_token',token);
 	$.ajax({
-		url:logined_link ,
+		url:logined_applied_link ,
 		type: 'POST',
 		data: dataItem,
 		async: false,

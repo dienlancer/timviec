@@ -215,9 +215,9 @@ if(isset($alias)){
     </div>
     <!-- Header Wrapper End -->
 	@yield("content")
-	@include("frontend.footer")
-    <!--main js file start-->
-    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>
+	@include("frontend.footer")        
+    <!--main js file start-->  
+    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>  
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.countTo.js')}}"></script>
@@ -380,7 +380,7 @@ if(isset($alias)){
         <!--end google map--> 
         <?php
     }  
-    ?>    
+    ?>   
     <!-- begin js standard -->       
     <script src="{{ asset('public/frontend/js/custom.js') }}"></script>     
     <script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>   
@@ -391,7 +391,7 @@ if(isset($alias)){
     <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>        
     <script src="{{ asset('public/frontend/js/chonviec.js') }}"></script> 
     <script src="{{ asset('public/frontend/js/owl-carousel.js') }}"></script> 
-    <!-- end js standard -->   
+    <!-- end js standard -->        
 </body>
 </html>
 

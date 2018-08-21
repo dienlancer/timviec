@@ -211,15 +211,4 @@ switch ($task) {
 		</div>
 	</div>
 </div>
-<script type="text/javascript" language="javascript">
-	$(document).ready(function(){
-		$( 'input[name="duration"]' ).datepicker({
-			dateFormat: "dd/mm/yy",
-			defaultDate: "+3d",
-			changeYear: true,
-			changeMonth: true,
-			yearRange: "1975:3000"
-		});
-	});		
-</script>
 @endsection()

@@ -90,4 +90,13 @@ $(document).ready(function(){
 	$('.selected2').select2({
 		theme: "classic"
 	});
+	$(document).ready(function(){
+		$( 'input[name="duration"]' ).datepicker({
+			dateFormat: "dd/mm/yy",
+			defaultDate: "+3d",
+			changeYear: true,
+			changeMonth: true,
+			yearRange: "1975:3000"
+		});
+	});	
 });

@@ -58,16 +58,16 @@ if(isset($alias)){
     <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />        
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />        
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/fonts.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/reset.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.carousel.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/owl.theme.default.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/flaticon.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_II.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />    
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />    
-    <!--end theme style -->       
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_II.css')}}" />  
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/style_map.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
+    <!--end theme style -->
     <!-- begin css standard -->        
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
     <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
@@ -215,28 +215,17 @@ if(isset($alias)){
     </div>
     <!-- Header Wrapper End -->
 	@yield("content")
-	@include("frontend.footer")	    
-    <!-- begin js standard -->
-    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>  
-    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>     
-    <script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>   
-    <script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
-    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/select2/select2.min.js')}}"                 ></script>
-    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote.js')}}"                 ></script>
-    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
-    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>        
-    <script src="{{ asset('public/frontend/js/chonviec.js') }}"></script> 
-    <script src="{{ asset('public/frontend/js/owl-carousel.js') }}"></script> 
-    <!-- end js standard -->   
-    <!--main js file start-->    
+	@include("frontend.footer")
+    <!--main js file start-->
+    <script src="{{asset('public/frontend/job-light/js/jquery_min.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.menu-aim.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.countTo.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/jquery.inview.min.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/owl.carousel.js')}}"></script>
-    <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>
-    <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>    	
-    <!--main js file end-->   
+    <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>    
+    <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>
+    <!--main js file end-->       	            
     <?php     
     if((int)Request::is('/')){
         ?>
@@ -392,7 +381,17 @@ if(isset($alias)){
         <?php
     }  
     ?>    
-    
+    <!-- begin js standard -->       
+    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>     
+    <script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>   
+    <script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/select2/select2.min.js')}}"                 ></script>
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote.js')}}"                 ></script>
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>        
+    <script src="{{ asset('public/frontend/js/chonviec.js') }}"></script> 
+    <script src="{{ asset('public/frontend/js/owl-carousel.js') }}"></script> 
+    <!-- end js standard -->   
 </body>
 </html>
 

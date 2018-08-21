@@ -1727,7 +1727,7 @@ function recruitment2Converter($data=array()){
             else{
                 $kicked=1;
             }
-            $status     = '<center>'.cmsStatus((int)@$data[$i]["id"],(int)@$data[$i]["status_employer"],$kicked).'</center>';            
+            $status     = '<center>'.cmsStatusLink((int)@$data[$i]["id"],(int)@$data[$i]["status_employer"],$kicked,route('frontend.index.changeRecruitmentAppearedStatus')).'</center>';            
             $id=@$data[$i]["id"];   
             $fullname=@$data[$i]['fullname'];    
             $created_at='<center>'.datetimeConverterVn($data[$i]["created_at"]).'</center>';          

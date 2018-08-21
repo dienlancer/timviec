@@ -429,7 +429,7 @@ if(count(@$item) > 0){
 					<div class="margin-top-15">Mật khẩu</div>
 					<div class="margin-top-5"><input type="password" name="password" class="vacca" placeholder="Mật khẩu" value=""></div>
 					<div class="margin-top-15">
-						<a href="javascript:void(0);" class="btn-login" onclick="loginApply();" >Đăng nhập</a>
+						<a href="javascript:void(0);" class="btn-login" onclick="loginApply('<?php echo route("frontend.index.loginApply"); ?>');" >Đăng nhập</a>
 						<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
 					</div>
 				</form>				
@@ -456,7 +456,7 @@ if(count(@$item) > 0){
 					<div class="margin-top-15">Mật khẩu</div>
 					<div class="margin-top-5"><input type="password" name="password" class="vacca" placeholder="Mật khẩu" value=""></div>
 					<div class="margin-top-15">
-						<a href="javascript:void(0);" class="btn-login" onclick="loginSavedRecruitment();" >Đăng nhập</a>
+						<a href="javascript:void(0);" class="btn-login" onclick="loginSavedRecruitment('<?php echo route("frontend.index.loginSavedRecruitment"); ?>');" >Đăng nhập</a>
 						<a href="<?php echo route('frontend.index.resetPassWrdCandidate'); ?>" class="btn-remember-password">Quên mật khẩu</a>
 					</div>
 				</form>				
@@ -465,78 +465,5 @@ if(count(@$item) > 0){
 	</div>
 </div>  
 <!-- end modal-alert-saved-recruitment -->
-<script type="text/javascript" language="javascript">
-	function loginApply(){
-        var email=$('form[name="frm_apply"]').find('input[name="email"]').val();        
-        var password=$('form[name="frm_apply"]').find('input[name="password"]').val();                  
-        var recruitment_id=$('form[name="frm_apply"]').find('input[name="recruitment_id"]').val(); 
-        var token=$('form[name="frm_apply"]').find('input[name="_token"]').val();                
-
-        var dataItem = new FormData();
-        dataItem.append('email',email);
-        dataItem.append('password',password);                        
-        dataItem.append('recruitment_id',recruitment_id);
-        dataItem.append('_token',token);
-        $.ajax({
-            url: '<?php echo route("frontend.index.loginApply"); ?>',
-            type: 'POST',
-            data: dataItem,
-            async: false,
-            success: function (data) {                
-               if(data.checked==1){    
-               		alert(data.msg.success);                      
-                    window.location.href = data.link_edit;                    
-                }else{
-                    showMsg('note-apply',data);  
-                }
-                spinner.hide();
-            },
-            error : function (data){
-                spinner.hide();
-            },
-            beforeSend  : function(jqXHR,setting){
-                spinner.show();
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-    function loginSavedRecruitment(){
-        var email=$('form[name="frm_saved_recruitment"]').find('input[name="email"]').val();        
-        var password=$('form[name="frm_saved_recruitment"]').find('input[name="password"]').val();                  
-        var recruitment_id=$('form[name="frm_saved_recruitment"]').find('input[name="recruitment_id"]').val(); 
-        var token=$('form[name="frm_saved_recruitment"]').find('input[name="_token"]').val();                
-
-        var dataItem = new FormData();
-        dataItem.append('email',email);
-        dataItem.append('password',password);                        
-        dataItem.append('recruitment_id',recruitment_id);
-        dataItem.append('_token',token);
-        $.ajax({
-            url: '<?php echo route("frontend.index.loginSavedRecruitment"); ?>',
-            type: 'POST',
-            data: dataItem,
-            async: false,
-            success: function (data) { 
-            	if(data.checked==1){
-            		alert(data.msg.success);                      
-            	}else{
-            		alert(data.msg.error);                      
-            	}
-               window.location.href = data.link_edit;    
-            },
-            error : function (data){
-                spinner.hide();
-            },
-            beforeSend  : function(jqXHR,setting){
-                spinner.show();
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-</script>
 @endsection()
 

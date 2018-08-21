@@ -97,33 +97,5 @@ $linkChangeRecruitmentAppearedStatus	=	route('frontend.index.changeRecruitmentAp
 		</div>
 	</div>
 </div>    
-<script type="text/javascript" language="javascript">
-	function changeStatus(id,status){		
-		var token = $("form[name='frm-manage-recruitment']").find("input[name='_token']").val();   
-		var dataItem={   
-			'id':id,
-			'status':status,         
-			'_token': token
-		};
-		$.ajax({
-			url: '<?php echo $linkChangeRecruitmentAppearedStatus; ?>',
-			type: 'POST',     
-			data: dataItem,
-			success: function (data, status, jqXHR) {   				
-				var element     = 'a#status-' + data['id'];
-				var classRemove = 'publish';
-				var classAdd    = 'unpublish';
-				if(parseInt(data['status']) ==1){
-					classRemove = 'unpublish';
-					classAdd    = 'publish';
-				}
-				$(element).attr('onclick',data['link']);
-				$(element + ' span').removeClass(classRemove).addClass(classAdd);
-			},
-			beforeSend  : function(jqXHR,setting){
-				
-			},
-		});				
-	}	
-</script>
+
 @endsection()

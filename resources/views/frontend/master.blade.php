@@ -114,7 +114,7 @@ if(!empty(@$alias)){
     <!-- end css standard -->    
 </head>
 <body>		
-	<!-- preloader Start -->
+	<!-- preloader Start -->    
     <div id="preloader">
         <div id="status"><img src="{{asset('public/frontend/job-light/images/header/loadinganimation.gif')}}" id="preloader_image" alt="loader">
         </div>

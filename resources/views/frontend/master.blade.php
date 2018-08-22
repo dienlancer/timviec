@@ -79,7 +79,8 @@ if(!empty(@$alias)){
     <meta property="og:description" content="<?php echo @$seo_meta_description; ?>" itemprop="description">
     <meta property="og:site_name" content="<?php echo url('/'); ?>">
     <meta property="og:url" content="<?php echo url(@$canonical); ?>" itemprop="url">
-    <meta property="og:image" content="<?php echo @$og_image; ?>" itemprop="thumbnailUrl">   
+    <meta property="og:image" content="<?php echo @$og_image; ?>" itemprop="thumbnailUrl"> 
+    <meta property="og:image:url" content="<?php echo @$og_image; ?>"/>  
     <link rel="shortcut icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">
     <link rel="icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">        
     <!-- begin google analytics -->

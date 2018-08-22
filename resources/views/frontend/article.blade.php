@@ -1,11 +1,6 @@
 @extends("frontend.master")
 @section("content")
 @include("frontend.content-top") 
-<?php 
-use App\ArticleCategoryModel;
-use App\ArticleModel;
-use Illuminate\Support\Facades\DB;
-?>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
@@ -17,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 				/* begin cập nhật count view */
 				$count_view=(int)@$item['count_view'];
 				$count_view++;
-				$row				=	ArticleModel::find((int)@$id); 
+				$row				=	App\ArticleModel::find((int)@$id); 
 				$row->count_view=$count_view;
 				$row->save();
 				$count_view_text=number_format($count_view,0,",",".");
@@ -32,7 +27,7 @@ use Illuminate\Support\Facades\DB;
 				->get()->toArray();						
 				$arr_category_name=array();	
 				$category_name='';	
-				$arr_category_id=array();
+				$arr_category_id=array();				
 				if(count($source_article_category) > 0){		
 					$data_article_category=convertToArray($source_article_category);
 					foreach ($data_article_category as $key => $value_article_category) {								
@@ -42,8 +37,15 @@ use Illuminate\Support\Facades\DB;
 					}		
 					$category_name=implode(' / ', $arr_category_name);		
 				}				
+				$data_category_article=App\CategoryArticleModel::find(@$arr_category_id[0])->toArray();
+				$breadcrumb= getBreadCrumbCategoryArticle(@$data_category_article);					
 				?>	
-				<div class="jp_blog_cate_left_main_wrapper margin-top-30">
+				<div class="margin-top-15">
+					<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="mybreadcrumb" >
+						<?php echo @$breadcrumb; ?>
+					</ul>		
+				</div>	
+				<div class="jp_blog_cate_left_main_wrapper margin-top-20">
 					<div class="jp_first_blog_post_main_wrapper">
 						<div class="jp_first_blog_post_img">
 							<img src="<?php echo asset('upload/'.@$item['image']); ?>" class="img-responsive" alt="<?php echo @$item['alt_image']; ?>" title="<?php echo @$item['alt_image']; ?>" />

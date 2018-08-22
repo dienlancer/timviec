@@ -4,10 +4,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<?php 
-			use App\ArticleCategoryModel;
-			use App\ArticleModel;
-			use Illuminate\Support\Facades\DB;
+			<?php 			
 			if(count($item) > 0){		
 				$id=$item["id"];
 				$fullname = $item["fullname"];				
@@ -15,14 +12,31 @@
 				/* begin cập nhật count view */
 				$count_view=(int)@$item['count_view'];
 				$count_view++;
-				$row				=	ArticleModel::find((int)@$id); 
+				$row				=	App\ArticleModel::find((int)@$id); 
 				$row->count_view=$count_view;
 				$row->save();
 				$count_view_text=number_format($count_view,0,",",".");
 				$created_at=datetimeConverterVn(@$item['created_at']);		
 				/* end cập nhật count view */				
 				?>	
-				<div class="jp_blog_cate_left_main_wrapper margin-top-30">
+				<div class="margin-top-15">
+					<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" class="mybreadcrumb" >
+						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
+								<span itemprop="name">Trang chủ</span>
+							</a>
+							<i class="fa fa-angle-right"></i>
+							<meta itemprop="position" content="1">
+						</li>						
+						<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+							<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.index',[@$alias]) ?>">
+								<span itemprop="name"><?php echo @$title; ?></span>
+							</a>						
+							<meta itemprop="position" content="2">
+						</li>      				
+					</ul>
+				</div>
+				<div class="jp_blog_cate_left_main_wrapper margin-top-20">
 					<div class="jp_first_blog_post_main_wrapper">
 						<?php 
 						if(!empty(@$item['alt_image'])){

@@ -24,8 +24,8 @@ if(!empty(@$meta_description)){
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="mybreadcrumb margin-top-15">
-				<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" >
+			<div class="margin-top-15">
+				<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" class="mybreadcrumb" >
 					<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
 						<a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="<?php echo route('frontend.index.getHome'); ?>">
 							<span itemprop="name">Trang chủ</span>

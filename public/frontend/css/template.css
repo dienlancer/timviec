@@ -1714,7 +1714,7 @@ form[name='frm-employer-login'] .register-tabs>li>a,form[name='frm-candidate-log
     position: relative;
     left: 10px;
 }
-.mybreadcrumb ul li{
+.mybreadcrumb li{
     display: inline-block;
 }
 

@@ -2,60 +2,94 @@
 $setting=getSettingSystem();
 $seo=getSeo();
 $telephone=$setting['telephone']['field_value'];
-$email_to=$setting['email_to']['field_value'];
-$facebook_url=$setting['facebook_url']['field_value'];
-$twitter_url=$setting['twitter_url']['field_value'];
-$google_plus=$setting['google_plus']['field_value'];
-$youtube_url=$setting['youtube_url']['field_value'];
-$instagram_url=$setting['instagram_url']['field_value'];
-$pinterest_url=$setting['pinterest_url']['field_value'];   
+$email_to=$setting['email_to']['field_value'];   
 $company=$setting['contacted_person']['field_value'];
-$opened_time=$setting['opened_time']['field_value'];
+
 $seo_title="";
 if(!empty(@$title)){
-	$seo_title=$title;
-}else{	
-	$seo_title=$seo["title"];
+    $seo_title=@$title;
+}else{  
+    $seo_title=@$seo["title"];
 }
 
 $seo_meta_keyword="";
 if(!empty(@$meta_keyword)){
-	$seo_meta_keyword=$meta_keyword;
+    $seo_meta_keyword=@$meta_keyword;
 }else{
-	$seo_meta_keyword=$seo["meta_keyword"];
+    $seo_meta_keyword=@$seo["meta_keyword"];
 }
 
 $seo_meta_description="";
 if(!empty(@$meta_description)){
-	$seo_meta_description=$meta_description;
+    $seo_meta_description=@$meta_description;
 }else{
-	$seo_meta_description=$seo["meta_description"];
+    $seo_meta_description=@$seo["meta_description"] . ' ' . @$telephone;
 }
 
-$seo_google_analytics=$seo["google_analytics"];
-$seo_author=$seo["author"];
-$seo_copyright=$seo["copyright"];
+$seo_google_analytics=@$seo["google_analytics"];
+$seo_author=@$seo["author"];
+$seo_copyright=@$seo["copyright"];
 $seo_generator="Mã nguồn mở phát triển bởi tichtacso.com";
-$seo_google_site_verification=$seo["google_site_verification"];
+$seo_google_site_verification=@$seo["google_site_verification"];
 $seo_page_url=url('/');
-$seo_favicon=asset('upload/'.$seo['favicon']);
-$seo_logo_frontend=asset('upload/'.$seo['logo_frontend']);
+$seo_favicon=asset('upload/'.@$seo['favicon']);
+$seo_logo_frontend=asset('upload/'.@$seo['logo_frontend']);
 $seo_alias="";
 if(isset($alias)){
-	$seo_alias=$alias;
+    $seo_alias=$alias;
 }
+
+$og_image=asset('upload/logo.png');
+if(count(@$item) > 0){
+    $image=@$item['image'];
+    if($image != null){
+        $og_image=get_article_thumbnail(@$image)  ;  
+    }
+}
+$canonical='';
+if(!empty(@$alias)){
+    $canonical=@$alias.'.html';
+}
+
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Job Pro Responsive HTML Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Job Pro" />
-    <meta name="keywords" content="Job Pro" />
-    <meta name="author" content="" />
-    <meta name="MobileOptimized" content="320" />           
-    <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/job-light/images/header/favicon.ico')}}" />        
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#">
+<head itemscope itemtype="http://schema.org/WebSite">       
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <title><?php echo @$seo_title; ?></title>
+    <meta name="keywords" content="<?php echo @$seo_meta_keyword; ?>">
+    <meta name="description" content="<?php echo @$seo_meta_description; ?>">    
+    <meta name="author" content="<?php echo @$seo_author; ?>">
+    <meta name="copyright" content="<?php echo @$seo_copyright; ?>">
+    <meta name="robots" content="index, archive, follow, noodp">
+    <meta name="googlebot" content="index,archive,follow,noodp">
+    <meta name="msnbot" content="all,index,follow">
+    <meta name="generator" content="<?php echo @$seo_generator; ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="<?php echo @$seo_google_site_verification; ?>">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta itemprop="name" content="<?php echo @$seo_title; ?>"/>
+    <link rel="canonical" href="<?php echo url(@$canonical); ?>" itemprop="url">
+    <meta property="fb:app_id" content="2161101824130389" /> 
+    <meta property="og:title" content="<?php echo @$seo_title; ?>" itemprop="headline">
+    <meta property="og:type"   content="article" /> 
+    <meta property="og:description" content="<?php echo @$seo_meta_description; ?>" itemprop="description">
+    <meta property="og:site_name" content="<?php echo @$seo_title; ?>">
+    <meta property="og:url" content="<?php echo url(@$canonical); ?>" itemprop="url">
+    <meta property="og:image" content="<?php echo @$og_image; ?>" itemprop="thumbnailUrl">   
+    <link rel="shortcut icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">    
+    <!-- begin google analytics -->
+    <script src="https://www.googletagmanager.com/gtag/js?id=<?php echo @$seo_google_analytics; ?>"></script>
+    <script language="javascript" type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '<?php echo @$seo_google_analytics; ?>');
+    </script>
+    <!-- end google analytics -->
     <!--srart theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/bootstrap.css')}}" />    
@@ -91,7 +125,7 @@ if(isset($alias)){
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
                         <div class="gc_header_wrapper">
                             <div class="gc_logo">
-                                <a href="<?php echo route('frontend.index.getHome'); ?>"><img src="<?php echo $seo_logo_frontend;?>" alt="<?php echo @$seo["alt_logo"]; ?>" title="<?php echo @$seo["alt_logo"]; ?>" class="img-responsive"></a>
+                                <a href="<?php echo route('frontend.index.getHome'); ?>"><img src="<?php echo @$seo_logo_frontend;?>" alt="<?php echo @$seo["alt_logo"]; ?>" title="<?php echo @$seo["alt_logo"]; ?>" class="img-responsive"></a>
                             </div>
                         </div>
                     </div>
@@ -225,11 +259,11 @@ if(isset($alias)){
     <script src="{{asset('public/frontend/job-light/js/owl.carousel.js')}}"></script>
     <script src="{{asset('public/frontend/job-light/js/modernizr.js')}}"></script>    
     <script src="{{asset('public/frontend/job-light/js/custom_map.js')}}"></script>
-    <!--main js file end-->       	            
+    <!--main js file end-->  
+    <!--begin google map-->     	            
     <?php     
     if((int)Request::is('/')){
-        ?>
-        <!--begin google map-->
+        ?>        
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDOogBL2cC0dSezucKzQGWxMIMmclqWNts&sensor=false"></script>
         <script type="text/javascript" language="javascript">
             var infowindow = null;
@@ -376,11 +410,11 @@ if(isset($alias)){
                     });
                 }
             }
-        </script>
-        <!--end google map--> 
+        </script>        
         <?php
     }  
     ?>   
+    <!--end google map--> 
     <!-- begin js standard -->       
     <script src="{{ asset('public/frontend/js/custom.js') }}"></script>     
     <script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>   

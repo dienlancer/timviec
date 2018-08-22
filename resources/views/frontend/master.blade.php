@@ -43,7 +43,7 @@ $og_image=asset('upload/logo.png');
 if(count(@$item) > 0){
     $image=@$item['image'];
     if($image != null){
-        $og_image=get_article_thumbnail(@$image)  ;  
+        $og_image=asset('upload/'.@$image)   ;  
     }
 }
 $canonical='';
@@ -68,18 +68,20 @@ if(!empty(@$alias)){
     <meta name="generator" content="<?php echo @$seo_generator; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="<?php echo @$seo_google_site_verification; ?>">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta itemprop="name" content="<?php echo @$seo_title; ?>"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <meta itemprop="url" content="<?php echo url(@$canonical); ?>"/>
+    <link rel="alternate" href="<?php echo url(@$canonical); ?>" hreflang="vi-vn" />
     <link rel="canonical" href="<?php echo url(@$canonical); ?>" itemprop="url">
     <meta property="fb:app_id" content="2161101824130389" /> 
     <meta property="og:title" content="<?php echo @$seo_title; ?>" itemprop="headline">
+    <meta property="og:locale" content="vi_VN" />
     <meta property="og:type"   content="article" /> 
     <meta property="og:description" content="<?php echo @$seo_meta_description; ?>" itemprop="description">
-    <meta property="og:site_name" content="<?php echo @$seo_title; ?>">
+    <meta property="og:site_name" content="<?php echo url('/'); ?>">
     <meta property="og:url" content="<?php echo url(@$canonical); ?>" itemprop="url">
     <meta property="og:image" content="<?php echo @$og_image; ?>" itemprop="thumbnailUrl">   
     <link rel="shortcut icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">
-    <link rel="icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">    
+    <link rel="icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">        
     <!-- begin google analytics -->
     <script src="https://www.googletagmanager.com/gtag/js?id=<?php echo @$seo_google_analytics; ?>"></script>
     <script language="javascript" type="text/javascript">

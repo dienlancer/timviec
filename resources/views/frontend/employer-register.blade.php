@@ -20,7 +20,7 @@ $source_scale=App\ScaleModel::orderBy('id','asc')->select('id','fullname')->get(
 							{{ csrf_field() }}
 							<div role="tabpanel">							
 								<ul id="tabOne" class="nav register-tabs">
-									<li class="active"><a href="#contentOne-1" data-toggle="tab">Tài khoản nhà tuyển dụng</a>
+									<li class="active"><a href="javascript:void(0);" data-toggle="tab">Tài khoản nhà tuyển dụng</a>
 									</li>								
 								</ul>
 								<div class="tab-content">

@@ -18,7 +18,7 @@ $seo=getSeo();
 							{{ csrf_field() }}
 							<div role="tabpanel">							
 								<ul id="tabOne" class="nav register-tabs">
-									<li class="active"><a href="#contentOne-1" data-toggle="tab">Tài khoản ứng viên</a>
+									<li class="active"><a href="javascript:void(0);" data-toggle="tab">Tài khoản ứng viên</a>
 									</li>								
 								</ul>
 								<div class="tab-content">

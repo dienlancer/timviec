@@ -1872,6 +1872,10 @@ form[name='frm-search-job-detail'] {
     font-size: 13px;
     line-height: 23px;
 }
+.register_tab_wrapper .register-tabs>li>a{
+	font-size: 15px;
+	    width: 250px;
+}
 @media (max-width: 768px){    
       
 }

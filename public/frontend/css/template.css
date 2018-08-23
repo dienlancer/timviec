@@ -1876,6 +1876,24 @@ form[name='frm-search-job-detail'] {
 	font-size: 15px;
 	    width: 250px;
 }
+/* begin province-employer-register */
+.province-employer-register .select2-container--classic .select2-selection--single{
+	background: #ffffff;
+	border : 1px solid #e0e0e0;
+}
+.province-employer-register .select2-container .select2-selection--single{
+	height: 50px;
+}
+.province-employer-register .select2-container--classic .select2-selection--single .select2-selection__rendered{
+	line-height: 50px;
+}
+.province-employer-register .select2-container--classic .select2-selection--single .select2-selection__arrow{
+	height: 48px;
+}
+/* end province-employer-register */
+.register_left_form input[type="text"], .register_left_form input[type="email"], .register_left_form input[type="password"], .register_left_form input[type="tel"], .register_left_form input[type="number"], .register_left_form input[type="url"], .register_left_form select, .register_left_form textarea{
+	text-transform: inherit;
+}
 @media (max-width: 768px){    
       
 }

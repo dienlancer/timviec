@@ -43,10 +43,10 @@ $seo=getSeo();
 							?>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-									<a href="javascript:void(0);" class="btn btn-primary"> <span>Đăng nhập bằng Facebook</span> <i class="fa fa-facebook"></i> </a>
+									<a href="javascript:void(0);" class="btn btn-primary"> <span>Đăng nhập bằng Facebook</span><i class="fab fa-facebook-f"></i></a>
 								</div>
 								<div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-									<a href="javascript:void(0);" class="btn btn-primary google-plus">Đăng nhập bằng Google<i class="fa fa-google-plus"></i> </a>
+									<a href="javascript:void(0);" class="btn btn-primary google-plus">Đăng nhập bằng Google<i class="fab fa-google-plus-g"></i></a>
 								</div>
 							</div>
 							<h2>or</h2>

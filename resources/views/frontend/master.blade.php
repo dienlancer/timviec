@@ -54,7 +54,8 @@ if(!empty(@$alias)){
 ?>
 <!DOCTYPE html>
 <html lang="vi" xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#">
-<head itemscope itemtype="http://schema.org/WebSite">       
+<head itemscope itemtype="http://schema.org/WebSite">  
+    <!--begin meta SEO-->     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <title><?php echo @$seo_title; ?></title>
@@ -82,7 +83,8 @@ if(!empty(@$alias)){
     <meta property="og:image" content="<?php echo @$og_image; ?>" itemprop="thumbnailUrl"> 
     <meta property="og:image:url" content="<?php echo @$og_image; ?>"/>  
     <link rel="shortcut icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">
-    <link rel="icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">        
+    <link rel="icon" href="<?php echo @$seo_favicon; ?>" type="image/x-icon">      
+    <!--end meta SEO-->       
     <!-- begin google analytics -->
     <script src="https://www.googletagmanager.com/gtag/js?id=<?php echo @$seo_google_analytics; ?>"></script>
     <script language="javascript" type="text/javascript">

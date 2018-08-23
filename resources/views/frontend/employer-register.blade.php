@@ -75,10 +75,12 @@ $source_scale=App\ScaleModel::orderBy('id','asc')->select('id','fullname')->get(
 											</div>
 											<!--Form Group-->
 											<div class="form-group col-md-6 col-sm-6 col-xs-12">
-												<?php 
-												$ddlProvince=cmsSelectboxCategory("province_id","selected2",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
-												echo $ddlProvince;
-												?>												
+												<div class="province-employer-register">
+													<?php 
+													$ddlProvince=cmsSelectboxCategory("province_id","selected2",$source_province,@$data['province_id'],'','Chọn tỉnh thành');
+													echo $ddlProvince;
+													?>
+												</div>																							
 											</div>
 											<div class="form-group col-md-6 col-sm-6 col-xs-12">
 												<?php 

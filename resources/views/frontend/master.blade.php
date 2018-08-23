@@ -108,6 +108,7 @@ if(!empty(@$alias)){
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/job-light/css/responsive_map.css')}}" />
     <!--end theme style -->
     <!-- begin css standard -->        
+    <link href="{{asset('public/frontend/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/fontawesome/css/all.min.css')}}" />
     <link href="{{asset('public/frontend/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('public/frontend/datatables/jquery.dataTables.min.css') }}" />
@@ -421,15 +422,16 @@ if(!empty(@$alias)){
     ?>   
     <!--end google map--> 
     <!-- begin js standard -->       
-    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>     
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/ui/jquery-ui.js')}}"                 ></script>    
     <script src="{{ asset('public/frontend/datatables/jquery.dataTables.min.js') }}"></script>   
     <script src="{{ asset('public/frontend/js/table-library.js') }}"></script>    
     <script language="javascript" type="text/javascript" src="{{asset('public/frontend/select2/select2.min.js')}}"                 ></script>
     <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote.js')}}"                 ></script>
     <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-image-attributes.js')}}"                 ></script>
-    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>        
-    <script src="{{ asset('public/frontend/js/chonviec.js') }}"></script> 
+    <script language="javascript" type="text/javascript" src="{{asset('public/frontend/summernote/summernote-remove-link.js')}}"                 ></script>            
     <script src="{{ asset('public/frontend/js/owl-carousel.js') }}"></script> 
+    <script src="{{ asset('public/frontend/js/chonviec.js') }}"></script> 
+    <script src="{{ asset('public/frontend/js/custom.js') }}"></script>    
     <!-- end js standard -->        
 </body>
 </html>
